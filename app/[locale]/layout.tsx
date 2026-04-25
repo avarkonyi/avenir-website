@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
+import { getTranslation, LOCALES } from "@/lib/i18n";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -12,15 +13,6 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const LOCALES = ["hu", "en", "de", "zh"];
-
-const DESCRIPTIONS: Record<string, string> = {
-  hu: "Komplex épületüzemeltetés és vagyonvédelem Magyarországon.",
-  en: "Comprehensive facility management and security services in Hungary.",
-  de: "Umfassende Gebäudeverwaltung und Sicherheitsdienste in Ungarn.",
-  zh: "匈牙利综合性物业管理与安全服务。",
-};
-
 export function generateStaticParams() {
   return LOCALES.map((locale) => ({ locale }));
 }
@@ -31,10 +23,11 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  const t = getTranslation(locale);
   return {
     metadataBase: new URL("https://www.afm.hu"),
     title: "Avenir Facility Management Kft.",
-    description: DESCRIPTIONS[locale] ?? DESCRIPTIONS.hu,
+    description: t.hero.sub,
     alternates: {
       canonical: `https://www.afm.hu/${locale}`,
       languages: {

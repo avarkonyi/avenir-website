@@ -1,0 +1,136 @@
+export const hu = {
+  nav: {
+    about: "Rólunk",
+    services: "Szolgáltatások",
+    references: "Referenciák",
+    news: "Hírek",
+    career: "Karrier",
+    contact: "Kapcsolat",
+    cta: "Ajánlatkérés",
+  },
+  hero: {
+    tag: "Épületüzemeltetés · Vagyonvédelem · Karbantartás",
+    h1a: "Az épület üzemel.",
+    h1b: "Ön a saját dolgára koncentrál.",
+    sub: "Az Avenir átveszi az épületüzemeltetés és a vagyonvédelem teljes terhét — napi működéstől a riportokig, egyetlen szerződéssel, egy kapcsolattartóval.",
+    cta1: "Szolgáltatásaink",
+    cta2: "Ajánlatkérés",
+  },
+  stats: [
+    { n: "30+", l: "Aktív helyszín" },
+    { n: "200+", l: "Szakképzett munkatárs" },
+    { n: "A+", l: "Bonitási minősítés" },
+    { n: "24/7", l: "Diszpécseri készenlét" },
+  ],
+  aboutTitle: "Az Avenir-ről",
+  aboutSub: "Egy partner. Minden szolgáltatás.",
+  aboutText:
+    "Cégünk 2018-ban alakult, de csapatunk és vezetőink több évtizedes tapasztalattal rendelkeznek az épületüzemeltetés és a vagyonvédelem területén. Ma 200+ fős szakembergárdával, 30+ aktív helyszínen dolgozunk országszerte — irodaházak, bevásárlóközpontok, logisztikai és ipari létesítmények, közintézmények számára. Nem nyolc külön szolgáltatást árulunk: egy integrált működést biztosítunk egyetlen szerződéssel, egy felelős kapcsolattartóval.",
+  values: [
+    {
+      t: "Átláthatóság",
+      d: "Mérhető teljesítmény, rendszeres riportok, kiszámítható számlázás.",
+    },
+    {
+      t: "Szakmai lefedettség",
+      d: "Vagyonvédelem, takarítás, műszak, zöldterület — minden diszciplína egy helyen.",
+    },
+    {
+      t: "Felelős jelenlét",
+      d: "Nem tűnünk el egy incidens után. Ott vagyunk, amikor számít.",
+    },
+  ],
+  servicesTitle: "Szolgáltatásaink",
+  servicesSub: "Komplex működés egy kézből",
+  services: [
+    {
+      id: "security",
+      icon: "shield",
+      t: "Őrzés-védelem",
+      d: "Személy- és vagyonvédelem képzett munkatársakkal: objektumőrzés, járőrszolgálat, beléptetés és központi diszpécserszolgálat — 24 órában, országos lefedettséggel.",
+    },
+    {
+      id: "cleaning",
+      icon: "sparkle",
+      t: "Takarítás",
+      d: "Napi és időszakos takarítás, nagytakarítás, gépi padlótisztítás és magassági ablaktisztítás — irodaházaktól ipari létesítményekig. Dokumentált protokollok, ellenőrzött minőség.",
+    },
+    {
+      id: "building",
+      icon: "building",
+      t: "Épületüzemeltetés",
+      d: "Teljes körű épületüzemeltetés egyetlen felelőssel: műszaki felügyelet, karbantartási ütemezés, alvállalkozó-menedzsment és energiagazdálkodás — a jogszabályi megfelelésre is kiterjedően.",
+    },
+    {
+      id: "reception",
+      icon: "desk",
+      t: "Portaszolgálat",
+      d: "Recepciós és portaszolgálat reprezentatív megjelenéssel: beléptetés, vendégkezelés, kulcskezelés és bérlőkapcsolat — a cég első benyomása, amit komolyan veszünk.",
+    },
+    {
+      id: "green",
+      icon: "leaf",
+      t: "Zöldterület-kezelés",
+      d: "Zöldfelület-gondozás szezonális ütemezéssel: fűnyírás, metszés, télesítés, hó- és síkosságmentesítés. Társasházaktól ipari parkokig, szerződött SLA-val.",
+    },
+    {
+      id: "technical",
+      icon: "wrench",
+      t: "Technikai karbantartás",
+      d: "Épületgépészeti, elektromos és HVAC rendszerek tervszerű karbantartása és hibaelhárítása. Jogszabályi felülvizsgálatok, mérések, dokumentáció egy kézből.",
+    },
+    {
+      id: "mystery",
+      icon: "eye",
+      t: "Mystery Shopping",
+      d: "Titkosvásárlói programok tervezése és lebonyolítása — független, dokumentált méréssel arról, hogyan működik a szolgáltatás az ügyfél oldalán.",
+    },
+    {
+      id: "hardfm",
+      icon: "gear",
+      t: "Hard FM",
+      d: "Épületszerkezet, gépészeti infrastruktúra és kritikus rendszerek üzemfenntartása — tervszerű megelőző karbantartással és 24 órás riasztási készenléttel.",
+    },
+  ],
+  refTitle: "Referenciáink",
+  refSub: "Bíznak bennünk",
+  refText:
+    "Ügyfeleink közös pontja nem a méret vagy az iparág — hanem az elvárás, hogy az épület hibátlanul működjön. Logisztikai központtól bevásárlóközpontig, ipari parktól közintézményig dolgozunk együtt olyan partnerekkel, akiknek a működési minőség nem kompromisszum kérdése.",
+  refs: [
+    "Irodaházak",
+    "Bevásárlóközpontok",
+    "Ipari és logisztikai parkok",
+    "Közintézmények",
+  ],
+  newsTitle: "Híreink",
+  newsSub: "Aktualitások és bejelentések",
+  newsText:
+    "Szakmai hírek, új referenciák, iparági események és bejelentések az Avenir-től.",
+  newsReadMore: "Tovább olvasom",
+  newsViewAll: "Összes hír",
+  newsEmpty: "Hamarosan friss hírekkel jelentkezünk.",
+  careerTitle: "Karrier",
+  careerSub: "Csatlakozz a csapathoz",
+  careerText:
+    "Az Avenir csapata országosan dolgozik nagyvállalati ügyfeleknek. Keressük azokat, akik komolyan veszik a műszakot: biztonsági, takarítási, műszaki és irányítói pozíciókra egyaránt. Amit kínálunk: stabil háttér, legális foglalkoztatás, szakmai képzés, belső előrelépés.",
+  applyBtn: "Jelentkezés",
+  contactTitle: "Kapcsolat",
+  contactSub: "Kérjen ajánlatot",
+  form: {
+    name: "Teljes név",
+    company: "Cégnév",
+    email: "E-mail cím",
+    phone: "Telefonszám",
+    service: "Érdeklő szolgáltatás",
+    message: "Üzenet / Igény leírása",
+    send: "Ajánlatkérés küldése",
+    success:
+      "Üzenetét megkaptuk. 2 munkanapon belül felvesszük Önnel a kapcsolatot.",
+  },
+  footer: {
+    rights: "© 2026 Avenir Facility Management Kft. · Minden jog fenntartva.",
+    privacy: "Adatvédelem",
+    terms: "ÁSZF",
+    impressum: "Impresszum",
+  },
+} as const;
