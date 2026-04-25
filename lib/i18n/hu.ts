@@ -116,6 +116,12 @@ export const hu = {
   applyBtn: "Jelentkezés",
   contactTitle: "Kapcsolat",
   contactSub: "Kérjen ajánlatot",
+  contactLabels: {
+    address: "Cím",
+    phone: "Telefon",
+    email: "E-mail",
+    hours: "24/7 diszpécseri ügyelet",
+  },
   form: {
     name: "Teljes név",
     company: "Cégnév",

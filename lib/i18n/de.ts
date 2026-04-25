@@ -124,6 +124,12 @@ export const de = {
   "applyBtn": "Bewerben",
   "contactTitle": "Kontakt",
   "contactSub": "Angebot anfragen",
+  "contactLabels": {
+    "address": "Adresse",
+    "phone": "Telefon",
+    "email": "E-Mail",
+    "hours": "24/7 Bereitschaft"
+  },
   "form": {
     "name": "Vollständiger Name",
     "company": "Unternehmen",

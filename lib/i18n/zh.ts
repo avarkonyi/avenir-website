@@ -124,6 +124,12 @@ export const zh = {
   "applyBtn": "立即申请",
   "contactTitle": "联系我们",
   "contactSub": "申请报价",
+  "contactLabels": {
+    "address": "地址",
+    "phone": "电话",
+    "email": "邮箱",
+    "hours": "24/7 调度值班"
+  },
   "form": {
     "name": "姓名",
     "company": "公司名称",

@@ -124,6 +124,12 @@ export const en = {
   "applyBtn": "Apply",
   "contactTitle": "Contact",
   "contactSub": "Request a quote",
+  "contactLabels": {
+    "address": "Address",
+    "phone": "Phone",
+    "email": "Email",
+    "hours": "24/7 dispatch on duty"
+  },
   "form": {
     "name": "Full name",
     "company": "Company",
