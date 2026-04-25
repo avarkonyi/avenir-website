@@ -126,7 +126,6 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 16px;
   transition: all 0.2s;
   background: #fff;
 }
@@ -177,5 +176,9 @@ a {
   .contact-grid {
     grid-template-columns: 1fr !important;
     gap: 40px !important;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
   }
 }

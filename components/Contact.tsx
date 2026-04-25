@@ -120,7 +120,7 @@ export function Contact({ t }: { t: Translation }) {
                     flexShrink: 0,
                   }}
                 >
-                  <Icon name={item.icon} size={18} color="#D1172E" />
+                  <Icon name={item.icon} size={22} color="#D1172E" />
                 </div>
                 <span style={{ color: "#556070", fontSize: 15, fontWeight: 300 }}>{item.text}</span>
               </div>

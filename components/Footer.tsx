@@ -7,9 +7,10 @@ export function Footer({ t }: { t: Translation }) {
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
         {/* Top grid: logo+blurb / services / contact / legal */}
         <div
+          className="footer-grid"
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+            gridTemplateColumns: "2fr 1fr 1.2fr 1fr",
             gap: 48,
             marginBottom: 40,
           }}
