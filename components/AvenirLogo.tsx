@@ -1,21 +1,17 @@
 type AvenirLogoProps = {
   size?: number;
-  dark?: boolean;
 };
 
-export function AvenirLogo({ size = 40, dark = false }: AvenirLogoProps) {
+export function AvenirLogo({ size = 40 }: AvenirLogoProps) {
   return (
     <img
-      src="/uploads/logo.png"
+      src="/uploads/logo.svg"
       alt="Avenir Facility Management"
       style={{
         height: size,
         width: "auto",
         display: "block",
         maxHeight: size,
-        filter: dark
-          ? "none"
-          : "drop-shadow(0 0 4px rgba(255,255,255,1)) drop-shadow(0 0 8px rgba(255,255,255,0.8))",
       }}
     />
   );
