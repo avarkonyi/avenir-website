@@ -127,8 +127,7 @@ export const en = {
   "contactLabels": {
     "address": "Address",
     "phone": "Phone",
-    "email": "Email",
-    "hours": "24/7 dispatch on duty"
+    "email": "Email"
   },
   "form": {
     "name": "Full name",

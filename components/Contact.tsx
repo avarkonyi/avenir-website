@@ -279,29 +279,6 @@ export function Contact({ t }: { t: Translation }) {
               <ContactRow key={item.kind} {...item} />
             ))}
           </div>
-          <div
-            style={{
-              marginTop: 24,
-              paddingLeft: 12,
-              display: "flex",
-              alignItems: "center",
-              gap: 8,
-              color: "#8A9BB0",
-              fontSize: 13,
-              fontStyle: "italic",
-            }}
-          >
-            <span
-              style={{
-                width: 6,
-                height: 6,
-                borderRadius: "50%",
-                background: "#22C55E",
-                flexShrink: 0,
-              }}
-            />
-            {t.contactLabels.hours}
-          </div>
         </div>
 
         <div

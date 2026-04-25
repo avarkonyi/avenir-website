@@ -120,7 +120,6 @@ export const hu = {
     address: "Cím",
     phone: "Telefon",
     email: "E-mail",
-    hours: "24/7 diszpécseri ügyelet",
   },
   form: {
     name: "Teljes név",

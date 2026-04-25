@@ -82,9 +82,6 @@ export function Footer({ t }: { t: Translation }) {
                   info@afm.hu
                 </a>
               </div>
-              <div style={{ color: "rgba(255,255,255,0.35)", fontSize: 12, marginTop: 4 }}>
-                24/7 diszpécseri készenlét
-              </div>
             </div>
           </div>
 

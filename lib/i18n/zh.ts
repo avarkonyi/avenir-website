@@ -127,8 +127,7 @@ export const zh = {
   "contactLabels": {
     "address": "地址",
     "phone": "电话",
-    "email": "邮箱",
-    "hours": "24/7 调度值班"
+    "email": "邮箱"
   },
   "form": {
     "name": "姓名",
