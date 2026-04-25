@@ -16,6 +16,7 @@ export function Career({ t }: { t: Translation }) {
           <div style={{ width: 40, height: 3, background: "#D1172E" }} />
           <span
             style={{
+              fontFamily: "var(--font-head)",
               fontSize: 13,
               letterSpacing: 2.5,
               color: "#D1172E",
@@ -29,6 +30,7 @@ export function Career({ t }: { t: Translation }) {
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, marginBottom: 52 }}>
           <h2
             style={{
+              fontFamily: "var(--font-head)",
               fontWeight: 800,
               fontSize: "clamp(36px, 4vw, 54px)",
               color: "#0B1E3E",
@@ -51,7 +53,7 @@ export function Career({ t }: { t: Translation }) {
           {PLACEHOLDER_POSITIONS.map((p, i) => (
             <div key={i} className="career-card">
               <div>
-                <h3 style={{ fontWeight: 700, fontSize: 20, color: "#0B1E3E", marginBottom: 8 }}>
+                <h3 style={{ fontFamily: "var(--font-head)", fontWeight: 700, fontSize: 20, color: "#0B1E3E", marginBottom: 8 }}>
                   {p.title}
                 </h3>
                 <div style={{ display: "flex", gap: 16 }}>

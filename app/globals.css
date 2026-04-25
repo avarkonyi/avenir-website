@@ -1,6 +1,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --font-head: var(--font-barlow-condensed), "Arial Narrow", sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -26,7 +27,7 @@ body {
   flex-direction: column;
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -136,6 +137,7 @@ a {
 .career-apply-btn {
   background: #0B1E3E;
   color: #fff;
+  font-family: var(--font-head);
   font-weight: 700;
   font-size: 12px;
   letter-spacing: 1px;
