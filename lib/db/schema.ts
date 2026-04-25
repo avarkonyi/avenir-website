@@ -1,0 +1,160 @@
+import {
+  pgTable,
+  serial,
+  text,
+  varchar,
+  boolean,
+  integer,
+  timestamp,
+  index,
+} from "drizzle-orm/pg-core";
+import { sql } from "drizzle-orm";
+
+// ────────────────────────────────────────────────────────────────────────────
+// 1. NEWS — admin-managed articles. Locale-aware via wide columns (4 locales
+//    × 3 content fields + 1 publish flag = 16 i18n columns). Slug is
+//    locale-independent: /hu/hirek/SLUG, /en/news/SLUG, /de/news/SLUG and
+//    /zh/news/SLUG all open the same article with locale-specific content.
+//
+//    Indexes:
+//      - 4 partial indexes (one per locale) on `published_*` filtered to
+//        `= true` — supports the per-locale "show only published" query
+//        common to all public-facing news lists.
+//      - `idx_news_date_desc` for feed-style ORDER BY date DESC.
+// ────────────────────────────────────────────────────────────────────────────
+export const news = pgTable(
+  "news",
+  {
+    id: serial("id").primaryKey(),
+    slug: varchar("slug", { length: 120 }).notNull().unique(),
+
+    titleHu: text("title_hu").notNull(),
+    titleEn: text("title_en").notNull(),
+    titleDe: text("title_de").notNull(),
+    titleZh: text("title_zh").notNull(),
+
+    leadHu: text("lead_hu").notNull(),
+    leadEn: text("lead_en").notNull(),
+    leadDe: text("lead_de").notNull(),
+    leadZh: text("lead_zh").notNull(),
+
+    bodyHu: text("body_hu").notNull(),
+    bodyEn: text("body_en").notNull(),
+    bodyDe: text("body_de").notNull(),
+    bodyZh: text("body_zh").notNull(),
+
+    publishedHu: boolean("published_hu").notNull().default(false),
+    publishedEn: boolean("published_en").notNull().default(false),
+    publishedDe: boolean("published_de").notNull().default(false),
+    publishedZh: boolean("published_zh").notNull().default(false),
+
+    date: timestamp("date", { withTimezone: true }).notNull().defaultNow(),
+    imageUrl: text("image_url"),
+
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (table) => [
+    index("idx_news_published_hu")
+      .on(table.publishedHu)
+      .where(sql`${table.publishedHu} = true`),
+    index("idx_news_published_en")
+      .on(table.publishedEn)
+      .where(sql`${table.publishedEn} = true`),
+    index("idx_news_published_de")
+      .on(table.publishedDe)
+      .where(sql`${table.publishedDe} = true`),
+    index("idx_news_published_zh")
+      .on(table.publishedZh)
+      .where(sql`${table.publishedZh} = true`),
+    index("idx_news_date_desc").on(sql`${table.date} DESC`),
+  ],
+);
+
+// ────────────────────────────────────────────────────────────────────────────
+// 2. POSITIONS — career listings. Title is HU-only by design (Avenir targets
+//    the Hungarian labour market); could migrate to wide-columns later if
+//    international hiring becomes a target.
+//
+//    Index: `idx_positions_active_sort` — partial composite covering the
+//    public Career list query (active rows only, ordered by sort_order).
+// ────────────────────────────────────────────────────────────────────────────
+export const positions = pgTable(
+  "positions",
+  {
+    id: serial("id").primaryKey(),
+    title: text("title").notNull(),
+    location: text("location").notNull(),
+    type: text("type").notNull(),
+    applyEmail: text("apply_email").notNull().default("info@afm.hu"),
+    active: boolean("active").notNull().default(true),
+    sortOrder: integer("sort_order").notNull().default(0),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (table) => [
+    index("idx_positions_active_sort")
+      .on(table.active, table.sortOrder)
+      .where(sql`${table.active} = true`),
+  ],
+);
+
+// ────────────────────────────────────────────────────────────────────────────
+// 3. MESSAGES — contact form submissions. DB is primary storage; the Resend
+//    notification (wired in a later prompt) is best-effort. The `service`
+//    column stores a service id string (not FK) since services live in
+//    translations, not in DB. `readAt` is nullable: NULL = unread, datetime
+//    = the moment admin marked the message as read.
+//
+//    Index: `idx_messages_unread` — partial covering the admin "show me
+//    unread, newest first" inbox view.
+// ────────────────────────────────────────────────────────────────────────────
+export const messages = pgTable(
+  "messages",
+  {
+    id: serial("id").primaryKey(),
+    name: text("name").notNull(),
+    company: text("company"),
+    email: text("email").notNull(),
+    phone: text("phone"),
+    service: varchar("service", { length: 50 }),
+    message: text("message"),
+    locale: varchar("locale", { length: 5 }).notNull(),
+    readAt: timestamp("read_at", { withTimezone: true }),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (table) => [
+    index("idx_messages_unread")
+      .on(sql`${table.createdAt} DESC`)
+      .where(sql`${table.readAt} IS NULL`),
+  ],
+);
+
+// ────────────────────────────────────────────────────────────────────────────
+// 4. CLIENT REFERENCES — initially seeded with the 4 industry categories
+//    currently in t.refs. Later admin can add named partner entries with
+//    logos under each category. SQL table is `client_references` to avoid
+//    the SQL reserved word `references`. All slugs are ASCII-only,
+//    transliterated from the HU label, lowercase, hyphen-separated.
+//
+//    Index: `idx_references_active_sort` — partial composite for the
+//    public-facing References section (active rows only, by sort_order).
+// ────────────────────────────────────────────────────────────────────────────
+export const clientReferences = pgTable(
+  "client_references",
+  {
+    id: serial("id").primaryKey(),
+    slug: varchar("slug", { length: 100 }).notNull().unique(),
+    labelHu: text("label_hu").notNull(),
+    labelEn: text("label_en").notNull(),
+    labelDe: text("label_de").notNull(),
+    labelZh: text("label_zh").notNull(),
+    sortOrder: integer("sort_order").notNull().default(0),
+    active: boolean("active").notNull().default(true),
+  },
+  (table) => [
+    index("idx_references_active_sort")
+      .on(table.active, table.sortOrder)
+      .where(sql`${table.active} = true`),
+  ],
+);
