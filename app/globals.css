@@ -47,3 +47,56 @@ a {
     color-scheme: dark;
   }
 }
+
+/* Services grid — hover via CSS (no client state) */
+.service-card {
+  background: #fff;
+  padding: 36px 32px;
+  border-radius: 3px;
+  cursor: default;
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  color: #0B1E3E;
+}
+.service-card:hover {
+  background: #0B1E3E;
+  border-bottom-color: #D1172E;
+  box-shadow: 0 16px 40px rgba(11, 30, 62, 0.15);
+  color: #D1172E;
+}
+.service-icon-wrap {
+  width: 56px;
+  height: 56px;
+  border-radius: 3px;
+  background: rgba(11, 30, 62, 0.07);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  transition: all 0.3s;
+}
+.service-card:hover .service-icon-wrap {
+  background: rgba(209, 23, 46, 0.15);
+}
+.service-title {
+  font-weight: 700;
+  font-size: 22px;
+  color: #0B1E3E;
+  margin-bottom: 12px;
+  letter-spacing: 0.3px;
+  transition: color 0.3s;
+}
+.service-card:hover .service-title {
+  color: #fff;
+}
+.service-desc {
+  color: #667788;
+  font-size: 14px;
+  line-height: 1.65;
+  font-weight: 300;
+  transition: color 0.3s;
+}
+.service-card:hover .service-desc {
+  color: rgba(255, 255, 255, 0.65);
+}
