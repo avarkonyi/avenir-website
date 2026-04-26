@@ -1,0 +1,11 @@
+og-image.jpg PLACEHOLDER
+
+Required spec for designer pack:
+- Filename: og-image.jpg (place in /public/, removes need for app/[locale]/opengraph-image.tsx fallback)
+- Format: JPG (or PNG)
+- Dimensions: 1200 × 630 px (16:9-ish, LinkedIn / FB / WhatsApp standard)
+- File size: under 1 MB
+- Content: Avenir brand visual — recommend logo + tagline "Épületüzemeltetés és vagyonvédelem" on dark navy (#0B1E3E) background with red (#D1172E) accent, matching the website hero section
+- Safe area: keep critical text within central 1100×580 (some platforms crop edges)
+
+Until this asset arrives, app/[locale]/opengraph-image.tsx auto-generates a per-locale fallback using ImageResponse.

@@ -1,0 +1,10 @@
+logo.png PLACEHOLDER
+
+Required spec for designer pack:
+- Filename: logo.png (place in /public/, will be referenced by Organization JSON-LD as https://www.afm.hu/logo.png)
+- Format: PNG with transparent background
+- Dimensions: minimum 600 × 60 px (Google Knowledge Panel requirement; larger is fine)
+- Aspect ratio: horizontal logo lockup (wordmark + symbol if available)
+- Color: full-colour brand version on transparent background (Knowledge Panel renders on white)
+
+This URL is currently referenced in lib/seo-data.ts (SEO_DATA.logoUrl) and the Organization + ProfessionalService JSON-LD blocks. The actual SVG site logo (used in Nav, Footer, About, News) lives at public/uploads/logo.svg and is unrelated to this Knowledge Panel asset.

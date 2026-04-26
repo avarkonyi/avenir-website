@@ -58,6 +58,8 @@ export function Footer({ t }: { t: Translation }) {
           </div>
 
           {/* Column 3: Contact info (hardcoded — not from translations) */}
+          {/* SOURCE OF TRUTH for company facts: lib/seo-data.ts */}
+          {/* Keep these strings synced when seo-data is updated. */}
           <div>
             <h4
               style={{

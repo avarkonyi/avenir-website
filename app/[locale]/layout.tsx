@@ -1,7 +1,20 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Barlow_Condensed } from "next/font/google";
 import "../globals.css";
 import { getTranslation, LOCALES } from "@/lib/i18n";
+import { JsonLd } from "@/components/JsonLd";
+import {
+  SEO_DATA,
+  SEO_FAQS_HU,
+  SEO_LOCALES,
+  OG_LOCALE_MAP,
+  META_TAGLINES,
+  META_KEYWORDS_HU,
+  SECURITY_FIRST_DESCRIPTION,
+  SCHEMA_KNOWS_ABOUT,
+  SCHEMA_SERVICE_ORDER,
+  type SeoLocale,
+} from "@/lib/seo-data";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,6 +32,12 @@ const barlowCondensed = Barlow_Condensed({
   weight: ["400", "600", "700", "800"],
 });
 
+export const viewport: Viewport = {
+  themeColor: SEO_DATA.themeColor,
+  width: "device-width",
+  initialScale: 1,
+};
+
 export function generateStaticParams() {
   return LOCALES.map((locale) => ({ locale }));
 }
@@ -30,21 +49,171 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = getTranslation(locale);
+  const seoLocale = (SEO_LOCALES.includes(locale as SeoLocale)
+    ? locale
+    : "hu") as SeoLocale;
+  const tagline = META_TAGLINES[seoLocale];
+  const title = `${SEO_DATA.legalNameShort} — ${tagline}`;
+  const description = t.hero.sub;
+  const localeUrl = `${SEO_DATA.url}/${seoLocale}`;
+  const alternateLocales = SEO_LOCALES.filter((l) => l !== seoLocale).map(
+    (l) => OG_LOCALE_MAP[l],
+  );
+
   return {
-    metadataBase: new URL("https://www.afm.hu"),
-    title: "Avenir Facility Management Kft.",
-    description: t.hero.sub,
+    metadataBase: new URL(SEO_DATA.url),
+    title,
+    description,
+    keywords: META_KEYWORDS_HU,
+    authors: [{ name: SEO_DATA.legalNameShort }],
+    robots: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
     alternates: {
-      canonical: `https://www.afm.hu/${locale}`,
+      canonical: localeUrl,
       languages: {
-        hu: "https://www.afm.hu/hu",
-        en: "https://www.afm.hu/en",
-        de: "https://www.afm.hu/de",
-        zh: "https://www.afm.hu/zh",
-        "x-default": "https://www.afm.hu/hu",
+        hu: `${SEO_DATA.url}/hu`,
+        en: `${SEO_DATA.url}/en`,
+        de: `${SEO_DATA.url}/de`,
+        zh: `${SEO_DATA.url}/zh`,
+        "x-default": `${SEO_DATA.url}/hu`,
       },
     },
+    openGraph: {
+      type: "website",
+      siteName: SEO_DATA.name,
+      title,
+      description,
+      url: localeUrl,
+      locale: OG_LOCALE_MAP[seoLocale],
+      alternateLocale: alternateLocales,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
   };
+}
+
+function buildJsonLdSchemas(
+  localeIso: SeoLocale,
+  services: readonly { readonly id: string; readonly t: string; readonly d: string }[],
+) {
+  const orgId = `${SEO_DATA.url}/#organization`;
+  const localBusinessId = `${SEO_DATA.url}/#localbusiness`;
+  const websiteId = `${SEO_DATA.url}/#website`;
+  const postalAddress = {
+    "@type": "PostalAddress",
+    streetAddress: SEO_DATA.address.streetAddress,
+    addressLocality: SEO_DATA.address.addressLocality,
+    postalCode: SEO_DATA.address.postalCode,
+    addressCountry: SEO_DATA.address.addressCountry,
+  };
+
+  return [
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": orgId,
+      name: SEO_DATA.legalNameShort,
+      legalName: SEO_DATA.legalName,
+      url: SEO_DATA.url,
+      logo: SEO_DATA.logoUrl,
+      image: SEO_DATA.ogImageUrl,
+      description: SECURITY_FIRST_DESCRIPTION,
+      foundingDate: SEO_DATA.foundingDate,
+      taxID: SEO_DATA.taxID,
+      vatID: SEO_DATA.vatID,
+      iso6523Code: SEO_DATA.iso6523,
+      address: postalAddress,
+      contactPoint: [
+        {
+          "@type": "ContactPoint",
+          telephone: SEO_DATA.contact.phone,
+          email: SEO_DATA.contact.email,
+          contactType: "customer service",
+          areaServed: "HU",
+          availableLanguage: ["Hungarian", "English"],
+        },
+      ],
+      sameAs: [],
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": ["ProfessionalService", "SecurityService"],
+      "@id": localBusinessId,
+      name: SEO_DATA.legalNameShort,
+      description: SECURITY_FIRST_DESCRIPTION,
+      serviceType: "Property Protection and Security Services",
+      knowsAbout: [...SCHEMA_KNOWS_ABOUT],
+      image: SEO_DATA.ogImageUrl,
+      url: SEO_DATA.url,
+      telephone: SEO_DATA.contact.phone,
+      email: SEO_DATA.contact.email,
+      priceRange: "$$",
+      address: postalAddress,
+      areaServed: { "@type": "Country", name: "Magyarország" },
+      openingHoursSpecification: [
+        {
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday",
+          ],
+          opens: "00:00",
+          closes: "23:59",
+          description: "24/7 diszpécseri készenlét",
+        },
+      ],
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      name: "Avenir szolgáltatások",
+      itemListElement: SCHEMA_SERVICE_ORDER.flatMap((id, i) => {
+        const svc = services.find((s) => s.id === id);
+        return svc
+          ? [
+              {
+                "@type": "Service",
+                position: i + 1,
+                name: svc.t,
+                description: svc.d,
+                provider: { "@id": orgId },
+              },
+            ]
+          : [];
+      }),
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: SEO_FAQS_HU.map((item) => ({
+        "@type": "Question",
+        name: item.q,
+        acceptedAnswer: { "@type": "Answer", text: item.a },
+      })),
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": websiteId,
+      url: SEO_DATA.url,
+      name: SEO_DATA.name,
+      publisher: { "@id": orgId },
+      inLanguage: [...SEO_LOCALES],
+    },
+  ];
 }
 
 export default async function LocaleLayout({
@@ -55,12 +224,22 @@ export default async function LocaleLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  const seoLocale = (SEO_LOCALES.includes(locale as SeoLocale)
+    ? locale
+    : "hu") as SeoLocale;
+  // JSON-LD schemas use HU services regardless of locale (decision: structured
+  // data stays in canonical HU; per-locale schema translation is a later pass).
+  const tHu = getTranslation("hu");
+  const schemas = buildJsonLdSchemas(seoLocale, tHu.services);
   return (
     <html
       lang={locale}
       className={`${geistSans.variable} ${geistMono.variable} ${barlowCondensed.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        <JsonLd schemas={schemas} />
+        {children}
+      </body>
     </html>
   );
 }
