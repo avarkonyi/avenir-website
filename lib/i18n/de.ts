@@ -137,7 +137,18 @@ export const de = {
     "service": "Gewünschte Leistung",
     "message": "Nachricht / Anforderungen",
     "send": "Anfrage senden",
-    "success": "Ihre Nachricht ist eingegangen! Wir melden uns in Kürze."
+    "success": "Ihre Nachricht ist eingegangen! Wir melden uns in Kürze.",
+    // TRANSLATION DRAFT: review by user
+    "errors": {
+      "nameRequired": "Bitte geben Sie Ihren vollständigen Namen ein",
+      "emailRequired": "Bitte geben Sie Ihre E-Mail-Adresse ein",
+      "emailInvalid": "Ungültige E-Mail-Adresse",
+      // NOTE: phone number "+36 70 316 8218" duplicated across 4 locales for
+      // instant trust signal in error states. If the number changes, update
+      // all 4 files together (hu.ts, en.ts, de.ts, zh.ts).
+      "server": "Beim Senden ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut oder rufen Sie uns an: +36 70 316 8218",
+      "throttled": "Zu viele Sendeversuche in kurzer Zeit. Bitte warten Sie eine Minute."
+    }
   },
   "footer": {
     "rights": "© 2026 Avenir Facility Management Kft. · Alle Rechte vorbehalten.",

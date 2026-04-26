@@ -131,6 +131,18 @@ export const hu = {
     send: "Ajánlatkérés küldése",
     success:
       "Üzenetét megkaptuk. 2 munkanapon belül felvesszük Önnel a kapcsolatot.",
+    errors: {
+      nameRequired: "Adja meg a teljes nevét",
+      emailRequired: "Adja meg az e-mail címét",
+      emailInvalid: "Érvénytelen e-mail cím",
+      // NOTE: phone number "+36 70 316 8218" duplicated across 4 locales for
+      // instant trust signal in error states. If the number changes, update
+      // all 4 files together (hu.ts, en.ts, de.ts, zh.ts).
+      server:
+        "Hiba történt a küldés során. Kérjük, próbálja újra később, vagy hívjon minket: +36 70 316 8218",
+      throttled:
+        "Túl sok küldési próbálkozás rövid idő alatt. Kérjük, várjon egy percet.",
+    },
   },
   footer: {
     rights: "© 2026 Avenir Facility Management Kft. · Minden jog fenntartva.",

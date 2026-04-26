@@ -11,11 +11,15 @@ type FormState = {
   phone: string;
   service: string;
   message: string;
+  // Honeypot: must stay empty; bots fill this and trigger silent reject
+  _website: string;
 };
 
 type Errors = {
   name?: string;
   email?: string;
+  // Server-side and network errors that aren't tied to a specific field
+  general?: string;
 };
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -172,7 +176,7 @@ function ContactRow({ kind, label, text, href }: ContactRowProps) {
   );
 }
 
-export function Contact({ t }: { t: Translation }) {
+export function Contact({ t, locale }: { t: Translation; locale: string }) {
   const [form, setForm] = useState<FormState>({
     name: "",
     company: "",
@@ -180,25 +184,84 @@ export function Contact({ t }: { t: Translation }) {
     phone: "",
     service: "",
     message: "",
+    _website: "",
   });
   const [errors, setErrors] = useState<Errors>({});
   const [submitting, setSubmitting] = useState(false);
   const [sent, setSent] = useState(false);
 
+  // Map a Zod issue code (returned by /api/contact for 400 responses) to
+  // the localized error string under t.form.errors. Falls back to the
+  // generic server-error string if the code is unknown.
+  const errorText = (code: string): string => {
+    const fallback = t.form.errors.server;
+    if (code === "nameRequired") return t.form.errors.nameRequired;
+    if (code === "emailRequired") return t.form.errors.emailRequired;
+    if (code === "emailInvalid") return t.form.errors.emailInvalid;
+    return fallback;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Client-side validation mirrors the server Zod schema for fast UX
     const newErrors: Errors = {};
-    if (!form.name.trim()) newErrors.name = "Adja meg a teljes nevét";
-    if (!form.email.trim()) newErrors.email = "Adja meg az e-mail címét";
-    else if (!EMAIL_REGEX.test(form.email.trim())) newErrors.email = "Érvénytelen e-mail cím";
+    if (!form.name.trim()) newErrors.name = t.form.errors.nameRequired;
+    if (!form.email.trim()) newErrors.email = t.form.errors.emailRequired;
+    else if (!EMAIL_REGEX.test(form.email.trim()))
+      newErrors.email = t.form.errors.emailInvalid;
     setErrors(newErrors);
     if (Object.keys(newErrors).length > 0) return;
 
     setSubmitting(true);
-    // Frontend-only fake submit; real Resend + DB integration is added when the contact API is wired.
-    await new Promise((r) => setTimeout(r, 800));
-    setSubmitting(false);
-    setSent(true);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: form.name.trim(),
+          company: form.company.trim(),
+          email: form.email.trim(),
+          phone: form.phone.trim(),
+          service: form.service,
+          message: form.message.trim(),
+          locale,
+          _website: form._website,
+        }),
+      });
+
+      if (res.ok) {
+        setSent(true);
+        return;
+      }
+
+      if (res.status === 429) {
+        setErrors({ general: t.form.errors.throttled });
+        return;
+      }
+
+      if (res.status === 400) {
+        const body = (await res.json().catch(() => null)) as
+          | { errors?: Record<string, string> }
+          | null;
+        if (body?.errors) {
+          const mapped: Errors = {};
+          if (body.errors.name) mapped.name = errorText(body.errors.name);
+          if (body.errors.email) mapped.email = errorText(body.errors.email);
+          if (Object.keys(mapped).length === 0) mapped.general = t.form.errors.server;
+          setErrors(mapped);
+          return;
+        }
+        setErrors({ general: t.form.errors.server });
+        return;
+      }
+
+      setErrors({ general: t.form.errors.server });
+    } catch {
+      setErrors({ general: t.form.errors.server });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const inputStyle = (hasError: boolean): React.CSSProperties => ({
@@ -320,6 +383,26 @@ export function Contact({ t }: { t: Translation }) {
             </div>
           ) : (
             <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 16 }} noValidate>
+              {/* Honeypot — visually hidden, off the keyboard tab order. Bots
+                  fill every input; humans don't see this. Server treats a
+                  non-empty value as silent success (no DB write, no email). */}
+              <input
+                type="text"
+                name="_website"
+                value={form._website}
+                onChange={(e) => setForm({ ...form, _website: e.target.value })}
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                style={{
+                  position: "absolute",
+                  left: "-9999px",
+                  width: 1,
+                  height: 1,
+                  opacity: 0,
+                  pointerEvents: "none",
+                }}
+              />
               <div>
                 <input
                   type="text"
@@ -389,6 +472,22 @@ export function Contact({ t }: { t: Translation }) {
                 onChange={(e) => setForm({ ...form, message: e.target.value })}
                 style={{ ...inputStyle(false), resize: "vertical" }}
               />
+              {errors.general && (
+                <div
+                  role="alert"
+                  style={{
+                    color: "#D1172E",
+                    fontSize: 13,
+                    lineHeight: 1.5,
+                    padding: "10px 14px",
+                    background: "rgba(209,23,46,0.06)",
+                    border: "1px solid rgba(209,23,46,0.25)",
+                    borderRadius: 2,
+                  }}
+                >
+                  {errors.general}
+                </div>
+              )}
               <button
                 type="submit"
                 disabled={submitting}

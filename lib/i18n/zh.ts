@@ -137,7 +137,18 @@ export const zh = {
     "service": "感兴趣的服务",
     "message": "留言 / 需求说明",
     "send": "发送报价申请",
-    "success": "已收到您的消息！我们将尽快与您联系。"
+    "success": "已收到您的消息！我们将尽快与您联系。",
+    // TRANSLATION DRAFT: review by user
+    "errors": {
+      "nameRequired": "请填写您的全名",
+      "emailRequired": "请填写您的电子邮箱",
+      "emailInvalid": "电子邮箱格式无效",
+      // NOTE: phone number "+36 70 316 8218" duplicated across 4 locales for
+      // instant trust signal in error states. If the number changes, update
+      // all 4 files together (hu.ts, en.ts, de.ts, zh.ts).
+      "server": "发送时出现错误。请稍后重试，或致电我们：+36 70 316 8218",
+      "throttled": "短时间内提交次数过多，请稍候一分钟。"
+    }
   },
   "footer": {
     "rights": "© 2026 Avenir Facility Management Kft. · 保留所有权利。",

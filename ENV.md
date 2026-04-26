@@ -1,0 +1,50 @@
+# Environment variables
+
+This project reads runtime configuration from `.env.local` (git-ignored)
+in dev, and from Vercel project env settings in production.
+
+## Quick start
+
+1. Copy `.env.example` to `.env.local`
+2. Fill in `DATABASE_URL` and `DATABASE_URL_UNPOOLED` from your Neon console
+3. (Optional) Fill in Resend variables if you want email notifications:
+   - `RESEND_API_KEY` — from https://resend.com/api-keys
+   - `RESEND_FROM_EMAIL` — defaults to `onboarding@resend.dev` (sandbox)
+   - `RESEND_NOTIFY_TO` — your inbox address (e.g. `info@afm.hu`)
+
+## Resend setup (production)
+
+Before deploying with real email delivery, configure domain authentication:
+
+1. Add domain `notify.afm.hu` in Resend dashboard → Domains
+2. Resend will provide DNS records (SPF + DKIM + DMARC) — add them to
+   the Servergarden DNS Zone Editor for the `notify.afm.hu` subdomain.
+   **Do NOT modify the root domain MX/SPF** (the M365 inbox at
+   `info@afm.hu` must stay intact).
+3. Wait for verification (5–15 minutes typically)
+4. In Vercel project settings → Environment Variables:
+   - `RESEND_API_KEY` = (production key from Resend)
+   - `RESEND_FROM_EMAIL` = `notify@notify.afm.hu`
+   - `RESEND_NOTIFY_TO` = `info@afm.hu`
+5. Redeploy
+
+## Fail-soft semantics
+
+If `RESEND_API_KEY` or `RESEND_NOTIFY_TO` is missing or empty, the
+contact form API still inserts the message into the `messages` DB table
+and returns 200 OK to the user. The email send is skipped with a server
+log warning (`[resend] skipped:`). The user sees the success state in
+the form regardless.
+
+This means:
+- Local dev works without Resend setup
+- Production degrades gracefully if Resend is temporarily down
+- The DB is the source of truth; admin will see all messages in the
+  `/admin/messages` inbox once that UI is wired
+
+## Runtime env evaluation
+
+`lib/resend.ts` reads `process.env.RESEND_*` inside the send function,
+not at module load. This means an `.env.local` edit takes effect on the
+next API call **without restarting the dev server** (handy when adding
+the API key for the first time).
