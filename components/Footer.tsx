@@ -43,11 +43,11 @@ export function Footer({ t }: { t: Translation }) {
                 <li key={s.id}>
                   <a
                     href="#services"
+                    className="footer-link"
                     style={{
                       color: "rgba(255,255,255,0.45)",
                       fontSize: 13,
                       textDecoration: "none",
-                      transition: "color 0.2s",
                     }}
                   >
                     {s.t}
@@ -75,14 +75,34 @@ export function Footer({ t }: { t: Translation }) {
               {t.contactTitle}
             </h4>
             <div style={{ display: "flex", flexDirection: "column", gap: 10, color: "rgba(255,255,255,0.55)", fontSize: 13, lineHeight: 1.6, fontWeight: 300 }}>
-              <div>1039 Budapest, Királyok útja 291.</div>
               <div>
-                <a href="tel:+36703168218" style={{ color: "inherit", textDecoration: "none" }}>
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=1039+Budapest%2C+Kir%C3%A1lyok+%C3%BAtja+291"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="footer-link"
+                  title="Megnyitás Google Maps-en"
+                  style={{
+                    color: "inherit",
+                    textDecoration: "none",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: 6,
+                  }}
+                >
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true" style={{ flexShrink: 0 }}>
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/>
+                  </svg>
+                  1039 Budapest, Királyok útja 291.
+                </a>
+              </div>
+              <div>
+                <a href="tel:+36703168218" className="footer-link" style={{ color: "inherit", textDecoration: "none" }}>
                   +36 70 316 8218
                 </a>
               </div>
               <div>
-                <a href="mailto:info@afm.hu" style={{ color: "inherit", textDecoration: "none" }}>
+                <a href="mailto:info@afm.hu" className="footer-link" style={{ color: "inherit", textDecoration: "none" }}>
                   info@afm.hu
                 </a>
               </div>
