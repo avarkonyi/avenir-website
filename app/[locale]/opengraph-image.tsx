@@ -15,9 +15,14 @@ export default async function OpengraphImage({
 }) {
   const { locale } = await params;
   const t = getTranslation(locale);
-  const fontData = await readFile(
-    join(process.cwd(), "assets/fonts/BarlowCondensed-Bold.ttf"),
-  );
+  // ZH OG image swaps to Noto Sans SC (CJK glyph coverage). Other locales
+  // use Barlow Condensed for brand-consistent display typography.
+  const isZh = locale === "zh";
+  const fontPath = isZh
+    ? "assets/fonts/NotoSansSC-Bold.otf"
+    : "assets/fonts/BarlowCondensed-Bold.ttf";
+  const fontName = isZh ? "Noto Sans SC" : "Barlow Condensed";
+  const fontData = await readFile(join(process.cwd(), fontPath));
   return new ImageResponse(
     (
       <div
@@ -31,7 +36,7 @@ export default async function OpengraphImage({
           justifyContent: "center",
           padding: "80px 100px",
           color: "#fff",
-          fontFamily: "Barlow Condensed",
+          fontFamily: fontName,
         }}
       >
         <div
@@ -91,7 +96,7 @@ export default async function OpengraphImage({
       ...size,
       fonts: [
         {
-          name: "Barlow Condensed",
+          name: fontName,
           data: fontData,
           weight: 700,
           style: "normal",
