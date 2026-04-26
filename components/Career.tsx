@@ -36,7 +36,7 @@ export async function Career({ t }: { t: Translation }) {
             {t.careerSub}
           </span>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, marginBottom: 52 }}>
+        <div className="career-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, marginBottom: 52 }}>
           <h2
             style={{
               fontFamily: "var(--font-head)",

@@ -223,6 +223,14 @@ a {
 .nav-cta:hover {
   background: #a80f24 !important;
 }
+/* Defensive: keep all nav button labels on one line at any viewport
+   width (DE "ÜBER UNS" otherwise wraps to 2 lines when the desktop
+   nav is shrunk by flex distribution). Locale chips are 2-3 chars
+   and never wrap, so they don't need this rule. */
+.nav-link,
+.nav-cta {
+  white-space: nowrap;
+}
 
 /* Footer link hover (services + contact + legal columns) */
 .footer-link {
@@ -232,14 +240,29 @@ a {
   color: #D1172E !important;
 }
 
-/* Responsive: nav desktop/mobile toggle */
-@media (max-width: 768px) {
+/* Responsive: nav switches to mobile menu earlier (1024px) so iPad
+   portrait + small laptops don't suffer from clipped/wrapped nav links
+   in HU/DE/ZH. The .nav-cta lives inside .desktop-nav so it's hidden
+   automatically. Layout-grid collapse stays at 768px (below). */
+@media (max-width: 1024px) {
   .desktop-nav {
     display: none !important;
   }
   .mobile-menu-btn {
     display: block !important;
   }
+  /* Hero eyebrow: drop the bordered pink-fill box on tablet/mobile —
+     too dominant on narrow viewports. Keep the bullet + uppercase
+     label inline, nothing else. */
+  .hero-eyebrow {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+  }
+}
+
+/* Responsive: layout grids collapse on tablet portrait + phone */
+@media (max-width: 768px) {
   .contact-grid {
     grid-template-columns: 1fr !important;
     gap: 40px !important;
@@ -251,6 +274,49 @@ a {
   .certifications-header-grid {
     grid-template-columns: 1fr !important;
     gap: 24px !important;
+  }
+
+  /* Section grids: collapse 2-column layouts to single column */
+  .about-grid {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+  .references-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+  .career-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+
+  /* About visual block: tighter padding + hide decorative offset square */
+  .about-visual-block {
+    padding: 32px !important;
+    min-height: 280px !important;
+  }
+  .about-photo-badge {
+    right: 8px !important;
+    bottom: 8px !important;
+  }
+  .about-decorative-square {
+    display: none !important;
+  }
+}
+
+/* Phone-only: Hero stats-bar leaves absolute-bottom overlay to avoid
+   overlap with longer HU/DE hero text on small viewports. The bar joins
+   normal flow below the CTAs; backdrop-filter dropped (no longer over an
+   image), background bumped for legibility against the page. */
+@media (max-width: 600px) {
+  .hero-section {
+    min-height: auto !important;
+    padding-bottom: 0 !important;
+  }
+  .hero-stats-bar {
+    position: static !important;
+    backdrop-filter: none !important;
+    background: rgba(11, 30, 62, 0.6) !important;
   }
 }
 
@@ -264,5 +330,18 @@ a {
   }
   .cert-logo-svg .cert-num {
     font-size: 26px;
+  }
+
+  /* Hero stats: 4-column → 2x2 grid; rebalance dividers */
+  .hero-stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .hero-stats-grid > div {
+    border-right: none !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 16px 8px !important;
+  }
+  .hero-stats-grid > div:nth-last-child(-n + 2) {
+    border-bottom: none;
   }
 }

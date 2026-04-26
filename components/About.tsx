@@ -6,6 +6,7 @@ export function About({ t }: { t: Translation }) {
   return (
     <section id="about" style={{ padding: "100px 5vw", background: "#fff" }}>
       <div
+        className="about-grid"
         style={{
           maxWidth: 1200,
           margin: "0 auto",
@@ -76,6 +77,7 @@ export function About({ t }: { t: Translation }) {
         {/* Visual block (logo + accent) */}
         <div style={{ position: "relative" }}>
           <div
+            className="about-visual-block"
             style={{
               background: "linear-gradient(135deg, #0B1E3E 0%, #1a3a6b 100%)",
               borderRadius: 4,
@@ -112,6 +114,7 @@ export function About({ t }: { t: Translation }) {
               BUDAPEST · HUNGARY
             </div>
             <div
+              className="about-photo-badge"
               style={{
                 position: "absolute",
                 bottom: 16,
@@ -128,6 +131,7 @@ export function About({ t }: { t: Translation }) {
             </div>
           </div>
           <div
+            className="about-decorative-square"
             style={{
               position: "absolute",
               bottom: -16,

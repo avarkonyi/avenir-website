@@ -6,6 +6,7 @@ export function Hero({ t }: { t: Translation }) {
   return (
     <section
       id="hero"
+      className="hero-section"
       style={{
         minHeight: "100vh",
         background: "#0B1E3E",
@@ -55,6 +56,7 @@ export function Hero({ t }: { t: Translation }) {
       <div style={{ maxWidth: 1200, margin: "0 auto", width: "100%", position: "relative", zIndex: 2 }}>
         <div style={{ maxWidth: 640 }}>
           <div
+            className="hero-eyebrow"
             style={{
               display: "inline-flex",
               alignItems: "center",
@@ -172,8 +174,11 @@ export function Hero({ t }: { t: Translation }) {
           </div>
         </div>
       </div>
-      {/* Stats bar overlay (glassmorphism, anchored to hero bottom) */}
+      {/* Stats bar overlay (glassmorphism, anchored to hero bottom).
+          Mobile (<600px): becomes static flow element below CTAs to avoid
+          overlap with longer HU/DE hero text. */}
       <div
+        className="hero-stats-bar"
         style={{
           position: "absolute",
           bottom: 0,
@@ -185,6 +190,7 @@ export function Hero({ t }: { t: Translation }) {
         }}
       >
         <div
+          className="hero-stats-grid"
           style={{
             maxWidth: 1200,
             margin: "0 auto",

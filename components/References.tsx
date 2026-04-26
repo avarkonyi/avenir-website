@@ -23,6 +23,7 @@ export function References({ t }: { t: Translation }) {
           </span>
         </div>
         <div
+          className="references-grid"
           style={{
             display: "grid",
             gridTemplateColumns: "1fr 1fr",
