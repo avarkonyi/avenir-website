@@ -6,6 +6,7 @@ import {
   boolean,
   integer,
   timestamp,
+  date,
   index,
 } from "drizzle-orm/pg-core";
 import { sql } from "drizzle-orm";
@@ -154,6 +155,81 @@ export const clientReferences = pgTable(
   },
   (table) => [
     index("idx_references_active_sort")
+      .on(table.active, table.sortOrder)
+      .where(sql`${table.active} = true`),
+  ],
+);
+
+// ────────────────────────────────────────────────────────────────────────────
+// 5. CERTIFICATIONS — official accreditations (ISO 9001, ISO 27001, etc.).
+//    Schema is rich on purpose: every field maps to either a Schema.org
+//    EducationalOccupationalCredential property, a microdata itemProp on the
+//    component, or a B2B credibility signal (issuer + accreditation chain).
+//    Certificate dates are stored as `date` (calendar, no time/TZ); a cert
+//    is "valid on day X" rather than "valid at moment X".
+//
+//    Wide-column-per-locale pattern matches news: full_name_<lang>,
+//    description_<lang>, scope_<lang>. The locale-independent fields
+//    (cert number, dates, accreditation) appear once.
+//
+//    Indexes:
+//      - `idx_certifications_active_sort` — partial composite for the
+//        public-facing Certifications section query.
+// ────────────────────────────────────────────────────────────────────────────
+export const certifications = pgTable(
+  "certifications",
+  {
+    id: serial("id").primaryKey(),
+    slug: varchar("slug", { length: 50 }).notNull().unique(),
+
+    // Locale-independent labels and identifiers
+    name: varchar("name", { length: 100 }).notNull(),
+    standardCode: varchar("standard_code", { length: 100 }),
+    certificateNumber: varchar("certificate_number", { length: 100 }),
+
+    // Localized full names, descriptions, scope
+    fullNameHu: text("full_name_hu").notNull(),
+    fullNameEn: text("full_name_en").notNull(),
+    fullNameDe: text("full_name_de").notNull(),
+    fullNameZh: text("full_name_zh").notNull(),
+
+    descriptionHu: text("description_hu"),
+    descriptionEn: text("description_en"),
+    descriptionDe: text("description_de"),
+    descriptionZh: text("description_zh"),
+
+    scopeHu: text("scope_hu"),
+    scopeEn: text("scope_en"),
+    scopeDe: text("scope_de"),
+    scopeZh: text("scope_zh"),
+
+    // Issuer and accreditation chain
+    issuer: text("issuer").notNull(),
+    issuerUrl: text("issuer_url"),
+    accreditationBody: varchar("accreditation_body", { length: 50 }),
+    accreditationNumber: varchar("accreditation_number", { length: 50 }),
+    iafMlaMember: boolean("iaf_mla_member").notNull().default(false),
+    verifyUrl: text("verify_url"),
+
+    // Validity window (calendar dates, no time/TZ)
+    issuedDate: date("issued_date"),
+    expiresDate: date("expires_date"),
+
+    // Schema.org credentialCategory mapping
+    credentialCategory: text("credential_category"),
+
+    // Asset URLs (nullable — admin uploads later)
+    logoUrl: text("logo_url"),
+    pdfUrl: text("pdf_url"),
+
+    // Listing controls
+    active: boolean("active").notNull().default(true),
+    sortOrder: integer("sort_order").notNull().default(0),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (table) => [
+    index("idx_certifications_active_sort")
       .on(table.active, table.sortOrder)
       .where(sql`${table.active} = true`),
   ],

@@ -144,5 +144,21 @@ export const en = {
     "privacy": "Privacy Policy",
     "terms": "Terms",
     "impressum": "Legal Notice"
+  },
+  // TRANSLATION DRAFT: review by user
+  "certifications": {
+    "sub": "Certifications",
+    "title": "Accredited professional certifications",
+    "intro": "As a property protection specialist with 200+ professionals across 30+ active sites, continuous quality and information security are core values for us. Our certifications are audited annually by independent accredited bodies and verifiable through the globally recognized IAF MLA system.",
+    "standardLabel": "Standard",
+    "scopeLabel": "Scope",
+    "issuedBy": "Issued by",
+    "certNumber": "Certificate number",
+    "issuedOn": "Issued",
+    "validUntil": "Valid until",
+    "accreditation": "Accreditation",
+    "iafMember": "IAF MLA member",
+    "downloadPdf": "Download certificate (PDF)",
+    "altText": "{name} certification logo"
   }
 } as const;

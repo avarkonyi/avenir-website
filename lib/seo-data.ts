@@ -131,3 +131,10 @@ export const SCHEMA_SERVICE_ORDER = [
   "green",
   "hardfm",
 ] as const;
+
+// Stable @id URL for an EducationalOccupationalCredential schema.
+// Used both inside the credential's own top-level JSON-LD object and for
+// hasCredential references from Organization + ProfessionalService.
+export function credentialId(slug: string): string {
+  return `${SEO_DATA.url}/#credential-${slug}`;
+}

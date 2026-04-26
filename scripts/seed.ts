@@ -11,7 +11,7 @@
 
 import "./load-env";
 import { count } from "drizzle-orm";
-import { db, news, positions, clientReferences } from "../lib/db";
+import { db, news, positions, clientReferences, certifications } from "../lib/db";
 
 async function main() {
   console.log("--- seed start ---");
@@ -26,6 +26,9 @@ async function main() {
   const [{ value: newsCount }] = await db
     .select({ value: count() })
     .from(news);
+  const [{ value: certsCount }] = await db
+    .select({ value: count() })
+    .from(certifications);
 
   // ─── CLIENT REFERENCES — 4 industry categories ──────────────────────────
   if (Number(refsCount) > 0) {
@@ -174,6 +177,192 @@ async function main() {
       },
     ]);
     console.log("seeded news (2 rows)");
+  }
+
+  // ─── CERTIFICATIONS — 2 ISO rows (9001 verified, 27001 placeholder) ─────
+  //
+  // ISO 9001 fields are verified from the actual PDF in
+  // public/certifications/iso-9001-avenir-2026.pdf. ISO 27001 fields are
+  // tentative placeholders pending the user's PDF upload — every uncertain
+  // field is marked `// TODO: confirm with PDF` so they're easy to update
+  // via admin CRUD or by editing this seed and re-running after a wipe.
+  //
+  // The `description_*` fields are not from the PDFs; they are AI/SEO
+  // friendly explanations of what each standard means and how Avenir is
+  // certified. HU is original copy; EN/DE/ZH are TRANSLATION DRAFTs that
+  // the user reviews before public deploy.
+
+  if (Number(certsCount) > 0) {
+    console.log(
+      `certifications already populated (${certsCount} rows), skipping`,
+    );
+  } else {
+    await db.insert(certifications).values([
+      // ─── ISO 9001 — VERIFIED (cert 843579099, MartonCert, 2026-03-19 → 2029-03-18) ───
+      {
+        slug: "iso-9001",
+        name: "ISO 9001",
+        standardCode: "MSZ EN ISO 9001:2015",
+        certificateNumber: "843579099",
+
+        fullNameHu: "ISO 9001 Minőségirányítási Rendszer Tanúsítvány",
+        // TRANSLATION DRAFT: review by user
+        fullNameEn: "ISO 9001 Quality Management System Certification",
+        // TRANSLATION DRAFT: review by user
+        fullNameDe: "ISO 9001 Qualitätsmanagementsystem-Zertifikat",
+        // TRANSLATION DRAFT: review by user
+        fullNameZh: "ISO 9001 质量管理体系认证",
+
+        descriptionHu:
+          "Az ISO 9001 a minőségirányítási rendszerek nemzetközi szabványa. " +
+          "Az Avenir tanúsítása a teljeskörű biztonsági szolgáltatásra terjed ki — " +
+          "a NAH-akkreditált MartonCert auditja igazolja, hogy a vagyonvédelmi és " +
+          "facility management szolgáltatási folyamataink megfelelnek a 2015-ös " +
+          "szabvány követelményeinek. A tanúsítvány az IAF MLA megállapodás " +
+          "keretében nemzetközileg is elismert.",
+        // TRANSLATION DRAFT: review by user
+        descriptionEn:
+          "ISO 9001 is the international standard for quality management systems. " +
+          "Avenir's certification covers comprehensive security services — the audit " +
+          "by NAH-accredited MartonCert verifies that our property protection and " +
+          "facility management service processes meet the 2015 standard's requirements. " +
+          "The certificate is internationally recognized under the IAF MLA agreement.",
+        // TRANSLATION DRAFT: review by user
+        descriptionDe:
+          "ISO 9001 ist der internationale Standard für Qualitätsmanagementsysteme. " +
+          "Avenirs Zertifizierung umfasst umfassende Sicherheitsdienstleistungen — das " +
+          "Audit der NAH-akkreditierten MartonCert bestätigt, dass unsere Eigentumsschutz- " +
+          "und Facility-Management-Serviceprozesse den Anforderungen der Norm von 2015 " +
+          "entsprechen. Das Zertifikat ist im Rahmen des IAF MLA-Abkommens international " +
+          "anerkannt.",
+        // TRANSLATION DRAFT: review by user
+        descriptionZh:
+          "ISO 9001 是质量管理体系的国际标准。Avenir 的认证范围涵盖全面安保服务——" +
+          "NAH 认可的 MartonCert 审核证明，我们的财产保护和设施管理服务流程符合 2015 " +
+          "年标准要求。该证书在 IAF MLA 协议下获得国际认可。",
+
+        // verbatim from PDF
+        scopeHu: "Teljeskörű biztonsági szolgáltatás",
+        // TRANSLATION DRAFT: review by user
+        scopeEn: "Comprehensive security services",
+        // TRANSLATION DRAFT: review by user
+        scopeDe: "Umfassende Sicherheitsdienstleistungen",
+        // TRANSLATION DRAFT: review by user
+        scopeZh: "全面安保服务",
+
+        issuer: "MartonCert Rendszertanúsító Kft.",
+        issuerUrl: "https://www.rendszertanusitas.hu",
+        accreditationBody: "NAH",
+        accreditationNumber: "NAH-4-0047/2023",
+        iafMlaMember: true,
+        verifyUrl: "https://www.iafcertsearch.org",
+
+        issuedDate: "2026-03-19",
+        expiresDate: "2029-03-18",
+
+        credentialCategory: "Quality Management System Certification",
+        // designer pack pending — Knowledge Panel logo will replace null
+        logoUrl: null,
+        pdfUrl: "/certifications/iso-9001-avenir-2026.pdf",
+
+        active: true,
+        sortOrder: 1,
+      },
+
+      // ─── ISO 27001 — PLACEHOLDER (all uncertain fields TODO) ─────────
+      {
+        slug: "iso-27001",
+        name: "ISO 27001",
+        // TODO: confirm with user PDF (may be the 2022 revision instead of 2014)
+        standardCode: "MSZ ISO/IEC 27001:2014",
+        // TODO: confirm with user PDF
+        certificateNumber: null,
+
+        fullNameHu:
+          "ISO 27001 Információbiztonsági Irányítási Rendszer Tanúsítvány",
+        // TRANSLATION DRAFT: review by user
+        fullNameEn:
+          "ISO 27001 Information Security Management System Certification",
+        // TRANSLATION DRAFT: review by user
+        fullNameDe:
+          "ISO 27001 Informationssicherheits-Managementsystem-Zertifikat",
+        // TRANSLATION DRAFT: review by user
+        fullNameZh: "ISO 27001 信息安全管理体系认证",
+
+        // ISO 27001 description: TENTATIVE security-fókuszú szöveg, user megerősíti
+        // amikor megkapja a PDF-et és tudjuk a pontos issuer/cert-number-t
+        descriptionHu:
+          "Az ISO 27001 az információbiztonsági irányítási rendszerek (ISMS) " +
+          "nemzetközi szabványa. Az Avenir tanúsítása igazolja, hogy a " +
+          "vagyonvédelmi munkánk során kezelt ügyfélinformációk, beléptetési " +
+          "naplók, kameraadatok és pénzügyi adatok kezelése megfelel a szabvány " +
+          "bizalmasság-, sértetlenség- és rendelkezésre állás-követelményeinek. " +
+          "A tanúsítvány az IAF MLA megállapodás keretében nemzetközileg is " +
+          "elismert.",
+        // TRANSLATION DRAFT: review by user
+        descriptionEn:
+          "ISO 27001 is the international standard for information security " +
+          "management systems (ISMS). Avenir's certification verifies that the " +
+          "customer information, access logs, camera data, and financial records " +
+          "handled in our property protection work meet the standard's " +
+          "confidentiality, integrity, and availability requirements. The " +
+          "certificate is internationally recognized under the IAF MLA agreement.",
+        // TRANSLATION DRAFT: review by user
+        descriptionDe:
+          "ISO 27001 ist der internationale Standard für Informationssicherheits-" +
+          "Managementsysteme (ISMS). Avenirs Zertifizierung bestätigt, dass die " +
+          "im Rahmen unserer Eigentumsschutz-Tätigkeit verarbeiteten " +
+          "Kundeninformationen, Zutrittsprotokolle, Kameradaten und Finanzdaten " +
+          "die Vertraulichkeits-, Integritäts- und Verfügbarkeitsanforderungen " +
+          "der Norm erfüllen. Das Zertifikat ist im Rahmen des IAF MLA-Abkommens " +
+          "international anerkannt.",
+        // TRANSLATION DRAFT: review by user
+        descriptionZh:
+          "ISO 27001 是信息安全管理体系（ISMS）的国际标准。Avenir 的认证证明，" +
+          "我们在财产保护工作中对客户信息、门禁日志、摄像数据和财务记录的处理符合" +
+          "该标准的保密性、完整性和可用性要求。该证书在 IAF MLA 协议下获得国际认可。",
+
+        // PLACEHOLDER scope (real PDF text to come)
+        scopeHu:
+          "Információbiztonsági irányítási rendszer biztonsági szolgáltatások területén",
+        // TRANSLATION DRAFT + PLACEHOLDER
+        scopeEn: "Information security management system for security services",
+        // TRANSLATION DRAFT + PLACEHOLDER
+        scopeDe:
+          "Informationssicherheits-Managementsystem für Sicherheitsdienstleistungen",
+        // TRANSLATION DRAFT + PLACEHOLDER
+        scopeZh: "安全服务领域信息安全管理体系",
+
+        // TODO: confirm with user PDF (tentatively same as ISO 9001)
+        issuer: "MartonCert Rendszertanúsító Kft.",
+        // TODO: confirm with user PDF
+        issuerUrl: "https://www.rendszertanusitas.hu",
+        // TODO: confirm with user PDF
+        accreditationBody: "NAH",
+        // TODO: confirm with user PDF
+        accreditationNumber: "NAH-4-0047/2023",
+        // TODO: confirm with user PDF
+        iafMlaMember: true,
+        // TODO: confirm with user PDF
+        verifyUrl: "https://www.iafcertsearch.org",
+
+        // TODO: confirm with user PDF
+        issuedDate: "2024-01-01",
+        // TODO: confirm with user PDF
+        expiresDate: "2027-01-01",
+
+        credentialCategory:
+          "Information Security Management System Certification",
+        // designer pack pending
+        logoUrl: null,
+        // user uploads PDF later
+        pdfUrl: null,
+
+        active: true,
+        sortOrder: 2,
+      },
+    ]);
+    console.log("seeded certifications (2 rows)");
   }
 
   // ─── MESSAGES — empty by design ─────────────────────────────────────────

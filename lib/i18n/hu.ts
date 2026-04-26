@@ -138,4 +138,20 @@ export const hu = {
     terms: "ÁSZF",
     impressum: "Impresszum",
   },
+  certifications: {
+    sub: "Tanúsítványok",
+    title: "Hivatalos szakmai tanúsítások",
+    intro:
+      "200+ szakemberrel és 30+ helyszínnel működő vagyonvédelmi szakértőként a folyamatos minőség és információbiztonság számunkra alapérték. Tanúsításainkat független akkreditált szervezetek auditálják évente, és a globálisan elismert IAF MLA-rendszerben verifikálhatók.",
+    standardLabel: "Szabvány",
+    scopeLabel: "Hatály",
+    issuedBy: "Kiállító",
+    certNumber: "Tanúsítvány száma",
+    issuedOn: "Kiállítva",
+    validUntil: "Érvényes",
+    accreditation: "Akkreditáció",
+    iafMember: "IAF MLA tag",
+    downloadPdf: "Tanúsítvány letöltése (PDF)",
+    altText: "{name} tanúsítvány logó",
+  },
 } as const;

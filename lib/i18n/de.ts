@@ -144,5 +144,21 @@ export const de = {
     "privacy": "Datenschutz",
     "terms": "AGB",
     "impressum": "Impressum"
+  },
+  // TRANSLATION DRAFT: review by user
+  "certifications": {
+    "sub": "Zertifizierungen",
+    "title": "Akkreditierte Fachzertifizierungen",
+    "intro": "Als Eigentumsschutz-Spezialist mit über 200 Fachkräften an mehr als 30 aktiven Standorten sind kontinuierliche Qualität und Informationssicherheit für uns Grundwerte. Unsere Zertifizierungen werden jährlich von unabhängigen akkreditierten Stellen geprüft und sind im global anerkannten IAF MLA-System verifizierbar.",
+    "standardLabel": "Norm",
+    "scopeLabel": "Geltungsbereich",
+    "issuedBy": "Ausgestellt von",
+    "certNumber": "Zertifikatsnummer",
+    "issuedOn": "Ausgestellt am",
+    "validUntil": "Gültig bis",
+    "accreditation": "Akkreditierung",
+    "iafMember": "IAF MLA-Mitglied",
+    "downloadPdf": "Zertifikat herunterladen (PDF)",
+    "altText": "{name} Zertifikatslogo"
   }
 } as const;

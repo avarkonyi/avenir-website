@@ -144,5 +144,21 @@ export const zh = {
     "privacy": "隐私政策",
     "terms": "条款",
     "impressum": "法律声明"
+  },
+  // TRANSLATION DRAFT: review by user
+  "certifications": {
+    "sub": "认证资质",
+    "title": "权威专业认证",
+    "intro": "作为拥有 200+ 专业人员、覆盖 30+ 活跃服务地点的财产保护专业服务商，持续的质量保证和信息安全是我们的核心价值。我们的认证由独立认可机构每年审核，并可通过全球公认的 IAF MLA 体系进行验证。",
+    "standardLabel": "标准",
+    "scopeLabel": "适用范围",
+    "issuedBy": "颁发机构",
+    "certNumber": "证书编号",
+    "issuedOn": "颁发日期",
+    "validUntil": "有效期至",
+    "accreditation": "认可机构",
+    "iafMember": "IAF MLA 成员",
+    "downloadPdf": "下载证书 (PDF)",
+    "altText": "{name} 认证标志"
   }
 } as const;

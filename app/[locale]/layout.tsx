@@ -1,8 +1,11 @@
 import type { Metadata, Viewport } from "next";
+import { connection } from "next/server";
 import { Geist, Geist_Mono, Barlow_Condensed } from "next/font/google";
+import { asc, eq } from "drizzle-orm";
 import "../globals.css";
 import { getTranslation, LOCALES } from "@/lib/i18n";
 import { JsonLd } from "@/components/JsonLd";
+import { db, certifications } from "@/lib/db";
 import {
   SEO_DATA,
   SEO_FAQS_HU,
@@ -13,6 +16,7 @@ import {
   SECURITY_FIRST_DESCRIPTION,
   SCHEMA_KNOWS_ABOUT,
   SCHEMA_SERVICE_ORDER,
+  credentialId,
   type SeoLocale,
 } from "@/lib/seo-data";
 
@@ -100,9 +104,28 @@ export async function generateMetadata({
   };
 }
 
+type CertSchemaInput = {
+  readonly slug: string;
+  readonly name: string;
+  readonly fullNameHu: string;
+  readonly descriptionHu: string | null;
+  readonly credentialCategory: string | null;
+  readonly issuer: string;
+  readonly issuerUrl: string | null;
+  readonly issuedDate: string | null;
+  readonly expiresDate: string | null;
+  readonly standardCode: string | null;
+  readonly certificateNumber: string | null;
+  readonly accreditationBody: string | null;
+  readonly accreditationNumber: string | null;
+  readonly iafMlaMember: boolean;
+  readonly pdfUrl: string | null;
+};
+
 function buildJsonLdSchemas(
   localeIso: SeoLocale,
   services: readonly { readonly id: string; readonly t: string; readonly d: string }[],
+  certs: readonly CertSchemaInput[],
 ) {
   const orgId = `${SEO_DATA.url}/#organization`;
   const localBusinessId = `${SEO_DATA.url}/#localbusiness`;
@@ -114,6 +137,7 @@ function buildJsonLdSchemas(
     postalCode: SEO_DATA.address.postalCode,
     addressCountry: SEO_DATA.address.addressCountry,
   };
+  const credentialRefs = certs.map((c) => ({ "@id": credentialId(c.slug) }));
 
   return [
     {
@@ -141,6 +165,7 @@ function buildJsonLdSchemas(
           availableLanguage: ["Hungarian", "English"],
         },
       ],
+      hasCredential: credentialRefs,
       sameAs: [],
     },
     {
@@ -158,6 +183,7 @@ function buildJsonLdSchemas(
       priceRange: "$$",
       address: postalAddress,
       areaServed: { "@type": "Country", name: "Magyarország" },
+      hasCredential: credentialRefs,
       openingHoursSpecification: [
         {
           "@type": "OpeningHoursSpecification",
@@ -213,6 +239,56 @@ function buildJsonLdSchemas(
       publisher: { "@id": orgId },
       inLanguage: [...SEO_LOCALES],
     },
+    // One top-level EducationalOccupationalCredential per certification.
+    // Organization and ProfessionalService reference these via @id above.
+    ...certs.map((c) => {
+      const additionalProperty: Record<string, unknown>[] = [];
+      if (c.standardCode) {
+        additionalProperty.push({
+          "@type": "PropertyValue",
+          name: "Standard",
+          value: c.standardCode,
+        });
+      }
+      if (c.accreditationBody || c.accreditationNumber) {
+        additionalProperty.push({
+          "@type": "PropertyValue",
+          name: "Accreditation",
+          value: [c.accreditationBody, c.accreditationNumber]
+            .filter(Boolean)
+            .join(" · "),
+        });
+      }
+      if (c.iafMlaMember) {
+        additionalProperty.push({
+          "@type": "PropertyValue",
+          name: "IAF MLA member",
+          value: "true",
+        });
+      }
+      const schema: Record<string, unknown> = {
+        "@context": "https://schema.org",
+        "@type": "EducationalOccupationalCredential",
+        "@id": credentialId(c.slug),
+        name: c.name,
+        recognizedBy: {
+          "@type": "Organization",
+          name: c.issuer,
+          ...(c.issuerUrl ? { url: c.issuerUrl } : {}),
+        },
+      };
+      if (c.fullNameHu) schema.alternateName = c.fullNameHu;
+      if (c.descriptionHu) schema.description = c.descriptionHu;
+      if (c.credentialCategory)
+        schema.credentialCategory = c.credentialCategory;
+      if (c.certificateNumber) schema.identifier = c.certificateNumber;
+      if (c.issuedDate) schema.dateCreated = c.issuedDate;
+      if (c.expiresDate) schema.expires = c.expiresDate;
+      if (c.pdfUrl) schema.url = `${SEO_DATA.url}${c.pdfUrl}`;
+      if (additionalProperty.length > 0)
+        schema.additionalProperty = additionalProperty;
+      return schema;
+    }),
   ];
 }
 
@@ -227,10 +303,33 @@ export default async function LocaleLayout({
   const seoLocale = (SEO_LOCALES.includes(locale as SeoLocale)
     ? locale
     : "hu") as SeoLocale;
-  // JSON-LD schemas use HU services regardless of locale (decision: structured
-  // data stays in canonical HU; per-locale schema translation is a later pass).
+  // JSON-LD schemas use HU services + HU certifications regardless of locale
+  // (decision: structured data stays in canonical HU; per-locale schema
+  // translation is a later pass).
   const tHu = getTranslation("hu");
-  const schemas = buildJsonLdSchemas(seoLocale, tHu.services);
+  await connection();
+  const certs = await db
+    .select({
+      slug: certifications.slug,
+      name: certifications.name,
+      fullNameHu: certifications.fullNameHu,
+      descriptionHu: certifications.descriptionHu,
+      credentialCategory: certifications.credentialCategory,
+      issuer: certifications.issuer,
+      issuerUrl: certifications.issuerUrl,
+      issuedDate: certifications.issuedDate,
+      expiresDate: certifications.expiresDate,
+      standardCode: certifications.standardCode,
+      certificateNumber: certifications.certificateNumber,
+      accreditationBody: certifications.accreditationBody,
+      accreditationNumber: certifications.accreditationNumber,
+      iafMlaMember: certifications.iafMlaMember,
+      pdfUrl: certifications.pdfUrl,
+    })
+    .from(certifications)
+    .where(eq(certifications.active, true))
+    .orderBy(asc(certifications.sortOrder));
+  const schemas = buildJsonLdSchemas(seoLocale, tHu.services, certs);
   return (
     <html
       lang={locale}

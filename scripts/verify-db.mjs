@@ -1,4 +1,4 @@
-// Verify connection + schema by counting rows in each of the 4 tables.
+// Verify connection + schema by counting rows in each of the 5 tables.
 // Run after migration to confirm tables exist; expects 0 rows everywhere
 // before seeding, then non-zero after seed-script runs.
 //
@@ -20,18 +20,20 @@ const news = (await sql`SELECT COUNT(*)::int AS n FROM news`)[0].n;
 const positions = (await sql`SELECT COUNT(*)::int AS n FROM positions`)[0].n;
 const messages = (await sql`SELECT COUNT(*)::int AS n FROM messages`)[0].n;
 const refs = (await sql`SELECT COUNT(*)::int AS n FROM client_references`)[0].n;
+const certs = (await sql`SELECT COUNT(*)::int AS n FROM certifications`)[0].n;
 
 console.log("--- row counts ---");
 console.log(`news               ${news} rows`);
 console.log(`positions          ${positions} rows`);
 console.log(`messages           ${messages} rows`);
 console.log(`client_references  ${refs} rows`);
+console.log(`certifications     ${certs} rows`);
 
 const indexRows = await sql`
   SELECT tablename, indexname
   FROM pg_indexes
   WHERE schemaname = 'public'
-    AND tablename IN ('client_references', 'messages', 'news', 'positions')
+    AND tablename IN ('client_references', 'messages', 'news', 'positions', 'certifications')
     AND indexname LIKE 'idx_%'
   ORDER BY tablename, indexname
 `;
@@ -43,7 +45,7 @@ for (const { tablename, indexname } of indexRows) {
 
 console.log("");
 console.log("--- indexes ---");
-for (const tbl of ["client_references", "messages", "news", "positions"]) {
+for (const tbl of ["client_references", "messages", "news", "positions", "certifications"]) {
   const list = grouped[tbl] ?? [];
   console.log(`${tbl}: ${list.join(", ")}`);
 }

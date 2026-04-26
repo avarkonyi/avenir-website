@@ -119,6 +119,68 @@ a {
   transform: translateY(-3px);
 }
 
+/* Screen-reader-only utility (visually hidden, available to assistive
+   tech and HTML-parsing crawlers). Standard sr-only pattern. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Certifications — minimal logo-only square cards */
+.certifications-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.certifications-header-grid {
+  /* matches the 1fr 1fr inline style; mobile collapses to single column */
+}
+.certification-card {
+  width: 200px;
+  height: 200px;
+  display: block;
+  border-radius: 4px;
+  border: 2px solid transparent;
+  overflow: hidden;
+  text-decoration: none;
+  transition: transform 0.25s ease, border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+.certification-card-link {
+  cursor: pointer;
+}
+.certification-card-link:hover {
+  border-color: #D1172E;
+  transform: scale(1.05);
+  box-shadow: 0 12px 30px rgba(11, 30, 62, 0.2);
+}
+.certification-card-static {
+  cursor: default;
+}
+.cert-logo-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.cert-logo-svg text {
+  font-family: var(--font-head);
+  font-weight: 700;
+  fill: #fff;
+}
+.cert-logo-svg .cert-iso {
+  font-size: 42px;
+}
+.cert-logo-svg .cert-num {
+  font-size: 34px;
+}
+
 /* Career cards — hover via CSS */
 .career-card {
   border: 1px solid #E2E8F0;
@@ -182,5 +244,22 @@ a {
   .footer-grid {
     grid-template-columns: 1fr !important;
     gap: 32px !important;
+  }
+  .certifications-header-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .certification-card {
+    width: 150px;
+    height: 150px;
+  }
+  .cert-logo-svg .cert-iso {
+    font-size: 32px;
+  }
+  .cert-logo-svg .cert-num {
+    font-size: 26px;
   }
 }

@@ -5,6 +5,7 @@ import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
 import { Services } from "@/components/Services";
 import { References } from "@/components/References";
+import { Certifications } from "@/components/Certifications";
 import { News } from "@/components/News";
 import { Career } from "@/components/Career";
 import { Contact } from "@/components/Contact";
@@ -64,6 +65,7 @@ export default async function HomePage({
         <About t={t} />
         <Services t={t} />
         <References t={t} />
+        <Certifications t={t} locale={locale} />
         <News t={t} locale={locale} articles={articles} />
         <Career t={t} />
         <Contact t={t} />
