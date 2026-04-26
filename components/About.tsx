@@ -20,6 +20,7 @@ export function About({ t }: { t: Translation }) {
             <div style={{ width: 40, height: 3, background: "#D1172E" }} />
             <span
               style={{
+                fontFamily: "var(--font-head)",
                 fontSize: 13,
                 letterSpacing: 2.5,
                 color: "#D1172E",
@@ -32,6 +33,7 @@ export function About({ t }: { t: Translation }) {
           </div>
           <h2
             style={{
+              fontFamily: "var(--font-head)",
               fontWeight: 800,
               fontSize: "clamp(36px, 4vw, 54px)",
               color: "#0B1E3E",
@@ -62,7 +64,7 @@ export function About({ t }: { t: Translation }) {
                   <Icon name="check" size={18} color="#fff" />
                 </div>
                 <div>
-                  <div style={{ fontWeight: 700, fontSize: 17, color: "#0B1E3E", letterSpacing: 0.3 }}>
+                  <div style={{ fontFamily: "var(--font-head)", fontWeight: 700, fontSize: 17, color: "#0B1E3E", letterSpacing: 0.3 }}>
                     {v.t}
                   </div>
                   <div style={{ color: "#778899", fontSize: 14, marginTop: 2, lineHeight: 1.5 }}>{v.d}</div>
@@ -97,6 +99,7 @@ export function About({ t }: { t: Translation }) {
             />
             <div
               style={{
+                fontFamily: "var(--font-head)",
                 color: "rgba(255,255,255,0.4)",
                 fontSize: 11,
                 letterSpacing: 2,

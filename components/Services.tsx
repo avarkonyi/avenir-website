@@ -18,6 +18,7 @@ export function Services({ t }: { t: Translation }) {
             <div style={{ width: 40, height: 3, background: "#D1172E" }} />
             <span
               style={{
+                fontFamily: "var(--font-head)",
                 fontSize: 13,
                 letterSpacing: 2.5,
                 color: "#D1172E",
@@ -31,6 +32,7 @@ export function Services({ t }: { t: Translation }) {
           </div>
           <h2
             style={{
+              fontFamily: "var(--font-head)",
               fontWeight: 800,
               fontSize: "clamp(36px, 4vw, 54px)",
               color: "#0B1E3E",
@@ -52,7 +54,7 @@ export function Services({ t }: { t: Translation }) {
               <div className="service-icon-wrap">
                 <Icon name={svc.icon} size={26} />
               </div>
-              <h3 className="service-title">{svc.t}</h3>
+              <h3 className="service-title" style={{ fontFamily: "var(--font-head)" }}>{svc.t}</h3>
               <p className="service-desc">{svc.d}</p>
             </div>
           ))}

@@ -11,6 +11,7 @@ export function References({ t }: { t: Translation }) {
           <div style={{ width: 40, height: 3, background: "#D1172E" }} />
           <span
             style={{
+              fontFamily: "var(--font-head)",
               fontSize: 13,
               letterSpacing: 2.5,
               color: "#D1172E",
@@ -32,6 +33,7 @@ export function References({ t }: { t: Translation }) {
         >
           <h2
             style={{
+              fontFamily: "var(--font-head)",
               fontWeight: 800,
               fontSize: "clamp(36px, 4vw, 54px)",
               color: "#fff",
@@ -60,7 +62,7 @@ export function References({ t }: { t: Translation }) {
               }}
             >
               <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#D1172E" }} />
-              <span style={{ color: "rgba(255,255,255,0.8)", fontSize: 14, fontWeight: 600, letterSpacing: 0.5 }}>
+              <span style={{ fontFamily: "var(--font-head)", color: "rgba(255,255,255,0.8)", fontSize: 14, fontWeight: 600, letterSpacing: 0.5 }}>
                 {r}
               </span>
             </div>

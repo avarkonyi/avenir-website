@@ -232,6 +232,7 @@ export function Contact({ t }: { t: Translation }) {
             <div style={{ width: 40, height: 3, background: "#D1172E" }} />
             <span
               style={{
+                fontFamily: "var(--font-head)",
                 fontSize: 13,
                 letterSpacing: 2.5,
                 color: "#D1172E",
@@ -244,6 +245,7 @@ export function Contact({ t }: { t: Translation }) {
           </div>
           <h2
             style={{
+              fontFamily: "var(--font-head)",
               fontWeight: 800,
               fontSize: "clamp(36px, 4vw, 54px)",
               color: "#0B1E3E",
@@ -395,6 +397,7 @@ export function Contact({ t }: { t: Translation }) {
                   border: "none",
                   cursor: submitting ? "wait" : "pointer",
                   color: "#fff",
+                  fontFamily: "var(--font-head)",
                   fontWeight: 700,
                   fontSize: 14,
                   letterSpacing: 1.5,

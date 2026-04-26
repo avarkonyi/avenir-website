@@ -27,6 +27,7 @@ export function Footer({ t }: { t: Translation }) {
           <div>
             <h4
               style={{
+                fontFamily: "var(--font-head)",
                 color: "rgba(255,255,255,0.85)",
                 fontSize: 13,
                 letterSpacing: 1.5,
@@ -60,6 +61,7 @@ export function Footer({ t }: { t: Translation }) {
           <div>
             <h4
               style={{
+                fontFamily: "var(--font-head)",
                 color: "rgba(255,255,255,0.85)",
                 fontSize: 13,
                 letterSpacing: 1.5,
@@ -89,6 +91,7 @@ export function Footer({ t }: { t: Translation }) {
           <div>
             <h4
               style={{
+                fontFamily: "var(--font-head)",
                 color: "rgba(255,255,255,0.85)",
                 fontSize: 13,
                 letterSpacing: 1.5,

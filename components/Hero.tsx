@@ -69,6 +69,7 @@ export function Hero({ t }: { t: Translation }) {
             <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#D1172E" }} />
             <span
               style={{
+                fontFamily: "var(--font-head)",
                 fontSize: 13,
                 letterSpacing: 2.5,
                 color: "#ff4a62",
@@ -81,6 +82,7 @@ export function Hero({ t }: { t: Translation }) {
           </div>
           <h1
             style={{
+              fontFamily: "var(--font-head)",
               fontWeight: 800,
               fontSize: "clamp(44px, 7vw, 92px)",
               lineHeight: 1.0,
@@ -117,6 +119,7 @@ export function Hero({ t }: { t: Translation }) {
                 border: "2px solid rgba(255,255,255,0.5)",
                 cursor: "pointer",
                 color: "#fff",
+                fontFamily: "var(--font-head)",
                 fontWeight: 700,
                 fontSize: 14,
                 letterSpacing: 1.5,
@@ -147,6 +150,7 @@ export function Hero({ t }: { t: Translation }) {
                 border: "2px solid #D1172E",
                 cursor: "pointer",
                 color: "#fff",
+                fontFamily: "var(--font-head)",
                 fontWeight: 700,
                 fontSize: 14,
                 letterSpacing: 1.5,
@@ -198,7 +202,7 @@ export function Hero({ t }: { t: Translation }) {
                 borderRight: i < 3 ? "1px solid rgba(255,255,255,0.08)" : "none",
               }}
             >
-              <div style={{ fontWeight: 800, fontSize: 36, color: "#D1172E", lineHeight: 1 }}>
+              <div style={{ fontFamily: "var(--font-head)", fontWeight: 800, fontSize: 36, color: "#D1172E", lineHeight: 1 }}>
                 {s.n}
               </div>
               <div

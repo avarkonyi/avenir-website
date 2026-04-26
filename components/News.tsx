@@ -54,6 +54,7 @@ export function News({
               <div style={{ width: 40, height: 3, background: "#D1172E" }} />
               <span
                 style={{
+                  fontFamily: "var(--font-head)",
                   fontSize: 13,
                   letterSpacing: 2.5,
                   color: "#D1172E",
@@ -66,6 +67,7 @@ export function News({
             </div>
             <h2
               style={{
+                fontFamily: "var(--font-head)",
                 fontWeight: 800,
                 fontSize: "clamp(36px, 4vw, 54px)",
                 color: "#0B1E3E",
@@ -132,6 +134,7 @@ export function News({
                       left: 16,
                       background: "#D1172E",
                       color: "#fff",
+                      fontFamily: "var(--font-head)",
                       fontSize: 11,
                       fontWeight: 700,
                       letterSpacing: 1,
@@ -153,6 +156,7 @@ export function News({
                 >
                   <h3
                     style={{
+                      fontFamily: "var(--font-head)",
                       fontWeight: 700,
                       fontSize: 22,
                       color: "#0B1E3E",
@@ -168,6 +172,7 @@ export function News({
                   <div style={{ marginTop: 18, display: "flex", alignItems: "center", gap: 8 }}>
                     <span
                       style={{
+                        fontFamily: "var(--font-head)",
                         fontWeight: 700,
                         fontSize: 13,
                         letterSpacing: 1.2,
@@ -239,6 +244,7 @@ export function News({
             <div style={{ padding: 40 }}>
               <div
                 style={{
+                  fontFamily: "var(--font-head)",
                   fontSize: 13,
                   letterSpacing: 2,
                   color: "#D1172E",
@@ -251,6 +257,7 @@ export function News({
               </div>
               <h2
                 style={{
+                  fontFamily: "var(--font-head)",
                   fontWeight: 800,
                   fontSize: 34,
                   color: "#0B1E3E",
