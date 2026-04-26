@@ -15,6 +15,8 @@ export const hu = {
     sub: "Az Avenir átveszi az épületüzemeltetés és a vagyonvédelem teljes terhét — napi működéstől a riportokig, egyetlen szerződéssel, egy kapcsolattartóval.",
     cta1: "Szolgáltatásaink",
     cta2: "Ajánlatkérés",
+    bgAlt:
+      "Avenir Facility Management — épületüzemeltetés és vagyonvédelem Magyarországon",
   },
   stats: [
     { n: "30+", l: "Aktív helyszín" },
@@ -129,6 +131,7 @@ export const hu = {
     service: "Érdeklő szolgáltatás",
     message: "Üzenet / Igény leírása",
     send: "Ajánlatkérés küldése",
+    sending: "Küldés folyamatban…",
     success:
       "Üzenetét megkaptuk. 2 munkanapon belül felvesszük Önnel a kapcsolatot.",
     errors: {

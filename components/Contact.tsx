@@ -507,7 +507,7 @@ export function Contact({ t, locale }: { t: Translation; locale: string }) {
                   transition: "background 0.2s",
                 }}
               >
-                {submitting ? "Küldés folyamatban…" : t.form.send}
+                {submitting ? t.form.sending : t.form.send}
               </button>
             </form>
           )}

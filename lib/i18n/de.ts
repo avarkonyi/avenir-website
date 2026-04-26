@@ -14,7 +14,8 @@ export const de = {
     "h1b": "Sicherheit.",
     "sub": "Avenir Facility Management bietet integrierte Gebäudebetrieb- und Sicherheitslösungen – mit Expertenteams und gleichbleibender Qualität.",
     "cta1": "Unsere Leistungen",
-    "cta2": "Angebot anfragen"
+    "cta2": "Angebot anfragen",
+    "bgAlt": "Avenir Facility Management — Gebäudebetrieb und Sicherheit in Ungarn"
   },
   "stats": [
     {
@@ -137,6 +138,7 @@ export const de = {
     "service": "Gewünschte Leistung",
     "message": "Nachricht / Anforderungen",
     "send": "Anfrage senden",
+    "sending": "Wird gesendet…",
     "success": "Ihre Nachricht ist eingegangen! Wir melden uns in Kürze.",
     // TRANSLATION DRAFT: review by user
     "errors": {

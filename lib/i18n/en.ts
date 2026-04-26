@@ -14,7 +14,8 @@ export const en = {
     "h1b": "security.",
     "sub": "Avenir Facility Management delivers integrated building operations and security solutions — with expert teams and consistent quality.",
     "cta1": "Our Services",
-    "cta2": "Get a Quote"
+    "cta2": "Get a Quote",
+    "bgAlt": "Avenir Facility Management — building operations and security in Hungary"
   },
   "stats": [
     {
@@ -137,6 +138,7 @@ export const en = {
     "service": "Service of interest",
     "message": "Message / Requirements",
     "send": "Send Request",
+    "sending": "Sending…",
     "success": "We have received your message! We will be in touch shortly.",
     // TRANSLATION DRAFT: review by user
     "errors": {

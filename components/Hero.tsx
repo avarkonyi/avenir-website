@@ -22,7 +22,7 @@ export function Hero({ t }: { t: Translation }) {
       <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
         <img
           src="/uploads/background.png"
-          alt=""
+          alt={t.hero.bgAlt}
           style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
         />
         <div

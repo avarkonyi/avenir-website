@@ -14,7 +14,8 @@ export const zh = {
     "h1b": "安全保障。",
     "sub": "Avenir设施管理提供一体化建筑运营与安保解决方案——专业团队，始终如一的品质。",
     "cta1": "我们的服务",
-    "cta2": "获取报价"
+    "cta2": "获取报价",
+    "bgAlt": "Avenir 设施管理 — 匈牙利设施运营与安保"
   },
   "stats": [
     {
@@ -137,6 +138,7 @@ export const zh = {
     "service": "感兴趣的服务",
     "message": "留言 / 需求说明",
     "send": "发送报价申请",
+    "sending": "发送中…",
     "success": "已收到您的消息！我们将尽快与您联系。",
     // TRANSLATION DRAFT: review by user
     "errors": {
