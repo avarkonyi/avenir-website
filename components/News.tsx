@@ -5,30 +5,13 @@ import type { Translation } from "@/lib/i18n";
 import { Icon } from "./Icon";
 import { AvenirLogo } from "./AvenirLogo";
 
-type Article = {
-  id: string;
+export type Article = {
+  id: number;
   title: string;
   lead: string;
   body: string;
   date: string;
 };
-
-const PLACEHOLDER_NEWS: Article[] = [
-  {
-    id: "kifli-partnership",
-    title: "Új partnerséget kötöttünk a Kifli.hu-val",
-    lead: "Az Avenir átvette a Kifli.hu logisztikai központjainak vagyonvédelmét.",
-    body: "2026 januárjától az Avenir Facility Management Kft. felel a Kifli.hu országos logisztikai központjainak vagyonvédelméért és portaszolgálatáért. A megállapodás keretében 24/7 őrzés-védelmet, beléptetést és központi diszpécserszolgálatot biztosítunk országos lefedettséggel.",
-    date: "2026-01-15",
-  },
-  {
-    id: "service-expansion",
-    title: "Bővülő szolgáltatás-portfólió 2026-ban",
-    lead: "Új technikai karbantartási és Hard FM csomagok minden ügyfelünk számára.",
-    body: "Az idei évtől kibővítjük szolgáltatási palettánkat: minden meglévő ügyfelünk számára elérhetővé válnak a tervszerű HVAC-karbantartási csomagok, valamint a 24 órás riasztási készenléttel működő Hard FM szolgáltatás. Részletekért keresse kapcsolattartóját.",
-    date: "2026-03-01",
-  },
-];
 
 function formatDate(iso: string, locale: string) {
   try {
@@ -42,9 +25,16 @@ function formatDate(iso: string, locale: string) {
   }
 }
 
-export function News({ t, locale }: { t: Translation; locale: string }) {
+export function News({
+  t,
+  locale,
+  articles,
+}: {
+  t: Translation;
+  locale: string;
+  articles: Article[];
+}) {
   const [active, setActive] = useState<Article | null>(null);
-  const articles = PLACEHOLDER_NEWS;
 
   return (
     <section id="news" style={{ padding: "100px 5vw", background: "#fff" }}>

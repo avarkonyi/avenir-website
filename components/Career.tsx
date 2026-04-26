@@ -1,14 +1,23 @@
+import { connection } from "next/server";
+import { asc, eq } from "drizzle-orm";
 import type { Translation } from "@/lib/i18n";
+import { db, positions } from "@/lib/db";
 import { Icon } from "./Icon";
 
-const PLACEHOLDER_POSITIONS = [
-  { title: "Biztonsági őr", location: "Budapest / országosan", type: "Teljes munkaidő" },
-  { title: "Takarítási csoportvezető", location: "Budapest", type: "Teljes munkaidő" },
-  { title: "Épületüzemeltetési mérnök", location: "Budapest", type: "Teljes munkaidő" },
-  { title: "Recepcióvezető", location: "Budapest", type: "Teljes munkaidő" },
-];
+export async function Career({ t }: { t: Translation }) {
+  await connection();
+  const rows = await db
+    .select({
+      id: positions.id,
+      title: positions.title,
+      location: positions.location,
+      type: positions.type,
+      applyEmail: positions.applyEmail,
+    })
+    .from(positions)
+    .where(eq(positions.active, true))
+    .orderBy(asc(positions.sortOrder));
 
-export function Career({ t }: { t: Translation }) {
   return (
     <section id="career" style={{ padding: "100px 5vw", background: "#fff" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
@@ -50,8 +59,8 @@ export function Career({ t }: { t: Translation }) {
             gap: 16,
           }}
         >
-          {PLACEHOLDER_POSITIONS.map((p, i) => (
-            <div key={i} className="career-card">
+          {rows.map((p) => (
+            <div key={p.id} className="career-card">
               <div>
                 <h3 style={{ fontFamily: "var(--font-head)", fontWeight: 700, fontSize: 20, color: "#0B1E3E", marginBottom: 8 }}>
                   {p.title}
@@ -68,7 +77,7 @@ export function Career({ t }: { t: Translation }) {
                 </div>
               </div>
               <a
-                href={`mailto:info@afm.hu?subject=${encodeURIComponent(`Jelentkezés - ${p.title}`)}`}
+                href={`mailto:${p.applyEmail}?subject=${encodeURIComponent(`Jelentkezés - ${p.title}`)}`}
                 className="career-apply-btn"
               >
                 {t.applyBtn}
