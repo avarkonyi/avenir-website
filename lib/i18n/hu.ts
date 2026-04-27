@@ -128,7 +128,7 @@ export const hu = {
     company: "Cégnév",
     email: "E-mail cím",
     phone: "Telefonszám",
-    service: "Érdeklő szolgáltatás",
+    service: "Érdeklődési terület",
     message: "Üzenet / Igény leírása",
     send: "Ajánlatkérés küldése",
     sending: "Küldés folyamatban…",

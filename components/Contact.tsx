@@ -15,12 +15,29 @@ type FormState = {
   _website: string;
 };
 
+// All form fields are listed for forward-compatibility: when the Zod
+// schema grows new validators (e.g., phone-format), the matching error
+// markup + aria-describedby wiring is already in place.
 type Errors = {
   name?: string;
+  company?: string;
   email?: string;
+  phone?: string;
+  service?: string;
+  message?: string;
   // Server-side and network errors that aren't tied to a specific field
   general?: string;
 };
+
+const FORM_FIELDS = [
+  "name",
+  "company",
+  "email",
+  "phone",
+  "service",
+  "message",
+] as const;
+type FormFieldName = (typeof FORM_FIELDS)[number];
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -246,8 +263,10 @@ export function Contact({ t, locale }: { t: Translation; locale: string }) {
           | null;
         if (body?.errors) {
           const mapped: Errors = {};
-          if (body.errors.name) mapped.name = errorText(body.errors.name);
-          if (body.errors.email) mapped.email = errorText(body.errors.email);
+          for (const field of FORM_FIELDS) {
+            const code = body.errors[field];
+            if (code) mapped[field] = errorText(code);
+          }
           if (Object.keys(mapped).length === 0) mapped.general = t.form.errors.server;
           setErrors(mapped);
           return;
@@ -404,8 +423,14 @@ export function Contact({ t, locale }: { t: Translation; locale: string }) {
                 }}
               />
               <div>
+                <label htmlFor="contact-name" className="sr-only">
+                  {t.form.name}
+                </label>
                 <input
+                  id="contact-name"
+                  name="name"
                   type="text"
+                  autoComplete="name"
                   placeholder={t.form.name}
                   value={form.name}
                   onChange={(e) => {
@@ -414,21 +439,48 @@ export function Contact({ t, locale }: { t: Translation; locale: string }) {
                   }}
                   style={inputStyle(!!errors.name)}
                   aria-invalid={!!errors.name}
+                  aria-describedby={errors.name ? "contact-name-error" : undefined}
                 />
                 {errors.name && (
-                  <div style={{ color: "#D1172E", fontSize: 12, marginTop: 4 }}>{errors.name}</div>
+                  <div id="contact-name-error" role="alert" style={{ color: "#D1172E", fontSize: 12, marginTop: 4 }}>
+                    {errors.name}
+                  </div>
                 )}
               </div>
-              <input
-                type="text"
-                placeholder={t.form.company}
-                value={form.company}
-                onChange={(e) => setForm({ ...form, company: e.target.value })}
-                style={inputStyle(false)}
-              />
               <div>
+                <label htmlFor="contact-company" className="sr-only">
+                  {t.form.company}
+                </label>
                 <input
+                  id="contact-company"
+                  name="organization"
+                  type="text"
+                  autoComplete="organization"
+                  placeholder={t.form.company}
+                  value={form.company}
+                  onChange={(e) => {
+                    setForm({ ...form, company: e.target.value });
+                    if (errors.company) setErrors({ ...errors, company: undefined });
+                  }}
+                  style={inputStyle(!!errors.company)}
+                  aria-invalid={!!errors.company}
+                  aria-describedby={errors.company ? "contact-company-error" : undefined}
+                />
+                {errors.company && (
+                  <div id="contact-company-error" role="alert" style={{ color: "#D1172E", fontSize: 12, marginTop: 4 }}>
+                    {errors.company}
+                  </div>
+                )}
+              </div>
+              <div>
+                <label htmlFor="contact-email" className="sr-only">
+                  {t.form.email}
+                </label>
+                <input
+                  id="contact-email"
+                  name="email"
                   type="email"
+                  autoComplete="email"
                   placeholder={t.form.email}
                   value={form.email}
                   onChange={(e) => {
@@ -437,41 +489,97 @@ export function Contact({ t, locale }: { t: Translation; locale: string }) {
                   }}
                   style={inputStyle(!!errors.email)}
                   aria-invalid={!!errors.email}
+                  aria-describedby={errors.email ? "contact-email-error" : undefined}
                 />
                 {errors.email && (
-                  <div style={{ color: "#D1172E", fontSize: 12, marginTop: 4 }}>{errors.email}</div>
+                  <div id="contact-email-error" role="alert" style={{ color: "#D1172E", fontSize: 12, marginTop: 4 }}>
+                    {errors.email}
+                  </div>
                 )}
               </div>
-              <input
-                type="tel"
-                placeholder={t.form.phone}
-                value={form.phone}
-                onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                style={inputStyle(false)}
-              />
-              <select
-                value={form.service}
-                onChange={(e) => setForm({ ...form, service: e.target.value })}
-                style={{
-                  ...inputStyle(false),
-                  color: form.service ? "#0B1E3E" : "#9BA8B5",
-                  appearance: "none",
-                }}
-              >
-                <option value="">{t.form.service}</option>
-                {t.services.map((s) => (
-                  <option key={s.id} value={s.id}>
-                    {s.t}
-                  </option>
-                ))}
-              </select>
-              <textarea
-                placeholder={t.form.message}
-                rows={4}
-                value={form.message}
-                onChange={(e) => setForm({ ...form, message: e.target.value })}
-                style={{ ...inputStyle(false), resize: "vertical" }}
-              />
+              <div>
+                <label htmlFor="contact-phone" className="sr-only">
+                  {t.form.phone}
+                </label>
+                <input
+                  id="contact-phone"
+                  name="tel"
+                  type="tel"
+                  autoComplete="tel"
+                  placeholder={t.form.phone}
+                  value={form.phone}
+                  onChange={(e) => {
+                    setForm({ ...form, phone: e.target.value });
+                    if (errors.phone) setErrors({ ...errors, phone: undefined });
+                  }}
+                  style={inputStyle(!!errors.phone)}
+                  aria-invalid={!!errors.phone}
+                  aria-describedby={errors.phone ? "contact-phone-error" : undefined}
+                />
+                {errors.phone && (
+                  <div id="contact-phone-error" role="alert" style={{ color: "#D1172E", fontSize: 12, marginTop: 4 }}>
+                    {errors.phone}
+                  </div>
+                )}
+              </div>
+              <div>
+                <label htmlFor="contact-service" className="sr-only">
+                  {t.form.service}
+                </label>
+                <select
+                  id="contact-service"
+                  name="service"
+                  value={form.service}
+                  onChange={(e) => {
+                    setForm({ ...form, service: e.target.value });
+                    if (errors.service) setErrors({ ...errors, service: undefined });
+                  }}
+                  style={{
+                    ...inputStyle(!!errors.service),
+                    color: form.service ? "#0B1E3E" : "#9BA8B5",
+                    appearance: "none",
+                  }}
+                  aria-invalid={!!errors.service}
+                  aria-describedby={errors.service ? "contact-service-error" : undefined}
+                >
+                  <option value="">{t.form.service}</option>
+                  {t.services.map((s) => (
+                    <option key={s.id} value={s.id}>
+                      {s.t}
+                    </option>
+                  ))}
+                </select>
+                {errors.service && (
+                  <div id="contact-service-error" role="alert" style={{ color: "#D1172E", fontSize: 12, marginTop: 4 }}>
+                    {errors.service}
+                  </div>
+                )}
+              </div>
+              <div>
+                <label htmlFor="contact-message" className="sr-only">
+                  {t.form.message}
+                </label>
+                <textarea
+                  id="contact-message"
+                  name="message"
+                  autoComplete="off"
+                  placeholder={t.form.message}
+                  rows={4}
+                  value={form.message}
+                  onChange={(e) => {
+                    setForm({ ...form, message: e.target.value });
+                    if (errors.message) setErrors({ ...errors, message: undefined });
+                  }}
+                  style={{ ...inputStyle(!!errors.message), resize: "vertical" }}
+                  aria-invalid={!!errors.message}
+                  aria-describedby={errors.message ? "contact-message-error" : undefined}
+                />
+                {errors.message && (
+                  <div id="contact-message-error" role="alert" style={{ color: "#D1172E", fontSize: 12, marginTop: 4 }}>
+                    {errors.message}
+                  </div>
+                )}
+              </div>
               {errors.general && (
                 <div
                   role="alert"
