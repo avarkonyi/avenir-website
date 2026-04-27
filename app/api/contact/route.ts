@@ -1,15 +1,19 @@
 // Contact form POST endpoint.
 //
 // Order of operations:
-//   1. Parse JSON body (400 on malformed)
-//   2. Zod-validate (400 with per-field error map)
-//   3. Honeypot check — non-empty `_website` returns silent 200 (bot
+//   1. Origin check — production rejects cross-origin POSTs; dev +
+//      Vercel preview skip the check for local testing flexibility
+//   2. Body-size guard — reject Content-Length > 32 KB before parsing
+//      to defend against memory/CPU abuse via gigantic payloads
+//   3. Parse JSON body (400 on malformed)
+//   4. Zod-validate (400 with per-field error map)
+//   5. Honeypot check — non-empty `_website` returns silent 200 (bot
 //      gets a successful response, no DB insert, no email)
-//   4. IP rate limit — 5/min/IP in production (skipped in dev). 429 on
+//   6. IP rate limit — 5/min/IP in production (skipped in dev). 429 on
 //      breach with Retry-After header.
-//   5. DB insert (primary storage; 500 if it fails — we cannot lose
+//   7. DB insert (primary storage; 500 if it fails — we cannot lose
 //      the message)
-//   6. Resend notification (fail-soft; warning log if skipped/fails,
+//   8. Resend notification (fail-soft; warning log if skipped/fails,
 //      user still gets 200)
 
 import { NextResponse } from "next/server";
@@ -19,7 +23,54 @@ import { sendContactNotification } from "@/lib/resend";
 import { buildNotificationEmail } from "@/lib/email-templates";
 import { db, messages } from "@/lib/db";
 
+const MAX_BODY_BYTES = 32 * 1024;
+
+// Default same-site allowlist for production. Override via the
+// ALLOWED_ORIGINS env var (comma-separated) to add Vercel preview
+// domains or staging hostnames without code changes.
+const DEFAULT_ALLOWED_ORIGINS = [
+  "https://www.afm.hu",
+  "https://afm.hu",
+];
+
+function getAllowedOrigins(): string[] {
+  const fromEnv = process.env.ALLOWED_ORIGINS;
+  if (!fromEnv) return DEFAULT_ALLOWED_ORIGINS;
+  return fromEnv
+    .split(",")
+    .map((s) => s.trim())
+    .filter((s) => s.length > 0);
+}
+
+function isOriginAllowed(request: Request): boolean {
+  // Dev + Vercel preview: skip check so local testing + preview deploys
+  // aren't blocked. Strict same-site enforcement only in production.
+  if (process.env.NODE_ENV !== "production") return true;
+  if (process.env.VERCEL_ENV === "preview") return true;
+  const origin = request.headers.get("origin");
+  if (!origin) return false;
+  return getAllowedOrigins().includes(origin);
+}
+
 export async function POST(request: Request) {
+  // Origin check — same-site enforcement in production. Cross-origin
+  // browser-initiated POSTs are spam vectors even without classic
+  // credentialed CSRF; block before any work happens.
+  if (!isOriginAllowed(request)) {
+    return NextResponse.json({ error: "forbidden-origin" }, { status: 403 });
+  }
+
+  // Body-size guard — reject oversized payloads before parsing to
+  // defend against memory/CPU abuse via gigantic JSON. 32 KB is
+  // generous (Zod max-field sum is ~4.5 KB).
+  const contentLength = request.headers.get("content-length");
+  if (contentLength && parseInt(contentLength, 10) > MAX_BODY_BYTES) {
+    return NextResponse.json(
+      { error: "payload-too-large" },
+      { status: 413 },
+    );
+  }
+
   let raw: unknown;
   try {
     raw = await request.json();

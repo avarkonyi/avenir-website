@@ -1,4 +1,5 @@
 import { connection } from "next/server";
+import { notFound } from "next/navigation";
 import { desc, eq } from "drizzle-orm";
 import { Nav } from "@/components/Nav";
 import { Hero } from "@/components/Hero";
@@ -33,6 +34,7 @@ export default async function HomePage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  if (!LOCALES.includes(locale as Locale)) notFound();
   const t = getTranslation(locale);
   const cols = NEWS_COLS[locale as Locale];
 

@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { connection } from "next/server";
+import { notFound } from "next/navigation";
 import { Geist, Geist_Mono, Barlow_Condensed } from "next/font/google";
 import { asc, eq } from "drizzle-orm";
 import "../globals.css";
@@ -52,10 +53,9 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
+  if (!SEO_LOCALES.includes(locale as SeoLocale)) notFound();
+  const seoLocale = locale as SeoLocale;
   const t = getTranslation(locale);
-  const seoLocale = (SEO_LOCALES.includes(locale as SeoLocale)
-    ? locale
-    : "hu") as SeoLocale;
   const tagline = META_TAGLINES[seoLocale];
   const title = `${SEO_DATA.legalNameShort} — ${tagline}`;
   const description = t.hero.sub;
@@ -300,9 +300,8 @@ export default async function LocaleLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const seoLocale = (SEO_LOCALES.includes(locale as SeoLocale)
-    ? locale
-    : "hu") as SeoLocale;
+  if (!SEO_LOCALES.includes(locale as SeoLocale)) notFound();
+  const seoLocale = locale as SeoLocale;
   // JSON-LD schemas use HU services + HU certifications regardless of locale
   // (decision: structured data stays in canonical HU; per-locale schema
   // translation is a later pass).

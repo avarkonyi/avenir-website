@@ -28,6 +28,30 @@ Before deploying with real email delivery, configure domain authentication:
    - `RESEND_NOTIFY_TO` = `info@afm.hu`
 5. Redeploy
 
+## Contact API origin allowlist (`ALLOWED_ORIGINS`)
+
+The `/api/contact` endpoint enforces a same-site Origin header check in
+production to block cross-origin browser-initiated spam (not classic
+CSRF — there are no credentials on this endpoint, but the spam vector
+is real).
+
+- **Dev (`NODE_ENV !== "production"`):** check is skipped; local
+  testing tools (curl, Postman, browser dev) all pass.
+- **Vercel preview (`VERCEL_ENV === "preview"`):** check is skipped so
+  preview deploys at `*.vercel.app` work without per-PR config.
+- **Production:** request must have an `Origin` header matching one
+  of `ALLOWED_ORIGINS` (comma-separated env var). If the var is unset,
+  the default allowlist is `https://www.afm.hu, https://afm.hu`.
+
+Override the var to add additional production domains:
+
+```
+ALLOWED_ORIGINS=https://www.afm.hu,https://afm.hu,https://landing.afm.hu
+```
+
+A failed origin check returns HTTP 403 `{ "error": "forbidden-origin" }`
+before any body parsing, rate limiting, or DB insert happens.
+
 ## Fail-soft semantics
 
 If `RESEND_API_KEY` or `RESEND_NOTIFY_TO` is missing or empty, the

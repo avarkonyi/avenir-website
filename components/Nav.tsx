@@ -152,6 +152,8 @@ export function Nav({ t }: { t: Translation }) {
             padding: 0,
           }}
           aria-label="Toggle menu"
+          aria-expanded={menuOpen}
+          aria-controls="mobile-nav-menu"
         >
           <Icon name={menuOpen ? "close" : "menu"} size={26} color="#fff" />
         </button>
@@ -160,6 +162,7 @@ export function Nav({ t }: { t: Translation }) {
       {/* Mobile menu */}
       {menuOpen && (
         <div
+          id="mobile-nav-menu"
           style={{
             background: "rgba(11,30,62,0.98)",
             padding: "20px 5vw 28px",
