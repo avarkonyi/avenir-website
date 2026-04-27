@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import type { Translation } from "@/lib/i18n";
 
 export function Hero({ t }: { t: Translation }) {
@@ -18,12 +19,21 @@ export function Hero({ t }: { t: Translation }) {
         padding: "120px 5vw 80px",
       }}
     >
-      {/* Full-bleed hero background photo */}
+      {/* Full-bleed hero background photo. next/image with `fill` mode
+          requires the parent to have `position: relative|absolute|fixed`
+          (we have absolute) and a sized container. `priority` skips
+          lazy-loading because Hero is above-the-fold on every page (LCP
+          candidate). `sizes="100vw"` tells Next which srcset variant to
+          serve based on viewport — mobile gets ~40 KB, desktop ~40 KB
+          too in this case (the WebP source is already tiny). */}
       <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
-        <img
-          src="/uploads/background.png"
+        <Image
+          src="/uploads/background.webp"
           alt={t.hero.bgAlt}
-          style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }}
+          fill
+          priority
+          sizes="100vw"
+          style={{ objectFit: "cover", objectPosition: "center" }}
         />
         <div
           style={{
