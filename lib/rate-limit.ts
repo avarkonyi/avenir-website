@@ -23,9 +23,13 @@ export function checkRateLimit(
   max = 5,
   windowMs = 60_000,
 ): RateLimitResult {
-  // Skip in development so local form testing isn't blocked after a
-  // few quick submits.
-  if (process.env.NODE_ENV === "development") {
+  // Skip in dev + Vercel preview deploys so local testing and PR-preview
+  // testing aren't blocked. Production-only enforcement. Mirrors the
+  // route.ts CSRF skip pattern for consistency.
+  if (process.env.NODE_ENV !== "production") {
+    return { allowed: true };
+  }
+  if (process.env.VERCEL_ENV === "preview") {
     return { allowed: true };
   }
   const now = Date.now();

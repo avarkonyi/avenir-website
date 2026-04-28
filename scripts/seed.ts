@@ -198,11 +198,12 @@ async function main() {
     );
   } else {
     await db.insert(certifications).values([
-      // ─── ISO 9001 — VERIFIED (cert 843579099, MartonCert, 2026-03-19 → 2029-03-18) ───
+      // ─── ISO 9001 — VERIFIED (cert 843579099, MARTON Szakértő Iroda, 2026-03-19 → 2029-03-18) ───
       {
         slug: "iso-9001",
         name: "ISO 9001",
-        standardCode: "MSZ EN ISO 9001:2015",
+        // International format (matches IAF CertSearch); was MSZ EN adoption
+        standardCode: "ISO 9001:2015",
         certificateNumber: "843579099",
 
         fullNameHu: "ISO 9001 Minőségirányítási Rendszer Tanúsítvány",
@@ -216,7 +217,7 @@ async function main() {
         descriptionHu:
           "Az ISO 9001 a minőségirányítási rendszerek nemzetközi szabványa. " +
           "Az Avenir tanúsítása a teljeskörű biztonsági szolgáltatásra terjed ki — " +
-          "a NAH-akkreditált MartonCert auditja igazolja, hogy a vagyonvédelmi és " +
+          "a NAH-akkreditált MARTON Szakértő Iroda auditja igazolja, hogy a vagyonvédelmi és " +
           "facility management szolgáltatási folyamataink megfelelnek a 2015-ös " +
           "szabvány követelményeinek. A tanúsítvány az IAF MLA megállapodás " +
           "keretében nemzetközileg is elismert.",
@@ -224,21 +225,21 @@ async function main() {
         descriptionEn:
           "ISO 9001 is the international standard for quality management systems. " +
           "Avenir's certification covers comprehensive security services — the audit " +
-          "by NAH-accredited MartonCert verifies that our property protection and " +
+          "by NAH-accredited MARTON Szakértő Iroda verifies that our property protection and " +
           "facility management service processes meet the 2015 standard's requirements. " +
           "The certificate is internationally recognized under the IAF MLA agreement.",
         // TRANSLATION DRAFT: review by user
         descriptionDe:
           "ISO 9001 ist der internationale Standard für Qualitätsmanagementsysteme. " +
           "Avenirs Zertifizierung umfasst umfassende Sicherheitsdienstleistungen — das " +
-          "Audit der NAH-akkreditierten MartonCert bestätigt, dass unsere Eigentumsschutz- " +
+          "Audit der NAH-akkreditierten MARTON Szakértő Iroda bestätigt, dass unsere Eigentumsschutz- " +
           "und Facility-Management-Serviceprozesse den Anforderungen der Norm von 2015 " +
           "entsprechen. Das Zertifikat ist im Rahmen des IAF MLA-Abkommens international " +
           "anerkannt.",
         // TRANSLATION DRAFT: review by user
         descriptionZh:
           "ISO 9001 是质量管理体系的国际标准。Avenir 的认证范围涵盖全面安保服务——" +
-          "NAH 认可的 MartonCert 审核证明，我们的财产保护和设施管理服务流程符合 2015 " +
+          "NAH 认可的 MARTON Szakértő Iroda 审核证明，我们的财产保护和设施管理服务流程符合 2015 " +
           "年标准要求。该证书在 IAF MLA 协议下获得国际认可。",
 
         // verbatim from PDF
@@ -250,7 +251,7 @@ async function main() {
         // TRANSLATION DRAFT: review by user
         scopeZh: "全面安保服务",
 
-        issuer: "MartonCert Rendszertanúsító Kft.",
+        issuer: "MARTON Szakértő Iroda Kft.",
         issuerUrl: "https://www.rendszertanusitas.hu",
         accreditationBody: "NAH",
         accreditationNumber: "NAH-4-0047/2023",
@@ -263,20 +264,19 @@ async function main() {
         credentialCategory: "Quality Management System Certification",
         // designer pack pending — Knowledge Panel logo will replace null
         logoUrl: null,
-        pdfUrl: "/certifications/iso-9001-avenir-2026.pdf",
+        pdfUrl: "/certifications/iso-9001-marton-843579099.pdf",
 
         active: true,
         sortOrder: 1,
       },
 
-      // ─── ISO 27001 — PLACEHOLDER (all uncertain fields TODO) ─────────
+      // ─── ISO 27001 — VERIFIED (cert 988960032, MARTON Szakértő Iroda, 2026-04-27 → 2029-04-26) ───
       {
         slug: "iso-27001",
         name: "ISO 27001",
-        // TODO: confirm with user PDF (may be the 2022 revision instead of 2014)
-        standardCode: "MSZ ISO/IEC 27001:2014",
-        // TODO: confirm with user PDF
-        certificateNumber: null,
+        // International format (matches IAF CertSearch); MSZ adoption is :2023
+        standardCode: "ISO/IEC 27001:2022",
+        certificateNumber: "988960032",
 
         fullNameHu:
           "ISO 27001 Információbiztonsági Irányítási Rendszer Tanúsítvány",
@@ -289,74 +289,70 @@ async function main() {
         // TRANSLATION DRAFT: review by user
         fullNameZh: "ISO 27001 信息安全管理体系认证",
 
-        // ISO 27001 description: TENTATIVE security-fókuszú szöveg, user megerősíti
-        // amikor megkapja a PDF-et és tudjuk a pontos issuer/cert-number-t
         descriptionHu:
-          "Az ISO 27001 az információbiztonsági irányítási rendszerek (ISMS) " +
-          "nemzetközi szabványa. Az Avenir tanúsítása igazolja, hogy a " +
+          "Az ISO/IEC 27001:2022 az információbiztonsági irányítási rendszerek " +
+          "(ISMS) nemzetközi szabványa. Az Avenir tanúsítása igazolja, hogy a " +
           "vagyonvédelmi munkánk során kezelt ügyfélinformációk, beléptetési " +
-          "naplók, kameraadatok és pénzügyi adatok kezelése megfelel a szabvány " +
+          "naplók, kameraadatok és pénzügyi adatok kezelése a teljes körű " +
+          "biztonsági szolgáltatásra kiterjedően megfelel a szabvány " +
           "bizalmasság-, sértetlenség- és rendelkezésre állás-követelményeinek. " +
-          "A tanúsítvány az IAF MLA megállapodás keretében nemzetközileg is " +
-          "elismert.",
+          "A NAH-akkreditált MARTON Szakértő Iroda auditja igazolja a rendszer " +
+          "megfelelőségét. A tanúsítvány az IAF MLA megállapodás keretében " +
+          "nemzetközileg is elismert.",
         // TRANSLATION DRAFT: review by user
         descriptionEn:
-          "ISO 27001 is the international standard for information security " +
-          "management systems (ISMS). Avenir's certification verifies that the " +
-          "customer information, access logs, camera data, and financial records " +
-          "handled in our property protection work meet the standard's " +
-          "confidentiality, integrity, and availability requirements. The " +
+          "ISO/IEC 27001:2022 is the international standard for information " +
+          "security management systems (ISMS). Avenir's certification verifies " +
+          "that the customer information, access logs, camera data, and " +
+          "financial records handled in our property protection work meet the " +
+          "standard's confidentiality, integrity, and availability requirements " +
+          "across the full security service scope. The audit by NAH-accredited " +
+          "MARTON Szakértő Iroda confirms the system's conformance. The " +
           "certificate is internationally recognized under the IAF MLA agreement.",
         // TRANSLATION DRAFT: review by user
         descriptionDe:
-          "ISO 27001 ist der internationale Standard für Informationssicherheits-" +
-          "Managementsysteme (ISMS). Avenirs Zertifizierung bestätigt, dass die " +
-          "im Rahmen unserer Eigentumsschutz-Tätigkeit verarbeiteten " +
-          "Kundeninformationen, Zutrittsprotokolle, Kameradaten und Finanzdaten " +
-          "die Vertraulichkeits-, Integritäts- und Verfügbarkeitsanforderungen " +
-          "der Norm erfüllen. Das Zertifikat ist im Rahmen des IAF MLA-Abkommens " +
+          "ISO/IEC 27001:2022 ist der internationale Standard für " +
+          "Informationssicherheits-Managementsysteme (ISMS). Avenirs " +
+          "Zertifizierung bestätigt, dass die im Rahmen unserer Eigentumsschutz-" +
+          "Tätigkeit verarbeiteten Kundeninformationen, Zutrittsprotokolle, " +
+          "Kameradaten und Finanzdaten die Vertraulichkeits-, Integritäts- und " +
+          "Verfügbarkeitsanforderungen der Norm im gesamten umfassenden " +
+          "Sicherheitsdienstleistungsbereich erfüllen. Das Audit der " +
+          "NAH-akkreditierten MARTON Szakértő Iroda bestätigt die Konformität " +
+          "des Systems. Das Zertifikat ist im Rahmen des IAF MLA-Abkommens " +
           "international anerkannt.",
         // TRANSLATION DRAFT: review by user
         descriptionZh:
-          "ISO 27001 是信息安全管理体系（ISMS）的国际标准。Avenir 的认证证明，" +
-          "我们在财产保护工作中对客户信息、门禁日志、摄像数据和财务记录的处理符合" +
-          "该标准的保密性、完整性和可用性要求。该证书在 IAF MLA 协议下获得国际认可。",
+          "ISO/IEC 27001:2022 是信息安全管理体系（ISMS）的国际标准。Avenir 的认证" +
+          "证明，我们在财产保护工作中对客户信息、门禁日志、摄像数据和财务记录的处理" +
+          "在全面安保服务范围内符合该标准的保密性、完整性和可用性要求。NAH 认可的 " +
+          "MARTON Szakértő Iroda 审核证实了体系的合规性。该证书在 IAF MLA 协议下" +
+          "获得国际认可。",
 
-        // PLACEHOLDER scope (real PDF text to come)
-        scopeHu:
-          "Információbiztonsági irányítási rendszer biztonsági szolgáltatások területén",
-        // TRANSLATION DRAFT + PLACEHOLDER
-        scopeEn: "Information security management system for security services",
-        // TRANSLATION DRAFT + PLACEHOLDER
-        scopeDe:
-          "Informationssicherheits-Managementsystem für Sicherheitsdienstleistungen",
-        // TRANSLATION DRAFT + PLACEHOLDER
-        scopeZh: "安全服务领域信息安全管理体系",
+        // verbatim from PDF
+        scopeHu: "Teljes körű biztonsági szolgáltatás",
+        // TRANSLATION DRAFT: review by user
+        scopeEn: "Comprehensive security services",
+        // TRANSLATION DRAFT: review by user
+        scopeDe: "Umfassende Sicherheitsdienstleistungen",
+        // TRANSLATION DRAFT: review by user
+        scopeZh: "全面安保服务",
 
-        // TODO: confirm with user PDF (tentatively same as ISO 9001)
-        issuer: "MartonCert Rendszertanúsító Kft.",
-        // TODO: confirm with user PDF
+        issuer: "MARTON Szakértő Iroda Kft.",
         issuerUrl: "https://www.rendszertanusitas.hu",
-        // TODO: confirm with user PDF
         accreditationBody: "NAH",
-        // TODO: confirm with user PDF
         accreditationNumber: "NAH-4-0047/2023",
-        // TODO: confirm with user PDF
         iafMlaMember: true,
-        // TODO: confirm with user PDF
         verifyUrl: "https://www.iafcertsearch.org",
 
-        // TODO: confirm with user PDF
-        issuedDate: "2024-01-01",
-        // TODO: confirm with user PDF
-        expiresDate: "2027-01-01",
+        issuedDate: "2026-04-27",
+        expiresDate: "2029-04-26",
 
         credentialCategory:
           "Information Security Management System Certification",
         // designer pack pending
         logoUrl: null,
-        // user uploads PDF later
-        pdfUrl: null,
+        pdfUrl: "/certifications/iso-27001-marton-988960032.pdf",
 
         active: true,
         sortOrder: 2,

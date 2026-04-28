@@ -37,7 +37,7 @@ export const de = {
   ],
   "aboutTitle": "Über Avenir",
   "aboutSub": "Ihr zuverlässiger Facility-Partner",
-  "aboutText": "Avenir Facility Management bietet seit 2008 integrierte Gebäudebetrieb- und Sicherheitsdienstleistungen an. Unsere Kernwerte sind Zuverlässigkeit, Präzision und Kundenzufriedenheit. Wir arbeiten nach höchsten professionellen Standards — von Bürogebäuden bis Einkaufszentren, von Industrieanlagen bis öffentlichen Räumen.",
+  "aboutText": "Avenir Facility Management bietet seit 2018 integrierte Gebäudebetrieb- und Sicherheitsdienstleistungen an. Unsere Kernwerte sind Zuverlässigkeit, Präzision und Kundenzufriedenheit. Wir arbeiten nach höchsten professionellen Standards — von Bürogebäuden bis Einkaufszentren, von Industrieanlagen bis öffentlichen Räumen.",
   "values": [
     {
       "t": "Zuverlässigkeit",

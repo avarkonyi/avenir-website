@@ -11,13 +11,19 @@ export const SEO_DATA = {
   shortName: "Avenir",
   legalName:
     "Avenir Facility Management Szolgáltató Korlátolt Felelősségű Társaság",
+  // Marketing-rövid forma — meta title, og:site_name, footer copyright
   legalNameShort: "Avenir Facility Management Kft.",
+  // Cégbíróság-bejegyzett rövid forma — IAF CertSearch authoritative,
+  // surfaced as schema.org Organization.alternateName
+  alternateName: "Avenir Facility Kft.",
 
   // Web
   url: "https://www.afm.hu",
-  // Placeholder asset URLs (designer pack will replace these)
+  // Placeholder asset URL (designer pack will replace this)
   logoUrl: "https://www.afm.hu/logo.png",
-  ogImageUrl: "https://www.afm.hu/og-image.jpg",
+  // Dynamic OG route (always 200) — replaces former /og-image.jpg
+  // placeholder which never existed as a static asset
+  ogImageUrl: "https://www.afm.hu/hu/opengraph-image",
 
   // Identifiers (Hungarian company registry)
   foundingDate: "2018-07-31",
@@ -26,13 +32,28 @@ export const SEO_DATA = {
   registrationId: "01-09-328046",
   iso6523: "0190:01-09-328046",
 
-  // Address
+  // Address — two presentations of the same legal address:
+  //
+  //   address.streetAddress (full, "Királyok útja 291. B. ép. 15. ajtó")
+  //     → JSON-LD PostalAddress, Footer impresszum line (small-print
+  //       legal context), llms.txt, future impresszum page, cert cards.
+  //       Used everywhere legal/structured precision matters.
+  //
+  //   addressShort (short, "1039 Budapest, Királyok útja 291.")
+  //     → Footer Maps-link visible text, Contact section visible text.
+  //       Used for quick-glance B2B browsing where the building/door
+  //       detail is visual noise. Maps URL queries also use this short
+  //       form (street+number is what Google Maps geocoder needs).
+  //
+  // Legal precision is preserved in the structured + impresszum surface;
+  // the visual surface stays elegant.
   address: {
-    streetAddress: "Királyok útja 291.",
+    streetAddress: "Királyok útja 291. B. ép. 15. ajtó",
     addressLocality: "Budapest",
     postalCode: "1039",
     addressCountry: "HU",
   },
+  addressShort: "1039 Budapest, Királyok útja 291.",
 
   // Contact
   contact: {
@@ -58,7 +79,7 @@ export const SEO_FAQS_HU = [
   },
   {
     q: "Hol érhető el az Avenir Facility Management?",
-    a: "Az Avenir Facility Management Magyarország teljes területén nyújt szolgáltatásokat, központja Budapesten található (1039 Budapest, Királyok útja 291.). 30+ aktív helyszínen dolgozunk országszerte.",
+    a: "Az Avenir Facility Management Magyarország teljes területén nyújt szolgáltatásokat, központja Budapesten található (1039 Budapest, Királyok útja 291. B. ép. 15. ajtó). 30+ aktív helyszínen dolgozunk országszerte.",
   },
   {
     q: "Hány embert foglalkoztat az Avenir?",

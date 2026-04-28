@@ -150,7 +150,7 @@ export function Footer({ t }: { t: Translation }) {
             {t.footer.rights}
           </p>
           <p style={{ color: "rgba(255,255,255,0.25)", fontSize: 12, fontWeight: 300 }}>
-            Cégjegyzékszám: 01-09-328046 · Adószám: 26395124-2-41 · Székhely: 1039 Budapest, Királyok útja 291.
+            Cégjegyzékszám: 01-09-328046 · Adószám: 26395124-2-41 · Székhely: 1039 Budapest, Királyok útja 291. B. ép. 15. ajtó
           </p>
         </div>
       </div>

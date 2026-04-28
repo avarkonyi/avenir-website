@@ -6,12 +6,13 @@
 ## Cégadatok
 
 - **Hivatalos név:** Avenir Facility Management Szolgáltató Korlátolt Felelősségű Társaság
-- **Rövid név:** Avenir Facility Management Kft.
+- **Marketing-rövid:** Avenir Facility Management Kft.
+- **Cégbíróság-rövid:** Avenir Facility Kft. (IAF CertSearch authoritative — verifikálható: https://www.iafcertsearch.org)
 - **Alapítás:** 2018. július 31.
 - **Cégjegyzékszám:** 01-09-328046
 - **Adószám:** 26395124-2-41
-- **Közösségi adószám:** HU26395124
-- **Székhely:** 1039 Budapest, Királyok útja 291.
+- **EU közösségi adószám (vatID):** HU26395124
+- **Székhely:** 1039 Budapest, Királyok útja 291. B. ép. 15. ajtó
 - **Bonitási minősítés (OPTEN):** A+
 - **Méretkategória:** Közepes vállalkozás
 

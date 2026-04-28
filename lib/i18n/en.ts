@@ -37,7 +37,7 @@ export const en = {
   ],
   "aboutTitle": "About Avenir",
   "aboutSub": "Your trusted facility partner",
-  "aboutText": "Avenir Facility Management has been delivering integrated building operations and security services since 2008. Our core values are reliability, precision, and client satisfaction. We operate to the highest professional standards — from office buildings to shopping centres, from industrial plants to public spaces.",
+  "aboutText": "Avenir Facility Management has been delivering integrated building operations and security services since 2018. Our core values are reliability, precision, and client satisfaction. We operate to the highest professional standards — from office buildings to shopping centres, from industrial plants to public spaces.",
   "values": [
     {
       "t": "Reliability",
