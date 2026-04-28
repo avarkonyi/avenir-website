@@ -1,7 +1,8 @@
+import Link from "next/link";
 import type { Translation } from "@/lib/i18n";
 import { AvenirLogo } from "./AvenirLogo";
 
-export function Footer({ t }: { t: Translation }) {
+export function Footer({ t, locale }: { t: Translation; locale: string }) {
   return (
     <footer style={{ background: "#070F1E", padding: "60px 5vw 28px", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
@@ -109,7 +110,7 @@ export function Footer({ t }: { t: Translation }) {
             </div>
           </div>
 
-          {/* Column 4: Legal links */}
+          {/* Column 4: Legal links — locale-prefixed Next/Link */}
           <div>
             <h4
               style={{
@@ -122,27 +123,32 @@ export function Footer({ t }: { t: Translation }) {
                 marginBottom: 18,
               }}
             >
-              Jogi
+              {t.footer.legalTitle}
             </h4>
             <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 10 }}>
               <li>
-                <a href="/adatvedelem" className="footer-link" style={{ color: "rgba(255,255,255,0.45)", fontSize: 13, textDecoration: "none" }}>
+                <Link href={`/${locale}/adatvedelem`} className="footer-link" style={{ color: "rgba(255,255,255,0.45)", fontSize: 13, textDecoration: "none" }}>
                   {t.footer.privacy}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/aszf" className="footer-link" style={{ color: "rgba(255,255,255,0.45)", fontSize: 13, textDecoration: "none" }}>
+                <Link href={`/${locale}/aszf`} className="footer-link" style={{ color: "rgba(255,255,255,0.45)", fontSize: 13, textDecoration: "none" }}>
                   {t.footer.terms}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/impresszum" className="footer-link" style={{ color: "rgba(255,255,255,0.45)", fontSize: 13, textDecoration: "none" }}>
+                <Link href={`/${locale}/impresszum`} className="footer-link" style={{ color: "rgba(255,255,255,0.45)", fontSize: 13, textDecoration: "none" }}>
                   {t.footer.impressum}
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
         </div>
+
+        {/* Licences disclosure line — fine print above divider, B2B procurement signal */}
+        <p style={{ color: "rgba(255,255,255,0.35)", fontSize: 11, lineHeight: 1.6, fontWeight: 300, marginBottom: 18, maxWidth: 980 }}>
+          {t.footer.licensesShort}
+        </p>
 
         {/* Divider */}
         <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)", paddingTop: 24 }}>
@@ -152,6 +158,11 @@ export function Footer({ t }: { t: Translation }) {
           <p style={{ color: "rgba(255,255,255,0.25)", fontSize: 12, fontWeight: 300 }}>
             Cégjegyzékszám: 01-09-328046 · Adószám: 26395124-2-41 · Székhely: 1039 Budapest, Királyok útja 291. B. ép. 15. ajtó
           </p>
+          {t.footer.machineTranslationDisclaimer && (
+            <p style={{ color: "rgba(255,255,255,0.4)", fontSize: 11, fontWeight: 300, marginTop: 10, fontStyle: "italic" }}>
+              {t.footer.machineTranslationDisclaimer}
+            </p>
+          )}
         </div>
       </div>
     </footer>

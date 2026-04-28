@@ -159,3 +159,196 @@ export const SCHEMA_SERVICE_ORDER = [
 export function credentialId(slug: string): string {
   return `${SEO_DATA.url}/#credential-${slug}`;
 }
+
+// Hivatalos képviselő (cégbíróság-bejegyzett ügyvezető). Telefonja eltér
+// a company-general számtól: a vizuális fő-helyeken (Footer, Contact,
+// JSON-LD) a +36 70 316 8218 céges-általános marad; az ügyvezető
+// +36 70 312 5868 száma kizárólag az impresszum képviselő-szakaszban.
+export const SEO_EXECUTIVE = {
+  name: "Kovács Attila",
+  nameEn: "Attila Kovács",
+  titleHu: "ügyvezető",
+  titleEn: "Managing Director",
+  titleDe: "Geschäftsführer",
+  titleZh: "总经理",
+  guardCardNumber: "VS0000850",
+  pidetectiveNumber: "MA2001317",
+  email: "info@afm.hu",
+  emailHref: "mailto:info@afm.hu",
+  phone: "+36-70-312-5868",
+  phoneDisplay: "+36 70 312 5868",
+  phoneTel: "tel:+36703125868",
+} as const;
+
+// GDPR Art. 37(1)(b)+(c) szerint kijelölt adatvédelmi tisztviselő.
+// NAIH-bejelentés Infotv. 25/L. § alapján folyamatban (2026.04.29).
+export const SEO_DPO = {
+  name: "Csegény Fanni",
+  nameEn: "Fanni Csegény",
+  email: "dpo@afm.hu",
+  emailHref: "mailto:dpo@afm.hu",
+  phone: "+36-70-622-6242",
+  phoneDisplay: "+36 70 622 6242",
+  phoneTel: "tel:+36706226242",
+} as const;
+
+// Cégbíróság (a cégjegyzékszám regisztrálója).
+export const SEO_COURT_REGISTRY = {
+  name: "Fővárosi Törvényszék Cégbírósága",
+  nameEn: "Court of Registration of the Budapest-Capital Regional Court",
+  address: "1055 Budapest, Markó utca 27.",
+} as const;
+
+// Tárhelyszolgáltató (Ekertv. 4. § f) kötelező disclosure).
+// VERIFIED 2026.04.28: Vercel privacy-policy szerinti hivatalos cím.
+export const SEO_HOSTING_PROVIDER = {
+  name: "Vercel Inc.",
+  address: "440 N Barranca Avenue #4133, Covina, CA 91723, USA",
+  email: "privacy@vercel.com",
+  generalEmail: "support@vercel.com",
+} as const;
+
+// Kötelező felelősségbiztosítás (SzVMt. 5/A. § (1) b) szerint).
+// Allianz-kötvényszám 2026.04.28 user-confirmed.
+export const SEO_LIABILITY = {
+  legalBasis: "SzVMt. 5/A. § (1) b)",
+  legalBasisEn: "§ 5/A(1)(b) of Hungarian Act CXXXIII of 2005",
+  insurerName: "Allianz Hungária Biztosító Zrt.",
+  insurerLegalName:
+    "Allianz Hungária Biztosító Zártkörűen Működő Részvénytársaság",
+  insurerAddress: "1087 Budapest, Könyves Kálmán krt. 48-52.",
+  insurerRegNumber: "Cg. 01-10-041356",
+  policyNumber: "341633910",
+} as const;
+
+// Hatósági engedélyek (3+1: vagyonvédelem őrzés-védés + biztonságtechnika +
+// magánnyomozás + nemzetbiztonsági névjegyzék). Iparági standard a B2B
+// procurement audithoz: a partner letöltheti a hatósági határozatokat.
+export const SEO_LICENSES = [
+  {
+    type: "guarding",
+    number: "01030-822/4926-7/2023",
+    validUntil: "2028-01-31",
+    indefinite: false,
+    issuer: "III. Kerületi Rendőrkapitányság, Igazgatásrendészeti Osztály",
+    issuerEn: "3rd District Police Station, Administrative Police Department",
+    legalBasis: "SzVMt. (2005. évi CXXXIII. törvény)",
+    legalBasisEn: "SzVMt. (Hungarian Act CXXXIII of 2005)",
+  },
+  {
+    type: "security-tech",
+    number: "01030-822/4927-3/2018",
+    validUntil: null,
+    indefinite: true,
+    issuer: "III. Kerületi Rendőrkapitányság, Igazgatásrendészeti Osztály",
+    issuerEn: "3rd District Police Station, Administrative Police Department",
+    legalBasis: "SzVMt. (2005. évi CXXXIII. törvény)",
+    legalBasisEn: "SzVMt. (Hungarian Act CXXXIII of 2005)",
+  },
+  {
+    type: "private-investigator",
+    number: "01030-822/4925-3/2018",
+    validUntil: null,
+    indefinite: true,
+    issuer: "III. Kerületi Rendőrkapitányság, Igazgatásrendészeti Osztály",
+    issuerEn: "3rd District Police Station, Administrative Police Department",
+    legalBasis: "SzVMt. (2005. évi CXXXIII. törvény)",
+    legalBasisEn: "SzVMt. (Hungarian Act CXXXIII of 2005)",
+  },
+  {
+    type: "national-security",
+    number: "AH/37595-14/2024-2",
+    validUntil: "2026-06-30",
+    indefinite: false,
+    issuer: "Alkotmányvédelmi Hivatal Iparbiztonsági Főosztály",
+    issuerEn: "Constitution Protection Office, Industrial Security Department",
+    legalBasis: "Vbt. (2016. évi XXX. törvény) 120. §",
+    legalBasisEn: "§ 120 of Hungarian Act XXX of 2016 (Vbt.)",
+  },
+] as const;
+
+export type LicenseType = (typeof SEO_LICENSES)[number]["type"];
+
+// Felügyeleti hatóságok (3 darab, eltérő hatáskör).
+// VERIFIED 2026.04.28: NAIH naih.hu/ugyfelszolgalat-kapcsolat;
+// AH ah.gov.hu/en/contact; III. Kerületi Rk. — felhasználó-megadott.
+export const SEO_REGULATORY_BODIES = {
+  guarding: {
+    area: "guarding",
+    name: "III. Kerületi Rendőrkapitányság, Igazgatásrendészeti Osztály",
+    nameEn: "3rd District Police Station, Administrative Police Department",
+    address: "1036 Budapest, Tímár utca 9/a",
+    phone: "+36 (1) 430-4700",
+    fax: "+36 (1) 430-4722",
+    email: "03rk@budapest.police.hu",
+    legalBasis:
+      "SzVMt. + 329/2007. (XII.13.) Korm. rendelet 12. § (3) c)",
+    legalBasisEn:
+      "SzVMt. + Government Decree 329/2007. (XII.13.) § 12(3)(c)",
+  },
+  nationalSecurity: {
+    area: "nationalSecurity",
+    name: "Alkotmányvédelmi Hivatal Iparbiztonsági Főosztály",
+    nameEn: "Constitution Protection Office, Industrial Security Department",
+    address: "1117 Budapest, Fehérvári út 70.",
+    postalAddress: "1391 Budapest, 62. Pf. 217",
+    phone: "+36 (1) 485-2300",
+    legalBasis: "Vbt. (2016. évi XXX. törvény) 120. §",
+    legalBasisEn: "§ 120 of Hungarian Act XXX of 2016 (Vbt.)",
+  },
+  dataProtection: {
+    area: "dataProtection",
+    name: "Nemzeti Adatvédelmi és Információszabadság Hatóság (NAIH)",
+    nameEn: "National Authority for Data Protection and Freedom of Information (NAIH)",
+    address: "1055 Budapest, Falk Miksa utca 9-11.",
+    postalAddress: "1363 Budapest, Pf.: 9",
+    phone: "+36 (1) 391-1400",
+    email: "ugyfelszolgalat@naih.hu",
+    web: "https://www.naih.hu",
+    legalBasis: "GDPR + Infotv. (2011. évi CXII. törvény)",
+    legalBasisEn: "GDPR + Infotv. (Hungarian Act CXII of 2011)",
+  },
+} as const;
+
+// GDPR Art. 28 szerinti adatfeldolgozók. VERIFIED 2026.04.28-ról a
+// szolgáltatók privacy/contact oldalairól. Schrems-II konzervatív
+// disclosure pattern: NEM állítjuk hogy "data stays in EU" — US-incorporated
+// parent + EU-region deployment + DPF-cert + SCC-fallback.
+export const SEO_DATA_PROCESSORS = [
+  {
+    id: "resend",
+    legalName: "Plus Five Five, Inc.",
+    tradeName: "Resend",
+    address: "2261 Market Street #5039, San Francisco, CA 94114, USA",
+    purposeHu: "Tranzakcionális email továbbítás",
+    purposeEn: "Transactional email delivery",
+    purposeDe: "Transaktionale E-Mail-Zustellung",
+    purposeZh: "事务性电子邮件传输",
+    location: "EU Frankfurt (sending region)",
+    dpfCertified: true,
+  },
+  {
+    id: "vercel",
+    legalName: "Vercel Inc.",
+    tradeName: "Vercel",
+    address: "440 N Barranca Avenue #4133, Covina, CA 91723, USA",
+    purposeHu: "Hosting, edge/CDN szolgáltatás és szerveroldali naplózás",
+    purposeEn: "Hosting, edge/CDN service and server-side logging",
+    purposeDe: "Hosting, Edge/CDN-Dienst und serverseitige Protokollierung",
+    purposeZh: "托管、边缘/CDN 服务及服务器端日志",
+    location: "EU edge regions (configured)",
+    dpfCertified: true,
+  },
+  {
+    id: "neon",
+    legalName: "Neon, LLC",
+    tradeName: "Neon (a Databricks, Inc. affiliate)",
+    address: "160 Spear Street, Suite 1300, San Francisco, CA 94105, USA",
+    purposeHu: "PostgreSQL adatbázis-szolgáltatás",
+    purposeEn: "PostgreSQL database service",
+    purposeDe: "PostgreSQL-Datenbankdienst",
+    purposeZh: "PostgreSQL 数据库服务",
+    location: "EU AWS Frankfurt (eu-central-1)",
+    dpfCertified: true,
+  },
+] as const;

@@ -12,6 +12,11 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Reference snapshots — not used by the app, kept as historical
+    // documentation of original components before the migration.
+    "references/**",
+    // Drafts folder — markdown working documents, not deploy-build assets
+    "drafts/**",
   ]),
 ]);
 

@@ -47,3 +47,7 @@ next-env.d.ts
 
 # private prompt-sequence playbook (do not commit, do not read ahead)
 references/Avenir_ClaudeCode_promptok_v2_admin.md
+
+# Working drafts (markdown). Tracked on the 18-commit-drafts backup
+# branch only; main treats them as untracked working documents.
+drafts/

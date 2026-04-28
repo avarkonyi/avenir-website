@@ -72,7 +72,7 @@ export default async function HomePage({
         <Career t={t} />
         <Contact t={t} locale={locale} />
       </main>
-      <Footer t={t} />
+      <Footer t={t} locale={locale} />
     </>
   );
 }

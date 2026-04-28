@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useParams } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import type { Translation } from "@/lib/i18n";
 import { AvenirLogo } from "./AvenirLogo";
@@ -14,7 +14,15 @@ export function Nav({ t }: { t: Translation }) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const params = useParams<{ locale: string }>();
+  const pathname = usePathname();
   const currentLocale = params?.locale ?? "hu";
+
+  // True if currently on the locale homepage (where the section anchors
+  // exist for in-page smooth scroll). False on legal pages and other
+  // sub-routes — clicking a nav item must navigate back to /[locale]
+  // with a hash anchor instead of trying to scrollIntoView a missing id.
+  const isOnHomepage =
+    pathname === `/${currentLocale}` || pathname === `/${currentLocale}/`;
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 60);
@@ -40,6 +48,28 @@ export function Nav({ t }: { t: Translation }) {
     if (el) window.scrollTo({ top: el.offsetTop - 72, behavior: "smooth" });
   };
 
+  // Click handler factory for section nav items. On homepage, prevent
+  // default Link navigation and smooth-scroll to the section. Off
+  // homepage, let Link handle navigation to /[locale]#id (browser will
+  // jump to the anchor after page load).
+  const handleSectionClick =
+    (id: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
+      if (isOnHomepage) {
+        e.preventDefault();
+        scrollTo(id);
+      }
+      // Off-homepage: let Link navigate; menu close happens via the
+      // page transition (component remounts) so no explicit setMenuOpen.
+    };
+
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (isOnHomepage) {
+      e.preventDefault();
+      scrollTo("hero");
+    }
+    // Off-homepage: let Link navigate to /[locale].
+  };
+
   const navStyle: React.CSSProperties = {
     position: "fixed",
     top: 0,
@@ -56,21 +86,24 @@ export function Nav({ t }: { t: Translation }) {
   return (
     <nav style={navStyle}>
       <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", alignItems: "center", height: 72, gap: 32 }}>
-        <button
-          onClick={() => scrollTo("hero")}
-          style={{ background: "none", border: "none", cursor: "pointer", padding: 0 }}
+        <Link
+          href={`/${currentLocale}`}
+          onClick={handleLogoClick}
+          style={{ background: "none", border: "none", cursor: "pointer", padding: 0, display: "inline-flex" }}
           aria-label="Avenir home"
         >
           <AvenirLogo size={36} />
-        </button>
+        </Link>
         <div style={{ flex: 1 }} />
 
-        {/* Desktop nav */}
+        {/* Desktop nav — Link with onClick: smooth-scroll on homepage,
+            navigate to /[locale]#id on legal pages and other sub-routes. */}
         <div className="desktop-nav" style={{ display: "flex", gap: 28, alignItems: "center" }}>
           {SECTION_KEYS.map((k) => (
-            <button
+            <Link
               key={k}
-              onClick={() => scrollTo(k)}
+              href={`/${currentLocale}#${k}`}
+              onClick={handleSectionClick(k)}
               className="nav-link"
               style={{
                 background: "none",
@@ -85,10 +118,11 @@ export function Nav({ t }: { t: Translation }) {
                 padding: "4px 0",
                 borderBottom: "2px solid transparent",
                 transition: "color 0.2s, border-color 0.2s",
+                textDecoration: "none",
               }}
             >
               {t.nav[k]}
-            </button>
+            </Link>
           ))}
 
           {/* Language switcher (URL-based) */}
@@ -117,8 +151,9 @@ export function Nav({ t }: { t: Translation }) {
             ))}
           </div>
 
-          <button
-            onClick={() => scrollTo("contact")}
+          <Link
+            href={`/${currentLocale}#contact`}
+            onClick={handleSectionClick("contact")}
             className="nav-cta"
             style={{
               background: "#D1172E",
@@ -133,10 +168,12 @@ export function Nav({ t }: { t: Translation }) {
               padding: "10px 22px",
               borderRadius: 2,
               transition: "background 0.2s",
+              textDecoration: "none",
+              display: "inline-block",
             }}
           >
             {t.nav.cta}
-          </button>
+          </Link>
         </div>
 
         {/* Mobile hamburger */}
@@ -172,9 +209,13 @@ export function Nav({ t }: { t: Translation }) {
           }}
         >
           {SECTION_KEYS.map((k) => (
-            <button
+            <Link
               key={k}
-              onClick={() => scrollTo(k)}
+              href={`/${currentLocale}#${k}`}
+              onClick={(e) => {
+                setMenuOpen(false);
+                handleSectionClick(k)(e);
+              }}
               style={{
                 background: "none",
                 border: "none",
@@ -188,10 +229,11 @@ export function Nav({ t }: { t: Translation }) {
                 textAlign: "left",
                 padding: "6px 0",
                 borderBottom: "1px solid rgba(255,255,255,0.08)",
+                textDecoration: "none",
               }}
             >
               {t.nav[k]}
-            </button>
+            </Link>
           ))}
           <div style={{ display: "flex", gap: 8, marginTop: 8 }}>
             {LOCALES.map((l) => (

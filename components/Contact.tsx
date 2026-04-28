@@ -1,8 +1,17 @@
 "use client";
 
 import { type ReactElement, useState } from "react";
+import Link from "next/link";
 import type { Translation } from "@/lib/i18n";
 import { Icon } from "./Icon";
+
+// Per-locale anchor target for the ÁSZF section #4 deep-link from the
+// magánnyomozói warning. HU keeps the Hungarian slug; EN/DE/ZH use the
+// English slug since the DE/ZH ÁSZF page reuses the EN section IDs.
+function getAszfPrivateInvestigationHref(locale: string): string {
+  const anchor = locale === "hu" ? "magannyomozas" : "private-investigation";
+  return `/${locale}/aszf#${anchor}`;
+}
 
 type FormState = {
   name: string;
@@ -402,6 +411,38 @@ export function Contact({ t, locale }: { t: Translation; locale: string }) {
             </div>
           ) : (
             <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 16 }} noValidate>
+              {/* Magánnyomozói / különleges adat warning — CONDITIONAL:
+                  csak akkor jelenik meg, ha a "Magánnyomozás" opció van
+                  kiválasztva a service dropdown-ban (form.service ===
+                  "magannyomozas"). Az érzékeny-adat tilalom kifejezetten
+                  a magánnyomozói tevékenységhez kapcsolódó B2B-megkeresések
+                  esetén releváns. */}
+              {form.service === "magannyomozas" && (
+                <div
+                  style={{
+                    background: "rgba(251,191,36,0.08)",
+                    border: "1px solid rgba(251,191,36,0.35)",
+                    borderRadius: 3,
+                    padding: "12px 14px",
+                    fontSize: 12,
+                    lineHeight: 1.55,
+                    color: "rgba(11,30,62,0.85)",
+                  }}
+                  role="note"
+                  aria-label="Special data warning"
+                >
+                  <strong style={{ color: "#92400e" }}>⚠️ </strong>
+                  {t.form.specialDataWarning}{" "}
+                  <Link
+                    href={getAszfPrivateInvestigationHref(locale)}
+                    style={{ color: "#D1172E", fontWeight: 600, textDecoration: "underline" }}
+                  >
+                    {t.form.specialDataWarningLink}
+                  </Link>
+                  .
+                </div>
+              )}
+
               {/* Honeypot — visually hidden, off the keyboard tab order. Bots
                   fill every input; humans don't see this. Server treats a
                   non-empty value as silent success (no DB write, no email). */}
@@ -548,6 +589,11 @@ export function Contact({ t, locale }: { t: Translation; locale: string }) {
                       {s.t}
                     </option>
                   ))}
+                  {/* 9th option — magánnyomozás. Tartja a hatósági engedély
+                      (01030-822/4925-3/2018) szerinti tevékenység transzparens
+                      megjelenítését. Választáskor a fenti specialDataWarning
+                      conditional render aktiválódik. */}
+                  <option value="magannyomozas">{t.form.privateInvestigation}</option>
                 </select>
                 {errors.service && (
                   <div id="contact-service-error" role="alert" style={{ color: "#D1172E", fontSize: 12, marginTop: 4 }}>
@@ -596,6 +642,27 @@ export function Contact({ t, locale }: { t: Translation; locale: string }) {
                   {errors.general}
                 </div>
               )}
+              {/* Layered notice — short summary above Send button + link
+                  to full Privacy Policy (Codex 2 IMP-10: "notice" not
+                  "consent" because basis is Art. 6(1)(b)/(f), not consent). */}
+              <p
+                style={{
+                  fontSize: 11,
+                  lineHeight: 1.55,
+                  color: "rgba(11,30,62,0.55)",
+                  margin: "8px 0 0",
+                }}
+              >
+                {t.form.layeredNotice}{" "}
+                <Link
+                  href={`/${locale}/adatvedelem`}
+                  style={{ color: "#D1172E", textDecoration: "underline", fontWeight: 500 }}
+                >
+                  {t.form.layeredNoticeLink}
+                </Link>
+                .
+              </p>
+
               <button
                 type="submit"
                 disabled={submitting}

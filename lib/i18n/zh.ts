@@ -1,5 +1,6 @@
 export const zh = {
   "nav": {
+    "home": "首页",
     "about": "关于我们",
     "services": "服务",
     "references": "参考案例",
@@ -139,7 +140,13 @@ export const zh = {
     "message": "留言 / 需求说明",
     "send": "发送报价申请",
     "sending": "发送中…",
-    "success": "已收到您的消息！我们将尽快与您联系。",
+    "success": "我们已收到您的留言。我们将在2个工作日内与您联系。您的数据将依据我们的隐私政策进行处理。",
+    "successPrivacyLink": "隐私政策",
+    "specialDataWarning": "请勿通过本表单提交特殊类别数据、刑事记录数据、机密数据、商业秘密或涉及第三方详细私人信息的内容。此类事项需另行签署合同并进行数据保护协商。",
+    "specialDataWarningLink": "使用条款 第4节",
+    "privateInvestigation": "私家侦探",
+    "layeredNotice": "提交即表示您同意我们的",
+    "layeredNoticeLink": "隐私政策",
     // TRANSLATION DRAFT: review by user
     "errors": {
       "nameRequired": "请填写您的全名",
@@ -154,9 +161,12 @@ export const zh = {
   },
   "footer": {
     "rights": "© 2026 Avenir Facility Management Kft. · 保留所有权利。",
+    "legalTitle": "法律",
     "privacy": "隐私政策",
-    "terms": "条款",
-    "impressum": "法律声明"
+    "terms": "使用条款",
+    "impressum": "法律声明",
+    "licensesShort": "安保许可:保安(有效期至2028年1月31日)·安防技术·私人侦探·国家安全登记(2016年第XXX号法案第120条)。监管机构:布达佩斯第三区警察局·NAIH·宪法保护办公室工业安全部。",
+    "machineTranslationDisclaimer": "本页面由匈牙利语机器翻译而来。具有法律约束力的版本仅为匈牙利语版本。"
   },
   // TRANSLATION DRAFT: review by user
   "certifications": {
@@ -173,5 +183,130 @@ export const zh = {
     "iafMember": "IAF MLA 成员",
     "downloadPdf": "下载证书 (PDF)",
     "altText": "{name} 认证标志"
+  },
+  // LEGAL_REVIEW_PENDING_ZH — 以下 notFound/errorPage/legal 内容为机器翻译；具有法律约束力的版本为匈牙利语版本。
+  "notFound": {
+    "title": "找不到页面",
+    "description": "您查找的内容不可用。该页面可能已被删除、迁移到新地址，或您输入的网址有误。",
+    "primaryCta": "返回首页",
+    "secondaryCta": "联系我们",
+    "tertiaryCta": "隐私政策"
+  },
+  "errorPage": {
+    "title": "出现错误",
+    "description": "抱歉 — 加载页面时发生意外错误。请重试；若问题仍然存在，请通过 info@afm.hu 联系我们。",
+    "retry": "重新加载",
+    "backHome": "返回首页"
+  },
+  "legal": {
+    "privacy": {
+      "title": "隐私政策",
+      "lastUpdated": "生效日期：2026年4月28日",
+      "version": "1.0版本 — 首次发布",
+      "intro": "Avenir Facility Management Szolgáltató Korlátolt Felelősségű Társaság（以下简称\"控制者\"）承诺保护数据主体的个人数据。本隐私政策依据GDPR以及匈牙利2011年第CXII号法律（Infotv.）制定。\n\n本政策范围仅限于 https://www.afm.hu 网站的联系和报价请求流程，以及成功报价请求后的合同管理。其他处理活动 — 特别是客户场所的视频监控、私人侦探活动、员工数据处理和客户项目数据处理 — 由单独通知规范。\n\n权威语言：本政策的权威版本为匈牙利语文本，发布于 https://www.afm.hu/hu/adatvedelem。英语、德语和中文版本仅供参考；如有差异，以匈牙利语文本为准。",
+      "sections": [
+        { "id": "controller", "title": "1. 控制者识别", "body": "法定名称：Avenir Facility Management Szolgáltató Korlátolt Felelősségű Társaság\n商业法院注册简称：Avenir Facility Kft.\n营销名称：Avenir Facility Management Kft.\n公司注册号：01-09-328046\n税号：26395124-2-41\n欧盟增值税号：HU26395124\n成立日期：2018年7月31日\n注册办公地址：匈牙利1039布达佩斯，Királyok útja 291号，B栋，15门\n一般联系：info@afm.hu · +36 70 316 8218" },
+        { "id": "representative", "title": "2. 控制者授权代表和数据保护联系人", "body": "授权代表：Kovács Attila，总经理\n电子邮件：info@afm.hu\n电话：+36 70 312 5868" },
+        { "id": "dpo", "title": "3. 数据保护官 (DPO)", "body": "控制者已根据GDPR第37(1)(b)和(c)条任命数据保护官。\n\n数据保护官：Csegény Fanni\n电子邮件：dpo@afm.hu\n电话：+36 70 622 6242\n邮政联系：1039 布达佩斯, Királyok útja 291, B栋, 15门, 匈牙利\n\n控制者已根据Infotv.第25/L条向NAIH提交/正在提交备案。" },
+        { "id": "processed-data", "title": "4. 处理目的、法律依据和处理的个人数据", "body": "4.1. 联系/报价请求 — 法律依据：自然人 GDPR Art. 6(1)(b)，B2B 联系人 Art. 6(1)(f)。\n4.2. 防止滥用和网站安全 — 法律依据：Art. 6(1)(f)。\n4.3. 成功请求后的合同管理。\n4.4. 排除特殊类别数据 — 请勿通过表单提交敏感、刑事或第三方信息。" },
+        { "id": "processors", "title": "5. 数据处理者 (GDPR Art. 28)", "body": "5.1. Plus Five Five, Inc.（\"Resend\"）— 2261 Market Street #5039, San Francisco, CA 94114, USA — 邮件传输。Art. 28 DPA。第三国传输保障：DPF (Art. 45) 或 SCC (Art. 46)。\n\n5.2. Vercel Inc. — 440 N Barranca Avenue #4133, Covina, CA 91723, USA — 托管/Edge/CDN。Art. 28 DPA。EU 区域已配置 (fra1)。\n\n5.3. Neon, LLC（Databricks, Inc. 关联公司）— 160 Spear Street, Suite 1300, San Francisco, CA 94105, USA — PostgreSQL 数据库，EU AWS Frankfurt。Art. 28 DPA。第三国保障：Databricks DPF 认证 (Art. 45) 或 SCC (Art. 46)。" },
+        { "id": "third-country", "title": "6. 国际数据传输", "body": "控制者努力使数据存储位于EU区域。但不保证所有处理仅在EEA内进行。对美国注册的提供商，根据美国法律（特别是 FISA 702、CLOUD Act）可能产生访问义务。保障：GDPR Art. 45 (DPF)、Art. 46 (SCC) 及补充措施。" },
+        { "id": "cookies", "title": "7. Cookie 和类似技术", "body": "Cookie 审计待定 — 控制者将在部署后通过 DevTools 审计完成完整 Cookie 清单。本网站不使用任何分析、营销、再营销或画像 Cookie。" },
+        { "id": "rights", "title": "8. 数据主体的权利 (GDPR Art. 12-22)", "body": "知情、访问、更正、删除、限制、可携、反对（针对 4.1 和 4.2 中基于合法利益的处理）、自动化决策相关权利。" },
+        { "id": "automated", "title": "9. 自动化决策和画像", "body": "本流程中不进行自动化决策和画像。" },
+        { "id": "dsar", "title": "10. 行使您的权利 (DSAR 程序)", "body": "电子邮件：info@afm.hu（主题：\"数据保护请求\"）\n邮寄：Avenir Facility Management Kft., Királyok útja 291, B栋, 15门, 1039 布达佩斯, 匈牙利\n\n根据 Art. 12(3) 在一个月内回复，最多可延长 2 个月。" },
+        { "id": "remedies", "title": "11. 救济措施", "body": "向 NAIH 投诉（Falk Miksa utca 9-11, 1055 布达佩斯, +36 1 391-1400, ugyfelszolgalat@naih.hu）或寻求司法救济（Art. 79 GDPR）。" },
+        { "id": "breach", "title": "12. 个人数据泄露", "body": "根据 Art. 33 GDPR，控制者将在不无故拖延的情况下，在可行的情况下不晚于知情后 72 小时内通知 NAIH。高风险情况下还将直接通知数据主体（Art. 34）。" },
+        { "id": "security", "title": "13. 信息安全", "body": "ISO/IEC 27001:2022 认证 ISMS（证书编号 988960032，颁发方 MARTON Szakértő Iroda Kft.，有效期 2026.04.27 – 2029.04.26）。措施符合 Art. 32 GDPR。" },
+        { "id": "modification", "title": "14. 本政策的修改", "body": "控制者保留单方修改的权利。版本历史：\n• 1.0 版本 — 自 2026 年 4 月 28 日起生效。首次发布。" }
+      ]
+    },
+    "terms": {
+      "title": "使用条款",
+      "lastUpdated": "生效日期：2026年4月28日",
+      "version": "1.0版本 — 首次发布",
+      "intro": "本使用条款规定您对由 Avenir Facility Management Szolgáltató Kft. 运营的 https://www.afm.hu 网站的使用。",
+      "sections": [
+        { "id": "general", "title": "1. 一般规定", "body": "提供方（营销）：Avenir Facility Management Kft.\n提供方（法定名称）：Avenir Facility Management Szolgáltató Korlátolt Felelősségű Társaság。\nB2B 仅限：提供方不通过本网站与消费者签订合同。权威语言：匈牙利语。" },
+        { "id": "service", "title": "2. 服务说明", "body": "本网站为信息性，不是在线签约平台。合同以书面形式单独签订。" },
+        { "id": "contact-form", "title": "3. 联系表单的使用", "body": "表单仅用于报价请求和联系。提供方将在 2 个工作日内回复。" },
+        { "id": "private-investigation", "title": "4. 排除特殊类别数据和私人侦探事项", "body": "请勿通过本表单提交特殊类别数据、健康、刑事记录、机密或涉及第三方的详细私人生活信息。私人侦探活动仅在许可证 01030-822/4925-3/2018 下、根据 SzVMt. 框架、基于书面委托合同进行。" },
+        { "id": "licenses", "title": "5. 经营许可证", "body": "a) 人身和财产保护（保安）— 01030-822/4926-7/2023，有效期至 2028.01.31\nb) 安防系统设计安装 — 01030-822/4927-3/2018，至撤销为止\nc) 私人侦探活动 — 01030-822/4925-3/2018，至撤销为止\nd) 国家安全登记 — AH/37595-14/2024-2，审查截止 2026.06.30，Vbt. § 120" },
+        { "id": "ip", "title": "6. 知识产权", "body": "全部内容受版权法保护。未经书面许可，禁止商业用途。" },
+        { "id": "liability", "title": "7. 责任免责声明和强制性专业责任保险", "body": "强制性专业责任保险（SzVMt. § 5/A(1)(b)）：Allianz Hungária Biztosító Zrt., Cg. 01-10-041356, 保单号 341633910。" },
+        { "id": "third-party", "title": "8. 第三方服务", "body": "托管：Vercel Inc. · 邮件：Plus Five Five, Inc.（\"Resend\"）· 数据库：Neon, LLC（Databricks 关联公司）。" },
+        { "id": "errors", "title": "9. 输入错误的更正", "body": "提交前可查看和更正输入。" },
+        { "id": "complaints", "title": "10. 投诉处理程序 (B2B)", "body": "B2B 仅限：消费者保护规定不适用。投诉提交至 info@afm.hu / +36 70 316 8218；提供方在 8 个工作日内提供实质性回复。" },
+        { "id": "code-of-conduct", "title": "11. 行为准则", "body": "提供方未加入任何自愿行为准则。" },
+        { "id": "law", "title": "12. 适用法律和争议解决", "body": "受匈牙利法律管辖。专属管辖：布达佩斯首都地方法院（Fővárosi Törvényszék）。" },
+        { "id": "modification", "title": "13. 本条款的修改", "body": "版本历史：\n• 1.0 版本 — 自 2026.04.28 起生效。首次发布。" }
+      ]
+    },
+    "impressum": {
+      "title": "法律声明",
+      "lastUpdated": "最后更新：2026年4月28日",
+      "sectionTitles": {
+        "company": "公司信息",
+        "representative": "代表",
+        "contact": "一般联系方式",
+        "regulatedProfession": "受监管职业（电子商务法第 4(g) 条）",
+        "licenses": "经营许可证",
+        "regulatory": "监管机构",
+        "certifications": "专业认证",
+        "liability": "强制性专业责任保险",
+        "hosting": "托管提供商",
+        "copyright": "版权"
+      },
+      "regulatedProfessionText": "提供方的活动属于匈牙利 2005 年第 CXXXIII 号法律（SzVMt.）及其实施法令（特别是 22/2006. (IV.25.) BM 法令）所规定的受监管职业（人身和财产保护、私人侦探）。许可证详见第 5 节。",
+      "labels": {
+        "legalName": "法定名称",
+        "shortName": "商业法院注册简称",
+        "marketingName": "营销名称",
+        "registrationNumber": "公司注册号",
+        "court": "登记法院",
+        "taxId": "税号",
+        "vatId": "欧盟增值税号",
+        "foundingDate": "成立日期",
+        "registeredOffice": "注册办公地址",
+        "executiveTitle": "职位",
+        "guardCard": "保安证号",
+        "pidetective": "私人侦探证号",
+        "email": "电子邮件",
+        "phone": "电话",
+        "generalEmail": "一般电子邮件",
+        "generalPhone": "一般电话",
+        "licenseNumber": "许可证号",
+        "validity": "有效期",
+        "validIndefinite": "至撤销为止",
+        "validUntilLabel": "有效期至",
+        "reviewBy": "审查截止",
+        "issuer": "颁发者",
+        "legalBasis": "法律依据",
+        "regulatoryAddress": "地址",
+        "regulatoryPostal": "邮政地址",
+        "regulatoryFax": "传真",
+        "insurerName": "保险人",
+        "insurerAddress": "地址",
+        "insurerRegNumber": "公司注册号",
+        "policyNumber": "保单号",
+        "hostingName": "公司",
+        "hostingAddress": "地址",
+        "certNumber": "证书编号",
+        "accreditation": "认可机构",
+        "verifyAt": "验证地址"
+      },
+      "licenseTitles": {
+        "guarding": "人身和财产保护（保安）",
+        "security-tech": "安防系统设计与安装",
+        "private-investigator": "私人侦探活动",
+        "national-security": "国家安全登记"
+      },
+      "regulatoryTitles": {
+        "guarding": "安保活动监管",
+        "nationalSecurity": "国家安全监管（2016年第XXX号法案第120条）",
+        "dataProtection": "数据保护监管"
+      },
+      "copyrightText": "© 2026 Avenir Facility Management Kft. 保留所有权利。本网站的全部内容受版权法保护（匈牙利1999年第LXXVI号法律）。"
+    }
   }
 } as const;
