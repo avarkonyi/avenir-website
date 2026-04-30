@@ -21,18 +21,21 @@ export function Hero({ t }: { t: Translation }) {
     >
       {/* Full-bleed hero background photo. next/image with `fill` mode
           requires the parent to have `position: relative|absolute|fixed`
-          (we have absolute) and a sized container. `priority` skips
-          lazy-loading because Hero is above-the-fold on every page (LCP
-          candidate). `sizes="100vw"` tells Next which srcset variant to
-          serve based on viewport — mobile gets ~40 KB, desktop ~40 KB
-          too in this case (the WebP source is already tiny). */}
+          (we have absolute) and a sized container.
+          - `priority` skips lazy-loading (LCP candidate, above-the-fold)
+          - `fetchPriority="high"` HTTP/2 stream priority hint (P1-G phase 2)
+          - `sizes="100vw"` tells Next which srcset variant to serve
+          - `quality={75}` explicit default — balance fidelity vs file size
+          mobile gets ~10 KB, desktop ~33 KB (WebP is already tiny). */}
       <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
         <Image
           src="/uploads/background.webp"
           alt={t.hero.bgAlt}
           fill
           priority
+          fetchPriority="high"
           sizes="100vw"
+          quality={75}
           style={{ objectFit: "cover", objectPosition: "center" }}
         />
         <div
