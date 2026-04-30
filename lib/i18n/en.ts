@@ -295,7 +295,7 @@ export const en = {
         {
           "id": "contact-form",
           "title": "3. Use of the Contact Form",
-          "body": "The form available at https://www.afm.hu/contact is intended solely for quote requests and contact. Submission of the form does NOT create a contractual relationship between the parties.\n\nThe Provider undertakes to respond to incoming requests within 2 business days.\n\nData protection: personal data submitted via the form is processed in accordance with our Privacy Policy (https://www.afm.hu/en/adatvedelem)."
+          "body": "The form available at https://www.afm.hu/en#contact is intended solely for quote requests and contact. Submission of the form does NOT create a contractual relationship between the parties.\n\nThe Provider undertakes to respond to incoming requests within 2 business days.\n\nData protection: personal data submitted via the form is processed in accordance with our Privacy Policy (https://www.afm.hu/en/adatvedelem)."
         },
         {
           "id": "private-investigation",
@@ -355,6 +355,7 @@ export const en = {
       "sectionTitles": {
         "company": "Company Details",
         "representative": "Representative",
+        "dpo": "Data Protection Officer",
         "contact": "General Contact",
         "regulatedProfession": "Regulated Profession (E-Commerce Act § 4(g))",
         "licenses": "Operating Licences",
@@ -365,6 +366,14 @@ export const en = {
         "copyright": "Copyright"
       },
       "regulatedProfessionText": "The Provider's activities fall within the scope of regulated professions under Hungarian Act CXXXIII of 2005 (SzVMt.) and its implementing decrees (in particular Decree 22/2006. (IV.25.) BM on personal and property security guard ID cards and private-investigator ID cards, and on the detailed rules of conducting these activities) — namely personal and property security and private investigation. See section 5 for the relevant authority licences.",
+      "dpoSection": {
+        "intro": "The Controller has appointed a Data Protection Officer (DPO) pursuant to Article 37(1)(b) and (c) GDPR. Data subjects may contact the DPO directly with any data-protection questions, requests or complaints.",
+        "name": "Fanni Csegény",
+        "email": "dpo@afm.hu",
+        "phone": "+36 70 622 6242",
+        "postal": "Királyok útja 291, building B, door 15, 1039 Budapest, Hungary",
+        "note": "Notification to NAIH pursuant to Section 25/L of the Hungarian Infotv. has been completed / is in progress."
+      },
       "labels": {
         "legalName": "Legal name",
         "shortName": "Court-registered short form",
@@ -382,6 +391,10 @@ export const en = {
         "phone": "Phone",
         "generalEmail": "General email",
         "generalPhone": "General phone",
+        "dpoName": "Name",
+        "dpoEmail": "Email",
+        "dpoPhone": "Phone",
+        "dpoPostal": "Postal contact",
         "licenseNumber": "Licence number",
         "validity": "Validity",
         "validIndefinite": "until revoked",

@@ -248,6 +248,7 @@ export const zh = {
       "sectionTitles": {
         "company": "公司信息",
         "representative": "代表",
+        "dpo": "数据保护官",
         "contact": "一般联系方式",
         "regulatedProfession": "受监管职业（电子商务法第 4(g) 条）",
         "licenses": "经营许可证",
@@ -258,6 +259,14 @@ export const zh = {
         "copyright": "版权"
       },
       "regulatedProfessionText": "提供方的活动属于匈牙利 2005 年第 CXXXIII 号法律（SzVMt.）及其实施法令（特别是 22/2006. (IV.25.) BM 法令）所规定的受监管职业（人身和财产保护、私人侦探）。许可证详见第 5 节。",
+      "dpoSection": {
+        "intro": "控制者已根据GDPR第37(1)(b)和(c)条任命数据保护官（DPO）。数据主体可就数据保护问题、请求或投诉直接联系数据保护官。",
+        "name": "Csegény Fanni",
+        "email": "dpo@afm.hu",
+        "phone": "+36 70 622 6242",
+        "postal": "1039 布达佩斯, Királyok útja 291, B栋, 15门, 匈牙利",
+        "note": "根据 Infotv. 第 25/L 条向 NAIH 的备案已完成 / 正在进行中。"
+      },
       "labels": {
         "legalName": "法定名称",
         "shortName": "商业法院注册简称",
@@ -275,6 +284,10 @@ export const zh = {
         "phone": "电话",
         "generalEmail": "一般电子邮件",
         "generalPhone": "一般电话",
+        "dpoName": "姓名",
+        "dpoEmail": "电子邮件",
+        "dpoPhone": "电话",
+        "dpoPostal": "邮政联系",
         "licenseNumber": "许可证号",
         "validity": "有效期",
         "validIndefinite": "至撤销为止",

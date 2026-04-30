@@ -197,9 +197,63 @@ export default async function ImpresszumPage({
         />
       </section>
 
-      {/* 3. Általános elérhetőség */}
+      {/* 3. Adatvédelmi tisztviselő (DPO) — GDPR Art. 37(1)(b)+(c) szerint
+          kijelölt belső munkavállaló. NAIH-bejelentés Infotv. 25/L. § alapján
+          folyamatban (2026-04-29). Külön szakasz a 2. Képviselő után, mert
+          a DPO az érintettekkel közvetlenül kapcsolattartó pozíció (Art.
+          38(4)) — vizuális elsődlegesség az általános elérhetőség előtt. */}
       <section style={sectionStyle}>
-        <h2 style={sectionTitleStyle}>3. {ST.contact}</h2>
+        <h2 style={sectionTitleStyle}>3. {ST.dpo}</h2>
+        <p
+          style={{
+            fontSize: 15,
+            lineHeight: 1.7,
+            color: "rgba(11,30,62,0.85)",
+            marginBottom: 16,
+          }}
+        >
+          {t.legal.impressum.dpoSection.intro}
+        </p>
+        <Row label={L.dpoName} value={t.legal.impressum.dpoSection.name} />
+        <Row
+          label={L.dpoEmail}
+          value={
+            <a
+              href={`mailto:${t.legal.impressum.dpoSection.email}`}
+              style={{ color: "#D1172E", textDecoration: "none" }}
+            >
+              {t.legal.impressum.dpoSection.email}
+            </a>
+          }
+        />
+        <Row
+          label={L.dpoPhone}
+          value={
+            <a
+              href={`tel:${t.legal.impressum.dpoSection.phone.replace(/\s/g, "")}`}
+              style={{ color: "#D1172E", textDecoration: "none" }}
+            >
+              {t.legal.impressum.dpoSection.phone}
+            </a>
+          }
+        />
+        <Row label={L.dpoPostal} value={t.legal.impressum.dpoSection.postal} />
+        <p
+          style={{
+            fontSize: 13,
+            lineHeight: 1.6,
+            color: "rgba(11,30,62,0.6)",
+            marginTop: 16,
+            fontStyle: "italic",
+          }}
+        >
+          {t.legal.impressum.dpoSection.note}
+        </p>
+      </section>
+
+      {/* 4. Általános elérhetőség */}
+      <section style={sectionStyle}>
+        <h2 style={sectionTitleStyle}>4. {ST.contact}</h2>
         <Row
           label={L.registeredOffice}
           value={`${SEO_DATA.address.postalCode} ${SEO_DATA.address.addressLocality}, ${SEO_DATA.address.streetAddress}`}
@@ -222,17 +276,17 @@ export default async function ImpresszumPage({
         />
       </section>
 
-      {/* 4. Szabályozott szakma */}
+      {/* 5. Szabályozott szakma */}
       <section style={sectionStyle}>
-        <h2 style={sectionTitleStyle}>4. {ST.regulatedProfession}</h2>
+        <h2 style={sectionTitleStyle}>5. {ST.regulatedProfession}</h2>
         <p style={{ fontSize: 15, lineHeight: 1.7, color: "rgba(11,30,62,0.85)" }}>
           {t.legal.impressum.regulatedProfessionText}
         </p>
       </section>
 
-      {/* 5. Tevékenységi engedélyek */}
+      {/* 6. Tevékenységi engedélyek */}
       <section style={sectionStyle}>
-        <h2 style={sectionTitleStyle}>5. {ST.licenses}</h2>
+        <h2 style={sectionTitleStyle}>6. {ST.licenses}</h2>
         {SEO_LICENSES.map((license, i) => (
           <div key={license.number} style={{ marginBottom: 20 }}>
             <h3 style={subTitleStyle}>
@@ -253,9 +307,9 @@ export default async function ImpresszumPage({
         ))}
       </section>
 
-      {/* 6. Felügyeleti hatóságok */}
+      {/* 7. Felügyeleti hatóságok */}
       <section style={sectionStyle}>
-        <h2 style={sectionTitleStyle}>6. {ST.regulatory}</h2>
+        <h2 style={sectionTitleStyle}>7. {ST.regulatory}</h2>
         {(["guarding", "nationalSecurity", "dataProtection"] as const).map((key, i) => {
           const body = SEO_REGULATORY_BODIES[key];
           return (
@@ -288,9 +342,9 @@ export default async function ImpresszumPage({
         })}
       </section>
 
-      {/* 7. Felelősségbiztosítás */}
+      {/* 8. Felelősségbiztosítás */}
       <section style={sectionStyle}>
-        <h2 style={sectionTitleStyle}>7. {ST.liability}</h2>
+        <h2 style={sectionTitleStyle}>8. {ST.liability}</h2>
         <Row
           label={L.legalBasis}
           value={locale === "en" ? SEO_LIABILITY.legalBasisEn : SEO_LIABILITY.legalBasis}
@@ -301,9 +355,9 @@ export default async function ImpresszumPage({
         <Row label={L.policyNumber} value={SEO_LIABILITY.policyNumber} />
       </section>
 
-      {/* 8. Tárhelyszolgáltató */}
+      {/* 9. Tárhelyszolgáltató */}
       <section style={sectionStyle}>
-        <h2 style={sectionTitleStyle}>8. {ST.hosting}</h2>
+        <h2 style={sectionTitleStyle}>9. {ST.hosting}</h2>
         <Row label={L.hostingName} value={SEO_HOSTING_PROVIDER.name} />
         <Row label={L.hostingAddress} value={SEO_HOSTING_PROVIDER.address} />
         <Row
@@ -319,9 +373,9 @@ export default async function ImpresszumPage({
         />
       </section>
 
-      {/* 9. Szerzői jog */}
+      {/* 10. Szerzői jog */}
       <section style={sectionStyle}>
-        <h2 style={sectionTitleStyle}>9. {ST.copyright}</h2>
+        <h2 style={sectionTitleStyle}>10. {ST.copyright}</h2>
         <p style={{ fontSize: 15, lineHeight: 1.7, color: "rgba(11,30,62,0.85)" }}>
           {t.legal.impressum.copyrightText}
         </p>

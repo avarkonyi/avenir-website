@@ -207,7 +207,7 @@ export const de = {
       "sections": [
         { "id": "controller", "title": "1. Identifikation des Verantwortlichen", "body": "Rechtsname: Avenir Facility Management Szolgáltató Korlátolt Felelősségű Társaság\nHandelsgerichtlich registrierte Kurzform: Avenir Facility Kft.\nMarketing-Bezeichnung: Avenir Facility Management Kft.\nHandelsregisternummer: 01-09-328046\nSteuernummer: 26395124-2-41\nEU-USt-IdNr.: HU26395124\nGründungsdatum: 31. Juli 2018\nRegistrierter Sitz: Királyok útja 291, Gebäude B, Tür 15, 1039 Budapest, Ungarn\nAllgemeiner Kontakt: info@afm.hu · +36 70 316 8218" },
         { "id": "representative", "title": "2. Vertretungsberechtigte Person und Datenschutzkontakt", "body": "Vertretungsberechtigte Person: Attila Kovács, Geschäftsführer\nE-Mail: info@afm.hu\nTelefon: +36 70 312 5868" },
-        { "id": "dpo", "title": "3. Datenschutzbeauftragter (DSB)", "body": "Der Verantwortliche hat einen Datenschutzbeauftragten gemäß Art. 37(1)(b) und (c) DSGVO bestellt.\n\nDatenschutzbeauftragte: Fanni Csegény\nE-Mail: dpo@afm.hu\nTelefon: +36 70 622 6242\nPostkontakt: Királyok útja 291, Gebäude B, Tür 15, 1039 Budapest, Ungarn\n\nDie Anmeldung bei NAIH erfolgte/erfolgt gemäß § 25/L Infotv." },
+        { "id": "dpo", "title": "3. Datenschutzbeauftragter (DSB)", "body": "Der Verantwortliche hat einen Datenschutzbeauftragten gemäß Art. 37(1)(b) und (c) DSGVO bestellt.\n\nDatenschutzbeauftragte: Fanni Csegény\nE-Mail: dpo@afm.hu\nTelefon: +36 70 622 6242\nPostkontakt: Királyok útja 291, Gebäude B, Tür 15, 1039 Budapest, Ungarn\n\nDie Anmeldung bei NAIH erfolgte/erfolgt gemäß § 25/L Infotv.\n\nBetroffene Personen können sich bei datenschutzrechtlichen Fragen, Anliegen oder Beschwerden direkt an die Datenschutzbeauftragte wenden. Dies berührt nicht das Recht, gemäß Abschnitt 11 eine Beschwerde bei der Aufsichtsbehörde einzulegen oder gerichtlichen Rechtsschutz zu suchen." },
         { "id": "processed-data", "title": "4. Zwecke, Rechtsgrundlagen und verarbeitete Daten (DSGVO Art. 13)", "body": "4.1. Kontakt-/Angebotsanfrage — Rechtsgrundlage: DSGVO Art. 6(1)(b) bei natürlichen Personen, Art. 6(1)(f) bei B2B-Ansprechpartnern.\n4.2. Missbrauchsverhinderung und Website-Sicherheit — Rechtsgrundlage: Art. 6(1)(f).\n4.3. Vertragsverwaltung nach erfolgreicher Anfrage.\n4.4. Ausschluss besonderer Datenkategorien aus dem Web-Formular — bitte keine sensiblen, strafrechtlichen oder Drittpersonen-Daten übermitteln." },
         { "id": "processors", "title": "5. Auftragsverarbeiter (DSGVO Art. 28)", "body": "5.1. Plus Five Five, Inc. („Resend\") — 2261 Market Street #5039, San Francisco, CA 94114, USA — E-Mail-Zustellung. AVV (Art. 28). Drittlandgarantie: DPF (Art. 45) bzw. SCCs (Art. 46).\n\n5.2. Vercel Inc. — 440 N Barranca Avenue #4133, Covina, CA 91723, USA — Hosting/Edge/CDN. AVV (Art. 28). EU-Region konfiguriert (fra1). Drittlandgarantie: DPF (Art. 45) bzw. SCCs (Art. 46).\n\n5.3. Neon, LLC (Affiliate von Databricks, Inc.) — 160 Spear Street, Suite 1300, San Francisco, CA 94105, USA — PostgreSQL-Datenbank, EU AWS Frankfurt. AVV (Art. 28). Drittlandgarantie: DPF (Art. 45 — Databricks-Zertifizierung) bzw. SCCs (Art. 46)." },
         { "id": "third-country", "title": "6. Internationale Datenübermittlung", "body": "Der Verantwortliche bemüht sich, dass Datenspeicherung in EU-Regionen erfolgt. Es wird jedoch nicht behauptet, dass alle Verarbeitungsvorgänge ausschließlich im EWR stattfinden. Bei US-incorporated Anbietern können nach US-Recht (insb. FISA 702, CLOUD Act) Zugriffspflichten bestehen. Garantien: GDPR Art. 45 (DPF), Art. 46 (SCC) sowie ergänzende Maßnahmen." },
@@ -248,6 +248,7 @@ export const de = {
       "sectionTitles": {
         "company": "Unternehmensdaten",
         "representative": "Vertreter",
+        "dpo": "Datenschutzbeauftragte",
         "contact": "Allgemeiner Kontakt",
         "regulatedProfession": "Reglementierter Beruf (E-Commerce-Gesetz § 4(g))",
         "licenses": "Betriebslizenzen",
@@ -258,6 +259,14 @@ export const de = {
         "copyright": "Urheberrecht"
       },
       "regulatedProfessionText": "Die Tätigkeit des Anbieters fällt unter die nach ungarischem Gesetz CXXXIII von 2005 (SzVMt.) und seinen Durchführungsverordnungen (insb. Verordnung 22/2006. (IV.25.) BM) reglementierten Berufe (Personen- und Eigentumsschutz, Privatdetektivtätigkeit). Lizenzen siehe Abschnitt 5.",
+      "dpoSection": {
+        "intro": "Der Verantwortliche hat gemäß Art. 37 Abs. 1 lit. b und c DSGVO eine Datenschutzbeauftragte bestellt. Betroffene Personen können sich bei datenschutzrechtlichen Fragen, Anliegen oder Beschwerden direkt an die Datenschutzbeauftragte wenden.",
+        "name": "Fanni Csegény",
+        "email": "dpo@afm.hu",
+        "phone": "+36 70 622 6242",
+        "postal": "Királyok útja 291, Gebäude B, Tür 15, 1039 Budapest, Ungarn",
+        "note": "Die Anmeldung bei NAIH gemäß § 25/L Infotv. ist erfolgt / erfolgt."
+      },
       "labels": {
         "legalName": "Rechtsname",
         "shortName": "Handelsgerichtliche Kurzform",
@@ -275,6 +284,10 @@ export const de = {
         "phone": "Telefon",
         "generalEmail": "Allgemeine E-Mail",
         "generalPhone": "Allgemeines Telefon",
+        "dpoName": "Name",
+        "dpoEmail": "E-Mail",
+        "dpoPhone": "Telefon",
+        "dpoPostal": "Postanschrift",
         "licenseNumber": "Lizenznummer",
         "validity": "Gültigkeit",
         "validIndefinite": "bis zum Widerruf",

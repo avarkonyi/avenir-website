@@ -286,7 +286,7 @@ export const hu = {
         {
           id: "general",
           title: "1. Általános rendelkezések",
-          body: "Szolgáltató (marketing-megnevezés): Avenir Facility Management Kft.\nSzolgáltató (hivatalos cégnév): Avenir Facility Management Szolgáltató Korlátolt Felelősségű Társaság (a továbbiakban: Szolgáltató). További cégadatok: lásd Impresszum oldal.\nA Felhasználási feltételek hatálya: a https://www.afm.hu weboldal használatára, a kapcsolatfelvételi és ajánlatkérési flow-ra.\nA Szolgáltató ügyfélköre kizárólag B2B (üzleti) ügyfél: a Szolgáltató fogyasztóknak (Ptk. 8:1. § (1) bek. 3. pont) a weboldalon keresztül szerződést nem köt, és fogyasztói jogviszonyt nem hoz létre. A weboldal kapcsolatfelvételi flow-ja kizárólag B2B-célú megkereséseket fogad.\nHatályba lépés: 2026.04.28.\nA Tájékoztató nyelve: magyar; a magyar nyelvű változat az autentikus. Az angol, német, kínai változatok tájékoztató jellegűek; eltérés esetén a magyar szöveg az irányadó.",
+          body: "Szolgáltató (marketing-megnevezés): Avenir Facility Management Kft.\nSzolgáltató (hivatalos cégnév): Avenir Facility Management Szolgáltató Korlátolt Felelősségű Társaság (a továbbiakban: Szolgáltató). További cégadatok: lásd Impresszum oldal.\nA jelen Felhasználási feltételek a Polgári Törvénykönyvről szóló 2013. évi V. törvény (Ptk.) 6:2–6:8. §-aira, valamint az elektronikus kereskedelmi szolgáltatásokról szóló 2001. évi CVIII. törvény (Ekertv.) rendelkezéseire figyelemmel kerültek megalkotásra.\nA Felhasználási feltételek hatálya: a https://www.afm.hu weboldal használatára, a kapcsolatfelvételi és ajánlatkérési flow-ra.\nA Szolgáltató ügyfélköre kizárólag B2B (üzleti) ügyfél: a Szolgáltató fogyasztóknak (Ptk. 8:1. § (1) bek. 3. pont) a weboldalon keresztül szerződést nem köt, és fogyasztói jogviszonyt nem hoz létre. A weboldal kapcsolatfelvételi flow-ja kizárólag B2B-célú megkereséseket fogad.\nHatályba lépés: 2026.04.28.\nA jelen Felhasználási feltételek nyelve: magyar; a magyar nyelvű változat az autentikus. Az angol, német, kínai változatok tájékoztató jellegűek; eltérés esetén a magyar szöveg az irányadó.",
         },
         {
           id: "service",
@@ -296,7 +296,7 @@ export const hu = {
         {
           id: "contact-form",
           title: "3. A kapcsolatfelvételi űrlap használata",
-          body: "A https://www.afm.hu/kapcsolat oldalon elérhető űrlap kizárólag ajánlatkérésre és kapcsolatfelvételre szolgál. Az űrlap kitöltése és elküldése NEM hoz létre szerződéses jogviszonyt a felek között.\n\nA Szolgáltató vállalja, hogy a beérkezett ajánlatkérésre 2 munkanapon belül visszajelez.\n\nAdatvédelem: az űrlapon megadott személyes adatokat az Adatvédelmi tájékoztatóban (https://www.afm.hu/hu/adatvedelem) leírtak szerint kezeljük.",
+          body: "A https://www.afm.hu/hu#contact oldalrészen elérhető űrlap kizárólag ajánlatkérésre és kapcsolatfelvételre szolgál. Az űrlap kitöltése és elküldése NEM hoz létre szerződéses jogviszonyt a felek között.\n\nA Szolgáltató vállalja, hogy a beérkezett ajánlatkérésre 2 munkanapon belül visszajelez.\n\nAdatvédelem: az űrlapon megadott személyes adatokat az Adatvédelmi tájékoztatóban (https://www.afm.hu/hu/adatvedelem) leírtak szerint kezeljük.",
         },
         {
           id: "magannyomozas",
@@ -356,6 +356,7 @@ export const hu = {
       sectionTitles: {
         company: "Cégadatok",
         representative: "Képviselő",
+        dpo: "Adatvédelmi tisztviselő",
         contact: "Általános elérhetőség",
         regulatedProfession: "Szabályozott szakma (Ekertv. 4. § g)",
         licenses: "Tevékenységi engedélyek",
@@ -367,6 +368,15 @@ export const hu = {
       },
       regulatedProfessionText:
         "A Szolgáltató tevékenysége a 2005. évi CXXXIII. törvény (SzVMt.) és annak végrehajtási rendeletei (különösen a 22/2006. (IV. 25.) BM rendelet a személy- és vagyonőri, valamint magánnyomozói igazolványokról és a tevékenység gyakorlásának részletes szabályairól) szerinti szabályozott szakmák körébe tartozik (személy- és vagyonvédelem, magánnyomozás). A vonatkozó hatósági engedélyeket lásd 5. szakasz.",
+      dpoSection: {
+        intro:
+          "Az Adatkezelő a GDPR 37. cikk (1) bek. b) és c) pontjai alapján adatvédelmi tisztviselőt (Data Protection Officer, DPO) jelölt ki. Az érintettek közvetlenül fordulhatnak a DPO-hoz adatvédelmi kérdéseikkel, kérelmeikkel vagy panaszaikkal.",
+        name: "Csegény Fanni",
+        email: "dpo@afm.hu",
+        phone: "+36 70 622 6242",
+        postal: "1039 Budapest, Királyok útja 291. B. ép. 15. ajtó",
+        note: "A NAIH-hoz történő bejelentés az Infotv. 25/L. § alapján megtörtént / folyamatban van.",
+      },
       labels: {
         legalName: "Hivatalos cégnév",
         shortName: "Cégbíróság-rövidített",
@@ -384,6 +394,10 @@ export const hu = {
         phone: "Telefon",
         generalEmail: "Általános email",
         generalPhone: "Általános telefon",
+        dpoName: "Név",
+        dpoEmail: "Email",
+        dpoPhone: "Telefon",
+        dpoPostal: "Postai elérhetőség",
         licenseNumber: "Engedélyszám",
         validity: "Érvényesség",
         validIndefinite: "visszavonásig",
