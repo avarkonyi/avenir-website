@@ -4,14 +4,34 @@ import type { Translation } from "@/lib/i18n";
 import { db, positions } from "@/lib/db";
 import { Icon } from "./Icon";
 
-export async function Career({ t }: { t: Translation }) {
+// Per-locale column selection. Resolves audit P0-3: positions used to
+// render HU strings on /en, /de, /zh. The DB schema now stores all four
+// locales (migration 0003_localize_positions); the component picks the
+// right column based on the URL locale prop.
+const LOCALE_COLS = {
+  hu: { title: positions.titleHu, location: positions.locationHu, type: positions.typeHu },
+  en: { title: positions.titleEn, location: positions.locationEn, type: positions.typeEn },
+  de: { title: positions.titleDe, location: positions.locationDe, type: positions.typeDe },
+  zh: { title: positions.titleZh, location: positions.locationZh, type: positions.typeZh },
+} as const;
+
+type Locale = keyof typeof LOCALE_COLS;
+
+export async function Career({
+  t,
+  locale,
+}: {
+  t: Translation;
+  locale: string;
+}) {
   await connection();
+  const cols = LOCALE_COLS[(locale in LOCALE_COLS ? locale : "hu") as Locale];
   const rows = await db
     .select({
       id: positions.id,
-      title: positions.title,
-      location: positions.location,
-      type: positions.type,
+      title: cols.title,
+      location: cols.location,
+      type: cols.type,
       applyEmail: positions.applyEmail,
     })
     .from(positions)
@@ -77,7 +97,7 @@ export async function Career({ t }: { t: Translation }) {
                 </div>
               </div>
               <a
-                href={`mailto:${p.applyEmail}?subject=${encodeURIComponent(`Jelentkezés - ${p.title}`)}`}
+                href={`mailto:${p.applyEmail}?subject=${encodeURIComponent(`${t.applyBtn} - ${p.title}`)}`}
                 className="career-apply-btn"
               >
                 {t.applyBtn}

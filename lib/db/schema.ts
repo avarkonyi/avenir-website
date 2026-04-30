@@ -73,9 +73,15 @@ export const news = pgTable(
 );
 
 // ────────────────────────────────────────────────────────────────────────────
-// 2. POSITIONS — career listings. Title is HU-only by design (Avenir targets
-//    the Hungarian labour market); could migrate to wide-columns later if
-//    international hiring becomes a target.
+// 2. POSITIONS — career listings. Wide-column-per-locale pattern (matching
+//    news, client_references, certifications): title_<lang>, location_<lang>,
+//    type_<lang>. Resolves audit P0-3 (positions appeared HU-only on EN/DE/ZH
+//    pages). Locale-independent fields (apply_email, active, sort_order) stay
+//    as scalar columns.
+//
+//    Migration history:
+//      0000_initial_schema — original HU-only columns (title, location, type)
+//      0003_localize_positions — rename + add _en/_de/_zh (this commit)
 //
 //    Index: `idx_positions_active_sort` — partial composite covering the
 //    public Career list query (active rows only, ordered by sort_order).
@@ -84,9 +90,22 @@ export const positions = pgTable(
   "positions",
   {
     id: serial("id").primaryKey(),
-    title: text("title").notNull(),
-    location: text("location").notNull(),
-    type: text("type").notNull(),
+
+    titleHu: text("title_hu").notNull(),
+    titleEn: text("title_en").notNull(),
+    titleDe: text("title_de").notNull(),
+    titleZh: text("title_zh").notNull(),
+
+    locationHu: text("location_hu").notNull(),
+    locationEn: text("location_en").notNull(),
+    locationDe: text("location_de").notNull(),
+    locationZh: text("location_zh").notNull(),
+
+    typeHu: text("type_hu").notNull(),
+    typeEn: text("type_en").notNull(),
+    typeDe: text("type_de").notNull(),
+    typeZh: text("type_zh").notNull(),
+
     applyEmail: text("apply_email").notNull().default("info@afm.hu"),
     active: boolean("active").notNull().default(true),
     sortOrder: integer("sort_order").notNull().default(0),

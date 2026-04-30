@@ -69,7 +69,7 @@ export default async function HomePage({
         <References t={t} />
         <Certifications t={t} locale={locale} />
         <News t={t} locale={locale} articles={articles} />
-        <Career t={t} />
+        <Career t={t} locale={locale} />
         <Contact t={t} locale={locale} />
       </main>
       <Footer t={t} locale={locale} />
