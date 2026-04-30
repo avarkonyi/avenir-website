@@ -165,7 +165,6 @@ export const de = {
     "privacy": "Datenschutz",
     "terms": "Nutzungsbedingungen",
     "impressum": "Impressum",
-    "licensesShort": "Sicherheitslizenzen: Bewachung (gültig bis 31.01.2028) · Sicherheitstechnik · Privatdetektivtätigkeit · Eintragung im nationalen Sicherheitsregister (Gesetz XXX/2016, § 120). Aufsichtsbehörden: Polizeirevier des III. Bezirks · NAIH · Verfassungsschutzamt, Industriesicherheits-Hauptabteilung.",
     "companyNumberLabel": "Handelsregisternummer",
     "taxNumberLabel": "Steuernummer",
     "headquartersLabel": "Sitz",

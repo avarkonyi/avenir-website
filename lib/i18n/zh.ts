@@ -165,7 +165,6 @@ export const zh = {
     "privacy": "隐私政策",
     "terms": "使用条款",
     "impressum": "法律声明",
-    "licensesShort": "安保许可:保安(有效期至2028年1月31日)·安防技术·私人侦探·国家安全登记(2016年第XXX号法案第120条)。监管机构:布达佩斯第三区警察局·NAIH·宪法保护办公室工业安全部。",
     "companyNumberLabel": "公司注册号",
     "taxNumberLabel": "税号",
     "headquartersLabel": "总部地址",

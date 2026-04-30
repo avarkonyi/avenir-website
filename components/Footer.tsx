@@ -145,11 +145,6 @@ export function Footer({ t, locale }: { t: Translation; locale: string }) {
           </div>
         </div>
 
-        {/* Licences disclosure line — fine print above divider, B2B procurement signal */}
-        <p style={{ color: "rgba(255,255,255,0.35)", fontSize: 11, lineHeight: 1.6, fontWeight: 300, marginBottom: 18, maxWidth: 980 }}>
-          {t.footer.licensesShort}
-        </p>
-
         {/* Divider */}
         <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)", paddingTop: 24 }}>
           <p style={{ color: "rgba(255,255,255,0.35)", fontSize: 13, fontWeight: 300, marginBottom: 6 }}>

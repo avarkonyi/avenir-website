@@ -165,7 +165,6 @@ export const en = {
     "privacy": "Privacy Policy",
     "terms": "Terms of Use",
     "impressum": "Legal Notice",
-    "licensesShort": "Security licences: guarding (valid until 31 Jan 2028) · security technology · private investigation · national security registry (Act XXX of 2016, § 120). Supervisory bodies: 3rd District Police Station · NAIH · Constitution Protection Office, Industrial Security Department.",
     "companyNumberLabel": "Company registration number",
     "taxNumberLabel": "Tax number",
     "headquartersLabel": "Registered office",
