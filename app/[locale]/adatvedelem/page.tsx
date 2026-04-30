@@ -69,6 +69,24 @@ export default async function PrivacyPage({
       {t.legal.privacy.sections.map((s) => (
         <LegalSection key={s.id} id={s.id} title={s.title} body={s.body} />
       ))}
+
+      {/* Version history footer — small fine-print block separated
+          from the last section by a top border. Out of the sections
+          array so it stays anchored to the document end regardless
+          of future section additions. */}
+      <p
+        style={{
+          marginTop: 48,
+          paddingTop: 24,
+          borderTop: "1px solid rgba(11,30,62,0.12)",
+          fontSize: 12,
+          lineHeight: 1.6,
+          color: "rgba(11,30,62,0.5)",
+          fontStyle: "italic",
+        }}
+      >
+        {t.legal.privacy.versionHistory}
+      </p>
     </LegalPageChrome>
   );
 }

@@ -220,8 +220,9 @@ export const zh = {
         { "id": "remedies", "title": "11. 救济措施", "body": "向 NAIH 投诉（Falk Miksa utca 9-11, 1055 布达佩斯, +36 1 391-1400, ugyfelszolgalat@naih.hu）或寻求司法救济（Art. 79 GDPR）。" },
         { "id": "breach", "title": "12. 个人数据泄露", "body": "根据 Art. 33 GDPR，控制者将在不无故拖延的情况下，在可行的情况下不晚于知情后 72 小时内通知 NAIH。高风险情况下还将直接通知数据主体（Art. 34）。" },
         { "id": "security", "title": "13. 信息安全", "body": "ISO/IEC 27001:2022 认证 ISMS（证书编号 988960032，颁发方 MARTON Szakértő Iroda Kft.，有效期 2026.04.27 – 2029.04.26）。措施符合 Art. 32 GDPR。" },
-        { "id": "modification", "title": "14. 本政策的修改", "body": "控制者保留单方修改的权利。版本历史：\n• 1.0 版本 — 自 2026 年 4 月 28 日起生效。首次发布。" }
-      ]
+        { "id": "modification", "title": "14. 本政策的修改", "body": "控制者保留单方修改的权利。" }
+      ],
+      "versionHistory": "版本历史：1.0 版本 — 自 2026 年 4 月 28 日起生效。首次发布。"
     },
     "terms": {
       "title": "使用条款",
@@ -241,8 +242,9 @@ export const zh = {
         { "id": "complaints", "title": "10. 投诉处理程序 (B2B)", "body": "B2B 仅限：消费者保护规定不适用。投诉提交至 info@afm.hu / +36 70 316 8218；提供方在 8 个工作日内提供实质性回复。" },
         { "id": "code-of-conduct", "title": "11. 行为准则", "body": "提供方未加入任何自愿行为准则。" },
         { "id": "law", "title": "12. 适用法律和争议解决", "body": "受匈牙利法律管辖。专属管辖：布达佩斯首都地方法院（Fővárosi Törvényszék）。" },
-        { "id": "modification", "title": "13. 本条款的修改", "body": "版本历史：\n• 1.0 版本 — 自 2026.04.28 起生效。首次发布。" }
+        { "id": "modification", "title": "13. 本条款的修改", "body": "提供方保留单方修改本使用条款的权利。" }
       ],
+      "versionHistory": "版本历史：1.0 版本 — 自 2026.04.28 起生效。首次发布。",
       "dataProtection": {
         "title": "14. 数据保护",
         "body": "作为数据控制者，Avenir Facility Management Kft. 根据 GDPR 和匈牙利信息法（Infotv.）的规定处理用户提供的个人数据。详细的数据处理信息可在单独的隐私政策中查阅。",

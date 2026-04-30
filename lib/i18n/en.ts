@@ -274,9 +274,10 @@ export const en = {
         {
           "id": "modification",
           "title": "14. Modification of this Policy",
-          "body": "The Controller reserves the right to modify this Policy unilaterally. Modifications take effect upon publication at https://www.afm.hu/en/adatvedelem. Material changes may be the subject of a separate notice.\n\nThe currently effective text of this Policy is always available at the URL above. Earlier versions are archived by the Controller and made available upon request.\n\nVersion history:\n• Version 1.0 — Effective: 28 April 2026. First publication (launch of https://www.afm.hu). Earlier versions: none."
+          "body": "The Controller reserves the right to modify this Policy unilaterally. Modifications take effect upon publication at https://www.afm.hu/en/adatvedelem. Material changes may be the subject of a separate notice.\n\nThe currently effective text of this Policy is always available at the URL above. Earlier versions are archived by the Controller and made available upon request."
         }
-      ]
+      ],
+      "versionHistory": "Version history: Version 1.0 — Effective: 28 April 2026. First publication (launch of https://www.afm.hu). Earlier versions: none."
     },
     "terms": {
       "title": "Terms of Use",
@@ -347,9 +348,10 @@ export const en = {
         {
           "id": "modification",
           "title": "13. Modification of these Terms",
-          "body": "The Provider reserves the right to modify these Terms of Use unilaterally. Modifications take effect upon publication at https://www.afm.hu/en/aszf. The Provider archives earlier versions and makes them available upon request.\n\nVersion history:\n• Version 1.0 — Effective: 28 April 2026. First publication."
+          "body": "The Provider reserves the right to modify these Terms of Use unilaterally. Modifications take effect upon publication at https://www.afm.hu/en/aszf. The Provider archives earlier versions and makes them available upon request."
         }
       ],
+      "versionHistory": "Version history: Version 1.0 — Effective: 28 April 2026. First publication.",
       "dataProtection": {
         "title": "14. Data Protection",
         "body": "Avenir Facility Management Kft., as Data Controller, processes personal data provided by Users in accordance with GDPR and the Hungarian Information Act (Infotv.). Detailed data processing information is available in the separate Privacy Policy.",

@@ -276,9 +276,11 @@ export const hu = {
         {
           id: "modification",
           title: "14. A tájékoztató módosítása",
-          body: "Az Adatkezelő fenntartja a jogot a jelen Tájékoztató egyoldalú módosítására. A módosítások a https://www.afm.hu/hu/adatvedelem oldalon történő közzététellel lépnek hatályba. A jelentős módosításokról az Adatkezelő külön értesítést tehet közzé.\n\nA jelen Tájékoztató hatályos szövege mindenkor a fenti URL-en érhető el. A korábbi verziókat az Adatkezelő archiválja és kérésre rendelkezésre bocsátja.\n\nVerzió-history:\n• 1.0 verzió — Hatály: 2026. április 28-tól. Első kiadás (a https://www.afm.hu weboldal indulása). Korábbi verziók: nincsenek.",
+          body: "Az Adatkezelő fenntartja a jogot a jelen Tájékoztató egyoldalú módosítására. A módosítások a https://www.afm.hu/hu/adatvedelem oldalon történő közzététellel lépnek hatályba. A jelentős módosításokról az Adatkezelő külön értesítést tehet közzé.\n\nA jelen Tájékoztató hatályos szövege mindenkor a fenti URL-en érhető el. A korábbi verziókat az Adatkezelő archiválja és kérésre rendelkezésre bocsátja.",
         },
       ],
+      versionHistory:
+        "Verzió-history: 1.0 verzió — Hatály: 2026. április 28-tól. Első kiadás (a https://www.afm.hu weboldal indulása). Korábbi verziók: nincsenek.",
     },
     terms: {
       title: "Felhasználási feltételek",
@@ -350,9 +352,11 @@ export const hu = {
         {
           id: "modification",
           title: "13. A felhasználási feltételek módosítása",
-          body: "A Szolgáltató fenntartja a jogot a jelen Felhasználási feltételek egyoldalú módosítására. A módosítások a https://www.afm.hu/hu/aszf oldalon történő közzététellel lépnek hatályba. A korábbi verziókat a Szolgáltató archiválja és kérésre rendelkezésre bocsátja.\n\nVerzió-history:\n• 1.0 verzió — Hatály: 2026.04.28-tól. Első kiadás.",
+          body: "A Szolgáltató fenntartja a jogot a jelen Felhasználási feltételek egyoldalú módosítására. A módosítások a https://www.afm.hu/hu/aszf oldalon történő közzététellel lépnek hatályba. A korábbi verziókat a Szolgáltató archiválja és kérésre rendelkezésre bocsátja.",
         },
       ],
+      versionHistory:
+        "Verzió-history: 1.0 verzió — Hatály: 2026.04.28-tól. Első kiadás.",
       // Section 14 — Data Protection cross-reference. Rendered as a
       // structured block (heading + body + DPO contact box + clickable
       // link to the full Privacy Policy) outside the plain-text sections

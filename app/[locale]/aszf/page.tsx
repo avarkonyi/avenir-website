@@ -148,6 +148,24 @@ export default async function TermsPage({
           </Link>
         </p>
       </section>
+
+      {/* Version history footer — small fine-print block at the very
+          end of the document, separated from §14 by a top border.
+          Moved out of §13 body after §14 was added (would have been
+          orphaned mid-document). */}
+      <p
+        style={{
+          marginTop: 48,
+          paddingTop: 24,
+          borderTop: "1px solid rgba(11,30,62,0.12)",
+          fontSize: 12,
+          lineHeight: 1.6,
+          color: "rgba(11,30,62,0.5)",
+          fontStyle: "italic",
+        }}
+      >
+        {t.legal.terms.versionHistory}
+      </p>
     </LegalPageChrome>
   );
 }

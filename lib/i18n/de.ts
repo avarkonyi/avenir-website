@@ -220,8 +220,9 @@ export const de = {
         { "id": "remedies", "title": "11. Rechtsbehelfe", "body": "Beschwerde bei NAIH (Falk Miksa utca 9-11, 1055 Budapest, +36 1 391-1400, ugyfelszolgalat@naih.hu) oder bei zuständigem Gericht (Art. 79 DSGVO)." },
         { "id": "breach", "title": "12. Datenschutzverletzung", "body": "Meldung an NAIH ohne unangemessene Verzögerung, möglichst innerhalb 72 Stunden (Art. 33 DSGVO). Bei hohem Risiko zusätzliche Information der Betroffenen (Art. 34)." },
         { "id": "security", "title": "13. Informationssicherheit", "body": "ISO/IEC 27001:2022 zertifiziertes ISMS (Zertifikat Nr. 988960032, Aussteller MARTON Szakértő Iroda Kft., gültig 27.04.2026 – 26.04.2029). Maßnahmen gemäß Art. 32 DSGVO." },
-        { "id": "modification", "title": "14. Änderung dieser Erklärung", "body": "Der Verantwortliche behält sich Änderungen vor. Versionsverlauf:\n• Version 1.0 — Gültig ab 28.04.2026. Erstveröffentlichung." }
-      ]
+        { "id": "modification", "title": "14. Änderung dieser Erklärung", "body": "Der Verantwortliche behält sich Änderungen vor." }
+      ],
+      "versionHistory": "Versionsverlauf: Version 1.0 — Gültig ab 28.04.2026. Erstveröffentlichung."
     },
     "terms": {
       "title": "Nutzungsbedingungen",
@@ -241,8 +242,9 @@ export const de = {
         { "id": "complaints", "title": "10. Beschwerdeverfahren (B2B)", "body": "B2B-Ausschließlichkeit: Verbraucherschutzvorschriften nicht anwendbar. Beschwerden an info@afm.hu / +36 70 316 8218; substantielle Antwort innerhalb 8 Werktagen." },
         { "id": "code-of-conduct", "title": "11. Verhaltenskodex", "body": "Der Anbieter ist keinem freiwilligen Verhaltenskodex beigetreten." },
         { "id": "law", "title": "12. Anwendbares Recht und Streitbeilegung", "body": "Ungarisches Recht. Ausschließlicher Gerichtsstand: Hauptstadtgericht Budapest (Fővárosi Törvényszék)." },
-        { "id": "modification", "title": "13. Änderung dieser Bedingungen", "body": "Versionsverlauf:\n• Version 1.0 — Gültig ab 28.04.2026. Erstveröffentlichung." }
+        { "id": "modification", "title": "13. Änderung dieser Bedingungen", "body": "Der Anbieter behält sich Änderungen dieser Nutzungsbedingungen vor." }
       ],
+      "versionHistory": "Versionsverlauf: Version 1.0 — Gültig ab 28.04.2026. Erstveröffentlichung.",
       "dataProtection": {
         "title": "14. Datenschutz",
         "body": "Die Avenir Facility Management Kft. verarbeitet als Verantwortlicher die von Nutzern angegebenen personenbezogenen Daten im Einklang mit der DSGVO und dem ungarischen Informationsgesetz (Infotv.). Detaillierte Informationen zur Datenverarbeitung finden Sie in der separaten Datenschutzerklärung.",
