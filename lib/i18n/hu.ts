@@ -163,6 +163,12 @@ export const hu = {
     impressum: "Impresszum",
     licensesShort:
       "Vagyonvédelmi engedélyek: őrzés-védés (érvényes 2028.01.31-ig) · biztonságtechnika · magánnyomozás · nemzetbiztonsági névjegyzék (Vbt. 120. §). Felügyelet: III. Kerületi Rendőrkapitányság · NAIH · AH Iparbiztonsági Főosztály.",
+    // Labels for the bottom impresszum line. Values (cégjegyzékszám,
+    // adószám, address) stay in Hungarian because they are legal-registry
+    // facts; only the labels translate per locale.
+    companyNumberLabel: "Cégjegyzékszám",
+    taxNumberLabel: "Adószám",
+    headquartersLabel: "Székhely",
     machineTranslationDisclaimer: "",
   },
   certifications: {

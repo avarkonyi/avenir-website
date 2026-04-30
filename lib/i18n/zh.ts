@@ -166,6 +166,9 @@ export const zh = {
     "terms": "使用条款",
     "impressum": "法律声明",
     "licensesShort": "安保许可:保安(有效期至2028年1月31日)·安防技术·私人侦探·国家安全登记(2016年第XXX号法案第120条)。监管机构:布达佩斯第三区警察局·NAIH·宪法保护办公室工业安全部。",
+    "companyNumberLabel": "公司注册号",
+    "taxNumberLabel": "税号",
+    "headquartersLabel": "总部地址",
     "machineTranslationDisclaimer": "本页面由匈牙利语机器翻译而来。具有法律约束力的版本仅为匈牙利语版本。"
   },
   // TRANSLATION DRAFT: review by user

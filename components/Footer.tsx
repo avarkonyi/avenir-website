@@ -156,7 +156,7 @@ export function Footer({ t, locale }: { t: Translation; locale: string }) {
             {t.footer.rights}
           </p>
           <p style={{ color: "rgba(255,255,255,0.25)", fontSize: 12, fontWeight: 300 }}>
-            Cégjegyzékszám: 01-09-328046 · Adószám: 26395124-2-41 · Székhely: 1039 Budapest, Királyok útja 291. B. ép. 15. ajtó
+            {t.footer.companyNumberLabel}: 01-09-328046 · {t.footer.taxNumberLabel}: 26395124-2-41 · {t.footer.headquartersLabel}: 1039 Budapest, Királyok útja 291. B. ép. 15. ajtó
           </p>
           {t.footer.machineTranslationDisclaimer && (
             <p style={{ color: "rgba(255,255,255,0.4)", fontSize: 11, fontWeight: 300, marginTop: 10, fontStyle: "italic" }}>
