@@ -24,6 +24,12 @@ export function Nav({ t }: { t: Translation }) {
   const isOnHomepage =
     pathname === `/${currentLocale}` || pathname === `/${currentLocale}/`;
 
+  // True if currently on a legal page (impresszum/aszf/adatvedelem).
+  // These pages have a white background that would clash with the
+  // homepage's transparent-at-top nav style — readability hotfix:
+  // force the navy nav background regardless of scroll position.
+  const isLegalPage = /\/(impresszum|aszf|adatvedelem)\/?$/.test(pathname);
+
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 60);
     handler();
@@ -89,15 +95,21 @@ export function Nav({ t }: { t: Translation }) {
     return `/${newLocale}`;
   };
 
+  // Force the navy treatment on legal pages (always) and on homepage
+  // after the user scrolls past 60px (hero overlay transition). On
+  // homepage at scrollY=0 the nav stays transparent so the hero image
+  // can show through.
+  const showDarkNav = scrolled || isLegalPage;
+
   const navStyle: React.CSSProperties = {
     position: "fixed",
     top: 0,
     left: 0,
     right: 0,
     zIndex: 100,
-    background: scrolled ? "rgba(11,30,62,0.97)" : "transparent",
-    backdropFilter: scrolled ? "blur(12px)" : "none",
-    borderBottom: scrolled ? "1px solid rgba(255,255,255,0.08)" : "none",
+    background: showDarkNav ? "rgba(11,30,62,0.97)" : "transparent",
+    backdropFilter: showDarkNav ? "blur(12px)" : "none",
+    borderBottom: showDarkNav ? "1px solid rgba(255,255,255,0.08)" : "none",
     transition: "all 0.35s ease",
     padding: "0 5vw",
   };
