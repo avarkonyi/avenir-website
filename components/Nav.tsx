@@ -70,6 +70,25 @@ export function Nav({ t }: { t: Translation }) {
     // Off-homepage: let Link navigate to /[locale].
   };
 
+  // Locale switcher — preserve the current path when changing language.
+  // Resolves audit P1-C: previously each language button navigated to the
+  // locale homepage (/[newLocale]), discarding the user's location and
+  // scroll position. Now /hu/impresszum → EN goes to /en/impresszum.
+  // Hash + query preservation is a Phase 2 polish (per-locale section IDs
+  // differ in legal pages, e.g. #magannyomozas vs #private-investigation,
+  // so naive hash carry-over would break the anchor target).
+  const buildLocaleHref = (newLocale: string): string => {
+    const segments = pathname.split("/");
+    if (
+      segments[1] &&
+      (LOCALES as readonly string[]).includes(segments[1])
+    ) {
+      segments[1] = newLocale;
+      return segments.join("/");
+    }
+    return `/${newLocale}`;
+  };
+
   const navStyle: React.CSSProperties = {
     position: "fixed",
     top: 0,
@@ -125,12 +144,15 @@ export function Nav({ t }: { t: Translation }) {
             </Link>
           ))}
 
-          {/* Language switcher (URL-based) */}
+          {/* Language switcher — preserves current path + scroll position */}
           <div style={{ display: "flex", gap: 6, marginLeft: 8 }}>
             {LOCALES.map((l) => (
               <Link
                 key={l}
-                href={`/${l}`}
+                href={buildLocaleHref(l)}
+                scroll={false}
+                prefetch
+                aria-label={`Switch to ${l.toUpperCase()}`}
                 style={{
                   background: currentLocale === l ? "#D1172E" : "rgba(255,255,255,0.12)",
                   cursor: "pointer",
@@ -239,7 +261,10 @@ export function Nav({ t }: { t: Translation }) {
             {LOCALES.map((l) => (
               <Link
                 key={l}
-                href={`/${l}`}
+                href={buildLocaleHref(l)}
+                scroll={false}
+                prefetch
+                aria-label={`Switch to ${l.toUpperCase()}`}
                 onClick={() => setMenuOpen(false)}
                 style={{
                   background: currentLocale === l ? "#D1172E" : "rgba(255,255,255,0.12)",
