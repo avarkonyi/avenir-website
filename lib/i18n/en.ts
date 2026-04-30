@@ -349,7 +349,17 @@ export const en = {
           "title": "13. Modification of these Terms",
           "body": "The Provider reserves the right to modify these Terms of Use unilaterally. Modifications take effect upon publication at https://www.afm.hu/en/aszf. The Provider archives earlier versions and makes them available upon request.\n\nVersion history:\n• Version 1.0 — Effective: 28 April 2026. First publication."
         }
-      ]
+      ],
+      "dataProtection": {
+        "title": "14. Data Protection",
+        "body": "Avenir Facility Management Kft., as Data Controller, processes personal data provided by Users in accordance with GDPR and the Hungarian Information Act (Infotv.). Detailed data processing information is available in the separate Privacy Policy.",
+        "dpoLabel": "Data Protection Officer",
+        "dpoName": "Fanni Csegény",
+        "dpoEmail": "dpo@afm.hu",
+        "dpoPhone": "+36 70 622 6242",
+        "privacyLinkText": "The full Privacy Policy is available here",
+        "privacyLinkHref": "/en/adatvedelem"
+      }
     },
     "impressum": {
       "title": "Legal Notice",

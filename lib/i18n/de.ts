@@ -242,7 +242,17 @@ export const de = {
         { "id": "code-of-conduct", "title": "11. Verhaltenskodex", "body": "Der Anbieter ist keinem freiwilligen Verhaltenskodex beigetreten." },
         { "id": "law", "title": "12. Anwendbares Recht und Streitbeilegung", "body": "Ungarisches Recht. Ausschließlicher Gerichtsstand: Hauptstadtgericht Budapest (Fővárosi Törvényszék)." },
         { "id": "modification", "title": "13. Änderung dieser Bedingungen", "body": "Versionsverlauf:\n• Version 1.0 — Gültig ab 28.04.2026. Erstveröffentlichung." }
-      ]
+      ],
+      "dataProtection": {
+        "title": "14. Datenschutz",
+        "body": "Die Avenir Facility Management Kft. verarbeitet als Verantwortlicher die von Nutzern angegebenen personenbezogenen Daten im Einklang mit der DSGVO und dem ungarischen Informationsgesetz (Infotv.). Detaillierte Informationen zur Datenverarbeitung finden Sie in der separaten Datenschutzerklärung.",
+        "dpoLabel": "Datenschutzbeauftragte",
+        "dpoName": "Fanni Csegény",
+        "dpoEmail": "dpo@afm.hu",
+        "dpoPhone": "+36 70 622 6242",
+        "privacyLinkText": "Die vollständige Datenschutzerklärung ist hier verfügbar",
+        "privacyLinkHref": "/de/adatvedelem"
+      }
     },
     "impressum": {
       "title": "Impressum",

@@ -353,6 +353,21 @@ export const hu = {
           body: "A Szolgáltató fenntartja a jogot a jelen Felhasználási feltételek egyoldalú módosítására. A módosítások a https://www.afm.hu/hu/aszf oldalon történő közzététellel lépnek hatályba. A korábbi verziókat a Szolgáltató archiválja és kérésre rendelkezésre bocsátja.\n\nVerzió-history:\n• 1.0 verzió — Hatály: 2026.04.28-tól. Első kiadás.",
         },
       ],
+      // Section 14 — Data Protection cross-reference. Rendered as a
+      // structured block (heading + body + DPO contact box + clickable
+      // link to the full Privacy Policy) outside the plain-text sections
+      // array. Resolves audit P0-2 (DPO disclosure missing on ÁSZF
+      // pages — was on privacy + impresszum but not on terms).
+      dataProtection: {
+        title: "14. Adatkezelés",
+        body: "Az Avenir Facility Management Kft. mint Adatkezelő a Felhasználói által megadott személyes adatokat a GDPR és az Infotv. rendelkezéseinek megfelelően kezeli. A részletes adatkezelési tájékoztató külön Adatvédelmi tájékoztatóban érhető el.",
+        dpoLabel: "Adatvédelmi tisztviselő",
+        dpoName: "Csegény Fanni",
+        dpoEmail: "dpo@afm.hu",
+        dpoPhone: "+36 70 622 6242",
+        privacyLinkText: "A teljes Adatvédelmi tájékoztató itt érhető el",
+        privacyLinkHref: "/hu/adatvedelem",
+      },
     },
     impressum: {
       title: "Impresszum",

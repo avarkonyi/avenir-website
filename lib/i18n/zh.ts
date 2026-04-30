@@ -242,7 +242,17 @@ export const zh = {
         { "id": "code-of-conduct", "title": "11. 行为准则", "body": "提供方未加入任何自愿行为准则。" },
         { "id": "law", "title": "12. 适用法律和争议解决", "body": "受匈牙利法律管辖。专属管辖：布达佩斯首都地方法院（Fővárosi Törvényszék）。" },
         { "id": "modification", "title": "13. 本条款的修改", "body": "版本历史：\n• 1.0 版本 — 自 2026.04.28 起生效。首次发布。" }
-      ]
+      ],
+      "dataProtection": {
+        "title": "14. 数据保护",
+        "body": "作为数据控制者，Avenir Facility Management Kft. 根据 GDPR 和匈牙利信息法（Infotv.）的规定处理用户提供的个人数据。详细的数据处理信息可在单独的隐私政策中查阅。",
+        "dpoLabel": "数据保护官",
+        "dpoName": "Csegény Fanni",
+        "dpoEmail": "dpo@afm.hu",
+        "dpoPhone": "+36 70 622 6242",
+        "privacyLinkText": "完整的隐私政策可在此处查阅",
+        "privacyLinkHref": "/zh/adatvedelem"
+      }
     },
     "impressum": {
       "title": "法律声明",
