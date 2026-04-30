@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { connection } from "next/server";
 import { notFound } from "next/navigation";
-import { Geist, Geist_Mono, Barlow_Condensed } from "next/font/google";
+import { Geist, Barlow_Condensed } from "next/font/google";
 import { asc, eq } from "drizzle-orm";
 import "../globals.css";
 import { getTranslation, LOCALES } from "@/lib/i18n";
@@ -26,15 +26,16 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+// NOTE: Geist_Mono dropped 2026-04-30 — `var(--font-geist-mono)` had 0
+// references across components/. Saves 1 woff2 preload (P1-G perf fix).
+// If a future feature needs monospace, re-add here + html className.
 
 const barlowCondensed = Barlow_Condensed({
   variable: "--font-barlow-condensed",
   subsets: ["latin", "latin-ext"],
-  weight: ["400", "600", "700", "800"],
+  // Weight 400 dropped 2026-04-30 — never rendered (only 600/700/800
+  // used across UI). Saves 2 woff2 preloads (latin + latin-ext × 1 weight).
+  weight: ["600", "700", "800"],
 });
 
 export const viewport: Viewport = {
@@ -334,7 +335,7 @@ export default async function LocaleLayout({
   return (
     <html
       lang={locale}
-      className={`${geistSans.variable} ${geistMono.variable} ${barlowCondensed.variable}`}
+      className={`${geistSans.variable} ${barlowCondensed.variable}`}
     >
       <body>
         <JsonLd schemas={schemas} />
