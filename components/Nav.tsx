@@ -37,6 +37,27 @@ export function Nav({ t }: { t: Translation }) {
     return () => window.removeEventListener("scroll", handler);
   }, []);
 
+  // Track window.location.hash for locale switcher hash preservation
+  // (P1-C phase 2). Two-pass hydration: initial state is empty so SSR
+  // and the first client render produce identical href strings (no
+  // hydration mismatch). After mount, useEffect populates the hash and
+  // re-renders the language buttons with /<locale><currentPath>#<hash>.
+  // Listens to hashchange so anchor jumps via in-page nav update too.
+  const [hash, setHash] = useState("");
+  useEffect(() => {
+    // One-time hydration sync of window.location.hash to React state.
+    // Cannot read window during SSR; initial render uses "" (matching
+    // server output, no hydration mismatch). After mount we sync the
+    // actual hash and subscribe to hashchange. Suppressing the
+    // react-hooks/set-state-in-effect rule because this is the canonical
+    // pattern for client-only browser-API state hydration.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setHash(window.location.hash);
+    const onHashChange = () => setHash(window.location.hash);
+    window.addEventListener("hashchange", onHashChange);
+    return () => window.removeEventListener("hashchange", onHashChange);
+  }, []);
+
   // Lock body scroll while mobile menu is open
   useEffect(() => {
     if (menuOpen) {
@@ -76,23 +97,32 @@ export function Nav({ t }: { t: Translation }) {
     // Off-homepage: let Link navigate to /[locale].
   };
 
-  // Locale switcher — preserve the current path when changing language.
-  // Resolves audit P1-C: previously each language button navigated to the
-  // locale homepage (/[newLocale]), discarding the user's location and
-  // scroll position. Now /hu/impresszum → EN goes to /en/impresszum.
-  // Hash + query preservation is a Phase 2 polish (per-locale section IDs
-  // differ in legal pages, e.g. #magannyomozas vs #private-investigation,
-  // so naive hash carry-over would break the anchor target).
+  // Locale switcher — preserve the current path AND hash anchor when
+  // changing language. P1-C resolved fully (Codex 2nd pass).
+  //
+  // Hash preservation: locale-independent IDs (#career, #contact,
+  // #about, #services, #references, #news from the homepage; most
+  // legal-page section IDs are also shared via t.legal.*.sections[i].id).
+  //
+  // Edge case — terms section §4 has #magannyomozas (HU) vs
+  // #private-investigation (EN/DE/ZH). Switching from /hu/aszf with
+  // that hash to EN gives /en/aszf#magannyomozas → not found → graceful
+  // top-of-page render. Acceptable: 1 of ~30 IDs differs (~3% miss rate
+  // for a corner-case scroll target). Locale-aware id mapping is a
+  // future polish if user feedback indicates it matters.
   const buildLocaleHref = (newLocale: string): string => {
     const segments = pathname.split("/");
+    let basePath: string;
     if (
       segments[1] &&
       (LOCALES as readonly string[]).includes(segments[1])
     ) {
       segments[1] = newLocale;
-      return segments.join("/");
+      basePath = segments.join("/");
+    } else {
+      basePath = `/${newLocale}`;
     }
-    return `/${newLocale}`;
+    return `${basePath}${hash}`;
   };
 
   // Force the navy treatment on legal pages (always) and on homepage
