@@ -1,0 +1,28 @@
+import { auth } from "@/auth";
+import { AdminSidebar } from "../_components/AdminSidebar";
+import { AdminTopbar } from "../_components/AdminTopbar";
+
+// Layout for authenticated admin pages. Wraps children with the
+// sidebar + topbar shell. The (dashboard) route group is invisible
+// in URLs — `app/admin/(dashboard)/page.tsx` renders at `/admin`.
+//
+// The middleware (proxy.ts) already gates /admin/* by auth, so by
+// the time this layout runs the request is authenticated. We re-fetch
+// session here to populate the topbar (name + email).
+export default async function DashboardLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const session = await auth();
+
+  return (
+    <div style={{ display: "flex", minHeight: "100vh" }}>
+      <AdminSidebar />
+      <div style={{ flex: 1, display: "flex", flexDirection: "column", minWidth: 0 }}>
+        <AdminTopbar user={session?.user ?? undefined} />
+        <main style={{ flex: 1, padding: "32px" }}>{children}</main>
+      </div>
+    </div>
+  );
+}
