@@ -16,7 +16,7 @@ type NavItem = {
 const NAV_ITEMS: NavItem[] = [
   { label: "Vezérlőpult", href: "/admin", enabled: true },
   { label: "Üzenetek", href: "/admin/messages", enabled: true, showUnreadBadge: true },
-  { label: "Hírek", href: "/admin/news", enabled: false },
+  { label: "Hírek", href: "/admin/news", enabled: true },
   { label: "Karrier", href: "/admin/positions", enabled: false },
   { label: "Partnerek", href: "/admin/partners", enabled: false },
   { label: "Tanúsítványok", href: "/admin/certifications", enabled: false },

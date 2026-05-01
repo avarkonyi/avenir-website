@@ -17,6 +17,15 @@ import { sql } from "drizzle-orm";
 //    locale-independent: /hu/hirek/SLUG, /en/news/SLUG, /de/news/SLUG and
 //    /zh/news/SLUG all open the same article with locale-specific content.
 //
+//    Locale optionality (Iter 3A): only HU title/lead/body remain NOT NULL.
+//    EN/DE/ZH variants are nullable so the admin form can save partial
+//    translations (HU article, EN copy pending, etc.) without forcing
+//    placeholder text into the DB. The public renderer falls back to HU
+//    when a locale-specific column is null.
+//
+//    Soft delete: `deleted_at` (Iter 3A) — set on admin "Törlés", filters
+//    out of the inbox views; row stays in the table for recovery.
+//
 //    Indexes:
 //      - 4 partial indexes (one per locale) on `published_*` filtered to
 //        `= true` — supports the per-locale "show only published" query
@@ -30,19 +39,19 @@ export const news = pgTable(
     slug: varchar("slug", { length: 120 }).notNull().unique(),
 
     titleHu: text("title_hu").notNull(),
-    titleEn: text("title_en").notNull(),
-    titleDe: text("title_de").notNull(),
-    titleZh: text("title_zh").notNull(),
+    titleEn: text("title_en"),
+    titleDe: text("title_de"),
+    titleZh: text("title_zh"),
 
     leadHu: text("lead_hu").notNull(),
-    leadEn: text("lead_en").notNull(),
-    leadDe: text("lead_de").notNull(),
-    leadZh: text("lead_zh").notNull(),
+    leadEn: text("lead_en"),
+    leadDe: text("lead_de"),
+    leadZh: text("lead_zh"),
 
     bodyHu: text("body_hu").notNull(),
-    bodyEn: text("body_en").notNull(),
-    bodyDe: text("body_de").notNull(),
-    bodyZh: text("body_zh").notNull(),
+    bodyEn: text("body_en"),
+    bodyDe: text("body_de"),
+    bodyZh: text("body_zh"),
 
     publishedHu: boolean("published_hu").notNull().default(false),
     publishedEn: boolean("published_en").notNull().default(false),
@@ -54,6 +63,7 @@ export const news = pgTable(
 
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
     updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+    deletedAt: timestamp("deleted_at", { withTimezone: true }),
   },
   (table) => [
     index("idx_news_published_hu")

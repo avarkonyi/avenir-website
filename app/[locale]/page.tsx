@@ -1,6 +1,6 @@
 import { connection } from "next/server";
 import { notFound } from "next/navigation";
-import { desc, eq } from "drizzle-orm";
+import { and, desc, eq, isNotNull, isNull } from "drizzle-orm";
 import { Nav } from "@/components/Nav";
 import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
@@ -39,6 +39,11 @@ export default async function HomePage({
   const cols = NEWS_COLS[locale as Locale];
 
   await connection();
+  // EN/DE/ZH locale columns are nullable post-Iter 3A. We only surface
+  // rows where the picked locale has a non-null title (defensive: an
+  // admin could in theory flip publishedXx without filling titleXx).
+  // Lead/body fall back to empty strings since the locale model permits
+  // title-only teasers.
   const newsRows = await db
     .select({
       id: news.id,
@@ -48,14 +53,20 @@ export default async function HomePage({
       date: news.date,
     })
     .from(news)
-    .where(eq(cols.published, true))
+    .where(
+      and(
+        eq(cols.published, true),
+        isNotNull(cols.title),
+        isNull(news.deletedAt),
+      ),
+    )
     .orderBy(desc(news.date));
 
   const articles = newsRows.map((r) => ({
     id: r.id,
-    title: r.title,
-    lead: r.lead,
-    body: r.body,
+    title: r.title ?? "",
+    lead: r.lead ?? "",
+    body: r.body ?? "",
     date: r.date.toISOString(),
   }));
 
