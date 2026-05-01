@@ -12,6 +12,7 @@ import MicrosoftEntraID from "next-auth/providers/microsoft-entra-id";
 const ALLOWED_ADMIN_EMAILS = [
   "varkonyi@afm.hu",
   "fanni.csegeny@afm.hu",
+  "peter.vagi@afm.hu",
 ] as const;
 
 export const { handlers, signIn, signOut, auth } = NextAuth({

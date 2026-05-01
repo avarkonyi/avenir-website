@@ -80,6 +80,7 @@ See `auth.ts`:
 const ALLOWED_ADMIN_EMAILS = [
   "varkonyi@afm.hu",     // András Várkonyi (managing director / project lead)
   "fanni.csegeny@afm.hu",// Csegény Fanni (Data Protection Officer)
+  "peter.vagi@afm.hu",   // Vági Péter
 ] as const;
 ```
 
