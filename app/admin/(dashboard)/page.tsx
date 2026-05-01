@@ -1,11 +1,23 @@
+import Link from "next/link";
+import { connection } from "next/server";
+import { and, isNull, sql } from "drizzle-orm";
 import { auth } from "@/auth";
+import { db, messages } from "@/lib/db";
 
-// Admin dashboard. Iteration 1: empty-state cards as placeholders for
-// the modules wired in subsequent iterations (Messages → Iter 2, News
-// → Iter 3, etc.). The dash counts (—) become live numbers as each
-// module ships.
+// Admin dashboard. Iteration 2: Üzenetek card shows live counts (total
+// active + unread). Other cards remain placeholders for future iterations.
 export default async function AdminDashboard() {
   const session = await auth();
+
+  await connection();
+  const [{ value: totalMessages }] = await db
+    .select({ value: sql<number>`count(*)::int` })
+    .from(messages)
+    .where(isNull(messages.deletedAt));
+  const [{ value: unreadMessages }] = await db
+    .select({ value: sql<number>`count(*)::int` })
+    .from(messages)
+    .where(and(isNull(messages.readAt), isNull(messages.deletedAt)));
 
   return (
     <div style={{ maxWidth: 1100 }}>
@@ -33,7 +45,60 @@ export default async function AdminDashboard() {
           gap: 16,
         }}
       >
-        {STAT_CARDS.map((card) => (
+        {/* Üzenetek — live, clickable */}
+        <Link
+          href="/admin/messages"
+          style={{
+            textDecoration: "none",
+            background: "#fff",
+            border: "1px solid #E2E8F0",
+            borderRadius: 6,
+            padding: "20px 24px",
+            boxShadow: "0 1px 2px rgba(11,30,62,0.04)",
+            transition: "border-color 0.15s ease, box-shadow 0.15s ease",
+            display: "block",
+          }}
+        >
+          <h3
+            style={{
+              fontSize: 13,
+              fontWeight: 600,
+              color: "#64748B",
+              textTransform: "uppercase",
+              letterSpacing: 0.8,
+              margin: 0,
+            }}
+          >
+            Üzenetek
+          </h3>
+          <p
+            style={{
+              fontSize: 32,
+              fontWeight: 700,
+              color: "#0B1E3E",
+              margin: "8px 0 4px",
+              lineHeight: 1,
+            }}
+          >
+            {totalMessages}
+          </p>
+          <p style={{ fontSize: 12, color: "#475569", margin: 0 }}>
+            {unreadMessages > 0 ? (
+              <>
+                <span style={{ color: "#D1172E", fontWeight: 700 }}>
+                  {unreadMessages} olvasatlan
+                </span>
+                {" · "}
+                <span>összesen</span>
+              </>
+            ) : (
+              <span>Mind olvasva ✓</span>
+            )}
+          </p>
+        </Link>
+
+        {/* Hírek — Iter 3 placeholder */}
+        {STAT_CARDS_PENDING.map((card) => (
           <div
             key={card.label}
             style={{
@@ -96,11 +161,12 @@ export default async function AdminDashboard() {
           }}
         >
           <li>
-            <strong>Iteration 1 (jelenlegi):</strong> NextAuth M365 OAuth
-            + admin shell.
+            <strong>Iteration 1:</strong> NextAuth M365 OAuth + admin shell
+            ✓
           </li>
           <li>
-            <strong>Iteration 2:</strong> Üzenetek inbox (DB-ből kontaktűrlap-naplók).
+            <strong>Iteration 2 (jelenlegi):</strong> Üzenetek inbox CRUD
+            ✓
           </li>
           <li>
             <strong>Iteration 3:</strong> Hírek CRUD (multi-locale).
@@ -115,8 +181,7 @@ export default async function AdminDashboard() {
   );
 }
 
-const STAT_CARDS = [
-  { label: "Üzenetek", note: "Iteration 2 (Hamarosan)" },
+const STAT_CARDS_PENDING = [
   { label: "Hírek", note: "Iteration 3 (Hamarosan)" },
   { label: "Karrier pozíciók", note: "Iteration 4 (Hamarosan)" },
 ] as const;

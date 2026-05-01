@@ -121,13 +121,22 @@ export const positions = pgTable(
 
 // ────────────────────────────────────────────────────────────────────────────
 // 3. MESSAGES — contact form submissions. DB is primary storage; the Resend
-//    notification (wired in a later prompt) is best-effort. The `service`
-//    column stores a service id string (not FK) since services live in
-//    translations, not in DB. `readAt` is nullable: NULL = unread, datetime
-//    = the moment admin marked the message as read.
+//    notification is best-effort. The `service` column stores a service id
+//    string (not FK) since services live in translations, not in DB.
 //
-//    Index: `idx_messages_unread` — partial covering the admin "show me
-//    unread, newest first" inbox view.
+//    State:
+//      - `read_at`: NULL = unread, datetime = when admin marked as read.
+//        Doubles as audit trail (avoids a separate boolean + timestamp).
+//      - `deleted_at`: NULL = active, datetime = soft-deleted (Iter 2 admin).
+//        Soft delete keeps data recoverable; hard delete deferred to a
+//        future "Trash" view.
+//
+//    Indexes:
+//      - `idx_messages_unread` — partial: unread + active, newest first.
+//      - `idx_messages_inbox`  — partial: all active, newest first
+//        (admin /messages list query — added 2026-05).
+//      Both filter `deleted_at IS NULL` so soft-deleted rows don't appear
+//      in the inbox views.
 // ────────────────────────────────────────────────────────────────────────────
 export const messages = pgTable(
   "messages",
@@ -141,12 +150,16 @@ export const messages = pgTable(
     message: text("message"),
     locale: varchar("locale", { length: 5 }).notNull(),
     readAt: timestamp("read_at", { withTimezone: true }),
+    deletedAt: timestamp("deleted_at", { withTimezone: true }),
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
   },
   (table) => [
     index("idx_messages_unread")
       .on(sql`${table.createdAt} DESC`)
-      .where(sql`${table.readAt} IS NULL`),
+      .where(sql`${table.readAt} IS NULL AND ${table.deletedAt} IS NULL`),
+    index("idx_messages_inbox")
+      .on(sql`${table.createdAt} DESC`)
+      .where(sql`${table.deletedAt} IS NULL`),
   ],
 );
 
