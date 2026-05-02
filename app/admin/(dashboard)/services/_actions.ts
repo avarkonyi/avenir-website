@@ -1,6 +1,6 @@
 "use server";
 
-import { and, eq, sql } from "drizzle-orm";
+import { and, eq, isNull, sql } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { auth } from "@/auth";
 import { db, services } from "@/lib/db";
@@ -433,6 +433,150 @@ export async function updateService(
         err instanceof Error
           ? err.message
           : "A szolgáltatás frissítése sikertelen.",
+    };
+  }
+}
+
+// ── inline status toggle (Iter 3C C4) ──────────────────────────────────
+
+// Asymmetric publish-hierarchy rule:
+//   - Parent publish/unpublish     → always allowed
+//   - Child unpublish              → always allowed
+//   - Child publish                → REQUIRES parent active+published
+//
+// No cascade-on-parent-unpublish. Children retain their isPublished
+// state in the DB; the public renderer is responsible for hiding a
+// published child whose parent is draft/inactive. The admin badge
+// always displays direct DB state — by design, so the operator can
+// stage children before flipping the parent live.
+export async function togglePublishStatus(
+  id: number,
+  nextPublished: boolean,
+): Promise<{ ok: true } | { ok: false; error: string }> {
+  await requireAdmin();
+
+  const [service] = await db
+    .select()
+    .from(services)
+    .where(eq(services.id, id))
+    .limit(1);
+  if (!service) {
+    return { ok: false, error: "Szolgáltatás nem található." };
+  }
+
+  if (nextPublished && service.parentId !== null) {
+    const [parent] = await db
+      .select()
+      .from(services)
+      .where(eq(services.id, service.parentId))
+      .limit(1);
+    if (!parent) {
+      return { ok: false, error: "Szülő szolgáltatás nem található." };
+    }
+    if (!parent.isPublished || !parent.isActive) {
+      return {
+        ok: false,
+        error:
+          "Al-szolgáltatás csak aktív és publikált főszolgáltatás alatt publikálható.",
+      };
+    }
+  }
+
+  try {
+    await db
+      .update(services)
+      .set({ isPublished: nextPublished, updatedAt: new Date() })
+      .where(eq(services.id, id));
+    revalidatePath("/admin/services");
+    return { ok: true };
+  } catch (err) {
+    console.error("togglePublishStatus error:", err);
+    return {
+      ok: false,
+      error:
+        err instanceof Error
+          ? err.message
+          : nextPublished
+            ? "Publikálás sikertelen."
+            : "A publikálás visszavonása sikertelen.",
+    };
+  }
+}
+
+// ── reorder active top-level parents (Iter 3C C4) ──────────────────────
+
+// Scope: ACTIVE top-level services only (parentId IS NULL AND
+// isActive = true). Inactive top-level services keep their existing
+// sort_order untouched — they're hidden from the default reorder
+// view (showInactive=OFF), so the input array reflects only the
+// active set.
+//
+// Validates the input ID set against the DB-truth ID set before any
+// write. Mismatch (a row went inactive / was deleted between page
+// render and drop, or the input is forged) → reject with a friendly
+// "frissítsd az oldalt" error and no DB writes.
+//
+// Concurrency: last-write-wins. Two admins/tabs reordering at the
+// same time will see the later save win without conflict detection.
+// Acceptable for the admin MVP; verzioned/optimistic-concurrency
+// control is a Phase 4 polish item.
+//
+// Atomicity: the per-row UPDATE statements run sequentially. The
+// neon-http driver doesn't expose a true transaction wrapper across
+// HTTP request boundaries, so a partial failure mid-loop would
+// leave a partially-renumbered set. In practice the UPDATEs are
+// fast and the failure window is tiny; on error the client calls
+// router.refresh() which fetches the canonical (possibly partial)
+// state from the DB.
+export async function reorderTopLevelServices(
+  orderedIds: number[],
+): Promise<{ ok: true } | { ok: false; error: string }> {
+  await requireAdmin();
+
+  if (!Array.isArray(orderedIds) || orderedIds.length === 0) {
+    return { ok: false, error: "Üres sorrend." };
+  }
+  if (new Set(orderedIds).size !== orderedIds.length) {
+    return { ok: false, error: "Duplikált ID a sorrendben." };
+  }
+  if (!orderedIds.every((id) => Number.isInteger(id) && id > 0)) {
+    return { ok: false, error: "Érvénytelen ID a sorrendben." };
+  }
+
+  const dbActiveTopLevel = await db
+    .select({ id: services.id })
+    .from(services)
+    .where(and(isNull(services.parentId), eq(services.isActive, true)));
+  const dbIds = new Set(dbActiveTopLevel.map((s) => s.id));
+  const inputIds = new Set(orderedIds);
+
+  if (
+    dbIds.size !== inputIds.size ||
+    ![...dbIds].every((id) => inputIds.has(id))
+  ) {
+    return {
+      ok: false,
+      error:
+        "A sorrend nem egyezik az aktív főszolgáltatások listájával. Frissítsd az oldalt.",
+    };
+  }
+
+  try {
+    const now = new Date();
+    for (let i = 0; i < orderedIds.length; i++) {
+      await db
+        .update(services)
+        .set({ sortOrder: i, updatedAt: now })
+        .where(eq(services.id, orderedIds[i]));
+    }
+    revalidatePath("/admin/services");
+    return { ok: true };
+  } catch (err) {
+    console.error("reorderTopLevelServices error:", err);
+    return {
+      ok: false,
+      error:
+        err instanceof Error ? err.message : "A sorrend mentése sikertelen.",
     };
   }
 }
