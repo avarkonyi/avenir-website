@@ -119,10 +119,13 @@ export default async function MessageDetailPage({
             ID #{row.id}
           </p>
         </div>
-        {/* Action bar — top-right per spec. The 2-stage confirm UX
-            stays from Commit 1; Commit 4 swaps it for a modal +
-            unarchive flow. */}
-        {row.archivedAt === null && <ArchiveButton messageId={row.id} />}
+        {/* Action bar — top-right per spec. Toggle: shows
+            "Archiválás" (with confirm modal) when active, or
+            "Visszaállítás" (immediate) when already archived. */}
+        <ArchiveButton
+          messageId={row.id}
+          isArchived={row.archivedAt !== null}
+        />
       </header>
 
       {/* Card 1 — Metadata */}

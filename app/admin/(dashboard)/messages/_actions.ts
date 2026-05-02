@@ -2,7 +2,6 @@
 
 import { and, eq, isNull } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
 import { Resend } from "resend";
 import { auth } from "@/auth";
 import { db, messages } from "@/lib/db";
@@ -57,20 +56,66 @@ export async function markAsUnread(id: number): Promise<void> {
 }
 
 // Archive. Sets archived_at = now(); the inbox query filters
-// `archived_at IS NULL`. Recoverable via clearing the timestamp — the
+// `archived_at IS NULL`. Recoverable via unarchiveMessage — the
 // derived state then returns naturally to whatever read_at / replied_at
 // presence indicates (no previous-status column needed). Hard delete is
 // intentionally not exposed; if retention pressure mounts a DBA can
 // `DELETE WHERE archived_at < now() - interval '90 days'`.
-export async function archiveMessage(id: number): Promise<void> {
+//
+// Returns a result object instead of redirecting so the client modal
+// can show a toast + router.refresh in place. Auth failure still
+// throws (security boundary; not user-correctable).
+export async function archiveMessage(
+  id: number,
+): Promise<{ ok: true } | { ok: false; error: string }> {
   await requireAdmin();
-  await db
-    .update(messages)
-    .set({ archivedAt: new Date() })
-    .where(eq(messages.id, id));
-  revalidatePath("/admin/messages");
-  revalidatePath("/admin");
-  redirect("/admin/messages");
+  try {
+    await db
+      .update(messages)
+      .set({ archivedAt: new Date() })
+      .where(eq(messages.id, id));
+    revalidatePath("/admin/messages");
+    revalidatePath(`/admin/messages/${id}`);
+    revalidatePath("/admin", "layout");
+    return { ok: true };
+  } catch (err) {
+    console.error("archiveMessage error:", err);
+    return {
+      ok: false,
+      error:
+        err instanceof Error ? err.message : "Az archiválás sikertelen.",
+    };
+  }
+}
+
+// Unarchive. Clears archived_at. The derived status returns to
+// whatever read_at / replied_at indicate, so an unarchived message
+// that had been replied lands back in "Megválaszolva" automatically.
+// Immediate UX (no confirm modal): unarchive is a recovery action,
+// low-risk, the user is restoring a row they previously chose to hide.
+export async function unarchiveMessage(
+  id: number,
+): Promise<{ ok: true } | { ok: false; error: string }> {
+  await requireAdmin();
+  try {
+    await db
+      .update(messages)
+      .set({ archivedAt: null })
+      .where(eq(messages.id, id));
+    revalidatePath("/admin/messages");
+    revalidatePath(`/admin/messages/${id}`);
+    revalidatePath("/admin", "layout");
+    return { ok: true };
+  } catch (err) {
+    console.error("unarchiveMessage error:", err);
+    return {
+      ok: false,
+      error:
+        err instanceof Error
+          ? err.message
+          : "A visszaállítás sikertelen.",
+    };
+  }
 }
 
 // Send a reply via Resend, then persist subject/body/timestamp to the

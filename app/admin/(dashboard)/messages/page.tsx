@@ -7,6 +7,14 @@ import { formatRelativeHu, formatAbsoluteHu } from "./_components/formatRelative
 
 const PAGE_SIZE = 50;
 
+const STATUS_KEYS = [
+  "olvasatlan",
+  "olvasott",
+  "megvalaszolt",
+  "archivalt",
+] as const;
+type StatusKey = (typeof STATUS_KEYS)[number] | "mind";
+
 type SearchParams = Promise<{
   status?: string;
   locale?: string;
@@ -19,7 +27,12 @@ export default async function MessagesListPage({
   searchParams: SearchParams;
 }) {
   const sp = await searchParams;
-  const status = sp.status === "read" || sp.status === "unread" ? sp.status : undefined;
+  const rawStatus = sp.status ?? "";
+  const status: StatusKey = (STATUS_KEYS as readonly string[]).includes(
+    rawStatus,
+  )
+    ? (rawStatus as StatusKey)
+    : "mind";
   const locale = ["hu", "en", "de", "zh"].includes(sp.locale ?? "")
     ? sp.locale
     : undefined;
@@ -27,13 +40,26 @@ export default async function MessagesListPage({
 
   await connection();
 
-  // Build the WHERE clause incrementally. Always exclude archived. The
-  // 5-pill filter UI (Iter 3B Commit 4) layers in replied/archived chips;
-  // for now the existing 3-state filter (Mind/Olvasatlan/Olvasott) keeps
-  // working because the read_at predicate is unchanged.
-  const conditions = [isNull(messages.archivedAt)];
-  if (status === "unread") conditions.push(isNull(messages.readAt));
-  if (status === "read") conditions.push(isNotNull(messages.readAt));
+  // Status filter — derived from timestamps (A2 — no enum). Only the
+  // "archivalt" branch INCLUDES archived rows; every other status
+  // implicitly excludes them (an inbox view of archived items doesn't
+  // make sense).
+  const conditions = [];
+  if (status === "mind") {
+    conditions.push(isNull(messages.archivedAt));
+  } else if (status === "olvasatlan") {
+    conditions.push(isNull(messages.readAt), isNull(messages.archivedAt));
+  } else if (status === "olvasott") {
+    conditions.push(
+      isNotNull(messages.readAt),
+      isNull(messages.repliedAt),
+      isNull(messages.archivedAt),
+    );
+  } else if (status === "megvalaszolt") {
+    conditions.push(isNotNull(messages.repliedAt), isNull(messages.archivedAt));
+  } else if (status === "archivalt") {
+    conditions.push(isNotNull(messages.archivedAt));
+  }
   if (locale) conditions.push(eq(messages.locale, locale));
   if (q) {
     const pattern = `%${q}%`;
@@ -54,6 +80,8 @@ export default async function MessagesListPage({
       message: messages.message,
       locale: messages.locale,
       readAt: messages.readAt,
+      repliedAt: messages.repliedAt,
+      archivedAt: messages.archivedAt,
       createdAt: messages.createdAt,
     })
     .from(messages)
@@ -68,7 +96,7 @@ export default async function MessagesListPage({
 
   const total = totalActive[0]?.value ?? 0;
   const filteredCount = rows.length;
-  const hasFilters = !!status || !!locale || !!q;
+  const hasFilters = status !== "mind" || !!locale || !!q;
 
   return (
     <div style={{ maxWidth: 1200 }}>
@@ -111,7 +139,9 @@ export default async function MessagesListPage({
             </thead>
             <tbody>
               {rows.map((m) => {
-                const unread = m.readAt === null;
+                const derived = deriveStatus(m);
+                const unread = derived === "uj";
+                const isArchived = derived === "archivalt";
                 const snippet = (m.message ?? "").slice(0, 90);
                 const truncated = (m.message ?? "").length > 90;
                 return (
@@ -119,7 +149,11 @@ export default async function MessagesListPage({
                     key={m.id}
                     style={{
                       borderTop: "1px solid #E2E8F0",
-                      background: unread ? "rgba(209,23,46,0.02)" : "#fff",
+                      background: unread
+                        ? "rgba(209,23,46,0.02)"
+                        : isArchived
+                          ? "rgba(100,116,139,0.04)"
+                          : "#fff",
                     }}
                   >
                     <Td>
@@ -158,11 +192,7 @@ export default async function MessagesListPage({
                       </span>
                     </Td>
                     <Td>
-                      {unread ? (
-                        <span style={statusPill("#D1172E")}>📬 Új</span>
-                      ) : (
-                        <span style={statusPill("#94A3B8")}>👁 Olvasva</span>
-                      )}
+                      <StatusPill status={derived} />
                     </Td>
                     <Td>
                       <Link
@@ -292,14 +322,45 @@ function LocaleBadge({ locale }: { locale: string }) {
   );
 }
 
-function statusPill(color: string): React.CSSProperties {
-  return {
-    background: `${color}1A`,
-    color,
-    padding: "2px 8px",
-    borderRadius: 999,
-    fontSize: 11,
-    fontWeight: 700,
-    letterSpacing: 0.4,
-  };
+type DerivedRowStatus = "uj" | "olvasva" | "megvalaszolva" | "archivalt";
+
+function deriveStatus(row: {
+  archivedAt: Date | null;
+  repliedAt: Date | null;
+  readAt: Date | null;
+}): DerivedRowStatus {
+  if (row.archivedAt) return "archivalt";
+  if (row.repliedAt) return "megvalaszolva";
+  if (row.readAt) return "olvasva";
+  return "uj";
+}
+
+const STATUS_PILL: Record<
+  DerivedRowStatus,
+  { label: string; color: string; icon: string }
+> = {
+  uj: { label: "Új", color: "#D1172E", icon: "📬" },
+  olvasva: { label: "Olvasva", color: "#2563EB", icon: "👁" },
+  megvalaszolva: { label: "Megválaszolva", color: "#15803D", icon: "✓" },
+  archivalt: { label: "Archivált", color: "#64748B", icon: "📦" },
+};
+
+function StatusPill({ status }: { status: DerivedRowStatus }) {
+  const { label, color, icon } = STATUS_PILL[status];
+  return (
+    <span
+      style={{
+        background: `${color}1A`,
+        color,
+        padding: "2px 8px",
+        borderRadius: 999,
+        fontSize: 11,
+        fontWeight: 700,
+        letterSpacing: 0.4,
+        whiteSpace: "nowrap",
+      }}
+    >
+      {icon} {label}
+    </span>
+  );
 }

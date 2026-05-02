@@ -13,10 +13,19 @@ import { useState } from "react";
 // the table). Search is form-based — Enter submits, navigates to
 // updated URL.
 
+// Status pill keys are Hungarian (matches the URL search-param values
+// the server expects). "Mind" stays empty so the default URL is clean
+// (/admin/messages with no ?status=). The other 4 use Hungarian slugs.
+//
+// "archivalt" gets a gray active-state hint (not red) so the operator
+// has a visual cue that they're now browsing the archive view rather
+// than the active inbox.
 const STATUS_OPTIONS = [
   { key: "", label: "Mind" },
-  { key: "unread", label: "Olvasatlan" },
-  { key: "read", label: "Olvasott" },
+  { key: "olvasatlan", label: "Olvasatlan" },
+  { key: "olvasott", label: "Olvasott" },
+  { key: "megvalaszolt", label: "Megválaszolt" },
+  { key: "archivalt", label: "Archivált" },
 ] as const;
 
 const LOCALE_OPTIONS = [
@@ -133,6 +142,10 @@ export function MessagesFilters() {
         </span>
         {STATUS_OPTIONS.map((opt) => {
           const active = status === opt.key;
+          // "Archivált" gets a gray active fill instead of navy so
+          // the operator can see at a glance they've left the active
+          // inbox view. Other active pills use the navy brand color.
+          const activeBg = opt.key === "archivalt" ? "#64748B" : "#0B1E3E";
           return (
             <Link
               key={opt.key || "all-status"}
@@ -143,9 +156,9 @@ export function MessagesFilters() {
                 fontSize: 13,
                 fontWeight: 600,
                 textDecoration: "none",
-                background: active ? "#0B1E3E" : "#fff",
+                background: active ? activeBg : "#fff",
                 color: active ? "#fff" : "#0B1E3E",
-                border: `1px solid ${active ? "#0B1E3E" : "#CBD5E1"}`,
+                border: `1px solid ${active ? activeBg : "#CBD5E1"}`,
               }}
             >
               {opt.label}
