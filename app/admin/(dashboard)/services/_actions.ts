@@ -1,6 +1,6 @@
 "use server";
 
-import { and, eq, isNull, sql } from "drizzle-orm";
+import { and, eq, inArray, isNull, sql } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { auth } from "@/auth";
 import { db, services } from "@/lib/db";
@@ -579,4 +579,98 @@ export async function reorderTopLevelServices(
         err instanceof Error ? err.message : "A sorrend mentése sikertelen.",
     };
   }
+}
+
+// ── permanent hard delete (Iter 3E) ────────────────────────────────────
+
+// PERMANENT HARD DELETE — distinct from the existing isActive=false
+// inactivation flow. Both coexist:
+//   - toggleServiceActive(false) → soft, reversible, hides from public,
+//     row remains in DB.
+//   - deleteService           → permanent, irreversible, row gone.
+//
+// The DB FK `parent_id REFERENCES services(id) ON DELETE RESTRICT` is
+// the safety net: any naive parent delete with surviving children is
+// blocked at the Postgres level. The cascade case here uses an explicit
+// transaction (children first, then parent) so the FK clears before the
+// parent delete runs. We deliberately do NOT change the FK to ON DELETE
+// CASCADE — that would lose the safety net entirely; this server action
+// is the only safe entry point.
+//
+// Cascade is opt-in: callers must pass options.cascade=true after the
+// UI has shown a warning with the exact child count. Server-side check
+// rejects cascade=false when children exist (defense-in-depth against a
+// manipulated client request).
+//
+// Grandchildren guard: the app design is 2-level, but the schema doesn't
+// enforce it. If a child somehow has its own children (corrupted/manual
+// data), the cascade is aborted with a friendly Hungarian error rather
+// than attempting a partial delete the FK would block confusingly.
+export async function deleteService(
+  serviceId: number,
+  options: { cascade: boolean },
+): Promise<{ ok: true } | { ok: false; error: string }> {
+  await requireAdmin();
+
+  const [svc] = await db
+    .select({ id: services.id })
+    .from(services)
+    .where(eq(services.id, serviceId))
+    .limit(1);
+  if (!svc) {
+    return { ok: false, error: "A szolgáltatás nem található." };
+  }
+
+  const children = await db
+    .select({ id: services.id })
+    .from(services)
+    .where(eq(services.parentId, serviceId));
+
+  if (children.length > 0 && !options.cascade) {
+    return {
+      ok: false,
+      error: `A szolgáltatásnak ${children.length} alszolgáltatása van. Csak cascade módban törölhető.`,
+    };
+  }
+
+  if (children.length > 0) {
+    const childIds = children.map((c) => c.id);
+    const grandchildren = await db
+      .select({ id: services.id })
+      .from(services)
+      .where(inArray(services.parentId, childIds));
+    if (grandchildren.length > 0) {
+      return {
+        ok: false,
+        error:
+          "A szolgáltatás 2 szintnél mélyebb hierarchiát tartalmaz. Kérlek vedd fel velem a kapcsolatot — manuális vizsgálat szükséges.",
+      };
+    }
+  }
+
+  try {
+    if (children.length > 0) {
+      // db.transaction on the neon-http driver batches statements into
+      // a single atomic HTTP request. If either delete fails, Postgres
+      // rolls back; no orphaned children left referencing a vanished
+      // parent.
+      await db.transaction(async (tx) => {
+        await tx.delete(services).where(eq(services.parentId, serviceId));
+        await tx.delete(services).where(eq(services.id, serviceId));
+      });
+    } else {
+      await db.delete(services).where(eq(services.id, serviceId));
+    }
+  } catch (err) {
+    console.error("deleteService error:", err);
+    return {
+      ok: false,
+      error: err instanceof Error ? err.message : "Törlés sikertelen.",
+    };
+  }
+
+  revalidatePath("/admin/services");
+  revalidatePath("/admin", "layout");
+
+  return { ok: true };
 }

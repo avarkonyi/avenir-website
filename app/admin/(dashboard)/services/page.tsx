@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { connection } from "next/server";
-import { and, eq, ilike, inArray, or, type SQL } from "drizzle-orm";
+import { and, eq, ilike, inArray, or, sql, type SQL } from "drizzle-orm";
 import { db, services } from "@/lib/db";
 import { ServicesFilters } from "./_components/ServicesFilters";
 import {
@@ -55,6 +55,38 @@ export default async function ServicesListPage({
   const grouped = groupHierarchically(rows);
   const hasFilters = status !== "all" || showInactive || q !== "";
 
+  // Live children counts for every displayed row — drives the cascade-vs-
+  // simple branch in DeleteServiceButton's confirm modal. Counts come
+  // from a single grouped query keyed by the displayed row IDs (NOT
+  // restricted by the user's status/active filters); the operator must
+  // see the TRUE child count regardless of filter state, since the
+  // delete itself is unfiltered.
+  //
+  // inArray([]) generates "WHERE parent_id IN ()" which Postgres rejects
+  // as a syntax error — guard against the empty case.
+  const displayedRowIds = grouped.flatRows.map((entry) => entry.row.id);
+  const childCountsRaw = displayedRowIds.length === 0
+    ? []
+    : await db
+        .select({
+          parentId: services.parentId,
+          count: sql<number>`count(*)::int`,
+        })
+        .from(services)
+        .where(inArray(services.parentId, displayedRowIds))
+        .groupBy(services.parentId);
+
+  // Type-narrow filter avoids the non-null `!` escape hatch — the WHERE
+  // clause guarantees parentId is non-null at runtime, but the column
+  // type is still `number | null`.
+  const childCounts = new Map<number, number>(
+    childCountsRaw
+      .filter(
+        (r): r is { parentId: number; count: number } => r.parentId !== null,
+      )
+      .map((r) => [r.parentId, r.count]),
+  );
+
   // Reorder is allowed only on the unfiltered, default-search,
   // hide-inactive view — anything else changes which rows the admin
   // sees, which would make a drag-to-reorder fundamentally ambiguous.
@@ -84,6 +116,7 @@ export default async function ServicesListPage({
     isFeatured: entry.row.isFeatured,
     isChild: entry.isChild,
     parentName: entry.parentName,
+    childrenCount: childCounts.get(entry.row.id) ?? 0,
   }));
 
   return (

@@ -26,6 +26,7 @@ import {
   toggleServiceActive,
   togglePublishStatus,
 } from "../_actions";
+import { DeleteServiceButton } from "./DeleteServiceButton";
 
 // Slim row shape passed from the server page. Only includes fields the
 // list-view actually renders or acts on; full service rows include
@@ -42,6 +43,11 @@ export type ServicesListRow = {
   isFeatured: boolean;
   isChild: boolean;
   parentName: string | null;
+  // Live count of rows whose parent_id equals this row's id (Iter 3E).
+  // Drives the cascade-vs-simple branch in DeleteServiceButton's
+  // confirm modal text. Populated server-side via a separate
+  // grouped-count query in page.tsx.
+  childrenCount: number;
 };
 
 type Props = {
@@ -444,7 +450,7 @@ function RowActions({
   }
 
   return (
-    <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
+    <div style={{ display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap" }}>
       <Link
         href={`/admin/services/${row.id}/edit`}
         style={{
@@ -477,6 +483,12 @@ function RowActions({
       >
         {row.isActive ? "Inaktiválás" : "Aktiválás"}
       </button>
+      <DeleteServiceButton
+        serviceId={row.id}
+        serviceName={row.nameHu}
+        childrenCount={row.childrenCount}
+        pendingGlobal={disabled}
+      />
     </div>
   );
 }
