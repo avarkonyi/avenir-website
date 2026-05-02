@@ -42,6 +42,7 @@ export type NewsFormPayload = {
   publishedDe?: boolean;
   publishedZh?: boolean;
   date?: Date | string;
+  imageUrl?: string | null;
 };
 
 export type CreateNewsResult =
@@ -157,6 +158,7 @@ export async function createNews(
         publishedDe: payload.publishedDe ?? false,
         publishedZh: payload.publishedZh ?? false,
         date: payload.date ? new Date(payload.date) : new Date(),
+        imageUrl: normLocale(payload.imageUrl),
       })
       .returning({ id: news.id });
 
@@ -213,6 +215,7 @@ export async function updateNews(
         publishedDe: payload.publishedDe ?? false,
         publishedZh: payload.publishedZh ?? false,
         date: payload.date ? new Date(payload.date) : new Date(),
+        imageUrl: normLocale(payload.imageUrl),
         updatedAt: new Date(),
       })
       .where(eq(news.id, id));

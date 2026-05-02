@@ -6,6 +6,7 @@ import { useMemo, useState, useTransition } from "react";
 import { toast } from "sonner";
 import { createNews, updateNews, type NewsFormPayload } from "../_actions";
 import { slugify } from "@/lib/utils/slugify";
+import { ImageUpload } from "@/app/admin/_components/ImageUpload";
 import { DeleteButton } from "./DeleteButton";
 
 // Shared multi-locale form for /admin/news/new and /admin/news/[id]/edit.
@@ -56,9 +57,17 @@ type FormState = {
   publishedDe: boolean;
   publishedZh: boolean;
   date: string; // datetime-local format: YYYY-MM-DDTHH:mm
+  imageUrl: string; // empty = no image; ImageUpload converts URL ↔ ""
 };
 
-type EditInitial = FormState & { id: number; imageUrl: string | null };
+// EditInitial mirrors the DB-shaped data passed from the edit page:
+// imageUrl arrives as `string | null` (the column is nullable). The
+// form converts to `""` at hydration so FormState's controlled-input
+// invariant (string only) holds.
+type EditInitial = Omit<FormState, "imageUrl"> & {
+  id: number;
+  imageUrl: string | null;
+};
 
 const EMPTY_STATE: FormState = {
   titleHu: "",
@@ -79,6 +88,7 @@ const EMPTY_STATE: FormState = {
   publishedDe: false,
   publishedZh: false,
   date: toLocalInput(new Date()),
+  imageUrl: "",
 };
 
 type Props =
@@ -89,7 +99,11 @@ export function NewsForm(props: Props) {
   const router = useRouter();
   const initial: FormState =
     props.mode === "edit"
-      ? { ...props.initial, date: isoToLocalInput(props.initial.date) }
+      ? {
+          ...props.initial,
+          date: isoToLocalInput(props.initial.date),
+          imageUrl: props.initial.imageUrl ?? "",
+        }
       : EMPTY_STATE;
 
   const [state, setState] = useState<FormState>(initial);
@@ -176,6 +190,7 @@ export function NewsForm(props: Props) {
       publishedDe: state.publishedDe,
       publishedZh: state.publishedZh,
       date: localInputToDate(state.date),
+      imageUrl: state.imageUrl,
     };
   }
 
@@ -223,7 +238,7 @@ export function NewsForm(props: Props) {
       onSubmit={handleSubmit}
       style={{ display: "flex", flexDirection: "column", gap: 24 }}
     >
-      {/* Cover image (Iter 3B placeholder) */}
+      {/* Borítókép — Iter 3D Vercel Blob upload */}
       <section
         style={{
           background: "#fff",
@@ -233,46 +248,11 @@ export function NewsForm(props: Props) {
         }}
       >
         <SectionLabel>Borítókép</SectionLabel>
-        {/* TODO: Iter 3B Vercel Blob upload */}
-        {props.mode === "edit" && props.initial.imageUrl ? (
-          <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={props.initial.imageUrl}
-              alt=""
-              style={{
-                width: 120,
-                height: 80,
-                objectFit: "cover",
-                borderRadius: 4,
-                background: "#F1F5F9",
-              }}
-            />
-            <div style={{ color: "#64748B", fontSize: 13 }}>
-              <p style={{ margin: 0 }}>Jelenlegi borítókép</p>
-              <p style={{ margin: "4px 0 0", fontSize: 12 }}>
-                A feltöltési felület a következő iterációban érkezik.
-              </p>
-            </div>
-          </div>
-        ) : (
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 12,
-              padding: "16px",
-              border: "1px dashed #CBD5E1",
-              borderRadius: 4,
-              background: "#F8FAFC",
-              color: "#94A3B8",
-              fontSize: 13,
-            }}
-          >
-            <input type="file" accept="image/*" disabled />
-            <span>(A borítókép-feltöltés a következő iterációban érkezik.)</span>
-          </div>
-        )}
+        <ImageUpload
+          folder="news"
+          value={state.imageUrl.length > 0 ? state.imageUrl : null}
+          onChange={(url) => update("imageUrl", url ?? "")}
+        />
       </section>
 
       {/* Locale tabs */}

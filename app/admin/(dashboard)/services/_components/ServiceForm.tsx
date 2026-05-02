@@ -7,6 +7,7 @@ import { toast } from "sonner";
 import { ICON_NAMES } from "@/components/Icon";
 import { Icon } from "@/components/Icon";
 import { slugify } from "@/lib/utils/slugify";
+import { ImageUpload } from "@/app/admin/_components/ImageUpload";
 import {
   createService,
   updateService,
@@ -401,31 +402,11 @@ export function ServiceForm(props: Props) {
         </Field>
 
         <Field label="Borítókép">
-          {/* Placeholder — matches NewsForm. Real Vercel Blob upload
-              ships in a future commit. Existing imageUrl (if any from
-              direct DB seed) is preserved through the hidden field. */}
-          <input type="hidden" value={state.imageUrl} readOnly />
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 12,
-              padding: "16px",
-              border: "1px dashed #CBD5E1",
-              borderRadius: 4,
-              background: "#F8FAFC",
-              color: "#94A3B8",
-              fontSize: 13,
-            }}
-          >
-            <input type="file" accept="image/*" disabled />
-            <span>(A borítókép-feltöltés egy következő iterációban érkezik.)</span>
-          </div>
-          {state.imageUrl && (
-            <p style={{ ...helpTextStyle, color: "#475569" }}>
-              Jelenlegi kép URL: <code>{state.imageUrl}</code>
-            </p>
-          )}
+          <ImageUpload
+            folder="services"
+            value={state.imageUrl.length > 0 ? state.imageUrl : null}
+            onChange={(url) => update("imageUrl", url ?? "")}
+          />
         </Field>
 
         <Field label="Sortrend">
