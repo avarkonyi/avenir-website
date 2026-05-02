@@ -39,7 +39,9 @@ const securityHeaders = [
     //     Nonce-based mitigation deferred to a later commit.
     //   'unsafe-inline' on style-src: required for inline-style usage
     //     across components (Hero, Footer, Contact, etc.).
-    //   img-src includes data: + blob: for next/image optimization output.
+    //   img-src includes data: + blob: for next/image optimization output,
+    //     plus *.public.blob.vercel-storage.com for admin-uploaded covers
+    //     served from the Vercel Blob CDN (Iter 3D).
     //   font-src 'self': next/font/google self-hosts at build time, no
     //     external font CDN connection needed.
     //   frame-ancestors 'none': matches X-Frame-Options DENY above.
@@ -48,7 +50,7 @@ const securityHeaders = [
       "default-src 'self'",
       "script-src 'self' 'unsafe-inline'",
       "style-src 'self' 'unsafe-inline'",
-      "img-src 'self' data: blob:",
+      "img-src 'self' data: blob: https://*.public.blob.vercel-storage.com",
       "font-src 'self'",
       "connect-src 'self'",
       "frame-ancestors 'none'",
