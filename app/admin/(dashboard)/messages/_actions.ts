@@ -1,6 +1,6 @@
 "use server";
 
-import { eq } from "drizzle-orm";
+import { and, eq, isNull } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { auth } from "@/auth";
@@ -24,15 +24,23 @@ async function requireAdmin() {
   return session.user.email;
 }
 
+// Idempotent — only writes if currently unread. Called both by the
+// auto-mount client component on the detail page (fire-and-forget) and
+// by any future explicit "mark read" UI. The WHERE-IS-NULL guard means
+// re-firing on an already-read row is a no-op at the DB level.
+//
+// Revalidates the layout segment so the sidebar badge counter (rendered
+// in (dashboard)/layout.tsx via AdminSidebar) refreshes on the next
+// navigation away from the detail page. The in-place page intentionally
+// does NOT refresh — see MarkAsReadOnMount.tsx for the rationale.
 export async function markAsRead(id: number): Promise<void> {
   await requireAdmin();
   await db
     .update(messages)
     .set({ readAt: new Date() })
-    .where(eq(messages.id, id));
+    .where(and(eq(messages.id, id), isNull(messages.readAt)));
   revalidatePath("/admin/messages");
-  revalidatePath(`/admin/messages/${id}`);
-  revalidatePath("/admin");
+  revalidatePath("/admin", "layout");
 }
 
 export async function markAsUnread(id: number): Promise<void> {

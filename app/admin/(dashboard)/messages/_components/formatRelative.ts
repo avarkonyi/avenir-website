@@ -42,3 +42,23 @@ export function formatAbsoluteHu(date: Date): string {
     minute: "2-digit",
   });
 }
+
+/**
+ * Formats a Date as "2026.05.02. 09:14" — no spaces around the dots,
+ * zero-padded hour. Used on the message detail view's metadata card
+ * for the Beérkezés timestamp.
+ *
+ * Exists separately from formatAbsoluteHu because Intl.DateTimeFormat
+ * for hu-HU emits "2026. 05. 02. 9:14" (interior spaces, hour without
+ * leading zero), which doesn't match the admin tool's chosen visual
+ * style. Manual zero-padding gives a stable column-aligned look across
+ * the metadata grid.
+ */
+export function formatTimestampHu(date: Date): string {
+  const yyyy = date.getFullYear();
+  const mm = String(date.getMonth() + 1).padStart(2, "0");
+  const dd = String(date.getDate()).padStart(2, "0");
+  const hh = String(date.getHours()).padStart(2, "0");
+  const min = String(date.getMinutes()).padStart(2, "0");
+  return `${yyyy}.${mm}.${dd}. ${hh}:${min}`;
+}
