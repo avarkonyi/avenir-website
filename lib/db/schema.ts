@@ -8,8 +8,10 @@ import {
   timestamp,
   date,
   index,
+  jsonb,
 } from "drizzle-orm/pg-core";
-import { sql } from "drizzle-orm";
+import type { AnyPgColumn } from "drizzle-orm/pg-core";
+import { relations, sql } from "drizzle-orm";
 
 // ────────────────────────────────────────────────────────────────────────────
 // 1. NEWS — admin-managed articles. Locale-aware via wide columns (4 locales
@@ -291,3 +293,112 @@ export const certifications = pgTable(
       .where(sql`${table.active} = true`),
   ],
 );
+
+// ────────────────────────────────────────────────────────────────────────────
+// 6. SERVICES — admin-managed service catalog with 2-level hierarchy.
+//    Self-referencing: parent_id NULL = top-level service ("Soft FM"),
+//    parent_id NOT NULL = sub-service ("Office cleaning" under Soft FM).
+//    The 2-level cap is enforced at the application layer (server action
+//    validates the chosen parent has parent_id IS NULL); the DB itself
+//    allows arbitrary nesting since self-references can't be depth-limited
+//    in CHECK constraints.
+//
+//    Source-of-truth migration: until the public-site reader is cut over
+//    from `t.services` (lib/i18n/*) to this table, the table starts empty
+//    and Iter 3C admin UI populates it. The seeded data + reader switch
+//    is a future-iteration cutover, not part of this commit.
+//
+//    Soft-delete cascade: `is_active = false` is the soft-delete flag.
+//    DB onDelete: "restrict" only blocks hard DELETE; the cascade rule
+//    (parent with active children cannot be inactivated) is enforced in
+//    the inactivateService server action (Commit 4 of this iteration).
+//
+//    Locale model: HU required (notNull); EN/DE/ZH nullable. The public
+//    renderer is expected to fall back to HU when a locale variant is
+//    null — same convention as news.
+//
+//    JSONB highlights arrays: NOT NULL with default '[]'::jsonb so the
+//    TS type stays `string[]` (no nullish guards in queries). Up to 6
+//    items per locale enforced in the server action validation, not in
+//    the DB.
+//
+//    Indexes:
+//      - slug UNIQUE auto-generates a B-tree index — no explicit
+//        idx_services_slug.
+//      - idx_services_parent_id covers admin "fetch children of parent X"
+//        queries.
+//      - idx_services_public is a partial composite covering the public
+//        site's most frequent query: WHERE is_published AND is_active,
+//        ordered by sort_order ascending. Filtered to the active+
+//        published subset for a smaller, more cache-friendly index.
+// ────────────────────────────────────────────────────────────────────────────
+export const services = pgTable(
+  "services",
+  {
+    id: serial("id").primaryKey(),
+
+    // Self-reference. The explicit `AnyPgColumn` return type breaks
+    // TS's circular inference on `services.id` — without it the
+    // compiler can either hang or emit unrelated cryptic errors.
+    parentId: integer("parent_id").references(
+      (): AnyPgColumn => services.id,
+      { onDelete: "restrict" },
+    ),
+
+    slug: text("slug").notNull().unique(),
+    icon: text("icon"),
+    imageUrl: text("image_url"),
+
+    nameHu: text("name_hu").notNull(),
+    nameEn: text("name_en"),
+    nameDe: text("name_de"),
+    nameZh: text("name_zh"),
+
+    shortDescHu: text("short_desc_hu"),
+    shortDescEn: text("short_desc_en"),
+    shortDescDe: text("short_desc_de"),
+    shortDescZh: text("short_desc_zh"),
+
+    longDescHu: text("long_desc_hu"),
+    longDescEn: text("long_desc_en"),
+    longDescDe: text("long_desc_de"),
+    longDescZh: text("long_desc_zh"),
+
+    highlightsHu: jsonb("highlights_hu").$type<string[]>().notNull().default([]),
+    highlightsEn: jsonb("highlights_en").$type<string[]>().notNull().default([]),
+    highlightsDe: jsonb("highlights_de").$type<string[]>().notNull().default([]),
+    highlightsZh: jsonb("highlights_zh").$type<string[]>().notNull().default([]),
+
+    sortOrder: integer("sort_order").notNull().default(0),
+    isFeatured: boolean("is_featured").notNull().default(false),
+    isPublished: boolean("is_published").notNull().default(false),
+    isActive: boolean("is_active").notNull().default(true),
+
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (table) => [
+    index("idx_services_parent_id").on(table.parentId),
+    index("idx_services_public")
+      .on(table.parentId, table.sortOrder, table.id)
+      .where(sql`${table.isPublished} = true AND ${table.isActive} = true`),
+  ],
+);
+
+// Parent ↔ children self-join via Drizzle relations API. Enables:
+//   db.query.services.findMany({
+//     where: isNull(services.parentId),
+//     with: { children: true }
+//   })
+// `lib/db/index.ts` already passes the full schema to `drizzle({ schema })`,
+// so this relation is auto-registered with the query builder.
+export const servicesRelations = relations(services, ({ one, many }) => ({
+  parent: one(services, {
+    fields: [services.parentId],
+    references: [services.id],
+    relationName: "parent_child",
+  }),
+  children: many(services, {
+    relationName: "parent_child",
+  }),
+}));
