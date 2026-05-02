@@ -3,7 +3,7 @@
 import { and, eq, inArray, isNull, sql } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { auth } from "@/auth";
-import { db, services } from "@/lib/db";
+import { db, neonSql, services } from "@/lib/db";
 import { slugify } from "@/lib/utils/slugify";
 import { ICON_NAMES } from "@/components/Icon";
 
@@ -650,14 +650,16 @@ export async function deleteService(
 
   try {
     if (children.length > 0) {
-      // db.transaction on the neon-http driver batches statements into
-      // a single atomic HTTP request. If either delete fails, Postgres
-      // rolls back; no orphaned children left referencing a vanished
-      // parent.
-      await db.transaction(async (tx) => {
-        await tx.delete(services).where(eq(services.parentId, serviceId));
-        await tx.delete(services).where(eq(services.id, serviceId));
-      });
+      // drizzle-orm/neon-http does NOT support db.transaction(callback)
+      // (the interactive pattern). Use Neon's HTTP non-interactive
+      // transaction API instead — a list of pre-built query promises
+      // executed atomically in one round-trip. Pass UNAWAITED tagged
+      // template invocations; awaiting them individually before the
+      // call would lose the atomic-batch semantics.
+      await neonSql.transaction([
+        neonSql`DELETE FROM services WHERE parent_id = ${serviceId}`,
+        neonSql`DELETE FROM services WHERE id = ${serviceId}`,
+      ]);
     } else {
       await db.delete(services).where(eq(services.id, serviceId));
     }
