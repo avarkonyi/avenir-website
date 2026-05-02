@@ -5,7 +5,7 @@ import { and, eq, isNull } from "drizzle-orm";
 import { db, messages } from "@/lib/db";
 import { markAsRead, markAsUnread } from "../_actions";
 import { formatAbsoluteHu } from "../_components/formatRelative";
-import { DeleteButton } from "./_components/DeleteButton";
+import { ArchiveButton } from "./_components/ArchiveButton";
 
 export default async function MessageDetailPage({
   params,
@@ -21,7 +21,7 @@ export default async function MessageDetailPage({
   const [row] = await db
     .select()
     .from(messages)
-    .where(and(eq(messages.id, id), isNull(messages.deletedAt)))
+    .where(and(eq(messages.id, id), isNull(messages.archivedAt)))
     .limit(1);
 
   if (!row) notFound();
@@ -217,7 +217,7 @@ export default async function MessageDetailPage({
 
         <div style={{ flex: 1 }} />
 
-        <DeleteButton messageId={row.id} />
+        <ArchiveButton messageId={row.id} />
       </section>
     </div>
   );

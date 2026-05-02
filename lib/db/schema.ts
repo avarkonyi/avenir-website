@@ -134,19 +134,31 @@ export const positions = pgTable(
 //    notification is best-effort. The `service` column stores a service id
 //    string (not FK) since services live in translations, not in DB.
 //
-//    State:
-//      - `read_at`: NULL = unread, datetime = when admin marked as read.
-//        Doubles as audit trail (avoids a separate boolean + timestamp).
-//      - `deleted_at`: NULL = active, datetime = soft-deleted (Iter 2 admin).
-//        Soft delete keeps data recoverable; hard delete deferred to a
-//        future "Trash" view.
+//    State is DERIVED from timestamp presence (Iter 3B; A2 — no enum):
+//      archived_at IS NOT NULL  → 'archived'  (highest precedence)
+//      replied_at  IS NOT NULL  → 'replied'
+//      read_at     IS NOT NULL  → 'read'
+//      else                     → 'new'
+//
+//    Columns:
+//      - `read_at`     — NULL = unread; set on first detail-view mount
+//                        via the auto-mark-as-read client component.
+//      - `archived_at` — NULL = active; renamed from `deleted_at` in 0006.
+//                        Iter 2's "soft delete" was always semantically
+//                        an archive (recoverable, never destructive); the
+//                        rename brings the schema name in line with intent.
+//      - `replied_at`, `reply_subject`, `reply_body` — populated by the
+//                        admin reply action (Iter 3B). The reply body and
+//                        subject are stored verbatim for audit trail; the
+//                        actual email delivery is via Resend SDK and is
+//                        not transactional with this DB write.
 //
 //    Indexes:
 //      - `idx_messages_unread` — partial: unread + active, newest first.
 //      - `idx_messages_inbox`  — partial: all active, newest first
 //        (admin /messages list query — added 2026-05).
-//      Both filter `deleted_at IS NULL` so soft-deleted rows don't appear
-//      in the inbox views.
+//      Both filter `archived_at IS NULL` so archived rows don't appear
+//      in the default inbox views.
 // ────────────────────────────────────────────────────────────────────────────
 export const messages = pgTable(
   "messages",
@@ -160,16 +172,19 @@ export const messages = pgTable(
     message: text("message"),
     locale: varchar("locale", { length: 5 }).notNull(),
     readAt: timestamp("read_at", { withTimezone: true }),
-    deletedAt: timestamp("deleted_at", { withTimezone: true }),
+    archivedAt: timestamp("archived_at", { withTimezone: true }),
+    repliedAt: timestamp("replied_at", { withTimezone: true }),
+    replySubject: text("reply_subject"),
+    replyBody: text("reply_body"),
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
   },
   (table) => [
     index("idx_messages_unread")
       .on(sql`${table.createdAt} DESC`)
-      .where(sql`${table.readAt} IS NULL AND ${table.deletedAt} IS NULL`),
+      .where(sql`${table.readAt} IS NULL AND ${table.archivedAt} IS NULL`),
     index("idx_messages_inbox")
       .on(sql`${table.createdAt} DESC`)
-      .where(sql`${table.deletedAt} IS NULL`),
+      .where(sql`${table.archivedAt} IS NULL`),
   ],
 );
 

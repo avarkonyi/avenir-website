@@ -1,17 +1,21 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { softDeleteMessage } from "../../_actions";
+import { archiveMessage } from "../../_actions";
 
-// Confirm-on-click delete button. Two-stage: first click flips the
+// Confirm-on-click archive button. Two-stage: first click flips the
 // label to "Biztos? Még kattints" + arms a 5-second timer to revert
 // the armed state if no second click. Second click within the window
 // invokes the server action.
 //
-// We use a client component because the confirm UX is interactive.
-// Server action `softDeleteMessage` redirects to /admin/messages, so
+// Iter 3B Commit 4 will replace this with a proper confirm modal +
+// add an unarchive (immediate, no confirm) flow. For Commit 1 we
+// preserve the existing UX so the rename is a behaviour-equivalent
+// substitution.
+//
+// Server action `archiveMessage` redirects to /admin/messages, so
 // after a successful invocation this component unmounts.
-export function DeleteButton({ messageId }: { messageId: number }) {
+export function ArchiveButton({ messageId }: { messageId: number }) {
   const [armed, setArmed] = useState(false);
   const [pending, startTransition] = useTransition();
 
@@ -23,7 +27,7 @@ export function DeleteButton({ messageId }: { messageId: number }) {
       return;
     }
     startTransition(async () => {
-      await softDeleteMessage(messageId);
+      await archiveMessage(messageId);
     });
   };
 
@@ -48,10 +52,10 @@ export function DeleteButton({ messageId }: { messageId: number }) {
       }}
     >
       {pending
-        ? "Törlés folyamatban…"
+        ? "Archiválás folyamatban…"
         : armed
           ? "Biztos? Még kattints"
-          : "Törlés"}
+          : "Archiválás"}
     </button>
   );
 }

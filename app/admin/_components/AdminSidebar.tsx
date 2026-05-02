@@ -13,7 +13,7 @@ export async function AdminSidebar() {
   const [{ value }] = await db
     .select({ value: sql<number>`count(*)::int` })
     .from(messages)
-    .where(and(isNull(messages.readAt), isNull(messages.deletedAt)));
+    .where(and(isNull(messages.readAt), isNull(messages.archivedAt)));
   const unreadCount = value ?? 0;
 
   return <AdminSidebarClient unreadCount={unreadCount} />;

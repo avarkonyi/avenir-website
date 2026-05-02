@@ -43,6 +43,13 @@
       "when": 1778400000000,
       "tag": "0005_news_admin_iter3a",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1778500000000,
+      "tag": "0006_rename_messages_deleted_to_archived",
+      "breakpoints": true
     }
   ]
 }

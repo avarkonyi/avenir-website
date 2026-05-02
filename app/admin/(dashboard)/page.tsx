@@ -14,11 +14,11 @@ export default async function AdminDashboard() {
   const [{ value: totalMessages }] = await db
     .select({ value: sql<number>`count(*)::int` })
     .from(messages)
-    .where(isNull(messages.deletedAt));
+    .where(isNull(messages.archivedAt));
   const [{ value: unreadMessages }] = await db
     .select({ value: sql<number>`count(*)::int` })
     .from(messages)
-    .where(and(isNull(messages.readAt), isNull(messages.deletedAt)));
+    .where(and(isNull(messages.readAt), isNull(messages.archivedAt)));
 
   const [{ value: totalNews }] = await db
     .select({ value: sql<number>`count(*)::int` })

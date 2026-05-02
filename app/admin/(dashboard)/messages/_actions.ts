@@ -11,10 +11,10 @@ import { db, messages } from "@/lib/db";
 // these actions are also reachable via direct POST to the action URL,
 // so a defense-in-depth check is mandatory.
 //
-// All three revalidate the inbox list path. The detail-page revalidate
-// is handled implicitly by Next's tag-less invalidation when the
-// parent path is revalidated (state on /admin/messages/[id] re-renders
-// when the data changes).
+// All actions revalidate the inbox list path. The detail-page revalidate
+// is handled implicitly by Next's tag-less invalidation when the parent
+// path is revalidated (state on /admin/messages/[id] re-renders when
+// the data changes).
 
 async function requireAdmin() {
   const session = await auth();
@@ -46,16 +46,17 @@ export async function markAsUnread(id: number): Promise<void> {
   revalidatePath("/admin");
 }
 
-// Soft delete. Sets deleted_at = now(); the inbox query filters
-// `deleted_at IS NULL`. Hard delete + a "Trash" recovery view are a
-// future iteration — for now, deleted rows stay in the table and a
-// DBA can `DELETE WHERE deleted_at < now() - interval '90 days'` if
-// retention pressure mounts.
-export async function softDeleteMessage(id: number): Promise<void> {
+// Archive. Sets archived_at = now(); the inbox query filters
+// `archived_at IS NULL`. Recoverable via clearing the timestamp — the
+// derived state then returns naturally to whatever read_at / replied_at
+// presence indicates (no previous-status column needed). Hard delete is
+// intentionally not exposed; if retention pressure mounts a DBA can
+// `DELETE WHERE archived_at < now() - interval '90 days'`.
+export async function archiveMessage(id: number): Promise<void> {
   await requireAdmin();
   await db
     .update(messages)
-    .set({ deletedAt: new Date() })
+    .set({ archivedAt: new Date() })
     .where(eq(messages.id, id));
   revalidatePath("/admin/messages");
   revalidatePath("/admin");

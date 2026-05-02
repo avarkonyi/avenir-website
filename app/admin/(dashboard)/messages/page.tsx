@@ -27,8 +27,11 @@ export default async function MessagesListPage({
 
   await connection();
 
-  // Build the WHERE clause incrementally. Always exclude soft-deleted.
-  const conditions = [isNull(messages.deletedAt)];
+  // Build the WHERE clause incrementally. Always exclude archived. The
+  // 5-pill filter UI (Iter 3B Commit 4) layers in replied/archived chips;
+  // for now the existing 3-state filter (Mind/Olvasatlan/Olvasott) keeps
+  // working because the read_at predicate is unchanged.
+  const conditions = [isNull(messages.archivedAt)];
   if (status === "unread") conditions.push(isNull(messages.readAt));
   if (status === "read") conditions.push(isNotNull(messages.readAt));
   if (locale) conditions.push(eq(messages.locale, locale));
@@ -61,7 +64,7 @@ export default async function MessagesListPage({
   const totalActive = await db
     .select({ value: sql<number>`count(*)::int` })
     .from(messages)
-    .where(isNull(messages.deletedAt));
+    .where(isNull(messages.archivedAt));
 
   const total = totalActive[0]?.value ?? 0;
   const filteredCount = rows.length;
