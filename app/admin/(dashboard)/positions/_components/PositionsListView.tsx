@@ -1,8 +1,9 @@
+import Link from "next/link";
 import type { positions } from "@/lib/db";
 
 // Pure server component. No state, no client interactivity. The
-// "Szerkesztés" cell is a disabled <span> placeholder until Iter 4
-// C2 wires the actual edit route.
+// "Szerkesztés" cell links to the per-row edit page (Iter 4 C2).
+// Activate/deactivate + delete actions land in C3.
 
 export type PositionRow = typeof positions.$inferSelect;
 
@@ -92,17 +93,17 @@ export function PositionsListView({ rows, totalCount }: Props) {
                 )}
               </Td>
               <Td>
-                <span
-                  title="A szerkesztés a következő commitban érkezik."
+                <Link
+                  href={`/admin/positions/${row.id}/edit`}
                   style={{
-                    color: "#94A3B8",
+                    color: "#0B1E3E",
+                    textDecoration: "none",
                     fontWeight: 600,
                     fontSize: 13,
-                    cursor: "not-allowed",
                   }}
                 >
                   Szerkesztés
-                </span>
+                </Link>
               </Td>
             </tr>
           ))}

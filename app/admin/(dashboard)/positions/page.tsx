@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { connection } from "next/server";
 import { asc, desc } from "drizzle-orm";
 import { db, positions } from "@/lib/db";
@@ -68,12 +69,10 @@ export default async function AdminPositionsPage({
             {inactiveCount > 0 ? ` (${inactiveCount} inaktív)` : ""}
           </p>
         </div>
-        <button
-          type="button"
-          disabled
-          title="A létrehozás a következő commitban érkezik."
+        <Link
+          href="/admin/positions/new"
           style={{
-            background: "#CBD5E1",
+            background: "#D1172E",
             color: "#fff",
             border: "none",
             padding: "10px 18px",
@@ -82,13 +81,12 @@ export default async function AdminPositionsPage({
             fontWeight: 600,
             letterSpacing: 0.5,
             textTransform: "uppercase",
-            cursor: "not-allowed",
-            opacity: 0.7,
-            fontFamily: "inherit",
+            textDecoration: "none",
+            display: "inline-block",
           }}
         >
           + Új pozíció
-        </button>
+        </Link>
       </header>
 
       <PositionsFilters
