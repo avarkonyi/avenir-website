@@ -7,6 +7,7 @@ import { db, messages } from "@/lib/db";
 import { formatTimestampHu } from "../_components/formatRelative";
 import { ArchiveButton } from "./_components/ArchiveButton";
 import { MarkAsReadOnMount } from "./_components/MarkAsReadOnMount";
+import { ReplyForm } from "./_components/ReplyForm";
 
 // Hungarian locale flags + label for the metadata grid. Kept in-file
 // (rather than reaching into the list page's LocaleBadge helper) so
@@ -212,21 +213,23 @@ export default async function MessageDetailPage({
         </div>
       </section>
 
-      {/* Card 3 — Válasz placeholder (Commit 3 will replace) */}
+      {/* Card 3 — Válasz */}
       <section
         style={{
-          background: "#F8FAFC",
-          border: "1px dashed #CBD5E1",
+          background: "#fff",
+          border: "1px solid #E2E8F0",
           borderRadius: 6,
           padding: "20px 24px",
-          color: "#64748B",
-          fontSize: 13,
         }}
       >
         <h2 style={cardTitleStyle}>Válasz</h2>
-        <p style={{ margin: 0 }}>
-          Válasz funkció hamarosan (Iter 3B Commit 3).
-        </p>
+        <ReplyForm
+          messageId={row.id}
+          recipientEmail={row.email}
+          recipientName={row.name}
+          recipientLocale={row.locale}
+          isArchived={row.archivedAt !== null}
+        />
       </section>
     </div>
   );
