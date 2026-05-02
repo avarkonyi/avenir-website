@@ -1,5 +1,30 @@
 import type { ReactElement } from "react";
 
+// Public list of valid icon keys. Used by admin form dropdowns
+// (Services, etc.) to constrain choices to known names. Keep this
+// list in sync with the `icons` map inside Icon() — adding a key
+// here without a matching SVG renders nothing at runtime; adding
+// an SVG without listing here hides it from admin form pickers.
+export const ICON_NAMES = [
+  "shield",
+  "sparkle",
+  "building",
+  "desk",
+  "leaf",
+  "wrench",
+  "eye",
+  "gear",
+  "menu",
+  "close",
+  "arrow",
+  "pin",
+  "clock",
+  "check",
+  "phone",
+] as const;
+
+export type IconName = (typeof ICON_NAMES)[number];
+
 type IconProps = {
   name: string;
   size?: number;
