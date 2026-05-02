@@ -1,7 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useMemo, useState, useTransition } from "react";
+import { toast } from "sonner";
 import { createNews, updateNews, type NewsFormPayload } from "../_actions";
 import { slugify } from "@/lib/utils/slugify";
 import { DeleteButton } from "./DeleteButton";
@@ -11,10 +13,14 @@ import { DeleteButton } from "./DeleteButton";
 //   - Locale tab state
 //   - Live slug auto-fill from titleHu (until user manually edits the slug)
 //   - useTransition wraps the server-action call
+//   - Confirm-on-publish modal state
 //
 // Per-locale model: each tab has Cím/Összefoglaló/Tartalom + a "Publikálva"
 // toggle. HU title is required (DB-side NOT NULL); EN/DE/ZH variants are
 // fully optional and collapse to NULL on the server when empty/whitespace.
+//
+// Server actions return { ok, ... } objects — no NEXT_REDIRECT to handle.
+// On success we toast + router.push (create) / router.refresh (update).
 
 type Locale = "hu" | "en" | "de" | "zh";
 const LOCALES: readonly Locale[] = ["hu", "en", "de", "zh"];
@@ -23,6 +29,12 @@ const LOCALE_LABEL: Record<Locale, string> = {
   en: "🇬🇧 English",
   de: "🇩🇪 Deutsch",
   zh: "🇨🇳 中文",
+};
+const LOCALE_NAME_HU: Record<Locale, string> = {
+  hu: "magyar",
+  en: "angol",
+  de: "német",
+  zh: "kínai",
 };
 
 type FormState = {
@@ -74,6 +86,7 @@ type Props =
   | { mode: "edit"; initial: EditInitial & { date: string } };
 
 export function NewsForm(props: Props) {
+  const router = useRouter();
   const initial: FormState =
     props.mode === "edit"
       ? { ...props.initial, date: isoToLocalInput(props.initial.date) }
@@ -81,12 +94,13 @@ export function NewsForm(props: Props) {
 
   const [state, setState] = useState<FormState>(initial);
   const [activeTab, setActiveTab] = useState<Locale>("hu");
-  // Slug touched once the user manually types in the slug field, after which
-  // the title→slug auto-fill stops. Edit mode starts touched (preserve
-  // the existing slug unless user wipes it).
   const [slugTouched, setSlugTouched] = useState<boolean>(props.mode === "edit");
   const [pending, startTransition] = useTransition();
-  const [error, setError] = useState<string | null>(null);
+  // Pending publish confirmation. Null when no modal is open. Carries
+  // the locale that triggered the toggle so the modal text can reference it.
+  const [confirmingLocale, setConfirmingLocale] = useState<Locale | null>(
+    null,
+  );
 
   const id = props.mode === "edit" ? props.initial.id : undefined;
 
@@ -108,7 +122,6 @@ export function NewsForm(props: Props) {
   function update<K extends keyof FormState>(key: K, value: FormState[K]) {
     setState((prev) => {
       const next = { ...prev, [key]: value };
-      // Live slug auto-fill from titleHu if user hasn't manually edited slug
       if (key === "titleHu" && !slugTouched) {
         next.slug = slugify(String(value));
       }
@@ -119,6 +132,28 @@ export function NewsForm(props: Props) {
   function handleSlugChange(value: string) {
     setSlugTouched(true);
     setState((prev) => ({ ...prev, slug: value }));
+  }
+
+  // Per-locale publish toggle. Going OFF→ON triggers the confirm modal;
+  // going ON→OFF or unchanged is immediate.
+  function togglePublished(locale: Locale, next: boolean) {
+    const cap = locale.charAt(0).toUpperCase() + locale.slice(1);
+    const pubKey = `published${cap}` as keyof FormState;
+    const current = state[pubKey] === true;
+    if (next && !current) {
+      setConfirmingLocale(locale);
+      return;
+    }
+    setState((prev) => ({ ...prev, [pubKey]: next }));
+  }
+
+  function confirmPublish() {
+    if (!confirmingLocale) return;
+    const cap =
+      confirmingLocale.charAt(0).toUpperCase() + confirmingLocale.slice(1);
+    const pubKey = `published${cap}` as keyof FormState;
+    setState((prev) => ({ ...prev, [pubKey]: true }));
+    setConfirmingLocale(null);
   }
 
   function buildPayload(): NewsFormPayload {
@@ -146,10 +181,9 @@ export function NewsForm(props: Props) {
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setError(null);
 
     if (!state.titleHu.trim()) {
-      setError("A magyar cím kötelező.");
+      toast.error("A magyar cím kötelező.");
       setActiveTab("hu");
       return;
     }
@@ -158,16 +192,28 @@ export function NewsForm(props: Props) {
       try {
         const payload = buildPayload();
         if (props.mode === "create") {
-          await createNews(payload);
+          const result = await createNews(payload);
+          if (result.ok) {
+            toast.success(result.message);
+            router.push(`/admin/news/${result.id}/edit`);
+          } else {
+            toast.error(result.error);
+          }
         } else {
-          await updateNews(id!, payload);
+          const result = await updateNews(id!, payload);
+          if (result.ok) {
+            toast.success(result.message);
+            router.refresh();
+          } else {
+            toast.error(result.error);
+          }
         }
       } catch (err) {
-        // NEXT_REDIRECT propagates through useTransition; only legit
-        // app errors land here.
-        if (err instanceof Error && err.message !== "NEXT_REDIRECT") {
-          setError(err.message);
-        }
+        toast.error(
+          err instanceof Error
+            ? err.message
+            : "Váratlan hiba történt. Próbáld újra.",
+        );
       }
     });
   }
@@ -264,6 +310,7 @@ export function NewsForm(props: Props) {
             locale={activeTab}
             state={state}
             update={update}
+            onTogglePublished={togglePublished}
           />
         </div>
       </section>
@@ -311,22 +358,6 @@ export function NewsForm(props: Props) {
         </Field>
       </section>
 
-      {error && (
-        <div
-          role="alert"
-          style={{
-            background: "rgba(209,23,46,0.08)",
-            border: "1px solid rgba(209,23,46,0.3)",
-            borderRadius: 4,
-            padding: "10px 14px",
-            fontSize: 13,
-            color: "#B91C1C",
-          }}
-        >
-          {error}
-        </div>
-      )}
-
       {/* Action bar */}
       <div
         style={{
@@ -371,11 +402,22 @@ export function NewsForm(props: Props) {
             cursor: pending ? "wait" : "pointer",
             fontFamily: "inherit",
             opacity: pending ? 0.7 : 1,
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 8,
           }}
         >
           {pending ? "Mentés…" : "Mentés"}
         </button>
       </div>
+
+      {confirmingLocale && (
+        <PublishConfirmDialog
+          locale={confirmingLocale}
+          onCancel={() => setConfirmingLocale(null)}
+          onConfirm={confirmPublish}
+        />
+      )}
     </form>
   );
 }
@@ -384,10 +426,12 @@ function LocaleFields({
   locale,
   state,
   update,
+  onTogglePublished,
 }: {
   locale: Locale;
   state: FormState;
   update: <K extends keyof FormState>(key: K, value: FormState[K]) => void;
+  onTogglePublished: (locale: Locale, next: boolean) => void;
 }) {
   const cap = locale.charAt(0).toUpperCase() + locale.slice(1);
   const titleKey = `title${cap}` as keyof FormState;
@@ -461,11 +505,122 @@ function LocaleFields({
         <input
           type="checkbox"
           checked={state[pubKey] === true}
-          onChange={(e) => update(pubKey, e.target.checked as never)}
+          onChange={(e) => onTogglePublished(locale, e.target.checked)}
           style={{ width: 16, height: 16 }}
         />
         Publikálva ezen a nyelven
       </label>
+    </div>
+  );
+}
+
+function PublishConfirmDialog({
+  locale,
+  onCancel,
+  onConfirm,
+}: {
+  locale: Locale;
+  onCancel: () => void;
+  onConfirm: () => void;
+}) {
+  return (
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="publish-confirm-title"
+      style={{
+        position: "fixed",
+        inset: 0,
+        background: "rgba(11,30,62,0.55)",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        zIndex: 50,
+        padding: 16,
+      }}
+      onClick={onCancel}
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        style={{
+          background: "#fff",
+          borderRadius: 6,
+          maxWidth: 460,
+          width: "100%",
+          padding: "24px 24px 20px",
+          boxShadow: "0 24px 48px rgba(11,30,62,0.25)",
+        }}
+      >
+        <h2
+          id="publish-confirm-title"
+          style={{
+            margin: 0,
+            fontSize: 18,
+            fontWeight: 700,
+            color: "#0B1E3E",
+          }}
+        >
+          Biztosan publikálni szeretnéd?
+        </h2>
+        <p
+          style={{
+            margin: "12px 0 0",
+            fontSize: 14,
+            color: "#475569",
+            lineHeight: 1.55,
+          }}
+        >
+          A {LOCALE_NAME_HU[locale]} nyelvű tartalom publikálása után a
+          publikus oldalon mindenki láthatja. (A publikálás csak
+          mentés után válik élővé.)
+        </p>
+        <div
+          style={{
+            marginTop: 20,
+            display: "flex",
+            justifyContent: "flex-end",
+            gap: 10,
+          }}
+        >
+          <button
+            type="button"
+            onClick={onCancel}
+            style={{
+              background: "#fff",
+              color: "#0B1E3E",
+              border: "1px solid #CBD5E1",
+              padding: "10px 18px",
+              borderRadius: 4,
+              fontSize: 13,
+              fontWeight: 600,
+              letterSpacing: 0.5,
+              cursor: "pointer",
+              fontFamily: "inherit",
+            }}
+          >
+            Mégse
+          </button>
+          <button
+            type="button"
+            onClick={onConfirm}
+            style={{
+              background: "#15803D",
+              color: "#fff",
+              border: "none",
+              padding: "10px 18px",
+              borderRadius: 4,
+              fontSize: 13,
+              fontWeight: 700,
+              letterSpacing: 0.5,
+              textTransform: "uppercase",
+              cursor: "pointer",
+              fontFamily: "inherit",
+            }}
+          >
+            Publikálás
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
@@ -551,6 +706,7 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
     <h2
       style={{
         margin: 0,
+        marginBottom: 12,
         fontSize: 12,
         letterSpacing: 0.8,
         textTransform: "uppercase",
@@ -578,9 +734,6 @@ function inputStyle(): React.CSSProperties {
   };
 }
 
-// `<input type="datetime-local">` requires a value in the form
-// "YYYY-MM-DDTHH:mm" in the local timezone (no Z, no seconds). These
-// helpers round-trip between that string and a Date.
 function toLocalInput(d: Date): string {
   const pad = (n: number) => String(n).padStart(2, "0");
   return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;

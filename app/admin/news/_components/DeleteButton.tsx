@@ -1,14 +1,17 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
+import { toast } from "sonner";
 import { deleteNews } from "../_actions";
 
 // Two-stage confirm-on-click delete (mirrors the messages module).
-// First click arms; second click within 5s invokes the server action;
-// if the user doesn't follow up, we auto-disarm. The server action
-// redirects to /admin/news on success, so this component unmounts.
+// First click arms; second click within 5s invokes the server action.
+// On success we toast + push the user to the list (the action no longer
+// redirects — see _actions.ts for the rationale).
 
 export function DeleteButton({ newsId }: { newsId: number }) {
+  const router = useRouter();
   const [armed, setArmed] = useState(false);
   const [pending, startTransition] = useTransition();
 
@@ -20,11 +23,21 @@ export function DeleteButton({ newsId }: { newsId: number }) {
     }
     startTransition(async () => {
       try {
-        await deleteNews(newsId);
-      } catch (err) {
-        if (err instanceof Error && err.message !== "NEXT_REDIRECT") {
-          alert(err.message);
+        const result = await deleteNews(newsId);
+        if (result.ok) {
+          toast.success(result.message);
+          router.push("/admin/news");
+        } else {
+          toast.error(result.error);
+          setArmed(false);
         }
+      } catch (err) {
+        toast.error(
+          err instanceof Error
+            ? err.message
+            : "Váratlan hiba történt. Próbáld újra.",
+        );
+        setArmed(false);
       }
     });
   };

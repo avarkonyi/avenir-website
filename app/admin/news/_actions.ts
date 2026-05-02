@@ -2,27 +2,26 @@
 
 import { and, eq, isNull, ne } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
 import { auth } from "@/auth";
 import { db, news } from "@/lib/db";
 import { FALLBACK_SLUG, SLUG_MAX_LENGTH, slugify } from "@/lib/utils/slugify";
 
-// Server actions for the News CRUD module. Auth check happens inside
-// each function — middleware gates /admin/* but server actions are also
-// reachable via direct POST to the action URL, so a defense-in-depth
-// check is mandatory.
+// Server actions for the News CRUD module.
+//
+// Result-return pattern (Iter 3A polish): actions no longer call
+// redirect() on the happy path. Instead they return an `ActionResult`,
+// and the client (NewsForm / DeleteButton) handles the post-success
+// navigation via router.push() AFTER showing a toast. Reason: a server-
+// side redirect tears down the page before any toast can mount.
+// Auth failures and other unexpected errors still throw, since they're
+// not user-correctable.
 //
 // Slug strategy:
-//   - User-entered slug wins (they may want a custom URL).
+//   - User-entered slug wins (custom URL).
 //   - Otherwise: slugify(titleHu).
 //   - Either way, run through uniqueSlug() to dedup against existing
 //     non-deleted rows. Suffix grows -2, -3, … and shrinks the base
 //     when needed to stay under SLUG_MAX_LENGTH.
-//
-// IMPORTANT: redirect() throws NEXT_REDIRECT internally (Next.js
-// control-flow exception). Wrapping it in try/catch swallows the
-// redirect and breaks navigation. The pattern below puts redirect()
-// AFTER the try/catch, on the happy path only.
 
 export type NewsFormPayload = {
   titleHu: string;
@@ -44,6 +43,18 @@ export type NewsFormPayload = {
   publishedZh?: boolean;
   date?: Date | string;
 };
+
+export type CreateNewsResult =
+  | { ok: true; id: number; message: string }
+  | { ok: false; error: string };
+
+export type UpdateNewsResult =
+  | { ok: true; message: string }
+  | { ok: false; error: string };
+
+export type DeleteNewsResult =
+  | { ok: true; message: string }
+  | { ok: false; error: string };
 
 async function requireAdmin(): Promise<string> {
   const session = await auth();
@@ -67,8 +78,6 @@ async function uniqueSlug(
     .limit(1);
   if (first.length === 0) return baseSlug;
 
-  // Collision. Iterate -2, -3, … shrinking the base if base + suffix
-  // would exceed SLUG_MAX_LENGTH.
   let counter = 2;
   while (true) {
     const suffix = `-${counter}`;
@@ -91,9 +100,9 @@ async function uniqueSlug(
   }
 }
 
-// Empty / whitespace-only EN/DE/ZH variants collapse to NULL so the public
-// renderer can fall back to HU. HU lead/body are NOT NULL in the DB but
-// allow empty strings (admin may publish a title-only teaser).
+// Empty / whitespace-only EN/DE/ZH variants collapse to NULL so the
+// public renderer can fall back to HU. HU lead/body are NOT NULL in
+// the DB but allow empty strings (admin may publish a title-only teaser).
 function normLocale(value: string | undefined | null): string | null {
   if (value === undefined || value === null) return null;
   const trimmed = value.trim();
@@ -114,14 +123,15 @@ function resolveBaseSlug(payload: NewsFormPayload): string {
   return slugify(payload.titleHu || "");
 }
 
-export async function createNews(payload: NewsFormPayload): Promise<void> {
+export async function createNews(
+  payload: NewsFormPayload,
+): Promise<CreateNewsResult> {
   await requireAdmin();
 
   if (!payload.titleHu || payload.titleHu.trim().length === 0) {
-    throw new Error("A magyar cím kötelező.");
+    return { ok: false, error: "A magyar cím kötelező." };
   }
 
-  let newId: number;
   try {
     const baseSlug = resolveBaseSlug(payload);
     const finalSlug = await uniqueSlug(baseSlug);
@@ -150,25 +160,32 @@ export async function createNews(payload: NewsFormPayload): Promise<void> {
       })
       .returning({ id: news.id });
 
-    newId = inserted.id;
     revalidatePath("/admin/news");
     revalidatePath("/admin");
+
+    return {
+      ok: true,
+      id: inserted.id,
+      message: "Hír sikeresen létrehozva.",
+    };
   } catch (err) {
     console.error("createNews error:", err);
-    throw err instanceof Error ? err : new Error("A hír mentése sikertelen.");
+    return {
+      ok: false,
+      error:
+        err instanceof Error ? err.message : "A hír mentése sikertelen.",
+    };
   }
-
-  redirect(`/admin/news/${newId}/edit`);
 }
 
 export async function updateNews(
   id: number,
   payload: NewsFormPayload,
-): Promise<void> {
+): Promise<UpdateNewsResult> {
   await requireAdmin();
 
   if (!payload.titleHu || payload.titleHu.trim().length === 0) {
-    throw new Error("A magyar cím kötelező.");
+    return { ok: false, error: "A magyar cím kötelező." };
   }
 
   try {
@@ -203,16 +220,19 @@ export async function updateNews(
     revalidatePath("/admin/news");
     revalidatePath(`/admin/news/${id}/edit`);
     revalidatePath("/admin");
+
+    return { ok: true, message: "Hír frissítve." };
   } catch (err) {
     console.error("updateNews error:", err);
-    throw err instanceof Error
-      ? err
-      : new Error("A hír frissítése sikertelen.");
+    return {
+      ok: false,
+      error:
+        err instanceof Error ? err.message : "A hír frissítése sikertelen.",
+    };
   }
-  // No redirect: user stays on /edit, revalidate refreshes the data.
 }
 
-export async function deleteNews(id: number): Promise<void> {
+export async function deleteNews(id: number): Promise<DeleteNewsResult> {
   await requireAdmin();
 
   try {
@@ -222,10 +242,12 @@ export async function deleteNews(id: number): Promise<void> {
       .where(eq(news.id, id));
     revalidatePath("/admin/news");
     revalidatePath("/admin");
+    return { ok: true, message: "Hír törölve." };
   } catch (err) {
     console.error("deleteNews error:", err);
-    throw err instanceof Error ? err : new Error("A hír törlése sikertelen.");
+    return {
+      ok: false,
+      error: err instanceof Error ? err.message : "A hír törlése sikertelen.",
+    };
   }
-
-  redirect("/admin/news");
 }
