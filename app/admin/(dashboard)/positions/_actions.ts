@@ -3,7 +3,7 @@
 import { eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { auth } from "@/auth";
-import { db, positions } from "@/lib/db";
+import { db, neonSql, positions } from "@/lib/db";
 
 // Server actions for the Positions CRUD module. Auth check happens
 // inside each function — middleware gates /admin/* but actions are
@@ -155,6 +155,149 @@ export async function updatePosition(
     return {
       ok: false,
       error: err instanceof Error ? err.message : "A pozíció mentése sikertelen.",
+    };
+  }
+}
+
+// ── inline status toggle (Iter 4 C3) ──────────────────────────────────
+
+// Mirrors Services' togglePublishStatus pattern: server-truth UI (no
+// optimistic flip), .returning({id}) defense-in-depth check for race
+// with concurrent delete, friendly Hungarian error on missing row.
+//
+// No cascade rule (positions has no parent/child hierarchy — flat
+// schema). active=false hides the row from the public Career
+// section's WHERE active=true query but leaves the row in the DB
+// for later re-activation.
+export async function togglePositionActive(
+  id: number,
+  nextActive: boolean,
+): Promise<{ ok: true } | { ok: false; error: string }> {
+  await requireAdmin();
+
+  try {
+    const [updated] = await db
+      .update(positions)
+      .set({ active: nextActive, updatedAt: new Date() })
+      .where(eq(positions.id, id))
+      .returning({ id: positions.id });
+    if (!updated) {
+      return { ok: false, error: "Pozíció nem található." };
+    }
+    revalidatePath("/admin/positions");
+    return { ok: true };
+  } catch (err) {
+    console.error("togglePositionActive error:", err);
+    return {
+      ok: false,
+      error: err instanceof Error ? err.message : "A művelet sikertelen.",
+    };
+  }
+}
+
+// ── permanent hard delete (Iter 4 C3) ─────────────────────────────────
+
+// Permanent hard delete — no archive/recovery, the row is gone.
+// Distinct from active=false (soft-hide). Positions has no children
+// in the schema, so no cascade logic is needed; a single DELETE is
+// sufficient. .returning({id}) defense-in-depth surfaces a friendly
+// error if the row vanished between the modal-open and the
+// confirm-click (concurrent delete race).
+export async function deletePosition(
+  id: number,
+): Promise<{ ok: true } | { ok: false; error: string }> {
+  await requireAdmin();
+
+  try {
+    const [deleted] = await db
+      .delete(positions)
+      .where(eq(positions.id, id))
+      .returning({ id: positions.id });
+    if (!deleted) {
+      return { ok: false, error: "Pozíció nem található." };
+    }
+    revalidatePath("/admin/positions");
+    return { ok: true };
+  } catch (err) {
+    console.error("deletePosition error:", err);
+    return {
+      ok: false,
+      error: err instanceof Error ? err.message : "Törlés sikertelen.",
+    };
+  }
+}
+
+// ── reorder active positions (Iter 4 C3) ──────────────────────────────
+
+// ATOMIC reorder via Neon's HTTP non-interactive transaction. All
+// UPDATEs run as a single batched HTTP request that Postgres commits
+// or rolls back as a unit — partial failure can't leave a half-
+// renumbered set.
+//
+// (Note: reorderTopLevelServices in services/_actions.ts uses
+// sequential awaits — non-atomic. That predates the Iter 3E
+// discovery that neonSql.transaction([...]) works on neon-http.
+// Flagged for Phase 1.5 backlog cleanup; not refactored here.)
+//
+// Validates the input set against the live active rows BEFORE any
+// write: shape, dedup, set-equality. Stale input from a tab opened
+// before someone else inactivated/deleted a row gets a friendly
+// "frissítsd az oldalt" error rather than a silent no-op or
+// partial reorder.
+//
+// The `AND active = true` guard inside each UPDATE is defense-in-
+// depth against TOCTOU: if a row is inactivated between the
+// set-equality check and the transaction commit, that row's UPDATE
+// silently no-ops on 0 rows. Acceptable trade-off vs SELECT FOR
+// UPDATE locking.
+export async function reorderPositions(
+  orderedIds: number[],
+): Promise<{ ok: true } | { ok: false; error: string }> {
+  await requireAdmin();
+
+  if (!Array.isArray(orderedIds) || orderedIds.length === 0) {
+    return { ok: false, error: "Üres sorrend." };
+  }
+  if (!orderedIds.every((id) => Number.isInteger(id) && id > 0)) {
+    return { ok: false, error: "Érvénytelen ID a sorrendben." };
+  }
+  const inputIds = new Set(orderedIds);
+  if (inputIds.size !== orderedIds.length) {
+    return { ok: false, error: "Duplikált ID a sorrendben." };
+  }
+
+  const activeRows = await db
+    .select({ id: positions.id })
+    .from(positions)
+    .where(eq(positions.active, true));
+  const activeIds = new Set(activeRows.map((r) => r.id));
+
+  if (
+    activeIds.size !== inputIds.size ||
+    ![...inputIds].every((id) => activeIds.has(id))
+  ) {
+    return {
+      ok: false,
+      error:
+        "A sorrend nem egyezik az aktív pozíciók listájával. Frissítsd az oldalt.",
+    };
+  }
+
+  try {
+    await neonSql.transaction(
+      orderedIds.map(
+        (id, index) =>
+          neonSql`UPDATE positions SET sort_order = ${index}, updated_at = NOW() WHERE id = ${id} AND active = true`,
+      ),
+    );
+    revalidatePath("/admin/positions");
+    return { ok: true };
+  } catch (err) {
+    console.error("reorderPositions error:", err);
+    return {
+      ok: false,
+      error:
+        err instanceof Error ? err.message : "A sorrend mentése sikertelen.",
     };
   }
 }
