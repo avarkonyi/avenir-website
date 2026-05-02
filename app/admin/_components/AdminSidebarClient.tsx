@@ -18,7 +18,7 @@ const NAV_ITEMS: NavItem[] = [
   { label: "Üzenetek", href: "/admin/messages", enabled: true, showUnreadBadge: true },
   { label: "Szolgáltatások", href: "/admin/services", enabled: true },
   { label: "Hírek", href: "/admin/news", enabled: true },
-  { label: "Karrier", href: "/admin/positions", enabled: false },
+  { label: "Karrier", href: "/admin/positions", enabled: true },
   { label: "Partnerek", href: "/admin/partners", enabled: false },
   { label: "Tanúsítványok", href: "/admin/certifications", enabled: false },
   { label: "Beállítások", href: "/admin/settings", enabled: false },
