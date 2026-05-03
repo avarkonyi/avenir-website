@@ -2,11 +2,11 @@ import type { Metadata, Viewport } from "next";
 import { connection } from "next/server";
 import { notFound } from "next/navigation";
 import { Geist, Barlow_Condensed } from "next/font/google";
-import { asc, eq } from "drizzle-orm";
+import { and, asc, eq, isNull } from "drizzle-orm";
 import "../globals.css";
 import { getTranslation, LOCALES } from "@/lib/i18n";
 import { JsonLd } from "@/components/JsonLd";
-import { db, certifications } from "@/lib/db";
+import { db, certifications, services } from "@/lib/db";
 import {
   SEO_DATA,
   SEO_FAQS_HU,
@@ -16,7 +16,6 @@ import {
   META_KEYWORDS_HU,
   SECURITY_FIRST_DESCRIPTION,
   SCHEMA_KNOWS_ABOUT,
-  SCHEMA_SERVICE_ORDER,
   credentialId,
   type SeoLocale,
 } from "@/lib/seo-data";
@@ -125,7 +124,7 @@ type CertSchemaInput = {
 
 function buildJsonLdSchemas(
   localeIso: SeoLocale,
-  services: readonly { readonly id: string; readonly t: string; readonly d: string }[],
+  services: readonly { readonly name: string; readonly description: string }[],
   certs: readonly CertSchemaInput[],
 ) {
   const orgId = `${SEO_DATA.url}/#organization`;
@@ -209,20 +208,13 @@ function buildJsonLdSchemas(
       "@context": "https://schema.org",
       "@type": "ItemList",
       name: "Avenir szolgáltatások",
-      itemListElement: SCHEMA_SERVICE_ORDER.flatMap((id, i) => {
-        const svc = services.find((s) => s.id === id);
-        return svc
-          ? [
-              {
-                "@type": "Service",
-                position: i + 1,
-                name: svc.t,
-                description: svc.d,
-                provider: { "@id": orgId },
-              },
-            ]
-          : [];
-      }),
+      itemListElement: services.map((svc, i) => ({
+        "@type": "Service",
+        position: i + 1,
+        name: svc.name,
+        description: svc.description,
+        provider: { "@id": orgId },
+      })),
     },
     {
       "@context": "https://schema.org",
@@ -305,10 +297,9 @@ export default async function LocaleLayout({
   const { locale } = await params;
   if (!SEO_LOCALES.includes(locale as SeoLocale)) notFound();
   const seoLocale = locale as SeoLocale;
-  // JSON-LD schemas use HU services + HU certifications regardless of locale
-  // (decision: structured data stays in canonical HU; per-locale schema
-  // translation is a later pass).
-  const tHu = getTranslation("hu");
+  // JSON-LD: services are now per-locale DB-backed (P2 C5 cutover).
+  // Certifications stay HU/shared — cert metadata is locale-shared by
+  // design (see `descriptionHu` etc. on the certifications table).
   await connection();
   const certs = await db
     .select({
@@ -331,7 +322,54 @@ export default async function LocaleLayout({
     .from(certifications)
     .where(eq(certifications.active, true))
     .orderBy(asc(certifications.sortOrder));
-  const schemas = buildJsonLdSchemas(seoLocale, tHu.services, certs);
+
+  // Same active+published+top-level filter and JS-side HU fallback
+  // as Services.tsx / Footer.tsx / page.tsx serviceOptions. Once a
+  // 5th call site appears, extract to lib/db/queries/services.ts.
+  const serviceRows = await db
+    .select({
+      nameHu: services.nameHu,
+      nameEn: services.nameEn,
+      nameDe: services.nameDe,
+      nameZh: services.nameZh,
+      shortDescHu: services.shortDescHu,
+      shortDescEn: services.shortDescEn,
+      shortDescDe: services.shortDescDe,
+      shortDescZh: services.shortDescZh,
+    })
+    .from(services)
+    .where(
+      and(
+        eq(services.isActive, true),
+        eq(services.isPublished, true),
+        isNull(services.parentId),
+      ),
+    )
+    .orderBy(asc(services.sortOrder));
+
+  const serviceItems = serviceRows
+    .map((row) => {
+      const namesByLocale = {
+        hu: row.nameHu,
+        en: row.nameEn,
+        de: row.nameDe,
+        zh: row.nameZh,
+      } as const;
+      const descsByLocale = {
+        hu: row.shortDescHu,
+        en: row.shortDescEn,
+        de: row.shortDescDe,
+        zh: row.shortDescZh,
+      } as const;
+      const name =
+        namesByLocale[seoLocale]?.trim() || row.nameHu?.trim() || "";
+      const description =
+        descsByLocale[seoLocale]?.trim() || row.shortDescHu?.trim() || "";
+      return { name, description };
+    })
+    .filter((s) => s.name.length > 0 && s.description.length > 0);
+
+  const schemas = buildJsonLdSchemas(seoLocale, serviceItems, certs);
   return (
     <html
       lang={locale}
