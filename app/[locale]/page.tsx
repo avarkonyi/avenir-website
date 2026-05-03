@@ -1,6 +1,6 @@
 import { connection } from "next/server";
 import { notFound } from "next/navigation";
-import { and, desc, eq, isNotNull, isNull } from "drizzle-orm";
+import { and, asc, desc, eq, isNotNull, isNull } from "drizzle-orm";
 import { Nav } from "@/components/Nav";
 import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
@@ -12,7 +12,7 @@ import { Career } from "@/components/Career";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 import { getTranslation } from "@/lib/i18n";
-import { db, news } from "@/lib/db";
+import { db, news, services } from "@/lib/db";
 
 const LOCALES = ["hu", "en", "de", "zh"] as const;
 type Locale = (typeof LOCALES)[number];
@@ -70,6 +70,51 @@ export default async function HomePage({
     date: r.date.toISOString(),
   }));
 
+  // Service-of-interest dropdown options for the Contact form. Same
+  // active+published+top-level filter and JS-side HU fallback as
+  // Services.tsx (P2 C2) and Footer.tsx (P2 C3) — Contact is a
+  // client component so we fetch here and pass serializable props.
+  // Wire-format contract: option `value` MUST be services.slug
+  // (string) — never the numeric services.id — so /api/contact
+  // validation and lib/email-templates/notification.ts
+  // SERVICE_LABELS_HU keep working unchanged.
+  //
+  // Backlog (after P2 C5 lands a 4th call site): extract a shared
+  // lib/db/queries/services.ts helper. Premature now.
+  const serviceRows = await db
+    .select({
+      slug: services.slug,
+      nameHu: services.nameHu,
+      nameEn: services.nameEn,
+      nameDe: services.nameDe,
+      nameZh: services.nameZh,
+    })
+    .from(services)
+    .where(
+      and(
+        eq(services.isActive, true),
+        eq(services.isPublished, true),
+        isNull(services.parentId),
+      ),
+    )
+    .orderBy(asc(services.sortOrder));
+
+  const serviceOptions = serviceRows
+    .map((row) => {
+      const namesByLocale = {
+        hu: row.nameHu,
+        en: row.nameEn,
+        de: row.nameDe,
+        zh: row.nameZh,
+      } as const;
+      const label =
+        namesByLocale[locale as Locale]?.trim() ||
+        row.nameHu?.trim() ||
+        "";
+      return { slug: row.slug, label };
+    })
+    .filter((opt) => opt.label.length > 0);
+
   return (
     <>
       <Nav t={t} />
@@ -81,7 +126,11 @@ export default async function HomePage({
         <Certifications t={t} locale={locale} />
         <News t={t} locale={locale} articles={articles} />
         <Career t={t} locale={locale} />
-        <Contact t={t} locale={locale} />
+        <Contact
+          t={t}
+          locale={locale}
+          serviceOptions={serviceOptions}
+        />
       </main>
       <Footer t={t} locale={locale} />
     </>

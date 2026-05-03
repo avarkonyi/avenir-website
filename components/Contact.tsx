@@ -202,7 +202,22 @@ function ContactRow({ kind, label, text, href }: ContactRowProps) {
   );
 }
 
-export function Contact({ t, locale }: { t: Translation; locale: string }) {
+// serviceOptions is fetched server-side in app/[locale]/page.tsx
+// (Contact stays a client component; it can't import db itself).
+// Wire-format contract: opt.slug becomes the <option value>, which
+// /api/contact validates and notification.ts SERVICE_LABELS_HU keys
+// off — never substitute services.id (numeric) here.
+export type ServiceOption = { slug: string; label: string };
+
+export function Contact({
+  t,
+  locale,
+  serviceOptions,
+}: {
+  t: Translation;
+  locale: string;
+  serviceOptions: ServiceOption[];
+}) {
   const [form, setForm] = useState<FormState>({
     name: "",
     company: "",
@@ -584,15 +599,19 @@ export function Contact({ t, locale }: { t: Translation; locale: string }) {
                   aria-describedby={errors.service ? "contact-service-error" : undefined}
                 >
                   <option value="">{t.form.service}</option>
-                  {t.services.map((s) => (
-                    <option key={s.id} value={s.id}>
-                      {s.t}
+                  {/* DB-backed since P2 C4. opt.slug (string) becomes the
+                      <option value> — wire-format contract with
+                      /api/contact + notification.ts SERVICE_LABELS_HU. */}
+                  {serviceOptions.map((opt) => (
+                    <option key={opt.slug} value={opt.slug}>
+                      {opt.label}
                     </option>
                   ))}
                   {/* 9th option — magánnyomozás. Tartja a hatósági engedély
                       (01030-822/4925-3/2018) szerinti tevékenység transzparens
                       megjelenítését. Választáskor a fenti specialDataWarning
-                      conditional render aktiválódik. */}
+                      conditional render aktiválódik. Hardcoded — nem a services
+                      táblában él, regulált tevékenység. */}
                   <option value="magannyomozas">{t.form.privateInvestigation}</option>
                 </select>
                 {errors.service && (
