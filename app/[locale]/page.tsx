@@ -76,7 +76,7 @@ export default async function HomePage({
       <main>
         <Hero t={t} />
         <About t={t} />
-        <Services t={t} />
+        <Services locale={locale} />
         <References t={t} />
         <Certifications t={t} locale={locale} />
         <News t={t} locale={locale} articles={articles} />
