@@ -11,6 +11,7 @@
     "db:migrate": "drizzle-kit migrate",
     "db:push": "drizzle-kit push",
     "db:seed": "tsx scripts/seed.ts",
+    "db:seed-services": "tsx scripts/seed-services.ts",
     "db:update-certs": "tsx scripts/update-certifications-prod.ts",
     "db:update-positions": "tsx scripts/update-positions-prod.ts"
   },
