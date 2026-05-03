@@ -1,8 +1,7 @@
 import Link from "next/link";
 import { connection } from "next/server";
-import { and, asc, eq, isNull } from "drizzle-orm";
-import { db, services } from "@/lib/db";
-import { LOCALES, type Locale, type Translation } from "@/lib/i18n";
+import { type Translation } from "@/lib/i18n";
+import { getActiveTopLevelServices } from "@/lib/db/queries/services";
 
 export async function Footer({
   t,
@@ -13,47 +12,12 @@ export async function Footer({
 }) {
   await connection();
 
-  // Locale-aware services-quick-links — DB-backed since P2 cutover
-  // Commit 3. Mirrors the Services.tsx Commit 2 pattern exactly:
-  // active + published + top-level filter, sortOrder ASC, JS-side HU
-  // fallback for nullable EN/DE/ZH name columns, empty-field guard.
-  // Slimmer SELECT than Services.tsx (no icon / no shortDesc — the
-  // Footer column only renders the localized title).
-  //
-  // Backlog: Services.tsx and this query are now identical aside from
-  // the projection. Extract a shared lib/db/queries/services.ts helper
-  // once Contact (P2 C4) and JSON-LD (P2 C5) make 4 call sites.
-  const safeLocale = asLocale(locale);
-  const rows = await db
-    .select({
-      slug: services.slug,
-      nameHu: services.nameHu,
-      nameEn: services.nameEn,
-      nameDe: services.nameDe,
-      nameZh: services.nameZh,
-    })
-    .from(services)
-    .where(
-      and(
-        eq(services.isActive, true),
-        eq(services.isPublished, true),
-        isNull(services.parentId),
-      ),
-    )
-    .orderBy(asc(services.sortOrder));
-
+  // Locale-aware services-quick-links via shared helper
+  // (lib/db/queries/services.ts). Footer surface needs name only;
+  // empty-field guard drops rows with no usable title.
+  const rows = await getActiveTopLevelServices(locale);
   const serviceLinks = rows
-    .map((row) => {
-      const namesByLocale: Record<Locale, string | null> = {
-        hu: row.nameHu,
-        en: row.nameEn,
-        de: row.nameDe,
-        zh: row.nameZh,
-      };
-      const title =
-        namesByLocale[safeLocale]?.trim() || row.nameHu?.trim() || "";
-      return { slug: row.slug, title };
-    })
+    .map((row) => ({ slug: row.slug, title: row.name }))
     .filter((link) => link.title.length > 0);
 
   return (
@@ -224,12 +188,4 @@ export async function Footer({
       </div>
     </footer>
   );
-}
-
-// ── helpers ────────────────────────────────────────────────────────────
-
-function asLocale(input: string): Locale {
-  return (LOCALES as readonly string[]).includes(input)
-    ? (input as Locale)
-    : "hu";
 }

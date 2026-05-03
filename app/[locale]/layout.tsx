@@ -2,11 +2,12 @@ import type { Metadata, Viewport } from "next";
 import { connection } from "next/server";
 import { notFound } from "next/navigation";
 import { Geist, Barlow_Condensed } from "next/font/google";
-import { and, asc, eq, isNull } from "drizzle-orm";
+import { asc, eq } from "drizzle-orm";
 import "../globals.css";
 import { getTranslation, LOCALES } from "@/lib/i18n";
 import { JsonLd } from "@/components/JsonLd";
-import { db, certifications, services } from "@/lib/db";
+import { db, certifications } from "@/lib/db";
+import { getActiveTopLevelServices } from "@/lib/db/queries/services";
 import {
   SEO_DATA,
   SEO_FAQS_HU,
@@ -323,50 +324,12 @@ export default async function LocaleLayout({
     .where(eq(certifications.active, true))
     .orderBy(asc(certifications.sortOrder));
 
-  // Same active+published+top-level filter and JS-side HU fallback
-  // as Services.tsx / Footer.tsx / page.tsx serviceOptions. Once a
-  // 5th call site appears, extract to lib/db/queries/services.ts.
-  const serviceRows = await db
-    .select({
-      nameHu: services.nameHu,
-      nameEn: services.nameEn,
-      nameDe: services.nameDe,
-      nameZh: services.nameZh,
-      shortDescHu: services.shortDescHu,
-      shortDescEn: services.shortDescEn,
-      shortDescDe: services.shortDescDe,
-      shortDescZh: services.shortDescZh,
-    })
-    .from(services)
-    .where(
-      and(
-        eq(services.isActive, true),
-        eq(services.isPublished, true),
-        isNull(services.parentId),
-      ),
-    )
-    .orderBy(asc(services.sortOrder));
-
+  // Locale-aware service rows via shared helper
+  // (lib/db/queries/services.ts). JSON-LD ItemList requires both name
+  // and description, so the empty-field guard checks both.
+  const serviceRows = await getActiveTopLevelServices(locale);
   const serviceItems = serviceRows
-    .map((row) => {
-      const namesByLocale = {
-        hu: row.nameHu,
-        en: row.nameEn,
-        de: row.nameDe,
-        zh: row.nameZh,
-      } as const;
-      const descsByLocale = {
-        hu: row.shortDescHu,
-        en: row.shortDescEn,
-        de: row.shortDescDe,
-        zh: row.shortDescZh,
-      } as const;
-      const name =
-        namesByLocale[seoLocale]?.trim() || row.nameHu?.trim() || "";
-      const description =
-        descsByLocale[seoLocale]?.trim() || row.shortDescHu?.trim() || "";
-      return { name, description };
-    })
+    .map((r) => ({ name: r.name, description: r.shortDesc }))
     .filter((s) => s.name.length > 0 && s.description.length > 0);
 
   const schemas = buildJsonLdSchemas(seoLocale, serviceItems, certs);
