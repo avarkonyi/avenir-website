@@ -139,20 +139,6 @@ export const SCHEMA_KNOWS_ABOUT = [
   "Integrált facility management",
 ] as const;
 
-// Service ordering used in the JSON-LD ItemList. Security-related items
-// surface first (Őrzés-védelem, Portaszolgálat, Mystery Shopping); the
-// component-side Services.tsx render order is intentionally unchanged.
-export const SCHEMA_SERVICE_ORDER = [
-  "security",
-  "reception",
-  "mystery",
-  "cleaning",
-  "building",
-  "technical",
-  "green",
-  "hardfm",
-] as const;
-
 // Stable @id URL for an EducationalOccupationalCredential schema.
 // Used both inside the credential's own top-level JSON-LD object and for
 // hasCredential references from Organization + ProfessionalService.

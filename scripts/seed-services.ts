@@ -21,9 +21,8 @@
 // slug here breaks the contact-form → email pipeline silently —
 // don't.
 //
-// SORT ORDER — security-first SEO priority per
-// SCHEMA_SERVICE_ORDER in lib/seo-data.ts (used by the JSON-LD
-// ItemList today). The admin can drag-reorder later; this is the
+// SORT ORDER — canonical seed sort order, security-first SEO
+// priority. The admin can drag-reorder later; this is the
 // initialization baseline.
 
 import "./load-env";
@@ -37,7 +36,7 @@ type CanonicalEntry = {
   sortOrder: number;
 };
 
-// Order matches SCHEMA_SERVICE_ORDER from lib/seo-data.ts:
+// Canonical seed sort order:
 //   security(0), reception(1), mystery(2), cleaning(3),
 //   building(4), technical(5), green(6), hardfm(7).
 const CANONICAL_SEED: ReadonlyArray<CanonicalEntry> = [
