@@ -3,7 +3,7 @@
 import Image from "next/image";
 import type { Translation } from "@/lib/i18n";
 
-export function Hero({ t }: { t: Translation }) {
+export function Hero({ t }: { t: Pick<Translation, "hero" | "stats"> }) {
   return (
     <section
       id="hero"

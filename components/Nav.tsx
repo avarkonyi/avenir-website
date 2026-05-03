@@ -9,7 +9,7 @@ import { Icon } from "./Icon";
 const SECTION_KEYS = ["about", "services", "references", "news", "career", "contact"] as const;
 const LOCALES = ["hu", "en", "de", "zh"] as const;
 
-export function Nav({ t }: { t: Translation }) {
+export function Nav({ t }: { t: Pick<Translation, "nav"> }) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const params = useParams<{ locale: string }>();

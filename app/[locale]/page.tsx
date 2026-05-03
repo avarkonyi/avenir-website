@@ -86,17 +86,32 @@ export default async function HomePage({
 
   return (
     <>
-      <Nav t={t} />
+      <Nav t={{ nav: t.nav }} />
       <main>
-        <Hero t={t} />
+        <Hero t={{ hero: t.hero, stats: t.stats }} />
         <About t={t} />
         <Services locale={locale} />
         <References t={t} />
         <Certifications t={t} locale={locale} />
-        <News t={t} locale={locale} articles={articles} />
+        <News
+          t={{
+            newsSub: t.newsSub,
+            newsTitle: t.newsTitle,
+            newsText: t.newsText,
+            newsEmpty: t.newsEmpty,
+            newsReadMore: t.newsReadMore,
+          }}
+          locale={locale}
+          articles={articles}
+        />
         <Career t={t} locale={locale} />
         <Contact
-          t={t}
+          t={{
+            contactSub: t.contactSub,
+            contactTitle: t.contactTitle,
+            contactLabels: t.contactLabels,
+            form: t.form,
+          }}
           locale={locale}
           serviceOptions={serviceOptions}
         />

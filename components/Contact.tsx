@@ -214,7 +214,7 @@ export function Contact({
   locale,
   serviceOptions,
 }: {
-  t: Translation;
+  t: Pick<Translation, "contactSub" | "contactTitle" | "contactLabels" | "form">;
   locale: string;
   serviceOptions: ServiceOption[];
 }) {

@@ -30,7 +30,10 @@ export function News({
   locale,
   articles,
 }: {
-  t: Translation;
+  t: Pick<
+    Translation,
+    "newsSub" | "newsTitle" | "newsText" | "newsEmpty" | "newsReadMore"
+  >;
   locale: string;
   articles: Article[];
 }) {
