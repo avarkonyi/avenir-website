@@ -1,7 +1,61 @@
 import Link from "next/link";
-import type { Translation } from "@/lib/i18n";
+import { connection } from "next/server";
+import { and, asc, eq, isNull } from "drizzle-orm";
+import { db, services } from "@/lib/db";
+import { LOCALES, type Locale, type Translation } from "@/lib/i18n";
 
-export function Footer({ t, locale }: { t: Translation; locale: string }) {
+export async function Footer({
+  t,
+  locale,
+}: {
+  t: Translation;
+  locale: string;
+}) {
+  await connection();
+
+  // Locale-aware services-quick-links — DB-backed since P2 cutover
+  // Commit 3. Mirrors the Services.tsx Commit 2 pattern exactly:
+  // active + published + top-level filter, sortOrder ASC, JS-side HU
+  // fallback for nullable EN/DE/ZH name columns, empty-field guard.
+  // Slimmer SELECT than Services.tsx (no icon / no shortDesc — the
+  // Footer column only renders the localized title).
+  //
+  // Backlog: Services.tsx and this query are now identical aside from
+  // the projection. Extract a shared lib/db/queries/services.ts helper
+  // once Contact (P2 C4) and JSON-LD (P2 C5) make 4 call sites.
+  const safeLocale = asLocale(locale);
+  const rows = await db
+    .select({
+      slug: services.slug,
+      nameHu: services.nameHu,
+      nameEn: services.nameEn,
+      nameDe: services.nameDe,
+      nameZh: services.nameZh,
+    })
+    .from(services)
+    .where(
+      and(
+        eq(services.isActive, true),
+        eq(services.isPublished, true),
+        isNull(services.parentId),
+      ),
+    )
+    .orderBy(asc(services.sortOrder));
+
+  const serviceLinks = rows
+    .map((row) => {
+      const namesByLocale: Record<Locale, string | null> = {
+        hu: row.nameHu,
+        en: row.nameEn,
+        de: row.nameDe,
+        zh: row.nameZh,
+      };
+      const title =
+        namesByLocale[safeLocale]?.trim() || row.nameHu?.trim() || "";
+      return { slug: row.slug, title };
+    })
+    .filter((link) => link.title.length > 0);
+
   return (
     <footer style={{ background: "#070F1E", padding: "60px 5vw 28px", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
@@ -48,8 +102,8 @@ export function Footer({ t, locale }: { t: Translation; locale: string }) {
               {t.servicesTitle}
             </h4>
             <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 10 }}>
-              {t.services.map((s) => (
-                <li key={s.id}>
+              {serviceLinks.map((link) => (
+                <li key={link.slug}>
                   <a
                     href="#services"
                     className="footer-link"
@@ -59,7 +113,7 @@ export function Footer({ t, locale }: { t: Translation; locale: string }) {
                       textDecoration: "none",
                     }}
                   >
-                    {s.t}
+                    {link.title}
                   </a>
                 </li>
               ))}
@@ -170,4 +224,12 @@ export function Footer({ t, locale }: { t: Translation; locale: string }) {
       </div>
     </footer>
   );
+}
+
+// ── helpers ────────────────────────────────────────────────────────────
+
+function asLocale(input: string): Locale {
+  return (LOCALES as readonly string[]).includes(input)
+    ? (input as Locale)
+    : "hu";
 }
