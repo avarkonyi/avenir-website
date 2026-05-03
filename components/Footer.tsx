@@ -1,6 +1,5 @@
 import Link from "next/link";
 import type { Translation } from "@/lib/i18n";
-import { AvenirLogo } from "./AvenirLogo";
 
 export function Footer({ t, locale }: { t: Translation; locale: string }) {
   return (
@@ -18,7 +17,16 @@ export function Footer({ t, locale }: { t: Translation; locale: string }) {
         >
           {/* Column 1: Logo + blurb */}
           <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-            <AvenirLogo size={36} />
+            <img
+              src="/avenir-logo-horizontal-dark.svg"
+              alt="Avenir Facility Management"
+              style={{
+                height: 36,
+                width: "auto",
+                display: "block",
+                maxWidth: "100%",
+              }}
+            />
             <p style={{ color: "rgba(255,255,255,0.45)", fontSize: 13, lineHeight: 1.65, fontWeight: 300, maxWidth: 260 }}>
               {t.hero.sub}
             </p>

@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import type { Translation } from "@/lib/i18n";
-import { AvenirLogo } from "./AvenirLogo";
 import { Icon } from "./Icon";
 
 const SECTION_KEYS = ["about", "services", "references", "news", "career", "contact"] as const;
@@ -153,7 +152,16 @@ export function Nav({ t }: { t: Translation }) {
           style={{ background: "none", border: "none", cursor: "pointer", padding: 0, display: "inline-flex" }}
           aria-label="Avenir home"
         >
-          <AvenirLogo size={36} />
+          <img
+            src="/avenir-logo-horizontal-dark.svg"
+            alt="Avenir Facility Management"
+            style={{
+              height: 36,
+              width: "auto",
+              display: "block",
+              maxWidth: "100%",
+            }}
+          />
         </Link>
         <div style={{ flex: 1 }} />
 
