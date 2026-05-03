@@ -20,7 +20,7 @@ const NAV_ITEMS: NavItem[] = [
   { label: "Hírek", href: "/admin/news", enabled: true },
   { label: "Karrier", href: "/admin/positions", enabled: true },
   { label: "Partnerek", href: "/admin/partners", enabled: true },
-  { label: "Tanúsítványok", href: "/admin/certifications", enabled: false },
+  { label: "Tanúsítványok", href: "/admin/certifications", enabled: true },
   { label: "Beállítások", href: "/admin/settings", enabled: false },
 ];
 

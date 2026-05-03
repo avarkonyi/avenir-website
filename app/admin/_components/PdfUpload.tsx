@@ -2,20 +2,17 @@
 
 import { useState } from "react";
 
-// Generic image upload control for admin forms (News, Services, …).
-// Fully CONTROLLED — `value` is the canonical URL state, owned by the
-// parent form. The component never holds its own URL; it only manages
-// transient UI state (uploading flag + last error). This prevents
-// state desync when the parent resets after submit / route change.
+// Generic PDF upload control for admin forms (Certifications, …).
+// Sibling to ImageUpload — same controlled-prop contract, same error
+// surface, but POSTs to /api/admin/upload-pdf and validates a single
+// MIME (application/pdf) with a larger 10 MB cap.
 //
-// Allowed: JPEG, PNG, WebP, max 5 MB. Client-side validation runs
-// before the POST so obvious rejects don't burn a network round-trip;
-// the server re-validates everything anyway.
+// Fully CONTROLLED — `value` is the canonical URL state, owned by
+// the parent form. The component never holds its own URL; it only
+// manages transient UI state (uploading flag + last error).
 
-const ALLOWED_MIMES = ["image/jpeg", "image/png", "image/webp"] as const;
-const ACCEPT_ATTR = ALLOWED_MIMES.join(",");
-const MAX_BYTES = 5 * 1024 * 1024;
-const MAX_LABEL_MB = 5;
+const MAX_BYTES = 10 * 1024 * 1024;
+const MAX_LABEL_MB = 10;
 
 type UploadResponse =
   | { ok: true; url: string }
@@ -23,29 +20,27 @@ type UploadResponse =
 
 type Props = {
   value: string | null;
-  folder: "news" | "services" | "partners" | "certifications";
+  folder: "certifications";
   onChange: (url: string | null) => void;
   label?: string;
 };
 
-export function ImageUpload({ value, folder, onChange, label }: Props) {
+export function PdfUpload({ value, folder, onChange, label }: Props) {
   const [isUploading, setIsUploading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   async function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
     // Reset the input so the same file can be re-selected after a
-    // failed upload (the browser otherwise suppresses the change event
-    // for the same selection).
+    // failed upload (the browser otherwise suppresses the change
+    // event for the same selection).
     e.currentTarget.value = "";
     if (!file) return;
 
     setError(null);
 
-    if (
-      !(ALLOWED_MIMES as readonly string[]).includes(file.type)
-    ) {
-      setError("Csak JPEG, PNG vagy WebP formátum engedélyezett.");
+    if (file.type !== "application/pdf") {
+      setError("Csak PDF formátum engedélyezett.");
       return;
     }
     if (file.size > MAX_BYTES) {
@@ -59,7 +54,7 @@ export function ImageUpload({ value, folder, onChange, label }: Props) {
       formData.append("file", file);
       formData.append("folder", folder);
 
-      const res = await fetch("/api/admin/upload-image", {
+      const res = await fetch("/api/admin/upload-pdf", {
         method: "POST",
         body: formData,
       });
@@ -94,37 +89,42 @@ export function ImageUpload({ value, folder, onChange, label }: Props) {
     onChange(null);
   }
 
-  const hasImage = value !== null && value.length > 0;
-  const labelText = label ?? "Kép feltöltése";
+  const hasFile = value !== null && value.length > 0;
+  const labelText = label ?? "PDF feltöltése";
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
-      {hasImage && (
-        <div style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
-          {/* Vercel Blob URLs are external; using <Image /> would
-              require remotePatterns config per blob store host.
-              <img> with explicit max dimensions is fine here — admin
-              preview only, never on the public-site critical path. */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={value as string}
-            alt=""
+      {hasFile && (
+        <div
+          style={{
+            display: "flex",
+            gap: 16,
+            alignItems: "center",
+            padding: 12,
+            border: "1px solid #E2E8F0",
+            borderRadius: 4,
+            background: "#F8FAFC",
+          }}
+        >
+          <span
+            aria-hidden
             style={{
-              width: 200,
-              height: "auto",
-              maxHeight: 200,
-              objectFit: "cover",
-              borderRadius: 4,
-              background: "#F1F5F9",
-              border: "1px solid #E2E8F0",
+              fontSize: 20,
+              color: "#D1172E",
+              fontWeight: 700,
+              fontFamily: "var(--font-head)",
             }}
-          />
+          >
+            PDF
+          </span>
           <div
             style={{
               display: "flex",
               flexDirection: "column",
-              gap: 8,
+              gap: 6,
               fontSize: 13,
+              flex: 1,
+              minWidth: 0,
             }}
           >
             <a
@@ -135,6 +135,7 @@ export function ImageUpload({ value, folder, onChange, label }: Props) {
                 color: "#0B1E3E",
                 fontWeight: 600,
                 textDecoration: "underline",
+                wordBreak: "break-all",
               }}
             >
               Megnyitás új ablakban
@@ -179,17 +180,17 @@ export function ImageUpload({ value, folder, onChange, label }: Props) {
       >
         <input
           type="file"
-          accept={ACCEPT_ATTR}
+          accept="application/pdf"
           onChange={handleFileChange}
           disabled={isUploading}
-          aria-label={hasImage ? `${labelText} (csere)` : labelText}
+          aria-label={hasFile ? `${labelText} (csere)` : labelText}
         />
         <span style={{ color: isUploading ? "#0B1E3E" : "#94A3B8" }}>
           {isUploading
             ? "Feltöltés folyamatban…"
-            : hasImage
-              ? `Másik kép feltöltéséhez válassz fájlt (max. ${MAX_LABEL_MB} MB).`
-              : `Maximum ${MAX_LABEL_MB} MB. JPEG, PNG vagy WebP.`}
+            : hasFile
+              ? `Másik PDF feltöltéséhez válassz fájlt (max. ${MAX_LABEL_MB} MB).`
+              : `Maximum ${MAX_LABEL_MB} MB. Csak PDF.`}
         </span>
       </div>
 

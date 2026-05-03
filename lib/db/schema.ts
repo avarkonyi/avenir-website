@@ -281,8 +281,14 @@ export const certifications = pgTable(
     logoUrl: text("logo_url"),
     pdfUrl: text("pdf_url"),
 
-    // Listing controls
+    // Listing controls. `active` is the soft-hide flag (public
+    // renderer filters by it). `is_published` is the future-public
+    // eligibility flag, admin-managed in Iter 6A; the public query
+    // does NOT yet filter on it (Iter 6B picks that up). Existing
+    // rows default to false on column add — operator must explicitly
+    // publish via admin once the public query is cut over.
     active: boolean("active").notNull().default(true),
+    isPublished: boolean("is_published").notNull().default(false),
     sortOrder: integer("sort_order").notNull().default(0),
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
     updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),

@@ -10,13 +10,20 @@
 // instead of a redirect (which a fetch() caller cannot follow).
 //
 // Folder whitelist: only accepts known subtrees ("news", "services",
-// "partners"). Adding a new module to the whitelist is a one-line change.
+// "partners", "certifications"). Adding a new module to the whitelist
+// is a one-line change. PDFs go through a separate route
+// (/api/admin/upload-pdf) — the MIME validation here is image-only.
 
 import { put } from "@vercel/blob";
 import { type NextRequest, NextResponse } from "next/server";
 import { auth } from "@/auth";
 
-const ALLOWED_FOLDERS = new Set(["news", "services", "partners"]);
+const ALLOWED_FOLDERS = new Set([
+  "news",
+  "services",
+  "partners",
+  "certifications",
+]);
 const ALLOWED_MIME_TO_EXT: Record<string, string> = {
   "image/jpeg": "jpg",
   "image/png": "png",
