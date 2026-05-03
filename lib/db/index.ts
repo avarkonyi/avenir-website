@@ -19,5 +19,5 @@ export const db = drizzle(neonSql, { schema });
 export { neonSql };
 
 // Re-export tables for ergonomic usage:
-//   import { db, news, positions, messages, clientReferences } from "@/lib/db";
+//   import { db, news, positions, messages, clientReferences, partners } from "@/lib/db";
 export * from "./schema";

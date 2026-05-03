@@ -403,3 +403,59 @@ export const servicesRelations = relations(services, ({ one, many }) => ({
     relationName: "parent_child",
   }),
 }));
+
+// ────────────────────────────────────────────────────────────────────────────
+// 7. PARTNERS — admin-managed partner / client / logo entities. Single
+//    locale (company names typically don't translate); locale-aware
+//    partner copy is out of scope for Iter 5. Distinct from
+//    `client_references`, which is a 4-locale industry-category taxonomy
+//    seeded from i18n; partners are concrete entities with logo asset +
+//    optional website link.
+//
+//    Slug: auto-derived from `name` on create with collision-suffix
+//    (slug, slug-2, slug-3, …). NOT editable post-create — slug is an
+//    internal stable identifier in Iter 5, not a public URL. If Phase 5
+//    introduces public partner pages, the migration will either add an
+//    editable `publicSlug` column (keeping `slug` stable) or introduce
+//    slug editing intentionally with the right validation surface.
+//
+//    Publish guard (application-layer, server actions): rejects
+//    `is_published = true` when `logo_url IS NULL` OR `name` (trimmed)
+//    is empty. NOT enforced as DB CHECK — admin error messaging is
+//    cleaner from the server action layer (matches the services
+//    parent-publish rule precedent).
+//
+//    Default state on create: is_active=true, is_published=false. New
+//    partners save as drafts even with no logo; publish requires a
+//    deliberate later toggle once logo + name are present.
+//
+//    No public consumer in Iter 5. The `is_published` flag is stored
+//    for a future Phase 5 visibility strategy; no `app/[locale]/*` code
+//    path queries this table in this iteration.
+//
+//    Index: `idx_partners_active_sort` partial composite on
+//    `(is_active, sort_order)` filtered to `is_active = true` —
+//    mirrors the active+sort pattern from client_references and
+//    certifications. Adequate for the admin list and any future
+//    public render.
+// ────────────────────────────────────────────────────────────────────────────
+export const partners = pgTable(
+  "partners",
+  {
+    id: serial("id").primaryKey(),
+    slug: text("slug").notNull().unique(),
+    name: text("name").notNull(),
+    logoUrl: text("logo_url"),
+    websiteUrl: text("website_url"),
+    isActive: boolean("is_active").notNull().default(true),
+    isPublished: boolean("is_published").notNull().default(false),
+    sortOrder: integer("sort_order").notNull().default(0),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (table) => [
+    index("idx_partners_active_sort")
+      .on(table.isActive, table.sortOrder)
+      .where(sql`${table.isActive} = true`),
+  ],
+);

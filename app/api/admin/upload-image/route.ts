@@ -9,14 +9,14 @@
 // the session inline as defense in depth and respond with 401 JSON
 // instead of a redirect (which a fetch() caller cannot follow).
 //
-// Folder whitelist: only accepts known subtrees ("news", "services").
-// Adding a new module to the whitelist is a one-line change.
+// Folder whitelist: only accepts known subtrees ("news", "services",
+// "partners"). Adding a new module to the whitelist is a one-line change.
 
 import { put } from "@vercel/blob";
 import { type NextRequest, NextResponse } from "next/server";
 import { auth } from "@/auth";
 
-const ALLOWED_FOLDERS = new Set(["news", "services"]);
+const ALLOWED_FOLDERS = new Set(["news", "services", "partners"]);
 const ALLOWED_MIME_TO_EXT: Record<string, string> = {
   "image/jpeg": "jpg",
   "image/png": "png",

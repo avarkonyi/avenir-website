@@ -23,7 +23,7 @@ type UploadResponse =
 
 type Props = {
   value: string | null;
-  folder: "news" | "services";
+  folder: "news" | "services" | "partners";
   onChange: (url: string | null) => void;
   label?: string;
 };
