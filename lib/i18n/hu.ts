@@ -110,7 +110,6 @@ export const hu = {
   newsText:
     "Szakmai hírek, új referenciák, iparági események és bejelentések az Avenir-től.",
   newsReadMore: "Tovább olvasom",
-  newsViewAll: "Összes hír",
   newsEmpty: "Hamarosan friss hírekkel jelentkezünk.",
   careerTitle: "Karrier",
   careerSub: "Csatlakozz a csapathoz",
@@ -184,21 +183,6 @@ export const hu = {
     iafMember: "IAF MLA tag",
     downloadPdf: "Tanúsítvány letöltése (PDF)",
     altText: "{name} tanúsítvány logó",
-  },
-  notFound: {
-    title: "Az oldal nem található",
-    description:
-      "A keresett tartalom nem érhető el. Az oldal megszűnt, átkerült más címre, vagy a beírt URL hibás.",
-    primaryCta: "Vissza a főoldalra",
-    secondaryCta: "Lépjen kapcsolatba velünk",
-    tertiaryCta: "Adatvédelmi tájékoztató",
-  },
-  errorPage: {
-    title: "Hiba történt",
-    description:
-      "Sajnáljuk, váratlan hiba lépett fel az oldal betöltése során. Kérjük, próbálja újra; ha a hiba ismétlődik, értesítse munkatársainkat: info@afm.hu",
-    retry: "Újratöltés",
-    backHome: "Vissza a főoldalra",
   },
   legal: {
     privacy: {

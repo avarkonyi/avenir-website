@@ -118,7 +118,6 @@ export const en = {
   "newsSub": "Updates & announcements",
   "newsText": "Follow the latest news, industry insights, and professional events from Avenir.",
   "newsReadMore": "Read more",
-  "newsViewAll": "All news",
   "newsEmpty": "Fresh news coming soon.",
   "careerTitle": "Career",
   "careerSub": "Join our team",
@@ -185,19 +184,6 @@ export const en = {
     "iafMember": "IAF MLA member",
     "downloadPdf": "Download certificate (PDF)",
     "altText": "{name} certification logo"
-  },
-  "notFound": {
-    "title": "Page not found",
-    "description": "The content you are looking for is not available. The page may have been removed, moved to a new address, or the URL you entered is incorrect.",
-    "primaryCta": "Return to homepage",
-    "secondaryCta": "Contact us",
-    "tertiaryCta": "Privacy Policy"
-  },
-  "errorPage": {
-    "title": "Something went wrong",
-    "description": "We apologise — an unexpected error occurred while loading this page. Please try again; if the issue persists, please contact us at info@afm.hu.",
-    "retry": "Reload",
-    "backHome": "Return to homepage"
   },
   "legal": {
     "privacy": {

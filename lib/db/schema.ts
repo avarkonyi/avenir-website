@@ -303,10 +303,11 @@ export const certifications = pgTable(
 //    allows arbitrary nesting since self-references can't be depth-limited
 //    in CHECK constraints.
 //
-//    Source-of-truth migration: until the public-site reader is cut over
-//    from `t.services` (lib/i18n/*) to this table, the table starts empty
-//    and Iter 3C admin UI populates it. The seeded data + reader switch
-//    is a future-iteration cutover, not part of this commit.
+//    Source-of-truth: this table backs every public-site service render
+//    (Services.tsx grid, Footer quick-links, Contact dropdown, JSON-LD
+//    ItemList) via lib/db/queries/services.ts. The legacy `t.services`
+//    array in lib/i18n/* survives only as input data for
+//    scripts/seed-services.ts; it is no longer read at runtime.
 //
 //    Soft-delete cascade: `is_active = false` is the soft-delete flag.
 //    DB onDelete: "restrict" only blocks hard DELETE; the cascade rule

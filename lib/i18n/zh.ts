@@ -118,7 +118,6 @@ export const zh = {
   "newsSub": "最新更新与公告",
   "newsText": "关注Avenir的最新新闻、行业动态与专业活动。",
   "newsReadMore": "阅读更多",
-  "newsViewAll": "全部新闻",
   "newsEmpty": "最新资讯即将发布。",
   "careerTitle": "招聘",
   "careerSub": "加入我们的团队",
@@ -186,20 +185,7 @@ export const zh = {
     "downloadPdf": "下载证书 (PDF)",
     "altText": "{name} 认证标志"
   },
-  // LEGAL_REVIEW_PENDING_ZH — 以下 notFound/errorPage/legal 内容为机器翻译；具有法律约束力的版本为匈牙利语版本。
-  "notFound": {
-    "title": "找不到页面",
-    "description": "您查找的内容不可用。该页面可能已被删除、迁移到新地址，或您输入的网址有误。",
-    "primaryCta": "返回首页",
-    "secondaryCta": "联系我们",
-    "tertiaryCta": "隐私政策"
-  },
-  "errorPage": {
-    "title": "出现错误",
-    "description": "抱歉 — 加载页面时发生意外错误。请重试；若问题仍然存在，请通过 info@afm.hu 联系我们。",
-    "retry": "重新加载",
-    "backHome": "返回首页"
-  },
+  // LEGAL_REVIEW_PENDING_ZH — 以下 legal 内容为机器翻译；具有法律约束力的版本为匈牙利语版本。
   "legal": {
     "privacy": {
       "title": "隐私政策",

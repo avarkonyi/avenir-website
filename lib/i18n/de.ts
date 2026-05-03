@@ -118,7 +118,6 @@ export const de = {
   "newsSub": "Updates & Ankündigungen",
   "newsText": "Verfolgen Sie die neuesten Nachrichten, Branchenthemen und Veranstaltungen von Avenir.",
   "newsReadMore": "Weiterlesen",
-  "newsViewAll": "Alle News",
   "newsEmpty": "Neue Nachrichten folgen in Kürze.",
   "careerTitle": "Karriere",
   "careerSub": "Werde Teil unseres Teams",
@@ -186,20 +185,7 @@ export const de = {
     "downloadPdf": "Zertifikat herunterladen (PDF)",
     "altText": "{name} Zertifikatslogo"
   },
-  // LEGAL_REVIEW_PENDING_DE — die folgenden notFound/errorPage/legal Inhalte sind maschinell aus der ungarischen/englischen Fassung übersetzt; rechtlich verbindlich ist die ungarische Fassung.
-  "notFound": {
-    "title": "Seite nicht gefunden",
-    "description": "Der gesuchte Inhalt ist nicht verfügbar. Die Seite wurde möglicherweise entfernt, an eine neue Adresse verschoben, oder die eingegebene URL ist fehlerhaft.",
-    "primaryCta": "Zur Startseite zurückkehren",
-    "secondaryCta": "Kontaktieren Sie uns",
-    "tertiaryCta": "Datenschutzerklärung"
-  },
-  "errorPage": {
-    "title": "Ein Fehler ist aufgetreten",
-    "description": "Wir entschuldigen uns — beim Laden der Seite ist ein unerwarteter Fehler aufgetreten. Bitte versuchen Sie es erneut. Falls das Problem weiterhin besteht, kontaktieren Sie uns unter info@afm.hu.",
-    "retry": "Neu laden",
-    "backHome": "Zur Startseite zurückkehren"
-  },
+  // LEGAL_REVIEW_PENDING_DE — die folgenden legal Inhalte sind maschinell aus der ungarischen/englischen Fassung übersetzt; rechtlich verbindlich ist die ungarische Fassung.
   "legal": {
     "privacy": {
       "title": "Datenschutzerklärung",
