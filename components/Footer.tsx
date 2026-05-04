@@ -39,10 +39,11 @@ export async function Footer({
               src="/avenir-logo-horizontal-dark.svg"
               alt="Avenir Facility Management"
               style={{
-                height: 54,
+                height: 65,
                 width: "auto",
                 display: "block",
                 maxWidth: "100%",
+                marginLeft: -41,
               }}
             />
             <p style={{ color: "rgba(255,255,255,0.48)", fontSize: 13, lineHeight: 1.7, fontWeight: 300, maxWidth: 310 }}>
