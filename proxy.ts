@@ -3,6 +3,23 @@ import { auth } from "@/auth";
 
 const LOCALES = ["hu", "en", "de", "zh"];
 const DEFAULT_LOCALE = "hu";
+const NOINDEX_HEADER = "noindex, nofollow";
+
+function shouldNoindex(req: NextRequest): boolean {
+  const host = req.headers.get("host")?.toLowerCase() ?? "";
+  return (
+    process.env.VERCEL_ENV !== "production" ||
+    host === "staging.afm.hu" ||
+    host.endsWith(".vercel.app")
+  );
+}
+
+function withNoindexHeader(req: NextRequest, response: NextResponse): NextResponse {
+  if (shouldNoindex(req)) {
+    response.headers.set("X-Robots-Tag", NOINDEX_HEADER);
+  }
+  return response;
+}
 
 // Single project-root middleware. Two responsibilities:
 //
@@ -28,26 +45,32 @@ export default auth(async function proxy(req: NextRequest & { auth?: unknown }) 
   if (isAdminRoute) {
     if (!isLoginPage && !isLoggedIn) {
       const loginUrl = new URL("/admin/login", req.nextUrl.origin);
-      return NextResponse.redirect(loginUrl);
+      return withNoindexHeader(req, NextResponse.redirect(loginUrl));
     }
     if (isLoginPage && isLoggedIn) {
-      return NextResponse.redirect(new URL("/admin", req.nextUrl.origin));
+      return withNoindexHeader(
+        req,
+        NextResponse.redirect(new URL("/admin", req.nextUrl.origin)),
+      );
     }
     // Authenticated /admin/* request — let it through, no rewrite.
-    return NextResponse.next();
+    return withNoindexHeader(req, NextResponse.next());
   }
 
   // ── 2. Locale rewrite (public routes only) ────────────────────────
   const hasLocale = LOCALES.some(
     (l) => pathname === `/${l}` || pathname.startsWith(`/${l}/`),
   );
-  if (hasLocale) return NextResponse.next();
+  if (hasLocale) return withNoindexHeader(req, NextResponse.next());
 
   if (pathname === "/") {
-    return NextResponse.rewrite(new URL(`/${DEFAULT_LOCALE}`, req.url));
+    return withNoindexHeader(
+      req,
+      NextResponse.rewrite(new URL(`/${DEFAULT_LOCALE}`, req.url)),
+    );
   }
 
-  return NextResponse.next();
+  return withNoindexHeader(req, NextResponse.next());
 });
 
 // Matcher rules:
