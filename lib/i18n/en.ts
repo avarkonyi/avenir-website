@@ -225,7 +225,7 @@ export const en = {
         {
           "id": "cookies",
           "title": "7. Cookies and similar technologies",
-          "body": "Cookie audit pending — the Controller will finalise the full cookie inventory by means of a DevTools audit following deployment and will update this section based on the actual cookie inventory.\n\nIn its current operation, the https://www.afm.hu website does not use any analytics, marketing, retargeting or profiling cookies.\n\nWhere strictly necessary technical cookies or similar technologies are used for the operation of the website, they are used solely for ensuring the operation, security, and abuse-prevention of the website. Such technologies do not serve marketing or analytical purposes.\n\nThe Controller regularly reviews cookie usage. If analytical or marketing cookies are introduced, the Controller will update this Policy in advance and apply a consent-management solution where required."
+          "body": "In its current operation, the https://www.afm.hu website does not use any analytics, marketing, retargeting or profiling cookies.\n\nWhere strictly necessary technical cookies or similar technologies are used for the operation of the website, they are used solely for ensuring the operation, security, and abuse-prevention of the website. Such technologies do not serve marketing or analytical purposes.\n\nThe Controller regularly reviews cookie usage. If analytical or marketing cookies are introduced, the Controller will update this Policy in advance and apply a consent-management solution where required."
         },
         {
           "id": "rights",
@@ -365,14 +365,14 @@ export const en = {
         "hosting": "Hosting Provider",
         "copyright": "Copyright"
       },
-      "regulatedProfessionText": "The Provider's activities fall within the scope of regulated professions under Hungarian Act CXXXIII of 2005 (SzVMt.) and its implementing decrees (in particular Decree 22/2006. (IV.25.) BM on personal and property security guard ID cards and private-investigator ID cards, and on the detailed rules of conducting these activities) — namely personal and property security and private investigation. See section 5 for the relevant authority licences.",
+      "regulatedProfessionText": "The Provider's activities fall within the scope of regulated professions under Hungarian Act CXXXIII of 2005 (SzVMt.) and its implementing decrees (in particular Decree 22/2006. (IV.25.) BM on personal and property security guard ID cards and private-investigator ID cards, and on the detailed rules of conducting these activities) — namely personal and property security and private investigation. See section 6 for the relevant authority licences.",
       "dpoSection": {
         "intro": "The Controller has appointed a Data Protection Officer (DPO) pursuant to Article 37(1)(b) and (c) GDPR. Data subjects may contact the DPO directly with any data-protection questions, requests or complaints.",
         "name": "Fanni Csegény",
         "email": "dpo@afm.hu",
         "phone": "+36 70 622 6242",
         "postal": "Királyok útja 291, building B, door 15, 1039 Budapest, Hungary",
-        "note": "Notification to NAIH pursuant to Section 25/L of the Hungarian Infotv. has been completed / is in progress."
+        "note": "Notification to NAIH pursuant to Section 25/L of the Hungarian Infotv. has been completed."
       },
       "labels": {
         "legalName": "Legal name",

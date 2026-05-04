@@ -167,7 +167,7 @@ export const SEO_EXECUTIVE = {
 } as const;
 
 // GDPR Art. 37(1)(b)+(c) szerint kijelölt adatvédelmi tisztviselő.
-// NAIH-bejelentés Infotv. 25/L. § alapján folyamatban (2026.04.29).
+// NAIH-bejelentés Infotv. 25/L. § alapján megtörtént (2026.04.29).
 export const SEO_DPO = {
   name: "Csegény Fanni",
   nameEn: "Fanni Csegény",

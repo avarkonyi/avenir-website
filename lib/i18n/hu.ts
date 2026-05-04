@@ -205,7 +205,7 @@ export const hu = {
         {
           id: "dpo",
           title: "3. Adatvédelmi tisztviselő (DPO)",
-          body: "Az Adatkezelő a GDPR 37. cikk (1) bek. b) és c) pontjai alapján adatvédelmi tisztviselőt jelölt ki. Az adatvédelmi tisztviselő az adatvédelmi kérdésekben az érintettek és a felügyeleti hatóság kapcsolattartója.\n\nAdatvédelmi tisztviselő: Csegény Fanni\nEmail: dpo@afm.hu\nTelefon: +36 70 622 6242\nPostai elérhetőség: 1039 Budapest, Királyok útja 291. B. ép. 15. ajtó\n\nA NAIH-bejelentést az Adatkezelő az Infotv. 25/L. § alapján megtette / folyamatban van.\n\nAz érintett adatvédelmi kérdéseivel, kérelmeivel vagy panaszaival közvetlenül az adatvédelmi tisztviselőhöz is fordulhat. Ez nem érinti azt a jogát, hogy a 11. pont szerint panaszt tegyen a felügyeleti hatóságnál vagy bírósághoz forduljon.",
+          body: "Az Adatkezelő a GDPR 37. cikk (1) bek. b) és c) pontjai alapján adatvédelmi tisztviselőt jelölt ki. Az adatvédelmi tisztviselő az adatvédelmi kérdésekben az érintettek és a felügyeleti hatóság kapcsolattartója.\n\nAdatvédelmi tisztviselő: Csegény Fanni\nEmail: dpo@afm.hu\nTelefon: +36 70 622 6242\nPostai elérhetőség: 1039 Budapest, Királyok útja 291. B. ép. 15. ajtó\n\nA NAIH-bejelentést az Adatkezelő az Infotv. 25/L. § alapján megtette.\n\nAz érintett adatvédelmi kérdéseivel, kérelmeivel vagy panaszaival közvetlenül az adatvédelmi tisztviselőhöz is fordulhat. Ez nem érinti azt a jogát, hogy a 11. pont szerint panaszt tegyen a felügyeleti hatóságnál vagy bírósághoz forduljon.",
         },
         {
           id: "processed-data",
@@ -225,7 +225,7 @@ export const hu = {
         {
           id: "cookies",
           title: "7. Sütik és hasonló technológiák",
-          body: "Süti-audit folyamatban — az Adatkezelő a teljes süti-listát a deployt követően DevTools-audittal véglegesíti, és a jelen szakaszt a tényleges süti-állomány alapján frissíti.\n\nA https://www.afm.hu weboldal jelenlegi működésében az Adatkezelő nem alkalmaz analitikai, marketing-, retargeting- vagy profilalkotási célú sütiket.\n\nAmennyiben a weboldal működéséhez elengedhetetlen technikai sütit vagy hasonló technológiát alkalmazunk, azt kizárólag a weboldal működésének biztosítása, biztonsága és visszaélések megelőzése céljából használjuk. Az ilyen technológiák nem szolgálnak marketing- vagy analitikai célt.\n\nAz Adatkezelő a sütik használatát rendszeresen ellenőrzi. Amennyiben analitikai vagy marketing célú sütik kerülnek bevezetésre, az Adatkezelő előzetesen frissíti a jelen tájékoztatót, és ahol szükséges, hozzájárulás-kezelési megoldást alkalmaz.",
+          body: "A https://www.afm.hu weboldal jelenlegi működésében az Adatkezelő nem alkalmaz analitikai, marketing-, retargeting- vagy profilalkotási célú sütiket.\n\nAmennyiben a weboldal működéséhez elengedhetetlen technikai sütit vagy hasonló technológiát alkalmazunk, azt kizárólag a weboldal működésének biztosítása, biztonsága és visszaélések megelőzése céljából használjuk. Az ilyen technológiák nem szolgálnak marketing- vagy analitikai célt.\n\nAz Adatkezelő a sütik használatát rendszeresen ellenőrzi. Amennyiben analitikai vagy marketing célú sütik kerülnek bevezetésre, az Adatkezelő előzetesen frissíti a jelen tájékoztatót, és ahol szükséges, hozzájárulás-kezelési megoldást alkalmaz.",
         },
         {
           id: "rights",
@@ -374,7 +374,7 @@ export const hu = {
         copyright: "Szerzői jog",
       },
       regulatedProfessionText:
-        "A Szolgáltató tevékenysége a 2005. évi CXXXIII. törvény (SzVMt.) és annak végrehajtási rendeletei (különösen a 22/2006. (IV. 25.) BM rendelet a személy- és vagyonőri, valamint magánnyomozói igazolványokról és a tevékenység gyakorlásának részletes szabályairól) szerinti szabályozott szakmák körébe tartozik (személy- és vagyonvédelem, magánnyomozás). A vonatkozó hatósági engedélyeket lásd 5. szakasz.",
+        "A Szolgáltató tevékenysége a 2005. évi CXXXIII. törvény (SzVMt.) és annak végrehajtási rendeletei (különösen a 22/2006. (IV. 25.) BM rendelet a személy- és vagyonőri, valamint magánnyomozói igazolványokról és a tevékenység gyakorlásának részletes szabályairól) szerinti szabályozott szakmák körébe tartozik (személy- és vagyonvédelem, magánnyomozás). A vonatkozó hatósági engedélyeket lásd 6. szakasz.",
       dpoSection: {
         intro:
           "Az Adatkezelő a GDPR 37. cikk (1) bek. b) és c) pontjai alapján adatvédelmi tisztviselőt (Data Protection Officer, DPO) jelölt ki. Az érintettek közvetlenül fordulhatnak a DPO-hoz adatvédelmi kérdéseikkel, kérelmeikkel vagy panaszaikkal.",
@@ -382,7 +382,7 @@ export const hu = {
         email: "dpo@afm.hu",
         phone: "+36 70 622 6242",
         postal: "1039 Budapest, Királyok útja 291. B. ép. 15. ajtó",
-        note: "A NAIH-hoz történő bejelentés az Infotv. 25/L. § alapján megtörtént / folyamatban van.",
+        note: "A NAIH-hoz történő bejelentés az Infotv. 25/L. § alapján megtörtént.",
       },
       labels: {
         legalName: "Hivatalos cégnév",

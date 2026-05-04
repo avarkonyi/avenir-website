@@ -195,11 +195,11 @@ export const zh = {
       "sections": [
         { "id": "controller", "title": "1. 控制者识别", "body": "法定名称：Avenir Facility Management Szolgáltató Korlátolt Felelősségű Társaság\n商业法院注册简称：Avenir Facility Kft.\n营销名称：Avenir Facility Management Kft.\n公司注册号：01-09-328046\n税号：26395124-2-41\n欧盟增值税号：HU26395124\n成立日期：2018年7月31日\n注册办公地址：匈牙利1039布达佩斯，Királyok útja 291号，B栋，15门\n一般联系：info@afm.hu · +36 70 316 8218" },
         { "id": "representative", "title": "2. 控制者授权代表和数据保护联系人", "body": "授权代表：Kovács Attila，总经理\n电子邮件：info@afm.hu\n电话：+36 70 312 5868" },
-        { "id": "dpo", "title": "3. 数据保护官 (DPO)", "body": "控制者已根据GDPR第37(1)(b)和(c)条任命数据保护官。\n\n数据保护官：Csegény Fanni\n电子邮件：dpo@afm.hu\n电话：+36 70 622 6242\n邮政联系：1039 布达佩斯, Királyok útja 291, B栋, 15门, 匈牙利\n\n控制者已根据Infotv.第25/L条向NAIH提交/正在提交备案。" },
+        { "id": "dpo", "title": "3. 数据保护官 (DPO)", "body": "控制者已根据GDPR第37(1)(b)和(c)条任命数据保护官。\n\n数据保护官：Csegény Fanni\n电子邮件：dpo@afm.hu\n电话：+36 70 622 6242\n邮政联系：1039 布达佩斯, Királyok útja 291, B栋, 15门, 匈牙利\n\n控制者已根据Infotv.第25/L条向NAIH提交备案。" },
         { "id": "processed-data", "title": "4. 处理目的、法律依据和处理的个人数据", "body": "4.1. 联系/报价请求 — 法律依据：自然人 GDPR Art. 6(1)(b)，B2B 联系人 Art. 6(1)(f)。\n4.2. 防止滥用和网站安全 — 法律依据：Art. 6(1)(f)。\n4.3. 成功请求后的合同管理。\n4.4. 排除特殊类别数据 — 请勿通过表单提交敏感、刑事或第三方信息。" },
         { "id": "processors", "title": "5. 数据处理者 (GDPR Art. 28)", "body": "5.1. Plus Five Five, Inc.（\"Resend\"）— 2261 Market Street #5039, San Francisco, CA 94114, USA — 邮件传输。Art. 28 DPA。第三国传输保障：DPF (Art. 45) 或 SCC (Art. 46)。\n\n5.2. Vercel Inc. — 440 N Barranca Avenue #4133, Covina, CA 91723, USA — 托管/Edge/CDN。Art. 28 DPA。EU 区域已配置 (fra1)。\n\n5.3. Neon, LLC（Databricks, Inc. 关联公司）— 160 Spear Street, Suite 1300, San Francisco, CA 94105, USA — PostgreSQL 数据库，EU AWS Frankfurt。Art. 28 DPA。第三国保障：Databricks DPF 认证 (Art. 45) 或 SCC (Art. 46)。" },
         { "id": "third-country", "title": "6. 国际数据传输", "body": "控制者努力使数据存储位于EU区域。但不保证所有处理仅在EEA内进行。对美国注册的提供商，根据美国法律（特别是 FISA 702、CLOUD Act）可能产生访问义务。保障：GDPR Art. 45 (DPF)、Art. 46 (SCC) 及补充措施。" },
-        { "id": "cookies", "title": "7. Cookie 和类似技术", "body": "Cookie 审计待定 — 控制者将在部署后通过 DevTools 审计完成完整 Cookie 清单。本网站不使用任何分析、营销、再营销或画像 Cookie。" },
+        { "id": "cookies", "title": "7. Cookie 和类似技术", "body": "在当前运行状态下，https://www.afm.hu 网站不使用任何分析、营销、再营销或画像 Cookie。\n\n如网站运行、安全或防止滥用所必需而使用技术性 Cookie 或类似技术，该等技术仅用于确保网站运行、安全和防止滥用，不用于营销或分析目的。\n\n控制者会定期检查 Cookie 使用情况。如未来引入分析或营销 Cookie，控制者将预先更新本政策，并在需要时采用同意管理解决方案。" },
         { "id": "rights", "title": "8. 数据主体的权利 (GDPR Art. 12-22)", "body": "知情、访问、更正、删除、限制、可携、反对（针对 4.1 和 4.2 中基于合法利益的处理）、自动化决策相关权利。" },
         { "id": "automated", "title": "9. 自动化决策和画像", "body": "本流程中不进行自动化决策和画像。" },
         { "id": "dsar", "title": "10. 行使您的权利 (DSAR 程序)", "body": "电子邮件：info@afm.hu（主题：\"数据保护请求\"）\n邮寄：Avenir Facility Management Kft., Királyok útja 291, B栋, 15门, 1039 布达佩斯, 匈牙利\n\n根据 Art. 12(3) 在一个月内回复，最多可延长 2 个月。" },
@@ -258,14 +258,14 @@ export const zh = {
         "hosting": "托管提供商",
         "copyright": "版权"
       },
-      "regulatedProfessionText": "提供方的活动属于匈牙利 2005 年第 CXXXIII 号法律（SzVMt.）及其实施法令（特别是 22/2006. (IV.25.) BM 法令）所规定的受监管职业（人身和财产保护、私人侦探）。许可证详见第 5 节。",
+      "regulatedProfessionText": "提供方的活动属于匈牙利 2005 年第 CXXXIII 号法律（SzVMt.）及其实施法令（特别是 22/2006. (IV.25.) BM 法令）所规定的受监管职业（人身和财产保护、私人侦探）。许可证详见第 6 节。",
       "dpoSection": {
         "intro": "控制者已根据GDPR第37(1)(b)和(c)条任命数据保护官（DPO）。数据主体可就数据保护问题、请求或投诉直接联系数据保护官。",
         "name": "Csegény Fanni",
         "email": "dpo@afm.hu",
         "phone": "+36 70 622 6242",
         "postal": "1039 布达佩斯, Királyok útja 291, B栋, 15门, 匈牙利",
-        "note": "根据 Infotv. 第 25/L 条向 NAIH 的备案已完成 / 正在进行中。"
+        "note": "根据 Infotv. 第 25/L 条向 NAIH 的备案已完成。"
       },
       "labels": {
         "legalName": "法定名称",
