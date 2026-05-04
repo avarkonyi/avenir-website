@@ -71,6 +71,13 @@
       "when": 1777837110803,
       "tag": "0009_tiresome_leper_queen",
       "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "7",
+      "when": 1777915279246,
+      "tag": "0010_crazy_whizzer",
+      "breakpoints": true
     }
   ]
 }

@@ -21,7 +21,7 @@ const NAV_ITEMS: NavItem[] = [
   { label: "Karrier", href: "/admin/positions", enabled: true },
   { label: "Partnerek", href: "/admin/partners", enabled: true },
   { label: "Tanúsítványok", href: "/admin/certifications", enabled: true },
-  { label: "Beállítások", href: "/admin/settings", enabled: false },
+  { label: "Beállítások", href: "/admin/settings", enabled: true },
 ];
 
 export function AdminSidebarClient({ unreadCount }: { unreadCount: number }) {

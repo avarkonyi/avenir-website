@@ -7,6 +7,7 @@ import {
   integer,
   timestamp,
   date,
+  check,
   index,
   jsonb,
 } from "drizzle-orm/pg-core";
@@ -461,5 +462,48 @@ export const partners = pgTable(
     index("idx_partners_active_sort")
       .on(table.isActive, table.sortOrder)
       .where(sql`${table.isActive} = true`),
+  ],
+);
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 8. SITE SETTINGS — admin-managed company/contact settings foundation.
+//    Single-row typed table (id=1 enforced by CHECK) rather than key/value:
+//    these fields are legal/contact facts with stable validation needs.
+//
+//    Iter 7 scope is admin-only. Public renderers still read SEO_DATA /
+//    hardcoded values until a separate public cutover commit decides how to
+//    bridge runtime settings into Footer, Contact, metadata and JSON-LD.
+// ─────────────────────────────────────────────────────────────────────────────
+export const siteSettings = pgTable(
+  "site_settings",
+  {
+    id: integer("id").primaryKey().default(1),
+
+    legalName: text("legal_name").notNull(),
+    legalNameShort: text("legal_name_short").notNull(),
+    alternateName: text("alternate_name").notNull(),
+    registrationId: text("registration_id").notNull(),
+    taxId: text("tax_id").notNull(),
+    vatId: text("vat_id").notNull(),
+
+    addressStreet: text("address_street").notNull(),
+    addressPostalCode: varchar("address_postal_code", { length: 20 }).notNull(),
+    addressLocality: text("address_locality").notNull(),
+    addressCountry: varchar("address_country", { length: 2 }).notNull().default("HU"),
+    addressShort: text("address_short").notNull(),
+    mapsUrl: text("maps_url").notNull(),
+
+    phone: text("phone").notNull(),
+    phoneDisplay: text("phone_display").notNull(),
+    phoneTel: text("phone_tel").notNull(),
+    email: text("email").notNull(),
+    emailHref: text("email_href").notNull(),
+    officeHoursHu: text("office_hours_hu"),
+
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (table) => [
+    check("site_settings_singleton_id", sql`${table.id} = 1`),
   ],
 );
