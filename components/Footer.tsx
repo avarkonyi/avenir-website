@@ -34,18 +34,18 @@ export async function Footer({
           }}
         >
           {/* Column 1: Logo + blurb */}
-          <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: 22 }}>
             <img
               src="/avenir-logo-horizontal-dark.svg"
               alt="Avenir Facility Management"
               style={{
-                height: 36,
+                height: 54,
                 width: "auto",
                 display: "block",
                 maxWidth: "100%",
               }}
             />
-            <p style={{ color: "rgba(255,255,255,0.45)", fontSize: 13, lineHeight: 1.65, fontWeight: 300, maxWidth: 260 }}>
+            <p style={{ color: "rgba(255,255,255,0.48)", fontSize: 13, lineHeight: 1.7, fontWeight: 300, maxWidth: 310 }}>
               {t.hero.sub}
             </p>
           </div>
