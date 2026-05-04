@@ -23,7 +23,7 @@ export async function Footer({
   return (
     <footer style={{ background: "#070F1E", padding: "60px 5vw 28px", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-        {/* Top grid: logo+blurb / services / contact / legal */}
+        {/* Top grid: logo / services / contact / legal */}
         <div
           className="footer-grid"
           style={{
@@ -33,8 +33,8 @@ export async function Footer({
             marginBottom: 40,
           }}
         >
-          {/* Column 1: Logo + blurb */}
-          <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+          {/* Column 1: Logo */}
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", minHeight: 150 }}>
             <img
               src="/avenir-logo-horizontal-dark.svg"
               alt="Avenir Facility Management"
@@ -43,12 +43,8 @@ export async function Footer({
                 width: "auto",
                 display: "block",
                 maxWidth: "100%",
-                marginLeft: -168,
               }}
             />
-            <p style={{ color: "rgba(255,255,255,0.48)", fontSize: 13, lineHeight: 1.7, fontWeight: 300, maxWidth: 320, marginLeft: -56 }}>
-              {t.hero.sub}
-            </p>
           </div>
 
           {/* Column 2: Services links */}
