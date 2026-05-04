@@ -46,7 +46,7 @@ export async function Footer({
                 marginLeft: -168,
               }}
             />
-            <p style={{ color: "rgba(255,255,255,0.48)", fontSize: 13, lineHeight: 1.7, fontWeight: 300, maxWidth: 320 }}>
+            <p style={{ color: "rgba(255,255,255,0.48)", fontSize: 13, lineHeight: 1.7, fontWeight: 300, maxWidth: 320, marginLeft: -56 }}>
               {t.hero.sub}
             </p>
           </div>
