@@ -147,16 +147,24 @@ Before running any one-off script:
 
 ## Launch Checklist
 
-- Main database has 8 canonical services.
-- Main database has all app tables.
-- Main and staging migration journals are aligned with local `drizzle/meta/_journal.json`.
-- Vercel Preview points at staging.
-- Vercel Production points at main.
-- Admin routes are blocked from indexing via metadata and robots.
-- Sitemap is generated.
-- Resend production sender and recipient are verified.
-- M365 SPF/DKIM/DMARC are verified.
-- Legal pages are reviewed before public launch.
+- [ ] Main database has 8 canonical services.
+- [ ] Main database has all app tables.
+- [ ] Main and staging migration journals are aligned with local `drizzle/meta/_journal.json`.
+- [ ] Vercel Preview points at staging.
+- [ ] Vercel Production points at main.
+- [ ] robots.txt verified: `/admin` and `/api` disallow active.
+- [ ] sitemap.xml verified: only real routes are included.
+- [ ] Main DB ISO 9001 + ISO 27001 `is_published=true` before production cutover (operator action via `/admin/certifications` inline pill).
+- [ ] `RESEND_FROM_EMAIL` uses a verified domain and is not `@resend.dev`.
+- [ ] `RESEND_NOTIFY_TO` is set in Vercel Production env.
+- [ ] `REPLY_TEST_RECIPIENT` is set in Vercel Preview/Development env.
+- [ ] Neon database password/token rotation completed because secrets were shared in chat history.
+- [ ] After secret rotation, `.env.local`, Vercel Preview env, and Vercel Production env are updated.
+- [ ] Google Search Console: sitemap submitted and indexing requested.
+- [ ] Vercel Production `DATABASE_URL` points to main (`ep-young-meadow-aln5ux5m`).
+- [ ] Vercel Preview `DATABASE_URL` points to staging (`ep-twilight-sound-al2b7jsb`).
+- [ ] M365 SPF/DKIM/DMARC are verified.
+- [ ] Legal pages are reviewed before public launch.
 
 ## Secret Rotation Note
 
