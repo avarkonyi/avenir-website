@@ -34,7 +34,7 @@ export async function Footer({
           }}
         >
           {/* Column 1: Logo */}
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", minHeight: 150, transform: "translateY(-38px)" }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-start", minHeight: 150 }}>
             <img
               src="/avenir-logo-horizontal-dark.svg"
               alt="Avenir Facility Management"
