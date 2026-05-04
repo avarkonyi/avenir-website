@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { connection } from "next/server";
 import { notFound } from "next/navigation";
 import { Geist, Barlow_Condensed } from "next/font/google";
-import { asc, eq } from "drizzle-orm";
+import { and, asc, eq } from "drizzle-orm";
 import "../globals.css";
 import { getTranslation, LOCALES } from "@/lib/i18n";
 import { JsonLd } from "@/components/JsonLd";
@@ -108,8 +108,8 @@ export async function generateMetadata({
 type CertSchemaInput = {
   readonly slug: string;
   readonly name: string;
-  readonly fullNameHu: string;
-  readonly descriptionHu: string | null;
+  readonly fullName: string;
+  readonly description: string | null;
   readonly credentialCategory: string | null;
   readonly issuer: string;
   readonly issuerUrl: string | null;
@@ -122,6 +122,38 @@ type CertSchemaInput = {
   readonly iafMlaMember: boolean;
   readonly pdfUrl: string | null;
 };
+
+const CERT_SCHEMA_COLS = {
+  hu: {
+    fullName: certifications.fullNameHu,
+    description: certifications.descriptionHu,
+  },
+  en: {
+    fullName: certifications.fullNameEn,
+    description: certifications.descriptionEn,
+  },
+  de: {
+    fullName: certifications.fullNameDe,
+    description: certifications.descriptionDe,
+  },
+  zh: {
+    fullName: certifications.fullNameZh,
+    description: certifications.descriptionZh,
+  },
+} as const;
+
+function withHuFallback(
+  value: string | null,
+  fallback: string | null,
+): string | null {
+  if (value && value.trim().length > 0) return value;
+  return fallback && fallback.trim().length > 0 ? fallback : null;
+}
+
+function absoluteUrl(url: string): string {
+  if (/^https?:\/\//.test(url)) return url;
+  return `${SEO_DATA.url}${url}`;
+}
 
 function buildJsonLdSchemas(
   localeIso: SeoLocale,
@@ -273,14 +305,14 @@ function buildJsonLdSchemas(
           ...(c.issuerUrl ? { url: c.issuerUrl } : {}),
         },
       };
-      if (c.fullNameHu) schema.alternateName = c.fullNameHu;
-      if (c.descriptionHu) schema.description = c.descriptionHu;
+      if (c.fullName) schema.alternateName = c.fullName;
+      if (c.description) schema.description = c.description;
       if (c.credentialCategory)
         schema.credentialCategory = c.credentialCategory;
       if (c.certificateNumber) schema.identifier = c.certificateNumber;
       if (c.issuedDate) schema.dateCreated = c.issuedDate;
       if (c.expiresDate) schema.expires = c.expiresDate;
-      if (c.pdfUrl) schema.url = `${SEO_DATA.url}${c.pdfUrl}`;
+      if (c.pdfUrl) schema.url = absoluteUrl(c.pdfUrl);
       if (additionalProperty.length > 0)
         schema.additionalProperty = additionalProperty;
       return schema;
@@ -298,15 +330,17 @@ export default async function LocaleLayout({
   const { locale } = await params;
   if (!SEO_LOCALES.includes(locale as SeoLocale)) notFound();
   const seoLocale = locale as SeoLocale;
-  // JSON-LD: services are now per-locale DB-backed (P2 C5 cutover).
-  // Certifications stay HU/shared — cert metadata is locale-shared by
-  // design (see `descriptionHu` etc. on the certifications table).
+  // JSON-LD: services and certifications are per-locale DB-backed.
+  // Certifications fall back to HU for nullable localized text.
   await connection();
-  const certs = await db
+  const certCols = CERT_SCHEMA_COLS[seoLocale] ?? CERT_SCHEMA_COLS.hu;
+  const certRows = await db
     .select({
       slug: certifications.slug,
       name: certifications.name,
+      fullName: certCols.fullName,
       fullNameHu: certifications.fullNameHu,
+      description: certCols.description,
       descriptionHu: certifications.descriptionHu,
       credentialCategory: certifications.credentialCategory,
       issuer: certifications.issuer,
@@ -321,8 +355,15 @@ export default async function LocaleLayout({
       pdfUrl: certifications.pdfUrl,
     })
     .from(certifications)
-    .where(eq(certifications.active, true))
+    .where(
+      and(eq(certifications.active, true), eq(certifications.isPublished, true)),
+    )
     .orderBy(asc(certifications.sortOrder));
+  const certs: CertSchemaInput[] = certRows.map((cert) => ({
+    ...cert,
+    fullName: withHuFallback(cert.fullName, cert.fullNameHu) ?? cert.name,
+    description: withHuFallback(cert.description, cert.descriptionHu),
+  }));
 
   // Locale-aware service rows via shared helper
   // (lib/db/queries/services.ts). JSON-LD ItemList requires both name

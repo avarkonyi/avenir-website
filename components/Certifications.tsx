@@ -1,5 +1,5 @@
 import { connection } from "next/server";
-import { asc, eq } from "drizzle-orm";
+import { and, asc, eq } from "drizzle-orm";
 import type { Translation } from "@/lib/i18n";
 import { db, certifications } from "@/lib/db";
 
@@ -62,6 +62,14 @@ type CertRow = {
   pdfUrl: string | null;
 };
 
+function withHuFallback(
+  value: string | null,
+  fallback: string | null,
+): string | null {
+  if (value && value.trim().length > 0) return value;
+  return fallback && fallback.trim().length > 0 ? fallback : null;
+}
+
 // Inline SVG logo: 200×200 viewBox with navy gradient and "ISO {num}"
 // stacked text. role="img" + <title> makes it a legitimate image entity
 // for screen readers and SEO crawlers without needing an <img> tag.
@@ -118,8 +126,11 @@ export async function Certifications({
       standardCode: certifications.standardCode,
       certificateNumber: certifications.certificateNumber,
       fullName: cols.fullName,
+      fullNameHu: certifications.fullNameHu,
       description: cols.description,
+      descriptionHu: certifications.descriptionHu,
       scope: cols.scope,
+      scopeHu: certifications.scopeHu,
       issuer: certifications.issuer,
       issuerUrl: certifications.issuerUrl,
       accreditationBody: certifications.accreditationBody,
@@ -133,10 +144,18 @@ export async function Certifications({
       pdfUrl: certifications.pdfUrl,
     })
     .from(certifications)
-    .where(eq(certifications.active, true))
+    .where(
+      and(eq(certifications.active, true), eq(certifications.isPublished, true)),
+    )
     .orderBy(asc(certifications.sortOrder));
+  const certRows: CertRow[] = rows.map((row) => ({
+    ...row,
+    fullName: withHuFallback(row.fullName, row.fullNameHu) ?? row.name,
+    description: withHuFallback(row.description, row.descriptionHu),
+    scope: withHuFallback(row.scope, row.scopeHu),
+  }));
 
-  if (rows.length === 0) return null;
+  if (certRows.length === 0) return null;
 
   return (
     <section
@@ -199,7 +218,7 @@ export async function Certifications({
           </p>
         </div>
         <div className="certifications-grid">
-          {rows.map((cert) => {
+          {certRows.map((cert) => {
             // Rich alt-text reuses existing i18n labels (no new key needed)
             const expiresStr = cert.expiresDate
               ? `, ${t.certifications.validUntil} ${formatDate(cert.expiresDate, locale)}`
