@@ -1,6 +1,6 @@
 import type { Translation } from "@/lib/i18n";
+import Image from "next/image";
 import { Icon } from "./Icon";
-import { AvenirLogo } from "./AvenirLogo";
 
 export function About({ t }: { t: Translation }) {
   return (
@@ -92,56 +92,22 @@ export function About({ t }: { t: Translation }) {
           <div
             className="about-visual-block"
             style={{
-              background: "linear-gradient(135deg, #0B1E3E 0%, #1a3a6b 100%)",
+              position: "relative",
+              overflow: "hidden",
+              background: "#0B1E3E",
               borderRadius: 4,
-              padding: 60,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
               minHeight: 420,
-              gap: 20,
             }}
           >
-            <AvenirLogo size={52} />
-            <div
-              style={{
-                width: "70%",
-                height: 1,
-                background: "rgba(255,255,255,0.12)",
-                margin: "8px 0",
-              }}
+            <Image
+              src="/uploads/company-photo.webp"
+              alt={t.aboutTitle}
+              fill
+              sizes="(max-width: 900px) 100vw, 50vw"
+              quality={82}
+              style={{ objectFit: "cover", objectPosition: "center" }}
             />
-            <div
-              style={{
-                fontFamily: "var(--font-head)",
-                color: "rgba(255,255,255,0.4)",
-                fontSize: 11,
-                letterSpacing: 2,
-                textAlign: "center",
-                lineHeight: 2,
-              }}
-            >
-              SINCE 2018
-              <br />
-              BUDAPEST · HUNGARY
-            </div>
-            <div
-              className="about-photo-badge"
-              style={{
-                position: "absolute",
-                bottom: 16,
-                right: 16,
-                background: "rgba(255,255,255,0.05)",
-                border: "1px dashed rgba(255,255,255,0.15)",
-                padding: "6px 12px",
-                borderRadius: 2,
-              }}
-            >
-              <span style={{ fontFamily: "monospace", fontSize: 10, color: "rgba(255,255,255,0.3)" }}>
-                company photo
-              </span>
-            </div>
+            <div style={{ position: "absolute", inset: 0, background: "rgba(11,30,62,0.08)" }} />
           </div>
           <div
             className="about-decorative-square"
