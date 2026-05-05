@@ -81,7 +81,6 @@ export function Hero({ t }: { t: Pick<Translation, "hero" | "stats"> }) {
               borderRadius: 2,
             }}
           >
-            <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#D1172E" }} />
             <span
               style={{
                 fontFamily: "var(--font-head)",
