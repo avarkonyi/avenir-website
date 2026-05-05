@@ -59,50 +59,50 @@ export const en = {
     {
       "id": "security",
       "icon": "shield",
-      "t": "Security",
-      "d": "Professional person and property protection with SIA-qualified personnel, available 24/7."
+      "t": "On-site Security Guarding",
+      "d": "Protection of people and assets with trained security guards: site guarding, patrol services, access control support and incident handling in industrial, retail and office environments."
     },
     {
       "id": "cleaning",
       "icon": "sparkle",
-      "t": "Cleaning",
-      "d": "Daily, weekly and one-off cleaning services for offices, facilities and public buildings."
+      "t": "Event Security",
+      "d": "Security for corporate events, conferences and special events according to agreed protocols: access control, on-site presence, patrols and incident handling."
     },
     {
       "id": "building",
       "icon": "building",
-      "t": "Building Operations",
-      "d": "Full building management: technical supervision, maintenance and energy management."
+      "t": "Security Technology",
+      "d": "Design, installation and maintenance of CCTV, access control and alarm systems, providing the technical layer that supports on-site security."
     },
     {
       "id": "reception",
       "icon": "desk",
-      "t": "Reception / Porter",
-      "d": "Professional reception and concierge services with access control and visitor management."
+      "t": "Reception and Gatehouse Services",
+      "d": "Professional gatehouse and reception presence: visitor reception, access control, key management, parcel acceptance and tenant liaison to support daily operations."
     },
     {
       "id": "green",
       "icon": "leaf",
-      "t": "Green Area Management",
-      "d": "Park and garden maintenance, landscaping and seasonal grounds care."
+      "t": "Soft FM",
+      "d": "Coordination of cleaning, grounds maintenance and caretaking tasks as complementary services, with controlled quality and one accountable point of contact."
     },
     {
       "id": "technical",
       "icon": "wrench",
-      "t": "Technical Maintenance",
-      "d": "Building mechanical, electrical and HVAC system operations and maintenance."
+      "t": "Remote Monitoring and Response",
+      "d": "Handling alarm and camera alerts with dispatcher support, with on-site response when needed, according to agreed protocols."
     },
     {
       "id": "mystery",
       "icon": "eye",
-      "t": "Mystery Shopping",
-      "d": "Design and execution of mystery shopper programmes to measure service quality."
+      "t": "Mystery Shopping and On-site Audits",
+      "d": "Mystery shopping, service quality checks and on-site audits in real customer and operational situations, with independent assessment and structured reporting."
     },
     {
       "id": "hardfm",
       "icon": "gear",
       "t": "Hard FM",
-      "d": "Comprehensive management of building structures, critical infrastructure and technical systems."
+      "d": "Support for technical operations, maintenance coordination and minor repair tasks as complementary services in complex client environments."
     }
   ],
   "refTitle": "References",

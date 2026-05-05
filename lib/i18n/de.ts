@@ -59,50 +59,50 @@ export const de = {
     {
       "id": "security",
       "icon": "shield",
-      "t": "Security",
-      "d": "Professioneller Personen- und Objektschutz mit qualifiziertem Personal, 24/7 verfügbar."
+      "t": "Personeller Objektschutz",
+      "d": "Personen- und Sachschutz mit geschulten Sicherheitskräften: Objektschutz, Streifendienste, Unterstützung bei der Zutrittskontrolle und Vorfallbearbeitung in Industrie-, Handels- und Büroumgebungen."
     },
     {
       "id": "cleaning",
       "icon": "sparkle",
-      "t": "Reinigung",
-      "d": "Tägliche, wöchentliche und einmalige Reinigungsdienste für Büros, Betriebe und Einrichtungen."
+      "t": "Veranstaltungsschutz",
+      "d": "Absicherung von Firmenevents, Konferenzen und Sonderveranstaltungen nach abgestimmten Protokollen: Zutrittskontrolle, Präsenz vor Ort, Streifendienste und Vorfallbearbeitung."
     },
     {
       "id": "building",
       "icon": "building",
-      "t": "Gebäudebetrieb",
-      "d": "Vollständiges Gebäudemanagement: technische Überwachung, Wartung und Energiemanagement."
+      "t": "Sicherheitstechnik",
+      "d": "Planung, Installation und Wartung von Videoüberwachungs-, Zutrittskontroll- und Alarmanlagen als technische Unterstützung für den personellen Objektschutz."
     },
     {
       "id": "reception",
       "icon": "desk",
-      "t": "Empfang / Pforte",
-      "d": "Professioneller Empfangs- und Pfortendienst mit Zugangskontrolle und Besuchermanagement."
+      "t": "Empfangs- und Pförtnerdienst",
+      "d": "Repräsentativer Pförtnerdienst und Empfangspräsenz: Besucherempfang, Zutrittskontrolle, Schlüsselverwaltung, Paketannahme und Mieterkommunikation zur Unterstützung des täglichen Betriebs."
     },
     {
       "id": "green",
       "icon": "leaf",
-      "t": "Grünflächenpflege",
-      "d": "Park- und Gartenpflege, Landschaftsgestaltung und saisonale Außenarbeiten."
+      "t": "Soft FM",
+      "d": "Organisation von Reinigungs-, Grünpflege- und Hausmeisterleistungen als ergänzende Services, mit kontrollierter Qualität und einem verantwortlichen Ansprechpartner."
     },
     {
       "id": "technical",
       "icon": "wrench",
-      "t": "Technische Wartung",
-      "d": "Betrieb und Wartung von gebäudetechnischen, elektrischen und HVAC-Anlagen."
+      "t": "Fernüberwachung und Interventionsdienst",
+      "d": "Bearbeitung von Alarm- und Kamerasignalen mit Leitstellenunterstützung, bei Bedarf mit Reaktion vor Ort, nach abgestimmten Protokollen."
     },
     {
       "id": "mystery",
       "icon": "eye",
-      "t": "Mystery Shopping",
-      "d": "Entwicklung und Durchführung von Mystery-Shopper-Programmen zur Servicemessung."
+      "t": "Mystery Shopping und Vor-Ort-Audits",
+      "d": "Mystery Shopping, Servicequalitätskontrollen und Vor-Ort-Audits in realen Kunden- und Betriebssituationen, mit unabhängiger Bewertung und strukturiertem Reporting."
     },
     {
       "id": "hardfm",
       "icon": "gear",
       "t": "Hard FM",
-      "d": "Umfassendes Management von Gebäudestrukturen, kritischer Infrastruktur und technischen Systemen."
+      "d": "Unterstützung bei technischem Betrieb, Wartungskoordination und kleineren Reparaturarbeiten als ergänzende Leistung in komplexen Kundenumgebungen."
     }
   ],
   "refTitle": "Referenzen",
