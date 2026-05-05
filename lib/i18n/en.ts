@@ -10,10 +10,10 @@ export const en = {
     "cta": "Get a Quote"
   },
   "hero": {
-    "tag": "Premium Facility Management",
-    "h1a": "Buildings, people,",
-    "h1b": "security.",
-    "sub": "Avenir Facility Management delivers integrated building operations and security solutions — with expert teams and consistent quality.",
+    "tag": "SECURITY SERVICES · SECURITY TECHNOLOGY · AUDITS",
+    "h1a": "Less risk.",
+    "h1b": "More control.",
+    "sub": "Avenir brings your security operations together as one coordinated service: site guarding, access control, security technology, on-site inspections and reporting. One contract. One accountable point of contact.",
     "cta1": "Our Services",
     "cta2": "Get a Quote",
     "bgAlt": "Avenir Facility Management — building operations and security in Hungary"

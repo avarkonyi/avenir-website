@@ -10,10 +10,10 @@ export const de = {
     "cta": "Angebot anfragen"
   },
   "hero": {
-    "tag": "Premium Facility Management",
-    "h1a": "Gebäude, Menschen,",
-    "h1b": "Sicherheit.",
-    "sub": "Avenir Facility Management bietet integrierte Gebäudebetrieb- und Sicherheitslösungen – mit Expertenteams und gleichbleibender Qualität.",
+    "tag": "OBJEKTSCHUTZ · SICHERHEITSTECHNIK · AUDITS",
+    "h1a": "Weniger Risiko.",
+    "h1b": "Mehr Kontrolle.",
+    "sub": "Avenir bündelt Ihren Sicherheitsbetrieb aus einer Hand: Objektschutz, Zutrittskontrolle, Sicherheitstechnik, Vor-Ort-Kontrollen und Reporting. Ein Vertrag. Ein verantwortlicher Ansprechpartner.",
     "cta1": "Unsere Leistungen",
     "cta2": "Angebot anfragen",
     "bgAlt": "Avenir Facility Management — Gebäudebetrieb und Sicherheit in Ungarn"
