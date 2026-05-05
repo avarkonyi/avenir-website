@@ -107,7 +107,7 @@ export const de = {
   ],
   "refTitle": "Referenzen",
   "refSub": "Sie vertrauen uns",
-  "refText": "Zu unseren Kunden zählen führende ungarische Unternehmen, Einkaufszentren, Industrieparks und öffentliche Einrichtungen.",
+  "refText": "Jeder Standort ist anders, doch die Erwartung ist dieselbe: ein sicherer, transparenter und planbarer Betrieb. Avenir arbeitet mit Partnern von Logistikzentren und Einkaufszentren bis hin zu Industrieparks und öffentlichen Einrichtungen zusammen — Organisationen, für die Sicherheit, Ordnung und Betriebsqualität keine Frage von Kompromissen sind.",
   "refs": [
     "Bürogebäude",
     "Einkaufszentren",

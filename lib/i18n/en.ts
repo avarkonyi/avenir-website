@@ -107,7 +107,7 @@ export const en = {
   ],
   "refTitle": "References",
   "refSub": "They trust us",
-  "refText": "Our clients include leading Hungarian companies, shopping centres, industrial parks and public institutions.",
+  "refText": "Every site is different, but the expectation is the same: safe, transparent and predictable operations. Avenir works with partners ranging from logistics centres and shopping centres to industrial parks and public institutions — organisations for whom security, order and operational quality are not open to compromise.",
   "refs": [
     "Office Buildings",
     "Shopping Centres",

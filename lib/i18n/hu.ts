@@ -98,7 +98,7 @@ export const hu = {
   refTitle: "Referenciáink",
   refSub: "Bíznak bennünk",
   refText:
-    "Ügyfeleink közös pontja nem a méret vagy az iparág — hanem az elvárás, hogy az épület hibátlanul működjön. Logisztikai központtól bevásárlóközpontig, ipari parktól közintézményig dolgozunk együtt olyan partnerekkel, akiknek a működési minőség nem kompromisszum kérdése.",
+    "Minden helyszín más, az elvárás mégis ugyanaz: biztonságos, átlátható és kiszámítható működés. Az Avenir logisztikai központoktól bevásárlóközpontokig, ipari parkoktól közintézményekig dolgozik olyan partnerekkel, akik számára a biztonság, a rend és a működési minőség nem kompromisszum kérdése.",
   refs: [
     "Irodaházak",
     "Bevásárlóközpontok",
