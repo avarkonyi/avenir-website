@@ -42,15 +42,15 @@ export const de = {
   "values": [
     {
       "t": "Zuverlässigkeit",
-      "d": "Beständige, planbare Präsenz an jedem Standort"
+      "d": "Beständige Präsenz vor Ort, gestützt durch dokumentierte Prozesse, regelmäßige Berichte und klare Verantwortlichkeiten."
     },
     {
       "t": "Expertise",
-      "d": "Ausgebildete Teams in allen Fachbereichen"
+      "d": "Geschulte Teams, standortspezifische Abläufe und kontrollierte Leistung in allen Fachbereichen."
     },
     {
       "t": "Flexibilität",
-      "d": "Maßgeschneiderte Lösungen für jeden Kunden"
+      "d": "Maßgeschneiderte Sicherheits-, Audit- und FM-Unterstützung für jeden Kunden, Standort und Bedarf."
     }
   ],
   "servicesTitle": "Unsere Leistungen",

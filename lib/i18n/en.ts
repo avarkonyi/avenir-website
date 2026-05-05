@@ -42,15 +42,15 @@ export const en = {
   "values": [
     {
       "t": "Reliability",
-      "d": "Consistent, predictable presence at every site"
+      "d": "Consistent site presence, backed by documented processes, regular reporting and clear responsibilities."
     },
     {
       "t": "Expertise",
-      "d": "Trained, experienced teams across all disciplines"
+      "d": "Trained teams, site-specific protocols and controlled delivery across all service areas."
     },
     {
       "t": "Flexibility",
-      "d": "Tailored solutions for every client"
+      "d": "Tailored security, audit and FM support for each client, site and operational need."
     }
   ],
   "servicesTitle": "Our Services",
