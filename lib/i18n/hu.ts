@@ -10,10 +10,10 @@ export const hu = {
     cta: "Ajánlatkérés",
   },
   hero: {
-    tag: "Épületüzemeltetés · Vagyonvédelem · Karbantartás",
-    h1a: "Az épület üzemel.",
-    h1b: "Ön a saját dolgára koncentrál.",
-    sub: "Az Avenir átveszi az épületüzemeltetés és a vagyonvédelem teljes terhét — napi működéstől a riportokig, egyetlen szerződéssel, egy kapcsolattartóval.",
+    tag: "VAGYONVÉDELEM · BIZTONSÁGTECHNIKA · AUDIT",
+    h1a: "Kevesebb kockázat.",
+    h1b: "Több kontroll.",
+    sub: "Az Avenir egy kézben fogja össze a vagyonvédelmi működést: objektumőrzés, beléptetés, biztonságtechnika, helyszíni ellenőrzések és riportolás. Egy szerződéssel, egy felelős kapcsolattartóval.",
     cta1: "Szolgáltatásaink",
     cta2: "Ajánlatkérés",
     bgAlt:
