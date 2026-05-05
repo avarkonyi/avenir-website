@@ -108,7 +108,7 @@ export const hu = {
   newsTitle: "Híreink",
   newsSub: "Aktualitások és bejelentések",
   newsText:
-    "Szakmai hírek, új referenciák, iparági események és bejelentések az Avenir-től.",
+    "Szakmai hírek, új referenciák, iparági események és bejelentések.",
   newsReadMore: "Tovább olvasom",
   newsEmpty: "Hamarosan friss hírekkel jelentkezünk.",
   careerTitle: "Karrier",
