@@ -44,9 +44,22 @@ export function About({ t }: { t: Translation }) {
           >
             {t.aboutTitle}
           </h2>
-          <p style={{ color: "#556070", fontSize: 17, lineHeight: 1.75, marginBottom: 40, fontWeight: 300 }}>
-            {t.aboutText}
-          </p>
+          <div style={{ marginBottom: 40 }}>
+            {t.aboutText.split("\n\n").map((paragraph, index) => (
+              <p
+                key={index}
+                style={{
+                  color: "#556070",
+                  fontSize: 17,
+                  lineHeight: 1.75,
+                  margin: index === 0 ? "0 0 16px" : 0,
+                  fontWeight: 300,
+                }}
+              >
+                {paragraph}
+              </p>
+            ))}
+          </div>
           <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
             {t.values.map((v, i) => (
               <div key={i} style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>

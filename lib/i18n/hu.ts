@@ -26,21 +26,21 @@ export const hu = {
     { n: "24/7", l: "Diszpécseri készenlét" },
   ],
   aboutTitle: "Az Avenir-ről",
-  aboutSub: "Egy partner. Minden szolgáltatás.",
+  aboutSub: "Vagyonvédelmi fókusz. Facility szemlélet.",
   aboutText:
-    "Cégünk 2018-ban alakult, de csapatunk és vezetőink több évtizedes tapasztalattal rendelkeznek az épületüzemeltetés és a vagyonvédelem területén. Ma 200+ fős szakembergárdával, 30+ aktív helyszínen dolgozunk országszerte — irodaházak, bevásárlóközpontok, logisztikai és ipari létesítmények, közintézmények számára. Nem nyolc külön szolgáltatást árulunk: egy integrált működést biztosítunk egyetlen szerződéssel, egy felelős kapcsolattartóval.",
+    "Az Avenir 2018 óta dolgozik vállalati, kereskedelmi, ipari és logisztikai helyszíneken. A napi vagyonvédelmi feladatokat — őrzés, beléptetés, járőrözés, incidenskezelés és riportolás — úgy szervezzük meg, hogy az ügyfél oldalán kevesebb egyeztetés, kevesebb kockázat és átláthatóbb működés maradjon.\n\nVagyonvédelmi fókuszunkat szükség esetén biztonságtechnikával, mystery shoppinggal és kapcsolódó facility támogatással egészítjük ki. Így nem külön szolgáltatásokat kell kezelnie, hanem egy felelős partnert.",
   values: [
     {
-      t: "Átláthatóság",
-      d: "Mérhető teljesítmény, rendszeres riportok, kiszámítható számlázás.",
+      t: "Átlátható kontroll",
+      d: "Dokumentált folyamatok, rendszeres riportok, egyértelmű felelősségi pontok — hogy mindig lássa, mi történik a helyszínen.",
     },
     {
-      t: "Szakmai lefedettség",
-      d: "Vagyonvédelem, takarítás, műszak, zöldterület — minden diszciplína egy helyen.",
+      t: "Szakmai jelenlét",
+      d: "Képzett személyzet, helyszínre szabott protokollok, ellenőrzött munkavégzés ipari, logisztikai és kereskedelmi környezetben.",
     },
     {
-      t: "Felelős jelenlét",
-      d: "Nem tűnünk el egy incidens után. Ott vagyunk, amikor számít.",
+      t: "Reagálás és felelősség",
+      d: "Incidens esetén nem csak jelen vagyunk: dokumentálunk, visszajelzünk, és segítünk megelőzni az ismétlődő problémákat.",
     },
   ],
   servicesTitle: "Szolgáltatásaink",
