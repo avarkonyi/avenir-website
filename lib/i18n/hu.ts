@@ -108,7 +108,7 @@ export const hu = {
   newsTitle: "Híreink",
   newsSub: "Aktualitások és bejelentések",
   newsText:
-    "Szakmai hírek, új referenciák, iparági események és bejelentések.",
+    "Céges hírek, szakmai aktualitások, új referenciák és bejelentések.",
   newsReadMore: "Tovább olvasom",
   newsEmpty: "Hamarosan friss hírekkel jelentkezünk.",
   careerTitle: "Karrier",

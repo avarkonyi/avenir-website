@@ -116,7 +116,7 @@ export const zh = {
   ],
   "newsTitle": "新闻动态",
   "newsSub": "最新更新与公告",
-  "newsText": "关注Avenir的最新新闻、行业动态与专业活动。",
+  "newsText": "Avenir 企业动态、行业观察及精选公告。",
   "newsReadMore": "阅读更多",
   "newsEmpty": "最新资讯即将发布。",
   "careerTitle": "招聘",

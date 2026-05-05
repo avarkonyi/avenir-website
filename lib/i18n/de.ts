@@ -116,7 +116,7 @@ export const de = {
   ],
   "newsTitle": "News",
   "newsSub": "Updates & Ankündigungen",
-  "newsText": "Verfolgen Sie die neuesten Nachrichten, Branchenthemen und Veranstaltungen von Avenir.",
+  "newsText": "Unternehmensupdates, Branchennotizen und ausgewählte Mitteilungen von Avenir.",
   "newsReadMore": "Weiterlesen",
   "newsEmpty": "Neue Nachrichten folgen in Kürze.",
   "careerTitle": "Karriere",
