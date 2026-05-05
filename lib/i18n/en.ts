@@ -38,7 +38,7 @@ export const en = {
   ],
   "aboutTitle": "About Avenir",
   "aboutSub": "Your trusted facility partner",
-  "aboutText": "Avenir Facility Management has been delivering integrated building operations and security services since 2018. Our core values are reliability, precision, and client satisfaction. We operate to the highest professional standards — from office buildings to shopping centres, from industrial plants to public spaces.",
+  "aboutText": "Avenir was founded in 2018, but its management team and specialists bring decades of experience in facility management and security services. Today, we work nationwide with a team of 200+ professionals across 30+ active sites — in corporate, retail, industrial and logistics environments.\n\nWe coordinate security operations: guarding, access control, patrol services, incident handling and reporting. Our goal is to reduce the need for day-to-day coordination on the client’s side, lower risk and make on-site operations more transparent.\n\nWhere needed, we complement our security focus with security technology, mystery shopping and related FM support — allowing our clients to work with one accountable partner instead of multiple separate service providers.",
   "values": [
     {
       "t": "Reliability",

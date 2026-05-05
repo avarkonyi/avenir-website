@@ -28,7 +28,7 @@ export const hu = {
   aboutTitle: "Az Avenir-ről",
   aboutSub: "Vagyonvédelmi fókusz. Facility szemlélet.",
   aboutText:
-    "Az Avenir 2018 óta dolgozik vállalati, kereskedelmi, ipari és logisztikai helyszíneken. A napi vagyonvédelmi feladatokat — őrzés, beléptetés, járőrözés, incidenskezelés és riportolás — úgy szervezzük meg, hogy az ügyfél oldalán kevesebb egyeztetés, kevesebb kockázat és átláthatóbb működés maradjon.\n\nVagyonvédelmi fókuszunkat szükség esetén biztonságtechnikával, mystery shoppinggal és kapcsolódó facility támogatással egészítjük ki. Így nem külön szolgáltatásokat kell kezelnie, hanem egy felelős partnert.",
+    "Az Avenir 2018-ban alakult, de vezetői csapata és szakemberei több évtizedes tapasztalattal rendelkeznek az épületüzemeltetés és a vagyonvédelem területén. Ma 200+ fős szakembergárdával, 30+ aktív helyszínen dolgozunk országszerte — vállalati, kereskedelmi, ipari és logisztikai környezetben.\n\nVagyonvédelmi működést szervezünk: őrzést, beléptetést, járőrözést, incidenskezelést és riportolást. Célunk, hogy ügyfeleink oldalán kevesebb egyeztetésre legyen szükség, csökkenjen a kockázat, és átláthatóbb legyen a napi működés.\n\nA vagyonvédelmi fókuszt szükség esetén biztonságtechnikával, mystery shoppinggal és kapcsolódó FM-támogatással egészítjük ki — így ügyfeleink egy felelős partnerrel dolgozhatnak, nem több különálló szolgáltatóval.",
   values: [
     {
       t: "Átlátható kontroll",
