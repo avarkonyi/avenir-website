@@ -9,8 +9,10 @@ export const ICON_NAMES = [
   "shield",
   "sparkle",
   "building",
+  "camera",
   "desk",
   "leaf",
+  "radar",
   "wrench",
   "eye",
   "gear",
@@ -50,6 +52,12 @@ export function Icon({ name, size = 28, color = "currentColor" }: IconProps) {
         <path d="M9 3v18M3 9h6M3 15h6M15 9h3M15 15h3M15 3v6" />
       </svg>
     ),
+    camera: (
+      <svg style={s} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.8">
+        <path d="M4 7h11l5-3v12l-5-3H4a2 2 0 01-2-2V9a2 2 0 012-2z" />
+        <path d="M8 13v5M12 13v5M6 18h8" />
+      </svg>
+    ),
     desk: (
       <svg style={s} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.8">
         <rect x="2" y="7" width="20" height="10" rx="1" />
@@ -61,6 +69,16 @@ export function Icon({ name, size = 28, color = "currentColor" }: IconProps) {
       <svg style={s} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.8">
         <path d="M17 8C8 10 5.9 16.17 3.82 19.1c-.29.41.26.89.63.55C7.08 17.2 9.69 16 12 16c5 0 9-4 9-9 0 0-1.5 0-4 1z" />
         <path d="M12 16v6" />
+      </svg>
+    ),
+    radar: (
+      <svg style={s} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.8">
+        <circle cx="12" cy="12" r="2" />
+        <path d="M12 12l6-6" />
+        <path d="M4.93 19.07a10 10 0 010-14.14" />
+        <path d="M19.07 4.93a10 10 0 010 14.14" />
+        <path d="M7.76 16.24a6 6 0 010-8.48" />
+        <path d="M16.24 7.76a6 6 0 010 8.48" />
       </svg>
     ),
     wrench: (

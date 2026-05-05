@@ -70,7 +70,7 @@ export const zh = {
     },
     {
       "id": "building",
-      "icon": "building",
+      "icon": "camera",
       "t": "安防技术",
       "d": "视频监控、门禁和报警系统的设计、安装与维护，为驻场安保提供技术支持。"
     },
@@ -88,7 +88,7 @@ export const zh = {
     },
     {
       "id": "technical",
-      "icon": "wrench",
+      "icon": "radar",
       "t": "远程监控与现场响应服务",
       "d": "依托调度后台处理报警和视频监控信号，并在需要时按照约定流程进行现场响应。"
     },

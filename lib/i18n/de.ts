@@ -70,7 +70,7 @@ export const de = {
     },
     {
       "id": "building",
-      "icon": "building",
+      "icon": "camera",
       "t": "Sicherheitstechnik",
       "d": "Planung, Installation und Wartung von Videoüberwachungs-, Zutrittskontroll- und Alarmanlagen als technische Unterstützung für den personellen Objektschutz."
     },
@@ -88,7 +88,7 @@ export const de = {
     },
     {
       "id": "technical",
-      "icon": "wrench",
+      "icon": "radar",
       "t": "Fernüberwachung und Interventionsdienst",
       "d": "Bearbeitung von Alarm- und Kamerasignalen mit Leitstellenunterstützung, bei Bedarf mit Reaktion vor Ort, nach abgestimmten Protokollen."
     },

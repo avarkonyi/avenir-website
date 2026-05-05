@@ -54,8 +54,8 @@ const CANONICAL_SEED: ReadonlyArray<CanonicalEntry> = [
   { slug: "reception", icon: "desk",     sortOrder: 1 },
   { slug: "mystery",   icon: "eye",      sortOrder: 2 },
   { slug: "cleaning",  icon: "sparkle",  sortOrder: 3 },
-  { slug: "building",  icon: "building", sortOrder: 4 },
-  { slug: "technical", icon: "wrench",   sortOrder: 5 },
+  { slug: "building",  icon: "camera",   sortOrder: 4 },
+  { slug: "technical", icon: "radar",    sortOrder: 5 },
   { slug: "green",     icon: "leaf",     sortOrder: 6 },
   { slug: "hardfm",    icon: "gear",     sortOrder: 7 },
 ];

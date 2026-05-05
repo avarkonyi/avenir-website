@@ -60,7 +60,7 @@ export const hu = {
     },
     {
       id: "building",
-      icon: "building",
+      icon: "camera",
       t: "Biztonságtechnika",
       d: "CCTV-, beléptető- és riasztórendszerek tervezése, telepítése és karbantartása az élőerős vagyonvédelmet támogató technikai háttérrel.",
     },
@@ -78,7 +78,7 @@ export const hu = {
     },
     {
       id: "technical",
-      icon: "wrench",
+      icon: "radar",
       t: "Távfelügyelet és vonulószolgálat",
       d: "Riasztás- és kamerajelzések kezelése diszpécseri háttérrel, szükség esetén helyszíni reagálással, egyeztetett protokollok szerint.",
     },
