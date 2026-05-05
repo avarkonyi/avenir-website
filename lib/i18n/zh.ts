@@ -172,8 +172,10 @@ export const zh = {
   // TRANSLATION DRAFT: review by user
   "certifications": {
     "sub": "认证资质",
-    "title": "权威专业认证",
-    "intro": "作为拥有 200+ 专业人员、覆盖 30+ 活跃服务地点的财产保护专业服务商，持续的质量保证和信息安全是我们的核心价值。我们的认证由独立认可机构每年审核，并可通过全球公认的 IAF MLA 体系进行验证。",
+    "title": "经认证的质量。\n经审核的运营。",
+    "intro": "我们的质量管理和信息安全运营由独立认证机构进行审核。这些认证为流程记录、可追溯管理和持续改进的运营奠定基础。",
+    "qualityManagement": "质量管理",
+    "informationSecurity": "信息安全",
     "standardLabel": "标准",
     "scopeLabel": "适用范围",
     "issuedBy": "颁发机构",

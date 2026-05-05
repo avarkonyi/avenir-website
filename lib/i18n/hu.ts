@@ -170,9 +170,11 @@ export const hu = {
   },
   certifications: {
     sub: "Tanúsítványok",
-    title: "Hivatalos szakmai tanúsítások",
+    title: "Tanúsított minőség.\nEllenőrzött működés.",
     intro:
-      "200+ szakemberrel és 30+ helyszínnel működő vagyonvédelmi szakértőként a folyamatos minőség és információbiztonság számunkra alapérték. Tanúsításainkat független akkreditált szervezetek auditálják évente, és a globálisan elismert IAF MLA-rendszerben verifikálhatók.",
+      "Minőségirányítási és információbiztonsági rendszereinket független tanúsító szervezetek ellenőrzik. Tanúsítványaink a dokumentált, visszakövethető és folyamatosan fejlesztett működés alapját adják.",
+    qualityManagement: "Minőségirányítás",
+    informationSecurity: "Információbiztonság",
     standardLabel: "Szabvány",
     scopeLabel: "Hatály",
     issuedBy: "Kiállító",

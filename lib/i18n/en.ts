@@ -172,8 +172,10 @@ export const en = {
   // TRANSLATION DRAFT: review by user
   "certifications": {
     "sub": "Certifications",
-    "title": "Accredited professional certifications",
-    "intro": "As a property protection specialist with 200+ professionals across 30+ active sites, continuous quality and information security are core values for us. Our certifications are audited annually by independent accredited bodies and verifiable through the globally recognized IAF MLA system.",
+    "title": "Certified quality.\nAudited operations.",
+    "intro": "Our quality management and information security systems are audited by independent certification bodies. These certifications provide the foundation for documented, traceable and continuously improved operations.",
+    "qualityManagement": "Quality Management",
+    "informationSecurity": "Information Security",
     "standardLabel": "Standard",
     "scopeLabel": "Scope",
     "issuedBy": "Issued by",

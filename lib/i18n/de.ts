@@ -171,9 +171,11 @@ export const de = {
   },
   // TRANSLATION DRAFT: review by user
   "certifications": {
-    "sub": "Zertifizierungen",
-    "title": "Akkreditierte Fachzertifizierungen",
-    "intro": "Als Eigentumsschutz-Spezialist mit über 200 Fachkräften an mehr als 30 aktiven Standorten sind kontinuierliche Qualität und Informationssicherheit für uns Grundwerte. Unsere Zertifizierungen werden jährlich von unabhängigen akkreditierten Stellen geprüft und sind im global anerkannten IAF MLA-System verifizierbar.",
+    "sub": "Zertifikate",
+    "title": "Zertifizierte Qualität.\nGeprüfte Prozesse.",
+    "intro": "Unsere Abläufe im Qualitätsmanagement und in der Informationssicherheit werden von unabhängigen Zertifizierungsstellen überprüft. Die Zertifikate bilden die Grundlage für dokumentierte, nachvollziehbare und kontinuierlich verbesserte Prozesse.",
+    "qualityManagement": "Qualitätsmanagement",
+    "informationSecurity": "Informationssicherheit",
     "standardLabel": "Norm",
     "scopeLabel": "Geltungsbereich",
     "issuedBy": "Ausgestellt von",

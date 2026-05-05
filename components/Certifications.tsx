@@ -70,6 +70,15 @@ function withHuFallback(
   return fallback && fallback.trim().length > 0 ? fallback : null;
 }
 
+function certificationCategoryLabel(
+  cert: CertRow,
+  t: Translation,
+): string | null {
+  if (/9001/.test(cert.name)) return t.certifications.qualityManagement;
+  if (/27001/.test(cert.name)) return t.certifications.informationSecurity;
+  return null;
+}
+
 // Inline SVG logo: 200×200 viewBox with navy gradient and "ISO {num}"
 // stacked text. role="img" + <title> makes it a legitimate image entity
 // for screen readers and SEO crawlers without needing an <img> tag.
@@ -201,6 +210,7 @@ export async function Certifications({
               fontSize: "clamp(36px, 4vw, 54px)",
               color: "#0B1E3E",
               lineHeight: 1.1,
+              whiteSpace: "pre-line",
             }}
           >
             {t.certifications.title}
@@ -225,9 +235,23 @@ export async function Certifications({
               : "";
             const altText = `${cert.name} — ${cert.fullName}, ${t.certifications.issuedBy} ${cert.issuer}${expiresStr}`;
 
+            const categoryLabel = certificationCategoryLabel(cert, t);
+
             const innerContent = (
               <>
-                <CertificationLogo cert={cert} altText={altText} />
+                <div className="certification-logo-frame">
+                  <CertificationLogo cert={cert} altText={altText} />
+                </div>
+                {categoryLabel && (
+                  <span className="certification-caption" aria-hidden="true">
+                    <span className="certification-caption-standard">
+                      {cert.name}
+                    </span>
+                    <span className="certification-caption-label">
+                      {categoryLabel}
+                    </span>
+                  </span>
+                )}
 
                 {/* Hidden microdata: every itemProp lives in sr-only spans
                     so AI/SEO/screen-reader can read full credential context

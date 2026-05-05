@@ -144,25 +144,57 @@ a {
 }
 .certification-card {
   width: 200px;
-  height: 200px;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   border-radius: 4px;
-  border: 2px solid transparent;
-  overflow: hidden;
   text-decoration: none;
   transition: transform 0.25s ease, border-color 0.25s ease,
     box-shadow 0.25s ease;
+}
+.certification-logo-frame {
+  width: 200px;
+  height: 200px;
+  border-radius: 4px;
+  border: 2px solid transparent;
+  overflow: hidden;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 .certification-card-link {
   cursor: pointer;
 }
 .certification-card-link:hover {
-  border-color: #D1172E;
   transform: scale(1.05);
+}
+.certification-card-link:hover .certification-logo-frame {
+  border-color: #D1172E;
   box-shadow: 0 12px 30px rgba(11, 30, 62, 0.2);
 }
 .certification-card-static {
   cursor: default;
+}
+.certification-caption {
+  display: block;
+  margin-top: 14px;
+  text-align: center;
+  color: #0B1E3E;
+}
+.certification-caption-standard,
+.certification-caption-label {
+  display: block;
+}
+.certification-caption-standard {
+  font-family: var(--font-head);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+.certification-caption-label {
+  margin-top: 3px;
+  font-size: 13px;
+  font-weight: 400;
+  color: #667788;
 }
 .cert-logo-svg {
   width: 100%;
@@ -322,6 +354,9 @@ a {
 
 @media (max-width: 480px) {
   .certification-card {
+    width: 150px;
+  }
+  .certification-logo-frame {
     width: 150px;
     height: 150px;
   }
