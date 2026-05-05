@@ -26,7 +26,7 @@ export const hu = {
     { n: "24/7", l: "Diszpécseri készenlét" },
   ],
   aboutTitle: "Az Avenir-ről",
-  aboutSub: "Vagyonvédelmi fókusz. Facility szemlélet.",
+  aboutSub: "VAGYONVÉDELEM · MŰKÖDÉSI BIZTONSÁG",
   aboutText:
     "Az Avenir 2018-ban alakult, de vezetői csapata és szakemberei több évtizedes tapasztalattal rendelkeznek az épületüzemeltetés és a vagyonvédelem területén. Ma 200+ fős szakembergárdával, 30+ aktív helyszínen dolgozunk országszerte — vállalati, kereskedelmi, ipari és logisztikai környezetben.\n\nVagyonvédelmi működést szervezünk: őrzést, beléptetést, járőrözést, incidenskezelést és riportolást. Célunk, hogy ügyfeleink oldalán kevesebb egyeztetésre legyen szükség, csökkenjen a kockázat, és átláthatóbb legyen a napi működés.\n\nA vagyonvédelmi fókuszt szükség esetén biztonságtechnikával, mystery shoppinggal és kapcsolódó FM-támogatással egészítjük ki — így ügyfeleink egy felelős partnerrel dolgozhatnak, nem több különálló szolgáltatóval.",
   values: [

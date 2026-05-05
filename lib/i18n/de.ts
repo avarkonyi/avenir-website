@@ -37,7 +37,7 @@ export const de = {
     }
   ],
   "aboutTitle": "Über Avenir",
-  "aboutSub": "Ihr zuverlässiger Facility-Partner",
+  "aboutSub": "OBJEKTSCHUTZ · BETRIEBSSICHERHEIT",
   "aboutText": "Avenir wurde 2018 gegründet, doch das Führungsteam und die Fachkräfte verfügen über jahrzehntelange Erfahrung im Facility Management und im Objektschutz. Heute sind wir mit einem Team von über 200 Fachkräften an mehr als 30 aktiven Standorten landesweit im Einsatz — in Unternehmens-, Handels-, Industrie- und Logistikumgebungen.\n\nWir organisieren Sicherheitsabläufe: Bewachung, Zutrittskontrolle, Streifendienste, Ereignismanagement und Reporting. Unser Ziel ist es, den Abstimmungsaufwand auf Kundenseite zu reduzieren, Risiken zu senken und den täglichen Betrieb vor Ort transparenter zu machen.\n\nBei Bedarf ergänzen wir unseren Sicherheitsfokus durch Sicherheitstechnik, Mystery Shopping und unterstützende FM-Leistungen — damit unsere Kunden mit einem verantwortlichen Partner arbeiten können, statt mehrere einzelne Dienstleister zu koordinieren.",
   "values": [
     {
