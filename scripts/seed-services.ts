@@ -36,9 +36,19 @@ type CanonicalEntry = {
   sortOrder: number;
 };
 
-// Canonical seed sort order:
-//   security(0), reception(1), mystery(2), cleaning(3),
-//   building(4), technical(5), green(6), hardfm(7).
+// Canonical seed sort order for the launch-facing portfolio:
+//   security   -> Élőerős objektumőrzés
+//   reception  -> Recepciós és portaszolgálat
+//   mystery    -> Mystery Shopping és helyszíni audit
+//   cleaning   -> Rendezvénybiztosítás
+//   building   -> Biztonságtechnika
+//   technical  -> Távfelügyelet és vonulószolgálat
+//   green      -> Soft FM
+//   hardfm     -> Hard FM
+//
+// Slugs are kept stable for the existing contact-form/email pipeline
+// until a later service-architecture migration introduces public
+// service detail URLs.
 const CANONICAL_SEED: ReadonlyArray<CanonicalEntry> = [
   { slug: "security",  icon: "shield",   sortOrder: 0 },
   { slug: "reception", icon: "desk",     sortOrder: 1 },

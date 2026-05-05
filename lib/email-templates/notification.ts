@@ -8,13 +8,13 @@
 import type { ContactPayload } from "../contact-schema";
 
 const SERVICE_LABELS_HU: Record<string, string> = {
-  security: "Őrzés-védelem",
-  cleaning: "Takarítás",
-  building: "Épületüzemeltetés",
-  reception: "Portaszolgálat",
-  green: "Zöldterület-kezelés",
-  technical: "Technikai karbantartás",
-  mystery: "Mystery Shopping",
+  security: "Élőerős objektumőrzés",
+  cleaning: "Rendezvénybiztosítás",
+  building: "Biztonságtechnika",
+  reception: "Recepciós és portaszolgálat",
+  green: "Soft FM",
+  technical: "Távfelügyelet és vonulószolgálat",
+  mystery: "Mystery Shopping és helyszíni audit",
   hardfm: "Hard FM",
 };
 
