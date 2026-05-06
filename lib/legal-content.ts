@@ -297,3 +297,21 @@ export function getTermsContent(locale: string, fallback: Translation): TermsCon
       "Verziótörténet: 1.1 verzió - Hatály: 2026. május 6-tól. A dokumentum címe DPO észrevétel alapján Jogi nyilatkozatokra módosult.",
   };
 }
+
+export function withLegalContent(locale: string, fallback: Translation): Translation {
+  if (locale !== "hu") {
+    return fallback;
+  }
+
+  const privacy = getPrivacyContent(locale, fallback);
+  const terms = getTermsContent(locale, fallback);
+
+  return {
+    ...fallback,
+    legal: {
+      ...fallback.legal,
+      privacy,
+      terms,
+    },
+  };
+}

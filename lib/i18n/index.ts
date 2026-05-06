@@ -2,6 +2,7 @@ import { hu } from "./hu";
 import { en } from "./en";
 import { de } from "./de";
 import { zh } from "./zh";
+import { withLegalContent } from "../legal-content";
 
 // Widen literal types from `as const` exports back to their general types,
 // recursively, while preserving readonly modifiers. This lets us derive a
@@ -33,9 +34,9 @@ export const translations: Record<Locale, Translation> = { hu, en, de, zh };
 
 export function getTranslation(locale: string): Translation {
   if (locale in translations) {
-    return translations[locale as Locale];
+    return withLegalContent(locale, translations[locale as Locale]);
   }
-  return translations.hu;
+  return withLegalContent(DEFAULT_LOCALE, translations.hu);
 }
 
 export const LOCALES: Locale[] = ["hu", "en", "de", "zh"];
