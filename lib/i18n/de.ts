@@ -114,7 +114,7 @@ export const de = {
     "Industrie- und Logistikparks",
     "Öffentliche Gebäude"
   ],
-  "newsTitle": "News",
+  "newsTitle": "Aktuelles",
   "newsSub": "Updates & Ankündigungen",
   "newsText": "Unternehmensupdates, Branchennotizen und ausgewählte Mitteilungen von Avenir.",
   "newsReadMore": "Weiterlesen",
