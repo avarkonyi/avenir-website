@@ -1,4 +1,3 @@
-import { connection } from "next/server";
 import { asc, eq } from "drizzle-orm";
 import type { Translation } from "@/lib/i18n";
 import { db, positions } from "@/lib/db";
@@ -24,7 +23,6 @@ export async function Career({
   t: Translation;
   locale: string;
 }) {
-  await connection();
   const cols = LOCALE_COLS[(locale in LOCALE_COLS ? locale : "hu") as Locale];
   const rows = await db
     .select({

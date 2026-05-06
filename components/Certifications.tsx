@@ -1,4 +1,3 @@
-import { connection } from "next/server";
 import { and, asc, eq } from "drizzle-orm";
 import type { Translation } from "@/lib/i18n";
 import { db, certifications } from "@/lib/db";
@@ -149,7 +148,6 @@ export async function Certifications({
   t: Translation;
   locale: string;
 }) {
-  await connection();
   const cols =
     CERTS_COLS[locale as keyof typeof CERTS_COLS] ?? CERTS_COLS.hu;
   const rows = await db

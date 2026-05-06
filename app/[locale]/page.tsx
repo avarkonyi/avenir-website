@@ -1,4 +1,3 @@
-import { connection } from "next/server";
 import { notFound } from "next/navigation";
 import { and, desc, eq, isNotNull, isNull } from "drizzle-orm";
 import { Nav } from "@/components/Nav";
@@ -17,6 +16,8 @@ import { getActiveTopLevelServices } from "@/lib/db/queries/services";
 
 const LOCALES = ["hu", "en", "de", "zh"] as const;
 type Locale = (typeof LOCALES)[number];
+
+export const revalidate = 3600;
 
 const NEWS_COLS = {
   hu: { title: news.titleHu, lead: news.leadHu, body: news.bodyHu, published: news.publishedHu },
@@ -39,7 +40,6 @@ export default async function HomePage({
   const t = getTranslation(locale);
   const cols = NEWS_COLS[locale as Locale];
 
-  await connection();
   // EN/DE/ZH locale columns are nullable post-Iter 3A. We only surface
   // rows where the picked locale has a non-null title (defensive: an
   // admin could in theory flip publishedXx without filling titleXx).

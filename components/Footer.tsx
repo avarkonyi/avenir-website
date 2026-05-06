@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { connection } from "next/server";
 import { type Translation } from "@/lib/i18n";
 import { getActiveTopLevelServices } from "@/lib/db/queries/services";
 
@@ -10,8 +9,6 @@ export async function Footer({
   t: Translation;
   locale: string;
 }) {
-  await connection();
-
   // Locale-aware services-quick-links via shared helper
   // (lib/db/queries/services.ts). Footer surface needs name only;
   // empty-field guard drops rows with no usable title.

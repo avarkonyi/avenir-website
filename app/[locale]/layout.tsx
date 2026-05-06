@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import { connection } from "next/server";
 import { notFound } from "next/navigation";
 import { Geist, Barlow_Condensed } from "next/font/google";
 import { and, asc, eq } from "drizzle-orm";
@@ -44,6 +43,8 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
 };
+
+export const revalidate = 3600;
 
 export function generateStaticParams() {
   return LOCALES.map((locale) => ({ locale }));
@@ -332,7 +333,6 @@ export default async function LocaleLayout({
   const seoLocale = locale as SeoLocale;
   // JSON-LD: services and certifications are per-locale DB-backed.
   // Certifications fall back to HU for nullable localized text.
-  await connection();
   const certCols = CERT_SCHEMA_COLS[seoLocale] ?? CERT_SCHEMA_COLS.hu;
   const certRows = await db
     .select({

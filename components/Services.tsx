@@ -1,4 +1,3 @@
-import { connection } from "next/server";
 import { getTranslation } from "@/lib/i18n";
 import { getActiveTopLevelServices } from "@/lib/db/queries/services";
 import { Icon, ICON_NAMES, type IconName } from "./Icon";
@@ -13,8 +12,6 @@ import { Icon, ICON_NAMES, type IconName } from "./Icon";
 // is the only thing migrated to DB.
 
 export async function Services({ locale }: { locale: string }) {
-  await connection();
-
   const t = getTranslation(locale);
   const rows = await getActiveTopLevelServices(locale);
 
