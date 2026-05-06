@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { Geist, Barlow_Condensed } from "next/font/google";
 import { and, asc, eq } from "drizzle-orm";
 import "../globals.css";
-import { getTranslation, LOCALES } from "@/lib/i18n";
+import { LOCALES } from "@/lib/i18n";
 import { JsonLd } from "@/components/JsonLd";
 import { db, certifications } from "@/lib/db";
 import { getActiveTopLevelServices } from "@/lib/db/queries/services";
@@ -13,6 +13,7 @@ import {
   SEO_FAQS_HU,
   SEO_LOCALES,
   OG_LOCALE_MAP,
+  META_DESCRIPTIONS,
   META_TAGLINES,
   META_KEYWORDS_HU,
   SECURITY_FIRST_DESCRIPTION,
@@ -56,10 +57,9 @@ export async function generateMetadata({
   const { locale } = await params;
   if (!SEO_LOCALES.includes(locale as SeoLocale)) notFound();
   const seoLocale = locale as SeoLocale;
-  const t = getTranslation(locale);
   const tagline = META_TAGLINES[seoLocale];
   const title = `${SEO_DATA.legalNameShort} — ${tagline}`;
-  const description = t.hero.sub;
+  const description = META_DESCRIPTIONS[seoLocale];
   const localeUrl = `${SEO_DATA.url}/${seoLocale}`;
   const alternateLocales = SEO_LOCALES.filter((l) => l !== seoLocale).map(
     (l) => OG_LOCALE_MAP[l],
