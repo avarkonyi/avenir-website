@@ -11,6 +11,7 @@ export type Article = {
   lead: string;
   body: string;
   date: string;
+  imageUrl?: string | null;
 };
 
 function formatDate(iso: string, locale: string) {
@@ -23,6 +24,16 @@ function formatDate(iso: string, locale: string) {
   } catch {
     return iso;
   }
+}
+
+function coverImageStyle(imageUrl: string): React.CSSProperties {
+  return {
+    position: "absolute",
+    inset: 0,
+    backgroundImage: `url(${JSON.stringify(imageUrl)})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  };
 }
 
 export function News({
@@ -119,17 +130,31 @@ export function News({
                     overflow: "hidden",
                   }}
                 >
-                  <div
-                    style={{
-                      position: "absolute",
-                      inset: 0,
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                    }}
-                  >
-                    <AvenirLogo size={36} />
-                  </div>
+                  {art.imageUrl ? (
+                    <>
+                      <div style={coverImageStyle(art.imageUrl)} aria-hidden="true" />
+                      <div
+                        style={{
+                          position: "absolute",
+                          inset: 0,
+                          background:
+                            "linear-gradient(180deg, rgba(11,30,62,0.12), rgba(11,30,62,0.28))",
+                        }}
+                      />
+                    </>
+                  ) : (
+                    <div
+                      style={{
+                        position: "absolute",
+                        inset: 0,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <AvenirLogo size={36} />
+                    </div>
+                  )}
                   <div
                     style={{
                       position: "absolute",
@@ -223,6 +248,26 @@ export function News({
               position: "relative",
             }}
           >
+            {active.imageUrl && (
+              <div
+                style={{
+                  position: "relative",
+                  aspectRatio: "16/9",
+                  overflow: "hidden",
+                  background: "#0B1E3E",
+                }}
+              >
+                <div style={coverImageStyle(active.imageUrl)} aria-hidden="true" />
+                <div
+                  style={{
+                    position: "absolute",
+                    inset: 0,
+                    background:
+                      "linear-gradient(180deg, rgba(11,30,62,0.05), rgba(11,30,62,0.18))",
+                  }}
+                />
+              </div>
+            )}
             <button
               onClick={() => setActive(null)}
               style={{

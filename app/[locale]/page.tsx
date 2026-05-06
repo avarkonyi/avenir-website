@@ -52,6 +52,7 @@ export default async function HomePage({
       lead: cols.lead,
       body: cols.body,
       date: news.date,
+      imageUrl: news.imageUrl,
     })
     .from(news)
     .where(
@@ -69,6 +70,7 @@ export default async function HomePage({
     lead: r.lead ?? "",
     body: r.body ?? "",
     date: r.date.toISOString(),
+    imageUrl: r.imageUrl,
   }));
 
   // Service-of-interest dropdown options for the Contact form via
