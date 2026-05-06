@@ -115,7 +115,7 @@ export const de = {
     "Öffentliche Gebäude"
   ],
   "newsTitle": "Aktuelles",
-  "newsSub": "Updates & Ankündigungen",
+  "newsSub": "Aktuelles & Mitteilungen",
   "newsText": "Unternehmensupdates, Branchennotizen und ausgewählte Mitteilungen von Avenir.",
   "newsReadMore": "Weiterlesen",
   "newsEmpty": "Neue Nachrichten folgen in Kürze.",
