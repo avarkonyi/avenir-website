@@ -1,47 +1,60 @@
 # Avenir Facility Management Kft.
 
-> Komplex épületüzemeltetési és vagyonvédelmi szolgáltatások Magyarországon.
-> 200+ szakembergárda, 30+ aktív helyszín, 24/7 diszpécseri készenlét.
+> Vagyonvedelmi fokuszu facility management szolgaltato Magyarorszagon.
+> Kevesebb kockazat. Tobb kontroll. 200+ fos szakembergarda, 30+ aktiv helyszin, 24/7 diszpecseri keszenlet.
 
-## Cégadatok
+## Pozicionalas
 
-- **Hivatalos név:** Avenir Facility Management Szolgáltató Korlátolt Felelősségű Társaság
-- **Marketing-rövid:** Avenir Facility Management Kft.
-- **Cégbíróság-rövid:** Avenir Facility Kft. (IAF CertSearch authoritative — verifikálható: https://www.iafcertsearch.org)
-- **Alapítás:** 2018. július 31.
-- **Cégjegyzékszám:** 01-09-328046
-- **Adószám:** 26395124-2-41
-- **EU közösségi adószám (vatID):** HU26395124
-- **Székhely:** 1039 Budapest, Királyok útja 291. B. ép. 15. ajtó
-- **Bonitási minősítés (OPTEN):** A+
-- **Méretkategória:** Közepes vállalkozás
+Az Avenir vallalati, kereskedelmi, ipari es logisztikai helyszineken szervez vagyonvedelmi mukodest: objektumorzes, beleptetes, jarorozes, incidenskezeles, helyszini ellenorzesek es riportolas. A vagyonvedelmi fokuszt szukseg eseten biztonsagtechnikaval, mystery shoppinggal es kapcsolodo FM-tamogatassal egeszitjuk ki.
+
+Fo uzenet: egy szerzodes, egy felelos kapcsolattarto, atlathato mukodes.
+
+## Cegadatok
+
+- **Hivatalos nev:** Avenir Facility Management Szolgaltato Korlatolt Felelossegu Tarsasag
+- **Marketing-rovid:** Avenir Facility Management Kft.
+- **Cegbirosag-rovid:** Avenir Facility Kft.
+- **Alapitas:** 2018. julius 31.
+- **Cegjegyzekszam:** 01-09-328046
+- **Adoszam:** 26395124-2-41
+- **EU kozossegi adoszam (vatID):** HU26395124
+- **Szekhely:** 1039 Budapest, Kiralyok utja 291. B. ep. 15. ajto
+- **Bonitasi minosites (OPTEN):** A+
+- **Meretkategoria:** kozepes vallalkozas
 
 ## Kapcsolat
 
 - **Telefon:** +36 70 316 8218
 - **E-mail:** info@afm.hu
 - **Web:** https://www.afm.hu/
-- **Ügyelet:** 24/7 diszpécseri készenlét
+- **Ugyelet:** 24/7 diszpecseri keszenlet
 
-## Szolgáltatások
+## Fo szolgaltatasi teruletek
 
-1. **Őrzés-védelem** — személy- és vagyonvédelem, objektumőrzés, járőrszolgálat, beléptetés, központi diszpécserszolgálat
-2. **Takarítás** — napi és időszakos, nagytakarítás, gépi padlótisztítás, magassági ablaktisztítás
-3. **Épületüzemeltetés** — műszaki felügyelet, karbantartási ütemezés, alvállalkozó-menedzsment, energiagazdálkodás
-4. **Portaszolgálat** — recepció, beléptetés, vendég- és kulcskezelés
-5. **Zöldterület-kezelés** — szezonális zöldfelület-gondozás, hó- és síkosságmentesítés
-6. **Technikai karbantartás** — épületgépészet, elektromos, HVAC rendszerek
-7. **Mystery Shopping** — titkosvásárlói programok
-8. **Hard FM** — kritikus rendszerek üzemfenntartása
+1. **Eloeros objektumorzes** - szemely- es vagyonvedelem kepzett vagyonorokkel: objektumorzes, jarorszolgalat, beleptetesi tamogatas es incidenskezeles ipari, kereskedelmi es irodai kornyezetben.
+2. **Recepcios es portaszolgalat** - vendegfogadas, beleptetes, kulcskezeles, csomagatvetel es berloi kapcsolattartas reprezentativ, fegyelmezett mukodessel.
+3. **Mystery Shopping es helyszini audit** - szolgaltatasminosegi ellenorzes es helyszini audit valos ugyfel- es mukodesi helyzetekben, fuggetlen meressel es strukturalt riporttal.
+4. **Rendezvenybiztositas** - ceges esemenyek, konferenciak es alkalmi rendezvenyek biztositasa: beleptetes, helyszini jelenlet, jarorozes es incidenskezeles.
+5. **Biztonsagtechnika** - CCTV-, belepteto- es riasztorendszerek tervezese, telepitese es karbantartasa az eloeros vagyonvedelmet tamogato technikai hatterrel.
+6. **Tavfelugyelet es vonuloszolgalat** - riasztas- es kamerajelzesek kezelese diszpecseri hatterrel, szukseg eseten helyszini reagalassal.
+7. **Soft FM** - takaritas, zoldterulet-kezeles es gondnoksagi feladatok szervezese kiegeszito szolgaltataskent, ellenorzott minoseggel es egy felelos kapcsolattartoval.
+8. **Hard FM** - muszaki uzemeltetes, karbantartas-koordinacio es kisebb javitasi feladatok tamogatasa komplex ugyfelkornyezetben.
 
-## Ügyfélkör
+## Ugyfelkor
 
-Irodaházak, bevásárlóközpontok, ipari és logisztikai parkok, közintézmények — Magyarország teljes területén.
+Irodahazak, bevasarlokozpontok, ipari es logisztikai parkok, kozintezmenyek, vallalati telephelyek es tobbhelyszines mukodesek Magyarorszag teljes teruleten.
 
-## Földrajzi lefedettség
+## Tanusitvanyok es bizalmi jelek
 
-Magyarország teljes területe, központtal Budapesten.
+- **ISO 9001** - minosegiranyitas
+- **ISO 27001** - informaciobiztonsag
+- **A+ bonitasi minosites**
+- **Hatosagi engedelyek** szemely- es vagyonvedelmi, biztonsagtechnikai es magannyomozoi tevekenysegekhez
+
+## Foldrajzi lefedettseg
+
+Magyarorszag teljes terulete, budapesti kozponttal.
 
 ## Nyelvek
 
-A weboldal négy nyelven elérhető: magyar (/hu), angol (/en), német (/de), kínai (/zh).
+A weboldal negy nyelven erheto el: magyar (/hu), angol (/en), nemet (/de), kinai (/zh).

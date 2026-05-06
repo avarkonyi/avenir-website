@@ -68,11 +68,12 @@ WHERE table_schema = 'public'
 ORDER BY table_name;
 ```
 
-Expected after Iter 6A cleanup:
+Expected launch baseline after Iter 7:
 
-- migration count: 10
-- app tables: `certifications`, `client_references`, `messages`, `news`, `partners`, `positions`, `services`
+- migration count: 11
+- app tables: `certifications`, `client_references`, `messages`, `news`, `partners`, `positions`, `services`, `site_settings`
 - services rows: 8
+- site_settings rows: 1
 
 ## Drift Recovery Recipes
 

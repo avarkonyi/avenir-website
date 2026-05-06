@@ -2,7 +2,7 @@
 
 **Site:** https://www.afm.hu
 **Stack:** Next.js 16 + React 19 + Drizzle (Neon Postgres) + Resend (email) + Vercel (hosting)
-**Last updated:** 2026-04-29 (18. commit)
+**Last updated:** 2026-05-06 (launch audit)
 
 ---
 
@@ -18,12 +18,12 @@
 
 Lásd `ENV.md` "Resend setup (production)" szakasz.
 
-- [ ] Resend dashboard: Domain `notify.afm.hu` hozzáadva (Domains tab)
-- [ ] Servergarden DNS Zone Editor: SPF + DKIM + DMARC records `notify.afm.hu` subdomain-re (NEM root!)
+- [ ] Resend dashboard: Domain `afm.hu` verified (Domains tab)
+- [ ] Servergarden DNS Zone Editor: Resend SPF/DKIM records for `afm.hu` are published and verified
 - [ ] Resend domain verified state (✓ green)
 - [ ] Vercel Project Settings → Environment Variables (Production scope):
   - [ ] `RESEND_API_KEY` = (production key)
-  - [ ] `RESEND_FROM_EMAIL` = `notify@notify.afm.hu`
+  - [ ] `RESEND_FROM_EMAIL` = `noreply@afm.hu`
   - [ ] `RESEND_NOTIFY_TO` = `info@afm.hu`
   - [ ] `DATABASE_URL` = Neon production pooled URL
   - [ ] `DATABASE_URL_UNPOOLED` = Neon production unpooled URL (drizzle-kit migrations)
@@ -43,7 +43,7 @@ Lásd `ENV.md` "Resend setup (production)" szakasz.
 
 - [ ] Neon production project provisioned (EU AWS Frankfurt region — `eu-central-1`)
 - [ ] Drizzle migrations applied to production: `npm run db:migrate` (with `DATABASE_URL_UNPOOLED` pointing at production)
-- [ ] Seed data applied: `npm run db:seed` (1×, idempotent)
+- [ ] Canonical services applied: `npm run db:seed-services` (8 public services, idempotent by slug)
 - [ ] Certifications data verified: `npm run db:update-certs` (if any cert metadata changed since last seed)
 
 ---
@@ -54,7 +54,7 @@ Lásd `ENV.md` "Resend setup (production)" szakasz.
 
 - [ ] `curl -I https://www.afm.hu` → 200, security headers present (X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy)
 - [ ] `curl https://www.afm.hu/sitemap.xml` → 17 URLs (1 root + 4 locales + 12 legal pages)
-- [ ] `curl https://www.afm.hu/robots.txt` → AI bot allowlist present
+- [ ] `curl https://www.afm.hu/robots.txt` -> public crawling allowed; `/admin` and `/api` disallowed
 - [ ] Browse https://www.afm.hu/hu — homepage renders, Hero WebP loads, JSON-LD validates in Google Rich Results Test
 - [ ] Browse https://www.afm.hu/hu/adatvedelem, /aszf, /impresszum — all 200, content correct
 - [ ] Browse https://www.afm.hu/foo (no-match) → branded 404

@@ -2,7 +2,7 @@
 
 **Site:** https://www.afm.hu
 **Audience:** internal pre-publication QA before Vercel production deploy
-**Last updated:** 2026-04-29 (18. commit)
+**Last updated:** 2026-05-06 (launch audit)
 
 > See `DEPLOY_CHECKLIST.md` for env + DNS + DPO + Resend operational steps.
 > This file is the **content/UX/SEO/A11y publication QA**.
@@ -78,8 +78,8 @@
 
 - [ ] `/sitemap.xml` lists 17 URLs (1 root + 4 locale homepages + 12 legal pages)
 - [ ] All sitemap entries have correct hreflang alternates for legal pages
-- [ ] `/robots.txt` allows AI bots (GPTBot, ClaudeBot, PerplexityBot, CCBot, Google-Extended, anthropic-ai)
-- [ ] No `Disallow:` lines blocking critical content
+- [ ] Production `/robots.txt` allows public crawling and disallows `/admin` + `/api`
+- [ ] Production has no `Disallow:` lines blocking public content; staging/preview intentionally return `Disallow: /`
 
 ### OG image
 
