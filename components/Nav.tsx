@@ -9,6 +9,13 @@ import { Icon } from "./Icon";
 const SECTION_KEYS = ["about", "services", "references", "news", "career", "contact"] as const;
 const LOCALES = ["hu", "en", "de", "zh"] as const;
 
+function normalizeHash(rawHash: string): string {
+  if (!rawHash) return "";
+  const parts = rawHash.split("#").filter(Boolean);
+  const lastPart = parts.at(-1);
+  return lastPart ? `#${lastPart}` : "";
+}
+
 export function Nav({ t }: { t: Pick<Translation, "nav"> }) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -44,17 +51,25 @@ export function Nav({ t }: { t: Pick<Translation, "nav"> }) {
   // Listens to hashchange so anchor jumps via in-page nav update too.
   const [hash, setHash] = useState("");
   useEffect(() => {
+    const syncHash = () => {
+      const normalizedHash = normalizeHash(window.location.hash);
+      if (window.location.hash !== normalizedHash) {
+        window.history.replaceState(
+          null,
+          "",
+          `${window.location.pathname}${window.location.search}${normalizedHash}`,
+        );
+      }
+      setHash(normalizedHash);
+    };
+
     // One-time hydration sync of window.location.hash to React state.
     // Cannot read window during SSR; initial render uses "" (matching
     // server output, no hydration mismatch). After mount we sync the
-    // actual hash and subscribe to hashchange. Suppressing the
-    // react-hooks/set-state-in-effect rule because this is the canonical
-    // pattern for client-only browser-API state hydration.
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setHash(window.location.hash);
-    const onHashChange = () => setHash(window.location.hash);
-    window.addEventListener("hashchange", onHashChange);
-    return () => window.removeEventListener("hashchange", onHashChange);
+    // actual hash and subscribe to hashchange.
+    syncHash();
+    window.addEventListener("hashchange", syncHash);
+    return () => window.removeEventListener("hashchange", syncHash);
   }, []);
 
   // Lock body scroll while mobile menu is open
@@ -74,6 +89,15 @@ export function Nav({ t }: { t: Pick<Translation, "nav"> }) {
     if (el) window.scrollTo({ top: el.offsetTop - 72, behavior: "smooth" });
   };
 
+  const replaceHash = (nextHash: string) => {
+    window.history.replaceState(
+      null,
+      "",
+      `${window.location.pathname}${window.location.search}${nextHash}`,
+    );
+    setHash(nextHash);
+  };
+
   // Click handler factory for section nav items. On homepage, prevent
   // default Link navigation and smooth-scroll to the section. Off
   // homepage, let Link handle navigation to /[locale]#id (browser will
@@ -83,6 +107,7 @@ export function Nav({ t }: { t: Pick<Translation, "nav"> }) {
       if (isOnHomepage) {
         e.preventDefault();
         scrollTo(id);
+        replaceHash(`#${id}`);
       }
       // Off-homepage: let Link navigate; menu close happens via the
       // page transition (component remounts) so no explicit setMenuOpen.
@@ -92,6 +117,7 @@ export function Nav({ t }: { t: Pick<Translation, "nav"> }) {
     if (isOnHomepage) {
       e.preventDefault();
       scrollTo("hero");
+      replaceHash("");
     }
     // Off-homepage: let Link navigate to /[locale].
   };
