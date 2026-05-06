@@ -68,7 +68,7 @@ export async function Career({
           >
             {t.careerTitle}
           </h2>
-          <p style={{ color: "#556070", fontSize: 17, lineHeight: 1.7, fontWeight: 300, paddingTop: 8 }}>
+          <p style={{ color: "#556070", fontSize: 17, lineHeight: 1.7, fontWeight: 300, paddingTop: 8, whiteSpace: "pre-line" }}>
             {t.careerText}
           </p>
         </div>

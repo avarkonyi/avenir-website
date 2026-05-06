@@ -121,7 +121,7 @@ export const en = {
   "newsEmpty": "Fresh news coming soon.",
   "careerTitle": "Career",
   "careerSub": "Join our team",
-  "careerText": "The Avenir team is growing. We are looking for dedicated, reliable colleagues in security, cleaning and technical roles.",
+  "careerText": "The Avenir team works nationwide at the sites of large corporate clients. We are looking for colleagues who take shifts seriously, understand the importance of reliable presence and responsible work.\n\nWe welcome applicants for security, cleaning, technical and supervisory roles. We offer stable backing, legal employment, professional onboarding and development opportunities.",
   "applyBtn": "Apply",
   "contactTitle": "Contact",
   "contactSub": "Request a quote",

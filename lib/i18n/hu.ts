@@ -114,7 +114,7 @@ export const hu = {
   careerTitle: "Karrier",
   careerSub: "Csatlakozz a csapathoz",
   careerText:
-    "Az Avenir csapata országosan dolgozik nagyvállalati ügyfeleknek. Keressük azokat, akik komolyan veszik a műszakot: biztonsági, takarítási, műszaki és irányítói pozíciókra egyaránt. Amit kínálunk: stabil háttér, legális foglalkoztatás, szakmai képzés, belső előrelépés.",
+    "Az Avenir csapata országosan dolgozik nagyvállalati ügyfelek helyszínein. Olyan munkatársakat keresünk, akik felelősen állnak a műszakhoz, értik a pontos jelenlét és a megbízható munkavégzés jelentőségét.\n\nBiztonsági, takarítási, műszaki és irányítói pozíciókba várunk jelentkezőket. Stabil hátteret, legális foglalkoztatást, szakmai betanítást és fejlődési lehetőséget kínálunk.",
   applyBtn: "Jelentkezés",
   contactTitle: "Kapcsolat",
   contactSub: "Kérjen ajánlatot",

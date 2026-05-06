@@ -121,7 +121,7 @@ export const zh = {
   "newsEmpty": "最新资讯即将发布。",
   "careerTitle": "招聘",
   "careerSub": "加入我们的团队",
-  "careerText": "Avenir团队持续扩张，诚招安保、清洁及技术岗位的专注、可靠人才。",
+  "careerText": "Avenir 团队在全国范围内为大型企业客户的现场提供服务。我们正在寻找认真对待每一个班次、理解准时到岗和可靠工作重要性的同事。\n\n我们欢迎安保、清洁、技术及管理岗位的应聘者。我们提供稳定的平台、合法雇佣、专业培训和发展机会。",
   "applyBtn": "立即申请",
   "contactTitle": "联系我们",
   "contactSub": "申请报价",

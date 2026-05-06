@@ -121,7 +121,7 @@ export const de = {
   "newsEmpty": "Neue Nachrichten folgen in Kürze.",
   "careerTitle": "Karriere",
   "careerSub": "Werde Teil unseres Teams",
-  "careerText": "Das Avenir-Team wächst. Wir suchen engagierte, zuverlässige Kolleginnen und Kollegen in den Bereichen Security, Reinigung und Technik.",
+  "careerText": "Das Avenir-Team arbeitet landesweit an Standorten großer Unternehmenskunden. Wir suchen Mitarbeitende, die ihre Schicht verantwortungsvoll angehen und die Bedeutung von zuverlässiger Präsenz und sorgfältiger Arbeit verstehen.\n\nWir freuen uns über Bewerbungen für Sicherheits-, Reinigungs-, technische und leitende Positionen. Wir bieten einen stabilen Hintergrund, legale Beschäftigung, professionelle Einarbeitung und Entwicklungsmöglichkeiten.",
   "applyBtn": "Bewerben",
   "contactTitle": "Kontakt",
   "contactSub": "Angebot anfragen",
