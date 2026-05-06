@@ -6,6 +6,8 @@ import { auth } from "@/auth";
 import { db, news } from "@/lib/db";
 import { FALLBACK_SLUG, SLUG_MAX_LENGTH, slugify } from "@/lib/utils/slugify";
 
+const PUBLIC_NEWS_PATHS = ["/hu", "/en", "/de", "/zh"] as const;
+
 // Server actions for the News CRUD module.
 //
 // Result-return pattern (Iter 3A polish): actions no longer call
@@ -124,6 +126,17 @@ function resolveBaseSlug(payload: NewsFormPayload): string {
   return slugify(payload.titleHu || "");
 }
 
+function revalidateNewsViews(newsId?: number) {
+  revalidatePath("/admin/news");
+  if (newsId !== undefined) {
+    revalidatePath(`/admin/news/${newsId}/edit`);
+  }
+  revalidatePath("/admin");
+  for (const path of PUBLIC_NEWS_PATHS) {
+    revalidatePath(path);
+  }
+}
+
 export async function createNews(
   payload: NewsFormPayload,
 ): Promise<CreateNewsResult> {
@@ -162,8 +175,7 @@ export async function createNews(
       })
       .returning({ id: news.id });
 
-    revalidatePath("/admin/news");
-    revalidatePath("/admin");
+    revalidateNewsViews(inserted.id);
 
     return {
       ok: true,
@@ -220,9 +232,7 @@ export async function updateNews(
       })
       .where(eq(news.id, id));
 
-    revalidatePath("/admin/news");
-    revalidatePath(`/admin/news/${id}/edit`);
-    revalidatePath("/admin");
+    revalidateNewsViews(id);
 
     return { ok: true, message: "Hír frissítve." };
   } catch (err) {
@@ -243,8 +253,7 @@ export async function deleteNews(id: number): Promise<DeleteNewsResult> {
       .update(news)
       .set({ deletedAt: new Date() })
       .where(eq(news.id, id));
-    revalidatePath("/admin/news");
-    revalidatePath("/admin");
+    revalidateNewsViews(id);
     return { ok: true, message: "Hír törölve." };
   } catch (err) {
     console.error("deleteNews error:", err);
