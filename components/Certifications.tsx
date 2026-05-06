@@ -85,13 +85,17 @@ function certificationCategoryLabel(
 function CertificationLogo({
   cert,
   altText,
+  categoryLabel,
 }: {
   cert: CertRow;
   altText: string;
+  categoryLabel: string | null;
 }) {
   const numPart = cert.name.replace(/^ISO\s*/, "");
   const gradId = `cert-grad-${cert.id}`;
   const titleId = `cert-title-${cert.id}`;
+  const compressedLabelLength =
+    categoryLabel && categoryLabel.length > 14 ? 150 : undefined;
   return (
     <svg
       viewBox="0 0 200 200"
@@ -107,12 +111,33 @@ function CertificationLogo({
         </linearGradient>
       </defs>
       <rect width="200" height="200" rx="4" fill={`url(#${gradId})`} />
-      <text x="100" y="88" textAnchor="middle" className="cert-iso">
+      <text x="100" y="62" textAnchor="middle" className="cert-iso">
         ISO
       </text>
-      <text x="100" y="138" textAnchor="middle" className="cert-num">
+      <text x="100" y="108" textAnchor="middle" className="cert-num">
         {numPart}
       </text>
+      {categoryLabel && (
+        <>
+          <line
+            x1="46"
+            y1="132"
+            x2="154"
+            y2="132"
+            className="cert-divider"
+          />
+          <text
+            x="100"
+            y="164"
+            textAnchor="middle"
+            className="cert-category"
+            textLength={compressedLabelLength}
+            lengthAdjust="spacingAndGlyphs"
+          >
+            {categoryLabel}
+          </text>
+        </>
+      )}
     </svg>
   );
 }
@@ -240,18 +265,12 @@ export async function Certifications({
             const innerContent = (
               <>
                 <div className="certification-logo-frame">
-                  <CertificationLogo cert={cert} altText={altText} />
+                  <CertificationLogo
+                    cert={cert}
+                    altText={altText}
+                    categoryLabel={categoryLabel}
+                  />
                 </div>
-                {categoryLabel && (
-                  <span className="certification-caption" aria-hidden="true">
-                    <span className="certification-caption-standard">
-                      {cert.name}
-                    </span>
-                    <span className="certification-caption-label">
-                      {categoryLabel}
-                    </span>
-                  </span>
-                )}
 
                 {/* Hidden microdata: every itemProp lives in sr-only spans
                     so AI/SEO/screen-reader can read full credential context

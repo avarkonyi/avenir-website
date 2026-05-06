@@ -173,29 +173,6 @@ a {
 .certification-card-static {
   cursor: default;
 }
-.certification-caption {
-  display: block;
-  margin-top: 14px;
-  text-align: center;
-  color: #0B1E3E;
-}
-.certification-caption-standard,
-.certification-caption-label {
-  display: block;
-}
-.certification-caption-standard {
-  font-family: var(--font-head);
-  font-size: 13px;
-  font-weight: 800;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-}
-.certification-caption-label {
-  margin-top: 3px;
-  font-size: 13px;
-  font-weight: 400;
-  color: #667788;
-}
 .cert-logo-svg {
   width: 100%;
   height: 100%;
@@ -207,10 +184,19 @@ a {
   fill: #fff;
 }
 .cert-logo-svg .cert-iso {
-  font-size: 42px;
+  font-size: 38px;
 }
 .cert-logo-svg .cert-num {
-  font-size: 34px;
+  font-size: 31px;
+}
+.cert-logo-svg .cert-category {
+  font-size: 13px;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+.cert-logo-svg .cert-divider {
+  stroke: rgba(255, 255, 255, 0.28);
+  stroke-width: 1.4;
 }
 
 /* Career cards — hover via CSS */
@@ -361,10 +347,13 @@ a {
     height: 150px;
   }
   .cert-logo-svg .cert-iso {
-    font-size: 32px;
+    font-size: 31px;
   }
   .cert-logo-svg .cert-num {
-    font-size: 26px;
+    font-size: 25px;
+  }
+  .cert-logo-svg .cert-category {
+    font-size: 11px;
   }
 
   /* Hero stats: 4-column → 2x2 grid; rebalance dividers */
