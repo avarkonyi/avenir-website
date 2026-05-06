@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getTranslation, LOCALES, type Locale } from "@/lib/i18n";
+import { getPrivacyContent } from "@/lib/legal-content";
 import { SEO_DATA } from "@/lib/seo-data";
 import {
   LegalPageChrome,
@@ -20,8 +21,9 @@ export async function generateMetadata({
   const { locale } = await params;
   if (!LOCALES.includes(locale as Locale)) notFound();
   const t = getTranslation(locale);
-  const title = `${t.legal.privacy.title} — ${SEO_DATA.legalNameShort}`;
-  const description = t.legal.privacy.intro.slice(0, 160);
+  const privacy = getPrivacyContent(locale, t);
+  const title = `${privacy.title} — ${SEO_DATA.legalNameShort}`;
+  const description = privacy.intro.slice(0, 160);
   const url = `${SEO_DATA.url}/${locale}/adatvedelem`;
 
   return {
@@ -51,22 +53,23 @@ export default async function PrivacyPage({
   const { locale } = await params;
   if (!LOCALES.includes(locale as Locale)) notFound();
   const t = getTranslation(locale);
+  const privacy = getPrivacyContent(locale, t);
 
   return (
     <LegalPageChrome
       t={t}
       locale={locale}
-      pageTitle={t.legal.privacy.title}
-      pageDescription={t.legal.privacy.intro.slice(0, 160)}
+      pageTitle={privacy.title}
+      pageDescription={privacy.intro.slice(0, 160)}
       pageSlug="adatvedelem"
     >
       <LegalHeader
-        title={t.legal.privacy.title}
-        lastUpdated={t.legal.privacy.lastUpdated}
-        version={t.legal.privacy.version}
-        intro={t.legal.privacy.intro}
+        title={privacy.title}
+        lastUpdated={privacy.lastUpdated}
+        version={privacy.version}
+        intro={privacy.intro}
       />
-      {t.legal.privacy.sections.map((s) => (
+      {privacy.sections.map((s) => (
         <LegalSection key={s.id} id={s.id} title={s.title} body={s.body} />
       ))}
 
@@ -85,7 +88,7 @@ export default async function PrivacyPage({
           fontStyle: "italic",
         }}
       >
-        {t.legal.privacy.versionHistory}
+        {privacy.versionHistory}
       </p>
     </LegalPageChrome>
   );

@@ -137,7 +137,7 @@ export const hu = {
     successPrivacyLink: "Adatvédelmi tájékoztatóban",
     specialDataWarning:
       "Kérjük, az üzenetmezőben ne küldjön különleges adatot, büntetőjogi adatot, minősített adatot, üzleti titkot vagy harmadik személyre vonatkozó részletes magánéleti információt. Ilyen ügyekben külön szerződéses és adatvédelmi egyeztetés szükséges.",
-    specialDataWarningLink: "ÁSZF 4. szakasz",
+    specialDataWarningLink: "Jogi nyilatkozatok 4. szakasz",
     privateInvestigation: "Magánnyomozás",
     layeredNotice: "A küldéssel tudomásul veszi az",
     layeredNoticeLink: "Adatvédelmi tájékoztatót",
@@ -158,7 +158,7 @@ export const hu = {
     rights: "© 2026 Avenir Facility Management Kft. · Minden jog fenntartva.",
     legalTitle: "Jogi",
     privacy: "Adatvédelem",
-    terms: "ÁSZF",
+    terms: "Jogi nyilatkozatok",
     impressum: "Impresszum",
     // Labels for the bottom impresszum line. Values (cégjegyzékszám,
     // adószám, address) stay in Hungarian because they are legal-registry

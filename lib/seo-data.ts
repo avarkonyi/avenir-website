@@ -190,7 +190,7 @@ export const SEO_DPO = {
 export const SEO_COURT_REGISTRY = {
   name: "Fővárosi Törvényszék Cégbírósága",
   nameEn: "Court of Registration of the Budapest-Capital Regional Court",
-  address: "1055 Budapest, Markó utca 27.",
+  address: "1051 Budapest, Nádor u. 28.",
 } as const;
 
 // Tárhelyszolgáltató (Ekertv. 4. § f) kötelező disclosure).
@@ -307,7 +307,7 @@ export const SEO_REGULATORY_BODIES = {
 // GDPR Art. 28 szerinti adatfeldolgozók. VERIFIED 2026.04.28-ról a
 // szolgáltatók privacy/contact oldalairól. Schrems-II konzervatív
 // disclosure pattern: NEM állítjuk hogy "data stays in EU" — US-incorporated
-// parent + EU-region deployment + DPF-cert + SCC-fallback.
+// parent + EU-region deployment + provider-specific DPF/SCC guarantees.
 export const SEO_DATA_PROCESSORS = [
   {
     id: "resend",
@@ -319,7 +319,7 @@ export const SEO_DATA_PROCESSORS = [
     purposeDe: "Transaktionale E-Mail-Zustellung",
     purposeZh: "事务性电子邮件传输",
     location: "EU Frankfurt (sending region)",
-    dpfCertified: true,
+    dpfCertified: false,
   },
   {
     id: "vercel",
@@ -343,6 +343,6 @@ export const SEO_DATA_PROCESSORS = [
     purposeDe: "PostgreSQL-Datenbankdienst",
     purposeZh: "PostgreSQL 数据库服务",
     location: "EU AWS Frankfurt (eu-central-1)",
-    dpfCertified: true,
+    dpfCertified: false,
   },
 ] as const;

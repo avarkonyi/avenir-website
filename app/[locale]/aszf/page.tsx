@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getTranslation, LOCALES, type Locale } from "@/lib/i18n";
+import { getTermsContent } from "@/lib/legal-content";
 import { SEO_DATA } from "@/lib/seo-data";
 import {
   LegalPageChrome,
@@ -21,8 +22,9 @@ export async function generateMetadata({
   const { locale } = await params;
   if (!LOCALES.includes(locale as Locale)) notFound();
   const t = getTranslation(locale);
-  const title = `${t.legal.terms.title} — ${SEO_DATA.legalNameShort}`;
-  const description = t.legal.terms.intro.slice(0, 160);
+  const terms = getTermsContent(locale, t);
+  const title = `${terms.title} — ${SEO_DATA.legalNameShort}`;
+  const description = terms.intro.slice(0, 160);
   const url = `${SEO_DATA.url}/${locale}/aszf`;
 
   return {
@@ -52,22 +54,23 @@ export default async function TermsPage({
   const { locale } = await params;
   if (!LOCALES.includes(locale as Locale)) notFound();
   const t = getTranslation(locale);
+  const terms = getTermsContent(locale, t);
 
   return (
     <LegalPageChrome
       t={t}
       locale={locale}
-      pageTitle={t.legal.terms.title}
-      pageDescription={t.legal.terms.intro.slice(0, 160)}
+      pageTitle={terms.title}
+      pageDescription={terms.intro.slice(0, 160)}
       pageSlug="aszf"
     >
       <LegalHeader
-        title={t.legal.terms.title}
-        lastUpdated={t.legal.terms.lastUpdated}
-        version={t.legal.terms.version}
-        intro={t.legal.terms.intro}
+        title={terms.title}
+        lastUpdated={terms.lastUpdated}
+        version={terms.version}
+        intro={terms.intro}
       />
-      {t.legal.terms.sections.map((s) => (
+      {terms.sections.map((s) => (
         <LegalSection key={s.id} id={s.id} title={s.title} body={s.body} />
       ))}
 
@@ -85,7 +88,7 @@ export default async function TermsPage({
             color: "#0B1E3E",
           }}
         >
-          {t.legal.terms.dataProtection.title}
+          {terms.dataProtection.title}
         </h2>
         <p
           style={{
@@ -95,7 +98,7 @@ export default async function TermsPage({
             marginBottom: 16,
           }}
         >
-          {t.legal.terms.dataProtection.body}
+          {terms.dataProtection.body}
         </p>
         <div
           style={{
@@ -117,34 +120,34 @@ export default async function TermsPage({
               color: "#0B1E3E",
             }}
           >
-            {t.legal.terms.dataProtection.dpoLabel}
+            {terms.dataProtection.dpoLabel}
           </h3>
           <p style={{ fontSize: 15, lineHeight: 1.6, color: "rgba(11,30,62,0.9)", margin: 0 }}>
-            {t.legal.terms.dataProtection.dpoName}
+            {terms.dataProtection.dpoName}
           </p>
           <p style={{ fontSize: 15, lineHeight: 1.6, margin: 0 }}>
             <a
-              href={`mailto:${t.legal.terms.dataProtection.dpoEmail}`}
+              href={`mailto:${terms.dataProtection.dpoEmail}`}
               style={{ color: "#D1172E", textDecoration: "none" }}
             >
-              {t.legal.terms.dataProtection.dpoEmail}
+              {terms.dataProtection.dpoEmail}
             </a>
           </p>
           <p style={{ fontSize: 15, lineHeight: 1.6, margin: 0 }}>
             <a
-              href={`tel:${t.legal.terms.dataProtection.dpoPhone.replace(/\s/g, "")}`}
+              href={`tel:${terms.dataProtection.dpoPhone.replace(/\s/g, "")}`}
               style={{ color: "#D1172E", textDecoration: "none" }}
             >
-              {t.legal.terms.dataProtection.dpoPhone}
+              {terms.dataProtection.dpoPhone}
             </a>
           </p>
         </div>
         <p style={{ fontSize: 15, lineHeight: 1.6, color: "rgba(11,30,62,0.85)" }}>
           <Link
-            href={t.legal.terms.dataProtection.privacyLinkHref}
+            href={terms.dataProtection.privacyLinkHref}
             style={{ color: "#D1172E", textDecoration: "underline", fontWeight: 600 }}
           >
-            {t.legal.terms.dataProtection.privacyLinkText} →
+            {terms.dataProtection.privacyLinkText} →
           </Link>
         </p>
       </section>
@@ -164,7 +167,7 @@ export default async function TermsPage({
           fontStyle: "italic",
         }}
       >
-        {t.legal.terms.versionHistory}
+        {terms.versionHistory}
       </p>
     </LegalPageChrome>
   );
