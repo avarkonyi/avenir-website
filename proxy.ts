@@ -59,6 +59,18 @@ export default function proxy(req: NextRequest, event: NextFetchEvent) {
 
   if (pathname.startsWith("/admin")) return adminProxy(req, event);
 
+  const localeSegment = pathname.split("/")[1];
+  const normalizedLocale = localeSegment?.toLowerCase();
+  if (
+    localeSegment &&
+    localeSegment !== normalizedLocale &&
+    LOCALES.includes(normalizedLocale)
+  ) {
+    const redirectUrl = req.nextUrl.clone();
+    redirectUrl.pathname = `/${normalizedLocale}${pathname.slice(localeSegment.length + 1)}`;
+    return withNoindexHeader(req, NextResponse.redirect(redirectUrl, 308));
+  }
+
   const hasLocale = LOCALES.some(
     (locale) => pathname === `/${locale}` || pathname.startsWith(`/${locale}/`),
   );
@@ -67,7 +79,7 @@ export default function proxy(req: NextRequest, event: NextFetchEvent) {
   if (pathname === "/") {
     return withNoindexHeader(
       req,
-      NextResponse.rewrite(new URL(`/${DEFAULT_LOCALE}`, req.url)),
+      NextResponse.redirect(new URL(`/${DEFAULT_LOCALE}`, req.url), 308),
     );
   }
 
