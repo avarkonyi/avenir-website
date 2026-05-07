@@ -9,7 +9,6 @@ import { db, certifications } from "@/lib/db";
 import { getActiveTopLevelServices } from "@/lib/db/queries/services";
 import {
   SEO_DATA,
-  SEO_FAQS_HU,
   SEO_LOCALES,
   OG_LOCALE_MAP,
   META_DESCRIPTIONS,
@@ -248,15 +247,6 @@ function buildJsonLdSchemas(
         name: svc.name,
         description: svc.description,
         provider: { "@id": orgId },
-      })),
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: SEO_FAQS_HU.map((item) => ({
-        "@type": "Question",
-        name: item.q,
-        acceptedAnswer: { "@type": "Answer", text: item.a },
       })),
     },
     {
