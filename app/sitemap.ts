@@ -6,12 +6,15 @@ const SITE_LAST_MODIFIED = new Date("2026-05-07T00:00:00.000Z");
 
 function localeAlternates(path = "") {
   return {
-    languages: Object.fromEntries(
-      SEO_LOCALES.map((locale) => [
-        locale,
-        `${SEO_DATA.url}/${locale}${path}`,
-      ]),
-    ),
+    languages: {
+      ...Object.fromEntries(
+        SEO_LOCALES.map((locale) => [
+          locale,
+          `${SEO_DATA.url}/${locale}${path}`,
+        ]),
+      ),
+      "x-default": `${SEO_DATA.url}/hu${path}`,
+    },
   };
 }
 
