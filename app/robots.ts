@@ -13,16 +13,36 @@ export default function robots(): MetadataRoute.Robots {
     };
   }
 
-  // Keep crawl policy simple for launch: public pages are crawlable,
-  // operational surfaces are not. Do not disallow /_next; crawlers and
-  // preview renderers need CSS/JS/assets to render the page correctly.
+  const publicDisallow = ["/admin", "/api"];
+  const aiSearchAgents = [
+    "OAI-SearchBot",
+    "ChatGPT-User",
+    "GPTBot",
+    "Claude-SearchBot",
+    "Claude-User",
+    "ClaudeBot",
+    "PerplexityBot",
+    "Perplexity-User",
+  ];
+
+  // Public pages are crawlable; operational surfaces are not. Do not
+  // disallow /_next because crawlers and preview renderers need CSS,
+  // JS and image assets to render the page correctly.
+  //
+  // AI-search/retrieval bots are listed explicitly so answer engines
+  // receive an unambiguous allow signal while admin/API surfaces stay out.
   return {
     rules: [
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/admin", "/api"],
+        disallow: publicDisallow,
       },
+      ...aiSearchAgents.map((userAgent) => ({
+        userAgent,
+        allow: "/",
+        disallow: publicDisallow,
+      })),
     ],
     sitemap: `${SEO_DATA.url}/sitemap.xml`,
   };

@@ -19,8 +19,9 @@ export const SEO_DATA = {
 
   // Web
   url: "https://www.afm.hu",
-  // Placeholder asset URL (designer pack will replace this)
-  logoUrl: "https://www.afm.hu/logo.png",
+  // Crawlable public logo used by JSON-LD. Keep this pointed at a real
+  // public asset; a missing logo URL weakens Organization structured data.
+  logoUrl: "https://www.afm.hu/uploads/logo.svg",
   // Dynamic OG route (always 200) — replaces former /og-image.jpg
   // placeholder which never existed as a static asset
   ogImageUrl: "https://www.afm.hu/hu/opengraph-image",
