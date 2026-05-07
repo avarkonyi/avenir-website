@@ -7,10 +7,35 @@ in dev, and from Vercel project env settings in production.
 
 1. Copy `.env.example` to `.env.local`
 2. Fill in `DATABASE_URL` and `DATABASE_URL_UNPOOLED` from your Neon console
-3. (Optional) Fill in Resend variables if you want email notifications:
+3. Keep `EXPECTED_STAGING_NEON_ENDPOINT` and `EXPECTED_PRODUCTION_NEON_ENDPOINT`
+   set to the endpoint IDs documented in `OPERATOR_RUNBOOK.md`
+4. (Optional) Fill in Resend variables if you want email notifications:
    - `RESEND_API_KEY` — from https://resend.com/api-keys
    - `RESEND_FROM_EMAIL` — defaults to `onboarding@resend.dev` (sandbox)
    - `RESEND_NOTIFY_TO` — your inbox address (e.g. `info@afm.hu`)
+
+## Database target guard
+
+All default database-mutating npm scripts are staging-only:
+
+```powershell
+npm run db:migrate
+npm run db:push
+npm run db:seed-services
+```
+
+Each command first checks the connected Neon endpoint through
+`scripts/verify-db-target.mjs`. If `.env.local` points at the production
+endpoint, the command stops before running Drizzle or seed code.
+
+Production changes require explicit `:prod` commands, for example:
+
+```powershell
+npm run db:migrate:prod
+```
+
+Use production commands only during a release gate after staging and
+preview have already passed.
 
 ## Resend setup (production)
 

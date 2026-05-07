@@ -6,6 +6,29 @@ Operational source of truth for Avenir website database targets, migrations, Ver
 
 Use a static staging database for local development and Vercel Preview. Use main only for production or an explicit release-gated production migration.
 
+Production DB writes are blocked by default in npm scripts. The default
+commands below are staging-only and run `scripts/verify-db-target.mjs`
+before touching the database:
+
+```powershell
+npm run db:verify-target
+npm run db:migrate
+npm run db:push
+npm run db:seed-services
+```
+
+Production database commands must use the explicit `:prod` variant:
+
+```powershell
+npm run db:verify-target:prod
+npm run db:migrate:prod
+npm run db:seed-services:prod
+```
+
+Before any `:prod` command, verify the Vercel production deployment,
+the migration SQL, and the Neon endpoint identity. Never use the default
+commands for production changes.
+
 | Context | DATABASE_URL | DATABASE_URL_UNPOOLED | Notes |
 | --- | --- | --- | --- |
 | Local app runtime | staging pooled | staging direct | `lib/db/index.ts` reads `DATABASE_URL`. |
@@ -134,6 +157,14 @@ DATABASE_URL_UNPOOLED=<staging direct>
 ```
 
 After changing env vars, redeploy the latest `feature/admin-mvp` Preview deployment. Environment changes do not reliably affect an already-built deployment.
+
+To verify Vercel Preview DB targets without printing secrets:
+
+```powershell
+vercel env pull .vercel/.env.preview.local --environment=preview
+node scripts/verify-db-target.mjs --target staging --env-file .vercel/.env.preview.local
+Remove-Item -LiteralPath .vercel/.env.preview.local
+```
 
 ## One-Off Scripts
 
