@@ -179,16 +179,6 @@ export const messages = pgTable(
     repliedAt: timestamp("replied_at", { withTimezone: true }),
     replySubject: text("reply_subject"),
     replyBody: text("reply_body"),
-    leadStatus: varchar("lead_status", { length: 30 }).notNull().default("new"),
-    leadOwnerName: text("lead_owner_name"),
-    leadNextActionAt: timestamp("lead_next_action_at", { withTimezone: true }),
-    leadNextActionNote: text("lead_next_action_note"),
-    leadEstimatedValue: integer("lead_estimated_value"),
-    leadSiteType: varchar("lead_site_type", { length: 80 }),
-    leadProposalUrl: text("lead_proposal_url"),
-    leadContractUrl: text("lead_contract_url"),
-    internalNotes: text("internal_notes"),
-    leadUpdatedAt: timestamp("lead_updated_at", { withTimezone: true }),
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
   },
   (table) => [
@@ -198,14 +188,6 @@ export const messages = pgTable(
     index("idx_messages_inbox")
       .on(sql`${table.createdAt} DESC`)
       .where(sql`${table.archivedAt} IS NULL`),
-    index("idx_messages_lead_status")
-      .on(table.leadStatus, sql`${table.createdAt} DESC`)
-      .where(sql`${table.archivedAt} IS NULL`),
-    index("idx_messages_next_action")
-      .on(sql`${table.leadNextActionAt} ASC`)
-      .where(
-        sql`${table.archivedAt} IS NULL AND ${table.leadNextActionAt} IS NOT NULL`,
-      ),
   ],
 );
 

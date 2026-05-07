@@ -3,22 +3,37 @@
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
-import { LEAD_STATUS_OPTIONS } from "@/lib/messages-lead";
 
+// Search + filter chips for the inbox. Uses URL search params as the
+// state store — the Server Component list page reads them and queries
+// the DB. No client state for the data; only for the search input
+// debounce-on-submit.
+//
+// All filter changes are Link-based (full reload, server re-renders
+// the table). Search is form-based — Enter submits, navigates to
+// updated URL.
+
+// Status pill keys are Hungarian (matches the URL search-param values
+// the server expects). "Mind" stays empty so the default URL is clean
+// (/admin/messages with no ?status=). The other 4 use Hungarian slugs.
+//
+// "archivalt" gets a gray active-state hint (not red) so the operator
+// has a visual cue that they're now browsing the archive view rather
+// than the active inbox.
 const STATUS_OPTIONS = [
   { key: "", label: "Mind" },
   { key: "olvasatlan", label: "Olvasatlan" },
   { key: "olvasott", label: "Olvasott" },
-  { key: "megvalaszolt", label: "Megvalaszolt" },
-  { key: "archivalt", label: "Archivalt" },
+  { key: "megvalaszolt", label: "Megválaszolt" },
+  { key: "archivalt", label: "Archivált" },
 ] as const;
 
 const LOCALE_OPTIONS = [
   { key: "", label: "Mind" },
-  { key: "hu", label: "HU" },
-  { key: "en", label: "EN" },
-  { key: "de", label: "DE" },
-  { key: "zh", label: "ZH" },
+  { key: "hu", label: "🇭🇺 HU" },
+  { key: "en", label: "🇬🇧 EN" },
+  { key: "de", label: "🇩🇪 DE" },
+  { key: "zh", label: "🇨🇳 ZH" },
 ] as const;
 
 function buildHref(
@@ -26,9 +41,9 @@ function buildHref(
   patch: Record<string, string>,
 ): string {
   const next = new URLSearchParams(current);
-  for (const [key, value] of Object.entries(patch)) {
-    if (!value) next.delete(key);
-    else next.set(key, value);
+  for (const [k, v] of Object.entries(patch)) {
+    if (!v) next.delete(k);
+    else next.set(k, v);
   }
   const qs = next.toString();
   return qs ? `/admin/messages?${qs}` : "/admin/messages";
@@ -38,8 +53,8 @@ export function MessagesFilters() {
   const searchParams = useSearchParams();
   const status = searchParams.get("status") ?? "";
   const locale = searchParams.get("locale") ?? "";
-  const lead = searchParams.get("lead") ?? "";
   const q = searchParams.get("q") ?? "";
+
   const [query, setQuery] = useState(q);
 
   return (
@@ -51,6 +66,7 @@ export function MessagesFilters() {
         marginBottom: 20,
       }}
     >
+      {/* Search */}
       <form
         action="/admin/messages"
         method="get"
@@ -58,13 +74,12 @@ export function MessagesFilters() {
       >
         {status && <input type="hidden" name="status" value={status} />}
         {locale && <input type="hidden" name="locale" value={locale} />}
-        {lead && <input type="hidden" name="lead" value={lead} />}
         <input
           type="text"
           name="q"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Kereses nevben, emailben, cegben vagy uzenetben..."
+          placeholder="Keresés név, email vagy üzenetben…"
           style={{
             flex: 1,
             padding: "10px 14px",
@@ -84,12 +99,12 @@ export function MessagesFilters() {
             padding: "10px 20px",
             borderRadius: 4,
             fontSize: 13,
-            fontWeight: 700,
+            fontWeight: 600,
             cursor: "pointer",
             letterSpacing: 0.5,
           }}
         >
-          Kereses
+          Keresés
         </button>
         {q && (
           <Link
@@ -106,117 +121,87 @@ export function MessagesFilters() {
               background: "#fff",
             }}
           >
-            Torles
+            Törlés
           </Link>
         )}
       </form>
 
-      <div style={filterRowStyle}>
-        <FilterLabel>Statusz:</FilterLabel>
-        {STATUS_OPTIONS.map((option) => {
-          const active = status === option.key;
-          const activeBg = option.key === "archivalt" ? "#64748B" : "#0B1E3E";
+      {/* Status chips */}
+      <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
+        <span
+          style={{
+            fontSize: 12,
+            color: "#64748B",
+            fontWeight: 600,
+            letterSpacing: 0.5,
+            textTransform: "uppercase",
+            marginRight: 4,
+          }}
+        >
+          Státusz:
+        </span>
+        {STATUS_OPTIONS.map((opt) => {
+          const active = status === opt.key;
+          // "Archivált" gets a gray active fill instead of navy so
+          // the operator can see at a glance they've left the active
+          // inbox view. Other active pills use the navy brand color.
+          const activeBg = opt.key === "archivalt" ? "#64748B" : "#0B1E3E";
           return (
-            <Chip
-              key={option.key || "all-status"}
-              href={buildHref(searchParams, { status: option.key })}
-              active={active}
-              activeColor={activeBg}
+            <Link
+              key={opt.key || "all-status"}
+              href={buildHref(searchParams, { status: opt.key })}
+              style={{
+                padding: "6px 14px",
+                borderRadius: 999,
+                fontSize: 13,
+                fontWeight: 600,
+                textDecoration: "none",
+                background: active ? activeBg : "#fff",
+                color: active ? "#fff" : "#0B1E3E",
+                border: `1px solid ${active ? activeBg : "#CBD5E1"}`,
+              }}
             >
-              {option.label}
-            </Chip>
+              {opt.label}
+            </Link>
+          );
+        })}
+
+        <span style={{ width: 1, height: 20, background: "#CBD5E1", margin: "0 8px" }} />
+
+        <span
+          style={{
+            fontSize: 12,
+            color: "#64748B",
+            fontWeight: 600,
+            letterSpacing: 0.5,
+            textTransform: "uppercase",
+            marginRight: 4,
+          }}
+        >
+          Nyelv:
+        </span>
+        {LOCALE_OPTIONS.map((opt) => {
+          const active = locale === opt.key;
+          return (
+            <Link
+              key={opt.key || "all-locale"}
+              href={buildHref(searchParams, { locale: opt.key })}
+              style={{
+                padding: "6px 12px",
+                borderRadius: 999,
+                fontSize: 13,
+                fontWeight: 600,
+                textDecoration: "none",
+                background: active ? "#D1172E" : "#fff",
+                color: active ? "#fff" : "#0B1E3E",
+                border: `1px solid ${active ? "#D1172E" : "#CBD5E1"}`,
+              }}
+            >
+              {opt.label}
+            </Link>
           );
         })}
       </div>
-
-      <div style={filterRowStyle}>
-        <FilterLabel>Lead:</FilterLabel>
-        <Chip
-          href={buildHref(searchParams, { lead: "" })}
-          active={!lead}
-          activeColor="#0B1E3E"
-        >
-          Mind
-        </Chip>
-        {LEAD_STATUS_OPTIONS.map((option) => (
-          <Chip
-            key={option.value}
-            href={buildHref(searchParams, { lead: option.value })}
-            active={lead === option.value}
-            activeColor={option.color}
-          >
-            {option.shortLabel}
-          </Chip>
-        ))}
-      </div>
-
-      <div style={filterRowStyle}>
-        <FilterLabel>Nyelv:</FilterLabel>
-        {LOCALE_OPTIONS.map((option) => (
-          <Chip
-            key={option.key || "all-locale"}
-            href={buildHref(searchParams, { locale: option.key })}
-            active={locale === option.key}
-            activeColor="#D1172E"
-          >
-            {option.label}
-          </Chip>
-        ))}
-      </div>
     </div>
-  );
-}
-
-const filterRowStyle: React.CSSProperties = {
-  display: "flex",
-  gap: 8,
-  alignItems: "center",
-  flexWrap: "wrap",
-};
-
-function FilterLabel({ children }: { children: React.ReactNode }) {
-  return (
-    <span
-      style={{
-        fontSize: 12,
-        color: "#64748B",
-        fontWeight: 700,
-        letterSpacing: 0.5,
-        textTransform: "uppercase",
-        marginRight: 4,
-      }}
-    >
-      {children}
-    </span>
-  );
-}
-
-function Chip({
-  href,
-  active,
-  activeColor,
-  children,
-}: {
-  href: string;
-  active: boolean;
-  activeColor: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <Link
-      href={href}
-      style={{
-        padding: "6px 12px",
-        borderRadius: 999,
-        fontSize: 13,
-        fontWeight: 700,
-        textDecoration: "none",
-        background: active ? activeColor : "#fff",
-        color: active ? "#fff" : "#0B1E3E",
-        border: `1px solid ${active ? activeColor : "#CBD5E1"}`,
-      }}
-    >
-      {children}
-    </Link>
   );
 }
