@@ -8,6 +8,7 @@ import { auth } from "@/auth";
 const LOCALES = ["hu", "en", "de", "zh"];
 const DEFAULT_LOCALE = "hu";
 const NOINDEX_HEADER = "noindex, nofollow";
+const LEGACY_GONE_PATHS = ["/cgi-sys", "/mall", "/tw"] as const;
 
 function shouldNoindex(req: NextRequest): boolean {
   const host = req.headers.get("host")?.toLowerCase() ?? "";
@@ -57,6 +58,16 @@ const adminProxy = auth(function adminProxy(
 export default function proxy(req: NextRequest, event: NextFetchEvent) {
   const { pathname } = req.nextUrl;
 
+  if (
+    LEGACY_GONE_PATHS.some(
+      (path) => pathname === path || pathname.startsWith(`${path}/`),
+    )
+  ) {
+    const response = new NextResponse(null, { status: 410 });
+    response.headers.set("X-Robots-Tag", NOINDEX_HEADER);
+    return response;
+  }
+
   if (pathname.startsWith("/admin")) return adminProxy(req, event);
 
   const localeSegment = pathname.split("/")[1];
@@ -87,5 +98,11 @@ export default function proxy(req: NextRequest, event: NextFetchEvent) {
 }
 
 export const config = {
-  matcher: ["/((?!_next|api|.*\\..*).*)"],
+  matcher: [
+    "/cgi-sys/:path*",
+    "/mall",
+    "/mall/:path*",
+    "/tw/:path*",
+    "/((?!_next|api|.*\\..*).*)",
+  ],
 };
