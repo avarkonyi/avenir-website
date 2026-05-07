@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -178,9 +179,13 @@ export function Nav({ t }: { t: Pick<Translation, "nav"> }) {
           style={{ background: "none", border: "none", cursor: "pointer", padding: 0, display: "inline-flex" }}
           aria-label="Avenir home"
         >
-          <img
+          <Image
             src="/avenir-logo-horizontal-dark.svg"
             alt="Avenir Facility Management"
+            width={3000}
+            height={750}
+            priority
+            unoptimized
             style={{
               height: 36,
               width: "auto",

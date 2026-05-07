@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { type Translation } from "@/lib/i18n";
 import { getActiveTopLevelServices } from "@/lib/db/queries/services";
@@ -32,9 +33,12 @@ export async function Footer({
         >
           {/* Column 1: Logo */}
           <div style={{ display: "flex", alignItems: "center", justifyContent: "flex-start", minHeight: 150 }}>
-            <img
+            <Image
               src="/avenir-logo-horizontal-dark.svg"
               alt="Avenir Facility Management"
+              width={3000}
+              height={750}
+              unoptimized
               style={{
                 height: 106,
                 width: "auto",

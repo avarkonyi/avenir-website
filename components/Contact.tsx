@@ -46,7 +46,6 @@ const FORM_FIELDS = [
   "service",
   "message",
 ] as const;
-type FormFieldName = (typeof FORM_FIELDS)[number];
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 

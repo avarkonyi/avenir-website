@@ -1,6 +1,5 @@
 import { ImageResponse } from "next/og";
 import { readFile } from "node:fs/promises";
-import { join } from "node:path";
 import { getTranslation } from "@/lib/i18n";
 import { SEO_DATA } from "@/lib/seo-data";
 
@@ -18,11 +17,11 @@ export default async function OpengraphImage({
   // ZH OG image swaps to Noto Sans SC (CJK glyph coverage). Other locales
   // use Barlow Condensed for brand-consistent display typography.
   const isZh = locale === "zh";
-  const fontPath = isZh
-    ? "assets/fonts/NotoSansSC-Bold.otf"
-    : "assets/fonts/BarlowCondensed-Bold.ttf";
+  const fontUrl = isZh
+    ? new URL("../../assets/fonts/NotoSansSC-Bold.otf", import.meta.url)
+    : new URL("../../assets/fonts/BarlowCondensed-Bold.ttf", import.meta.url);
   const fontName = isZh ? "Noto Sans SC" : "Barlow Condensed";
-  const fontData = await readFile(join(process.cwd(), fontPath));
+  const fontData = await readFile(fontUrl);
   return new ImageResponse(
     (
       <div
