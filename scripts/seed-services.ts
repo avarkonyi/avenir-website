@@ -26,7 +26,7 @@
 // initialization baseline.
 
 import "./load-env";
-import { eq } from "drizzle-orm";
+import { eq, or } from "drizzle-orm";
 import { db, services } from "../lib/db";
 import { getTranslation, type Locale } from "../lib/i18n";
 
@@ -34,30 +34,41 @@ type CanonicalEntry = {
   slug: string;
   icon: string;
   sortOrder: number;
+  // i18nId may diverge from slug after the P5 Phase 1 rename
+  // (e.g., slug "objektumorzes" maps to i18n entry id "security").
+  // Falls back to slug when omitted.
+  i18nId?: string;
 };
 
 // Canonical seed sort order for the launch-facing portfolio:
-//   security   -> Élőerős objektumőrzés
-//   reception  -> Recepciós és portaszolgálat
-//   mystery    -> Mystery Shopping és helyszíni audit
-//   cleaning   -> Rendezvénybiztosítás
-//   building   -> Biztonságtechnika
-//   technical  -> Távfelügyelet és vonulószolgálat
-//   green      -> Soft FM
-//   hardfm     -> Hard FM
+//   objektumorzes -> Élőerős objektumőrzés
+//   reception     -> Recepciós és portaszolgálat
+//   mystery       -> Mystery Shopping és helyszíni audit
+//   cleaning      -> Rendezvénybiztosítás
+//   building      -> Biztonságtechnika
+//   technical     -> Távfelügyelet és vonulószolgálat
+//   green         -> Soft FM
+//   hardfm        -> Hard FM
 //
-// Slugs are kept stable for the existing contact-form/email pipeline
-// until a later service-architecture migration introduces public
-// service detail URLs.
+// P5 Phase 1: the security -> objektumorzes rename brings the slug in
+// line with the public service detail URL convention
+// (/[locale]/szolgaltatasok/objektumorzes). The legacy "security" key
+// is still accepted by the contact-form/email pipeline (see
+// SERVICE_LABELS_HU in lib/email-templates/notification.ts) so any
+// stale references continue to render correctly.
+//
+// `i18nId` is the lookup key into lib/i18n/*.ts services arrays. It
+// keeps the legacy id ("security") so the i18n source files don't
+// need a parallel rename in this iteration; only the DB slug changes.
 const CANONICAL_SEED: ReadonlyArray<CanonicalEntry> = [
-  { slug: "security",  icon: "shield",   sortOrder: 0 },
-  { slug: "reception", icon: "desk",     sortOrder: 1 },
-  { slug: "mystery",   icon: "eye",      sortOrder: 2 },
-  { slug: "cleaning",  icon: "sparkle",  sortOrder: 3 },
-  { slug: "building",  icon: "camera",   sortOrder: 4 },
-  { slug: "technical", icon: "radar",    sortOrder: 5 },
-  { slug: "green",     icon: "leaf",     sortOrder: 6 },
-  { slug: "hardfm",    icon: "gear",     sortOrder: 7 },
+  { slug: "objektumorzes", icon: "shield",   sortOrder: 0, i18nId: "security"  },
+  { slug: "reception",     icon: "desk",     sortOrder: 1, i18nId: "reception" },
+  { slug: "mystery",       icon: "eye",      sortOrder: 2, i18nId: "mystery"   },
+  { slug: "cleaning",      icon: "sparkle",  sortOrder: 3, i18nId: "cleaning"  },
+  { slug: "building",      icon: "camera",   sortOrder: 4, i18nId: "building"  },
+  { slug: "technical",     icon: "radar",    sortOrder: 5, i18nId: "technical" },
+  { slug: "green",         icon: "leaf",     sortOrder: 6, i18nId: "green"     },
+  { slug: "hardfm",        icon: "gear",     sortOrder: 7, i18nId: "hardfm"    },
 ];
 
 // Localized strings for one service slug. Each i18n file has
@@ -84,15 +95,16 @@ async function main() {
   let updated = 0;
 
   for (const meta of CANONICAL_SEED) {
+    const i18nId = meta.i18nId ?? meta.slug;
     // Build the localized field map by iterating the 4 locales.
     // Throws (and aborts the whole script) if any locale is missing
     // the expected entry — surfaces i18n drift loudly rather than
     // silently writing partial data.
     const localized = {
-      hu: pickFromLocale("hu", meta.slug),
-      en: pickFromLocale("en", meta.slug),
-      de: pickFromLocale("de", meta.slug),
-      zh: pickFromLocale("zh", meta.slug),
+      hu: pickFromLocale("hu", i18nId),
+      en: pickFromLocale("en", i18nId),
+      de: pickFromLocale("de", i18nId),
+      zh: pickFromLocale("zh", i18nId),
     };
 
     // Per spec: UPDATE all schema fields except id + createdAt.
@@ -127,10 +139,15 @@ async function main() {
       isActive: true,
     };
 
+    const existingWhere =
+      meta.slug === "objektumorzes"
+        ? or(eq(services.slug, meta.slug), eq(services.slug, "security"))
+        : eq(services.slug, meta.slug);
+
     const existing = await db
       .select({ id: services.id })
       .from(services)
-      .where(eq(services.slug, meta.slug))
+      .where(existingWhere)
       .limit(1);
 
     if (existing.length === 0) {

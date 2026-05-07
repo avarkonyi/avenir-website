@@ -8,7 +8,12 @@
 import type { ContactPayload } from "../contact-schema";
 
 const SERVICE_LABELS_HU: Record<string, string> = {
+  // P5 Phase 1: "security" → "objektumorzes" rename for the public
+  // detail-page URL. Both keys map to the same Hungarian label so any
+  // in-flight contact submissions or sites still posting the legacy
+  // slug keep rendering correctly in the notification email.
   security: "Élőerős objektumőrzés",
+  objektumorzes: "Élőerős objektumőrzés",
   cleaning: "Rendezvénybiztosítás",
   building: "Biztonságtechnika",
   reception: "Recepciós és portaszolgálat",

@@ -60,6 +60,49 @@ type FormState = {
   highlightsDeRaw: string;
   highlightsZhRaw: string;
 
+  // Service-detail-page fields (P5 Phase 1)
+  seoTitleHu: string;
+  seoTitleEn: string;
+  seoTitleDe: string;
+  seoTitleZh: string;
+
+  seoDescriptionHu: string;
+  seoDescriptionEn: string;
+  seoDescriptionDe: string;
+  seoDescriptionZh: string;
+
+  valuePropositionHu: string;
+  valuePropositionEn: string;
+  valuePropositionDe: string;
+  valuePropositionZh: string;
+
+  useCasesHuRaw: string;
+  useCasesEnRaw: string;
+  useCasesDeRaw: string;
+  useCasesZhRaw: string;
+
+  includedItemsHuRaw: string;
+  includedItemsEnRaw: string;
+  includedItemsDeRaw: string;
+  includedItemsZhRaw: string;
+
+  processStepsHuRaw: string;
+  processStepsEnRaw: string;
+  processStepsDeRaw: string;
+  processStepsZhRaw: string;
+
+  trustItemsHuRaw: string;
+  trustItemsEnRaw: string;
+  trustItemsDeRaw: string;
+  trustItemsZhRaw: string;
+
+  faqHuRaw: string;
+  faqEnRaw: string;
+  faqDeRaw: string;
+  faqZhRaw: string;
+
+  relatedServiceSlugsRaw: string;
+
   sortOrder: string; // input type=number value comes through as string
   isFeatured: boolean;
   isPublished: boolean;
@@ -91,6 +134,48 @@ const EMPTY_STATE: FormState = {
   highlightsEnRaw: "",
   highlightsDeRaw: "",
   highlightsZhRaw: "",
+
+  seoTitleHu: "",
+  seoTitleEn: "",
+  seoTitleDe: "",
+  seoTitleZh: "",
+
+  seoDescriptionHu: "",
+  seoDescriptionEn: "",
+  seoDescriptionDe: "",
+  seoDescriptionZh: "",
+
+  valuePropositionHu: "",
+  valuePropositionEn: "",
+  valuePropositionDe: "",
+  valuePropositionZh: "",
+
+  useCasesHuRaw: "",
+  useCasesEnRaw: "",
+  useCasesDeRaw: "",
+  useCasesZhRaw: "",
+
+  includedItemsHuRaw: "",
+  includedItemsEnRaw: "",
+  includedItemsDeRaw: "",
+  includedItemsZhRaw: "",
+
+  processStepsHuRaw: "",
+  processStepsEnRaw: "",
+  processStepsDeRaw: "",
+  processStepsZhRaw: "",
+
+  trustItemsHuRaw: "",
+  trustItemsEnRaw: "",
+  trustItemsDeRaw: "",
+  trustItemsZhRaw: "",
+
+  faqHuRaw: "",
+  faqEnRaw: "",
+  faqDeRaw: "",
+  faqZhRaw: "",
+
+  relatedServiceSlugsRaw: "",
 
   sortOrder: "0",
   isFeatured: false,
@@ -125,6 +210,49 @@ export type ServiceInitial = {
   highlightsDe: string[];
   highlightsZh: string[];
 
+  // Service-detail-page fields (P5 Phase 1)
+  seoTitleHu: string | null;
+  seoTitleEn: string | null;
+  seoTitleDe: string | null;
+  seoTitleZh: string | null;
+
+  seoDescriptionHu: string | null;
+  seoDescriptionEn: string | null;
+  seoDescriptionDe: string | null;
+  seoDescriptionZh: string | null;
+
+  valuePropositionHu: string | null;
+  valuePropositionEn: string | null;
+  valuePropositionDe: string | null;
+  valuePropositionZh: string | null;
+
+  useCasesHu: string[];
+  useCasesEn: string[];
+  useCasesDe: string[];
+  useCasesZh: string[];
+
+  includedItemsHu: string[];
+  includedItemsEn: string[];
+  includedItemsDe: string[];
+  includedItemsZh: string[];
+
+  processStepsHu: { title: string; body: string }[];
+  processStepsEn: { title: string; body: string }[];
+  processStepsDe: { title: string; body: string }[];
+  processStepsZh: { title: string; body: string }[];
+
+  trustItemsHu: { title: string; body: string }[];
+  trustItemsEn: { title: string; body: string }[];
+  trustItemsDe: { title: string; body: string }[];
+  trustItemsZh: { title: string; body: string }[];
+
+  faqHu: { q: string; a: string }[];
+  faqEn: { q: string; a: string }[];
+  faqDe: { q: string; a: string }[];
+  faqZh: { q: string; a: string }[];
+
+  relatedServiceSlugs: string[];
+
   sortOrder: number;
   isFeatured: boolean;
   isPublished: boolean;
@@ -146,6 +274,24 @@ type Props =
       parentOptions: ParentOption[];
       isParentDisabled: boolean;
     };
+
+// Compound items round-trip via "Title || Body" per line so the
+// admin can edit them in a plain textarea. Empty bodies serialize to
+// "Title" only (no trailing "||"), matching how the server-side
+// normalizer accepts title-only lines.
+function joinCompound(items: { title: string; body: string }[]): string {
+  return items
+    .map(({ title, body }) =>
+      body.trim().length > 0 ? `${title} || ${body}` : title,
+    )
+    .join("\n");
+}
+
+function joinFaq(items: { q: string; a: string }[]): string {
+  return items
+    .map(({ q, a }) => (a.trim().length > 0 ? `${q} || ${a}` : q))
+    .join("\n");
+}
 
 function initialFromService(s: ServiceInitial): FormState {
   return {
@@ -173,6 +319,48 @@ function initialFromService(s: ServiceInitial): FormState {
     highlightsEnRaw: s.highlightsEn.join("\n"),
     highlightsDeRaw: s.highlightsDe.join("\n"),
     highlightsZhRaw: s.highlightsZh.join("\n"),
+
+    seoTitleHu: s.seoTitleHu ?? "",
+    seoTitleEn: s.seoTitleEn ?? "",
+    seoTitleDe: s.seoTitleDe ?? "",
+    seoTitleZh: s.seoTitleZh ?? "",
+
+    seoDescriptionHu: s.seoDescriptionHu ?? "",
+    seoDescriptionEn: s.seoDescriptionEn ?? "",
+    seoDescriptionDe: s.seoDescriptionDe ?? "",
+    seoDescriptionZh: s.seoDescriptionZh ?? "",
+
+    valuePropositionHu: s.valuePropositionHu ?? "",
+    valuePropositionEn: s.valuePropositionEn ?? "",
+    valuePropositionDe: s.valuePropositionDe ?? "",
+    valuePropositionZh: s.valuePropositionZh ?? "",
+
+    useCasesHuRaw: s.useCasesHu.join("\n"),
+    useCasesEnRaw: s.useCasesEn.join("\n"),
+    useCasesDeRaw: s.useCasesDe.join("\n"),
+    useCasesZhRaw: s.useCasesZh.join("\n"),
+
+    includedItemsHuRaw: s.includedItemsHu.join("\n"),
+    includedItemsEnRaw: s.includedItemsEn.join("\n"),
+    includedItemsDeRaw: s.includedItemsDe.join("\n"),
+    includedItemsZhRaw: s.includedItemsZh.join("\n"),
+
+    processStepsHuRaw: joinCompound(s.processStepsHu),
+    processStepsEnRaw: joinCompound(s.processStepsEn),
+    processStepsDeRaw: joinCompound(s.processStepsDe),
+    processStepsZhRaw: joinCompound(s.processStepsZh),
+
+    trustItemsHuRaw: joinCompound(s.trustItemsHu),
+    trustItemsEnRaw: joinCompound(s.trustItemsEn),
+    trustItemsDeRaw: joinCompound(s.trustItemsDe),
+    trustItemsZhRaw: joinCompound(s.trustItemsZh),
+
+    faqHuRaw: joinFaq(s.faqHu),
+    faqEnRaw: joinFaq(s.faqEn),
+    faqDeRaw: joinFaq(s.faqDe),
+    faqZhRaw: joinFaq(s.faqZh),
+
+    relatedServiceSlugsRaw: s.relatedServiceSlugs.join("\n"),
 
     sortOrder: String(s.sortOrder),
     isFeatured: s.isFeatured,
@@ -244,6 +432,48 @@ export function ServiceForm(props: Props) {
       highlightsEnRaw: state.highlightsEnRaw,
       highlightsDeRaw: state.highlightsDeRaw,
       highlightsZhRaw: state.highlightsZhRaw,
+
+      seoTitleHu: state.seoTitleHu,
+      seoTitleEn: state.seoTitleEn,
+      seoTitleDe: state.seoTitleDe,
+      seoTitleZh: state.seoTitleZh,
+
+      seoDescriptionHu: state.seoDescriptionHu,
+      seoDescriptionEn: state.seoDescriptionEn,
+      seoDescriptionDe: state.seoDescriptionDe,
+      seoDescriptionZh: state.seoDescriptionZh,
+
+      valuePropositionHu: state.valuePropositionHu,
+      valuePropositionEn: state.valuePropositionEn,
+      valuePropositionDe: state.valuePropositionDe,
+      valuePropositionZh: state.valuePropositionZh,
+
+      useCasesHuRaw: state.useCasesHuRaw,
+      useCasesEnRaw: state.useCasesEnRaw,
+      useCasesDeRaw: state.useCasesDeRaw,
+      useCasesZhRaw: state.useCasesZhRaw,
+
+      includedItemsHuRaw: state.includedItemsHuRaw,
+      includedItemsEnRaw: state.includedItemsEnRaw,
+      includedItemsDeRaw: state.includedItemsDeRaw,
+      includedItemsZhRaw: state.includedItemsZhRaw,
+
+      processStepsHuRaw: state.processStepsHuRaw,
+      processStepsEnRaw: state.processStepsEnRaw,
+      processStepsDeRaw: state.processStepsDeRaw,
+      processStepsZhRaw: state.processStepsZhRaw,
+
+      trustItemsHuRaw: state.trustItemsHuRaw,
+      trustItemsEnRaw: state.trustItemsEnRaw,
+      trustItemsDeRaw: state.trustItemsDeRaw,
+      trustItemsZhRaw: state.trustItemsZhRaw,
+
+      faqHuRaw: state.faqHuRaw,
+      faqEnRaw: state.faqEnRaw,
+      faqDeRaw: state.faqDeRaw,
+      faqZhRaw: state.faqZhRaw,
+
+      relatedServiceSlugsRaw: state.relatedServiceSlugsRaw,
 
       sortOrder: Number.isFinite(parsedSortOrder) ? parsedSortOrder : 0,
       isFeatured: state.isFeatured,
@@ -492,6 +722,34 @@ export function ServiceForm(props: Props) {
         </div>
       </section>
 
+      {/* Aloldal — locale-independent fields (P5 Phase 1) */}
+      <section
+        style={{
+          background: "#fff",
+          border: "1px solid #E2E8F0",
+          borderRadius: 6,
+          padding: "20px 24px",
+          display: "grid",
+          gap: 16,
+        }}
+      >
+        <SectionLabel>Aloldal — kapcsolódó szolgáltatások</SectionLabel>
+        <Field label="Kapcsolódó szolgáltatások (slugok, soronként vagy vesszővel)">
+          <textarea
+            value={state.relatedServiceSlugsRaw}
+            onChange={(e) => update("relatedServiceSlugsRaw", e.target.value)}
+            rows={3}
+            placeholder={"reception\nmystery"}
+            style={{ ...inputStyle(), resize: "vertical", lineHeight: 1.55 }}
+            disabled={pending}
+          />
+          <p style={helpTextStyle}>
+            A nem létező vagy nem-publikált slugok automatikusan kimaradnak
+            a publikus oldalon. A slugok közösek minden nyelvre.
+          </p>
+        </Field>
+      </section>
+
       {/* Action bar */}
       <div
         style={{
@@ -560,7 +818,21 @@ function LocaleFields({
   const shortKey = `shortDesc${c}` as keyof FormState;
   const longKey = `longDesc${c}` as keyof FormState;
   const highlightsKey = `highlights${c}Raw` as keyof FormState;
+  const seoTitleKey = `seoTitle${c}` as keyof FormState;
+  const seoDescriptionKey = `seoDescription${c}` as keyof FormState;
+  const valuePropKey = `valueProposition${c}` as keyof FormState;
+  const useCasesKey = `useCases${c}Raw` as keyof FormState;
+  const includedKey = `includedItems${c}Raw` as keyof FormState;
+  const processKey = `processSteps${c}Raw` as keyof FormState;
+  const trustKey = `trustItems${c}Raw` as keyof FormState;
+  const faqKey = `faq${c}Raw` as keyof FormState;
   const isHu = locale === "hu";
+  const compoundHelp =
+    "Soronként egy elem. Cím és törzs a „||” elválasztóval: " +
+    "Cím || Részletes leírás. Törzs nélkül csak a címet írd.";
+  const faqHelp =
+    "Soronként egy kérdés-válasz pár, „||” elválasztóval: " +
+    "Kérdés || Válasz.";
 
   return (
     <div style={{ display: "grid", gap: 16 }}>
@@ -593,14 +865,14 @@ function LocaleFields({
         />
       </Field>
 
-      <Field label="Hosszú leírás (Markdown)">
+      <Field label={`Hosszú leírás${isHu ? " (kötelező a publikáláshoz)" : ""}`}>
         <textarea
           value={String(state[longKey] ?? "")}
           onChange={(e) => update(longKey, e.target.value as never)}
           rows={10}
           placeholder={
             isHu
-              ? "Részletes szolgáltatás-leírás Markdown formátumban."
+              ? "Részletes szolgáltatás-leírás. Egyszerű szöveg vagy Markdown."
               : "Opcionális"
           }
           style={{
@@ -630,6 +902,138 @@ function LocaleFields({
           style={{ ...inputStyle(), resize: "vertical", lineHeight: 1.55 }}
           disabled={pending}
         />
+      </Field>
+
+      <SubSectionLabel>Aloldal — SEO</SubSectionLabel>
+
+      <Field label={`SEO cím${isHu ? " (kötelező a publikáláshoz)" : ""}`}>
+        <input
+          type="text"
+          value={String(state[seoTitleKey] ?? "")}
+          onChange={(e) => update(seoTitleKey, e.target.value as never)}
+          maxLength={120}
+          placeholder={
+            isHu
+              ? "Meta <title> — pl. „Élőerős objektumőrzés | Avenir”"
+              : "Opcionális"
+          }
+          style={inputStyle()}
+          disabled={pending}
+        />
+      </Field>
+
+      <Field label={`SEO leírás${isHu ? " (kötelező a publikáláshoz)" : ""}`}>
+        <textarea
+          value={String(state[seoDescriptionKey] ?? "")}
+          onChange={(e) => update(seoDescriptionKey, e.target.value as never)}
+          rows={3}
+          maxLength={300}
+          placeholder={
+            isHu
+              ? "Meta description — 150–160 karakter ideális."
+              : "Opcionális"
+          }
+          style={{ ...inputStyle(), resize: "vertical", lineHeight: 1.5 }}
+          disabled={pending}
+        />
+      </Field>
+
+      <SubSectionLabel>Aloldal — tartalom</SubSectionLabel>
+
+      <Field
+        label={`Értékajánlat (hero alá)${isHu ? " (kötelező a publikáláshoz)" : ""}`}
+      >
+        <textarea
+          value={String(state[valuePropKey] ?? "")}
+          onChange={(e) => update(valuePropKey, e.target.value as never)}
+          rows={3}
+          maxLength={400}
+          placeholder={
+            isHu
+              ? "1–2 mondat arról, mit nyer az ügyfél."
+              : "Opcionális"
+          }
+          style={{ ...inputStyle(), resize: "vertical", lineHeight: 1.55 }}
+          disabled={pending}
+        />
+      </Field>
+
+      <Field label="Kinek jó (use cases) — egy sor egy elem">
+        <textarea
+          value={String(state[useCasesKey] ?? "")}
+          onChange={(e) => update(useCasesKey, e.target.value as never)}
+          rows={5}
+          placeholder={
+            isHu
+              ? "Logisztikai központok\nIrodaházak\nIpari parkok"
+              : "Opcionális"
+          }
+          style={{ ...inputStyle(), resize: "vertical", lineHeight: 1.55 }}
+          disabled={pending}
+        />
+      </Field>
+
+      <Field label="Mit tartalmaz — egy sor egy elem">
+        <textarea
+          value={String(state[includedKey] ?? "")}
+          onChange={(e) => update(includedKey, e.target.value as never)}
+          rows={5}
+          placeholder={
+            isHu
+              ? "Képzett vagyonőrök\nDokumentált szolgálati napló\nNapi/heti riport"
+              : "Opcionális"
+          }
+          style={{ ...inputStyle(), resize: "vertical", lineHeight: 1.55 }}
+          disabled={pending}
+        />
+      </Field>
+
+      <Field label="Hogyan indul az együttműködés (cím || leírás soronként)">
+        <textarea
+          value={String(state[processKey] ?? "")}
+          onChange={(e) => update(processKey, e.target.value as never)}
+          rows={6}
+          placeholder={
+            isHu
+              ? "Felmérés || Helyszíni bejárás és kockázatelemzés.\nAjánlat || Testre szabott szolgáltatási csomag és árazás.\nIndulás || Csapat-felállás és protokollok bevezetése."
+              : "Opcionális"
+          }
+          style={{ ...inputStyle(), resize: "vertical", lineHeight: 1.55 }}
+          disabled={pending}
+        />
+        <p style={helpTextStyle}>{compoundHelp}</p>
+      </Field>
+
+      <Field label="Bizalmi elemek (cím || leírás soronként)">
+        <textarea
+          value={String(state[trustKey] ?? "")}
+          onChange={(e) => update(trustKey, e.target.value as never)}
+          rows={4}
+          placeholder={
+            isHu
+              ? "ISO 9001 + ISO 27001 || Tanúsított minőségirányítás és információbiztonság.\nMűködési megbízhatóság || 30+ aktív helyszín, 24/7 diszpécseri háttér.\nEgy felelős kapcsolattartó || Egyszerű döntéshozatal, gyors reagálás."
+              : "Opcionális"
+          }
+          style={{ ...inputStyle(), resize: "vertical", lineHeight: 1.55 }}
+          disabled={pending}
+        />
+        <p style={helpTextStyle}>{compoundHelp}</p>
+      </Field>
+
+      <Field label="GYIK / FAQ (kérdés || válasz soronként)">
+        <textarea
+          value={String(state[faqKey] ?? "")}
+          onChange={(e) => update(faqKey, e.target.value as never)}
+          rows={6}
+          placeholder={
+            isHu
+              ? "Hogyan kérhetek ajánlatot? || Telefonon, e-mailben vagy az űrlapon. 2 munkanapon belül visszajelzünk.\nMilyen rendszerességgel kapok riportot? || Heti írásos riport és havi áttekintés."
+              : "Opcionális"
+          }
+          style={{ ...inputStyle(), resize: "vertical", lineHeight: 1.55 }}
+          disabled={pending}
+        />
+        <p style={helpTextStyle}>{faqHelp}</p>
       </Field>
     </div>
   );
@@ -721,6 +1125,25 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
     >
       {children}
     </h2>
+  );
+}
+
+function SubSectionLabel({ children }: { children: React.ReactNode }) {
+  return (
+    <h3
+      style={{
+        margin: "8px 0 -4px",
+        fontSize: 11,
+        letterSpacing: 1,
+        textTransform: "uppercase",
+        fontWeight: 700,
+        color: "#94A3B8",
+        borderTop: "1px solid #F1F5F9",
+        paddingTop: 14,
+      }}
+    >
+      {children}
+    </h3>
   );
 }
 

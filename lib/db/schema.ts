@@ -375,6 +375,54 @@ export const services = pgTable(
     highlightsDe: jsonb("highlights_de").$type<string[]>().notNull().default([]),
     highlightsZh: jsonb("highlights_zh").$type<string[]>().notNull().default([]),
 
+    // Service-detail-page fields (P5 Phase 1). All locale-aware text
+    // columns are nullable; HU is the only locale guarded by the publish
+    // gate (see assertCanPublishDetail in _actions.ts). Compound jsonb
+    // columns keep `[]` defaults to avoid nullish guards in renderers.
+    seoTitleHu: text("seo_title_hu"),
+    seoTitleEn: text("seo_title_en"),
+    seoTitleDe: text("seo_title_de"),
+    seoTitleZh: text("seo_title_zh"),
+
+    seoDescriptionHu: text("seo_description_hu"),
+    seoDescriptionEn: text("seo_description_en"),
+    seoDescriptionDe: text("seo_description_de"),
+    seoDescriptionZh: text("seo_description_zh"),
+
+    valuePropositionHu: text("value_proposition_hu"),
+    valuePropositionEn: text("value_proposition_en"),
+    valuePropositionDe: text("value_proposition_de"),
+    valuePropositionZh: text("value_proposition_zh"),
+
+    useCasesHu: jsonb("use_cases_hu").$type<string[]>().notNull().default([]),
+    useCasesEn: jsonb("use_cases_en").$type<string[]>().notNull().default([]),
+    useCasesDe: jsonb("use_cases_de").$type<string[]>().notNull().default([]),
+    useCasesZh: jsonb("use_cases_zh").$type<string[]>().notNull().default([]),
+
+    includedItemsHu: jsonb("included_items_hu").$type<string[]>().notNull().default([]),
+    includedItemsEn: jsonb("included_items_en").$type<string[]>().notNull().default([]),
+    includedItemsDe: jsonb("included_items_de").$type<string[]>().notNull().default([]),
+    includedItemsZh: jsonb("included_items_zh").$type<string[]>().notNull().default([]),
+
+    processStepsHu: jsonb("process_steps_hu").$type<{ title: string; body: string }[]>().notNull().default([]),
+    processStepsEn: jsonb("process_steps_en").$type<{ title: string; body: string }[]>().notNull().default([]),
+    processStepsDe: jsonb("process_steps_de").$type<{ title: string; body: string }[]>().notNull().default([]),
+    processStepsZh: jsonb("process_steps_zh").$type<{ title: string; body: string }[]>().notNull().default([]),
+
+    trustItemsHu: jsonb("trust_items_hu").$type<{ title: string; body: string }[]>().notNull().default([]),
+    trustItemsEn: jsonb("trust_items_en").$type<{ title: string; body: string }[]>().notNull().default([]),
+    trustItemsDe: jsonb("trust_items_de").$type<{ title: string; body: string }[]>().notNull().default([]),
+    trustItemsZh: jsonb("trust_items_zh").$type<{ title: string; body: string }[]>().notNull().default([]),
+
+    faqHu: jsonb("faq_hu").$type<{ q: string; a: string }[]>().notNull().default([]),
+    faqEn: jsonb("faq_en").$type<{ q: string; a: string }[]>().notNull().default([]),
+    faqDe: jsonb("faq_de").$type<{ q: string; a: string }[]>().notNull().default([]),
+    faqZh: jsonb("faq_zh").$type<{ q: string; a: string }[]>().notNull().default([]),
+
+    // Locale-independent — slugs are shared across locales. Empty array
+    // = no related links.
+    relatedServiceSlugs: jsonb("related_service_slugs").$type<string[]>().notNull().default([]),
+
     sortOrder: integer("sort_order").notNull().default(0),
     isFeatured: boolean("is_featured").notNull().default(false),
     isPublished: boolean("is_published").notNull().default(false),

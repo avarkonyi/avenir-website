@@ -79,6 +79,48 @@ export default async function EditServicePage({
     highlightsDe: row.highlightsDe,
     highlightsZh: row.highlightsZh,
 
+    seoTitleHu: row.seoTitleHu,
+    seoTitleEn: row.seoTitleEn,
+    seoTitleDe: row.seoTitleDe,
+    seoTitleZh: row.seoTitleZh,
+
+    seoDescriptionHu: row.seoDescriptionHu,
+    seoDescriptionEn: row.seoDescriptionEn,
+    seoDescriptionDe: row.seoDescriptionDe,
+    seoDescriptionZh: row.seoDescriptionZh,
+
+    valuePropositionHu: row.valuePropositionHu,
+    valuePropositionEn: row.valuePropositionEn,
+    valuePropositionDe: row.valuePropositionDe,
+    valuePropositionZh: row.valuePropositionZh,
+
+    useCasesHu: row.useCasesHu,
+    useCasesEn: row.useCasesEn,
+    useCasesDe: row.useCasesDe,
+    useCasesZh: row.useCasesZh,
+
+    includedItemsHu: row.includedItemsHu,
+    includedItemsEn: row.includedItemsEn,
+    includedItemsDe: row.includedItemsDe,
+    includedItemsZh: row.includedItemsZh,
+
+    processStepsHu: row.processStepsHu,
+    processStepsEn: row.processStepsEn,
+    processStepsDe: row.processStepsDe,
+    processStepsZh: row.processStepsZh,
+
+    trustItemsHu: row.trustItemsHu,
+    trustItemsEn: row.trustItemsEn,
+    trustItemsDe: row.trustItemsDe,
+    trustItemsZh: row.trustItemsZh,
+
+    faqHu: row.faqHu,
+    faqEn: row.faqEn,
+    faqDe: row.faqDe,
+    faqZh: row.faqZh,
+
+    relatedServiceSlugs: row.relatedServiceSlugs,
+
     sortOrder: row.sortOrder,
     isFeatured: row.isFeatured,
     isPublished: row.isPublished,

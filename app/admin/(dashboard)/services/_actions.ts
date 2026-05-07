@@ -53,6 +53,54 @@ export type ServicePayload = {
   highlightsDeRaw: string;
   highlightsZhRaw: string;
 
+  // Service-detail-page fields (P5 Phase 1).
+  seoTitleHu: string;
+  seoTitleEn: string;
+  seoTitleDe: string;
+  seoTitleZh: string;
+
+  seoDescriptionHu: string;
+  seoDescriptionEn: string;
+  seoDescriptionDe: string;
+  seoDescriptionZh: string;
+
+  valuePropositionHu: string;
+  valuePropositionEn: string;
+  valuePropositionDe: string;
+  valuePropositionZh: string;
+
+  // Line-separated raw strings for string[] fields.
+  useCasesHuRaw: string;
+  useCasesEnRaw: string;
+  useCasesDeRaw: string;
+  useCasesZhRaw: string;
+
+  includedItemsHuRaw: string;
+  includedItemsEnRaw: string;
+  includedItemsDeRaw: string;
+  includedItemsZhRaw: string;
+
+  // Per-line "Title || Body" raw strings for compound items.
+  processStepsHuRaw: string;
+  processStepsEnRaw: string;
+  processStepsDeRaw: string;
+  processStepsZhRaw: string;
+
+  trustItemsHuRaw: string;
+  trustItemsEnRaw: string;
+  trustItemsDeRaw: string;
+  trustItemsZhRaw: string;
+
+  // Per-line "Question || Answer" raw strings.
+  faqHuRaw: string;
+  faqEnRaw: string;
+  faqDeRaw: string;
+  faqZhRaw: string;
+
+  // Comma-or-line separated slugs of related services. Locale-
+  // independent.
+  relatedServiceSlugsRaw: string;
+
   sortOrder: number;
   isFeatured: boolean;
   isPublished: boolean;
@@ -95,6 +143,172 @@ function normalizeHighlights(raw: string | null | undefined): string[] {
     }
   }
   return lines;
+}
+
+// Generic line-array normalizer (no per-item count cap; the highlights
+// helper above keeps its 6-item / 160-char limit because it backs the
+// already-shipped homepage card pattern). Each line is trimmed; empty
+// lines collapse out. Per-line length capped at 400 to avoid pathological
+// admin paste-bombs filling the jsonb column unbounded.
+function normalizeLines(raw: string | null | undefined): string[] {
+  if (!raw) return [];
+  const lines = raw
+    .split("\n")
+    .map((line) => line.trim())
+    .filter((line) => line.length > 0);
+  for (const line of lines) {
+    if (line.length > 400) {
+      throw new Error(
+        `Egy sor maximum 400 karakter (talált: ${line.length}).`,
+      );
+    }
+  }
+  return lines;
+}
+
+// Compound items: each non-empty line is "Title || Body". Lines without
+// the "||" separator are treated as title-only (body = "").
+function normalizeCompound(
+  raw: string | null | undefined,
+): { title: string; body: string }[] {
+  if (!raw) return [];
+  return raw
+    .split("\n")
+    .map((line) => line.trim())
+    .filter((line) => line.length > 0)
+    .map((line) => {
+      const sep = line.indexOf("||");
+      if (sep === -1) return { title: line, body: "" };
+      const title = line.slice(0, sep).trim();
+      const body = line.slice(sep + 2).trim();
+      return { title, body };
+    })
+    .filter((entry) => entry.title.length > 0);
+}
+
+// FAQ entries reuse the "Q || A" same separator, but the canonical
+// shape has q/a keys (matches FAQPage schema.org property names).
+function normalizeFaq(
+  raw: string | null | undefined,
+): { q: string; a: string }[] {
+  return normalizeCompound(raw).map(({ title, body }) => ({
+    q: title,
+    a: body,
+  }));
+}
+
+// Related-service slugs: comma- or newline-separated, slugified per
+// entry so admin can paste display names. Empty entries drop. The
+// detail page query (getPublishedServicesBySlugs) silently filters
+// any slug that's missing or unpublished — we don't FK-validate here
+// because the related target may be added later.
+function normalizeRelatedSlugs(raw: string | null | undefined): string[] {
+  if (!raw) return [];
+  const seen = new Set<string>();
+  const out: string[] = [];
+  for (const piece of raw.split(/[\n,]/)) {
+    const trimmed = piece.trim();
+    if (trimmed.length === 0) continue;
+    const slug = slugify(trimmed);
+    if (!slug || slug === "hir" || seen.has(slug)) continue;
+    seen.add(slug);
+    out.push(slug);
+  }
+  return out;
+}
+
+// Bundles every detail-page column write into a single object spread
+// into the values()/set() call. Keeps the CRUD bodies short and
+// guarantees create/update parity (any new detail column added here
+// flows to both paths automatically).
+function normalizeDetailFields(payload: ServicePayload) {
+  return {
+    seoTitleHu: normLocale(payload.seoTitleHu),
+    seoTitleEn: normLocale(payload.seoTitleEn),
+    seoTitleDe: normLocale(payload.seoTitleDe),
+    seoTitleZh: normLocale(payload.seoTitleZh),
+
+    seoDescriptionHu: normLocale(payload.seoDescriptionHu),
+    seoDescriptionEn: normLocale(payload.seoDescriptionEn),
+    seoDescriptionDe: normLocale(payload.seoDescriptionDe),
+    seoDescriptionZh: normLocale(payload.seoDescriptionZh),
+
+    valuePropositionHu: normLocale(payload.valuePropositionHu),
+    valuePropositionEn: normLocale(payload.valuePropositionEn),
+    valuePropositionDe: normLocale(payload.valuePropositionDe),
+    valuePropositionZh: normLocale(payload.valuePropositionZh),
+
+    useCasesHu: normalizeLines(payload.useCasesHuRaw),
+    useCasesEn: normalizeLines(payload.useCasesEnRaw),
+    useCasesDe: normalizeLines(payload.useCasesDeRaw),
+    useCasesZh: normalizeLines(payload.useCasesZhRaw),
+
+    includedItemsHu: normalizeLines(payload.includedItemsHuRaw),
+    includedItemsEn: normalizeLines(payload.includedItemsEnRaw),
+    includedItemsDe: normalizeLines(payload.includedItemsDeRaw),
+    includedItemsZh: normalizeLines(payload.includedItemsZhRaw),
+
+    processStepsHu: normalizeCompound(payload.processStepsHuRaw),
+    processStepsEn: normalizeCompound(payload.processStepsEnRaw),
+    processStepsDe: normalizeCompound(payload.processStepsDeRaw),
+    processStepsZh: normalizeCompound(payload.processStepsZhRaw),
+
+    trustItemsHu: normalizeCompound(payload.trustItemsHuRaw),
+    trustItemsEn: normalizeCompound(payload.trustItemsEnRaw),
+    trustItemsDe: normalizeCompound(payload.trustItemsDeRaw),
+    trustItemsZh: normalizeCompound(payload.trustItemsZhRaw),
+
+    faqHu: normalizeFaq(payload.faqHuRaw),
+    faqEn: normalizeFaq(payload.faqEnRaw),
+    faqDe: normalizeFaq(payload.faqDeRaw),
+    faqZh: normalizeFaq(payload.faqZhRaw),
+
+    relatedServiceSlugs: normalizeRelatedSlugs(payload.relatedServiceSlugsRaw),
+  };
+}
+
+// Publish gate (P5 Phase 1 spec): a service can only flip
+// isPublished=true when slug, seoTitleHu, seoDescriptionHu,
+// longDescHu, and valuePropositionHu are all present. Other locales
+// fall back to HU at render time, so the gate is HU-only — same
+// philosophy as the news / certifications publish-required surface.
+function assertCanPublishDetail(
+  payload: ServicePayload,
+  slug: string,
+): void {
+  if (!payload.isPublished) return;
+  const missing: string[] = [];
+  if (slug.trim().length === 0) missing.push("slug");
+  if (payload.seoTitleHu.trim().length === 0) missing.push("SEO cím (HU)");
+  if (payload.seoDescriptionHu.trim().length === 0)
+    missing.push("SEO leírás (HU)");
+  if (payload.longDescHu.trim().length === 0)
+    missing.push("Hosszú leírás (HU)");
+  if (payload.valuePropositionHu.trim().length === 0)
+    missing.push("Értékajánlat (HU)");
+  if (missing.length > 0) {
+    throw new Error(
+      `A publikáláshoz a következő mezők szükségesek: ${missing.join(", ")}.`,
+    );
+  }
+}
+
+function assertExistingCanPublishDetail(
+  service: typeof services.$inferSelect,
+): void {
+  if (!service.isPublished) return;
+  const missing: string[] = [];
+  if (service.slug.trim().length === 0) missing.push("slug");
+  if (!service.seoTitleHu?.trim()) missing.push("SEO cím (HU)");
+  if (!service.seoDescriptionHu?.trim()) missing.push("SEO leírás (HU)");
+  if (!service.longDescHu?.trim()) missing.push("Hosszú leírás (HU)");
+  if (!service.valuePropositionHu?.trim())
+    missing.push("Értékajánlat (HU)");
+  if (missing.length > 0) {
+    throw new Error(
+      `A publikáláshoz a következő mezők szükségesek: ${missing.join(", ")}.`,
+    );
+  }
 }
 
 // Slug pipeline: canonicalize first, validate after.
@@ -249,6 +463,9 @@ export async function createService(
     const highlightsDe = normalizeHighlights(payload.highlightsDeRaw);
     const highlightsZh = normalizeHighlights(payload.highlightsZhRaw);
 
+    const detail = normalizeDetailFields(payload);
+    assertCanPublishDetail(payload, slug);
+
     const sortOrder = Number.isFinite(payload.sortOrder)
       ? Math.max(0, Math.trunc(payload.sortOrder))
       : 0;
@@ -280,6 +497,8 @@ export async function createService(
         highlightsEn,
         highlightsDe,
         highlightsZh,
+
+        ...detail,
 
         sortOrder,
         isFeatured: payload.isFeatured,
@@ -370,6 +589,9 @@ export async function updateService(
     const highlightsDe = normalizeHighlights(payload.highlightsDeRaw);
     const highlightsZh = normalizeHighlights(payload.highlightsZhRaw);
 
+    const detail = normalizeDetailFields(payload);
+    assertCanPublishDetail(payload, slug);
+
     const sortOrder = Number.isFinite(payload.sortOrder)
       ? Math.max(0, Math.trunc(payload.sortOrder))
       : 0;
@@ -401,6 +623,8 @@ export async function updateService(
         highlightsEn,
         highlightsDe,
         highlightsZh,
+
+        ...detail,
 
         sortOrder,
         isFeatured: payload.isFeatured,
@@ -483,6 +707,13 @@ export async function togglePublishStatus(
   }
 
   try {
+    if (nextPublished) {
+      assertExistingCanPublishDetail({
+        ...service,
+        isPublished: true,
+      });
+    }
+
     await db
       .update(services)
       .set({ isPublished: nextPublished, updatedAt: new Date() })
