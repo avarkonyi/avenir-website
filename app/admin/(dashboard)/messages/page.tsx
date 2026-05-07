@@ -2,8 +2,9 @@ import Link from "next/link";
 import { connection } from "next/server";
 import { and, desc, eq, ilike, isNotNull, isNull, or, sql } from "drizzle-orm";
 import { db, messages } from "@/lib/db";
+import { isLeadStatus, leadStatusMeta } from "@/lib/messages-lead";
 import { MessagesFilters } from "./_components/MessagesFilters";
-import { formatRelativeHu, formatAbsoluteHu } from "./_components/formatRelative";
+import { formatAbsoluteHu, formatRelativeHu } from "./_components/formatRelative";
 
 const PAGE_SIZE = 50;
 
@@ -13,11 +14,13 @@ const STATUS_KEYS = [
   "megvalaszolt",
   "archivalt",
 ] as const;
+
 type StatusKey = (typeof STATUS_KEYS)[number] | "mind";
 
 type SearchParams = Promise<{
   status?: string;
   locale?: string;
+  lead?: string;
   q?: string;
 }>;
 
@@ -36,14 +39,11 @@ export default async function MessagesListPage({
   const locale = ["hu", "en", "de", "zh"].includes(sp.locale ?? "")
     ? sp.locale
     : undefined;
+  const lead = isLeadStatus(sp.lead ?? "") ? sp.lead : undefined;
   const q = (sp.q ?? "").trim();
 
   await connection();
 
-  // Status filter — derived from timestamps (A2 — no enum). Only the
-  // "archivalt" branch INCLUDES archived rows; every other status
-  // implicitly excludes them (an inbox view of archived items doesn't
-  // make sense).
   const conditions = [];
   if (status === "mind") {
     conditions.push(isNull(messages.archivedAt));
@@ -61,11 +61,13 @@ export default async function MessagesListPage({
     conditions.push(isNotNull(messages.archivedAt));
   }
   if (locale) conditions.push(eq(messages.locale, locale));
+  if (lead) conditions.push(eq(messages.leadStatus, lead));
   if (q) {
     const pattern = `%${q}%`;
     const search = or(
       ilike(messages.name, pattern),
       ilike(messages.email, pattern),
+      ilike(messages.company, pattern),
       ilike(messages.message, pattern),
     );
     if (search) conditions.push(search);
@@ -83,6 +85,9 @@ export default async function MessagesListPage({
       repliedAt: messages.repliedAt,
       archivedAt: messages.archivedAt,
       createdAt: messages.createdAt,
+      leadStatus: messages.leadStatus,
+      leadOwnerName: messages.leadOwnerName,
+      leadNextActionAt: messages.leadNextActionAt,
     })
     .from(messages)
     .where(and(...conditions))
@@ -96,18 +101,25 @@ export default async function MessagesListPage({
 
   const total = totalActive[0]?.value ?? 0;
   const filteredCount = rows.length;
-  const hasFilters = status !== "mind" || !!locale || !!q;
+  const hasFilters = status !== "mind" || !!locale || !!lead || !!q;
 
   return (
-    <div style={{ maxWidth: 1200 }}>
+    <div style={{ maxWidth: 1240 }}>
       <header style={{ marginBottom: 24 }}>
-        <h1 style={{ fontSize: 28, fontWeight: 700, color: "#0B1E3E", margin: 0 }}>
-          Üzenetek
+        <h1
+          style={{
+            fontSize: 28,
+            fontWeight: 700,
+            color: "#0B1E3E",
+            margin: 0,
+          }}
+        >
+          Uzenetek es leadek
         </h1>
         <p style={{ color: "#64748B", marginTop: 4, fontSize: 14 }}>
           {hasFilters
-            ? `${filteredCount} találat (${total} összesen)`
-            : `${total} üzenet`}
+            ? `${filteredCount} talalat (${total} aktiv osszesen)`
+            : `${total} aktiv uzenet`}
         </p>
       </header>
 
@@ -127,13 +139,14 @@ export default async function MessagesListPage({
           <table style={{ width: "100%", borderCollapse: "collapse" }}>
             <thead style={{ background: "#F8FAFC" }}>
               <tr>
-                <Th>Beérkezés</Th>
-                <Th>Név</Th>
-                <Th>Email</Th>
-                <Th>Cég</Th>
+                <Th>Beerkezes</Th>
+                <Th>Nev</Th>
+                <Th>Ceg</Th>
+                <Th>Lead</Th>
+                <Th>Kovetkezo</Th>
                 <Th>Nyelv</Th>
-                <Th>Üzenet</Th>
-                <Th>Státusz</Th>
+                <Th>Uzenet</Th>
+                <Th>Inbox</Th>
                 <Th></Th>
               </tr>
             </thead>
@@ -142,8 +155,8 @@ export default async function MessagesListPage({
                 const derived = deriveStatus(m);
                 const unread = derived === "uj";
                 const isArchived = derived === "archivalt";
-                const snippet = (m.message ?? "").slice(0, 90);
-                const truncated = (m.message ?? "").length > 90;
+                const snippet = (m.message ?? "").slice(0, 80);
+                const truncated = (m.message ?? "").length > 80;
                 return (
                   <tr
                     key={m.id}
@@ -165,22 +178,32 @@ export default async function MessagesListPage({
                       </span>
                     </Td>
                     <Td>
-                      <span style={{ fontWeight: unread ? 600 : 400 }}>
-                        {m.name}
-                      </span>
-                    </Td>
-                    <Td>
-                      <a
-                        href={`mailto:${m.email}`}
-                        style={{ color: "#0B1E3E", textDecoration: "none" }}
-                      >
-                        {m.email}
-                      </a>
+                      <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
+                        <span style={{ fontWeight: unread ? 700 : 600 }}>
+                          {m.name}
+                        </span>
+                        <a
+                          href={`mailto:${m.email}`}
+                          style={{
+                            color: "#64748B",
+                            textDecoration: "none",
+                            fontSize: 12,
+                          }}
+                        >
+                          {m.email}
+                        </a>
+                      </div>
                     </Td>
                     <Td>
                       <span style={{ color: "#64748B" }}>
-                        {m.company ?? "—"}
+                        {m.company ?? "-"}
                       </span>
+                    </Td>
+                    <Td>
+                      <LeadPill status={m.leadStatus} owner={m.leadOwnerName} />
+                    </Td>
+                    <Td>
+                      <NextAction value={m.leadNextActionAt} />
                     </Td>
                     <Td>
                       <LocaleBadge locale={m.locale} />
@@ -188,7 +211,7 @@ export default async function MessagesListPage({
                     <Td>
                       <span style={{ color: "#475569", fontSize: 13 }}>
                         {snippet}
-                        {truncated && "…"}
+                        {truncated && "..."}
                       </span>
                     </Td>
                     <Td>
@@ -200,11 +223,12 @@ export default async function MessagesListPage({
                         style={{
                           color: "#0B1E3E",
                           textDecoration: "none",
-                          fontWeight: 600,
+                          fontWeight: 700,
                           fontSize: 13,
+                          whiteSpace: "nowrap",
                         }}
                       >
-                        Megtekint →
+                        Megtekint -&gt;
                       </Link>
                     </Td>
                   </tr>
@@ -224,8 +248,8 @@ export default async function MessagesListPage({
             fontStyle: "italic",
           }}
         >
-          Csak az első {PAGE_SIZE} üzenet látható. Pontosítsd a szűrést a
-          régebbi tételekhez (lapozás Iter 2.x).
+          Csak az elso {PAGE_SIZE} uzenet lathato. Pontositsd a szurest a
+          regebbi tetelekhez.
         </p>
       )}
     </div>
@@ -243,17 +267,15 @@ function EmptyState({ hasFilters }: { hasFilters: boolean }) {
         textAlign: "center",
       }}
     >
-      <p style={{ fontSize: 36, margin: 0, lineHeight: 1 }}>📭</p>
       <p
         style={{
           fontSize: 16,
           fontWeight: 600,
           color: "#0B1E3E",
-          marginTop: 16,
-          marginBottom: 4,
+          margin: 0,
         }}
       >
-        {hasFilters ? "Nincs találat a szűrésre." : "Még nincs beérkezett üzenet."}
+        {hasFilters ? "Nincs talalat a szuresre." : "Meg nincs beerkezett uzenet."}
       </p>
       {hasFilters && (
         <Link
@@ -263,9 +285,11 @@ function EmptyState({ hasFilters }: { hasFilters: boolean }) {
             textDecoration: "underline",
             fontSize: 13,
             fontWeight: 600,
+            display: "inline-block",
+            marginTop: 10,
           }}
         >
-          Szűrők törlése
+          Szurok torlese
         </Link>
       )}
     </div>
@@ -299,12 +323,6 @@ function Td({ children }: { children: React.ReactNode }) {
 }
 
 function LocaleBadge({ locale }: { locale: string }) {
-  const map: Record<string, string> = {
-    hu: "🇭🇺",
-    en: "🇬🇧",
-    de: "🇩🇪",
-    zh: "🇨🇳",
-  };
   return (
     <span
       style={{
@@ -313,11 +331,55 @@ function LocaleBadge({ locale }: { locale: string }) {
         padding: "2px 8px",
         borderRadius: 999,
         fontSize: 11,
-        fontWeight: 600,
+        fontWeight: 700,
         letterSpacing: 0.5,
       }}
     >
-      {map[locale] ?? "🏳️"} {locale.toUpperCase()}
+      {locale.toUpperCase()}
+    </span>
+  );
+}
+
+function LeadPill({
+  status,
+  owner,
+}: {
+  status: string;
+  owner: string | null;
+}) {
+  const meta = leadStatusMeta(status);
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 3 }}>
+      <span
+        style={{
+          background: `${meta.color}1A`,
+          color: meta.color,
+          padding: "2px 8px",
+          borderRadius: 999,
+          fontSize: 11,
+          fontWeight: 800,
+          letterSpacing: 0.4,
+          whiteSpace: "nowrap",
+          width: "fit-content",
+        }}
+      >
+        {meta.shortLabel}
+      </span>
+      {owner && (
+        <span style={{ color: "#64748B", fontSize: 11 }}>{owner}</span>
+      )}
+    </div>
+  );
+}
+
+function NextAction({ value }: { value: Date | null }) {
+  if (!value) return <span style={{ color: "#94A3B8" }}>-</span>;
+  return (
+    <span
+      title={formatAbsoluteHu(value)}
+      style={{ color: "#0B1E3E", fontSize: 12, fontWeight: 600 }}
+    >
+      {formatRelativeHu(value)}
     </span>
   );
 }
@@ -337,16 +399,16 @@ function deriveStatus(row: {
 
 const STATUS_PILL: Record<
   DerivedRowStatus,
-  { label: string; color: string; icon: string }
+  { label: string; color: string }
 > = {
-  uj: { label: "Új", color: "#D1172E", icon: "📬" },
-  olvasva: { label: "Olvasva", color: "#2563EB", icon: "👁" },
-  megvalaszolva: { label: "Megválaszolva", color: "#15803D", icon: "✓" },
-  archivalt: { label: "Archivált", color: "#64748B", icon: "📦" },
+  uj: { label: "Uj", color: "#D1172E" },
+  olvasva: { label: "Olvasva", color: "#2563EB" },
+  megvalaszolva: { label: "Megvalaszolva", color: "#15803D" },
+  archivalt: { label: "Archivalt", color: "#64748B" },
 };
 
 function StatusPill({ status }: { status: DerivedRowStatus }) {
-  const { label, color, icon } = STATUS_PILL[status];
+  const { label, color } = STATUS_PILL[status];
   return (
     <span
       style={{
@@ -360,7 +422,7 @@ function StatusPill({ status }: { status: DerivedRowStatus }) {
         whiteSpace: "nowrap",
       }}
     >
-      {icon} {label}
+      {label}
     </span>
   );
 }
