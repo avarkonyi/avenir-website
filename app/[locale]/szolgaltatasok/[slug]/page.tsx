@@ -23,8 +23,9 @@ import { SEO_DATA, SEO_LOCALES, type SeoLocale } from "@/lib/seo-data";
 //
 // Draft handling: getPublishedServiceDetailBySlug already filters
 // isPublished=true AND isActive=true; missing/draft → notFound().
-// Sitemap (app/sitemap.ts) calls getAllPublishedServiceSlugs so
-// drafts never get indexed via that surface either.
+// Sitemap (app/sitemap.ts) calls getAllPublishedServicePaths so
+// drafts and incomplete locale detail pages never get indexed via that
+// surface either.
 //
 // JSON-LD: Service + BreadcrumbList always; FAQPage only when the
 // page actually renders the FAQ section (per spec).

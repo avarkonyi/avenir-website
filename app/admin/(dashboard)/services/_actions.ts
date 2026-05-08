@@ -267,11 +267,10 @@ function normalizeDetailFields(payload: ServicePayload) {
   };
 }
 
-// Publish gate (P5 Phase 1 spec): a service can only flip
-// isPublished=true when slug, seoTitleHu, seoDescriptionHu,
-// longDescHu, and valuePropositionHu are all present. Other locales
-// fall back to HU at render time, so the gate is HU-only — same
-// philosophy as the news / certifications publish-required surface.
+// Admin publish gate (P5 Phase 1): a service can only flip
+// isPublished=true when the HU baseline is present. Public service
+// detail routes apply a stricter locale-specific readiness gate, so
+// EN/DE/ZH detail pages stay 404 until their own required fields exist.
 function assertCanPublishDetail(
   payload: ServicePayload,
   slug: string,

@@ -23,8 +23,9 @@ function localeAlternates(path = "") {
 // Sitemap is async (Next 16 supports async sitemaps) so we can pull
 // the live list of published+active service slugs from the DB. Drafts
 // (isPublished=false) and soft-deleted rows (isActive=false) are
-// filtered inside getAllPublishedServiceSlugs — they never reach the
-// sitemap, matching the "no draft URL is indexable" P5 guarantee.
+// filtered inside getAllPublishedServicePaths. Incomplete locale
+// detail pages are filtered there too, matching the "no draft or
+// unfinished URL is indexable" P5 guarantee.
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const servicePaths = await getAllPublishedServicePaths();
   const serviceLocalesBySlug = new Map<string, string[]>();
