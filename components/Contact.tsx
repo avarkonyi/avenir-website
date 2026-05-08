@@ -1,6 +1,6 @@
 "use client";
 
-import { type ReactElement, useState } from "react";
+import { type ReactElement, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import type { Translation } from "@/lib/i18n";
 import { Icon } from "./Icon";
@@ -48,6 +48,21 @@ const FORM_FIELDS = [
 ] as const;
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+function subscribeToServiceQuery(onStoreChange: () => void) {
+  if (typeof window === "undefined") return () => {};
+  window.addEventListener("popstate", onStoreChange);
+  return () => window.removeEventListener("popstate", onStoreChange);
+}
+
+function getServiceQuerySnapshot(): string {
+  if (typeof window === "undefined") return "";
+  return new URLSearchParams(window.location.search).get("service")?.trim() ?? "";
+}
+
+function getEmptyServiceQuerySnapshot(): string {
+  return "";
+}
 
 type ContactRowKind = "address" | "phone" | "email";
 
@@ -229,6 +244,19 @@ export function Contact({
   const [errors, setErrors] = useState<Errors>({});
   const [submitting, setSubmitting] = useState(false);
   const [sent, setSent] = useState(false);
+  const [serviceTouched, setServiceTouched] = useState(false);
+
+  const requestedService = useSyncExternalStore(
+    subscribeToServiceQuery,
+    getServiceQuerySnapshot,
+    getEmptyServiceQuerySnapshot,
+  );
+  const prefilledService =
+    requestedService &&
+    serviceOptions.some((option) => option.slug === requestedService)
+      ? requestedService
+      : "";
+  const selectedService = serviceTouched ? form.service : prefilledService;
 
   // Map a Zod issue code (returned by /api/contact for 400 responses) to
   // the localized error string under t.form.errors. Falls back to the
@@ -263,7 +291,7 @@ export function Contact({
           company: form.company.trim(),
           email: form.email.trim(),
           phone: form.phone.trim(),
-          service: form.service,
+          service: selectedService,
           message: form.message.trim(),
           locale,
           _website: form._website,
@@ -431,7 +459,7 @@ export function Contact({
                   "magannyomozas"). Az érzékeny-adat tilalom kifejezetten
                   a magánnyomozói tevékenységhez kapcsolódó B2B-megkeresések
                   esetén releváns. */}
-              {form.service === "magannyomozas" && (
+              {selectedService === "magannyomozas" && (
                 <div
                   style={{
                     background: "rgba(251,191,36,0.08)",
@@ -584,14 +612,15 @@ export function Contact({
                 <select
                   id="contact-service"
                   name="service"
-                  value={form.service}
+                  value={selectedService}
                   onChange={(e) => {
+                    setServiceTouched(true);
                     setForm({ ...form, service: e.target.value });
                     if (errors.service) setErrors({ ...errors, service: undefined });
                   }}
                   style={{
                     ...inputStyle(!!errors.service),
-                    color: form.service ? "#0B1E3E" : "#9BA8B5",
+                    color: selectedService ? "#0B1E3E" : "#9BA8B5",
                     appearance: "none",
                   }}
                   aria-invalid={!!errors.service}
