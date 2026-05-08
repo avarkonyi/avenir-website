@@ -34,15 +34,16 @@ type CanonicalEntry = {
   slug: string;
   icon: string;
   sortOrder: number;
-  // i18nId may diverge from slug after the P5 Phase 1 rename
-  // (e.g., slug "objektumorzes" maps to i18n entry id "security").
+  // i18nId may diverge from slug after a public detail-page rename
+  // (e.g., slug "objektumorzes" maps to i18n entry id "security",
+  // and "portaszolgalat" maps to i18n entry id "reception").
   // Falls back to slug when omitted.
   i18nId?: string;
 };
 
 // Canonical seed sort order for the launch-facing portfolio:
 //   objektumorzes -> Élőerős objektumőrzés
-//   reception     -> Recepciós és portaszolgálat
+//   portaszolgalat -> Recepciós és portaszolgálat
 //   mystery       -> Mystery Shopping és helyszíni audit
 //   cleaning      -> Rendezvénybiztosítás
 //   building      -> Biztonságtechnika
@@ -50,26 +51,37 @@ type CanonicalEntry = {
 //   green         -> Soft FM
 //   hardfm        -> Hard FM
 //
-// P5 Phase 1: the security -> objektumorzes rename brings the slug in
-// line with the public service detail URL convention
-// (/[locale]/szolgaltatasok/objektumorzes). The legacy "security" key
-// is still accepted by the contact-form/email pipeline (see
+// P5 Phase 1: legacy generic slugs are being replaced one-by-one with
+// Hungarian public service-detail slugs:
+//   security  -> objektumorzes
+//   reception -> portaszolgalat
+//
+// Legacy keys stay accepted by the contact-form/email pipeline (see
 // SERVICE_LABELS_HU in lib/email-templates/notification.ts) so any
 // stale references continue to render correctly.
 //
 // `i18nId` is the lookup key into lib/i18n/*.ts services arrays. It
-// keeps the legacy id ("security") so the i18n source files don't
-// need a parallel rename in this iteration; only the DB slug changes.
+// keeps the legacy ids ("security", "reception") so the i18n source
+// files don't need a parallel rename in this iteration; only the DB
+// slug changes.
 const CANONICAL_SEED: ReadonlyArray<CanonicalEntry> = [
-  { slug: "objektumorzes", icon: "shield",   sortOrder: 0, i18nId: "security"  },
-  { slug: "reception",     icon: "desk",     sortOrder: 1, i18nId: "reception" },
-  { slug: "mystery",       icon: "eye",      sortOrder: 2, i18nId: "mystery"   },
-  { slug: "cleaning",      icon: "sparkle",  sortOrder: 3, i18nId: "cleaning"  },
-  { slug: "building",      icon: "camera",   sortOrder: 4, i18nId: "building"  },
-  { slug: "technical",     icon: "radar",    sortOrder: 5, i18nId: "technical" },
-  { slug: "green",         icon: "leaf",     sortOrder: 6, i18nId: "green"     },
-  { slug: "hardfm",        icon: "gear",     sortOrder: 7, i18nId: "hardfm"    },
+  { slug: "objektumorzes", icon: "shield",  sortOrder: 0, i18nId: "security"  },
+  { slug: "portaszolgalat", icon: "desk",   sortOrder: 1, i18nId: "reception" },
+  { slug: "mystery",       icon: "eye",     sortOrder: 2, i18nId: "mystery"   },
+  { slug: "cleaning",      icon: "sparkle", sortOrder: 3, i18nId: "cleaning"  },
+  { slug: "building",      icon: "camera",  sortOrder: 4, i18nId: "building"  },
+  { slug: "technical",     icon: "radar",   sortOrder: 5, i18nId: "technical" },
+  { slug: "green",         icon: "leaf",    sortOrder: 6, i18nId: "green"     },
+  { slug: "hardfm",        icon: "gear",    sortOrder: 7, i18nId: "hardfm"    },
 ];
+
+// Baseline seeding must update legacy rows in-place instead of
+// inserting duplicate old slugs after a pilot detail seed has renamed
+// the canonical row.
+const LEGACY_SLUG_BY_CANONICAL: Partial<Record<string, string>> = {
+  objektumorzes: "security",
+  portaszolgalat: "reception",
+};
 
 // Localized strings for one service slug. Each i18n file has
 // `services: Array<{ id, icon, t, d }>`; we look up by id (which
@@ -139,10 +151,10 @@ async function main() {
       isActive: true,
     };
 
-    const existingWhere =
-      meta.slug === "objektumorzes"
-        ? or(eq(services.slug, meta.slug), eq(services.slug, "security"))
-        : eq(services.slug, meta.slug);
+    const legacySlug = LEGACY_SLUG_BY_CANONICAL[meta.slug];
+    const existingWhere = legacySlug
+      ? or(eq(services.slug, meta.slug), eq(services.slug, legacySlug))
+      : eq(services.slug, meta.slug);
 
     const existing = await db
       .select({ id: services.id })
