@@ -92,16 +92,51 @@ function safeLocaleOf(locale: string): Locale {
 
 // Homepage service-card publication predates detail pages, so
 // services.isPublished alone is not enough to expose a detail URL.
-// A service detail page is public only when the HU detail baseline
-// exists; other locales can fall back to HU until translated.
-function publishedDetailPredicate() {
+// A service detail page is public only when that exact locale has the
+// mandatory detail baseline. EN/DE/ZH must not become public via HU
+// fallback content.
+function requiredDetailFieldsFor(locale: Locale) {
+  switch (locale) {
+    case "en":
+      return [
+        services.seoTitleEn,
+        services.seoDescriptionEn,
+        services.longDescEn,
+        services.valuePropositionEn,
+      ];
+    case "de":
+      return [
+        services.seoTitleDe,
+        services.seoDescriptionDe,
+        services.longDescDe,
+        services.valuePropositionDe,
+      ];
+    case "zh":
+      return [
+        services.seoTitleZh,
+        services.seoDescriptionZh,
+        services.longDescZh,
+        services.valuePropositionZh,
+      ];
+    case "hu":
+    default:
+      return [
+        services.seoTitleHu,
+        services.seoDescriptionHu,
+        services.longDescHu,
+        services.valuePropositionHu,
+      ];
+  }
+}
+
+function publishedDetailPredicate(locale: Locale) {
+  const requiredFields = requiredDetailFieldsFor(locale);
   return and(
     eq(services.isPublished, true),
     eq(services.isActive, true),
-    sql`nullif(trim(${services.seoTitleHu}), '') is not null`,
-    sql`nullif(trim(${services.seoDescriptionHu}), '') is not null`,
-    sql`nullif(trim(${services.longDescHu}), '') is not null`,
-    sql`nullif(trim(${services.valuePropositionHu}), '') is not null`,
+    ...requiredFields.map(
+      (field) => sql`nullif(trim(${field}), '') is not null`,
+    ),
   );
 }
 
@@ -174,7 +209,7 @@ export async function getPublishedServiceDetailBySlug(
     .where(
       and(
         eq(services.slug, slug),
-        publishedDetailPredicate(),
+        publishedDetailPredicate(safeLocale),
       ),
     )
     .limit(1);
@@ -330,13 +365,39 @@ export async function getPublishedServiceDetailBySlug(
 // All published+active service slugs, used by:
 //   - sitemap generation (one entry per locale × slug)
 //   - generateStaticParams for the detail route
-export async function getAllPublishedServiceSlugs(): Promise<string[]> {
-  const rows = await db
-    .select({ slug: services.slug })
-    .from(services)
-    .where(publishedDetailPredicate())
-    .orderBy(asc(services.sortOrder));
-  return rows.map((r) => r.slug);
+export type PublishedServicePath = {
+  readonly locale: Locale;
+  readonly slug: string;
+};
+
+export async function getAllPublishedServicePaths(): Promise<PublishedServicePath[]> {
+  const results = await Promise.all(
+    LOCALES.map(async (locale) => {
+      const rows = await db
+        .select({ slug: services.slug })
+        .from(services)
+        .where(publishedDetailPredicate(locale))
+        .orderBy(asc(services.sortOrder));
+      return rows.map((row) => ({ locale, slug: row.slug }));
+    }),
+  );
+  return results.flat();
+}
+
+export async function getPublishedServiceLocalesBySlug(
+  slug: string,
+): Promise<Locale[]> {
+  const results = await Promise.all(
+    LOCALES.map(async (locale) => {
+      const [row] = await db
+        .select({ slug: services.slug })
+        .from(services)
+        .where(and(eq(services.slug, slug), publishedDetailPredicate(locale)))
+        .limit(1);
+      return row ? locale : null;
+    }),
+  );
+  return results.filter((locale): locale is Locale => locale !== null);
 }
 
 // Hydrate related-service link cards (name + shortDesc only). Returns
@@ -366,7 +427,7 @@ export async function getPublishedServicesBySlugs(
     .where(
       and(
         inArray(services.slug, [...slugs]),
-        publishedDetailPredicate(),
+        publishedDetailPredicate(safeLocale),
       ),
     );
 

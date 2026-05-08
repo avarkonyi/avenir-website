@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { SEO_DATA, SEO_LOCALES } from "@/lib/seo-data";
-import { getAllPublishedServiceSlugs } from "@/lib/db/queries/services";
+import { getAllPublishedServicePaths } from "@/lib/db/queries/services";
 
 const LEGAL_SLUGS = ["adatvedelem", "aszf", "impresszum"] as const;
 const SITE_LAST_MODIFIED = new Date("2026-05-07T00:00:00.000Z");
@@ -26,7 +26,29 @@ function localeAlternates(path = "") {
 // filtered inside getAllPublishedServiceSlugs — they never reach the
 // sitemap, matching the "no draft URL is indexable" P5 guarantee.
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const serviceSlugs = await getAllPublishedServiceSlugs();
+  const servicePaths = await getAllPublishedServicePaths();
+  const serviceLocalesBySlug = new Map<string, string[]>();
+
+  for (const { locale, slug } of servicePaths) {
+    const locales = serviceLocalesBySlug.get(slug) ?? [];
+    locales.push(locale);
+    serviceLocalesBySlug.set(slug, locales);
+  }
+
+  const serviceAlternates = (slug: string) => {
+    const readyLocales = serviceLocalesBySlug.get(slug) ?? [];
+    const languages: Record<string, string> = Object.fromEntries(
+      readyLocales.map((locale) => [
+        locale,
+        `${SEO_DATA.url}/${locale}/${SERVICE_URL_SEGMENT}/${slug}`,
+      ]),
+    );
+    if (readyLocales.includes("hu")) {
+      languages["x-default"] =
+        `${SEO_DATA.url}/hu/${SERVICE_URL_SEGMENT}/${slug}`;
+    }
+    return { languages };
+  };
 
   return [
     ...SEO_LOCALES.map((locale) => ({
@@ -45,14 +67,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         alternates: localeAlternates(`/${slug}`),
       })),
     ),
-    ...SEO_LOCALES.flatMap((locale) =>
-      serviceSlugs.map((slug) => ({
-        url: `${SEO_DATA.url}/${locale}/${SERVICE_URL_SEGMENT}/${slug}`,
-        lastModified: SITE_LAST_MODIFIED,
-        changeFrequency: "monthly" as const,
-        priority: 0.7,
-        alternates: localeAlternates(`/${SERVICE_URL_SEGMENT}/${slug}`),
-      })),
-    ),
+    ...servicePaths.map(({ locale, slug }) => ({
+      url: `${SEO_DATA.url}/${locale}/${SERVICE_URL_SEGMENT}/${slug}`,
+      lastModified: SITE_LAST_MODIFIED,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+      alternates: serviceAlternates(slug),
+    })),
   ];
 }

@@ -9,7 +9,8 @@ import { getTranslation, LOCALES, type Locale } from "@/lib/i18n";
 import {
   getPublishedServiceDetailBySlug,
   getPublishedServicesBySlugs,
-  getAllPublishedServiceSlugs,
+  getAllPublishedServicePaths,
+  getPublishedServiceLocalesBySlug,
 } from "@/lib/db/queries/services";
 import { SEO_DATA, SEO_LOCALES, type SeoLocale } from "@/lib/seo-data";
 
@@ -33,10 +34,7 @@ const URL_SEGMENT = "szolgaltatasok";
 export const revalidate = 3600;
 
 export async function generateStaticParams() {
-  const slugs = await getAllPublishedServiceSlugs();
-  return LOCALES.flatMap((locale) =>
-    slugs.map((slug) => ({ locale, slug })),
-  );
+  return getAllPublishedServicePaths();
 }
 
 export async function generateMetadata({
@@ -68,11 +66,14 @@ export async function generateMetadata({
 
   const path = `/${locale}/${URL_SEGMENT}/${slug}`;
   const canonical = `${SEO_DATA.url}${path}`;
+  const readyLocales = await getPublishedServiceLocalesBySlug(slug);
   const languages: Record<string, string> = {};
-  for (const l of SEO_LOCALES) {
+  for (const l of readyLocales) {
     languages[l] = `${SEO_DATA.url}/${l}/${URL_SEGMENT}/${slug}`;
   }
-  languages["x-default"] = `${SEO_DATA.url}/hu/${URL_SEGMENT}/${slug}`;
+  if (readyLocales.includes("hu")) {
+    languages["x-default"] = `${SEO_DATA.url}/hu/${URL_SEGMENT}/${slug}`;
+  }
 
   return {
     metadataBase: new URL(SEO_DATA.url),
