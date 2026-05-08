@@ -39,111 +39,185 @@ const TARGET_SLUG = "objektumorzes";
 const LEGACY_SLUG = "security";
 
 const PILOT_HU = {
-  seoTitle: "Élőerős objektumőrzés | Avenir Facility Management",
+  seoTitle: "Élőerős objektumőrzés vállalatoknak | Avenir",
   seoDescription:
-    "Képzett vagyonőrök, dokumentált folyamatok és 24/7 diszpécseri háttér. " +
-    "Egy szerződés, egy felelős kapcsolattartó országosan.",
+    "Objektumőrzés beléptetéssel, járőrözéssel, incidenskezeléssel és " +
+    "riportálással. Helyszínre szabott protokollok vállalati helyszínekre.",
   valueProposition:
-    "Kevesebb kockázat, több kontroll: képzett vagyonőrök, dokumentált " +
-    "szolgálati protokollok és 24/7 diszpécseri háttér — egy felelős " +
-    "kapcsolattartóval országszerte.",
+    "Helyszínre szabott objektumőrzéssel támogatjuk a telephelyek, " +
+    "irodaházak, logisztikai és ipari helyszínek ellenőrizhető napi " +
+    "működését: beléptetés, kiléptetés, járőrözés, incidenskezelés, " +
+    "szolgálati napló és egyeztetett eszkalációs rend alapján.",
   longDesc:
-    "Az élőerős objektumőrzés a vagyonvédelem klasszikus, " +
-    "kiszámítható alapköve: állandó őri jelenlét, ellenőrzött beléptetés, " +
-    "járőrözés és dokumentált incidenskezelés. Az Avenir képzett, " +
-    "fegyveres és fegyvertelen vagyonőrökkel dolgozik a hatósági " +
-    "engedélyek (SzVMt. szerinti tevékenységi engedély " +
-    "01030-822/4926-7/2023) és belső ISO 9001 + ISO 27001 protokollok " +
-    "szerint.\n\n" +
-    "Minden helyszínre testre szabott szolgálati utasítást készítünk: " +
-    "ki, mikor, mit ellenőriz, milyen jelentési és eszkalációs rendben. " +
-    "A napi szolgálati jegyzőkönyveket digitálisan rögzítjük; heti " +
-    "összesített riportot küldünk a kapcsolattartónak.",
+    "Az élőerős objektumőrzés célja, hogy a helyszínen ne csak őri " +
+    "jelenlét legyen, hanem előre rögzített, ellenőrizhető vagyonvédelmi " +
+    "működés. Az Avenir a helyszíni felmérés alapján szolgálati utasítást " +
+    "készít: meghatározza a belépési és kilépési pontokat, a látogatók és " +
+    "beszállítók kezelését, a járőrútvonalakat, a kulcskezelési " +
+    "szabályokat, az incidensek dokumentálását és az eszkalációs rendet.\n\n" +
+    "A szolgáltatás igény szerint kapcsolódhat meglévő kamerarendszerhez, " +
+    "beléptető rendszerhez vagy riasztási folyamathoz. A cél, hogy a " +
+    "megrendelő ne csak jelenlétet kapjon, hanem visszakövethető " +
+    "működést: szolgálati naplóval, eseményjelentéssel, rendszeres " +
+    "egyeztetéssel és kijelölt felelős kapcsolattartóval.\n\n" +
+    "A vagyonőri jelenlét a helyszín kockázati profiljához és a " +
+    "szerződéses igényhez igazodik: fegyver nélküli vagy a jogi " +
+    "feltételeknek megfelelő fegyveres vagyonőri szolgáltatás is " +
+    "kialakítható. Az Avenir SzVMt. szerinti vagyonvédelmi tevékenységi " +
+    "engedélyének száma: 01030-822/4926-7/2023. A működés ISO 9001 és " +
+    "ISO 27001 tanúsított irányítási rendszerekhez illeszkedő, " +
+    "dokumentált folyamatokra épül, 24/7 diszpécseri háttérrel, több " +
+    "mint 30 aktív helyszínen szerzett tapasztalattal és 200+ " +
+    "munkatársból álló szervezeti háttérrel.",
   useCases: [
-    "Logisztikai központok és raktárbázisok",
-    "Ipari és gyártási parkok",
-    "Bevásárlóközpontok és kiskereskedelmi egységek",
-    "Irodaházak és A-kategóriás bérirodák",
-    "Közintézmények és oktatási létesítmények",
+    "Logisztikai központok, raktárak és teherkapus helyszínek",
+    "Ipari és gyártási telephelyek",
+    "Irodaházak és üzleti központok",
+    "Kiskereskedelmi és bevásárlóközponti környezet",
+    "Építési, átmeneti vagy fokozott kockázatú helyszínek",
   ],
   includedItems: [
-    "Hatósági engedéllyel rendelkező vagyonőrök",
-    "Helyszínre szabott szolgálati utasítás",
-    "Beléptetés-, kulcs- és látogatókezelés",
-    "Rendszeres járőrözés és ellenőrzési pontok",
-    "Digitális szolgálati napló és incidens-jegyzőkönyv",
-    "Heti riport, havi áttekintő egyeztetés",
+    "Beléptetési és kiléptetési rend támogatása",
+    "Látogató-, beszállító- és kulcskezelés",
+    "Járőrözés, ellenőrzési pontok és területbejárás",
+    "Incidensek rögzítése és eszkalációja",
+    "Szolgálati napló és egyeztetett riportálás",
+    "Helyszíni biztonsági felmérés és protokoll-javaslat",
+    "Kapcsolódás meglévő kamerarendszerhez, beléptetőhöz vagy " +
+      "riasztási folyamathoz, ha a helyszín ezt igényli",
   ],
   processSteps: [
     {
-      title: "Felmérés",
-      body: "Helyszíni bejárás, kockázatelemzés és igényfelmérés a " +
-        "kapcsolattartóval. 1–3 munkanap.",
+      title: "Első egyeztetés és igényfelmérés",
+      body: "A megkeresésre 2 munkanapon belül visszajelzünk, majd " +
+        "rögzítjük az őrzési célt, a helyszín típusát, az időszakot és " +
+        "az elsődleges kockázati pontokat.",
     },
     {
-      title: "Ajánlat",
-      body: "Testre szabott szolgáltatási csomag, létszámterv és " +
-        "transzparens árazás 5 munkanapon belül.",
+      title: "Helyszíni felmérés és kockázati pontok áttekintése",
+      body: "A helyszíni bejárás és az alapvető kockázati áttekintés " +
+        "jellemzően 1–3 munkanapon belül megszervezhető.",
     },
     {
-      title: "Indulás",
-      body: "Csapat-felállás, oktatás, szolgálati utasítás véglegesítése. " +
-        "A vállalt indulási dátumot rögzítjük a szerződésben.",
+      title: "Belépési, kilépési, járőrözési és eszkalációs rend kialakítása",
+      body: "Meghatározzuk a belépési pontokat, a látogatói és beszállítói " +
+        "folyamatot, a járőrútvonalakat és az incidensek jelzési rendjét.",
     },
     {
-      title: "Működés",
-      body: "Napi digitális jegyzőkönyv, heti riport, havi áttekintés. " +
-        "Eskalációs rend a 24/7 diszpécseren át.",
+      title: "Szolgálati utasítás és riportálási folyamat rögzítése",
+      body: "Írásban rögzítjük, mit kell dokumentálni, milyen rendszerességű " +
+        "riport készül, és kik kapnak értesítést eltérés vagy incidens esetén.",
+    },
+    {
+      title: "Vagyonőri jelenlét megszervezése",
+      body: "A fegyver nélküli vagy fegyveres vagyonőri jelenlétet a " +
+        "szerződéses igény, a jogi feltételek és a helyszín kockázati " +
+        "profilja alapján szervezzük meg.",
+    },
+    {
+      title: "Rendszeres kapcsolattartás, riportálás és finomhangolás",
+      body: "A működés közben a szolgálati tapasztalatokat, visszatérő " +
+        "eseményeket és riportokat a kijelölt kapcsolattartóval egyeztetjük.",
     },
   ],
   trustItems: [
     {
-      title: "ISO 9001 + ISO 27001",
-      body: "Tanúsított minőségirányítás és információbiztonság — a " +
-        "szolgálati adatok és incidens-jegyzőkönyvek kezelése auditált.",
+      title: "24/7 diszpécseri háttér",
+      body: "Az objektumőrzési működés 24/7 diszpécseri háttérrel " +
+        "támogatható; az értesítési és eszkalációs rendet az együttműködés " +
+        "elején rögzítjük.",
     },
     {
-      title: "Működési megbízhatóság",
-      body: "30+ aktív helyszín, 200+ szakképzett munkatárs, 24/7 " +
-        "diszpécseri háttér országosan.",
+      title: "Dokumentált szolgálati működés",
+      body: "Szolgálati napló, eseményrögzítés, egyeztetett riportálás és " +
+        "előre rögzített eszkalációs rend segíti a visszakövethető működést.",
     },
     {
       title: "Egy felelős kapcsolattartó",
-      body: "Egy szerződés, egy döntéshozó. Nincs ping-pong több " +
-        "alvállalkozó között — gyors döntés és reagálás.",
+      body: "A napi működéshez kijelölt felelős kapcsolattartót adunk, így " +
+        "a megrendelő nem különálló szereplők között egyeztet.",
+    },
+    {
+      title: "ISO 9001 és ISO 27001",
+      body: "A szolgálati folyamatok ISO 9001 és ISO 27001 tanúsított " +
+        "irányítási rendszerekhez illeszkedő dokumentált működésre épülnek.",
+    },
+    {
+      title: "Szervezeti háttér",
+      body: "Több mint 30 aktív helyszínen szerzett tapasztalat és 200+ " +
+        "munkatársból álló szervezeti háttér támogatja a szolgáltatást.",
+    },
+    {
+      title: "Vagyonvédelmi engedély",
+      body: "Az Avenir SzVMt. szerinti vagyonvédelmi tevékenységi " +
+        "engedélyének száma: 01030-822/4926-7/2023.",
     },
   ],
   faq: [
     {
-      q: "Hogyan kérhetek ajánlatot?",
-      a: "Telefonon (+36 70 316 8218), e-mailben (info@afm.hu) vagy a " +
-        "weboldal kapcsolati űrlapján. 2 munkanapon belül visszajelzünk; " +
-        "az írásos ajánlat tipikusan 5 munkanapon belül érkezik.",
+      q: "Mit tartalmaz az objektumőrzés?",
+      a: "Az objektumőrzés a helyszín igényei szerint magában foglalhatja " +
+        "a beléptetést és kiléptetést, a látogatók és beszállítók kezelését, " +
+        "a járőrözést, a kulcskezelési szabályokat, az incidensek rögzítését, " +
+        "a szolgálati naplót és az egyeztetett riportálást.",
     },
     {
-      q: "Milyen rendszerességgel kapok riportot?",
-      a: "Napi digitális szolgálati jegyzőkönyv, heti összesített riport " +
-        "és havi áttekintő egyeztetés. Incidens esetén soron kívüli " +
-        "értesítést küldünk a megállapodott eszkalációs rend szerint.",
+      q: "Hogyan történik a látogatók és beszállítók beléptetése?",
+      a: "A beléptetési rendet a helyszíni felmérés alapján alakítjuk ki. " +
+        "Meghatározható, ki, mikor, milyen jogosultsággal léphet be, hogyan " +
+        "történik a vendégregisztráció, a beszállítói beléptetés, a " +
+        "teherforgalom kezelése és a kiléptetés dokumentálása.",
     },
     {
-      q: "Milyen hatósági engedélyekkel rendelkeznek?",
-      a: "Az Avenir SzVMt. szerinti vagyonvédelmi tevékenységi engedéllyel " +
-        "(01030-822/4926-7/2023, 2028.01.31-ig), biztonságtechnikai és " +
-        "magánnyomozói engedéllyel, valamint nemzetbiztonsági névjegyzéki " +
-        "regisztrációval rendelkezik. Az impresszumban minden engedély " +
-        "számát közöljük.",
+      q: "Van-e 24/7 háttértámogatás?",
+      a: "Igen, az objektumőrzési szolgáltatás 24/7 diszpécseri háttérrel " +
+        "támogatható, az eszkalációs és értesítési rendet pedig az " +
+        "együttműködés elején rögzítjük.",
     },
     {
-      q: "Vállalnak vidéki és többműszakos szolgálatot is?",
-      a: "Igen. Országosan 30+ aktív helyszínen dolgozunk, és 24/7 " +
-        "(többműszakos) szolgálatot is biztosítunk a megrendelővel " +
-        "egyeztetett protokoll szerint.",
+      q: "Fegyveres őrzés is kérhető?",
+      a: "A helyszín kockázati profiljától, a jogi feltételektől és a " +
+        "szerződéses igénytől függően fegyver nélküli vagy fegyveres " +
+        "vagyonőri jelenlét is kialakítható.",
+    },
+    {
+      q: "Kapunk-e szolgálati naplót vagy incidensriportot?",
+      a: "Igen, a szolgáltatás része lehet szolgálati napló, " +
+        "eseményrögzítés és egyeztetett riportálás. A pontos " +
+        "riportformátumot az együttműködés elején rögzítjük, hogy a " +
+        "megrendelő visszakövethető információt kapjon a helyszíni " +
+        "működésről.",
+    },
+    {
+      q: "Összeköthető az őrzés kamerarendszerrel vagy beléptető rendszerrel?",
+      a: "Igen, ahol erre lehetőség van, az élőerős őrzés kapcsolódhat " +
+        "meglévő kamerarendszerhez, beléptető rendszerhez, riasztási " +
+        "folyamathoz vagy távfelügyeleti működéshez. Így az őri jelenlét " +
+        "és a technikai vagyonvédelem egymást erősítheti.",
+    },
+    {
+      q: "Mi történik incidens esetén?",
+      a: "Az incidenskezelést előre egyeztetett eszkalációs rend alapján " +
+        "alakítjuk ki. Ez meghatározza, milyen eseményt kell rögzíteni, kit " +
+        "kell értesíteni, milyen sorrendben történik a jelzés, és hogyan " +
+        "kerül dokumentálásra az eset.",
+    },
+    {
+      q: "Mikor szükséges helyszíni biztonsági felmérés?",
+      a: "Helyszíni biztonsági felmérés különösen akkor hasznos, ha új " +
+        "objektumot kell őrizni, változik a beléptetési rend, nő a " +
+        "teherforgalom, visszatérő incidensek vannak, vagy a meglévő őrzési " +
+        "és technikai folyamatokat szeretnék átláthatóbbá tenni.",
     },
   ],
   // Slugs of related services that will appear in the "related" rail.
   // Missing/unpublished slugs are silently dropped at render time.
-  relatedSlugs: ["reception", "mystery", "technical"],
+  relatedSlugs: [
+    "portaszolgalat",
+    "biztonsagtechnika",
+    "tavfelugyelet-vonuloszolgalat",
+    "mystery-shopping-helyszini-audit",
+  ],
 };
 
 // Build the column-level update payload once so dry-run and live mode
