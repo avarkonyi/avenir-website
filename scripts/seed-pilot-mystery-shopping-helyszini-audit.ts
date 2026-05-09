@@ -40,192 +40,217 @@ const TARGET_SLUG = "mystery-shopping-helyszini-audit";
 const LEGACY_SLUG = "mystery";
 
 const PILOT_HU = {
-  seoTitle: "Mystery Shopping és helyszíni audit vállalati működéshez | Avenir",
+  seoTitle: "Próbavásárlás és szolgáltatásaudit | Avenir",
   seoDescription:
-    "Helyszíni szolgáltatásminőség-mérés, porta- és ügyfélút-ellenőrzés, " +
-    "működési audit és riportálható fejlesztési javaslatok.",
+    "Mystery Shopping, brand audit, próbautazás és szolgáltatásaudit " +
+    "ügyfélélmény, folyamatkövetés és megfelelési szempontok vizsgálatára.",
   valueProposition:
-    "A Mystery Shopping és helyszíni audit segít objektíven látni, hogyan " +
-    "működnek a helyszíni folyamatok a gyakorlatban: hogyan zajlik a " +
-    "beléptetés, a vendégkezelés, a portaszolgálat, az őrzési protokoll, " +
-    "az ügyfélút vagy a beszállítói folyamat, és hol érdemes javítani a " +
-    "kontrollt, a szolgáltatásminőséget vagy a dokumentáltságot.",
+    "A próbavásárlás és szolgáltatásaudit valós ügyfélhelyzetben mutatja meg, " +
+    "hogyan működik egy szolgáltatás a gyakorlatban: mit tapasztal az ügyfél, " +
+    "követik-e a munkatársak az elvárt folyamatot, teljesülnek-e a brand-, " +
+    "tájékoztatási és működési szabályok, és hol jelenik meg minőségi, " +
+    "reputációs vagy megfelelési kockázat.",
   longDesc:
-    "A helyszíni audit célja, hogy a megrendelő ne csak belső " +
-    "visszajelzésekből vagy eseti panaszokból lássa a működés minőségét, " +
-    "hanem strukturált, megfigyelhető és riportálható tapasztalatok " +
-    "alapján. A vizsgálat előre egyeztetett scope szerint történik: " +
-    "meghatározható, mely helyszíneket, folyamatokat, időszakokat és " +
-    "szolgáltatási pontokat kell értékelni.\n\n" +
-    "A Mystery Shopping és helyszíni audit különösen hasznos ott, ahol a " +
-    "porta, recepció, objektumőrzés, ügyfélfogadás, beszállítói beléptetés " +
-    "vagy helyszíni kiszolgálási folyamat minősége közvetlenül befolyásolja " +
-    "a biztonságot, az ügyfélélményt vagy a napi működés kontrollját.\n\n" +
-    "Az Avenir a megfigyeléseket nem általános benyomásként kezeli, hanem " +
-    "riportálható működési visszajelzésként: mi volt a folyamat, mi tért el " +
-    "az elvárt működéstől, hol volt kockázat, és milyen fejlesztési javaslat " +
-    "segítheti a következő lépést.",
+    "A Mystery Shopping nem egyszerű ellenőrzés, hanem előre megtervezett, " +
+    "dokumentált szolgáltatásminőség-mérés. A vizsgálat során a próbavásárló " +
+    "vagy auditor valós ügyfélhelyzetben járja végig az adott szolgáltatási " +
+    "folyamatot: vásárlást, ügyintézést, helyszíni látogatást, próbautazást " +
+    "vagy más ügyfélkapcsolati pontot.\n\n" +
+    "A vizsgálat scope-ja előre egyeztetett: meghatározható, milyen " +
+    "szolgáltatási pontokat, folyamatlépéseket, brand standardokat, " +
+    "kommunikációs elvárásokat, tájékoztatási kötelezettségeket vagy " +
+    "megfelelési szempontokat kell vizsgálni. A cél nem az öncélú " +
+    "hibakeresés, hanem az, hogy a vezetés pontos, riportálható " +
+    "képet kapjon a tényleges működésről.\n\n" +
+    "A szolgáltatás több formában is alkalmazható. A Brand Audit az arculati, " +
+    "vizuális, tisztasági, hangulati és szolgáltatási standardokat vizsgálja. " +
+    "A Situation Shopping konkrét ügyfélhelyzeteket, kérdéseket, konfliktusokat " +
+    "vagy folyamatlépéseket tesztel. A szolgáltatásaudit vagy próbautazás pedig " +
+    "egy teljes ügyfélutat vizsgálhat, például személyszállítási, " +
+    "ügyfélszolgálati vagy helyszíni kiszolgálási folyamatban.\n\n" +
+    "Az audit eredménye strukturált riport: mi történt az ügyfélút során, mi " +
+    "felelt meg az elvárt működésnek, hol volt eltérés, milyen kockázat jelent " +
+    "meg, és milyen fejlesztési javaslat segítheti a szolgáltatásminőség, a " +
+    "kontroll vagy a megfelelés javítását.",
   useCases: [
-    "Porta- és recepciós működés ellenőrzése",
-    "Objektumőrzési protokollok gyakorlati működésének vizsgálata",
-    "Beléptetési, kiléptetési és vendégkezelési folyamatok mérése",
-    "Ügyfélút, látogatói élmény és helyszíni kiszolgálás értékelése",
-    "Beszállítói, futár- vagy teherforgalmi folyamatok kontrollja",
-    "Több helyszínes működés összehasonlítható auditja",
+    "Próbavásárlás üzletekben, szolgáltatási pontokon vagy ügyfélszolgálati helyzetekben",
+    "Próbautazás taxi, személyszállítási vagy közlekedési szolgáltatás esetén",
+    "Brand Audit: arculat, tisztaság, vizuális megjelenés és szolgáltatási standardok ellenőrzése",
+    "Situation Shopping: konkrét ügyfélhelyzetek, kérdések vagy konfliktushelyzetek tesztelése",
+    "Ügyfélút és látogatói élmény vizsgálata",
+    "Tájékoztatási, árkommunikációs, számlázási, nyugtaadási vagy más megfelelési szempontok vizsgálata előre egyeztetett scope alapján",
+    "Több helyszín, szolgáltató vagy egység összehasonlítható auditja",
   ],
   includedItems: [
-    "Előre egyeztetett audit scope és értékelési szempontok",
-    "Helyszíni működés megfigyelése jóváhagyott keretek között",
-    "Porta-, recepciós vagy őrzési folyamatok ellenőrzése",
-    "Beléptetés, vendégkezelés és ügyfélút értékelése",
-    "Eltérések, kockázatok és fejlesztési pontok rögzítése",
+    "Audit cél, scope és értékelési szempontok egyeztetése",
+    "Próbavásárlási, próbautazási vagy ügyfélút-forgatókönyv kialakítása",
+    "Brand Audit vagy Situation Shopping módszertan kiválasztása",
+    "Valós ügyfélhelyzetben történő szolgáltatásminőség-mérés",
+    "Ügyfélút, kommunikáció, folyamatkövetés és kiszolgálás értékelése",
+    "Előre egyeztetett megfelelési szempontok vizsgálata",
+    "Eltérések, kockázatok és fejlesztési pontok dokumentálása",
     "Strukturált riport és vezetői összefoglaló",
-    "Fejlesztési javaslatok a működés javítására",
   ],
   processSteps: [
     {
       title: "Audit cél és scope egyeztetése",
       body:
-        "Rögzítjük, milyen működési kérdésre kell választ adnia az auditnak, " +
-        "mely folyamatok tartoznak bele, és milyen keretek között történhet " +
-        "a helyszíni vizsgálat.",
+        "Rögzítjük, milyen üzleti, szolgáltatásminőségi vagy megfelelési " +
+        "kérdésre kell választ adnia az auditnak, és pontosan milyen folyamatok " +
+        "tartoznak a vizsgálatba.",
     },
     {
-      title: "Helyszínek, folyamatok és értékelési szempontok meghatározása",
+      title: "Értékelési szempontok és forgatókönyv kialakítása",
       body:
-        "Meghatározzuk az érintett helyszíneket, időszakokat, szolgáltatási " +
-        "pontokat és azokat a szempontokat, amelyek alapján összehasonlítható " +
-        "visszajelzés készül.",
+        "Meghatározzuk a mérési pontokat, a brand standardokat, a " +
+        "kommunikációs és tájékoztatási elvárásokat, valamint a próbavásárlási, " +
+        "próbautazási vagy ügyfélút-forgatókönyvet.",
     },
     {
-      title: "Helyszíni vizsgálat vagy Mystery Shopping lefolytatása",
+      title: "Brand Audit, Situation Shopping, próbavásárlás vagy próbautazás elvégzése",
       body:
-        "A vizsgálat a jóváhagyott scope szerint, jogszerű és célhoz kötött " +
-        "keretek között történik, a tényleges helyszíni működés megfigyelhető " +
-        "elemeire fókuszálva.",
+        "Az audit a jóváhagyott scope szerint, valós ügyfélhelyzetben történik, " +
+        "a szolgáltatási folyamat, az ügyfélélmény és az előre rögzített " +
+        "megfelelési pontok mérésére fókuszálva.",
     },
     {
-      title: "Megfigyelések, eltérések és működési kockázatok rögzítése",
+      title: "Tapasztalatok, eltérések és megfelelési pontok dokumentálása",
       body:
-        "A tapasztalatokat nem általános véleményként, hanem strukturált " +
-        "működési megfigyelésként rögzítjük: mi történt, hol volt eltérés, " +
-        "és milyen kockázat vagy javítási pont merült fel.",
+        "A tapasztalatokat strukturált módon rögzítjük: mi történt az ügyfélút " +
+        "során, mi felelt meg az elvárt működésnek, hol volt eltérés, és milyen " +
+        "kockázat vagy javítási pont jelent meg.",
     },
     {
-      title: "Riport és fejlesztési javaslatok elkészítése",
+      title: "Riport, vezetői összefoglaló és fejlesztési javaslatok elkészítése",
       body:
-        "A megállapításokat vezetői szinten áttekinthető riportba rendezzük, " +
-        "amely tartalmazhat kockázati pontokat, eltéréseket és javasolt " +
-        "következő lépéseket.",
+        "Az eredményeket vezetői szinten is áttekinthető riportba rendezzük, " +
+        "amely tartalmazhat megfelelési megállapításokat, visszatérő mintákat " +
+        "és konkrét fejlesztési javaslatokat.",
     },
     {
       title: "Eredmények egyeztetése és következő lépések meghatározása",
       body:
-        "Az audit eredményeit közös egyeztetésen áttekintjük, hogy a " +
-        "megrendelő dönteni tudjon a képzésről, protokollmódosításról vagy " +
-        "további működési kontrollról.",
+        "Az audit eredményeit közösen áttekintjük, hogy a megrendelő dönteni " +
+        "tudjon protokollmódosításról, képzésről, brand standard pontosításról " +
+        "vagy további mérésről.",
     },
   ],
   trustItems: [
     {
-      title: "Előre jóváhagyott audit scope",
+      title: "Előre egyeztetett audit scope",
       body:
-        "A vizsgálat célját, módszertanát és kereteit előre rögzíteni kell, " +
-        "hogy az audit jogszerű, arányos és célhoz kötött maradjon.",
+        "A vizsgálat célját, módszerét, érintett folyamatait és értékelési " +
+        "szempontjait előre rögzíteni kell.",
     },
     {
       title: "Strukturált értékelési szempontok",
       body:
-        "Az audit összehasonlítható szempontok alapján méri a porta, recepció, " +
-        "beléptetés, őrzés vagy ügyfélút gyakorlati működését.",
+        "Az audit összehasonlítható szempontok alapján méri az ügyfélutat, a " +
+        "kommunikációt, a brand standardokat és a folyamatkövetést.",
     },
     {
-      title: "Riportálható működési megfigyelések",
+      title: "Brand Audit és Situation Shopping módszertan",
       body:
-        "A visszajelzés nem általános benyomás, hanem dokumentálható " +
-        "működési tapasztalat, amely vezetői döntéshez is felhasználható.",
+        "A vizsgálat kialakítható arculati, szolgáltatási, interakciós vagy " +
+        "konkrét ügyfélhelyzetre épülő forgatókönyv szerint.",
+    },
+    {
+      title: "Dokumentált ügyfélút vagy szolgáltatási folyamat",
+      body:
+        "A riport az ügyfélhelyzetben megtapasztalt folyamatot, eltéréseket, " +
+        "megfelelési pontokat és fejlesztési lehetőségeket rögzíti.",
+    },
+    {
+      title: "Szolgáltatásminőség és megfelelési pontok együttes vizsgálata",
+      body:
+        "Az audit egyszerre vizsgálhat ügyfélélményt, tájékoztatást, " +
+        "folyamatkövetést, számlázási vagy más előre egyeztetett megfelelési " +
+        "szempontokat.",
+    },
+    {
+      title: "Több helyszín vagy szolgáltató összehasonlítható riportja",
+      body:
+        "Egységes mérési szempontrendszerrel több egység, szolgáltató vagy " +
+        "időszak eredménye is összehasonlíthatóvá válik.",
     },
     {
       title: "Vezetői összefoglaló és fejlesztési javaslatok",
       body:
-        "Az eredmények rövid vezetői összefoglalóban és részletesebb " +
-        "működési riportban is összegezhetők.",
+        "Az eredmények nem önmagukért készülnek: a riport döntéstámogató " +
+        "javaslatokat adhat a szolgáltatásminőség, kontroll vagy megfelelés " +
+        "javításához.",
     },
     {
-      title: "Kapcsolódás portaszolgálathoz és objektumőrzéshez",
+      title: "Jogszerű, célhoz kötött és arányos vizsgálati keretek",
       body:
-        "A vizsgálat különösen hasznos ott, ahol a porta, recepció, " +
-        "beléptetés vagy őrzési protokoll minősége napi működési kockázatot " +
-        "vagy ügyféloldali élményt befolyásol.",
-    },
-    {
-      title: "Helyszíni biztonsági audit szemlélet",
-      body:
-        "Az audit a szolgáltatásminőség mellett a helyszíni kontrollpontokat, " +
-        "szabálykövetést és működési kockázatokat is vizsgálhatja.",
-    },
-    {
-      title: "Jogszerű és célhoz kötött vizsgálati keretek",
-      body:
-        "A vizsgálat nem jelent korlátlan vagy jogellenes megfigyelést: a " +
-        "módszert, célt és terjedelmet az együttműködés elején kell rögzíteni.",
+        "A vizsgálat nem korlátlan ellenőrzés: a cél, módszer, scope és " +
+        "értékelési keret az együttműködés elején kerül rögzítésre.",
     },
   ],
   faq: [
     {
-      q: "Mit jelent a Mystery Shopping és helyszíni audit?",
+      q: "Mit jelent a próbavásárlás vagy Mystery Shopping?",
       a:
-        "A Mystery Shopping és helyszíni audit előre egyeztetett szempontok " +
-        "alapján vizsgálja, hogyan működnek a helyszíni folyamatok a " +
-        "gyakorlatban. Ide tartozhat a porta, recepció, beléptetés, " +
-        "vendégkezelés, ügyfélút, őrzési protokoll vagy beszállítói folyamat " +
-        "értékelése.",
+        "A próbavásárlás olyan előre megtervezett szolgáltatásminőség-mérés, " +
+        "amelyben a próbavásárló vagy auditor valós ügyfélhelyzetben járja " +
+        "végig az adott folyamatot. Ez lehet vásárlás, ügyintézés, helyszíni " +
+        "látogatás, próbautazás vagy más ügyfélkapcsolati pont.",
     },
     {
-      q: "Miben más ez, mint egy belső ellenőrzés?",
+      q: "Mi az a Brand Audit?",
       a:
-        "A belső ellenőrzés gyakran a meglévő dokumentumokra és belső " +
-        "visszajelzésekre épül. A helyszíni audit ezzel szemben a tényleges " +
-        "működés megfigyelhető elemeit vizsgálja, majd strukturált riportban " +
-        "mutatja meg az eltéréseket, kockázatokat és fejlesztési lehetőségeket.",
+        "A Brand Audit az arculati, vizuális, tisztasági, hangulati és " +
+        "szolgáltatási standardokat vizsgálja. Segít megmutatni, hogy a " +
+        "helyszín vagy szolgáltatási pont mennyire felel meg a márka elvárt " +
+        "működésének és ügyfélélményének.",
     },
     {
-      q: "Milyen folyamatokat lehet vizsgálni?",
+      q: "Mi az a Situation Shopping?",
       a:
-        "Vizsgálható például a beléptetés, kiléptetés, vendégfogadás, " +
-        "portaszolgálat, objektumőrzési protokoll, ügyfélút, beszállítói " +
-        "folyamat, teherforgalom vagy helyszíni kiszolgálás. A pontos scope-ot " +
-        "az együttműködés elején kell rögzíteni.",
+        "A Situation Shopping interakciós próbavásárlás, ahol előre egyeztetett " +
+        "ügyfélhelyzeteket, kérdéseket, konfliktusokat vagy folyamatlépéseket " +
+        "tesztelünk. Így nem csak a környezet, hanem a kommunikáció, reakció " +
+        "és folyamatkövetés is mérhető.",
+    },
+    {
+      q: "Alkalmazható közlekedési vagy taxi jellegű szolgáltatásnál?",
+      a:
+        "Igen. Próbautazás keretében vizsgálható például az utazás teljes " +
+        "ügyfélútja, a tájékoztatás, a kiszolgálás, a számlázási vagy " +
+        "nyugtaadási folyamat, a viselkedési protokoll és az előre " +
+        "meghatározott szolgáltatási vagy megfelelési szempontok teljesülése.",
+    },
+    {
+      q: "Milyen megfelelési szempontok vizsgálhatók?",
+      a:
+        "Az audit előre egyeztetett scope alapján vizsgálhat tájékoztatási, " +
+        "árkommunikációs, számlázási, nyugtaadási, ügyfélkezelési, brand " +
+        "standardhoz vagy szerződéses szolgáltatási szinthez kapcsolódó " +
+        "szempontokat. Jogi vagy compliance auditként csak külön rögzített " +
+        "szakmai keretben kezelhető.",
     },
     {
       q: "Készül riport az eredményekről?",
       a:
-        "Igen, az audit eredménye strukturált riportban összesíthető. A riport " +
-        "tartalmazhat megfigyeléseket, eltéréseket, kockázati pontokat és " +
-        "fejlesztési javaslatokat, valamint vezetői összefoglalót is.",
+        "Igen, az audit eredménye strukturált riportban foglalható össze. A " +
+        "riport tartalmazhatja a tapasztalt folyamatot, az eltéréseket, a " +
+        "kockázati pontokat, a megfelelési megállapításokat és a fejlesztési " +
+        "javaslatokat.",
     },
     {
-      q: "Ez jogi vagy compliance audit?",
+      q: "Használható több helyszín vagy szolgáltató összehasonlítására?",
       a:
-        "A szolgáltatás alapvetően működési és szolgáltatásminőségi audit. " +
-        "Jogi vagy compliance auditként csak akkor kezelhető, ha annak scope-ja, " +
-        "módszertana és szakmai kerete külön rögzítve van.",
+        "Igen, egységes értékelési szempontok alapján több helyszín, " +
+        "szolgáltató, egység vagy időszak is összehasonlítható. Ez segít az " +
+        "eltérések, visszatérő minták és fejlesztési prioritások azonosításában.",
     },
     {
-      q: "Használható több helyszín összehasonlítására?",
+      q: "Hogyan biztosítható a jogszerűség?",
       a:
-        "Igen, több helyszín is vizsgálható azonos értékelési szempontok " +
-        "alapján. Ez segíthet abban, hogy a megrendelő lássa, hol működnek " +
-        "jól a folyamatok, és hol érdemes további képzést, protokollmódosítást " +
-        "vagy kontrollt bevezetni.",
-    },
-    {
-      q: "Hogyan biztosítható, hogy az audit jogszerű legyen?",
-      a:
-        "Az audit scope-ját, célját és módszerét előre rögzíteni kell. A " +
-        "vizsgálatnak jogszerű, célhoz kötött és arányos keretek között kell " +
-        "történnie, különösen akkor, ha munkavállalói, látogatói vagy " +
-        "ügyféloldali folyamatokat érint.",
+        "A vizsgálat célját, módszerét, scope-ját és értékelési szempontjait " +
+        "előre rögzíteni kell. Az auditnak jogszerű, célhoz kötött és arányos " +
+        "keretek között kell történnie, különösen akkor, ha munkavállalói, " +
+        "ügyféloldali vagy szolgáltatói folyamatokat érint.",
     },
   ],
   // Related services use canonical Hungarian public slugs. Missing or
