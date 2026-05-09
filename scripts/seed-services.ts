@@ -44,7 +44,8 @@ type CanonicalEntry = {
   sortOrder: number;
   // i18nId may diverge from slug after a public detail-page rename
   // (e.g., slug "objektumorzes" maps to i18n entry id "security",
-  // and "portaszolgalat" maps to i18n entry id "reception").
+  // "portaszolgalat" maps to i18n entry id "reception", and
+  // "tavfelugyelet-vonuloszolgalat" maps to i18n entry id "technical").
   // Falls back to slug when omitted.
   i18nId?: string;
 };
@@ -55,7 +56,7 @@ type CanonicalEntry = {
 //   mystery       -> Mystery Shopping és helyszíni audit
 //   cleaning      -> Rendezvénybiztosítás
 //   biztonsagtechnika -> Biztonságtechnika
-//   technical     -> Távfelügyelet és vonulószolgálat
+//   tavfelugyelet-vonuloszolgalat -> Távfelügyelet és vonulószolgálat
 //   green         -> Soft FM
 //   hardfm        -> Hard FM
 //
@@ -64,28 +65,35 @@ type CanonicalEntry = {
 //   security  -> objektumorzes
 //   reception -> portaszolgalat
 //   building  -> biztonsagtechnika
+//   technical -> tavfelugyelet-vonuloszolgalat
 //
-// `technical` must not be used for Biztonságtechnika: it is the
-// legacy/current baseline slug for the future Távfelügyelet és
-// vonulószolgálat service.
+// `technical` is the legacy/current baseline slug for Távfelügyelet
+// és vonulószolgálat. It must not be mapped to Biztonságtechnika:
+// that service uses `building` as legacy and `biztonsagtechnika` as
+// the canonical public slug.
 //
 // Legacy keys stay accepted by the contact-form/email pipeline (see
 // SERVICE_LABELS_HU in lib/email-templates/notification.ts) so any
 // stale references continue to render correctly.
 //
 // `i18nId` is the lookup key into lib/i18n/*.ts services arrays. It
-// keeps the legacy ids ("security", "reception", "building") so the
-// i18n source files don't need a parallel rename in this iteration;
-// only the DB slug changes. The legacy lookup below prevents future
-// baseline seed runs from recreating duplicate legacy rows after a
-// pilot seed renames them in-place.
+// keeps the legacy ids ("security", "reception", "building",
+// "technical") so the i18n source files don't need a parallel rename
+// in this iteration; only the DB slug changes. The legacy lookup below
+// prevents future baseline seed runs from recreating duplicate legacy
+// rows after a pilot seed renames them in-place.
 const CANONICAL_SEED: ReadonlyArray<CanonicalEntry> = [
   { slug: "objektumorzes", icon: "shield",  sortOrder: 0, i18nId: "security"  },
   { slug: "portaszolgalat", icon: "desk",   sortOrder: 1, i18nId: "reception" },
   { slug: "mystery",       icon: "eye",     sortOrder: 2, i18nId: "mystery"   },
   { slug: "cleaning",      icon: "sparkle", sortOrder: 3, i18nId: "cleaning"  },
   { slug: "biztonsagtechnika", icon: "camera", sortOrder: 4, i18nId: "building" },
-  { slug: "technical",     icon: "radar",   sortOrder: 5, i18nId: "technical" },
+  {
+    slug: "tavfelugyelet-vonuloszolgalat",
+    icon: "radar",
+    sortOrder: 5,
+    i18nId: "technical",
+  },
   { slug: "green",         icon: "leaf",    sortOrder: 6, i18nId: "green"     },
   { slug: "hardfm",        icon: "gear",    sortOrder: 7, i18nId: "hardfm"    },
 ];
@@ -97,6 +105,7 @@ const LEGACY_SLUG_BY_CANONICAL: Partial<Record<string, string>> = {
   objektumorzes: "security",
   portaszolgalat: "reception",
   biztonsagtechnika: "building",
+  "tavfelugyelet-vonuloszolgalat": "technical",
 };
 
 // Localized strings for one service slug. Each i18n file has

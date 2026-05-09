@@ -227,6 +227,7 @@ const SERVICE_SLUG_ALIASES: Record<string, string> = {
   security: "objektumorzes",
   reception: "portaszolgalat",
   building: "biztonsagtechnika",
+  technical: "tavfelugyelet-vonuloszolgalat",
 };
 
 function canonicalServiceSlug(slug: string): string {
