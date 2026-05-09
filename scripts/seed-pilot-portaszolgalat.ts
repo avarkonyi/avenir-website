@@ -220,8 +220,11 @@ const PILOT_HU = {
         "és felelősségi rendre van szükség.",
     },
   ],
-  // Slugs of related services that will appear in the "related" rail.
-  // Missing/unpublished slugs are silently dropped at render time.
+  // Related services use future canonical Hungarian public slugs. Some
+  // may not exist in the baseline seed yet; the public query filters
+  // missing/unpublished services so links do not break. Add future
+  // service pilots one-by-one by aligning their canonical baseline slug,
+  // not by reverting these values to legacy slugs.
   relatedSlugs: [
     "objektumorzes",
     "biztonsagtechnika",

@@ -9,11 +9,19 @@
 // we want to insert/update the canonical 8 without skipping the
 // whole table or touching unrelated admin rows.
 //
-// IMPORTANT — running this resets admin enrichment on canonical rows:
-// the upsert UPDATEs every column on a slug match, including
-// long_desc_*, highlights_*, image_url, is_featured back to their
-// canonical (mostly empty) baseline. Admin-created rows whose slugs
-// don't collide with the canonical 8 stay untouched.
+// IMPORTANT — this is a baseline seed script, not a detail-page seed.
+// Running it resets admin/detail enrichment on canonical rows: the
+// upsert UPDATEs every column on a slug match, including seo_title_*,
+// seo_description_*, long_desc_*, value_proposition_*, use_cases_*,
+// included_items_*, process_steps_*, trust_items_*, faq_*,
+// highlights_*, image_url and is_featured back to their canonical
+// mostly-empty baseline. Run it before pilot detail seeds, not after
+// them. If it runs after pilot seeds, detail URLs can return 404
+// because the locale readiness gate requires HU detail fields such as
+// seoTitleHu, seoDescriptionHu, longDescHu and valuePropositionHu.
+// Re-run the relevant pilot seed scripts afterward if staging detail
+// pages need to be republished after a baseline reset. Admin-created
+// rows whose slugs don't collide with the canonical 8 stay untouched.
 //
 // CANONICAL SLUGS — the wire format. The contact form's
 // <option value> uses these strings, and email-templates/
