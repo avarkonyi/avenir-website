@@ -223,6 +223,27 @@ function ContactRow({ kind, label, text, href }: ContactRowProps) {
 // off — never substitute services.id (numeric) here.
 export type ServiceOption = { slug: string; label: string };
 
+const SERVICE_SLUG_ALIASES: Record<string, string> = {
+  reception: "portaszolgalat",
+};
+
+function canonicalServiceSlug(slug: string): string {
+  return SERVICE_SLUG_ALIASES[slug] ?? slug;
+}
+
+function canonicalServiceOptions(options: ServiceOption[]): ServiceOption[] {
+  const bySlug = new Map<string, ServiceOption>();
+
+  for (const option of options) {
+    const slug = canonicalServiceSlug(option.slug);
+    if (!bySlug.has(slug)) {
+      bySlug.set(slug, { ...option, slug });
+    }
+  }
+
+  return [...bySlug.values()];
+}
+
 export function Contact({
   t,
   locale,
@@ -251,10 +272,14 @@ export function Contact({
     getServiceQuerySnapshot,
     getEmptyServiceQuerySnapshot,
   );
+  const normalizedServiceOptions = canonicalServiceOptions(serviceOptions);
+  const canonicalRequestedService = canonicalServiceSlug(requestedService);
   const prefilledService =
-    requestedService &&
-    serviceOptions.some((option) => option.slug === requestedService)
-      ? requestedService
+    canonicalRequestedService &&
+    normalizedServiceOptions.some(
+      (option) => option.slug === canonicalRequestedService,
+    )
+      ? canonicalRequestedService
       : "";
   const selectedService = serviceTouched ? form.service : prefilledService;
 
@@ -630,7 +655,7 @@ export function Contact({
                   {/* DB-backed since P2 C4. opt.slug (string) becomes the
                       <option value> — wire-format contract with
                       /api/contact + notification.ts SERVICE_LABELS_HU. */}
-                  {serviceOptions.map((opt) => (
+                  {normalizedServiceOptions.map((opt) => (
                     <option key={opt.slug} value={opt.slug}>
                       {opt.label}
                     </option>
