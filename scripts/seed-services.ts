@@ -44,8 +44,10 @@ type CanonicalEntry = {
   sortOrder: number;
   // i18nId may diverge from slug after a public detail-page rename
   // (e.g., slug "objektumorzes" maps to i18n entry id "security",
-  // "portaszolgalat" maps to i18n entry id "reception", and
-  // "tavfelugyelet-vonuloszolgalat" maps to i18n entry id "technical").
+  // "portaszolgalat" maps to i18n entry id "reception",
+  // "tavfelugyelet-vonuloszolgalat" maps to i18n entry id
+  // "technical", and "mystery-shopping-helyszini-audit" maps to
+  // i18n entry id "mystery").
   // Falls back to slug when omitted.
   i18nId?: string;
 };
@@ -53,7 +55,7 @@ type CanonicalEntry = {
 // Canonical seed sort order for the launch-facing portfolio:
 //   objektumorzes -> Élőerős objektumőrzés
 //   portaszolgalat -> Recepciós és portaszolgálat
-//   mystery       -> Mystery Shopping és helyszíni audit
+//   mystery-shopping-helyszini-audit -> Mystery Shopping és helyszíni audit
 //   cleaning      -> Rendezvénybiztosítás
 //   biztonsagtechnika -> Biztonságtechnika
 //   tavfelugyelet-vonuloszolgalat -> Távfelügyelet és vonulószolgálat
@@ -66,11 +68,17 @@ type CanonicalEntry = {
 //   reception -> portaszolgalat
 //   building  -> biztonsagtechnika
 //   technical -> tavfelugyelet-vonuloszolgalat
+//   mystery   -> mystery-shopping-helyszini-audit
 //
 // `technical` is the legacy/current baseline slug for Távfelügyelet
 // és vonulószolgálat. It must not be mapped to Biztonságtechnika:
 // that service uses `building` as legacy and `biztonsagtechnika` as
 // the canonical public slug.
+//
+// `mystery` is the legacy slug for Mystery Shopping és helyszíni
+// audit. The canonical public service-detail slug is
+// `mystery-shopping-helyszini-audit`, while i18nId remains `mystery`
+// because the translation/service label source still uses that key.
 //
 // Legacy keys stay accepted by the contact-form/email pipeline (see
 // SERVICE_LABELS_HU in lib/email-templates/notification.ts) so any
@@ -78,14 +86,20 @@ type CanonicalEntry = {
 //
 // `i18nId` is the lookup key into lib/i18n/*.ts services arrays. It
 // keeps the legacy ids ("security", "reception", "building",
-// "technical") so the i18n source files don't need a parallel rename
-// in this iteration; only the DB slug changes. The legacy lookup below
-// prevents future baseline seed runs from recreating duplicate legacy
-// rows after a pilot seed renames them in-place.
+// "technical", "mystery") so the i18n source files don't need a
+// parallel rename in this iteration; only the DB slug changes. The
+// legacy lookup below prevents future baseline seed runs from
+// recreating duplicate legacy rows after a pilot seed renames them
+// in-place.
 const CANONICAL_SEED: ReadonlyArray<CanonicalEntry> = [
   { slug: "objektumorzes", icon: "shield",  sortOrder: 0, i18nId: "security"  },
   { slug: "portaszolgalat", icon: "desk",   sortOrder: 1, i18nId: "reception" },
-  { slug: "mystery",       icon: "eye",     sortOrder: 2, i18nId: "mystery"   },
+  {
+    slug: "mystery-shopping-helyszini-audit",
+    icon: "eye",
+    sortOrder: 2,
+    i18nId: "mystery",
+  },
   { slug: "cleaning",      icon: "sparkle", sortOrder: 3, i18nId: "cleaning"  },
   { slug: "biztonsagtechnika", icon: "camera", sortOrder: 4, i18nId: "building" },
   {
@@ -106,6 +120,7 @@ const LEGACY_SLUG_BY_CANONICAL: Partial<Record<string, string>> = {
   portaszolgalat: "reception",
   biztonsagtechnika: "building",
   "tavfelugyelet-vonuloszolgalat": "technical",
+  "mystery-shopping-helyszini-audit": "mystery",
 };
 
 // Localized strings for one service slug. Each i18n file has

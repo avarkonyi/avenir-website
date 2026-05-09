@@ -23,6 +23,7 @@ const SERVICE_LABELS_HU: Record<string, string> = {
   technical: "Távfelügyelet és vonulószolgálat",
   "tavfelugyelet-vonuloszolgalat": "Távfelügyelet és vonulószolgálat",
   mystery: "Mystery Shopping és helyszíni audit",
+  "mystery-shopping-helyszini-audit": "Mystery Shopping és helyszíni audit",
   hardfm: "Hard FM",
 };
 
