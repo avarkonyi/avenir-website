@@ -230,11 +230,33 @@ const SERVICE_SLUG_ALIASES: Record<string, string> = {
   technical: "tavfelugyelet-vonuloszolgalat",
 };
 
+const SERVICE_PREFILL_FALLBACKS: Record<string, ServiceOption> = {
+  objektumorzes: {
+    slug: "objektumorzes",
+    label: "Élőerős objektumőrzés",
+  },
+  portaszolgalat: {
+    slug: "portaszolgalat",
+    label: "Recepciós és portaszolgálat",
+  },
+  biztonsagtechnika: {
+    slug: "biztonsagtechnika",
+    label: "Biztonságtechnika",
+  },
+  "tavfelugyelet-vonuloszolgalat": {
+    slug: "tavfelugyelet-vonuloszolgalat",
+    label: "Távfelügyelet és vonulószolgálat",
+  },
+};
+
 function canonicalServiceSlug(slug: string): string {
   return SERVICE_SLUG_ALIASES[slug] ?? slug;
 }
 
-function canonicalServiceOptions(options: ServiceOption[]): ServiceOption[] {
+function canonicalServiceOptions(
+  options: ServiceOption[],
+  requestedCanonicalSlug: string,
+): ServiceOption[] {
   const bySlug = new Map<string, ServiceOption>();
 
   for (const option of options) {
@@ -242,6 +264,11 @@ function canonicalServiceOptions(options: ServiceOption[]): ServiceOption[] {
     if (!bySlug.has(slug)) {
       bySlug.set(slug, { ...option, slug });
     }
+  }
+
+  const fallback = SERVICE_PREFILL_FALLBACKS[requestedCanonicalSlug];
+  if (fallback && !bySlug.has(fallback.slug)) {
+    bySlug.set(fallback.slug, fallback);
   }
 
   return [...bySlug.values()];
@@ -275,8 +302,11 @@ export function Contact({
     getServiceQuerySnapshot,
     getEmptyServiceQuerySnapshot,
   );
-  const normalizedServiceOptions = canonicalServiceOptions(serviceOptions);
   const canonicalRequestedService = canonicalServiceSlug(requestedService);
+  const normalizedServiceOptions = canonicalServiceOptions(
+    serviceOptions,
+    canonicalRequestedService,
+  );
   const prefilledService =
     canonicalRequestedService &&
     normalizedServiceOptions.some(
