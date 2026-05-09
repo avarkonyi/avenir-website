@@ -16,6 +16,7 @@ const SERVICE_LABELS_HU: Record<string, string> = {
   objektumorzes: "Élőerős objektumőrzés",
   cleaning: "Rendezvénybiztosítás",
   building: "Biztonságtechnika",
+  biztonsagtechnika: "Biztonságtechnika",
   reception: "Recepciós és portaszolgálat",
   portaszolgalat: "Recepciós és portaszolgálat",
   green: "Soft FM",

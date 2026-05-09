@@ -226,6 +226,7 @@ export type ServiceOption = { slug: string; label: string };
 const SERVICE_SLUG_ALIASES: Record<string, string> = {
   security: "objektumorzes",
   reception: "portaszolgalat",
+  building: "biztonsagtechnika",
 };
 
 function canonicalServiceSlug(slug: string): string {

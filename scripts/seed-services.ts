@@ -54,7 +54,7 @@ type CanonicalEntry = {
 //   portaszolgalat -> Recepciós és portaszolgálat
 //   mystery       -> Mystery Shopping és helyszíni audit
 //   cleaning      -> Rendezvénybiztosítás
-//   building      -> Biztonságtechnika
+//   biztonsagtechnika -> Biztonságtechnika
 //   technical     -> Távfelügyelet és vonulószolgálat
 //   green         -> Soft FM
 //   hardfm        -> Hard FM
@@ -63,21 +63,28 @@ type CanonicalEntry = {
 // Hungarian public service-detail slugs:
 //   security  -> objektumorzes
 //   reception -> portaszolgalat
+//   building  -> biztonsagtechnika
+//
+// `technical` must not be used for Biztonságtechnika: it is the
+// legacy/current baseline slug for the future Távfelügyelet és
+// vonulószolgálat service.
 //
 // Legacy keys stay accepted by the contact-form/email pipeline (see
 // SERVICE_LABELS_HU in lib/email-templates/notification.ts) so any
 // stale references continue to render correctly.
 //
 // `i18nId` is the lookup key into lib/i18n/*.ts services arrays. It
-// keeps the legacy ids ("security", "reception") so the i18n source
-// files don't need a parallel rename in this iteration; only the DB
-// slug changes.
+// keeps the legacy ids ("security", "reception", "building") so the
+// i18n source files don't need a parallel rename in this iteration;
+// only the DB slug changes. The legacy lookup below prevents future
+// baseline seed runs from recreating duplicate legacy rows after a
+// pilot seed renames them in-place.
 const CANONICAL_SEED: ReadonlyArray<CanonicalEntry> = [
   { slug: "objektumorzes", icon: "shield",  sortOrder: 0, i18nId: "security"  },
   { slug: "portaszolgalat", icon: "desk",   sortOrder: 1, i18nId: "reception" },
   { slug: "mystery",       icon: "eye",     sortOrder: 2, i18nId: "mystery"   },
   { slug: "cleaning",      icon: "sparkle", sortOrder: 3, i18nId: "cleaning"  },
-  { slug: "building",      icon: "camera",  sortOrder: 4, i18nId: "building"  },
+  { slug: "biztonsagtechnika", icon: "camera", sortOrder: 4, i18nId: "building" },
   { slug: "technical",     icon: "radar",   sortOrder: 5, i18nId: "technical" },
   { slug: "green",         icon: "leaf",    sortOrder: 6, i18nId: "green"     },
   { slug: "hardfm",        icon: "gear",    sortOrder: 7, i18nId: "hardfm"    },
@@ -89,6 +96,7 @@ const CANONICAL_SEED: ReadonlyArray<CanonicalEntry> = [
 const LEGACY_SLUG_BY_CANONICAL: Partial<Record<string, string>> = {
   objektumorzes: "security",
   portaszolgalat: "reception",
+  biztonsagtechnika: "building",
 };
 
 // Localized strings for one service slug. Each i18n file has
