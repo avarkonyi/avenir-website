@@ -15,14 +15,16 @@ A jelenlegi oldal mar production-kepes es jogi/compliance szempontbol eros. A ko
 
 1. Staging / preview workflow rendbetetele.
 2. Szolgaltatas-aloldalak magyar MVP.
-3. Referenciak es partnerek publikus megerositese.
-4. Hiraloldalak es Article schema.
-5. SEO / GEO / AI-search sprint.
-6. Konverzios javitasok az ajanlatkereshez.
-7. AOS mini-CRM dashboard es teendo-nezet.
-8. OneDrive / SharePoint dokumentumgerinc.
-9. Ajanlatgenerator MVP.
-10. Case study / Trust Center / tenderanyagok.
+3. Specialis biztonsagi es vizsgalati szolgaltatasok diszkret publikus retege.
+4. Referenciak es partnerek publikus megerositese.
+5. Megfeleloseg, fenntarthatosag es dokumentumtar publikus trust retege.
+6. Hiraloldalak es Article schema.
+7. SEO / GEO / AI-search sprint.
+8. Konverzios javitasok az ajanlatkereshez.
+9. AOS mini-CRM dashboard es teendo-nezet.
+10. OneDrive / SharePoint dokumentumgerinc.
+11. Ajanlatgenerator MVP.
+12. Case study / Trust Center / tenderanyagok.
 
 **Fo dontes:** az Avenir Operating System fontos, de ne elozze meg a publikus szolgaltatas-, referencia- es SEO-reteget. Eloszor legyen tobb minosegi erkezo forgalom es bizalom, utana erdemes a belso folyamatokat melyebben automatizalni.
 
@@ -75,6 +77,7 @@ A jelenlegi oldal mar production-kepes es jogi/compliance szempontbol eros. A ko
 - Google Business Profile / Bing Places
 - `llms.txt`, `llms-full.txt`
 - Konverzios tracking-kompatibilis thank-you flow
+- megfelelosegi / fenntarthatosagi dokumentumtar es panaszkezeles
 - AOS kovetkezo retegei
 
 ---
@@ -144,6 +147,24 @@ Minden erdemi fejlesztes stagingen indul. Main/production csak jovahagyott, tesz
 **Ido:** 3-5 nap az elso magyar MVP-re  
 **Cel:** a szolgaltatasok ne csak kartyak legyenek, hanem keresok es B2B erdeklodok szamara kulon landing oldalak.
 
+### Celzott fooldali struktura
+
+A publikus lead-generation oldal celzott sorrendje:
+
+1. Hero
+2. Rolunk / ertekajanlat
+3. 8 fo szolgaltatas-kartya
+4. Specialis szolgaltatasok
+5. Tanusitvanyok / megfeleloseg / dokumentumtar
+6. Referenciak
+7. Hirek
+8. Kapcsolat
+
+Az elso 8 fo szolgaltatas-kartya maradjon a fo publikus szolgaltatasi reteg.
+A specialis szolgaltatasok ne 9-10-11. hangos kartyakent jelenjenek meg,
+hanem masodlagos, diszkret B2B blokkkent a 8 fo kartya utan, a trust /
+compliance / referencia reteg elott.
+
 ### Mi legyen az elso korben
 
 Nem kell rogton 8-9 szolgaltatas x 4 nyelv. Eloszor magyar MVP:
@@ -193,6 +214,47 @@ Minden szolgaltatas-oldal:
 **A szolgaltatasoldalak adminbol legyenek szerkeszthetok, vagy kodban legyenek indulaskor?**
 
 Javaslat: indulaskor kod + DB-tartalom kombinacio. A szoveges struktura legyen stabil, de a leirasok es kepek kesobb adminbol bovulhetnek.
+
+---
+
+## 4A. Phase 2A - Specialis biztonsagi es vizsgalati szolgaltatasok
+
+**Prioritas:** P1/P2
+**Ido:** tervezes 0.5-1 nap, elso oldalak 1-3 nap
+**Cel:** a szabalyzott, celzott vizsgalati es audit jellegu szolgaltatasok elerhetok legyenek, de ne toljak el a fo 8 szolgaltatas publikusan ertheto struktura-jarol a hangsulyt.
+
+### Fooldali blokk
+
+**Cim:** Specialis biztonsagi es vizsgalati szolgaltatasok
+
+**Intro:**
+Bizonyos helyzetek nem altalanos orzesi vagy facility feladatot igenyelnek, hanem celzott vizsgalatot, helyszini auditot vagy szabalyozott tenyfeltarast.
+
+### Blokk elemei
+
+- Magannyomozas
+- Helyszini biztonsagi audit
+- Vizsgalati / ellenorzesi szolgaltatasok
+
+### Javasolt URL-ek
+
+- `/hu/szolgaltatasok/magannyomozas`
+- `/hu/szolgaltatasok/helyszini-biztonsagi-audit`
+- `/hu/szolgaltatasok/vizsgalati-ellenorzesi-szolgaltatasok`
+
+### Strukturalis szabaly
+
+Ezek ne keruljenek be automatikusan a 8 fo szolgaltatas-kartya koze.
+Kulon, visszafogott, B2B specialis szolgaltatas blokkban jelenjenek meg.
+A magannyomozas kulonosen diszkret megjelenitest igenyel: legyen megtalalhato, de ne legyen tulpromotalva a fooldalon.
+
+### Copy es compliance szabalyok
+
+- Ne implikaljon jogellenes rejtett megfigyelest.
+- Ne implikaljon munkavallaloi monitoringot elore jovahagyott, jogszeru scope nelkul.
+- Ne allitson jogi/compliance auditot, ha csak mukodesi vizsgalatrol van szo.
+- Minden vizsgalatnal legyen elore rogzitett cel, scope, modszertan es adatkezelesi keret.
+- A megallapitasok mukodesi megfigyelesek es fejlesztesi javaslatok legyenek, ne bizonyitatlan garanciak.
 
 ---
 
@@ -313,6 +375,188 @@ Legyen legalabb 3 publikus hir:
 - szolgaltatasok listazasa
 - fotok
 - cegadatok egyezosege az oldallal
+
+---
+
+## 7A. Phase 5A - Megfeleloseg, fenntarthatosag es dokumentumtar
+
+**Prioritas:** P1/P2
+**Ido:** elso publikus reteg 2-5 nap, teljes dokumentum eletciklus kesobb
+**Cel:** nagyvallalati beszerzesnel, tendernel, kulso fenntarthatosagi ertekelesnel es AI-search kornyezetben az Avenir dokumentalt, ellenorizheto es beszallitoi szempontbol felkeszult partnernek latszodjon.
+
+### Pozicio a roadmapben
+
+Ez a blokk a szolgaltatasoldalak, referencia/trust jelek es SEO/GEO sprint kozott kapjon helyet, az AOS melyebb moduljai elott. Nem belso dokumentumtar-fejleszteskent indul, hanem publikus bizalmi es megfelelosegi retegkent.
+
+### Javasolt publikus URL-ek
+
+- `/hu/megfeleloseg-es-fenntarthatosag`
+- `/hu/tanusitvanyok-es-engedelyek`
+- `/hu/panaszkezeles`
+- `/hu/visszaeles-bejelentes` vagy `/hu/etikai-bejelentes` - csak ha jogilag es mukodesileg eldontott
+- `/hu/dokumentumok/[slug]` - kesobb, ha adminbol kezelt dokumentumtar lesz
+
+Alternativa: a dokumentumok kezdetben a `/hu/megfeleloseg-es-fenntarthatosag` oldal szekcioikent jelennek meg, es csak kesobb kapnak onallo dokumentum URL-t.
+
+### EcoVadis irany
+
+Az Avenir jelenleg ne allitsa, hogy EcoVadis tanusitott, minositett, auditált vagy medal/badge birtokosa.
+
+Hasznalhato megfogalmazasok:
+
+- EcoVadis felkeszules
+- fenntarthatosagi es megfelelosegi dokumentacio
+- nagyvallalati beszallitoi elvarasok tamogatasa
+- kulso fenntarthatosagi ertekelesekre valo felkeszules
+
+Kerulendo:
+
+- EcoVadis tanusitott
+- EcoVadis minositett
+- EcoVadis auditált
+- EcoVadis medal / badge allitas, amig nincs igazolt rating
+
+### Dokumentumok besorolasa
+
+#### Publikus weboldalra tervezheto dokumentumok
+
+- Minosegpolitika
+- Informaciobiztonsagi nyilatkozat
+- Fenntarthatosagi nyilatkozat
+- Etikai kodex
+- Anti-korrupcios nyilatkozat
+- Panaszkezelesi tajekoztato
+- Adatvedelmi tajekoztato
+- Kornyezetvedelmi nyilatkozat
+- Munkavedelmi es biztonsagi alapelvek
+- Sokszinuseg es eselyegyenloseg nyilatkozat
+- Minosegiranyitasi alapelvek
+- Informaciobiztonsagi alapelvek
+- Adatvedelmi es adatbiztonsagi osszefoglalo
+
+#### Publikus, de jovahagyas-koteles dokumentumok
+
+- Beszallitoi magatartasi kodex
+- Visszaeles-bejelentesi tajekoztato
+- Whistleblowing / etikai bejelentes tajekoztato
+- Emberi jogi / munkavallaloi jogi nyilatkozat
+- Beszallitoi ertekelesi alapelvek
+- Felelossegbiztositasi igazolas, ha publikalhato
+- ISO 9001 tanusitvany, ha publikalhato
+- ISO 27001 tanusitvany, ha publikalhato
+- Vagyonvedelmi engedely, ha publikalhato
+- Biztonsagtechnikai engedely, ha publikalhato
+- Magannyomozoi engedely, ha publikalhato
+
+#### Internal / audit-only / tender-only dokumentumok
+
+- belso audit bizonyitekok
+- ugyfel- vagy szerzodesspecifikus dokumentumok
+- szemelyes adatot tartalmazo riportok
+- belso incidensnaplok
+- reszletes biztonsagi kontroll listak
+- belso kockazatertekelesek
+- ugyfelspecifikus SLA-k es arak
+- nem publikus partneri / tender anyagok
+
+Ezek ne keruljenek nyilvanos weboldalra. A webapp kesobb csak jovahagyott publikus verziot vagy publikus linket tegyen ki.
+
+### Panaszkezeles oldal
+
+URL: `/hu/panaszkezeles`
+
+Javasolt szerkezet:
+
+1. H1: Panaszkezeles
+2. Milyen ugyekben lehet panaszt tenni?
+3. Hogyan lehet panaszt benyujtani?
+4. Milyen adatokat erdemes megadni?
+5. Mi tortenik a panasz beerkezese utan?
+6. Valaszadasi hatarido
+7. Jogorvoslati / tovabbi lehetosegek
+8. Adatkezelesi kapcsolat
+9. Kapcsolodo dokumentumok
+
+Production publikacio elott jogi review kotelezo.
+
+### Footer es navigacio
+
+Javasolt uj footer csoport:
+
+**Megfeleloseg**
+
+- Megfeleloseg es fenntarthatosag
+- Tanusitvanyok es engedelyek
+- Panaszkezeles
+- Etikai kodex
+- Beszallitoi magatartasi kodex
+
+Specialis szolgaltatasok kisebb footer csoportban:
+
+- Magannyomozas
+- Helyszini biztonsagi audit
+- Vizsgalati / ellenorzesi szolgaltatasok
+
+### Admin / AOS dokumentum modul kesobb
+
+Javasolt admin modul: Documents / Policies / Certifications.
+
+Mezok:
+
+- title
+- slug
+- category
+- documentType
+- description
+- issuer
+- validFrom
+- validUntil
+- lastReviewedAt
+- language
+- fileUrl
+- isPublic
+- isDownloadable
+- approvalStatus
+- approvedBy
+- approvedAt
+- sortOrder
+- relatedServices
+- tags
+
+Kategoriak:
+
+- certification
+- license
+- policy
+- procedure
+- complaint-handling
+- whistleblowing
+- sustainability
+- ethics
+- supplier
+- privacy
+- security
+- quality
+- environment
+- health-and-safety
+- human-rights
+- diversity
+
+OneDrive / SharePoint maradjon a hosszu tavu dokumentumgerinc. A weboldal csak jovahagyott publikus verziokat, publikus linkeket vagy letoltheto PDF-eket tegyen elerhetove. Internal evidence dokumentumok maradjanak Microsoft 365-ben, nem a publikus weben.
+
+### SEO / GEO / AI-search kovetelmenyek
+
+- stabil publikus URL-ek
+- tiszta H1/H2 struktura
+- dokumentum metadata
+- utolso frissites datum
+- Organization / WebPage / Breadcrumb schema
+- kesobb opcionalisan DigitalDocument / CreativeWork schema, ha a publikus dokumentumok mar leteznek
+- belso linkek szolgaltatasoldalakrol es footerbol
+- AI-search-barát osszefoglalok
+- `llms.txt` / `llms-full.txt` hivatkozas kesobb
+
+Schema-t ne vigyuk tulzasba, amig a publikus oldalak es dokumentumok nem leteznek.
 
 ---
 
@@ -478,6 +722,9 @@ Avenir/
 ### Prioritas
 
 Eloszor ne teljes Trust Center, hanem egy "Tanusitvanyok es engedelyek" oldal.
+Ez kapcsolodik a Phase 5A megfeleloseg/fenntarthatosag reteghez: ott induljon a publikus informacios architektura, itt kesobb bovulhet tenderanyag-csomagga es belso AOS dokumentumfolyamattá.
+
+EcoVadis csak felkeszuleskent szerepelhet, amig nincs igazolt rating vagy medal.
 
 ---
 
@@ -534,17 +781,20 @@ FAQPage schema csak akkor keruljon vissza, ha van lathato FAQ blokk az oldalon. 
 - tavfelugyelet oldal
 - mystery shopping oldal
 - service card belso linkek
+- specialis szolgaltatasok fooldali masodlagos blokkjanak terve
 
 ### 5. nap
 
 - Service schema
 - sitemap/canonical ellenorzes
 - kontakt prefill elso verzio
+- megfeleloseg / fenntarthatosag / dokumentumtar informacios architektura
 
 ### 6. nap
 
 - partnerek/referenciak public cutover terv
 - logok, jogosultsagok, admin publish allapot
+- tanusitvanyok es engedelyek publikus lista jovahagyasi korrel
 
 ### 7. nap
 
@@ -552,6 +802,7 @@ FAQPage schema csak akkor keruljon vissza, ha van lathato FAQ blokk az oldalon. 
   - tovabb szolgaltatasok EN/DE/ZH iranyba
   - vagy referencia blokk
   - vagy SEO sprint
+  - vagy megfeleloseg / panaszkezeles oldal elso publikus kor
 
 ---
 
@@ -562,6 +813,8 @@ FAQPage schema csak akkor keruljon vissza, ha van lathato FAQ blokk az oldalon. 
 - staging workflow stabil
 - magyar szolgaltatas-aloldalak elso kor kesz
 - 4-6 partner/referencia publikus trust signal
+- specialis szolgaltatasok masodlagos fooldali blokk terve
+- panaszkezeles es megfeleloseg/fenntarthatosag oldalak tartalmi vazlata
 - hiroldalak sluggal
 - Article schema
 - Service schema
@@ -578,6 +831,9 @@ FAQPage schema csak akkor keruljon vissza, ha van lathato FAQ blokk az oldalon. 
 
 - szolgaltatas-aloldalak 4 nyelven
 - legalabb 3 case study
+- megfeleloseg es fenntarthatosag publikus trust reteg
+- dokumentumtar MVP jovahagyott publikus dokumentumokkal
+- EcoVadis felkeszulesi dokumentacio, EcoVadis rating allitas nelkul
 - Trust Center alap
 - SEO/GEO/AI-search csomag stabil
 - mini-CRM napi hasznalatban
@@ -611,7 +867,11 @@ Olvasas utan ezekrol erdemes donteni:
 5. A szolgaltatasoldalak eloszor csak HU vagy rogton 4 locale?
 6. Staging DB-t hogyan valasszuk szet a productiontol?
 7. AOS-t mikor folytassuk: szolgaltatas/SEO utan vagy parhuzamosan heti 1 nap?
-8. Legyen-e 30 napos sprintterv napi bontasban?
+8. Specialis szolgaltatasok kozul melyik legyen publikus eloszor?
+9. Mely dokumentumok publikalhatok weben, es melyek csak tender/audit csomagban?
+10. Panaszkezeles oldal jogi review felelose?
+11. EcoVadis felkeszuleshez milyen belso dokumentumok hianyoznak?
+12. Legyen-e 30 napos sprintterv napi bontasban?
 
 ---
 
@@ -625,10 +885,12 @@ Ha ezt a roadmapet elfogadjuk, a kovetkezo commit-sorrend:
 4. `feat(services): add reception and security tech pages`
 5. `feat(services): add service schema and breadcrumbs`
 6. `feat(contact): prefill service from url`
-7. `feat(partners): render published partners on homepage`
-8. `feat(news): add public article pages`
-9. `feat(seo): add article schema and localbusiness geo`
-10. `feat(seo): add llms files`
+7. `docs(compliance): plan public document and complaint-handling layer`
+8. `feat(home): add secondary special services block`
+9. `feat(partners): render published partners on homepage`
+10. `feat(news): add public article pages`
+11. `feat(seo): add article schema and localbusiness geo`
+12. `feat(seo): add llms files`
 
 ---
 
@@ -636,7 +898,7 @@ Ha ezt a roadmapet elfogadjuk, a kovetkezo commit-sorrend:
 
 A legjobb sorrend:
 
-**Staging -> Szolgaltatasoldalak -> Referenciak -> SEO/GEO/AI -> Konverzio -> AOS**
+**Staging -> Szolgaltatasoldalak -> Specialis szolgaltatasok -> Referenciak -> Megfeleloseg/dokumentumtar -> SEO/GEO/AI -> Konverzio -> AOS**
 
 Ez adja a legjobb aranyt:
 

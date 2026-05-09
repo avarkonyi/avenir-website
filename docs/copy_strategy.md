@@ -67,4 +67,57 @@ Avoid vague CTAs:
 
 - Tovább
 - Küldés
+
+## Special services wording
+
+Special services such as magánnyomozás, helyszíni biztonsági audit, and
+vizsgálati / ellenőrzési szolgáltatások must be written as discreet B2B
+services, not as aggressive consumer-style investigation offers.
+
+Use careful wording:
+
+- előre egyeztetett scope;
+- jogszerű, célhoz kötött és arányos vizsgálati keretek;
+- működési megfigyelések;
+- strukturált riport;
+- fejlesztési javaslatok;
+- helyszíni biztonsági audit szemlélet.
+
+Avoid:
+
+- unlawful covert surveillance implications;
+- hidden employee monitoring without approved lawful scope;
+- recording claims unless explicitly approved;
+- guaranteed improvement numbers;
+- legal or compliance audit claims unless that scope is separately defined.
+
+## Compliance and sustainability wording
+
+The compliance/document layer should support large-enterprise procurement,
+tenders, supplier due diligence, SEO/GEO, and AI-search summaries.
+
+EcoVadis is preparation only until verified otherwise.
+
+Use:
+
+- EcoVadis felkészülés;
+- fenntarthatósági és megfelelőségi dokumentáció;
+- nagyvállalati beszállítói elvárások támogatása;
+- külső fenntarthatósági értékelésekre való felkészülés.
+
+Avoid unless later verified:
+
+- EcoVadis tanúsított;
+- EcoVadis minősített;
+- EcoVadis auditált;
+- EcoVadis medal or badge claims.
+
+Public document copy should clearly separate:
+
+- public website documents;
+- public but approval-required documents;
+- internal / audit-only / tender-only evidence.
+
+Never suggest publishing confidential, personal, client-specific,
+contract-specific, or internal audit evidence publicly.
 - Kapcsolat

@@ -12,13 +12,15 @@ Follow this order unless the user explicitly says otherwise:
 
 1. Staging and preview safety
 2. Service detail pages
-3. References and partner trust signals
-4. SEO / GEO / AI-search readiness
-5. Conversion improvements
-6. Mini-CRM / AOS modules
-7. OneDrive / SharePoint workflows
-8. Proposal generator
-9. Trust Center and tender materials
+3. Special services as a discreet secondary service layer
+4. References and partner trust signals
+5. Compliance, sustainability, certificates, policies, and document library
+6. SEO / GEO / AI-search readiness
+7. Conversion improvements
+8. Mini-CRM / AOS modules
+9. OneDrive / SharePoint workflows
+10. Proposal generator
+11. Trust Center and tender materials
 
 Do not prioritize internal AOS features ahead of the public lead-generation layer unless explicitly requested.
 
@@ -99,6 +101,46 @@ Incorrect:
 /hu#contact?service=objektumorzes
 
 Use canonical service slugs in URLs.
+
+## Compliance and document layer rules
+
+Avenir is preparing a public compliance / sustainability / document layer,
+but EcoVadis must be described as preparation only until an actual verified
+rating, medal, or assessment exists.
+
+Allowed wording:
+
+- EcoVadis felkészülés;
+- fenntarthatósági és megfelelőségi dokumentáció;
+- nagyvállalati beszállítói elvárások támogatása;
+- külső fenntarthatósági értékelésekre való felkészülés.
+
+Forbidden unless later verified:
+
+- EcoVadis tanúsított;
+- EcoVadis minősített;
+- EcoVadis auditált;
+- EcoVadis medal / badge claims.
+
+Separate documents into:
+
+1. public website documents;
+2. public but approval-required documents;
+3. internal / audit-only / tender-only documents.
+
+Do not publish confidential, personal, client-specific, contract-specific, or
+internal audit evidence publicly.
+
+## Planning agent roles
+
+When planning roadmap/documentation-level work, reason through:
+
+- Avenir Product / Roadmap Agent;
+- Avenir Compliance Guard Agent;
+- Avenir SEO/GEO Agent;
+- Avenir UX / Navigation Agent;
+- Avenir AOS / Document Workflow Agent;
+- Avenir Copywriter Research Agent.
 
 ## Copywriting rules
 

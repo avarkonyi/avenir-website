@@ -50,6 +50,31 @@ security
 5. mystery-shopping-helyszini-audit
 6. hard-fm or soft-fm based on business priority
 
+## Main vs special services
+
+The existing 8 homepage service cards remain the main public service layer.
+
+Special services should not be added as loud 9th/10th/11th homepage cards.
+They belong in a secondary, visually quieter homepage block after the 8 main
+service cards and before trust/compliance/references.
+
+Secondary block:
+
+- title: Speciális biztonsági és vizsgálati szolgáltatások
+- intro: Bizonyos helyzetek nem általános őrzési vagy facility feladatot
+  igényelnek, hanem célzott vizsgálatot, helyszíni auditot vagy szabályozott
+  tényfeltárást.
+
+Planned special-service URLs:
+
+- /hu/szolgaltatasok/magannyomozas
+- /hu/szolgaltatasok/helyszini-biztonsagi-audit
+- /hu/szolgaltatasok/vizsgalati-ellenorzesi-szolgaltatasok
+
+Special-service copy must be discreet, regulated, B2B, and compliance-aware.
+Do not imply unlawful covert surveillance, blanket employee monitoring,
+recording, or legal/compliance audit unless that scope is explicitly approved.
+
 ## Object guarding page angle
 
 Objektumőrzés should focus on:
@@ -102,6 +127,14 @@ This page should focus on:
 - on-site observation;
 - reporting;
 - actionable improvement plan.
+
+Compliance notes:
+
+- audit scope must be agreed in advance;
+- findings are operational observations and improvement recommendations;
+- do not promise guaranteed improvement numbers;
+- do not imply hidden employee monitoring outside a lawful approved scope;
+- do not mention recording unless explicitly scoped and lawful.
 
 ## Hard FM angle
 
