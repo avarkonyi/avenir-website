@@ -1,5 +1,7 @@
+import Link from "next/link";
 import { getTranslation } from "@/lib/i18n";
 import { getActiveTopLevelServices } from "@/lib/db/queries/services";
+import { getReadyHuServiceDetailHref } from "@/lib/service-detail-links";
 import { Icon, ICON_NAMES, type IconName } from "./Icon";
 
 // Public Services grid — DB-backed via shared
@@ -21,6 +23,7 @@ export async function Services({ locale }: { locale: string }) {
       icon: safeIconName(row.icon),
       title: row.name,
       description: row.shortDesc,
+      href: getReadyHuServiceDetailHref(locale, row.slug),
     }))
     .filter((card) => card.title.length > 0 && card.description.length > 0);
 
@@ -71,17 +74,56 @@ export async function Services({ locale }: { locale: string }) {
             gap: 24,
           }}
         >
-          {cards.map((card) => (
-            <div key={card.id} className="service-card">
-              <div className="service-icon-wrap">
-                <Icon name={card.icon} size={26} />
-              </div>
-              <h3 className="service-title" style={{ fontFamily: "var(--font-head)" }}>
-                {card.title}
-              </h3>
-              <p className="service-desc">{card.description}</p>
-            </div>
-          ))}
+          {cards.map((card) => {
+            const content = (
+              <>
+                <div className="service-icon-wrap">
+                  <Icon name={card.icon} size={26} />
+                </div>
+                <h3 className="service-title" style={{ fontFamily: "var(--font-head)" }}>
+                  {card.title}
+                </h3>
+                <p className="service-desc">{card.description}</p>
+                {card.href && (
+                  <span
+                    aria-hidden="true"
+                    style={{
+                      display: "inline-flex",
+                      marginTop: 18,
+                      fontFamily: "var(--font-head)",
+                      fontSize: 13,
+                      fontWeight: 700,
+                      letterSpacing: 1.2,
+                      textTransform: "uppercase",
+                      color: "#D1172E",
+                    }}
+                  >
+                    Részletek
+                  </span>
+                )}
+              </>
+            );
+
+            if (!card.href) {
+              return (
+                <div key={card.id} className="service-card">
+                  {content}
+                </div>
+              );
+            }
+
+            return (
+              <Link
+                key={card.id}
+                href={card.href}
+                className="service-card"
+                aria-label={`${card.title} részletei`}
+                style={{ display: "block", cursor: "pointer" }}
+              >
+                {content}
+              </Link>
+            );
+          })}
         </div>
       </div>
     </section>

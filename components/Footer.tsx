@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { type Translation } from "@/lib/i18n";
 import { getActiveTopLevelServices } from "@/lib/db/queries/services";
+import { getReadyHuServiceDetailHref } from "@/lib/service-detail-links";
 
 export async function Footer({
   t,
@@ -15,7 +16,11 @@ export async function Footer({
   // empty-field guard drops rows with no usable title.
   const rows = await getActiveTopLevelServices(locale);
   const serviceLinks = rows
-    .map((row) => ({ slug: row.slug, title: row.name }))
+    .map((row) => ({
+      slug: row.slug,
+      title: row.name,
+      href: getReadyHuServiceDetailHref(locale, row.slug),
+    }))
     .filter((link) => link.title.length > 0);
 
   return (
@@ -66,17 +71,31 @@ export async function Footer({
             <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 10 }}>
               {serviceLinks.map((link) => (
                 <li key={link.slug}>
-                  <a
-                    href="#services"
-                    className="footer-link"
-                    style={{
-                      color: "rgba(255,255,255,0.45)",
-                      fontSize: 13,
-                      textDecoration: "none",
-                    }}
-                  >
-                    {link.title}
-                  </a>
+                  {link.href ? (
+                    <Link
+                      href={link.href}
+                      className="footer-link"
+                      style={{
+                        color: "rgba(255,255,255,0.45)",
+                        fontSize: 13,
+                        textDecoration: "none",
+                      }}
+                    >
+                      {link.title}
+                    </Link>
+                  ) : (
+                    <a
+                      href="#services"
+                      className="footer-link"
+                      style={{
+                        color: "rgba(255,255,255,0.45)",
+                        fontSize: 13,
+                        textDecoration: "none",
+                      }}
+                    >
+                      {link.title}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
