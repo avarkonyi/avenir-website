@@ -91,6 +91,49 @@ Avoid:
 - guaranteed improvement numbers;
 - legal or compliance audit claims unless that scope is separately defined.
 
+## Mystery Shopping / szolgáltatásaudit wording
+
+The `mystery-shopping-helyszini-audit` page is a service-quality and customer-journey audit page. It is not the future magánnyomozás page and not the future helyszíni biztonsági audit page.
+
+Use:
+
+- próbavásárlás;
+- szolgáltatásaudit;
+- brand audit;
+- situation shopping;
+- ügyfélút audit;
+- próbautazás;
+- szolgáltatásminőség-mérés;
+- előre egyeztetett megfelelési szempontok;
+- strukturált riport;
+- vezetői összefoglaló;
+- fejlesztési javaslat;
+- jogszerű, célhoz kötött vizsgálati keretek.
+
+Avoid:
+
+- magánnyomozás positioning;
+- covert surveillance;
+- spying language;
+- nyomozás;
+- megfigyelés;
+- beépülés;
+- lebuktatás;
+- bizonyítékgyűjtés;
+- titkos ellenőrzés;
+- client-specific case details without approval.
+
+Rules:
+
+- audit scope, method, and evaluation criteria must be agreed in advance;
+- transport/taxi-type audits may be one use case, not the whole page;
+- no client names, including ÉKM, may appear without explicit approval;
+- no operator names, routes, cities, scores, case results, or report excerpts may appear without approval;
+- legal/compliance checks should be phrased as "előre egyeztetett megfelelési szempontok szerint";
+- findings should be operational observations and improvement recommendations, not proof-gathering or punishment language.
+
+If a later Shadow Audit or similar sub-brand is created, it must keep the same compliance-safe language and must not sound like spying, private investigation, or employee surveillance.
+
 ## Compliance and sustainability wording
 
 The compliance/document layer should support large-enterprise procurement,

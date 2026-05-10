@@ -12,15 +12,15 @@ Follow this order unless the user explicitly says otherwise:
 
 1. Staging and preview safety
 2. Service detail pages
-3. Special services as a discreet secondary service layer
-4. References and partner trust signals
-5. Compliance, sustainability, certificates, policies, and document library
-6. SEO / GEO / AI-search readiness
-7. Conversion improvements
-8. Mini-CRM / AOS modules
-9. OneDrive / SharePoint workflows
-10. Proposal generator
-11. Trust Center and tender materials
+3. References and partner trust signals
+4. SEO / GEO / AI-search readiness
+5. Conversion improvements
+6. Mini-CRM / AOS modules
+7. OneDrive / SharePoint workflows
+8. Proposal generator
+9. Trust Center and tender materials
+
+Special services, compliance/document layers, Shadow Audit, and AOS Guard Log are important roadmap items, but they must not overtake the current public website/service-page, trust, SEO, and conversion priorities unless the user explicitly reprioritizes them.
 
 Do not prioritize internal AOS features ahead of the public lead-generation layer unless explicitly requested.
 
@@ -58,11 +58,21 @@ Service detail pages are currently implemented at:
 
 app/[locale]/szolgaltatasok/[slug]/page.tsx
 
-Current canonical pilot service:
+Current HU service detail layer:
 
-- canonical slug: objektumorzes
-- legacy slug: security
-- service: Élőerős objektumőrzés
+Status: current staging HU service detail layer.
+
+| Service | Canonical public slug | Legacy slug |
+| --- | --- | --- |
+| Élőerős objektumőrzés | `objektumorzes` | `security` |
+| Recepciós és portaszolgálat | `portaszolgalat` | `reception` |
+| Biztonságtechnika | `biztonsagtechnika` | `building` |
+| Távfelügyelet és vonulószolgálat | `tavfelugyelet-vonuloszolgalat` | `technical` |
+| Mystery Shopping és helyszíni audit | `mystery-shopping-helyszini-audit` | `mystery` |
+
+Service detail pages are added one by one.
+
+Use canonical HU slugs in public service URLs and new CTA links. Legacy slugs may remain supported for seed lookup, contact query aliases, and email label safety, but legacy detail routes should keep returning 404 unless redirects are explicitly approved later.
 
 Do not bulk-generate pages for all old homepage service cards.
 
@@ -96,11 +106,27 @@ Correct:
 
 /hu?service=objektumorzes#contact
 
+/hu?service=portaszolgalat#contact
+
+/hu?service=biztonsagtechnika#contact
+
+/hu?service=tavfelugyelet-vonuloszolgalat#contact
+
+/hu?service=mystery-shopping-helyszini-audit#contact
+
 Incorrect:
 
 /hu#contact?service=objektumorzes
 
 Use canonical service slugs in URLs.
+
+Legacy query aliases currently expected for backwards compatibility:
+
+- `security` -> `objektumorzes`
+- `reception` -> `portaszolgalat`
+- `building` -> `biztonsagtechnika`
+- `technical` -> `tavfelugyelet-vonuloszolgalat`
+- `mystery` -> `mystery-shopping-helyszini-audit`
 
 ## Compliance and document layer rules
 

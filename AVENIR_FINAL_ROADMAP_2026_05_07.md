@@ -13,18 +13,17 @@ A jelenlegi oldal mar production-kepes es jogi/compliance szempontbol eros. A ko
 
 **Javasolt sorrend:**
 
-1. Staging / preview workflow rendbetetele.
+1. Publikus lead-generation alap stabilizalasa.
 2. Szolgaltatas-aloldalak magyar MVP.
-3. Specialis biztonsagi es vizsgalati szolgaltatasok diszkret publikus retege.
-4. Referenciak es partnerek publikus megerositese.
-5. Megfeleloseg, fenntarthatosag es dokumentumtar publikus trust retege.
-6. Hiraloldalak es Article schema.
-7. SEO / GEO / AI-search sprint.
-8. Konverzios javitasok az ajanlatkereshez.
-9. AOS mini-CRM dashboard es teendo-nezet.
-10. OneDrive / SharePoint dokumentumgerinc.
-11. Ajanlatgenerator MVP.
-12. Case study / Trust Center / tenderanyagok.
+3. Referenciak es partnerek publikus trust retege.
+4. SEO / GEO / AI-search sprint.
+5. Konverzios javitasok az ajanlatkereshez.
+6. AOS mini-CRM dashboard es teendo-nezet.
+7. OneDrive / SharePoint dokumentumgerinc.
+8. Ajanlatgenerator MVP.
+9. Trust Center / tenderanyagok.
+
+Specialis szolgaltatasok, megfelelosegi dokumentumretegek, Shadow Audit es elektronikus ornaplo szerepeljenek a roadmapben, de ne elozzek meg a publikus szolgaltatas-, referencia-, SEO- es konverzios prioritast.
 
 **Fo dontes:** az Avenir Operating System fontos, de ne elozze meg a publikus szolgaltatas-, referencia- es SEO-reteget. Eloszor legyen tobb minosegi erkezo forgalom es bizalom, utana erdemes a belso folyamatokat melyebben automatizalni.
 
@@ -53,6 +52,12 @@ A jelenlegi oldal mar production-kepes es jogi/compliance szempontbol eros. A ko
   - Partners
   - Certifications
   - Settings
+- Staging service-detail reteg:
+  - `/hu/szolgaltatasok/objektumorzes`
+  - `/hu/szolgaltatasok/portaszolgalat`
+  - `/hu/szolgaltatasok/biztonsagtechnika`
+  - `/hu/szolgaltatasok/tavfelugyelet-vonuloszolgalat`
+  - `/hu/szolgaltatasok/mystery-shopping-helyszini-audit`
 - News: tobbnyelvu publikacio, kepfeltoltes, publikus megjelenites
 - Mini-CRM V1 a Messages modulban:
   - lead statusz
@@ -68,7 +73,7 @@ A jelenlegi oldal mar production-kepes es jogi/compliance szempontbol eros. A ko
 
 - Staging workflow formalizalasa
 - Kulon staging adatbazis
-- Szolgaltatas-aloldalak
+- Tovabbi szolgaltatas-aloldalak es production cutover
 - Publikus partner/referencia megjelenites
 - Hir reszletezo aloldalak
 - Article schema
@@ -176,6 +181,29 @@ Nem kell rogton 8-9 szolgaltatas x 4 nyelv. Eloszor magyar MVP:
 5. `Mystery Shopping es helyszini audit`
 6. `Hard FM` vagy `Soft FM` - uzleti prioritas alapjan
 
+### Jelenlegi staging allapot
+
+Status: current staging HU service detail layer.
+
+Az elso ot HU oldal stagingen kesz:
+
+| Szolgaltatas | Canonical slug | Legacy slug |
+| --- | --- | --- |
+| Elos objektumorzes | `objektumorzes` | `security` |
+| Recepcios es portaszolgalat | `portaszolgalat` | `reception` |
+| Biztonsagtechnika | `biztonsagtechnika` | `building` |
+| Tavfelugyelet es vonuloszolgalat | `tavfelugyelet-vonuloszolgalat` | `technical` |
+| Mystery Shopping es helyszini audit | `mystery-shopping-helyszini-audit` | `mystery` |
+
+Szabaly:
+
+- canonical HU URL-ek publikusak stagingen;
+- legacy detail URL-ek 404-et adnak;
+- EN/DE/ZH service detail URL-ek 404-et adnak, amig nincs sajat lokalizalt detail tartalom;
+- sitemap csak a ready HU service detail URL-eket tartalmazza;
+- hreflang csak ready locale-t hirdet;
+- contact prefill canonical es legacy query aliasokat is elfogad, de uj linkekben canonical slugot kell hasznalni.
+
 ### Javasolt URL-ek
 
 - `/hu/szolgaltatasok/objektumorzes`
@@ -207,7 +235,18 @@ Minden szolgaltatas-oldal:
 - Breadcrumb
 - Service JSON-LD
 - belso link a fooldali service cardokbol
-- kontakt form prefill: `?service=security`
+- kontakt form prefill canonical sluggal:
+  - `?service=objektumorzes`
+  - `?service=portaszolgalat`
+  - `?service=biztonsagtechnika`
+  - `?service=tavfelugyelet-vonuloszolgalat`
+  - `?service=mystery-shopping-helyszini-audit`
+- legacy query aliasok hatterkompatibilitasra:
+  - `security`
+  - `reception`
+  - `building`
+  - `technical`
+  - `mystery`
 
 ### Dontesi pont
 
@@ -255,6 +294,92 @@ A magannyomozas kulonosen diszkret megjelenitest igenyel: legyen megtalalhato, d
 - Ne allitson jogi/compliance auditot, ha csak mukodesi vizsgalatrol van szo.
 - Minden vizsgalatnal legyen elore rogzitett cel, scope, modszertan es adatkezelesi keret.
 - A megallapitasok mukodesi megfigyelesek es fejlesztesi javaslatok legyenek, ne bizonyitatlan garanciak.
+
+---
+
+## 4B. Shadow Audit / Mystery Shopping sub-brand opcio
+
+**Status:** discovery / strategic option
+**Prioritas:** future P2/P3 after current HU service page MVP and SEO/trust work
+**Implementacio:** do not implement yet
+
+### Strategiai irany
+
+Az Avenir oldalon a `/hu/szolgaltatasok/mystery-shopping-helyszini-audit` maradjon rovid, komoly B2B szolgaltatasoldal:
+
+- probavasarlas
+- szolgaltatasaudit
+- brand audit
+- situation shopping
+- ugyfelut audit
+- probautazas / service journey audit
+- service quality measurement
+- elore egyeztetett megfelelesi pontok merese
+
+Ez kesobb kulon sub-brand vagy microsite lehet, mert az edukacios, SEO es lead-generation potencial nagyobb, mint egyetlen Avenir service page.
+
+Javasolt brand architektura:
+
+- Avenir = parent brand, bizalom, B2B facility/security/compliance hatter
+- Shadow Audit vagy hasonlo = specializalt szolgaltatasaudit / mystery shopping / customer journey audit brand
+
+### Fontos jogi/brand ovatosag
+
+Nem szabad feltetelezni, hogy a Shadow Agency, Shadow Audit vagy barmely Shadow nev jogilag szabad.
+
+Szukseges dontes es ellenorzes:
+
+- nev shortlist
+- domain ellenorzes
+- magyar vedjegy ellenorzes
+- EUIPO vedjegy ellenorzes
+- jogi review
+- brand kockazati review
+
+Elso korben visszafordithato megoldas javasolt: Avenir-kontrollalt subdomain, peldaul `shadow.afm.hu`. Kulon domain csak nev/domain/jogi tisztazas utan.
+
+### Copy es compliance szabaly
+
+Hasznalhato:
+
+- probavasarlas
+- szolgaltatasaudit
+- ugyfelut audit
+- brand audit
+- situation shopping
+- probautazas
+- szolgaltatasminoseg-meres
+- elore egyeztetett megfelelesi pontok
+- strukturalt riport
+- vezetoi osszefoglalo
+- fejlesztesi javaslat
+- jogszeru, celhoz kotott vizsgalati keretek
+
+Kerulendo:
+
+- kemkedes
+- megfigyeles
+- beepules
+- lebuktatas
+- titkos ellenorzes
+- buntetes
+- nyomozas
+- bizonyitekgyujtes
+
+Ez nem magannyomozas, nem rejtett munkavallaloi monitoring es nem bizonyitekgyujtes.
+
+### Dontesek Andrasnak
+
+- Maradjon Avenir service page, vagy legyen kulon sub-brand?
+- Melyik legyen a preferalt munkanev?
+- Subdomain vagy kulon domain?
+- Ki viszi a jogi/vedjegy/domain ellenorzest?
+- Mit lehet publikus mondani taxi / transport service audit temaban?
+- Lehet-e demo riportot mutatni?
+- Legyen-e kulon lead form?
+- Kapjon-e sajat lead kategoriat a mini-CRM-ben?
+
+Reszletes strategia: `docs/shadow_audit_strategy.md`.
 
 ---
 
@@ -569,8 +694,12 @@ Schema-t ne vigyuk tulzasba, amig a publikus oldalak es dokumentumok nem letezne
 ### Gyors nyeresek
 
 - service card -> kontakt form elotoltes:
-  - `/hu#contact?service=security`
-  - vagy `/hu?service=security#contact`
+  - `/hu?service=objektumorzes#contact`
+  - `/hu?service=portaszolgalat#contact`
+  - `/hu?service=biztonsagtechnika#contact`
+  - `/hu?service=tavfelugyelet-vonuloszolgalat#contact`
+  - `/hu?service=mystery-shopping-helyszini-audit#contact`
+  - legacy query aliasok tovabbra is biztonsagosan kezelhetok: `security`, `reception`, `building`, `technical`, `mystery`
 - kontakt form mellett lathato mikrocopy:
   - "Valasz 2 munkanapon belul"
   - "ISO 9001 szerint dokumentalt folyamat"
@@ -628,6 +757,83 @@ Messages modulbol mini-CRM V1:
 ### Fontos elv
 
 Kulsos CRM-integracio csak akkor, ha a sajat pipeline 2-4 hetig napi hasznalatban bizonyitott.
+
+---
+
+## 9A. Future AOS module - Elektronikus ornaplo
+
+**Status:** future AOS module
+**Prioritas:** after mini-CRM and after public lead-generation layer is stable
+**Implementacio:** do not implement yet
+
+### Strategiai szerep
+
+Az elektronikus ornaplo belso operativ eszkoz legyen eloszor, nem publikus weboldal-fejlesztes. Celja, hogy az objektumorzes, portaszolgalat, tavfelugyelet, incidenskezeles es riportalas strukturalt digitalis naplozast kapjon.
+
+Nem elozheti meg a jelenlegi publikus prioritast:
+
+1. szolgaltatas-aloldalak
+2. referenciak / trust reteg
+3. SEO/GEO sprint
+4. konverzios javitasok
+5. mini-CRM
+6. elektronikus ornaplo discovery
+7. elektronikus ornaplo MVP
+8. OneDrive / SharePoint riportintegracio
+9. kliens oldali riport reteg
+
+### MVP gondolat
+
+Tablet- vagy mobilbarat felulet oroknek es helyszini szemelyzetnek:
+
+- szolgalat kezdete / vege
+- napi ornaplo bejegyzesek
+- incidensrogzites
+- jaror / checkpoint rekordok
+- kulcsatadas
+- latogatoi / beszallitoi rendellenessegek
+- muszakatadas
+- helyszini utasitas tudomasulvetele
+- supervisor/admin review
+- exportalhato riportok
+
+### Copy es compliance szabaly
+
+Ne legyen munkavallaloi megfigyelesi vagy dolgozoi tracking termekkent pozicionalva.
+
+Hasznalhato:
+
+- elektronikus ornaplo
+- operational reporting
+- strukturalt szolgalati dokumentacio
+- incidens es muszakatadas naplozas
+- jaror / checkpoint dokumentacio
+- ugyfelriport
+
+Kerulendo:
+
+- employee surveillance
+- dolgozok kovetese
+- orok monitorozasa
+- performance policing
+- hidden monitoring
+
+Jogi/adatvedelmi review szukseges, mielott production vagy kliens oldali hasznalatba kerul.
+
+### Dontesek Andrasnak
+
+- Elso verzio csak belso legyen?
+- Tablet-first vagy mobile-first?
+- Mely szerepkorok kellenek eloszor?
+- Melyik legyen a pilot szolgaltatas: objektumorzes vagy portaszolgalat?
+- QR checkpoint MVP vagy kesobb?
+- Foto csatolas MVP vagy kesobb?
+- Riportok OneDrive/SharePoint mappaba menjenek?
+- Kapjanak-e ugyfelek read-only hozzaferest?
+- Milyen jogi/adatvedelmi szabalyok vonatkoznak a staff activity logokra?
+- Mi a minimalis riportformatum, ami ugyfelnek is ertekes?
+
+Reszletes strategia: `docs/aos_guard_log.md`.
 
 ---
 
@@ -768,7 +974,7 @@ FAQPage schema csak akkor keruljon vissza, ha van lathato FAQ blokk az oldalon. 
 
 - szolgaltatas aloldal technikai vaza
 - routing, metadata, breadcrumb
-- 1 pilot oldal: objektumorzes
+- elso canonical HU service oldalak validalasa stagingen
 
 ### 3. nap
 
@@ -782,6 +988,7 @@ FAQPage schema csak akkor keruljon vissza, ha van lathato FAQ blokk az oldalon. 
 - mystery shopping oldal
 - service card belso linkek
 - specialis szolgaltatasok fooldali masodlagos blokkjanak terve
+- rendezvenybiztositas kulon service page tervezese kesobbre, canonical slug: `rendezvenybiztositas`
 
 ### 5. nap
 
@@ -881,16 +1088,18 @@ Ha ezt a roadmapet elfogadjuk, a kovetkezo commit-sorrend:
 
 1. `docs(ops): define staging workflow`
 2. `feat(services): add public service detail routes`
-3. `feat(services): add security service page`
-4. `feat(services): add reception and security tech pages`
-5. `feat(services): add service schema and breadcrumbs`
-6. `feat(contact): prefill service from url`
-7. `docs(compliance): plan public document and complaint-handling layer`
-8. `feat(home): add secondary special services block`
-9. `feat(partners): render published partners on homepage`
-10. `feat(news): add public article pages`
-11. `feat(seo): add article schema and localbusiness geo`
-12. `feat(seo): add llms files`
+3. `feat(services): add objektumorzes service page`
+4. `feat(services): add portaszolgalat and biztonsagtechnika pages`
+5. `feat(services): add monitoring and mystery shopping pages`
+6. `feat(services): add service schema and breadcrumbs`
+7. `feat(contact): prefill service from url`
+8. `docs(compliance): plan public document and complaint-handling layer`
+9. `docs(strategy): outline shadow audit and guard log future scope`
+10. `feat(home): add secondary special services block`
+11. `feat(partners): render published partners on homepage`
+12. `feat(news): add public article pages`
+13. `feat(seo): add article schema and localbusiness geo`
+14. `feat(seo): add llms files`
 
 ---
 
@@ -898,7 +1107,7 @@ Ha ezt a roadmapet elfogadjuk, a kovetkezo commit-sorrend:
 
 A legjobb sorrend:
 
-**Staging -> Szolgaltatasoldalak -> Specialis szolgaltatasok -> Referenciak -> Megfeleloseg/dokumentumtar -> SEO/GEO/AI -> Konverzio -> AOS**
+**Staging -> Szolgaltatasoldalak -> Referenciak/trust -> SEO/GEO/AI -> Konverzio -> mini-CRM/AOS -> Dokumentumfolyamatok -> Ajanlatgenerator -> Trust Center**
 
 Ez adja a legjobb aranyt:
 

@@ -27,19 +27,19 @@ Required before public indexing:
 - related services
 - visible FAQ if FAQ schema is used
 
-## Current pilot
+## Current HU service detail layer
 
-Service:
+Status: current staging HU service detail layer.
 
-Élőerős objektumőrzés
+| Order | Service | Canonical slug | Legacy slug |
+| --- | --- | --- | --- |
+| 1 | Élőerős objektumőrzés | `objektumorzes` | `security` |
+| 2 | Recepciós és portaszolgálat | `portaszolgalat` | `reception` |
+| 3 | Biztonságtechnika | `biztonsagtechnika` | `building` |
+| 4 | Távfelügyelet és vonulószolgálat | `tavfelugyelet-vonuloszolgalat` | `technical` |
+| 5 | Mystery Shopping és helyszíni audit | `mystery-shopping-helyszini-audit` | `mystery` |
 
-Canonical slug:
-
-objektumorzes
-
-Legacy slug:
-
-security
+Canonical HU slugs are used in public URLs and new CTA links. Legacy slugs are only for seed/contact/email safety and should keep returning 404 as service-detail URLs unless explicit redirects are approved later.
 
 ## First HU service page order
 
@@ -49,6 +49,7 @@ security
 4. tavfelugyelet-vonuloszolgalat
 5. mystery-shopping-helyszini-audit
 6. hard-fm or soft-fm based on business priority
+7. rendezvenybiztositas as a separate service page later
 
 ## Main vs special services
 
@@ -84,6 +85,7 @@ Objektumőrzés should focus on:
 - site-specific protocols;
 - entry and exit control;
 - visitor/vendor handling;
+- patrol;
 - incident escalation;
 - dispatch or supervisory support;
 - reporting;
@@ -97,10 +99,10 @@ Biztonságtechnika should not be a generic camera/alarm page.
 
 It should connect technical security with live guarding:
 
-- access control;
 - CCTV;
+- access control;
 - intrusion detection;
-- alarm systems;
+- alarm flow;
 - monitoring;
 - escalation;
 - integration with guarding and dispatch;
@@ -113,20 +115,39 @@ Távfelügyelet should focus on:
 - signal handling;
 - escalation protocol;
 - response chain;
-- dispatch / vonulószolgálat;
+- dispatch / vonulószolgálat based on contract and technical setup;
+- event logging;
 - documentation;
 - service continuity.
+
+Avoid guaranteed arrival-time, universal SLA, armed-response, or immediate-dispatch overclaims unless the exact contract and operational proof support them.
+
+## Reception and gatehouse page angle
+
+Portaszolgálat should focus on:
+
+- reception;
+- guest handling;
+- supplier/vendor handling;
+- key handling;
+- front desk and gatehouse process;
+- visitor registration and handover;
+- connection to guarding, access control, and reporting.
 
 ## Mystery shopping / site audit angle
 
 This page should focus on:
 
-- measurement;
-- service quality;
-- process compliance;
-- on-site observation;
-- reporting;
-- actionable improvement plan.
+- próbavásárlás;
+- szolgáltatásaudit;
+- brand audit;
+- situation shopping;
+- customer journey / ügyfélút audit;
+- próbautazás;
+- service quality measurement;
+- agreed compliance-point measurement;
+- structured reporting;
+- actionable improvement recommendations.
 
 Compliance notes:
 
@@ -135,6 +156,32 @@ Compliance notes:
 - do not promise guaranteed improvement numbers;
 - do not imply hidden employee monitoring outside a lawful approved scope;
 - do not mention recording unless explicitly scoped and lawful.
+- do not position this page as magánnyomozás;
+- do not use covert-surveillance, spying, beépülés, lebuktatás, bizonyítékgyűjtés, or titkos ellenőrzés language;
+- transport/taxi-type audits may be one use case, not the whole page;
+- keep this distinct from the future helyszíni biztonsági audit service page, which should focus on physical security risks.
+
+## Event security planning note
+
+Rendezvénybiztosítás should become a separate service detail page later, not a subsection of objektumőrzés.
+
+Recommended canonical slug:
+
+`rendezvenybiztositas`
+
+Positioning notes:
+
+- beléptetés and guest flow;
+- event venue security;
+- personal and property safety;
+- conflict prevention;
+- event security / stewarding staff;
+- VIP, backstage, or restricted-area handling;
+- parking or traffic coordination where relevant;
+- organizer contact chain;
+- incident escalation;
+- documented event handling;
+- legal and contractual scope limits.
 
 ## Hard FM angle
 
