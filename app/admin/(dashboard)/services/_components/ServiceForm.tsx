@@ -739,7 +739,7 @@ export function ServiceForm(props: Props) {
             value={state.relatedServiceSlugsRaw}
             onChange={(e) => update("relatedServiceSlugsRaw", e.target.value)}
             rows={3}
-            placeholder={"portaszolgalat\nmystery"}
+            placeholder={"portaszolgalat\nmystery-shopping-helyszini-audit"}
             style={{ ...inputStyle(), resize: "vertical", lineHeight: 1.55 }}
             disabled={pending}
           />

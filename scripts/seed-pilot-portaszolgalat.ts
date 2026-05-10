@@ -26,6 +26,10 @@
 // Idempotent: running multiple times re-applies the same canonical
 // pilot content. Other services and any admin-edited copy are
 // untouched.
+// This script intentionally does not write nameHu: the display name
+// stays the short baseline/i18n name. Long landing-page positioning
+// belongs in detail fields such as seoTitleHu, valuePropositionHu,
+// and longDescHu.
 //
 // Run after the 0011 migration has been applied; otherwise the new
 // columns won't exist in the target DB and the UPDATE will fail.
@@ -299,14 +303,13 @@ async function main() {
   console.log(banner);
   console.log(`DB target (host/db): ${redactedDbIdentity()}`);
 
-  const [existing] = await db
+  const matches = await db
     .select()
     .from(services)
     .where(or(eq(services.slug, TARGET_SLUG), eq(services.slug, LEGACY_SLUG)))
-    .orderBy(services.id)
-    .limit(1);
+    .orderBy(services.id);
 
-  if (!existing) {
+  if (matches.length === 0) {
     console.error(
       `No existing canonical row found (looked for slug "${TARGET_SLUG}" ` +
         `or "${LEGACY_SLUG}"). Run "npm run db:seed-services" first to ` +
@@ -315,6 +318,16 @@ async function main() {
     process.exit(1);
   }
 
+  if (matches.length > 1) {
+    console.error(
+      `Expected exactly one target row but found ${matches.length} ` +
+        `matching "${TARGET_SLUG}" or "${LEGACY_SLUG}". Resolve duplicate ` +
+        `service rows before running this pilot seed.`,
+    );
+    process.exit(1);
+  }
+
+  const existing = matches[0];
   const values = buildUpdateValues();
 
   console.log("");

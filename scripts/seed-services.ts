@@ -10,18 +10,17 @@
 // whole table or touching unrelated admin rows.
 //
 // IMPORTANT — this is a baseline seed script, not a detail-page seed.
-// Running it resets admin/detail enrichment on canonical rows: the
-// upsert UPDATEs every column on a slug match, including seo_title_*,
-// seo_description_*, long_desc_*, value_proposition_*, use_cases_*,
-// included_items_*, process_steps_*, trust_items_*, faq_*,
-// highlights_*, image_url and is_featured back to their canonical
-// mostly-empty baseline. Run it before pilot detail seeds, not after
-// them. If it runs after pilot seeds, detail URLs can return 404
-// because the locale readiness gate requires HU detail fields such as
-// seoTitleHu, seoDescriptionHu, longDescHu and valuePropositionHu.
-// Re-run the relevant pilot seed scripts afterward if staging detail
-// pages need to be republished after a baseline reset. Admin-created
-// rows whose slugs don't collide with the canonical 8 stay untouched.
+// Run it before pilot detail seeds, not as a casual reset afterward.
+// The update payload preserves detail enrichment fields where possible
+// by not writing seo_title_*, seo_description_*, long_desc_*,
+// value_proposition_*, use_cases_*, included_items_*, process_steps_*,
+// trust_items_*, faq_* or related_service_slugs. It still restores the
+// homepage-card baseline fields it owns (slug, icon, names,
+// short_desc_*, image_url, highlights_*, sort order and publish flags).
+// Re-run the relevant pilot seed scripts afterward if detail content
+// needs to be republished on staging after any baseline reset or manual
+// cleanup. Admin-created rows whose slugs don't collide with the
+// canonical 8 stay untouched.
 //
 // CANONICAL SLUGS — the wire format. The contact form's
 // <option value> uses these strings, and email-templates/
@@ -159,11 +158,12 @@ async function main() {
       zh: pickFromLocale("zh", i18nId),
     };
 
-    // Per spec: UPDATE all schema fields except id + createdAt.
-    // Including resets for admin-only enrichment fields (long_desc_*,
-    // highlights_*, image_url, is_featured) so re-running the seed
-    // restores a known canonical baseline. parentId stays NULL —
-    // canonical seed is flat (top-level cards only).
+    // Per spec: UPDATE the baseline homepage-card fields this script
+    // owns. Detail-page enrichment fields (long_desc_*, seo_title_*,
+    // value_proposition_*, use_cases_*, FAQ, related services, etc.)
+    // are deliberately omitted so existing pilot/admin detail content
+    // is preserved where possible. parentId stays NULL — canonical seed
+    // is flat (top-level cards only).
     const values = {
       slug: meta.slug,
       icon: meta.icon,
@@ -177,10 +177,6 @@ async function main() {
       shortDescEn: localized.en.shortDesc,
       shortDescDe: localized.de.shortDesc,
       shortDescZh: localized.zh.shortDesc,
-      longDescHu: null,
-      longDescEn: null,
-      longDescDe: null,
-      longDescZh: null,
       highlightsHu: [] as string[],
       highlightsEn: [] as string[],
       highlightsDe: [] as string[],
