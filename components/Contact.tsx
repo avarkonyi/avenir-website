@@ -230,6 +230,7 @@ const SERVICE_SLUG_ALIASES: Record<string, string> = {
   technical: "tavfelugyelet-vonuloszolgalat",
   mystery: "mystery-shopping-helyszini-audit",
   cleaning: "rendezvenybiztositas",
+  hardfm: "hard-fm",
 };
 
 const SERVICE_PREFILL_FALLBACKS: Record<string, ServiceOption> = {
@@ -252,6 +253,10 @@ const SERVICE_PREFILL_FALLBACKS: Record<string, ServiceOption> = {
   "mystery-shopping-helyszini-audit": {
     slug: "mystery-shopping-helyszini-audit",
     label: "Mystery Shopping és helyszíni audit",
+  },
+  "hard-fm": {
+    slug: "hard-fm",
+    label: "Hard FM",
   },
   rendezvenybiztositas: {
     slug: "rendezvenybiztositas",
