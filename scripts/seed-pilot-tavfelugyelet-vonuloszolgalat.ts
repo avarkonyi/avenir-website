@@ -235,6 +235,7 @@ const PILOT_HU = {
     "objektumorzes",
     "portaszolgalat",
     "mystery-shopping-helyszini-audit",
+    "rendezvenybiztositas",
   ],
 };
 

@@ -262,6 +262,7 @@ const PILOT_HU = {
     "objektumorzes",
     "biztonsagtechnika",
     "tavfelugyelet-vonuloszolgalat",
+    "rendezvenybiztositas",
   ],
 };
 
