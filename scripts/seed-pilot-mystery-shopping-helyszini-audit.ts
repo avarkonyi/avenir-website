@@ -263,6 +263,7 @@ const PILOT_HU = {
     "biztonsagtechnika",
     "tavfelugyelet-vonuloszolgalat",
     "rendezvenybiztositas",
+    "hard-fm",
   ],
 };
 

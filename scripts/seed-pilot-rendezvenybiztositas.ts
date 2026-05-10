@@ -234,6 +234,7 @@ const PILOT_HU = {
     "biztonsagtechnika",
     "tavfelugyelet-vonuloszolgalat",
     "mystery-shopping-helyszini-audit",
+    "hard-fm",
   ],
 };
 
