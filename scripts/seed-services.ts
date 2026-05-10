@@ -58,7 +58,7 @@ type CanonicalEntry = {
 //   rendezvenybiztositas -> Rendezvénybiztosítás
 //   biztonsagtechnika -> Biztonságtechnika
 //   tavfelugyelet-vonuloszolgalat -> Távfelügyelet és vonulószolgálat
-//   green         -> Soft FM
+//   soft-fm       -> Soft FM
 //   hard-fm       -> Hard FM
 //
 // P5 Phase 1: legacy generic slugs are being replaced one-by-one with
@@ -70,6 +70,7 @@ type CanonicalEntry = {
 //   mystery   -> mystery-shopping-helyszini-audit
 //   cleaning  -> rendezvenybiztositas
 //   hardfm    -> hard-fm
+//   green     -> soft-fm
 //
 // `technical` is the legacy/current baseline slug for Távfelügyelet
 // és vonulószolgálat. It must not be mapped to Biztonságtechnika:
@@ -93,13 +94,20 @@ type CanonicalEntry = {
 // Hard FM is separate from Soft FM: `green` belongs to Soft FM and
 // must not be mapped to Hard FM.
 //
+// `green` is the legacy slug for Soft FM. The canonical public
+// service-detail slug is `soft-fm`, while i18nId remains `green`
+// because the translation/service label source still uses that key.
+// Soft FM is separate from Hard FM (`hardfm`) and Rendezvenybiztositas
+// (`cleaning`), which prevents future baseline seed runs from
+// recreating a duplicate legacy `green` row after the pilot rename.
+//
 // Legacy keys stay accepted by the contact-form/email pipeline (see
 // SERVICE_LABELS_HU in lib/email-templates/notification.ts) so any
 // stale references continue to render correctly.
 //
 // `i18nId` is the lookup key into lib/i18n/*.ts services arrays. It
 // keeps the legacy ids ("security", "reception", "building",
-// "technical", "mystery", "cleaning", "hardfm") so the i18n source
+// "technical", "mystery", "cleaning", "hardfm", "green") so the i18n source
 // files don't need a parallel rename in this iteration; only the DB slug changes.
 // The legacy lookup below prevents future baseline seed runs from
 // recreating duplicate legacy rows after a pilot seed renames them
@@ -126,7 +134,7 @@ const CANONICAL_SEED: ReadonlyArray<CanonicalEntry> = [
     sortOrder: 5,
     i18nId: "technical",
   },
-  { slug: "green",         icon: "leaf",    sortOrder: 6, i18nId: "green"     },
+  { slug: "soft-fm",       icon: "leaf",    sortOrder: 6, i18nId: "green"     },
   { slug: "hard-fm",       icon: "gear",    sortOrder: 7, i18nId: "hardfm"    },
 ];
 
@@ -141,6 +149,7 @@ const LEGACY_SLUG_BY_CANONICAL: Partial<Record<string, string>> = {
   "mystery-shopping-helyszini-audit": "mystery",
   rendezvenybiztositas: "cleaning",
   "hard-fm": "hardfm",
+  "soft-fm": "green",
 };
 
 // Localized strings for one service slug. Each i18n file has

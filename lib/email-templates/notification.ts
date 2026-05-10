@@ -21,6 +21,7 @@ const SERVICE_LABELS_HU: Record<string, string> = {
   reception: "Recepciós és portaszolgálat",
   portaszolgalat: "Recepciós és portaszolgálat",
   green: "Soft FM",
+  "soft-fm": "Soft FM",
   technical: "Távfelügyelet és vonulószolgálat",
   "tavfelugyelet-vonuloszolgalat": "Távfelügyelet és vonulószolgálat",
   mystery: "Mystery Shopping és helyszíni audit",
