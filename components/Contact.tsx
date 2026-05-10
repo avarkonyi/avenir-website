@@ -229,6 +229,7 @@ const SERVICE_SLUG_ALIASES: Record<string, string> = {
   building: "biztonsagtechnika",
   technical: "tavfelugyelet-vonuloszolgalat",
   mystery: "mystery-shopping-helyszini-audit",
+  cleaning: "rendezvenybiztositas",
 };
 
 const SERVICE_PREFILL_FALLBACKS: Record<string, ServiceOption> = {
@@ -251,6 +252,10 @@ const SERVICE_PREFILL_FALLBACKS: Record<string, ServiceOption> = {
   "mystery-shopping-helyszini-audit": {
     slug: "mystery-shopping-helyszini-audit",
     label: "Mystery Shopping és helyszíni audit",
+  },
+  rendezvenybiztositas: {
+    slug: "rendezvenybiztositas",
+    label: "Rendezvénybiztosítás",
   },
 };
 

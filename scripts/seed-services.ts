@@ -55,7 +55,7 @@ type CanonicalEntry = {
 //   objektumorzes -> Élőerős objektumőrzés
 //   portaszolgalat -> Recepciós és portaszolgálat
 //   mystery-shopping-helyszini-audit -> Mystery Shopping és helyszíni audit
-//   cleaning      -> Rendezvénybiztosítás
+//   rendezvenybiztositas -> Rendezvénybiztosítás
 //   biztonsagtechnika -> Biztonságtechnika
 //   tavfelugyelet-vonuloszolgalat -> Távfelügyelet és vonulószolgálat
 //   green         -> Soft FM
@@ -68,6 +68,7 @@ type CanonicalEntry = {
 //   building  -> biztonsagtechnika
 //   technical -> tavfelugyelet-vonuloszolgalat
 //   mystery   -> mystery-shopping-helyszini-audit
+//   cleaning  -> rendezvenybiztositas
 //
 // `technical` is the legacy/current baseline slug for Távfelügyelet
 // és vonulószolgálat. It must not be mapped to Biztonságtechnika:
@@ -79,15 +80,21 @@ type CanonicalEntry = {
 // `mystery-shopping-helyszini-audit`, while i18nId remains `mystery`
 // because the translation/service label source still uses that key.
 //
+// `cleaning` is the legacy slug for Rendezvénybiztosítás / Event
+// Security. The canonical public service-detail slug is
+// `rendezvenybiztositas`, while i18nId remains `cleaning` because the
+// translation/service label source still uses that key. `green` is
+// separate and belongs to Soft FM, not Rendezvénybiztosítás.
+//
 // Legacy keys stay accepted by the contact-form/email pipeline (see
 // SERVICE_LABELS_HU in lib/email-templates/notification.ts) so any
 // stale references continue to render correctly.
 //
 // `i18nId` is the lookup key into lib/i18n/*.ts services arrays. It
 // keeps the legacy ids ("security", "reception", "building",
-// "technical", "mystery") so the i18n source files don't need a
-// parallel rename in this iteration; only the DB slug changes. The
-// legacy lookup below prevents future baseline seed runs from
+// "technical", "mystery", "cleaning") so the i18n source files don't
+// need a parallel rename in this iteration; only the DB slug changes.
+// The legacy lookup below prevents future baseline seed runs from
 // recreating duplicate legacy rows after a pilot seed renames them
 // in-place.
 const CANONICAL_SEED: ReadonlyArray<CanonicalEntry> = [
@@ -99,7 +106,12 @@ const CANONICAL_SEED: ReadonlyArray<CanonicalEntry> = [
     sortOrder: 2,
     i18nId: "mystery",
   },
-  { slug: "cleaning",      icon: "sparkle", sortOrder: 3, i18nId: "cleaning"  },
+  {
+    slug: "rendezvenybiztositas",
+    icon: "sparkle",
+    sortOrder: 3,
+    i18nId: "cleaning",
+  },
   { slug: "biztonsagtechnika", icon: "camera", sortOrder: 4, i18nId: "building" },
   {
     slug: "tavfelugyelet-vonuloszolgalat",
@@ -120,6 +132,7 @@ const LEGACY_SLUG_BY_CANONICAL: Partial<Record<string, string>> = {
   biztonsagtechnika: "building",
   "tavfelugyelet-vonuloszolgalat": "technical",
   "mystery-shopping-helyszini-audit": "mystery",
+  rendezvenybiztositas: "cleaning",
 };
 
 // Localized strings for one service slug. Each i18n file has
