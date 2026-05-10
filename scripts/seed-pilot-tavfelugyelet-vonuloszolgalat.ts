@@ -31,8 +31,14 @@
 //
 // Run after the 0011 migration has been applied; otherwise the new
 // columns won't exist in the target DB and the UPDATE will fail.
+//
+// Safety: pilot seeds are staging-only. The runtime DB target guard
+// verifies DATABASE_URL before any SELECT/UPDATE, including direct
+// `npx tsx scripts/seed-pilot-*.ts` execution, and never prints the
+// full connection string.
 
 import "./load-env";
+import { ensureStagingDbTarget } from "./ensure-staging-db";
 import { eq, or } from "drizzle-orm";
 import { db, services } from "../lib/db";
 
@@ -305,6 +311,10 @@ async function main() {
     ? "--- seed-pilot-tavfelugyelet-vonuloszolgalat DRY-RUN start ---"
     : "--- seed-pilot-tavfelugyelet-vonuloszolgalat start ---";
   console.log(banner);
+  ensureStagingDbTarget({
+    scriptName: "seed-pilot-tavfelugyelet-vonuloszolgalat",
+    isDryRun,
+  });
   console.log(`DB target (host/db): ${redactedDbIdentity()}`);
 
   const matches = await db
