@@ -38,6 +38,7 @@ Status: current staging HU service detail layer.
 | 3 | Biztonságtechnika | `biztonsagtechnika` | `building` |
 | 4 | Távfelügyelet és vonulószolgálat | `tavfelugyelet-vonuloszolgalat` | `technical` |
 | 5 | Mystery Shopping és helyszíni audit | `mystery-shopping-helyszini-audit` | `mystery` |
+| 6 | Rendezvénybiztosítás | `rendezvenybiztositas` | `cleaning` |
 
 Canonical HU slugs are used in public URLs and new CTA links. Legacy slugs are only for seed/contact/email safety and should keep returning 404 as service-detail URLs unless explicit redirects are approved later.
 
@@ -48,8 +49,8 @@ Canonical HU slugs are used in public URLs and new CTA links. Legacy slugs are o
 3. biztonsagtechnika
 4. tavfelugyelet-vonuloszolgalat
 5. mystery-shopping-helyszini-audit
-6. hard-fm or soft-fm based on business priority
-7. rendezvenybiztositas as a separate service page later
+6. rendezvenybiztositas
+7. hard-fm or soft-fm based on business priority
 
 ## Main vs special services
 
@@ -163,11 +164,15 @@ Compliance notes:
 
 ## Event security planning note
 
-Rendezvénybiztosítás should become a separate service detail page later, not a subsection of objektumőrzés.
+Rendezvénybiztosítás is part of the current staging HU service detail layer. It remains a separate service detail page, not a subsection of objektumőrzés.
 
-Recommended canonical slug:
+Canonical slug:
 
 `rendezvenybiztositas`
+
+Legacy slug:
+
+`cleaning`
 
 Positioning notes:
 

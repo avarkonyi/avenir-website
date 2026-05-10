@@ -58,6 +58,7 @@ Specialis szolgaltatasok, megfelelosegi dokumentumretegek, Shadow Audit es elekt
   - `/hu/szolgaltatasok/biztonsagtechnika`
   - `/hu/szolgaltatasok/tavfelugyelet-vonuloszolgalat`
   - `/hu/szolgaltatasok/mystery-shopping-helyszini-audit`
+  - `/hu/szolgaltatasok/rendezvenybiztositas`
 - News: tobbnyelvu publikacio, kepfeltoltes, publikus megjelenites
 - Mini-CRM V1 a Messages modulban:
   - lead statusz
@@ -179,13 +180,14 @@ Nem kell rogton 8-9 szolgaltatas x 4 nyelv. Eloszor magyar MVP:
 3. `Biztonsagtechnika`
 4. `Tavfelugyelet es vonuloszolgalat`
 5. `Mystery Shopping es helyszini audit`
-6. `Hard FM` vagy `Soft FM` - uzleti prioritas alapjan
+6. `Rendezvenybiztositas`
+7. `Hard FM` vagy `Soft FM` - uzleti prioritas alapjan
 
 ### Jelenlegi staging allapot
 
 Status: current staging HU service detail layer.
 
-Az elso ot HU oldal stagingen kesz:
+Az elso hat HU oldal stagingen kesz:
 
 | Szolgaltatas | Canonical slug | Legacy slug |
 | --- | --- | --- |
@@ -194,6 +196,7 @@ Az elso ot HU oldal stagingen kesz:
 | Biztonsagtechnika | `biztonsagtechnika` | `building` |
 | Tavfelugyelet es vonuloszolgalat | `tavfelugyelet-vonuloszolgalat` | `technical` |
 | Mystery Shopping es helyszini audit | `mystery-shopping-helyszini-audit` | `mystery` |
+| Rendezvenybiztositas | `rendezvenybiztositas` | `cleaning` |
 
 Szabaly:
 
@@ -211,6 +214,7 @@ Szabaly:
 - `/hu/szolgaltatasok/biztonsagtechnika`
 - `/hu/szolgaltatasok/tavfelugyelet-vonuloszolgalat`
 - `/hu/szolgaltatasok/mystery-shopping-helyszini-audit`
+- `/hu/szolgaltatasok/rendezvenybiztositas`
 - `/hu/szolgaltatasok/hard-fm`
 
 ### Oldalszerkezet
@@ -241,12 +245,14 @@ Minden szolgaltatas-oldal:
   - `?service=biztonsagtechnika`
   - `?service=tavfelugyelet-vonuloszolgalat`
   - `?service=mystery-shopping-helyszini-audit`
+  - `?service=rendezvenybiztositas`
 - legacy query aliasok hatterkompatibilitasra:
   - `security`
   - `reception`
   - `building`
   - `technical`
   - `mystery`
+  - `cleaning`
 
 ### Dontesi pont
 
@@ -699,7 +705,8 @@ Schema-t ne vigyuk tulzasba, amig a publikus oldalak es dokumentumok nem letezne
   - `/hu?service=biztonsagtechnika#contact`
   - `/hu?service=tavfelugyelet-vonuloszolgalat#contact`
   - `/hu?service=mystery-shopping-helyszini-audit#contact`
-  - legacy query aliasok tovabbra is biztonsagosan kezelhetok: `security`, `reception`, `building`, `technical`, `mystery`
+  - `/hu?service=rendezvenybiztositas#contact`
+  - legacy query aliasok tovabbra is biztonsagosan kezelhetok: `security`, `reception`, `building`, `technical`, `mystery`, `cleaning`
 - kontakt form mellett lathato mikrocopy:
   - "Valasz 2 munkanapon belul"
   - "ISO 9001 szerint dokumentalt folyamat"
@@ -988,7 +995,7 @@ FAQPage schema csak akkor keruljon vissza, ha van lathato FAQ blokk az oldalon. 
 - mystery shopping oldal
 - service card belso linkek
 - specialis szolgaltatasok fooldali masodlagos blokkjanak terve
-- rendezvenybiztositas kulon service page tervezese kesobbre, canonical slug: `rendezvenybiztositas`
+- rendezvenybiztositas staging service page QA es kapcsolodo service linkek ellenorzese
 
 ### 5. nap
 

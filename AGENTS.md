@@ -69,6 +69,7 @@ Status: current staging HU service detail layer.
 | Biztonságtechnika | `biztonsagtechnika` | `building` |
 | Távfelügyelet és vonulószolgálat | `tavfelugyelet-vonuloszolgalat` | `technical` |
 | Mystery Shopping és helyszíni audit | `mystery-shopping-helyszini-audit` | `mystery` |
+| Rendezvénybiztosítás | `rendezvenybiztositas` | `cleaning` |
 
 Service detail pages are added one by one.
 
@@ -114,6 +115,8 @@ Correct:
 
 /hu?service=mystery-shopping-helyszini-audit#contact
 
+/hu?service=rendezvenybiztositas#contact
+
 Incorrect:
 
 /hu#contact?service=objektumorzes
@@ -127,6 +130,7 @@ Legacy query aliases currently expected for backwards compatibility:
 - `building` -> `biztonsagtechnika`
 - `technical` -> `tavfelugyelet-vonuloszolgalat`
 - `mystery` -> `mystery-shopping-helyszini-audit`
+- `cleaning` -> `rendezvenybiztositas`
 
 ## Compliance and document layer rules
 
