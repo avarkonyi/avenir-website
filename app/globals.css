@@ -102,6 +102,76 @@ a {
   color: rgba(255, 255, 255, 0.65);
 }
 
+/* Service detail page responsive affordances */
+.service-detail-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.service-detail-cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  max-width: 100%;
+  text-align: center;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.service-detail-related-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: 20px;
+}
+
+.service-detail-related-card {
+  display: block;
+  min-width: 0;
+  height: 100%;
+}
+
+.service-detail-related-head {
+  min-width: 0;
+}
+
+.service-detail-related-icon {
+  flex: 0 0 auto;
+}
+
+.service-detail-related-title,
+.service-detail-related-desc {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+.service-detail-related-title {
+  line-height: 1.2;
+}
+
+@media (max-width: 640px) {
+  .service-detail-cta-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .service-detail-cta-button {
+    width: 100%;
+    min-height: 48px;
+  }
+
+  .service-detail-related-grid {
+    gap: 14px;
+  }
+
+  .service-detail-related-head {
+    align-items: flex-start;
+  }
+}
+
 /* News grid — hover via CSS */
 .news-card {
   background: #fff;

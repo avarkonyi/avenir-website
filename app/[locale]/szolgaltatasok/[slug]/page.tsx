@@ -263,9 +263,10 @@ export default async function ServiceDetailPage({
                 {detail.valueProposition}
               </p>
             )}
-            <div style={{ marginTop: 28, display: "flex", gap: 12 }}>
+            <div className="service-detail-cta-row" style={{ marginTop: 28 }}>
               <Link
                 href={ctaUrl}
+                className="service-detail-cta-button"
                 style={{
                   background: "#D1172E",
                   color: "#fff",
@@ -277,7 +278,6 @@ export default async function ServiceDetailPage({
                   padding: "12px 24px",
                   borderRadius: 2,
                   textDecoration: "none",
-                  display: "inline-block",
                 }}
               >
                 {t.nav.cta}
@@ -480,19 +480,13 @@ export default async function ServiceDetailPage({
         {/* Related services */}
         {related.length > 0 && (
           <Section eyebrow="Még az Avenirtől" title="Kapcsolódó szolgáltatások">
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-                gap: 20,
-              }}
-            >
+            <div className="service-detail-related-grid">
               {related.map((r) => (
                 <Link
                   key={r.slug}
                   href={`/${locale}/${URL_SEGMENT}/${r.slug}`}
+                  className="service-detail-related-card"
                   style={{
-                    display: "block",
                     border: "1px solid #E2E8F0",
                     borderRadius: 4,
                     padding: "20px 22px",
@@ -503,6 +497,7 @@ export default async function ServiceDetailPage({
                   }}
                 >
                   <div
+                    className="service-detail-related-head"
                     style={{
                       display: "flex",
                       alignItems: "center",
@@ -510,8 +505,11 @@ export default async function ServiceDetailPage({
                       marginBottom: 8,
                     }}
                   >
-                    <Icon name={safeIconName(r.icon)} size={22} />
+                    <span className="service-detail-related-icon" aria-hidden>
+                      <Icon name={safeIconName(r.icon)} size={22} />
+                    </span>
                     <h3
+                      className="service-detail-related-title"
                       style={{
                         margin: 0,
                         fontFamily: "var(--font-head)",
@@ -524,6 +522,7 @@ export default async function ServiceDetailPage({
                   </div>
                   {r.shortDesc && (
                     <p
+                      className="service-detail-related-desc"
                       style={{
                         margin: 0,
                         color: "rgba(11,30,62,0.7)",
@@ -583,6 +582,7 @@ export default async function ServiceDetailPage({
             )}
             <Link
               href={ctaUrl}
+              className="service-detail-cta-button"
               style={{
                 background: "#D1172E",
                 color: "#fff",
@@ -594,7 +594,6 @@ export default async function ServiceDetailPage({
                 padding: "14px 28px",
                 borderRadius: 2,
                 textDecoration: "none",
-                display: "inline-block",
               }}
             >
               {t.nav.cta}
