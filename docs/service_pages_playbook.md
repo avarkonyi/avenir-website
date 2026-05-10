@@ -40,6 +40,7 @@ Status: current staging HU service detail layer.
 | 5 | Mystery Shopping és helyszíni audit | `mystery-shopping-helyszini-audit` | `mystery` |
 | 6 | Rendezvénybiztosítás | `rendezvenybiztositas` | `cleaning` |
 | 7 | Hard FM | `hard-fm` | `hardfm` |
+| 8 | Soft FM | `soft-fm` | `green` |
 
 Canonical HU slugs are used in public URLs and new CTA links. Legacy slugs are only for seed/contact/email safety and should keep returning 404 as service-detail URLs unless explicit redirects are approved later.
 
@@ -52,7 +53,11 @@ Canonical HU slugs are used in public URLs and new CTA links. Legacy slugs are o
 5. mystery-shopping-helyszini-audit
 6. rendezvenybiztositas
 7. hard-fm
-8. soft-fm based on business priority
+8. soft-fm
+
+The first HU service-page MVP is complete on staging when these eight canonical
+HU pages are seeded, public, sitemap-visible, and their legacy detail URLs
+return 404.
 
 ## Main vs special services
 
@@ -203,6 +208,12 @@ Hard FM should focus on:
 - preventive operation.
 
 ## Soft FM angle
+
+Soft FM is part of the current staging HU service detail layer.
+
+Canonical slug: `soft-fm`
+
+Legacy slug: `green`
 
 Soft FM should focus on:
 

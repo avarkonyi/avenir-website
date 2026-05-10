@@ -71,6 +71,7 @@ Status: current staging HU service detail layer.
 | Mystery Shopping és helyszíni audit | `mystery-shopping-helyszini-audit` | `mystery` |
 | Rendezvénybiztosítás | `rendezvenybiztositas` | `cleaning` |
 | Hard FM | `hard-fm` | `hardfm` |
+| Soft FM | `soft-fm` | `green` |
 
 Service detail pages are added one by one.
 
@@ -120,6 +121,8 @@ Correct:
 
 /hu?service=hard-fm#contact
 
+/hu?service=soft-fm#contact
+
 Incorrect:
 
 /hu#contact?service=objektumorzes
@@ -135,6 +138,7 @@ Legacy query aliases currently expected for backwards compatibility:
 - `mystery` -> `mystery-shopping-helyszini-audit`
 - `cleaning` -> `rendezvenybiztositas`
 - `hardfm` -> `hard-fm`
+- `green` -> `soft-fm`
 
 ## Compliance and document layer rules
 

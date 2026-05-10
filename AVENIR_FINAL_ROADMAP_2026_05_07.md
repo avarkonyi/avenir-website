@@ -60,6 +60,7 @@ Specialis szolgaltatasok, megfelelosegi dokumentumretegek, Shadow Audit es elekt
   - `/hu/szolgaltatasok/mystery-shopping-helyszini-audit`
   - `/hu/szolgaltatasok/rendezvenybiztositas`
   - `/hu/szolgaltatasok/hard-fm`
+  - `/hu/szolgaltatasok/soft-fm`
 - News: tobbnyelvu publikacio, kepfeltoltes, publikus megjelenites
 - Mini-CRM V1 a Messages modulban:
   - lead statusz
@@ -183,13 +184,15 @@ Nem kell rogton 8-9 szolgaltatas x 4 nyelv. Eloszor magyar MVP:
 5. `Mystery Shopping es helyszini audit`
 6. `Rendezvenybiztositas`
 7. `Hard FM`
-8. `Soft FM` - kovetkezo FM prioritas
+8. `Soft FM`
 
 ### Jelenlegi staging allapot
 
 Status: current staging HU service detail layer.
 
-Az elso het HU oldal stagingen kesz:
+Az elso nyolc HU oldal stagingen kesz. Ezzel az elso HU service-page MVP
+stagingen teljes, production kiadas csak kulon release-tervvel es tartalmi
+jovahagyassal tortenhet.
 
 | Szolgaltatas | Canonical slug | Legacy slug |
 | --- | --- | --- |
@@ -200,6 +203,7 @@ Az elso het HU oldal stagingen kesz:
 | Mystery Shopping es helyszini audit | `mystery-shopping-helyszini-audit` | `mystery` |
 | Rendezvenybiztositas | `rendezvenybiztositas` | `cleaning` |
 | Hard FM | `hard-fm` | `hardfm` |
+| Soft FM | `soft-fm` | `green` |
 
 Szabaly:
 
@@ -251,6 +255,7 @@ Minden szolgaltatas-oldal:
   - `?service=mystery-shopping-helyszini-audit`
   - `?service=rendezvenybiztositas`
   - `?service=hard-fm`
+  - `?service=soft-fm`
 - legacy query aliasok hatterkompatibilitasra:
   - `security`
   - `reception`
@@ -259,6 +264,7 @@ Minden szolgaltatas-oldal:
   - `mystery`
   - `cleaning`
   - `hardfm`
+  - `green`
 
 ### Dontesi pont
 
@@ -713,7 +719,8 @@ Schema-t ne vigyuk tulzasba, amig a publikus oldalak es dokumentumok nem letezne
   - `/hu?service=mystery-shopping-helyszini-audit#contact`
   - `/hu?service=rendezvenybiztositas#contact`
   - `/hu?service=hard-fm#contact`
-  - legacy query aliasok tovabbra is biztonsagosan kezelhetok: `security`, `reception`, `building`, `technical`, `mystery`, `cleaning`, `hardfm`
+  - `/hu?service=soft-fm#contact`
+  - legacy query aliasok tovabbra is biztonsagosan kezelhetok: `security`, `reception`, `building`, `technical`, `mystery`, `cleaning`, `hardfm`, `green`
 - kontakt form mellett lathato mikrocopy:
   - "Valasz 2 munkanapon belul"
   - "ISO 9001 szerint dokumentalt folyamat"
