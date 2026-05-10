@@ -51,6 +51,7 @@ The current ready HU service detail pages on staging are:
 | Távfelügyelet és vonulószolgálat | `/hu/szolgaltatasok/tavfelugyelet-vonuloszolgalat` | `technical` |
 | Mystery Shopping és helyszíni audit | `/hu/szolgaltatasok/mystery-shopping-helyszini-audit` | `mystery` |
 | Rendezvénybiztosítás | `/hu/szolgaltatasok/rendezvenybiztositas` | `cleaning` |
+| Hard FM | `/hu/szolgaltatasok/hard-fm` | `hardfm` |
 
 Expected legacy detail URLs should return 404:
 
@@ -60,6 +61,7 @@ Expected legacy detail URLs should return 404:
 - `/hu/szolgaltatasok/technical`
 - `/hu/szolgaltatasok/mystery`
 - `/hu/szolgaltatasok/cleaning`
+- `/hu/szolgaltatasok/hardfm`
 
 Expected EN/DE/ZH service detail URLs should remain 404 until their own localized required content exists.
 
@@ -113,10 +115,10 @@ Do not rely on local `.next` sitemap artifacts for final SEO QA. They may be sta
 
 Before merging service-detail work, verify on the Vercel Preview URL:
 
-- the six canonical HU service detail URLs return 200;
-- the six legacy detail URLs listed above return 404;
-- EN/DE/ZH service detail URLs for the six services return 404;
-- `/sitemap.xml` includes exactly the six ready HU service detail URLs;
+- the seven canonical HU service detail URLs return 200;
+- the seven legacy detail URLs listed above return 404;
+- EN/DE/ZH service detail URLs for the seven services return 404;
+- `/sitemap.xml` includes exactly the seven ready HU service detail URLs;
 - `/sitemap.xml` does not include legacy service detail URLs;
 - `/sitemap.xml` does not include EN/DE/ZH service detail URLs;
 - canonical URLs point to the ready HU URLs;
@@ -137,6 +139,7 @@ Canonical examples:
 - `/hu?service=tavfelugyelet-vonuloszolgalat#contact`
 - `/hu?service=mystery-shopping-helyszini-audit#contact`
 - `/hu?service=rendezvenybiztositas#contact`
+- `/hu?service=hard-fm#contact`
 
 Legacy alias examples:
 
@@ -146,5 +149,6 @@ Legacy alias examples:
 - `/hu?service=technical#contact`
 - `/hu?service=mystery#contact`
 - `/hu?service=cleaning#contact`
+- `/hu?service=hardfm#contact`
 
 Unknown service query values should be ignored safely.

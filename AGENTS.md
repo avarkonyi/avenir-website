@@ -70,6 +70,7 @@ Status: current staging HU service detail layer.
 | Távfelügyelet és vonulószolgálat | `tavfelugyelet-vonuloszolgalat` | `technical` |
 | Mystery Shopping és helyszíni audit | `mystery-shopping-helyszini-audit` | `mystery` |
 | Rendezvénybiztosítás | `rendezvenybiztositas` | `cleaning` |
+| Hard FM | `hard-fm` | `hardfm` |
 
 Service detail pages are added one by one.
 
@@ -117,6 +118,8 @@ Correct:
 
 /hu?service=rendezvenybiztositas#contact
 
+/hu?service=hard-fm#contact
+
 Incorrect:
 
 /hu#contact?service=objektumorzes
@@ -131,6 +134,7 @@ Legacy query aliases currently expected for backwards compatibility:
 - `technical` -> `tavfelugyelet-vonuloszolgalat`
 - `mystery` -> `mystery-shopping-helyszini-audit`
 - `cleaning` -> `rendezvenybiztositas`
+- `hardfm` -> `hard-fm`
 
 ## Compliance and document layer rules
 

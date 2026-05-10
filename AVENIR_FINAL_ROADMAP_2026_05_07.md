@@ -59,6 +59,7 @@ Specialis szolgaltatasok, megfelelosegi dokumentumretegek, Shadow Audit es elekt
   - `/hu/szolgaltatasok/tavfelugyelet-vonuloszolgalat`
   - `/hu/szolgaltatasok/mystery-shopping-helyszini-audit`
   - `/hu/szolgaltatasok/rendezvenybiztositas`
+  - `/hu/szolgaltatasok/hard-fm`
 - News: tobbnyelvu publikacio, kepfeltoltes, publikus megjelenites
 - Mini-CRM V1 a Messages modulban:
   - lead statusz
@@ -181,13 +182,14 @@ Nem kell rogton 8-9 szolgaltatas x 4 nyelv. Eloszor magyar MVP:
 4. `Tavfelugyelet es vonuloszolgalat`
 5. `Mystery Shopping es helyszini audit`
 6. `Rendezvenybiztositas`
-7. `Hard FM` vagy `Soft FM` - uzleti prioritas alapjan
+7. `Hard FM`
+8. `Soft FM` - kovetkezo FM prioritas
 
 ### Jelenlegi staging allapot
 
 Status: current staging HU service detail layer.
 
-Az elso hat HU oldal stagingen kesz:
+Az elso het HU oldal stagingen kesz:
 
 | Szolgaltatas | Canonical slug | Legacy slug |
 | --- | --- | --- |
@@ -197,6 +199,7 @@ Az elso hat HU oldal stagingen kesz:
 | Tavfelugyelet es vonuloszolgalat | `tavfelugyelet-vonuloszolgalat` | `technical` |
 | Mystery Shopping es helyszini audit | `mystery-shopping-helyszini-audit` | `mystery` |
 | Rendezvenybiztositas | `rendezvenybiztositas` | `cleaning` |
+| Hard FM | `hard-fm` | `hardfm` |
 
 Szabaly:
 
@@ -216,6 +219,7 @@ Szabaly:
 - `/hu/szolgaltatasok/mystery-shopping-helyszini-audit`
 - `/hu/szolgaltatasok/rendezvenybiztositas`
 - `/hu/szolgaltatasok/hard-fm`
+- `/hu/szolgaltatasok/soft-fm`
 
 ### Oldalszerkezet
 
@@ -246,6 +250,7 @@ Minden szolgaltatas-oldal:
   - `?service=tavfelugyelet-vonuloszolgalat`
   - `?service=mystery-shopping-helyszini-audit`
   - `?service=rendezvenybiztositas`
+  - `?service=hard-fm`
 - legacy query aliasok hatterkompatibilitasra:
   - `security`
   - `reception`
@@ -253,6 +258,7 @@ Minden szolgaltatas-oldal:
   - `technical`
   - `mystery`
   - `cleaning`
+  - `hardfm`
 
 ### Dontesi pont
 
@@ -706,7 +712,8 @@ Schema-t ne vigyuk tulzasba, amig a publikus oldalak es dokumentumok nem letezne
   - `/hu?service=tavfelugyelet-vonuloszolgalat#contact`
   - `/hu?service=mystery-shopping-helyszini-audit#contact`
   - `/hu?service=rendezvenybiztositas#contact`
-  - legacy query aliasok tovabbra is biztonsagosan kezelhetok: `security`, `reception`, `building`, `technical`, `mystery`, `cleaning`
+  - `/hu?service=hard-fm#contact`
+  - legacy query aliasok tovabbra is biztonsagosan kezelhetok: `security`, `reception`, `building`, `technical`, `mystery`, `cleaning`, `hardfm`
 - kontakt form mellett lathato mikrocopy:
   - "Valasz 2 munkanapon belul"
   - "ISO 9001 szerint dokumentalt folyamat"
