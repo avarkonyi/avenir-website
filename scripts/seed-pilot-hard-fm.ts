@@ -228,8 +228,8 @@ const PILOT_HU = {
   // Canonical Hungarian public service slugs. Missing or unpublished
   // related services are filtered safely by the public query layer.
   // Do not replace hard-fm with hardfm in related arrays: hardfm is
-  // only the legacy slug for this service. soft-fm may be added later
-  // once Soft FM is canonicalized and public-ready.
+  // only the legacy slug for this service. soft-fm is the canonical
+  // Soft FM slug; green is only its legacy slug.
   relatedSlugs: [
     "biztonsagtechnika",
     "portaszolgalat",
@@ -237,6 +237,7 @@ const PILOT_HU = {
     "tavfelugyelet-vonuloszolgalat",
     "rendezvenybiztositas",
     "mystery-shopping-helyszini-audit",
+    "soft-fm",
   ],
 };
 

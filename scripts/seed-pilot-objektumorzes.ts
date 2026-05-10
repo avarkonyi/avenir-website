@@ -226,6 +226,7 @@ const PILOT_HU = {
     "mystery-shopping-helyszini-audit",
     "rendezvenybiztositas",
     "hard-fm",
+    "soft-fm",
   ],
 };
 

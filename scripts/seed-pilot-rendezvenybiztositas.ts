@@ -235,6 +235,7 @@ const PILOT_HU = {
     "tavfelugyelet-vonuloszolgalat",
     "mystery-shopping-helyszini-audit",
     "hard-fm",
+    "soft-fm",
   ],
 };
 

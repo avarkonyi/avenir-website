@@ -264,6 +264,7 @@ const PILOT_HU = {
     "tavfelugyelet-vonuloszolgalat",
     "rendezvenybiztositas",
     "hard-fm",
+    "soft-fm",
   ],
 };
 
