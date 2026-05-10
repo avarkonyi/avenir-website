@@ -116,6 +116,30 @@ export type UpdateServiceResult =
   | { ok: false; error: string };
 
 const ICON_NAME_SET = new Set<string>(ICON_NAMES);
+const PUBLIC_LOCALES = ["hu", "en", "de", "zh"] as const;
+const SERVICE_DETAIL_SEGMENT = "szolgaltatasok";
+
+function revalidatePublicServiceSurfaces(
+  affectedSlugs: readonly (string | null | undefined)[] = [],
+): void {
+  revalidatePath("/sitemap.xml");
+
+  for (const locale of PUBLIC_LOCALES) {
+    revalidatePath(`/${locale}`);
+  }
+
+  const uniqueSlugs = new Set(
+    affectedSlugs
+      .map((slug) => slug?.trim())
+      .filter((slug): slug is string => Boolean(slug)),
+  );
+
+  for (const slug of uniqueSlugs) {
+    for (const locale of PUBLIC_LOCALES) {
+      revalidatePath(`/${locale}/${SERVICE_DETAIL_SEGMENT}/${slug}`);
+    }
+  }
+}
 
 function normLocale(value: string | null | undefined): string | null {
   if (value === null || value === undefined) return null;
@@ -421,6 +445,7 @@ export async function toggleServiceActive(
       .set({ isActive: nextActive, updatedAt: new Date() })
       .where(eq(services.id, id));
     revalidatePath("/admin/services");
+    revalidatePublicServiceSurfaces([service.slug]);
     return { ok: true };
   } catch (err) {
     console.error("toggleServiceActive error:", err);
@@ -507,6 +532,7 @@ export async function createService(
       .returning({ id: services.id });
 
     revalidatePath("/admin/services");
+    revalidatePublicServiceSurfaces([slug]);
 
     return {
       ok: true,
@@ -636,6 +662,7 @@ export async function updateService(
 
     revalidatePath("/admin/services");
     revalidatePath(`/admin/services/${id}/edit`);
+    revalidatePublicServiceSurfaces([existing.slug, slug]);
 
     return {
       ok: true,
@@ -718,6 +745,7 @@ export async function togglePublishStatus(
       .set({ isPublished: nextPublished, updatedAt: new Date() })
       .where(eq(services.id, id));
     revalidatePath("/admin/services");
+    revalidatePublicServiceSurfaces([service.slug]);
     return { ok: true };
   } catch (err) {
     console.error("togglePublishStatus error:", err);
@@ -800,6 +828,7 @@ export async function reorderTopLevelServices(
         .where(eq(services.id, orderedIds[i]));
     }
     revalidatePath("/admin/services");
+    revalidatePublicServiceSurfaces();
     return { ok: true };
   } catch (err) {
     console.error("reorderTopLevelServices error:", err);
@@ -843,7 +872,7 @@ export async function deleteService(
   await requireAdmin();
 
   const [svc] = await db
-    .select({ id: services.id })
+    .select({ id: services.id, slug: services.slug })
     .from(services)
     .where(eq(services.id, serviceId))
     .limit(1);
@@ -852,7 +881,7 @@ export async function deleteService(
   }
 
   const children = await db
-    .select({ id: services.id })
+    .select({ id: services.id, slug: services.slug })
     .from(services)
     .where(eq(services.parentId, serviceId));
 
@@ -903,6 +932,7 @@ export async function deleteService(
 
   revalidatePath("/admin/services");
   revalidatePath("/admin", "layout");
+  revalidatePublicServiceSurfaces([svc.slug, ...children.map((c) => c.slug)]);
 
   return { ok: true };
 }
