@@ -818,6 +818,78 @@ Tablet- vagy mobilbarat felulet oroknek es helyszini szemelyzetnek:
 - supervisor/admin review
 - exportalhato riportok
 
+### Iparag-specifikus regiszterek es AI jelentésasszisztens
+
+Kesobbi scope-kent az elektronikus ornaplo ne csak altalanos szabad szoveges naplo legyen, hanem iparag- es szolgaltatasspecifikus regisztereket is tudjon kezelni:
+
+- kulcskiadas / kulcsatvetel regiszter
+- latogatoi beleptetes regiszter
+- beszallitoi beleptetes regiszter
+- gepjarmu / teherforgalom regiszter
+- jaror / ellenorzesi pont regiszter
+- szolgalatatadas regiszter
+- rendkivuli esemeny jelentes
+- karesemeny / incidens jelentes
+- talalt targy / atadas-atvetel regiszter
+- karbantartasi vagy FM hibabejelentes
+- napi szolgalati osszefoglalo
+
+Javasolt kesobbi modulnev: **AOS Guard Log + AI Report Assistant**.
+
+Az AI jelentésasszisztens celja, hogy a rovid, nyers orjegyzetbol formalizalt, strukturalt jelentestervezetet keszitsen, es jelezze a hianyzo adatokat. Peldaul hianyzo lehet: pontos helyszin, kapu/pont, rendszam, ertesitett szemely, megtett intezkedes, kar/serules tenye, ugyfelertesitesi igeny.
+
+Fontos korlat:
+
+- Human-in-the-loop drafting tool legyen, nem onallo dontesi vagy riportkuldo rendszer.
+- AI csak rogzitett tenyeket strukturálhat es fogalmazhat at.
+- AI nem kovetkeztethet szandekra, felelossegre, jogsertesre vagy fegyelmi felelossegre.
+- AI soha nem kuldhet automatikusan riportot ugyfelnek.
+- AI nem irhatja felul az eredeti nyers orjegyzetet.
+- AI nem talalhat ki tenyeket.
+- AI nem adhat jogi kovetkeztetest.
+- AI nem allapithat meg felelosseget rogzitett bizonyitek nelkul.
+- Ugyfelnek csak supervisor / teruleti vezeto altal jovahagyott riport mehet ki.
+
+Nem pozicionalhato:
+
+- automated decision-making
+- employee surveillance
+- disciplinary automation
+- automatic client notification
+- legal assessment tool
+
+Megorzendo verziok:
+
+- nyers orjegyzet
+- AI draft
+- hianyzo mezok checklistaja
+- supervisor altal szerkesztett verzio
+- vegleges jovahagyott verzio
+- ugyfelnek elkuldott verzio
+- idobelyegek, szerzo, reviewer, szerepkor, approval state es audit trail
+
+Javasolt statuszok:
+
+- `draft_raw`
+- `ai_draft`
+- `needs_missing_info`
+- `supervisor_review`
+- `correction_requested`
+- `approved`
+- `sent_to_client`
+- `archived`
+
+### Jovahagyasi workflow
+
+1. Or rogziti a nyers jegyzetet.
+2. AI formalizalt jelentestervezetet keszit.
+3. AI jelzi a hianyzo mezoket.
+4. Or vagy supervisor kiegesziti az adatokat.
+5. Teruleti vezeto / supervisor atnezi.
+6. Supervisor jovahagyja vagy javitast ker.
+7. Csak jovahagyott riport kuldheto ugyfelnek.
+8. A nyers jegyzet, AI draft, jovahagyott verzio es elkuldott verzio mind megmarad.
+
 ### Copy es compliance szabaly
 
 Ne legyen munkavallaloi megfigyelesi vagy dolgozoi tracking termekkent pozicionalva.
@@ -829,7 +901,10 @@ Hasznalhato:
 - strukturalt szolgalati dokumentacio
 - incidens es muszakatadas naplozas
 - jaror / checkpoint dokumentacio
+- szolgaltatasminosegi dokumentacio
 - ugyfelriport
+- supervisor altal jovahagyott riport workflow
+- AI-assisted draft
 
 Kerulendo:
 
@@ -838,20 +913,42 @@ Kerulendo:
 - orok monitorozasa
 - performance policing
 - hidden monitoring
+- automatikus fegyelmi riport
 
-Jogi/adatvedelmi review szukseges, mielott production vagy kliens oldali hasznalatba kerul.
+Jogi/adatvedelmi review szukseges, mielott production vagy kliens oldali hasznalatba kerul. AI output csak belso draft legyen, es kliens oldali kuldes elott emberi jovahagyas kotelezo.
+
+Jogi/adatvedelmi tervezesi kerdesek:
+
+- jogalap az orjegyzetek es incidensnaplok tarolasara
+- adatminimalizalas
+- retention period nyers jegyzetre, AI draftra, jovahagyott es elkuldott riportokra
+- szerepkor alapu hozzaferes
+- tartalmazhat-e kliensnek lathato riport szemelyes adatot
+- tarolunk-e rendszamot, nevet, telefonszamot, fotot vagy CCTV hivatkozast
+- AI provider processing igenyel-e adatfeldolgozoi szerzodest
+- AI promptok es outputok tarolodnak-e
+- AI-assisted draft jeloles belso kotelezosege
+- javitasok, supervisor dontesek es kuldesek audit-logolasa
 
 ### Dontesek Andrasnak
 
+- Melyik regiszter legyen az MVP elso eleme?
 - Elso verzio csak belso legyen?
 - Tablet-first vagy mobile-first?
 - Mely szerepkorok kellenek eloszor?
 - Melyik legyen a pilot szolgaltatas: objektumorzes vagy portaszolgalat?
+- Ki hagyja jova az ugyfelnek kuldheto riportokat: supervisor, teruleti vezeto vagy admin?
+- AI draft lathato lehet-e ugyfelnek jovahagyas elott? Javasolt valasz: nem.
+- Mely mezok kotelezok rendkivuli esemeny jelentesnel?
 - QR checkpoint MVP vagy kesobb?
 - Foto csatolas MVP vagy kesobb?
-- Riportok OneDrive/SharePoint mappaba menjenek?
+- Riportok emailben menjenek vagy eloszor OneDrive/SharePoint mappaba keruljenek?
 - Kapjanak-e ugyfelek read-only hozzaferest?
 - Milyen jogi/adatvedelmi szabalyok vonatkoznak a staff activity logokra?
+- AI output legyen-e belsoen "AI-assisted draft" jelolessel ellatva?
+- Milyen szemelyes adatok szerepelhetnek kliensnek kuldott riportban?
+- Kell-e AI provider DPA es prompt/output retention szabaly?
+- Hogyan legyenek audit-logolva a korrekciok es supervisor dontesek?
 - Mi a minimalis riportformatum, ami ugyfelnek is ertekes?
 
 Reszletes strategia: `docs/aos_guard_log.md`.

@@ -24,6 +24,24 @@ Special services, compliance/document layers, Shadow Audit, and AOS Guard Log ar
 
 Do not prioritize internal AOS features ahead of the public lead-generation layer unless explicitly requested.
 
+## Future AOS Guard Log Scope
+
+AOS Guard Log / Elektronikus őrnapló is a future AOS module, not an immediate website task.
+
+Future scope may include industry-specific registers and an AI Report Assistant, but only as a human-reviewed drafting workflow:
+
+- guards create raw notes;
+- AI may create a structured draft and flag missing fields;
+- supervisors or territorial managers approve or request correction;
+- client-facing reports are sent only after human approval;
+- raw notes, AI drafts, edited versions, approved versions, and sent versions must be preserved.
+
+AI must not invent facts, overwrite raw notes, make legal conclusions, assign blame without recorded evidence, or send reports automatically.
+
+Use compliance-safe wording: structured service documentation, operational reporting, incident and handover logging, supervisor-approved report workflow, and AI-assisted draft. Avoid employee surveillance, worker tracking, hidden monitoring, and automatic disciplinary reporting.
+
+The AI assistant must only transform and structure recorded facts. It must not be framed as automated decision-making, employee surveillance, disciplinary automation, automatic client notification, or a legal assessment tool. Future implementation planning must address lawful basis, data minimization, retention, role-based access, client-visible personal data, AI provider data processing, prompt/output storage, AI-assisted draft marking, and audit logging of corrections and supervisor decisions.
+
 ## Production safety
 
 Never assume production deployment unless confirmed.
