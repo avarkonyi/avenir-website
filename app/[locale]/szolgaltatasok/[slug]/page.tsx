@@ -499,9 +499,6 @@ export default async function ServiceDetailPage({
                   <div
                     className="service-detail-related-head"
                     style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 12,
                       marginBottom: 8,
                     }}
                   >
@@ -580,24 +577,26 @@ export default async function ServiceDetailPage({
                 {detail.valueProposition}
               </p>
             )}
-            <Link
-              href={ctaUrl}
-              className="service-detail-cta-button"
-              style={{
-                background: "#D1172E",
-                color: "#fff",
-                fontFamily: "var(--font-head)",
-                fontWeight: 700,
-                fontSize: 14,
-                letterSpacing: 1.5,
-                textTransform: "uppercase",
-                padding: "14px 28px",
-                borderRadius: 2,
-                textDecoration: "none",
-              }}
-            >
-              {t.nav.cta}
-            </Link>
+            <div className="service-detail-cta-row service-detail-cta-row--center">
+              <Link
+                href={ctaUrl}
+                className="service-detail-cta-button"
+                style={{
+                  background: "#D1172E",
+                  color: "#fff",
+                  fontFamily: "var(--font-head)",
+                  fontWeight: 700,
+                  fontSize: 14,
+                  letterSpacing: 1.5,
+                  textTransform: "uppercase",
+                  padding: "14px 28px",
+                  borderRadius: 2,
+                  textDecoration: "none",
+                }}
+              >
+                {t.nav.cta}
+              </Link>
+            </div>
           </div>
         </section>
       </main>
