@@ -125,6 +125,25 @@ a {
   line-height: 1.2;
   overflow-wrap: anywhere;
   white-space: normal;
+  box-shadow: 0 4px 18px rgba(209, 23, 46, 0.22);
+  transition:
+    background-color 0.2s ease,
+    box-shadow 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.service-detail-cta-button:hover,
+.service-detail-cta-button:focus-visible {
+  background: #a80f24 !important;
+  color: #fff !important;
+  box-shadow: 0 8px 24px rgba(209, 23, 46, 0.34);
+  transform: translateY(-1px);
+}
+
+.service-detail-cta-button:focus-visible {
+  outline: 3px solid rgba(209, 23, 46, 0.45);
+  outline-offset: 3px;
 }
 
 .service-detail-related-grid {
@@ -139,6 +158,27 @@ a {
   min-width: 0;
   height: 100%;
   box-sizing: border-box;
+  border-bottom: 3px solid transparent !important;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.service-detail-related-card:hover,
+.service-detail-related-card:focus-visible {
+  background: #0B1E3E !important;
+  border-color: #E2E8F0 #E2E8F0 #D1172E !important;
+  box-shadow: 0 16px 40px rgba(11, 30, 62, 0.15);
+  color: #D1172E !important;
+  transform: translateY(-2px);
+}
+
+.service-detail-related-card:focus-visible {
+  outline: 3px solid rgba(209, 23, 46, 0.45);
+  outline-offset: 3px;
 }
 
 .service-detail-related-head {
@@ -165,6 +205,21 @@ a {
 .service-detail-related-title {
   flex: 1 1 auto;
   line-height: 1.2;
+  transition: color 0.3s ease;
+}
+
+.service-detail-related-desc {
+  transition: color 0.3s ease;
+}
+
+.service-detail-related-card:hover .service-detail-related-title,
+.service-detail-related-card:focus-visible .service-detail-related-title {
+  color: #fff !important;
+}
+
+.service-detail-related-card:hover .service-detail-related-desc,
+.service-detail-related-card:focus-visible .service-detail-related-desc {
+  color: rgba(255, 255, 255, 0.65) !important;
 }
 
 @media (max-width: 900px) {

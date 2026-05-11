@@ -493,7 +493,6 @@ export default async function ServiceDetailPage({
                     textDecoration: "none",
                     color: "#0B1E3E",
                     background: "#fff",
-                    transition: "border-color 0.2s, transform 0.2s",
                   }}
                 >
                   <div
