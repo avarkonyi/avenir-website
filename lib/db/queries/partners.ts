@@ -40,9 +40,9 @@ export async function getHomepagePartnerLogos(): Promise<
           sql`nullif(trim(${partners.logoUrl}), '') is not null`,
           isNotNull(partners.logoUsageApprovedAt),
           isNotNull(partners.logoUsageApprovedBy),
-          sql`nullif(trim(${partners.logoUsageApprovedBy}), '') is not null`,
+          sql`btrim(${partners.logoUsageApprovedBy}) <> ''`,
           isNotNull(partners.logoUsageScope),
-          sql`nullif(trim(${partners.logoUsageScope}), '') is not null`,
+          sql`btrim(${partners.logoUsageScope}) <> ''`,
         ),
       )
       .orderBy(asc(partners.sortOrder), asc(partners.name));

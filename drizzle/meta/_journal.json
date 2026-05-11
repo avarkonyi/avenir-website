@@ -99,6 +99,13 @@
       "when": 1778523600000,
       "tag": "0013_partner_logo_strip_full_proof_index",
       "breakpoints": true
+    },
+    {
+      "idx": 14,
+      "version": "7",
+      "when": 1778527200000,
+      "tag": "0014_partner_logo_strip_recreate_full_proof_index",
+      "breakpoints": true
     }
   ]
 }
