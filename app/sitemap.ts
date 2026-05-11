@@ -1,8 +1,9 @@
 import type { MetadataRoute } from "next";
 import { SEO_DATA, SEO_LOCALES } from "@/lib/seo-data";
-import { getAllPublishedServicePaths } from "@/lib/db/queries/services";
+import { getAllPublishedServicePathsForBuild } from "@/lib/db/queries/services";
 
 const LEGAL_SLUGS = ["adatvedelem", "aszf", "impresszum"] as const;
+const LEGAL_SITEMAP_LOCALES = ["hu"] as const;
 const SITE_LAST_MODIFIED = new Date("2026-05-07T00:00:00.000Z");
 const SERVICE_URL_SEGMENT = "szolgaltatasok";
 
@@ -20,14 +21,25 @@ function localeAlternates(path = "") {
   };
 }
 
+function legalAlternates(path = "") {
+  return {
+    languages: {
+      hu: `${SEO_DATA.url}/hu${path}`,
+      "x-default": `${SEO_DATA.url}/hu${path}`,
+    },
+  };
+}
+
 // Sitemap is async (Next 16 supports async sitemaps) so we can pull
 // the live list of published+active service slugs from the DB. Drafts
-// (isPublished=false) and soft-deleted rows (isActive=false) are
-// filtered inside getAllPublishedServicePaths. Incomplete locale
-// detail pages are filtered there too, matching the "no draft or
-// unfinished URL is indexable" P5 guarantee.
+// (isPublished=false), soft-deleted rows (isActive=false), and
+// incomplete locale detail pages are filtered inside the shared
+// service-path helper, matching the "no draft or unfinished URL is
+// indexable" P5 guarantee. If the DB lookup fails, generation fails
+// loudly instead of emitting stale or incomplete service URLs.
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const servicePaths = await getAllPublishedServicePaths();
+  const servicePaths =
+    await getAllPublishedServicePathsForBuild("sitemap.xml");
   const serviceLocalesBySlug = new Map<string, string[]>();
 
   for (const { locale, slug } of servicePaths) {
@@ -59,13 +71,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.9,
       alternates: localeAlternates(),
     })),
-    ...SEO_LOCALES.flatMap((locale) =>
+    // Non-HU legal pages are intentionally excluded from the sitemap
+    // until localized legal content has been reviewed and approved.
+    ...LEGAL_SITEMAP_LOCALES.flatMap((locale) =>
       LEGAL_SLUGS.map((slug) => ({
         url: `${SEO_DATA.url}/${locale}/${slug}`,
         lastModified: SITE_LAST_MODIFIED,
         changeFrequency: "yearly" as const,
         priority: 0.3,
-        alternates: localeAlternates(`/${slug}`),
+        alternates: legalAlternates(`/${slug}`),
       })),
     ),
     ...servicePaths.map(({ locale, slug }) => ({
