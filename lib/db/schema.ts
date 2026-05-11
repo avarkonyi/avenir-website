@@ -520,12 +520,7 @@ export const partners = pgTable(
     index("idx_partners_logo_strip_public")
       .on(table.sortOrder, table.name)
       .where(
-        sql`${table.isActive} = true AND ${table.isPublished} = true AND ${table.showInLogoStrip} = true AND ${table.logoUrl} IS NOT NULL AND ${table.logoUsageApprovedAt} IS NOT NULL`,
-      ),
-    index("idx_partners_logo_strip_full_proof")
-      .on(table.sortOrder, table.name)
-      .where(
-        sql`${table.isActive} = true AND ${table.isPublished} = true AND ${table.showInLogoStrip} = true AND nullif(trim(${table.logoUrl}), '') IS NOT NULL AND ${table.logoUsageApprovedAt} IS NOT NULL AND nullif(trim(${table.logoUsageApprovedBy}), '') IS NOT NULL AND nullif(trim(${table.logoUsageScope}), '') IS NOT NULL`,
+        sql`${table.isActive} = true AND ${table.isPublished} = true AND ${table.showInLogoStrip} = true AND ${table.logoUrl} IS NOT NULL AND ${table.logoUsageApprovedAt} IS NOT NULL AND ${table.logoUsageApprovedBy} IS NOT NULL AND btrim(${table.logoUsageApprovedBy}) <> '' AND ${table.logoUsageScope} IS NOT NULL AND btrim(${table.logoUsageScope}) <> ''`,
       ),
   ],
 );
