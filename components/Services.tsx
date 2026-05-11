@@ -13,7 +13,13 @@ import { Icon, ICON_NAMES, type IconName } from "./Icon";
 // Section chrome (h2 title + eyebrow) stays in i18n. The list data
 // is the only thing migrated to DB.
 
-export async function Services({ locale }: { locale: string }) {
+export async function Services({
+  locale,
+  readyHuServiceDetailSlugs,
+}: {
+  locale: string;
+  readyHuServiceDetailSlugs: readonly string[];
+}) {
   const t = getTranslation(locale);
   const rows = await getActiveTopLevelServices(locale);
 
@@ -23,7 +29,11 @@ export async function Services({ locale }: { locale: string }) {
       icon: safeIconName(row.icon),
       title: row.name,
       description: row.shortDesc,
-      href: getReadyHuServiceDetailHref(locale, row.slug),
+      href: getReadyHuServiceDetailHref(
+        locale,
+        row.slug,
+        readyHuServiceDetailSlugs,
+      ),
     }))
     .filter((card) => card.title.length > 0 && card.description.length > 0);
 

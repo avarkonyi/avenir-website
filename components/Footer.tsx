@@ -1,25 +1,39 @@
 import Image from "next/image";
 import Link from "next/link";
 import { type Translation } from "@/lib/i18n";
-import { getActiveTopLevelServices } from "@/lib/db/queries/services";
+import {
+  getActiveTopLevelServices,
+  getAllPublishedServicePathsForBuild,
+} from "@/lib/db/queries/services";
 import { getReadyHuServiceDetailHref } from "@/lib/service-detail-links";
 
 export async function Footer({
   t,
   locale,
+  readyHuServiceDetailSlugs,
 }: {
   t: Translation;
   locale: string;
+  readyHuServiceDetailSlugs?: readonly string[];
 }) {
   // Locale-aware services-quick-links via shared helper
   // (lib/db/queries/services.ts). Footer surface needs name only;
   // empty-field guard drops rows with no usable title.
   const rows = await getActiveTopLevelServices(locale);
+  const effectiveReadyHuServiceDetailSlugs =
+    readyHuServiceDetailSlugs ??
+    (await getAllPublishedServicePathsForBuild("footer service detail links"))
+      .filter((path) => path.locale === "hu")
+      .map((path) => path.slug);
   const serviceLinks = rows
     .map((row) => ({
       slug: row.slug,
       title: row.name,
-      href: getReadyHuServiceDetailHref(locale, row.slug),
+      href: getReadyHuServiceDetailHref(
+        locale,
+        row.slug,
+        effectiveReadyHuServiceDetailSlugs,
+      ),
     }))
     .filter((link) => link.title.length > 0);
 

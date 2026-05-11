@@ -12,7 +12,10 @@ import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 import { getTranslation } from "@/lib/i18n";
 import { db, news } from "@/lib/db";
-import { getActiveTopLevelServices } from "@/lib/db/queries/services";
+import {
+  getActiveTopLevelServices,
+  getAllPublishedServicePathsForBuild,
+} from "@/lib/db/queries/services";
 
 const LOCALES = ["hu", "en", "de", "zh"] as const;
 type Locale = (typeof LOCALES)[number];
@@ -85,6 +88,11 @@ export default async function HomePage({
   const serviceOptions = serviceRows
     .map((row) => ({ slug: row.slug, label: row.name }))
     .filter((opt) => opt.label.length > 0);
+  const readyHuServiceDetailSlugs = (
+    await getAllPublishedServicePathsForBuild("homepage service detail links")
+  )
+    .filter((path) => path.locale === "hu")
+    .map((path) => path.slug);
 
   return (
     <>
@@ -92,7 +100,10 @@ export default async function HomePage({
       <main>
         <Hero t={{ hero: t.hero, stats: t.stats }} />
         <About t={t} />
-        <Services locale={locale} />
+        <Services
+          locale={locale}
+          readyHuServiceDetailSlugs={readyHuServiceDetailSlugs}
+        />
         <References t={t} locale={locale} />
         <Certifications t={t} locale={locale} />
         <News
@@ -118,7 +129,11 @@ export default async function HomePage({
           serviceOptions={serviceOptions}
         />
       </main>
-      <Footer t={t} locale={locale} />
+      <Footer
+        t={t}
+        locale={locale}
+        readyHuServiceDetailSlugs={readyHuServiceDetailSlugs}
+      />
     </>
   );
 }
