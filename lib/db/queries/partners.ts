@@ -1,4 +1,4 @@
-import { and, asc, eq, isNotNull } from "drizzle-orm";
+import { and, asc, eq, isNotNull, sql } from "drizzle-orm";
 import { db, partners } from "@/lib/db";
 
 export type HomepagePartnerLogo = {
@@ -14,7 +14,9 @@ function isMissingLogoStripColumnError(err: unknown): boolean {
     maybeError.code === "42703" ||
     (typeof maybeError.message === "string" &&
       (maybeError.message.includes("show_in_logo_strip") ||
-        maybeError.message.includes("logo_usage_approved_at")))
+        maybeError.message.includes("logo_usage_approved_at") ||
+        maybeError.message.includes("logo_usage_approved_by") ||
+        maybeError.message.includes("logo_usage_scope")))
   );
 }
 
@@ -35,7 +37,12 @@ export async function getHomepagePartnerLogos(): Promise<
           eq(partners.isPublished, true),
           eq(partners.showInLogoStrip, true),
           isNotNull(partners.logoUrl),
+          sql`nullif(trim(${partners.logoUrl}), '') is not null`,
           isNotNull(partners.logoUsageApprovedAt),
+          isNotNull(partners.logoUsageApprovedBy),
+          sql`nullif(trim(${partners.logoUsageApprovedBy}), '') is not null`,
+          isNotNull(partners.logoUsageScope),
+          sql`nullif(trim(${partners.logoUsageScope}), '') is not null`,
         ),
       )
       .orderBy(asc(partners.sortOrder), asc(partners.name));

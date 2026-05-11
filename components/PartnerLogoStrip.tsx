@@ -3,10 +3,10 @@ import { getHomepagePartnerLogos } from "@/lib/db/queries/partners";
 const MARQUEE_THRESHOLD = 8;
 
 const ARIA_LABELS: Record<string, string> = {
-  hu: "Jovahagyott partnerlogok",
+  hu: "Jóváhagyott partnerlogók",
   en: "Approved partner logos",
   de: "Freigegebene Partnerlogos",
-  zh: "Approved partner logos",
+  zh: "已批准的合作伙伴标识",
 };
 
 function isApprovedAssetUrl(src: string): boolean {
