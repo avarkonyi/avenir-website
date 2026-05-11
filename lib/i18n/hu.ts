@@ -95,10 +95,10 @@ export const hu = {
       d: "Műszaki üzemeltetés, karbantartás-koordináció és kisebb javítási feladatok támogatása kiegészítő szolgáltatásként, komplex ügyfélkörnyezetben.",
     },
   ],
-  refTitle: "Referenciáink",
-  refSub: "Bíznak bennünk",
+  refTitle: "Partnereink",
+  refSub: "Válogatott együttműködések",
   refText:
-    "Minden helyszín más, az elvárás mégis ugyanaz: biztonságos, átlátható és kiszámítható működés. Az Avenir logisztikai központoktól bevásárlóközpontokig, ipari parkoktól közintézményekig dolgozik olyan partnerekkel, akik számára a biztonság, a rend és a működési minőség nem kompromisszum kérdése.",
+    "Minden helyszín más, az elvárás mégis ugyanaz: biztonságos, átlátható és kiszámítható működés. Az Avenir többféle vállalati, intézményi és üzemeltetési környezetben dolgozik együtt partnerekkel, ahol a biztonság, a rend és a működési minőség kiemelt szempont.",
   refs: [
     "Irodaházak",
     "Bevásárlóközpontok",

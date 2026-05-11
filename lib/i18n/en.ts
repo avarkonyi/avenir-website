@@ -105,9 +105,9 @@ export const en = {
       "d": "Support for technical operations, maintenance coordination and minor repair tasks as complementary services in complex client environments."
     }
   ],
-  "refTitle": "References",
-  "refSub": "They trust us",
-  "refText": "Every site is different, but the expectation is the same: safe, transparent and predictable operations. Avenir works with partners ranging from logistics centres and shopping centres to industrial parks and public institutions — organisations for whom security, order and operational quality are not open to compromise.",
+  "refTitle": "Partners",
+  "refSub": "Selected collaborations",
+  "refText": "Every site is different, but the expectation is the same: safe, transparent and predictable operations. Avenir works across corporate, institutional and operational environments where security, order and service quality are important operating priorities.",
   "refs": [
     "Office Buildings",
     "Shopping Centres",

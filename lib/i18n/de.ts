@@ -105,9 +105,9 @@ export const de = {
       "d": "Unterstützung bei technischem Betrieb, Wartungskoordination und kleineren Reparaturarbeiten als ergänzende Leistung in komplexen Kundenumgebungen."
     }
   ],
-  "refTitle": "Referenzen",
-  "refSub": "Sie vertrauen uns",
-  "refText": "Jeder Standort ist anders, doch die Erwartung ist dieselbe: ein sicherer, transparenter und planbarer Betrieb. Avenir arbeitet mit Partnern von Logistikzentren und Einkaufszentren bis hin zu Industrieparks und öffentlichen Einrichtungen zusammen — Organisationen, für die Sicherheit, Ordnung und Betriebsqualität keine Frage von Kompromissen sind.",
+  "refTitle": "Partner",
+  "refSub": "Ausgewählte Kooperationen",
+  "refText": "Jeder Standort ist anders, doch die Erwartung ist dieselbe: ein sicherer, transparenter und planbarer Betrieb. Avenir arbeitet in unterschiedlichen Unternehmens-, Institutions- und Betriebsumgebungen, in denen Sicherheit, Ordnung und Servicequalität wichtige operative Prioritäten sind.",
   "refs": [
     "Bürogebäude",
     "Einkaufszentren",
