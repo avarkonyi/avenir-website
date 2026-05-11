@@ -410,21 +410,11 @@ a {
 }
 
 .partner-logo-strip {
-  margin: 0 0 56px;
-  padding: 22px 24px;
+  margin: 0;
+  padding: 18px 20px;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.045);
+  background: rgba(255, 255, 255, 0.055);
   overflow: hidden;
-}
-
-.partner-logo-strip-title {
-  margin: 0 0 18px;
-  color: rgba(255, 255, 255, 0.72);
-  font-family: var(--font-head);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 1.4px;
-  text-transform: uppercase;
 }
 
 .partner-logo-static-grid {
@@ -432,7 +422,7 @@ a {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
 }
 
 .partner-logo-marquee-viewport {
@@ -449,9 +439,9 @@ a {
 .partner-logo-marquee-track {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
   width: max-content;
-  animation: partner-logo-marquee 42s linear infinite;
+  animation: partner-logo-marquee 46s linear infinite;
 }
 
 .partner-logo-marquee-viewport:hover .partner-logo-marquee-track,
@@ -462,25 +452,25 @@ a {
 .partner-logo-marquee-copy {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
 }
 
 .partner-logo-item {
-  width: 154px;
-  height: 66px;
+  width: 230px;
+  min-height: 104px;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex: 0 0 154px;
-  padding: 12px 18px;
+  flex: 0 0 230px;
+  padding: 18px 24px;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.09);
   box-sizing: border-box;
 }
 
 .partner-logo-item img {
   max-width: 100%;
-  max-height: 42px;
+  max-height: 70px;
   width: auto;
   height: auto;
   object-fit: contain;
@@ -503,7 +493,7 @@ a {
     transform: translateX(0);
   }
   to {
-    transform: translateX(calc(-50% - 7px));
+    transform: translateX(calc(-50% - 8px));
   }
 }
 
@@ -576,16 +566,16 @@ a {
     gap: 32px !important;
   }
   .partner-logo-strip {
-    margin-bottom: 40px;
-    padding: 18px 16px;
-  }
-  .partner-logo-strip-title {
-    text-align: center;
+    padding: 16px;
   }
   .partner-logo-item {
-    width: min(100%, 148px);
-    flex-basis: min(100%, 148px);
-    height: 62px;
+    width: min(100%, 220px);
+    flex-basis: min(100%, 220px);
+    min-height: 96px;
+    padding: 16px 20px;
+  }
+  .partner-logo-item img {
+    max-height: 62px;
   }
 
   /* About visual block: tighter padding + hide decorative offset square */

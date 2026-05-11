@@ -2,11 +2,11 @@ import { getHomepagePartnerLogos } from "@/lib/db/queries/partners";
 
 const MARQUEE_THRESHOLD = 8;
 
-const HEADINGS: Record<string, string> = {
-  hu: "Jóváhagyott referenciák és együttműködések",
-  en: "Approved references and collaborations",
-  de: "Freigegebene Referenzen und Kooperationen",
-  zh: "已批准的参考与合作",
+const ARIA_LABELS: Record<string, string> = {
+  hu: "Jovahagyott partnerlogok",
+  en: "Approved partner logos",
+  de: "Freigegebene Partnerlogos",
+  zh: "Approved partner logos",
 };
 
 function isApprovedAssetUrl(src: string): boolean {
@@ -38,8 +38,8 @@ function LogoItem({
       <img
         src={logoUrl}
         alt={decorative ? "" : `${name} logo`}
-        width={160}
-        height={64}
+        width={220}
+        height={88}
         loading="lazy"
         decoding="async"
       />
@@ -54,15 +54,11 @@ export async function PartnerLogoStrip({ locale }: { locale: string }) {
 
   if (partners.length === 0) return null;
 
-  const heading = HEADINGS[locale] ?? HEADINGS.hu;
+  const ariaLabel = ARIA_LABELS[locale] ?? ARIA_LABELS.hu;
   const isMarquee = partners.length >= MARQUEE_THRESHOLD;
 
   return (
-    <section className="partner-logo-strip" aria-labelledby="partner-logo-title">
-      <h3 id="partner-logo-title" className="partner-logo-strip-title">
-        {heading}
-      </h3>
-
+    <section className="partner-logo-strip" aria-label={ariaLabel}>
       {isMarquee ? (
         <div className="partner-logo-marquee-viewport">
           <div className="partner-logo-marquee-track">
