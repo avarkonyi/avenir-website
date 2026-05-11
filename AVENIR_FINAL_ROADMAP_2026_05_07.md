@@ -787,6 +787,39 @@ Kulsos CRM-integracio csak akkor, ha a sajat pipeline 2-4 hetig napi hasznalatba
 **Prioritas:** after mini-CRM and after public lead-generation layer is stable
 **Implementacio:** do not implement yet
 
+### AOS Field App / Tablet App concept parking
+
+Az elektronikus ornaplo jovobeli formaban ne csak admin modul legyen, hanem tablet-first helyszini alkalmazas is.
+
+Munkanevek:
+
+- AOS Field App
+- AOS Tablet App
+- AOS Guard Log field app
+
+Statusz: future AOS module / concept parking.
+
+Prioritas: csak a publikus szolgaltatasoldalak, referenciak/trust, SEO/GEO, konverzio es mini-CRM alapok utan. Nem implementacios feladat most.
+
+Kesobbi helyszini felhasznalok:
+
+- orok
+- recepcios / porta munkatarsak
+- helyszini operatorok
+
+A field app csak helyszini funkciokat mutasson: aktualis muszak, helyszini utasitasok, gyors ornaplo bejegyzes, rendkivuli esemeny, kulcs-, latogatoi-, beszallitoi-, gepjarmu-, jaror/checkpoint regiszter, muszakatadas, talalt targy / atadas, FM hibabejelentes, helyszini taskok, foto csatolmanyok es belso uzenetek.
+
+Tablet home screen kesobb:
+
+- aktualis muszak
+- site
+- muszak ideje
+- helyszini utasitasok
+- supervisor contact
+- surgos uzenetek
+- quick action gombok
+- nyitott kiosztott feladatok
+
 ### Strategiai szerep
 
 Az elektronikus ornaplo belso operativ eszkoz legyen eloszor, nem publikus weboldal-fejlesztes. Celja, hogy az objektumorzes, portaszolgalat, tavfelugyelet, incidenskezeles es riportalas strukturalt digitalis naplozast kapjon.
@@ -805,7 +838,7 @@ Nem elozheti meg a jelenlegi publikus prioritast:
 
 ### MVP gondolat
 
-Tablet- vagy mobilbarat felulet oroknek es helyszini szemelyzetnek:
+Tablet-first helyszini felulet oroknek, porta/reception munkatarsaknak es site operatoroknak:
 
 - szolgalat kezdete / vege
 - napi ornaplo bejegyzesek
@@ -817,6 +850,35 @@ Tablet- vagy mobilbarat felulet oroknek es helyszini szemelyzetnek:
 - helyszini utasitas tudomasulvetele
 - supervisor/admin review
 - exportalhato riportok
+
+### Checkpoint, task es foto koncepcio
+
+Kesobbi checkpoint terv:
+
+- QR checkpoint MVP
+- NFC checkpoint kesobb
+- GPS csak konkret check-inhez, taskhoz, incidenshez vagy riporthoz kotve
+- nincs folyamatos dolgozoi kovetes
+- nincs hidden monitoring
+
+Kesobbi site task peldak:
+
+- kapu ellenorzese
+- helyiseg vagy terulet ellenorzese
+- foto keszitese
+- ajto zarva allapot visszaigazolasa
+- kulcsszekreny statusz ellenorzese
+- QR/NFC checkpoint teljesitese
+- teljesites vagy hiba jelentese
+
+Fotok csatolhatok kesobb:
+
+- incidensriporthoz
+- karesemenyhez
+- FM hibahoz
+- checkpoint ellenorzeshez
+- atadasi rekordhoz
+- talalt targyhoz
 
 ### Iparag-specifikus regiszterek es AI jelentésasszisztens
 
@@ -882,13 +944,13 @@ Javasolt statuszok:
 ### Jovahagyasi workflow
 
 1. Or rogziti a nyers jegyzetet.
-2. AI formalizalt jelentestervezetet keszit.
-3. AI jelzi a hianyzo mezoket.
+2. AI vagy kesobb fix sablon formalizalt jelentestervezetet keszithet.
+3. AI/sablon jelzi a hianyzo mezoket.
 4. Or vagy supervisor kiegesziti az adatokat.
 5. Teruleti vezeto / supervisor atnezi.
 6. Supervisor jovahagyja vagy javitast ker.
 7. Csak jovahagyott riport kuldheto ugyfelnek.
-8. A nyers jegyzet, AI draft, jovahagyott verzio es elkuldott verzio mind megmarad.
+8. A nyers jegyzet, AI draft, szerkesztett verzio, jovahagyott verzio es elkuldott verzio mind megmarad.
 
 ### Copy es compliance szabaly
 
@@ -913,7 +975,10 @@ Kerulendo:
 - orok monitorozasa
 - performance policing
 - hidden monitoring
+- continuous GPS monitoring
 - automatikus fegyelmi riport
+
+GPS csak esemenyhez kotott operativ dokumentacio lehet: konkret check-in, task, incidens vagy riport. Nem pozicionalhato folyamatos munkavallaloi megfigyeleskent vagy dolgozoi trackingkent.
 
 Jogi/adatvedelmi review szukseges, mielott production vagy kliens oldali hasznalatba kerul. AI output csak belso draft legyen, es kliens oldali kuldes elott emberi jovahagyas kotelezo.
 
@@ -930,18 +995,74 @@ Jogi/adatvedelmi tervezesi kerdesek:
 - AI-assisted draft jeloles belso kotelezosege
 - javitasok, supervisor dontesek es kuldesek audit-logolasa
 
+### Javasolt field app phasing
+
+Phase 1:
+
+- tablet app shell
+- Microsoft login
+- current shift
+- site instructions
+- quick guard log
+- messages
+
+Phase 2:
+
+- electronic registers
+- key
+- visitor
+- supplier/vendor
+- vehicle
+- incident
+- handover
+
+Phase 3:
+
+- QR checkpoint
+- event-bound GPS
+- NFC later
+
+Phase 4:
+
+- site task assignment
+- photo attachments
+- task status
+
+Phase 5:
+
+- supervisor approval workflow
+- client-ready reports
+
+Phase 6:
+
+- AI Report Assistant
+
+Phase 7:
+
+- client portal
+- report history
+- PDF
+- OneDrive or SharePoint
+
 ### Dontesek Andrasnak
 
+- Tablet-first vagy mobile-first?
+- Company tablets vagy sajat eszkozok?
 - Melyik regiszter legyen az MVP elso eleme?
 - Elso verzio csak belso legyen?
-- Tablet-first vagy mobile-first?
 - Mely szerepkorok kellenek eloszor?
 - Melyik legyen a pilot szolgaltatas: objektumorzes vagy portaszolgalat?
 - Ki hagyja jova az ugyfelnek kuldheto riportokat: supervisor, teruleti vezeto vagy admin?
 - AI draft lathato lehet-e ugyfelnek jovahagyas elott? Javasolt valasz: nem.
 - Mely mezok kotelezok rendkivuli esemeny jelentesnel?
 - QR checkpoint MVP vagy kesobb?
+- NFC checkpoint MVP vagy kesobb?
+- GPS event-bound only? Javasolt valasz: igen.
+- Mely regiszterek legyenek MVP-ben?
 - Foto csatolas MVP vagy kesobb?
+- Bizonyos task tipusoknal kotelezo legyen-e foto?
+- Offline mode most vagy kesobb?
+- Client portal most vagy kesobb?
 - Riportok emailben menjenek vagy eloszor OneDrive/SharePoint mappaba keruljenek?
 - Kapjanak-e ugyfelek read-only hozzaferest?
 - Milyen jogi/adatvedelmi szabalyok vonatkoznak a staff activity logokra?

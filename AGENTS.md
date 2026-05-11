@@ -28,6 +28,10 @@ Do not prioritize internal AOS features ahead of the public lead-generation laye
 
 AOS Guard Log / Elektronikus őrnapló is a future AOS module, not an immediate website task.
 
+Treat the future scope as an AOS Field App / Tablet App concept as well as an admin/reporting module. The field app should be tablet-first for guards, reception/porta staff, and site operators, with only field-relevant functions such as current shift, site instructions, quick guard log, incidents, registers, checkpoints, handover, site tasks, photos, and internal messages.
+
+Checkpoint/GPS scope must stay compliance-safe: QR checkpoint MVP, NFC later, and GPS only tied to a specific check-in, task, incident, or report. Do not frame it as continuous employee tracking, worker tracking, hidden monitoring, or employee surveillance.
+
 Future scope may include industry-specific registers and an AI Report Assistant, but only as a human-reviewed drafting workflow:
 
 - guards create raw notes;

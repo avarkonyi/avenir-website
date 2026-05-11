@@ -6,6 +6,36 @@ Priority: after mini-CRM and after the public lead-generation layer is stable.
 
 Do not implement yet.
 
+## Concept Parking: AOS Field App / Tablet App
+
+The AOS Guard Log concept should be preserved as a future tablet-first field application, not only as an admin module.
+
+Working concept names:
+
+- AOS Field App;
+- AOS Tablet App;
+- AOS Guard Log field app;
+- Elektronikus ornaplo field app.
+
+Status: future AOS module / concept parking.
+
+Priority: after public service pages, references/trust, SEO/GEO, conversion improvements, and mini-CRM foundations.
+
+Do not implement yet:
+
+- do not create routes;
+- do not create database schema;
+- do not run migrations;
+- do not build a field app MVP before the public website and mini-CRM foundations are ready.
+
+Field app users:
+
+- guards;
+- reception / porta staff;
+- site operators.
+
+The field app should expose only field-relevant functions. Admin configuration, client management, reporting governance, and proof review belong in supervisor/admin surfaces, not in the tablet home screen.
+
 ## Strategic Role
 
 AOS Guard Log is a future electronic guard log system for guarding, reception, monitoring, event-security, and facility operations.
@@ -36,7 +66,40 @@ Do not let this module overtake the current public website priorities:
 
 ## MVP Concept
 
-Tablet-friendly or mobile-friendly interface for guards and site staff to record:
+The MVP concept is tablet-first, field-facing, and operational. It should be designed for guards, reception / porta staff, and site operators working on a live site.
+
+Field-relevant functions:
+
+- current shift;
+- site instructions;
+- guard log quick entry;
+- extraordinary incident report;
+- key register;
+- visitor register;
+- supplier/vendor register;
+- vehicle/truck register;
+- patrol/checkpoint register;
+- shift handover;
+- found item / handover;
+- maintenance/FM issue report;
+- site tasks;
+- photo attachments;
+- internal messages.
+
+Tablet app home screen:
+
+- current shift;
+- site;
+- shift time;
+- site instructions;
+- supervisor contact;
+- urgent messages;
+- quick action buttons;
+- open assigned tasks.
+
+The first tablet shell should avoid admin complexity. It should answer: "What shift am I on, what site am I covering, what instructions matter now, what urgent messages exist, and what can I record quickly?"
+
+The application may also support:
 
 - service start / service end;
 - daily guard log entries;
@@ -49,6 +112,45 @@ Tablet-friendly or mobile-friendly interface for guards and site staff to record
 - supervisor/admin review;
 - filtering by site, client, service, date, status, and responsible person;
 - exportable reports.
+
+Filtering, exports, report approval, and client-ready reporting belong primarily to supervisor/admin views, not to the first field app home screen.
+
+## Checkpoint, GPS, and Site Task Concept
+
+Checkpoint documentation should be incremental:
+
+- QR checkpoint MVP;
+- NFC checkpoint later;
+- GPS only tied to a specific check-in, task, incident, or report;
+- no continuous employee tracking;
+- no hidden monitoring.
+
+GPS must not be positioned as worker tracking. If used later, it should document a specific operational event, such as a checkpoint completion, incident location, or task report location.
+
+Supervisors should later be able to assign site tasks such as:
+
+- check a gate;
+- inspect a room or area;
+- take a photo;
+- confirm a door is closed;
+- verify key cabinet status;
+- complete a QR/NFC checkpoint;
+- report completion or issue.
+
+Task status should remain operational: assigned, in progress, completed, issue reported, reviewed. It should not be framed as disciplinary monitoring.
+
+## Photo Attachments
+
+Photos can be attached to:
+
+- incident reports;
+- damage reports;
+- FM issues;
+- checkpoint checks;
+- handover records;
+- found items.
+
+Photo handling needs privacy and retention review before implementation, especially if people, vehicles, license plates, client premises, CCTV screens, documents, or access-control panels may appear in images.
 
 ## Industry-Specific Operational Registers
 
@@ -186,13 +288,13 @@ The AI Report Assistant must not:
 The client-facing workflow must remain human-approved.
 
 1. Guard creates raw note.
-2. AI creates formal report draft.
-3. AI flags missing fields.
+2. AI or a fixed template can create a formal report draft later.
+3. AI/template flow flags missing fields.
 4. Guard or supervisor completes missing information.
 5. Territorial manager / supervisor reviews.
 6. Supervisor approves or requests correction.
 7. Only an approved report can be sent to the client.
-8. Original raw note, AI draft, approved version, and sent version are all preserved.
+8. Raw note, AI draft, edited version, approved version, and sent version are all preserved.
 
 Roles:
 
@@ -304,6 +406,7 @@ Use:
 - structured service documentation;
 - incident and handover logging;
 - patrol/checkpoint documentation;
+- checkpoint documentation;
 - service quality documentation;
 - client reporting;
 - supervisor-approved report workflow;
@@ -316,7 +419,24 @@ Avoid:
 - monitoring guards;
 - performance policing;
 - hidden monitoring;
+- continuous GPS monitoring;
 - automatic disciplinary reporting.
+
+Compliance-safe positioning:
+
+- structured service documentation;
+- operational reporting;
+- checkpoint documentation;
+- incident and handover logging;
+- supervisor-approved report workflow;
+- client reporting.
+
+GPS wording rule:
+
+- use event-bound GPS only for a specific check-in, task, incident, or report;
+- do not call it continuous monitoring;
+- do not call it employee tracking;
+- do not imply hidden monitoring.
 
 AI wording rules:
 
@@ -344,52 +464,80 @@ Phase 0:
 
 Phase 1:
 
-- Manual electronic forms:
-  - raw guard log;
-  - incident report;
-  - key handover;
-  - visitor/vendor irregularity;
-  - shift handover.
+- Tablet app shell:
+  - Microsoft login;
+  - current shift;
+  - site instructions;
+  - quick guard log;
+  - internal messages.
 
 Phase 2:
 
-- AI draft assistant:
-  - rewrite raw notes;
-  - flag missing fields;
-  - generate supervisor-review draft.
+- Electronic registers:
+  - key register;
+  - visitor register;
+  - supplier/vendor register;
+  - vehicle/truck register;
+  - incident register;
+  - handover register.
 
 Phase 3:
+
+- Checkpoints:
+  - QR checkpoint MVP;
+  - event-bound GPS only for specific check-ins, tasks, incidents, or reports;
+  - NFC later.
+
+Phase 4:
+
+- Site task assignment:
+  - assigned site tasks;
+  - photo attachments;
+  - task status;
+  - completion or issue reporting.
+
+Phase 5:
 
 - Supervisor approval workflow:
   - approve;
   - request correction;
-  - send to client;
+  - client-ready reports;
   - preserve audit trail.
 
-Phase 4:
+Phase 6:
 
-- Client reporting:
+- AI Report Assistant:
+  - rewrite raw notes;
+  - flag missing fields;
+  - generate supervisor-review draft;
+  - never send reports automatically.
+
+Phase 7:
+
+- Client portal / report history:
   - PDF export;
   - email text;
   - OneDrive / SharePoint folder storage;
-  - weekly/monthly report summaries.
-
-Phase 5:
-
-- Tablet UI:
-  - fast field entry;
-  - large buttons;
-  - offline-aware design;
-  - QR checkpoint support.
+  - weekly/monthly report summaries;
+  - client read-only report history, if approved later.
 
 ## Decisions Needed
 
+- Tablet-first or mobile-first?
+- Company tablets or own devices?
 - Which register should be MVP first?
 - Should the first pilot be Objektumőrzés or Portaszolgálat?
 - Who approves reports: supervisor, territorial manager, or admin?
+- Should QR checkpoints be in MVP or later?
+- Should NFC be in MVP or later?
+- Should GPS be event-bound only? Recommended default: yes.
+- Which registers are MVP?
+- Are photos mandatory for some task types?
 - Should AI drafts be visible to the client before approval? Recommended default: no.
 - What minimum fields are mandatory for incident reports?
 - Should photos be included in MVP?
+- Should offline mode be now or later?
+- Should a client portal be now or later?
 - Should reports be sent by email or stored first in OneDrive?
 - Should clients have read-only access later?
 - What legal/privacy rules apply to guard notes and staff activity logs?
