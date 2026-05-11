@@ -113,6 +113,16 @@ The Vercel Preview `/sitemap.xml` must be checked after service seed/content upd
 
 Do not rely on local `.next` sitemap artifacts for final SEO QA. They may be stale or generated from a different DB snapshot. Live Preview is the source of truth for pre-merge indexing checks.
 
+### Build-time service path DB dependency
+
+Service detail `generateStaticParams`, `/sitemap.xml`, and data-driven homepage/footer service detail links depend on the DB-backed service readiness query.
+
+If that query fails during build or sitemap generation because `DATABASE_URL` is missing, points at the wrong target, or Neon is unavailable, the app should fail the generation with a sanitized error instead of emitting an empty or stale service detail layer.
+
+The error may print only a credential-free DB target summary such as host and database name. It must never print the full `DATABASE_URL`.
+
+This is intentional: a Preview or production build with an unavailable service-readiness source is not a reliable SEO artifact. Fix the DB target or retry the build, then verify the live Preview `/sitemap.xml`.
+
 ## Service Detail QA Checklist
 
 Before merging service-detail work, verify on the Vercel Preview URL:

@@ -9,7 +9,7 @@ import { getTranslation, LOCALES, type Locale } from "@/lib/i18n";
 import {
   getPublishedServiceDetailBySlug,
   getPublishedServicesBySlugs,
-  getAllPublishedServicePaths,
+  getAllPublishedServicePathsForBuild,
   getPublishedServiceLocalesBySlug,
 } from "@/lib/db/queries/services";
 import { SEO_DATA, SEO_LOCALES, type SeoLocale } from "@/lib/seo-data";
@@ -23,9 +23,9 @@ import { SEO_DATA, SEO_LOCALES, type SeoLocale } from "@/lib/seo-data";
 //
 // Draft handling: getPublishedServiceDetailBySlug already filters
 // isPublished=true AND isActive=true; missing/draft → notFound().
-// Sitemap (app/sitemap.ts) calls getAllPublishedServicePaths so
+// Sitemap (app/sitemap.ts) uses the shared service-path helper so
 // drafts and incomplete locale detail pages never get indexed via that
-// surface either.
+// surface either; DB lookup failures fail generation loudly.
 //
 // JSON-LD: Service + BreadcrumbList always; FAQPage only when the
 // page actually renders the FAQ section (per spec).
@@ -35,7 +35,9 @@ const URL_SEGMENT = "szolgaltatasok";
 export const revalidate = 3600;
 
 export async function generateStaticParams() {
-  return getAllPublishedServicePaths();
+  return getAllPublishedServicePathsForBuild(
+    "service detail generateStaticParams",
+  );
 }
 
 export async function generateMetadata({
