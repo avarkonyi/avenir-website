@@ -93,7 +93,7 @@ export default async function HomePage({
         <Hero t={{ hero: t.hero, stats: t.stats }} />
         <About t={t} />
         <Services locale={locale} />
-        <References t={t} />
+        <References t={t} locale={locale} />
         <Certifications t={t} locale={locale} />
         <News
           t={{

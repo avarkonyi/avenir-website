@@ -482,15 +482,16 @@ export const servicesRelations = relations(services, ({ one, many }) => ({
 //    partners save as drafts even with no logo; publish requires a
 //    deliberate later toggle once logo + name are present.
 //
-//    No public consumer in Iter 5. The `is_published` flag is stored
-//    for a future Phase 5 visibility strategy; no `app/[locale]/*` code
-//    path queries this table in this iteration.
+//    Public logo strip: homepage rendering is proof-gated. A partner logo
+//    can appear only when the row is active, published, has a logo asset,
+//    is explicitly opted into the logo strip, and public logo usage approval
+//    has been recorded. Partner rows are not public relationship/schema claims.
 //
 //    Index: `idx_partners_active_sort` partial composite on
 //    `(is_active, sort_order)` filtered to `is_active = true` —
 //    mirrors the active+sort pattern from client_references and
-//    certifications. Adequate for the admin list and any future
-//    public render.
+//    certifications. `idx_partners_logo_strip_public` supports the
+//    proof-gated homepage logo-strip query.
 // ────────────────────────────────────────────────────────────────────────────
 export const partners = pgTable(
   "partners",
@@ -502,6 +503,12 @@ export const partners = pgTable(
     websiteUrl: text("website_url"),
     isActive: boolean("is_active").notNull().default(true),
     isPublished: boolean("is_published").notNull().default(false),
+    showInLogoStrip: boolean("show_in_logo_strip").notNull().default(false),
+    logoUsageApprovedAt: timestamp("logo_usage_approved_at", {
+      withTimezone: true,
+    }),
+    logoUsageApprovedBy: text("logo_usage_approved_by"),
+    logoUsageScope: text("logo_usage_scope"),
     sortOrder: integer("sort_order").notNull().default(0),
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
     updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
@@ -510,6 +517,11 @@ export const partners = pgTable(
     index("idx_partners_active_sort")
       .on(table.isActive, table.sortOrder)
       .where(sql`${table.isActive} = true`),
+    index("idx_partners_logo_strip_public")
+      .on(table.sortOrder, table.name)
+      .where(
+        sql`${table.isActive} = true AND ${table.isPublished} = true AND ${table.showInLogoStrip} = true AND ${table.logoUrl} IS NOT NULL AND ${table.logoUsageApprovedAt} IS NOT NULL`,
+      ),
   ],
 );
 

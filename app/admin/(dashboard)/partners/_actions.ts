@@ -29,6 +29,11 @@ import { slugify } from "@/lib/slugify";
 // `is_active AND is_published AND logo_url IS NOT NULL` — never
 // trust upstream constraints to be the only barrier.
 //
+// Homepage logo strip guard: showInLogoStrip is independent from
+// publishing. It can only be enabled when logo usage approval metadata
+// is present, and the public query still filters active + published +
+// approved rows defensively.
+//
 // websiteUrl validation: empty/null is accepted and stored as null;
 // non-empty values must parse via `new URL(value)` AND
 // `protocol === "https:"`. HTTPS is required only when a website
@@ -41,6 +46,10 @@ export type PartnerPayload = {
   sortOrder: number;
   isActive: boolean;
   isPublished: boolean;
+  showInLogoStrip: boolean;
+  logoUsageApprovedAt: string;
+  logoUsageApprovedBy: string;
+  logoUsageScope: string;
 };
 
 export type CreatePartnerResult =
@@ -57,6 +66,18 @@ async function requireAdmin(): Promise<string> {
     throw new Error("Unauthorized");
   }
   return session.user.email;
+}
+
+const PUBLIC_HOME_PATHS = ["/hu", "/en", "/de", "/zh"] as const;
+
+function revalidatePartnerSurfaces(id?: number) {
+  revalidatePath("/admin/partners");
+  if (typeof id === "number") {
+    revalidatePath(`/admin/partners/${id}/edit`);
+  }
+  for (const path of PUBLIC_HOME_PATHS) {
+    revalidatePath(path);
+  }
 }
 
 // Auto-derive a unique slug from `name`, suffixing with `-2`,
@@ -114,6 +135,20 @@ function resolveWebsiteUrl(raw: string): string | null {
   return trimmed;
 }
 
+function resolveLogoUsageApprovedAt(raw: string): Date | null {
+  const trimmed = raw.trim();
+  if (trimmed.length === 0) return null;
+
+  const normalized = /^\d{4}-\d{2}-\d{2}$/.test(trimmed)
+    ? `${trimmed}T00:00:00.000Z`
+    : trimmed;
+  const parsed = new Date(normalized);
+  if (Number.isNaN(parsed.getTime())) {
+    throw new Error("Érvénytelen logóhasználati jóváhagyási dátum.");
+  }
+  return parsed;
+}
+
 // Application-layer publish guard. Both name (after trim) AND
 // logoUrl must be present for a partner to be published. Used by
 // CREATE, UPDATE, and the publish-toggle action.
@@ -125,6 +160,35 @@ function validatePublishGuard(
   if (!isPublished) return null;
   if (name.trim().length === 0 || logoUrl === null || logoUrl.length === 0) {
     return "Publikáláshoz logo és név kötelező.";
+  }
+  return null;
+}
+
+function validateLogoStripGuard({
+  showInLogoStrip,
+  logoUrl,
+  logoUsageApprovedAt,
+  logoUsageApprovedBy,
+  logoUsageScope,
+}: {
+  showInLogoStrip: boolean;
+  logoUrl: string | null;
+  logoUsageApprovedAt: Date | null;
+  logoUsageApprovedBy: string | null;
+  logoUsageScope: string | null;
+}): string | null {
+  if (!showInLogoStrip) return null;
+  if (logoUrl === null || logoUrl.length === 0) {
+    return "A főoldali logósávhoz feltöltött logó szükséges.";
+  }
+  if (!logoUsageApprovedAt) {
+    return "A főoldali logósávhoz rögzített logóhasználati jóváhagyási dátum szükséges.";
+  }
+  if (!logoUsageApprovedBy || logoUsageApprovedBy.trim().length === 0) {
+    return "A főoldali logósávhoz jóváhagyó vagy proof owner megadása szükséges.";
+  }
+  if (!logoUsageScope || logoUsageScope.trim().length === 0) {
+    return "A főoldali logósávhoz használati scope vagy megjegyzés szükséges.";
   }
   return null;
 }
@@ -151,14 +215,35 @@ export async function createPartner(
   if (guardError) return { ok: false, error: guardError };
 
   let websiteUrl: string | null;
+  let logoUsageApprovedAt: Date | null;
   try {
     websiteUrl = resolveWebsiteUrl(payload.websiteUrl);
+    logoUsageApprovedAt = resolveLogoUsageApprovedAt(
+      payload.logoUsageApprovedAt,
+    );
   } catch (err) {
     return {
       ok: false,
       error: err instanceof Error ? err.message : "Érvénytelen weboldal cím.",
     };
   }
+
+  const logoUsageApprovedBy =
+    payload.logoUsageApprovedBy.trim().length > 0
+      ? payload.logoUsageApprovedBy.trim()
+      : null;
+  const logoUsageScope =
+    payload.logoUsageScope.trim().length > 0
+      ? payload.logoUsageScope.trim()
+      : null;
+  const logoStripGuardError = validateLogoStripGuard({
+    showInLogoStrip: payload.showInLogoStrip,
+    logoUrl,
+    logoUsageApprovedAt,
+    logoUsageApprovedBy,
+    logoUsageScope,
+  });
+  if (logoStripGuardError) return { ok: false, error: logoStripGuardError };
 
   try {
     const slug = await uniqueSlugFromName(name);
@@ -172,9 +257,13 @@ export async function createPartner(
         sortOrder: Math.trunc(payload.sortOrder),
         isActive: payload.isActive,
         isPublished: payload.isPublished,
+        showInLogoStrip: payload.showInLogoStrip,
+        logoUsageApprovedAt,
+        logoUsageApprovedBy,
+        logoUsageScope,
       })
       .returning({ id: partners.id });
-    revalidatePath("/admin/partners");
+    revalidatePartnerSurfaces(created.id);
     return { ok: true, id: created.id };
   } catch (err) {
     console.error("createPartner error:", err);
@@ -209,14 +298,35 @@ export async function updatePartner(
   if (guardError) return { ok: false, error: guardError };
 
   let websiteUrl: string | null;
+  let logoUsageApprovedAt: Date | null;
   try {
     websiteUrl = resolveWebsiteUrl(payload.websiteUrl);
+    logoUsageApprovedAt = resolveLogoUsageApprovedAt(
+      payload.logoUsageApprovedAt,
+    );
   } catch (err) {
     return {
       ok: false,
       error: err instanceof Error ? err.message : "Érvénytelen weboldal cím.",
     };
   }
+
+  const logoUsageApprovedBy =
+    payload.logoUsageApprovedBy.trim().length > 0
+      ? payload.logoUsageApprovedBy.trim()
+      : null;
+  const logoUsageScope =
+    payload.logoUsageScope.trim().length > 0
+      ? payload.logoUsageScope.trim()
+      : null;
+  const logoStripGuardError = validateLogoStripGuard({
+    showInLogoStrip: payload.showInLogoStrip,
+    logoUrl,
+    logoUsageApprovedAt,
+    logoUsageApprovedBy,
+    logoUsageScope,
+  });
+  if (logoStripGuardError) return { ok: false, error: logoStripGuardError };
 
   try {
     const [updated] = await db
@@ -228,6 +338,10 @@ export async function updatePartner(
         sortOrder: Math.trunc(payload.sortOrder),
         isActive: payload.isActive,
         isPublished: payload.isPublished,
+        showInLogoStrip: payload.showInLogoStrip,
+        logoUsageApprovedAt,
+        logoUsageApprovedBy,
+        logoUsageScope,
         updatedAt: new Date(),
       })
       .where(eq(partners.id, id))
@@ -235,8 +349,7 @@ export async function updatePartner(
     if (!updated) {
       return { ok: false, error: "Partner nem található." };
     }
-    revalidatePath("/admin/partners");
-    revalidatePath(`/admin/partners/${id}/edit`);
+    revalidatePartnerSurfaces(id);
     return { ok: true };
   } catch (err) {
     console.error("updatePartner error:", err);
@@ -267,7 +380,7 @@ export async function togglePartnerActive(
     if (!updated) {
       return { ok: false, error: "Partner nem található." };
     }
-    revalidatePath("/admin/partners");
+    revalidatePartnerSurfaces(id);
     return { ok: true };
   } catch (err) {
     console.error("togglePartnerActive error:", err);
@@ -289,7 +402,14 @@ export async function togglePartnerPublished(
 
   if (nextPublished) {
     const [row] = await db
-      .select({ name: partners.name, logoUrl: partners.logoUrl })
+      .select({
+        name: partners.name,
+        logoUrl: partners.logoUrl,
+        showInLogoStrip: partners.showInLogoStrip,
+        logoUsageApprovedAt: partners.logoUsageApprovedAt,
+        logoUsageApprovedBy: partners.logoUsageApprovedBy,
+        logoUsageScope: partners.logoUsageScope,
+      })
       .from(partners)
       .where(eq(partners.id, id))
       .limit(1);
@@ -298,6 +418,14 @@ export async function togglePartnerPublished(
     }
     const guardError = validatePublishGuard(row.name, row.logoUrl, true);
     if (guardError) return { ok: false, error: guardError };
+    const logoStripGuardError = validateLogoStripGuard({
+      showInLogoStrip: row.showInLogoStrip,
+      logoUrl: row.logoUrl,
+      logoUsageApprovedAt: row.logoUsageApprovedAt,
+      logoUsageApprovedBy: row.logoUsageApprovedBy,
+      logoUsageScope: row.logoUsageScope,
+    });
+    if (logoStripGuardError) return { ok: false, error: logoStripGuardError };
   }
 
   try {
@@ -309,7 +437,7 @@ export async function togglePartnerPublished(
     if (!updated) {
       return { ok: false, error: "Partner nem található." };
     }
-    revalidatePath("/admin/partners");
+    revalidatePartnerSurfaces(id);
     return { ok: true };
   } catch (err) {
     console.error("togglePartnerPublished error:", err);
@@ -350,7 +478,7 @@ export async function deletePartner(
     if (!deleted) {
       return { ok: false, error: "Partner nem található." };
     }
-    revalidatePath("/admin/partners");
+    revalidatePartnerSurfaces(id);
     return { ok: true };
   } catch (err) {
     console.error("deletePartner error:", err);
@@ -417,7 +545,7 @@ export async function reorderPartners(
           neonSql`UPDATE partners SET sort_order = ${index}, updated_at = NOW() WHERE id = ${id} AND is_active = true`,
       ),
     );
-    revalidatePath("/admin/partners");
+    revalidatePartnerSurfaces();
     return { ok: true };
   } catch (err) {
     console.error("reorderPartners error:", err);

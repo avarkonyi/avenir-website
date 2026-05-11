@@ -36,6 +36,10 @@ type FormState = {
   sortOrder: string;
   isActive: boolean;
   isPublished: boolean;
+  showInLogoStrip: boolean;
+  logoUsageApprovedAt: string;
+  logoUsageApprovedBy: string;
+  logoUsageScope: string;
 };
 
 const EMPTY_STATE: FormState = {
@@ -47,6 +51,10 @@ const EMPTY_STATE: FormState = {
   // Per spec: new partner records default to draft (isPublished=false)
   // so a name-only save succeeds without tripping the publish guard.
   isPublished: false,
+  showInLogoStrip: false,
+  logoUsageApprovedAt: "",
+  logoUsageApprovedBy: "",
+  logoUsageScope: "",
 };
 
 export type PartnerInitial = {
@@ -57,6 +65,10 @@ export type PartnerInitial = {
   sortOrder: number;
   isActive: boolean;
   isPublished: boolean;
+  showInLogoStrip: boolean;
+  logoUsageApprovedAt: string | null;
+  logoUsageApprovedBy: string | null;
+  logoUsageScope: string | null;
 };
 
 type Props =
@@ -71,6 +83,10 @@ function initialFromPartner(p: PartnerInitial): FormState {
     sortOrder: String(p.sortOrder),
     isActive: p.isActive,
     isPublished: p.isPublished,
+    showInLogoStrip: p.showInLogoStrip,
+    logoUsageApprovedAt: p.logoUsageApprovedAt ?? "",
+    logoUsageApprovedBy: p.logoUsageApprovedBy ?? "",
+    logoUsageScope: p.logoUsageScope ?? "",
   };
 }
 
@@ -96,6 +112,10 @@ export function PartnerForm(props: Props) {
       sortOrder: Number.isFinite(parsedSort) ? Math.max(0, parsedSort) : 0,
       isActive: state.isActive,
       isPublished: state.isPublished,
+      showInLogoStrip: state.showInLogoStrip,
+      logoUsageApprovedAt: state.logoUsageApprovedAt,
+      logoUsageApprovedBy: state.logoUsageApprovedBy,
+      logoUsageScope: state.logoUsageScope,
     };
   }
 
@@ -215,6 +235,76 @@ export function PartnerForm(props: Props) {
         </p>
       </section>
 
+      {/* Homepage logo strip approval */}
+      <section
+        style={{
+          background: "#fff",
+          border: "1px solid #E2E8F0",
+          borderRadius: 6,
+          padding: "20px 24px",
+          display: "grid",
+          gap: 16,
+        }}
+      >
+        <SectionLabel>Főoldali logósáv</SectionLabel>
+
+        <Checkbox
+          label="Megjelenítés a főoldali partnerlogó sávban"
+          checked={state.showInLogoStrip}
+          onChange={(v) => update("showInLogoStrip", v)}
+          disabled={pending}
+        />
+        <p style={{ ...helpTextStyle, marginTop: -8 }}>
+          Csak akkor kapcsold be, ha a nyilvános logóhasználat kifejezetten
+          jóvá van hagyva a főoldalra. A publikálás önmagában nem kapcsolja be.
+        </p>
+
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+            gap: 16,
+          }}
+        >
+          <Field label="Jóváhagyás dátuma">
+            <input
+              type="date"
+              value={state.logoUsageApprovedAt}
+              onChange={(e) => update("logoUsageApprovedAt", e.target.value)}
+              disabled={pending}
+              style={inputStyle()}
+            />
+          </Field>
+
+          <Field label="Jóváhagyó / proof owner">
+            <input
+              type="text"
+              value={state.logoUsageApprovedBy}
+              onChange={(e) => update("logoUsageApprovedBy", e.target.value)}
+              maxLength={200}
+              disabled={pending}
+              style={inputStyle()}
+              placeholder="belső felelős vagy jóváhagyó"
+            />
+          </Field>
+        </div>
+
+        <Field label="Használati scope / megjegyzés">
+          <textarea
+            value={state.logoUsageScope}
+            onChange={(e) => update("logoUsageScope", e.target.value)}
+            maxLength={1000}
+            disabled={pending}
+            style={{ ...inputStyle(), minHeight: 88, resize: "vertical" }}
+            placeholder="pl. főoldali logósáv, belső proof alapján; lejárat vagy korlátozás, ha van"
+          />
+          <p style={helpTextStyle}>
+            Rögzítsd, hogy hol használható a logó. A publikus felület csak
+            aktív, publikált, logóval rendelkező, jóváhagyott sorokat jelenít meg.
+          </p>
+        </Field>
+      </section>
+
       {/* Settings */}
       <section
         style={{
@@ -257,8 +347,8 @@ export function PartnerForm(props: Props) {
           disabled={pending}
         />
         <p style={{ ...helpTextStyle, marginTop: -8 }}>
-          A publikáláshoz név és logo kötelező. (Iter 5: a publikus
-          renderelés még nem aktív; a flag későbbi felhasználáshoz tárolódik.)
+          A publikáláshoz név és logo kötelező. A főoldali logósávban csak
+          külön bekapcsolt és jóváhagyott logók jelenhetnek meg.
         </p>
       </section>
 

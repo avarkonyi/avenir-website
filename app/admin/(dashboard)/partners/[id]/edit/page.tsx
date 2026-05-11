@@ -34,6 +34,12 @@ export default async function EditPartnerPage({
     sortOrder: row.sortOrder,
     isActive: row.isActive,
     isPublished: row.isPublished,
+    showInLogoStrip: row.showInLogoStrip,
+    logoUsageApprovedAt: row.logoUsageApprovedAt
+      ? row.logoUsageApprovedAt.toISOString().slice(0, 10)
+      : null,
+    logoUsageApprovedBy: row.logoUsageApprovedBy,
+    logoUsageScope: row.logoUsageScope,
   };
 
   return (

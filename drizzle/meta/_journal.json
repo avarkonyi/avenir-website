@@ -85,6 +85,13 @@
       "when": 1778180529000,
       "tag": "0011_add_service_detail_fields",
       "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "7",
+      "when": 1778520000000,
+      "tag": "0012_partner_logo_strip_approval",
+      "breakpoints": true
     }
   ]
 }

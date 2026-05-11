@@ -1,6 +1,7 @@
 import type { Translation } from "@/lib/i18n";
+import { PartnerLogoStrip } from "@/components/PartnerLogoStrip";
 
-export function References({ t }: { t: Translation }) {
+export function References({ t, locale }: { t: Translation; locale: string }) {
   return (
     <section
       id="references"
@@ -47,6 +48,7 @@ export function References({ t }: { t: Translation }) {
             {t.refText}
           </p>
         </div>
+        <PartnerLogoStrip locale={locale} />
         {/* Category pills */}
         <div style={{ display: "flex", flexWrap: "wrap", gap: 16 }}>
           {t.refs.map((r, i) => (
