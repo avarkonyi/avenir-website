@@ -52,22 +52,24 @@ const PILOT_HU = {
     "vonulószolgálati folyamat biztonságtechnikával és őrzéssel összehangolva.",
   valueProposition:
     "A távfelügyelet és vonulószolgálat akkor ad valódi kontrollt, ha a " +
-    "jelzések nem önmagukban érkeznek be, hanem előre egyeztetett " +
+    "jelzések nem önmagukban érkeznek be, hanem egyeztetett " +
     "eszkalációs rend, kapcsolattartási lánc, eseményrögzítés és helyszíni " +
     "reagálási folyamat kapcsolódik hozzájuk.",
   longDesc:
     "A távfelügyelet célja, hogy a riasztási, behatolásjelzési vagy más " +
     "biztonságtechnikai események ne maradjanak elszigetelt jelzések. A " +
     "működés lényege, hogy a jelzések fogadása, értékelése, dokumentálása " +
-    "és továbbítása előre rögzített szabályok szerint történjen.\n\n" +
-    "Az Avenir a távfelügyeleti és vonulószolgálati folyamatot a helyszín " +
+    "és továbbítása rögzített szabályok szerint történjen.\n\n" +
+    "Avenir a távfelügyeleti és vonulószolgálati folyamatot a helyszín " +
     "biztonságtechnikai adottságaihoz, őrzési rendjéhez és kapcsolattartási " +
     "struktúrájához igazítja. A helyszíni felmérés során meghatározható, " +
     "milyen eseményre milyen jelzési és eszkalációs rend vonatkozzon, kiket " +
     "kell értesíteni, mikor indokolt helyszíni reagálás, és hogyan történjen " +
-    "az esemény dokumentálása.\n\n" +
-    "A cél egy átlátható, visszakövethető és szerződéses feltételekhez " +
-    "igazított jelzéskezelési működés: olyan folyamat, amely összekapcsolja " +
+    "az esemény dokumentálása. A jelzések, események és esetleges felvételek " +
+    "kezelése a helyszínre vonatkozó adatvédelmi és szolgálati szabályok " +
+    "szerint történik.\n\n" +
+    "A cél egy átlátható, szerződéses feltételekhez igazított " +
+    "jelzéskezelési rend: olyan folyamat, amely összekapcsolja " +
     "a biztonságtechnikát, az objektumőrzést, a portaszolgálatot és a " +
     "vonulószolgálati reagálást.",
   useCases: [
@@ -82,7 +84,7 @@ const PILOT_HU = {
     "Jelzéskezelési és eszkalációs rend kialakítása",
     "Kapcsolattartási lánc és értesítési szabályok rögzítése",
     "Vonulószolgálati folyamat szerződéses feltételek szerinti kezelése",
-    "Eseményrögzítés és dokumentált riportálás",
+    "Eseményrögzítés és riportálás",
     "Kapcsolódás kamerarendszerhez, beléptetéshez és objektumőrzéshez",
     "Helyszíni biztonsági felmérés és működési javaslat",
   ],
@@ -114,8 +116,8 @@ const PILOT_HU = {
     {
       title: "Eseményrögzítési és riportálási szabályok egyeztetése",
       body:
-        "Meghatározzuk, mit kell naplózni, milyen riport készüljön, és hogyan " +
-        "legyen visszakövethető az esemény kezelése.",
+        "Meghatározzuk, mit kell naplózni, milyen riport készüljön, és milyen " +
+        "lezárási rend szerint kezelhető az esemény.",
     },
     {
       title: "Működés elindítása, ellenőrzése és finomhangolása",
@@ -133,10 +135,10 @@ const PILOT_HU = {
         "rögzíteni.",
     },
     {
-      title: "Dokumentált jelzéskezelési folyamat",
+      title: "Jelzéskezelési folyamat",
       body:
-        "A jelzések fogadása, értékelése, továbbítása és lezárása előre " +
-        "rögzített működési rend szerint történhet.",
+        "A jelzések fogadása, értékelése, továbbítása és lezárása rögzített " +
+        "működési rend szerint történhet.",
     },
     {
       title: "Egyeztetett eszkalációs rend",
@@ -161,7 +163,7 @@ const PILOT_HU = {
       title: "Eseményrögzítés és riportálás",
       body:
         "A szolgáltatás része lehet eseményrögzítés és egyeztetett riportálás, " +
-        "hogy a helyszíni működés visszakövethető maradjon.",
+        "hogy a helyszíni jelzéskezelés átlátható maradjon.",
     },
     {
       title: "Szerződéses feltételekhez igazított vonulószolgálati folyamat",
@@ -173,7 +175,7 @@ const PILOT_HU = {
       title: "ISO 9001 és ISO 27001",
       body:
         "A működés ISO 9001 és ISO 27001 tanúsított irányítási rendszerekhez " +
-        "illeszkedő dokumentált folyamatokra építhető.",
+        "illeszkedő szabályozott folyamatokra építhető.",
     },
   ],
   faq: [
@@ -182,7 +184,7 @@ const PILOT_HU = {
       a:
         "A távfelügyelet a riasztási, behatolásjelzési vagy más " +
         "biztonságtechnikai jelzések fogadását, kezelését, továbbítását és " +
-        "dokumentálását jelenti. A cél, hogy a jelzések előre egyeztetett " +
+        "dokumentálását jelenti. A cél, hogy a jelzések egyeztetett " +
         "eszkalációs rend szerint kerüljenek feldolgozásra.",
     },
     {
@@ -215,6 +217,15 @@ const PILOT_HU = {
         "Igen, a szolgáltatás része lehet eseményrögzítés és egyeztetett " +
         "riportálás. A riport formátuma, gyakorisága és tartalma az " +
         "együttműködés elején rögzíthető.",
+    },
+    {
+      q: "Hogyan dokumentálhatók a riasztási jelzések és események?",
+      a:
+        "A jelzések eseménynaplóban rögzíthetők: mikor érkezett a jelzés, " +
+        "milyen értesítési lánc indult el, történt-e eszkaláció, milyen " +
+        "intézkedés következett, mi lett a lezárási státusz, és milyen " +
+        "riport készüljön a megrendelő felé. A részleteket a helyszíni és " +
+        "szerződéses szabályok alapján érdemes meghatározni.",
     },
     {
       q: "Összekapcsolható a távfelügyelet a biztonságtechnikával?",

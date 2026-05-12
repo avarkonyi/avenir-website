@@ -47,42 +47,42 @@ const PILOT_HU = {
   seoTitle: "Hard FM és műszaki üzemeltetés vállalati helyszínekre | Avenir",
   seoDescription:
     "Műszaki üzemeltetés, hibabejelentés-kezelés, karbantartási koordináció, " +
-    "szolgáltatói egyeztetés és dokumentált riportálás vállalati helyszínekre.",
+    "szolgáltatói egyeztetés és riportálás vállalati helyszínekre.",
   valueProposition:
-    "A Hard FM célja, hogy a vállalati, ipari, logisztikai és irodai " +
-    "helyszínek műszaki működése ne eseti tűzoltásként, hanem átlátható, " +
-    "koordinált és dokumentált folyamatként működjön: hibabejelentés-kezeléssel, " +
+    "A Hard FM célja, hogy a helyszínek műszaki működése ne eseti " +
+    "tűzoltásként, hanem átlátható üzemeltetési folyamatként működjön: " +
+    "hibabejelentés-kezeléssel, " +
     "karbantartási egyeztetéssel, szolgáltatói koordinációval, eszkalációs " +
     "renddel és riportálással.",
   longDesc:
     "A Hard FM a helyszínek műszaki üzemeltetésének és karbantartási " +
-    "folyamatainak koordinált kezelését jelenti. Ide tartozhatnak az " +
+    "folyamatainak szervezett kezelését jelenti. Ide tartozhatnak az " +
     "épületgépészeti, elektromos, kisebb műszaki, karbantartási, " +
     "hibaelhárítási és szolgáltatói egyeztetési feladatok, valamint azok " +
-    "dokumentált követése.\n\n" +
-    "Az Avenir a Hard FM feladatokat nem elszigetelt javításként kezeli, " +
+    "nyomon követése.\n\n" +
+    "Avenir a Hard FM feladatokat nem elszigetelt javításként kezeli, " +
     "hanem működési folyamatként. A helyszíni igények alapján meghatározható, " +
     "hogyan érkezzenek a hibabejelentések, ki döntsön az eszkalációról, " +
     "mely szolgáltatók vagy alvállalkozók vonhatók be, hogyan történjen a " +
-    "beavatkozások dokumentálása, és milyen riportot kapjon a megrendelő.\n\n" +
+    "beavatkozások rögzítése, és milyen riportot kapjon a megrendelő.\n\n" +
     "A cél az, hogy a műszaki üzemeltetés támogassa a napi működés " +
     "folytonosságát: csökkenjen az ad hoc egyeztetés, átláthatóbb legyen a " +
-    "hibák és beavatkozások kezelése, és a megrendelő visszakövethető " +
-    "információt kapjon a helyszíni műszaki folyamatokról.",
+    "hibák és beavatkozások kezelése, és a megrendelő naprakész információt " +
+    "kapjon a helyszíni műszaki folyamatokról.",
   useCases: [
     "Irodaházak és üzleti központok műszaki üzemeltetési támogatása",
     "Ipari és logisztikai telephelyek karbantartási koordinációja",
     "Raktárak, szolgáltatási pontok és több helyszínes működések műszaki folyamatai",
     "Hibabejelentések, kisebb műszaki problémák és szolgáltatói egyeztetések kezelése",
-    "Olyan helyszínek, ahol fontos a dokumentált beavatkozás, riportálás és eszkaláció",
-    "Műszaki üzemeltetés és Soft FM / security operation összehangolása",
+    "Olyan helyszínek, ahol fontos a beavatkozások rögzítése, riportálás és eszkaláció",
+    "Műszaki üzemeltetés és Soft FM / biztonsági működés összehangolása",
   ],
   includedItems: [
     "Hibabejelentési és eszkalációs folyamat kialakítása",
     "Karbantartási és műszaki feladatok koordinációja",
     "Szolgáltatói és alvállalkozói egyeztetés támogatása",
     "Helyszíni műszaki kockázatok és visszatérő problémák rögzítése",
-    "Beavatkozások, státuszok és lezárások dokumentálása",
+    "Beavatkozások, státuszok és lezárások rögzítése",
     "Egyeztetett riportálás a megrendelő felé",
     "Kapcsolódás Soft FM, portaszolgálati és biztonsági működéshez",
   ],
@@ -109,10 +109,10 @@ const PILOT_HU = {
         "megfelelően.",
     },
     {
-      title: "Műszaki feladatok, beavatkozások és státuszok dokumentálása",
+      title: "Műszaki feladatok, beavatkozások és státuszok rögzítése",
       body:
         "A hibák, intézkedések, lezárások és nyitott pontok egyeztetett módon " +
-        "rögzíthetők, hogy a helyszíni műszaki működés visszakövethető legyen.",
+        "rögzíthetők, hogy a helyszíni műszaki működés átláthatóbb legyen.",
     },
     {
       title: "Rendszeres riportálás és visszajelzés a megrendelő felé",
@@ -131,7 +131,7 @@ const PILOT_HU = {
   ],
   trustItems: [
     {
-      title: "Dokumentált műszaki üzemeltetési folyamat",
+      title: "Műszaki üzemeltetési folyamat",
       body:
         "A hibák, beavatkozások, státuszok és lezárások egyeztetett módon " +
         "rögzíthetők, nem csak eseti kommunikációban kezelhetők.",
@@ -149,7 +149,7 @@ const PILOT_HU = {
         "megrendelői szolgáltatói kör összehangolását.",
     },
     {
-      title: "Beavatkozások és státuszok visszakövethető rögzítése",
+      title: "Beavatkozások és státuszok rögzítése",
       body:
         "A megrendelő átláthatóbb képet kaphat arról, milyen műszaki feladat " +
         "nyitott, folyamatban lévő vagy lezárt.",
@@ -180,8 +180,8 @@ const PILOT_HU = {
       a:
         "A Hard FM a helyszínek műszaki üzemeltetésének, karbantartási " +
         "folyamatainak, hibabejelentéseinek és szolgáltatói egyeztetéseinek " +
-        "koordinált kezelését jelenti. A cél, hogy a műszaki működés átlátható, " +
-        "dokumentált és visszakövethető legyen.",
+        "koordinált kezelését jelenti. A cél, hogy a műszaki működés " +
+        "átlátható és riportálható legyen.",
     },
     {
       q: "Miben különbözik a Hard FM a Soft FM-től?",
@@ -200,7 +200,7 @@ const PILOT_HU = {
         "a helyszíni igények és a szerződéses keretek alapján érdemes rögzíteni.",
     },
     {
-      q: "Az Avenir saját maga végez minden műszaki munkát?",
+      q: "Avenir saját maga végez minden műszaki munkát?",
       a:
         "A működés a feladat jellegétől és a szerződéses keretektől függ. A " +
         "Hard FM szolgáltatás része lehet saját koordináció, kijelölt " +
@@ -221,6 +221,16 @@ const PILOT_HU = {
         "Igen, a szolgáltatás része lehet egyeztetett riportálás. A riport " +
         "tartalmazhatja a hibabejelentéseket, státuszokat, beavatkozásokat, " +
         "lezárt feladatokat, visszatérő problémákat és fejlesztési javaslatokat.",
+    },
+    {
+      q: "Mikor érdemes külön Hard FM folyamatot kialakítani?",
+      a:
+        "Külön Hard FM folyamat akkor hasznos, ha visszatérő műszaki hibák, " +
+        "több szolgáltató, tisztázatlan eszkaláció, gyakori ad hoc egyeztetés " +
+        "vagy erősebb státuszkövetési, riportálási és karbantartási " +
+        "koordinációs igény jelentkezik. Ez nem jelent garantált javítási " +
+        "időt; a vállalható reakciókat a helyszín és a szerződéses keretek " +
+        "alapján kell rögzíteni.",
     },
     {
       q: "Kapcsolódhat a Hard FM biztonsági vagy portaszolgálati működéshez?",

@@ -49,23 +49,22 @@ const PILOT_HU = {
     "Soft FM szolgáltatások takarítási koordinációval, zöldterület-gondozással, " +
     "higiéniai folyamatokkal, operatív támogatással és riportálással.",
   valueProposition:
-    "A Soft FM célja, hogy a vállalati, ipari, logisztikai és irodai helyszínek " +
-    "napi működést támogató szolgáltatásai ne különálló feladatokként, hanem " +
-    "koordinált, ellenőrizhető és riportálható folyamatként működjenek: " +
-    "takarítási egyeztetéssel, zöldterület-gondozással, higiéniai és operatív " +
-    "támogatással, szolgáltatói koordinációval és minőségellenőrzéssel.",
+    "A Soft FM célja, hogy a helyszínek napi működést támogató szolgáltatásai " +
+    "ne különálló feladatokként, hanem átlátható, riportálható folyamatként " +
+    "működjenek: takarítási egyeztetéssel, zöldterület-gondozással, higiéniai " +
+    "és operatív támogatással, szolgáltatói koordinációval és minőségellenőrzéssel.",
   longDesc:
     "A Soft FM a helyszínek napi működését támogató, nem műszaki facility " +
-    "szolgáltatások koordinált kezelését jelenti. Ide tartozhat a takarítási " +
+    "szolgáltatások szervezett kezelését jelenti. Ide tartozhat a takarítási " +
     "működés, a zöldterület-gondozás, a higiéniai és hulladékkezelési folyamatok " +
     "támogatása, a helyszíni operatív feladatok egyeztetése, valamint a " +
     "szolgáltatók és alvállalkozók koordinációja.\n\n" +
-    "Az Avenir a Soft FM feladatokat nem elszigetelt napi teendőként kezeli, " +
+    "Avenir a Soft FM feladatokat nem elszigetelt napi teendőként kezeli, " +
     "hanem működési rendszerként. A helyszíni igények alapján meghatározható, " +
     "milyen gyakorisággal, milyen területeken, milyen minőségi elvárások szerint " +
     "és milyen riportálással történjenek a támogató szolgáltatások.\n\n" +
-    "A cél az, hogy a megrendelő átláthatóbb, visszakövethetőbb és kiszámíthatóbb " +
-    "operatív működést kapjon: kevesebb ad hoc egyeztetéssel, egyértelmű " +
+    "A cél az, hogy a megrendelő átláthatóbb és kiszámíthatóbb " +
+    "operatív rendet kapjon: kevesebb ad hoc egyeztetéssel, egyértelmű " +
     "felelősségi pontokkal, egyeztetett minőségellenőrzéssel és olyan " +
     "riportálással, amely segíti a helyszíni működés folyamatos javítását.",
   useCases: [
@@ -127,7 +126,7 @@ const PILOT_HU = {
   ],
   trustItems: [
     {
-      title: "Dokumentált Soft FM működési folyamat",
+      title: "Soft FM működési folyamat",
       body:
         "A takarítási, higiéniai, zöldterület- és operatív feladatok egyeztetett " +
         "módon követhetők, nem csak eseti kommunikációban kezelhetők.",
@@ -180,7 +179,7 @@ const PILOT_HU = {
       q: "Mit jelent a Soft FM?",
       a:
         "A Soft FM a helyszínek napi működését támogató, nem műszaki facility " +
-        "szolgáltatások koordinált kezelését jelenti. Ide tartozhat például a " +
+        "szolgáltatások szervezett kezelését jelenti. Ide tartozhat például a " +
         "takarítási működés, a zöldterület-gondozás, a higiéniai folyamatok, az " +
         "operatív támogatás és a szolgáltatói egyeztetés.",
     },
@@ -214,6 +213,15 @@ const PILOT_HU = {
         "A minőségi elvárásokat, ellenőrzési szempontokat és visszajelzési " +
         "folyamatokat előre kell rögzíteni. Így a szolgáltatás nem általános " +
         "ígéretre, hanem egyeztetett scope-ra, ellenőrzési pontokra és riportálásra épül.",
+    },
+    {
+      q: "Hogyan ellenőrizhető a Soft FM szolgáltatások minősége?",
+      a:
+        "A minőség meghatározott scope-pal, gyakorisággal, ellenőrzési " +
+        "pontokkal, riportálással, visszatérő problémák kezelésével, " +
+        "visszajelzési körökkel és helyszínspecifikus elvárásokkal követhető. " +
+        "Általános minőségi garancia helyett az ellenőrzést az egyeztetett " +
+        "feladatokra és minőségi szempontokra érdemes építeni.",
     },
     {
       q: "Kapunk riportot a Soft FM feladatokról?",

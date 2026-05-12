@@ -55,30 +55,29 @@ const PILOT_HU = {
     "riportálással. Helyszínre szabott protokollok vállalati helyszínekre.",
   valueProposition:
     "Helyszínre szabott objektumőrzéssel támogatjuk a telephelyek, " +
-    "irodaházak, logisztikai és ipari helyszínek ellenőrizhető napi " +
-    "működését: beléptetés, kiléptetés, járőrözés, incidenskezelés, " +
-    "szolgálati napló és egyeztetett eszkalációs rend alapján.",
+    "irodaházak, logisztikai és ipari helyszínek biztonsági rendjét: " +
+    "beléptetés, kiléptetés, járőrözés, incidenskezelés, szolgálati napló " +
+    "és egyeztetett eszkaláció alapján.",
   longDesc:
     "Az élőerős objektumőrzés célja, hogy a helyszínen ne csak őri " +
-    "jelenlét legyen, hanem előre rögzített, ellenőrizhető vagyonvédelmi " +
-    "működés. Az Avenir a helyszíni felmérés alapján szolgálati utasítást " +
+    "jelenlét legyen, hanem helyszínhez igazított vagyonvédelmi rend. " +
+    "Avenir a helyszíni felmérés alapján szolgálati utasítást " +
     "készít: meghatározza a belépési és kilépési pontokat, a látogatók és " +
     "beszállítók kezelését, a járőrútvonalakat, a kulcskezelési " +
     "szabályokat, az incidensek dokumentálását és az eszkalációs rendet.\n\n" +
-    "A szolgáltatás igény szerint kapcsolódhat meglévő kamerarendszerhez, " +
-    "beléptető rendszerhez vagy riasztási folyamathoz. A cél, hogy a " +
-    "megrendelő ne csak jelenlétet kapjon, hanem visszakövethető " +
-    "működést: szolgálati naplóval, eseményjelentéssel, rendszeres " +
-    "egyeztetéssel és kijelölt felelős kapcsolattartóval.\n\n" +
+    "A szolgáltatás igény szerint összehangolható meglévő kamerarendszerrel, " +
+    "beléptető rendszerrel vagy riasztási folyamattal. A cél, hogy a " +
+    "megrendelő ne csak jelenlétet kapjon, hanem egyértelmű szolgálati " +
+    "keretet: naplózással, eseményjelentéssel, rendszeres egyeztetéssel " +
+    "és kijelölt felelős kapcsolattartóval.\n\n" +
     "A vagyonőri jelenlét a helyszín kockázati profiljához és a " +
-    "szerződéses igényhez igazodik: fegyver nélküli vagy a jogi " +
-    "feltételeknek megfelelő fegyveres vagyonőri szolgáltatás is " +
-    "kialakítható. Az Avenir SzVMt. szerinti vagyonvédelmi tevékenységi " +
-    "engedélyének száma: 01030-822/4926-7/2023. A működés ISO 9001 és " +
+    "szerződéses igényhez igazodik: fegyver nélküli vagy a jogi feltételek " +
+    "teljesülése esetén fegyveres vagyonőri szolgáltatás is kialakítható. " +
+    "Avenir SzVMt. szerinti vagyonvédelmi tevékenységi engedélyének száma: " +
+    "01030-822/4926-7/2023. A szolgálati rend ISO 9001 és " +
     "ISO 27001 tanúsított irányítási rendszerekhez illeszkedő, " +
-    "dokumentált folyamatokra épül, 24/7 diszpécseri háttérrel, több " +
-    "mint 30 aktív helyszínen szerzett tapasztalattal és 200+ " +
-    "munkatársból álló szervezeti háttérrel.",
+    "szabályozott folyamatokra építhető, 24/7 diszpécseri háttérrel " +
+    "támogatva.",
   useCases: [
     "Logisztikai központok, raktárak és teherkapus helyszínek",
     "Ipari és gyártási telephelyek",
@@ -138,9 +137,9 @@ const PILOT_HU = {
         "elején rögzítjük.",
     },
     {
-      title: "Dokumentált szolgálati működés",
+      title: "Szolgálati napló és eseménykezelés",
       body: "Szolgálati napló, eseményrögzítés, egyeztetett riportálás és " +
-        "előre rögzített eszkalációs rend segíti a visszakövethető működést.",
+        "eszkalációs rend segíti a helyszíni kontrollt.",
     },
     {
       title: "Egy felelős kapcsolattartó",
@@ -150,16 +149,16 @@ const PILOT_HU = {
     {
       title: "ISO 9001 és ISO 27001",
       body: "A szolgálati folyamatok ISO 9001 és ISO 27001 tanúsított " +
-        "irányítási rendszerekhez illeszkedő dokumentált működésre épülnek.",
+        "irányítási rendszerekhez illeszkedő szabályozott működésre épülnek.",
     },
     {
-      title: "Szervezeti háttér",
-      body: "Több mint 30 aktív helyszínen szerzett tapasztalat és 200+ " +
-        "munkatársból álló szervezeti háttér támogatja a szolgáltatást.",
+      title: "Helyszínhez igazított szolgálati modell",
+      body: "A szolgálati rendet a helyszín kockázati profilja, nyitvatartása, " +
+        "belépési pontjai és riportálási elvárásai alapján érdemes kialakítani.",
     },
     {
       title: "Vagyonvédelmi engedély",
-      body: "Az Avenir SzVMt. szerinti vagyonvédelmi tevékenységi " +
+      body: "Avenir SzVMt. szerinti vagyonvédelmi tevékenységi " +
         "engedélyének száma: 01030-822/4926-7/2023.",
     },
   ],
@@ -186,28 +185,27 @@ const PILOT_HU = {
     },
     {
       q: "Fegyveres őrzés is kérhető?",
-      a: "A helyszín kockázati profiljától, a jogi feltételektől és a " +
-        "szerződéses igénytől függően fegyver nélküli vagy fegyveres " +
-        "vagyonőri jelenlét is kialakítható.",
+      a: "A helyszín kockázati profiljától, a szerződéses igénytől és a " +
+        "jogi feltételek teljesülésétől függően fegyver nélküli vagy " +
+        "fegyveres vagyonőri jelenlét is kialakítható.",
     },
     {
       q: "Kapunk-e szolgálati naplót vagy incidensriportot?",
       a: "Igen, a szolgáltatás része lehet szolgálati napló, " +
         "eseményrögzítés és egyeztetett riportálás. A pontos " +
         "riportformátumot az együttműködés elején rögzítjük, hogy a " +
-        "megrendelő visszakövethető információt kapjon a helyszíni " +
-        "működésről.",
+        "megrendelő naprakész információt kapjon a helyszíni működésről.",
     },
     {
       q: "Összeköthető az őrzés kamerarendszerrel vagy beléptető rendszerrel?",
-      a: "Igen, ahol erre lehetőség van, az élőerős őrzés kapcsolódhat " +
+      a: "Igen, ahol erre lehetőség van, az élőerős őrzés összehangolható " +
         "meglévő kamerarendszerhez, beléptető rendszerhez, riasztási " +
         "folyamathoz vagy távfelügyeleti működéshez. Így az őri jelenlét " +
         "és a technikai vagyonvédelem egymást erősítheti.",
     },
     {
       q: "Mi történik incidens esetén?",
-      a: "Az incidenskezelést előre egyeztetett eszkalációs rend alapján " +
+      a: "Az incidenskezelést egyeztetett eszkalációs rend alapján " +
         "alakítjuk ki. Ez meghatározza, milyen eseményt kell rögzíteni, kit " +
         "kell értesíteni, milyen sorrendben történik a jelzés, és hogyan " +
         "kerül dokumentálásra az eset.",
@@ -218,6 +216,14 @@ const PILOT_HU = {
         "objektumot kell őrizni, változik a beléptetési rend, nő a " +
         "teherforgalom, visszatérő incidensek vannak, vagy a meglévő őrzési " +
         "és technikai folyamatokat szeretnék átláthatóbbá tenni.",
+    },
+    {
+      q: "Milyen szerződéses formában érdemes indítani az objektumőrzést?",
+      a: "A megfelelő modell a helyszín méretétől, kockázati profiljától, " +
+        "nyitvatartásától, belépési pontjaitól, járőrözési igényétől, " +
+        "incidenskezelési rendjétől és riportálási elvárásaitól függ. " +
+        "Ezeket az indulás előtt érdemes rögzíteni, hogy a szolgálat a " +
+        "helyszín valós működéséhez igazodjon.",
     },
   ],
   // Related services use future canonical Hungarian public slugs. Some

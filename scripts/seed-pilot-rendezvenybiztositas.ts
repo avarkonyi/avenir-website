@@ -52,10 +52,9 @@ const PILOT_HU = {
   valueProposition:
     "A rendezvénybiztosítás célja, hogy az esemény ideje alatt a " +
     "vendégáramlás, a beléptetés, a zárt vagy kiemelt területek kezelése, " +
-    "a konfliktusmegelőzés és az incidensjelzés előre egyeztetett rend " +
-    "szerint működjön. Az Avenir a rendezvény jellegéhez, helyszínéhez és " +
-    "szervezői elvárásaihoz igazított biztonsági jelenlétet és dokumentált " +
-    "eseménykezelést biztosít.",
+    "a konfliktusmegelőzés és az incidensjelzés egyeztetett rend szerint " +
+    "történjen. Avenir az esemény jellegéhez, létszámához és szerződéses " +
+    "kereteihez igazított biztonsági jelenlétet biztosít.",
   longDesc:
     "A rendezvénybiztosítás nem azonos a folyamatos objektumőrzéssel. A " +
     "rendezvények időben, helyszínben és kockázati profilban is eltérő " +
@@ -63,14 +62,14 @@ const PILOT_HU = {
     "beszállítók és szervezők mozognak, VIP vagy backstage területek " +
     "kezelése merülhet fel, és a helyszíni személyzetnek gyorsan kell " +
     "együttműködnie a szervezőkkel.\n\n" +
-    "Az Avenir a rendezvénybiztosítást előre egyeztetett scope alapján " +
-    "szervezi. A helyszín, a résztvevői kör, a belépési pontok, a zárt " +
+    "Avenir a rendezvénybiztosítást egyeztetett scope alapján szervezi. " +
+    "A helyszín, a résztvevői kör, a belépési pontok, a zárt " +
     "területek, a szervezői kapcsolattartás, az incidensjelzési rend és a " +
-    "szükséges biztonsági személyzet az esemény jellegétől és szerződéses " +
-    "kereteitől függően kerül meghatározásra.\n\n" +
+    "szükséges biztonsági személyzet az esemény jellegéhez, létszámához " +
+    "és szerződéses kereteihez igazítva kerül meghatározásra.\n\n" +
     "A cél nem az, hogy általános garanciát adjunk minden helyzetre, hanem " +
-    "hogy a rendezvény ideje alatt átlátható, koordinált és dokumentált " +
-    "biztonsági működés álljon rendelkezésre: beléptetés támogatásával, " +
+    "hogy a rendezvény ideje alatt átlátható biztonsági rend álljon " +
+    "rendelkezésre: beléptetés támogatásával, " +
     "vendégáramlás kezelésével, konfliktusmegelőző jelenléttel, " +
     "eszkalációs renddel és rendezvényzáró visszajelzéssel.",
   useCases: [
@@ -87,8 +86,8 @@ const PILOT_HU = {
     "Zárt, VIP vagy backstage területek kezelése",
     "Szervezői kapcsolattartás és helyszíni koordináció",
     "Konfliktusmegelőző biztonsági jelenlét",
-    "Incidensjelzés és eszkaláció előre egyeztetett rend szerint",
-    "Dokumentált eseménykezelés és rendezvényzáró visszajelzés",
+    "Incidensjelzés és eszkaláció egyeztetett rend szerint",
+    "Eseménykezelés és rendezvényzáró visszajelzés",
   ],
   processSteps: [
     {
@@ -131,7 +130,7 @@ const PILOT_HU = {
   ],
   trustItems: [
     {
-      title: "Előre egyeztetett rendezvénybiztosítási scope",
+      title: "Egyeztetett rendezvénybiztosítási scope",
       body:
         "A biztonsági jelenlét, beléptetés, zónakezelés és kapcsolattartás " +
         "kereteit az esemény előtt kell rögzíteni.",
@@ -143,9 +142,9 @@ const PILOT_HU = {
         "biztonsági oldalon is egyértelmű kapcsolattartási pont szükséges.",
     },
     {
-      title: "Dokumentált incidensjelzési és eszkalációs rend",
+      title: "Incidensjelzési és eszkalációs rend",
       body:
-        "A váratlan helyzetek kezelését előre egyeztetett jelzési, értesítési " +
+        "A váratlan helyzetek kezelését egyeztetett jelzési, értesítési " +
         "és dokumentálási rend támogatja.",
     },
     {
@@ -201,7 +200,7 @@ const PILOT_HU = {
       q: "Van garantált konfliktusmentes rendezvény?",
       a:
         "Nem ígérhető garantált konfliktusmentesség. A szolgáltatás célja a " +
-        "kockázatok csökkentése, a helyszíni jelenlét, az előre egyeztetett " +
+        "kockázatok csökkentése, a helyszíni jelenlét, az egyeztetett " +
         "eszkalációs rend és a szervezőkkel való gyors kapcsolattartás biztosítása.",
     },
     {
@@ -219,6 +218,14 @@ const PILOT_HU = {
         "amely összefoglalja a főbb eseményeket, eltéréseket, incidenseket és " +
         "fejlesztési javaslatokat. A riport részletezettségét az együttműködés " +
         "elején érdemes rögzíteni.",
+    },
+    {
+      q: "Mikor érdemes előzetes rendezvénybiztosítási bejárást tartani?",
+      a:
+        "Előzetes bejárás különösen akkor hasznos, ha több belépési pont, " +
+        "VIP, backstage vagy zárt zóna, nagyobb vendégáramlás, külső " +
+        "beszállítói mozgás, szokatlan helyszíni elrendezés, magasabb " +
+        "kockázatú programelem vagy erős szervezői koordinációs igény várható.",
     },
     {
       q: "Kapcsolódhat a rendezvénybiztosítás beléptető vagy biztonságtechnikai rendszerhez?",

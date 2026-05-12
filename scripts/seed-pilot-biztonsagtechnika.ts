@@ -52,22 +52,29 @@ const PILOT_HU = {
   valueProposition:
     "A biztonságtechnikai rendszer akkor működik jól, ha nem különálló " +
     "eszközök halmaza, hanem a helyszín napi működéséhez illeszkedő " +
-    "védelmi réteg. Az Avenir a kamerarendszereket, beléptetési pontokat, " +
+    "védelmi réteg. Avenir a kamerarendszereket, beléptetési pontokat, " +
     "riasztási folyamatokat és jelzéskezelést az élőerős őrzéssel, " +
-    "portaszolgálattal és távfelügyeleti működéssel összehangolva tervezi " +
-    "és kezeli.",
+    "portaszolgálattal és távfelügyelettel összehangolva tervezi.",
   longDesc:
     "A biztonságtechnika célja, hogy a helyszíni vagyonvédelem ne csak " +
-    "emberi jelenlétre támaszkodjon, hanem ellenőrizhető technikai " +
+    "emberi jelenlétre támaszkodjon, hanem jól kezelhető technikai " +
     "támogatást is kapjon. Ide tartozhat a kamerarendszer, a beléptető " +
     "rendszer, a behatolásjelzés, a riasztási folyamat, a jelzések " +
     "továbbítása és az események dokumentálása.\n\n" +
-    "Az Avenir a biztonságtechnikai működést nem elszigetelt " +
+    "Avenir a biztonságtechnikai működést nem elszigetelt " +
     "eszközbeszerzésként kezeli. A helyszíni felmérés alapján azt " +
     "vizsgáljuk, hol vannak belépési pontok, gyenge ellenőrzési zónák, " +
     "visszatérő események, kritikus területek és olyan folyamatok, ahol a " +
     "technológia az őrzést, a portaszolgálatot vagy a távfelügyeletet " +
     "támogatni tudja.\n\n" +
+    "A kamerás megfigyelés, a beléptetési adatok és a biztonságtechnikai " +
+    "jelzések kezelése adatvédelmi szempontból is tervezést igényel. A " +
+    "rendszer kialakításánál figyelembe kell venni a célhoz kötöttséget, " +
+    "a látószög arányosságát, a jogos érdek dokumentálását, az érintetti " +
+    "tájékoztatást és a felvételek megőrzési idejének szakmai indokolását. " +
+    "Avenir a biztonságtechnikai felmérés és tervezés során ezeket a " +
+    "szempontokat is beépíti a javaslatba, hogy a technikai védelem ne " +
+    "csak működőképes, hanem átlátható és felelősen kezelhető legyen.\n\n" +
     "A cél egy átlátható, karbantartható és napi működésben is használható " +
     "biztonságtechnikai réteg: olyan megoldás, amely nem csak rögzít, " +
     "hanem segíti az észlelést, az eszkalációt, a beléptetést, a " +
@@ -86,7 +93,7 @@ const PILOT_HU = {
     "Élőerős őrzéssel és portaszolgálattal való összekapcsolás",
     "Jelzéskezelési és eszkalációs rend kialakítása",
     "Helyszíni biztonsági felmérés és technológiai javaslat",
-    "Dokumentált működés, eseményrögzítés és riportálási támogatás",
+    "Eseményrögzítés és riportálási támogatás",
   ],
   processSteps: [
     {
@@ -131,7 +138,7 @@ const PILOT_HU = {
   ],
   trustItems: [
     {
-      title: "Dokumentált helyszíni felmérés",
+      title: "Helyszíni felmérés",
       body:
         "A technikai igényeket helyszíni felmérés és működési áttekintés " +
         "alapján érdemes rögzíteni, nem önálló eszközlistaként.",
@@ -157,20 +164,26 @@ const PILOT_HU = {
     {
       title: "Jelzéskezelési és eszkalációs rend",
       body:
-        "A rendszer akkor hasznos a napi működésben, ha előre rögzített, ki " +
+        "A rendszer akkor hasznos a napi működésben, ha rögzített, ki " +
         "mikor kap jelzést és milyen lépést kell tennie.",
     },
     {
-      title: "Karbantarthatóság és visszakövethető eseménykezelés",
+      title: "Adatvédelmi szempontokat figyelembe vevő tervezés",
       body:
-        "A technikai rétegnek hosszabb távon is kezelhetőnek, ellenőrizhetőnek " +
+        "A kameraképek, beléptetési adatok és jelzések kezelésekor a cél, " +
+        "látószög, tájékoztatás és megőrzési rend is tervezési szempont.",
+    },
+    {
+      title: "Karbantarthatóság és eseménykezelés",
+      body:
+        "A technikai rétegnek hosszabb távon is kezelhetőnek, karbantarthatónak " +
         "és riportálhatónak kell maradnia.",
     },
     {
       title: "ISO 9001 és ISO 27001",
       body:
         "A működés ISO 9001 és ISO 27001 tanúsított irányítási rendszerekhez " +
-        "illeszkedő dokumentált folyamatokra építhető.",
+        "illeszkedő szabályozott folyamatokra építhető.",
     },
   ],
   faq: [
@@ -179,7 +192,7 @@ const PILOT_HU = {
       a:
         "A biztonságtechnika a helyszíni vagyonvédelem technikai rétegét " +
         "jelenti: kamerarendszert, beléptetést, behatolásjelzést, riasztási " +
-        "folyamatot, jelzéskezelést és ezek dokumentált működését. A cél, " +
+        "folyamatot, jelzéskezelést és ezek szabályozott működését. A cél, " +
         "hogy a technika ne különálló eszköz legyen, hanem támogassa az " +
         "őrzést, a portaszolgálatot és az eszkalációt.",
     },
@@ -215,7 +228,7 @@ const PILOT_HU = {
         "alapján érdemes rögzíteni.",
     },
     {
-      q: "Miért fontos a dokumentált eszkalációs rend?",
+      q: "Miért fontos a rögzített eszkalációs rend?",
       a:
         "Az eszkalációs rend határozza meg, hogy riasztás, rendkívüli esemény " +
         "vagy jogosulatlan belépési kísérlet esetén ki kap jelzést, milyen " +
@@ -225,10 +238,27 @@ const PILOT_HU = {
     {
       q: "Miben más ez, mint egy egyszerű kamera- vagy riasztórendszer?",
       a:
-        "Egy kamera- vagy riasztórendszer önmagában csak eszköz. Az Avenir " +
+        "Egy kamera- vagy riasztórendszer önmagában csak eszköz. Avenir " +
         "szemléletében a biztonságtechnika a teljes helyszíni működés része: " +
         "kapcsolódik az őrzéshez, a portaszolgálathoz, a beléptetéshez, a " +
         "jelzéskezeléshez és a riportáláshoz.",
+    },
+    {
+      q: "Kell-e adatvédelmi szempontokat vizsgálni kamerarendszer kialakításánál?",
+      a:
+        "Igen. Kamerarendszer tervezésekor a célhoz kötöttség, az érintetti " +
+        "tájékoztatás, a jogos érdek dokumentálása, a kamerák látószöge, a " +
+        "megőrzési idő és a helyszín saját adatkezelési környezete is " +
+        "vizsgálandó. Ez nem jogi tanácsadás, de a műszaki javaslatnak " +
+        "ezekkel a szempontokkal is számolnia kell.",
+    },
+    {
+      q: "Milyen szempontok befolyásolják a kamerafelvételek megőrzési idejét?",
+      a:
+        "A megőrzési időt a rögzítés célja, a helyszín kockázati profilja, " +
+        "az incidenskezelési igény, a belső szabályzat és az adatvédelmi " +
+        "környezet befolyásolja. Nincs minden helyszínre azonos, általános " +
+        "válasz; a megőrzési rendet szakmailag indokoltan kell kialakítani.",
     },
   ],
   // Related services use future canonical Hungarian public slugs. Missing

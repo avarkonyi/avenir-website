@@ -51,37 +51,37 @@ const PILOT_HU = {
   seoTitle: "Recepciós és portaszolgálat vállalatoknak | Avenir",
   seoDescription:
     "Portaszolgálat beléptetéssel, vendégkezeléssel, kulcskezeléssel és " +
-    "dokumentált napi működéssel irodaházaknak és vállalati helyszíneknek.",
+    "naplózott napi folyamattal irodaházaknak és vállalati helyszíneknek.",
   valueProposition:
     "A recepciós és portaszolgálat az első működési pont, ahol a látogatók, " +
     "beszállítók, munkatársak és bérlők találkoznak a helyszín szabályaival. " +
-    "Az Avenir célja, hogy ez a pont egyszerre legyen rendezett, udvarias, " +
-    "ellenőrizhető és biztonsági szempontból következetes.",
+    "Avenir célja, hogy ez a pont rendezett, udvarias és biztonsági " +
+    "szempontból következetes legyen.",
   longDesc:
     "A portaszolgálat nem egyszerű jelenlét a bejáratnál: a napi működés " +
     "egyik legfontosabb kontrollpontja. A szolgáltatás a helyszín igényei " +
     "szerint támogathatja a látogatók fogadását, a vendégregisztrációt, a " +
     "beszállítók és alvállalkozók beléptetését, a kulcskezelést, a csomagok " +
     "átvételét, az információadást és a rendkívüli események jelzését.\n\n" +
-    "Az Avenir a helyszíni felmérés alapján rögzíti a portaszolgálati és " +
+    "Avenir a helyszíni felmérés alapján rögzíti a portaszolgálati és " +
     "recepciós protokollt: ki léphet be, milyen jogosultsággal, milyen " +
     "dokumentáció mellett, mikor szükséges értesítés, és milyen eseményt " +
-    "kell naplózni vagy eszkalálni. A cél, hogy a megrendelő ne csak " +
-    "reprezentatív vendégfogadást kapjon, hanem visszakövethető működést " +
-    "is: szolgálati naplóval, egyeztetett riportálással és kijelölt felelős " +
-    "kapcsolattartóval.\n\n" +
+    "kell naplózni vagy eszkalálni. Látogató- és beléptetési adatok " +
+    "kezelésekor a célhoz kötöttség, az időben korlátozott megőrzés és a " +
+    "megfelelő tájékoztatás szempontjai is részei a porta- és recepciós " +
+    "folyamatnak.\n\n" +
     "A portaszolgálat kapcsolódhat élőerős objektumőrzéshez, beléptető " +
     "rendszerhez, kamerarendszerhez vagy belső üzemeltetési folyamathoz. " +
     "A működés ISO 9001 és ISO 27001 tanúsított irányítási rendszerekhez " +
-    "illeszkedő dokumentált folyamatokra épül, 24/7 diszpécseri háttérrel " +
-    "támogatható, és több mint 30 aktív helyszínen szerzett tapasztalatra " +
-    "támaszkodik.",
+    "illeszkedő szabályozott folyamatokra építhető, 24/7 diszpécseri " +
+    "háttérrel támogatható, szolgálati naplóval, egyeztetett riportálással " +
+    "és kijelölt felelős kapcsolattartóval.",
   useCases: [
     "Irodaházak és üzleti központok recepciós működése",
     "Logisztikai és ipari telephelyek porta- és beléptetési pontjai",
     "Bérlői, munkatársi és látogatói forgalmat kezelő helyszínek",
     "Beszállítói, futár- és teherforgalommal érintett objektumok",
-    "Olyan vállalati helyszínek, ahol fontos a rendezett első benyomás és a dokumentált beléptetés",
+    "Olyan vállalati helyszínek, ahol fontos a rendezett első benyomás és a szabályozott beléptetés",
   ],
   includedItems: [
     "Látogatók és vendégek fogadása",
@@ -135,11 +135,10 @@ const PILOT_HU = {
   ],
   trustItems: [
     {
-      title: "Dokumentált napi működés",
+      title: "Napi szolgálati rend és naplózás",
       body:
         "Szolgálati napló, vendégkezelési rend, eseményrögzítés és " +
-        "egyeztetett riportálás segíti a visszakövethető portaszolgálati " +
-        "működést.",
+        "egyeztetett riportálás segíti a portaszolgálati kontrollt.",
     },
     {
       title: "Kijelölt felelős kapcsolattartó",
@@ -158,13 +157,14 @@ const PILOT_HU = {
       title: "ISO 9001 és ISO 27001",
       body:
         "A folyamatok ISO 9001 és ISO 27001 tanúsított irányítási " +
-        "rendszerekhez illeszkedő dokumentált működésre épülnek.",
+        "rendszerekhez illeszkedő szabályozott működésre épülnek.",
     },
     {
-      title: "Szervezeti háttér",
+      title: "Látogatóadat-kezelési szempontok figyelembevétele",
       body:
-        "Több mint 30 aktív helyszínen szerzett tapasztalat és 200+ " +
-        "munkatársból álló szervezeti háttér támogatja a szolgáltatást.",
+        "A látogatói és beléptetési adatok kezelésekor figyelembe kell venni " +
+        "a célhoz kötöttséget, a tájékoztatást és az időben korlátozott " +
+        "megőrzést.",
     },
     {
       title: "Kapcsolódó vagyonvédelmi működés",
@@ -197,14 +197,23 @@ const PILOT_HU = {
         "Igen, a beszállítói, futár- és alvállalkozói beléptetés rendjét a " +
         "helyszíni felmérés alapján alakítjuk ki. Meghatározható, milyen " +
         "adatokat kell rögzíteni, kit kell értesíteni, és hogyan történjen a " +
-        "ki- és beléptetés dokumentálása.",
+        "ki- és beléptetés naplózása.",
     },
     {
       q: "Van-e kulcskezelés?",
       a:
         "Igen, a szolgáltatás része lehet kulcskezelési rend követése, " +
-        "kulcskiadás és kulcsvisszavétel dokumentálása. A pontos szabályokat " +
+        "kulcskiadás és kulcsvisszavétel rögzítése. A pontos szabályokat " +
         "az együttműködés elején, helyszínre szabottan rögzítjük.",
+    },
+    {
+      q: "Hogyan kezelhetők a látogatóadatok a porta- és recepciós folyamatban?",
+      a:
+        "A látogatóadatok kezelésekor a célhoz kötöttség, az időben " +
+        "korlátozott megőrzés, a látogatói tájékoztatás, a beléptetési " +
+        "kontextus és a helyszín saját szabályai a meghatározók. A pontos " +
+        "adatköröket és megőrzési rendet a megrendelői elvárásokkal és a " +
+        "helyszíni adatkezelési szabályokkal összhangban kell kialakítani.",
     },
     {
       q: "Kapunk-e riportot a napi működésről?",
@@ -226,7 +235,7 @@ const PILOT_HU = {
       a:
         "A felmérés akkor különösen hasznos, ha nő a látogatói vagy " +
         "beszállítói forgalom, változik a beléptetési rend, több szereplő " +
-        "használja ugyanazt az objektumot, vagy rendezettebb dokumentálásra " +
+        "használja ugyanazt az objektumot, vagy rendezettebb naplózásra " +
         "és felelősségi rendre van szükség.",
     },
   ],

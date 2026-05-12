@@ -52,22 +52,20 @@ const PILOT_HU = {
     "ügyfélélmény, folyamatkövetés és megfelelési szempontok vizsgálatára.",
   valueProposition:
     "A próbavásárlás és szolgáltatásaudit valós ügyfélhelyzetben mutatja meg, " +
-    "hogyan működik egy szolgáltatás a gyakorlatban: mit tapasztal az ügyfél, " +
-    "követik-e a munkatársak az elvárt folyamatot, teljesülnek-e a brand-, " +
-    "tájékoztatási és működési szabályok, és hol jelenik meg minőségi, " +
-    "reputációs vagy megfelelési kockázat.",
+    "mit tapasztal az ügyfél, követik-e az elvárt folyamatot, teljesülnek-e " +
+    "a brand-, tájékoztatási és szolgáltatási szabályok, és hol jelenik meg " +
+    "minőségi, reputációs vagy megfelelési kockázat.",
   longDesc:
-    "A Mystery Shopping nem egyszerű ellenőrzés, hanem előre megtervezett, " +
-    "dokumentált szolgáltatásminőség-mérés. A vizsgálat során a próbavásárló " +
+    "A Mystery Shopping nem egyszerű ellenőrzés, hanem megtervezett " +
+    "szolgáltatásminőség-mérés. A vizsgálat során a próbavásárló " +
     "vagy auditor valós ügyfélhelyzetben járja végig az adott szolgáltatási " +
     "folyamatot: vásárlást, ügyintézést, helyszíni látogatást, próbautazást " +
     "vagy más ügyfélkapcsolati pontot.\n\n" +
-    "A vizsgálat scope-ja előre egyeztetett: meghatározható, milyen " +
-    "szolgáltatási pontokat, folyamatlépéseket, brand standardokat, " +
-    "kommunikációs elvárásokat, tájékoztatási kötelezettségeket vagy " +
-    "megfelelési szempontokat kell vizsgálni. A cél nem az öncélú " +
-    "hibakeresés, hanem az, hogy a vezetés pontos, riportálható " +
-    "képet kapjon a tényleges működésről.\n\n" +
+    "A vizsgálat scope-ja rögzíti, milyen szolgáltatási pontokat, " +
+    "folyamatlépéseket, brand standardokat, kommunikációs elvárásokat, " +
+    "tájékoztatási kötelezettségeket vagy megfelelési szempontokat kell " +
+    "vizsgálni. A cél nem az öncélú hibakeresés, hanem az, hogy a vezetés " +
+    "pontos, riportálható képet kapjon a tényleges ügyfélélményről.\n\n" +
     "A szolgáltatás több formában is alkalmazható. A Brand Audit az arculati, " +
     "vizuális, tisztasági, hangulati és szolgáltatási standardokat vizsgálja. " +
     "A Situation Shopping konkrét ügyfélhelyzeteket, kérdéseket, konfliktusokat " +
@@ -75,7 +73,7 @@ const PILOT_HU = {
     "egy teljes ügyfélutat vizsgálhat, például személyszállítási, " +
     "ügyfélszolgálati vagy helyszíni kiszolgálási folyamatban.\n\n" +
     "Az audit eredménye strukturált riport: mi történt az ügyfélút során, mi " +
-    "felelt meg az elvárt működésnek, hol volt eltérés, milyen kockázat jelent " +
+    "felelt meg az elvárt folyamatnak, hol volt eltérés, milyen kockázat jelent " +
     "meg, és milyen fejlesztési javaslat segítheti a szolgáltatásminőség, a " +
     "kontroll vagy a megfelelés javítását.",
   useCases: [
@@ -84,7 +82,7 @@ const PILOT_HU = {
     "Brand Audit: arculat, tisztaság, vizuális megjelenés és szolgáltatási standardok ellenőrzése",
     "Situation Shopping: konkrét ügyfélhelyzetek, kérdések vagy konfliktushelyzetek tesztelése",
     "Ügyfélút és látogatói élmény vizsgálata",
-    "Tájékoztatási, árkommunikációs, számlázási, nyugtaadási vagy más megfelelési szempontok vizsgálata előre egyeztetett scope alapján",
+    "Tájékoztatási, árkommunikációs, számlázási, nyugtaadási vagy más megfelelési szempontok vizsgálata egyeztetett scope alapján",
     "Több helyszín, szolgáltató vagy egység összehasonlítható auditja",
   ],
   includedItems: [
@@ -93,7 +91,7 @@ const PILOT_HU = {
     "Brand Audit vagy Situation Shopping módszertan kiválasztása",
     "Valós ügyfélhelyzetben történő szolgáltatásminőség-mérés",
     "Ügyfélút, kommunikáció, folyamatkövetés és kiszolgálás értékelése",
-    "Előre egyeztetett megfelelési szempontok vizsgálata",
+    "Egyeztetett megfelelési szempontok vizsgálata",
     "Eltérések, kockázatok és fejlesztési pontok dokumentálása",
     "Strukturált riport és vezetői összefoglaló",
   ],
@@ -143,10 +141,10 @@ const PILOT_HU = {
   ],
   trustItems: [
     {
-      title: "Előre egyeztetett audit scope",
+      title: "Egyeztetett audit scope",
       body:
         "A vizsgálat célját, módszerét, érintett folyamatait és értékelési " +
-        "szempontjait előre rögzíteni kell.",
+        "szempontjait az audit előtt rögzíteni kell.",
     },
     {
       title: "Strukturált értékelési szempontok",
@@ -161,7 +159,7 @@ const PILOT_HU = {
         "konkrét ügyfélhelyzetre épülő forgatókönyv szerint.",
     },
     {
-      title: "Dokumentált ügyfélút vagy szolgáltatási folyamat",
+      title: "Rögzített ügyfélút vagy szolgáltatási folyamat",
       body:
         "A riport az ügyfélhelyzetben megtapasztalt folyamatot, eltéréseket, " +
         "megfelelési pontokat és fejlesztési lehetőségeket rögzíti.",
@@ -170,7 +168,7 @@ const PILOT_HU = {
       title: "Szolgáltatásminőség és megfelelési pontok együttes vizsgálata",
       body:
         "Az audit egyszerre vizsgálhat ügyfélélményt, tájékoztatást, " +
-        "folyamatkövetést, számlázási vagy más előre egyeztetett megfelelési " +
+        "folyamatkövetést, számlázási vagy más egyeztetett megfelelési " +
         "szempontokat.",
     },
     {
@@ -213,10 +211,18 @@ const PILOT_HU = {
     {
       q: "Mi az a Situation Shopping?",
       a:
-        "A Situation Shopping interakciós próbavásárlás, ahol előre egyeztetett " +
+        "A Situation Shopping interakciós próbavásárlás, ahol egyeztetett " +
         "ügyfélhelyzeteket, kérdéseket, konfliktusokat vagy folyamatlépéseket " +
         "tesztelünk. Így nem csak a környezet, hanem a kommunikáció, reakció " +
         "és folyamatkövetés is mérhető.",
+    },
+    {
+      q: "Mi a különbség a Mystery Shopping és a magánnyomozás között?",
+      a:
+        "A Mystery Shopping és szolgáltatásaudit szolgáltatásminőséget, " +
+        "folyamatkövetést, ügyfélutat és egyeztetett megfelelési pontokat mér " +
+        "egy meghatározott scope alapján. Nem magánnyomozás, nem korlátlan " +
+        "megfigyelés, nem bizonyítékgyűjtés és nem fegyelmi automatizmus.",
     },
     {
       q: "Alkalmazható közlekedési vagy taxi jellegű szolgáltatásnál?",
@@ -229,7 +235,7 @@ const PILOT_HU = {
     {
       q: "Milyen megfelelési szempontok vizsgálhatók?",
       a:
-        "Az audit előre egyeztetett scope alapján vizsgálhat tájékoztatási, " +
+        "Az audit egyeztetett scope alapján vizsgálhat tájékoztatási, " +
         "árkommunikációs, számlázási, nyugtaadási, ügyfélkezelési, brand " +
         "standardhoz vagy szerződéses szolgáltatási szinthez kapcsolódó " +
         "szempontokat. Jogi vagy compliance auditként csak külön rögzített " +
