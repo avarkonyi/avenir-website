@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { SEO_DATA, SEO_LOCALES } from "@/lib/seo-data";
 import { getAllPublishedServicePathsForBuild } from "@/lib/db/queries/services";
-import { getAllPublishedNewsPathsHu } from "@/lib/db/queries/news";
+import { getAllPublishedNewsPathsHuForBuild } from "@/lib/db/queries/news";
 
 const LEGAL_SLUGS = ["adatvedelem", "aszf", "impresszum"] as const;
 const LEGAL_SITEMAP_LOCALES = ["hu"] as const;
@@ -52,7 +52,7 @@ function huOnlyAlternates(path: string) {
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [servicePaths, newsPaths] = await Promise.all([
     getAllPublishedServicePathsForBuild("sitemap.xml"),
-    getAllPublishedNewsPathsHu(),
+    getAllPublishedNewsPathsHuForBuild("sitemap.xml"),
   ]);
   const serviceLocalesBySlug = new Map<string, string[]>();
 

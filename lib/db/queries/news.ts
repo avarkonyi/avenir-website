@@ -104,6 +104,60 @@ export async function getAllPublishedNewsPathsHu(): Promise<
   }));
 }
 
+function redactedDbIdentity(): string {
+  const raw = process.env.DATABASE_URL;
+  if (!raw) return "DATABASE_URL is not set";
+
+  try {
+    const url = new URL(raw);
+    const database = url.pathname.replace(/^\/+/, "") || "(unknown)";
+    return `host=${url.hostname} db=${database}`;
+  } catch {
+    return "DATABASE_URL is set but could not be parsed";
+  }
+}
+
+function sanitizeDbErrorMessage(error: unknown): string {
+  const rawMessage =
+    error instanceof Error
+      ? error.message
+      : typeof error === "string"
+        ? error
+        : "Unknown database error";
+
+  const databaseUrl = process.env.DATABASE_URL;
+  let message = rawMessage;
+  if (databaseUrl) {
+    message = message.split(databaseUrl).join("[redacted DATABASE_URL]");
+  }
+
+  return message
+    .replace(/postgres(?:ql)?:\/\/[^\s"'`<>]+/gi, "postgres://[redacted]")
+    .replace(/(password=)[^&\s"'`<>]+/gi, "$1[redacted]");
+}
+
+export async function getAllPublishedNewsPathsHuForBuild(
+  surface: string,
+): Promise<PublishedNewsPathHu[]> {
+  try {
+    return await getAllPublishedNewsPathsHu();
+  } catch (error) {
+    console.error(
+      [
+        `[news-paths] ${surface}: failed to read DB-backed published HU article paths.`,
+        "Failing generation instead of emitting an incomplete article layer.",
+        `DB target: ${redactedDbIdentity()}.`,
+        `Cause: ${sanitizeDbErrorMessage(error)}.`,
+        "Full DATABASE_URL was not printed.",
+      ].join(" "),
+    );
+
+    throw new Error(
+      `[news-paths] ${surface}: HU article path generation requires a reachable database.`,
+    );
+  }
+}
+
 export function newsDetailHrefHu(slug: string): string {
   return `/hu/${NEWS_URL_SEGMENT_HU}/${encodeURIComponent(slug)}`;
 }

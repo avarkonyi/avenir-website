@@ -7,7 +7,7 @@ import { AvenirLogo } from "@/components/AvenirLogo";
 import { JsonLd } from "@/components/JsonLd";
 import { getTranslation } from "@/lib/i18n";
 import {
-  getAllPublishedNewsPathsHu,
+  getAllPublishedNewsPathsHuForBuild,
   getPublishedNewsDetailBySlugHu,
 } from "@/lib/db/queries/news";
 import { SEO_DATA } from "@/lib/seo-data";
@@ -18,7 +18,9 @@ const INDEX_PATH = "/hu/hirek";
 const INDEX_URL = `${SEO_DATA.url}${INDEX_PATH}`;
 
 export async function generateStaticParams() {
-  return getAllPublishedNewsPathsHu();
+  return getAllPublishedNewsPathsHuForBuild(
+    "article detail generateStaticParams",
+  );
 }
 
 function articleUrl(slug: string): string {
