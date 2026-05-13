@@ -447,14 +447,14 @@ function LocaleFields({
         />
       </Field>
 
-      <Field label="Tartalom (Markdown)">
+      <Field label="Tartalom (sima szöveg)">
         <textarea
           value={String(state[bodyKey] ?? "")}
           onChange={(e) => update(bodyKey, e.target.value as never)}
           rows={15}
           placeholder={
             isHu
-              ? "## Bevezetés\n\nA hír teljes szövege Markdown formátumban."
+              ? "A hír teljes szövege. A bekezdéseket üres sorral válaszd el."
               : "Opcionális"
           }
           style={{
@@ -466,7 +466,7 @@ function LocaleFields({
           }}
         />
         <p style={{ margin: "6px 0 0", fontSize: 12, color: "#94A3B8" }}>
-          A Markdown előnézet a következő iterációban érkezik.
+          A publikus cikkoldal sima szövegként jeleníti meg a tartalmat.
         </p>
       </Field>
 

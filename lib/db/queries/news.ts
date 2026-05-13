@@ -87,13 +87,19 @@ export async function getPublishedNewsDetailBySlugHu(
 export type PublishedNewsPathHu = {
   readonly locale: "hu";
   readonly slug: string;
+  readonly date: Date;
+  readonly updatedAt: Date;
 };
 
 export async function getAllPublishedNewsPathsHu(): Promise<
   PublishedNewsPathHu[]
 > {
   const rows = await db
-    .select({ slug: news.slug })
+    .select({
+      slug: news.slug,
+      date: news.date,
+      updatedAt: news.updatedAt,
+    })
     .from(news)
     .where(publishedNewsHuPredicate())
     .orderBy(desc(news.date));
@@ -101,6 +107,8 @@ export async function getAllPublishedNewsPathsHu(): Promise<
   return rows.map((row) => ({
     locale: "hu" as const,
     slug: row.slug.trim(),
+    date: row.date,
+    updatedAt: row.updatedAt,
   }));
 }
 

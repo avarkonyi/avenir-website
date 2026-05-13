@@ -42,6 +42,13 @@ function huOnlyAlternates(path: string) {
   };
 }
 
+function articleLastModified(article: {
+  readonly updatedAt?: Date | null;
+  readonly date?: Date | null;
+}): Date {
+  return article.updatedAt ?? article.date ?? SITE_LAST_MODIFIED;
+}
+
 // Sitemap is async (Next 16 supports async sitemaps) so we can pull
 // the live list of published+active service slugs from the DB. Drafts
 // (isPublished=false), soft-deleted rows (isActive=false), and
@@ -55,6 +62,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     getAllPublishedNewsPathsHuForBuild("sitemap.xml"),
   ]);
   const serviceLocalesBySlug = new Map<string, string[]>();
+  const newsIndexLastModified =
+    newsPaths.reduce<Date | null>((latest, article) => {
+      const lastModified = articleLastModified(article);
+      return !latest || lastModified > latest ? lastModified : latest;
+    }, null) ?? SITE_LAST_MODIFIED;
 
   for (const { locale, slug } of servicePaths) {
     const locales = serviceLocalesBySlug.get(slug) ?? [];
@@ -107,18 +119,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       ? [
           {
             url: `${SEO_DATA.url}${NEWS_INDEX_PATH_HU}`,
-            lastModified: SITE_LAST_MODIFIED,
+            lastModified: newsIndexLastModified,
             changeFrequency: "monthly" as const,
             priority: 0.55,
             alternates: huOnlyAlternates(NEWS_INDEX_PATH_HU),
           },
         ]
       : []),
-    ...newsPaths.map(({ slug }) => {
+    ...newsPaths.map(({ slug, date, updatedAt }) => {
       const path = `/hu/${NEWS_URL_SEGMENT_HU}/${slug}`;
       return {
         url: `${SEO_DATA.url}${path}`,
-        lastModified: SITE_LAST_MODIFIED,
+        lastModified: articleLastModified({ date, updatedAt }),
         changeFrequency: "monthly" as const,
         priority: 0.5,
         alternates: huOnlyAlternates(path),

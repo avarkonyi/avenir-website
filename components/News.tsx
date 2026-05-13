@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import type { Translation } from "@/lib/i18n";
+import { getSafePublicImageSrc } from "@/lib/safe-public-image";
 import { Icon } from "./Icon";
 import { AvenirLogo } from "./AvenirLogo";
 
@@ -51,6 +52,7 @@ export function News({
   articles: Article[];
 }) {
   const [active, setActive] = useState<Article | null>(null);
+  const activeImageUrl = getSafePublicImageSrc(active?.imageUrl);
 
   return (
     <section id="news" style={{ padding: "100px 5vw", background: "#fff" }}>
@@ -171,7 +173,7 @@ export function News({
               position: "relative",
             }}
           >
-            {active.imageUrl && (
+            {activeImageUrl && (
               <div
                 style={{
                   position: "relative",
@@ -180,7 +182,7 @@ export function News({
                   background: "#0B1E3E",
                 }}
               >
-                <div style={coverImageStyle(active.imageUrl)} aria-hidden="true" />
+                <div style={coverImageStyle(activeImageUrl)} aria-hidden="true" />
                 <div
                   style={{
                     position: "absolute",
@@ -266,6 +268,8 @@ function NewsCardContent({
   locale: string;
   cta: string;
 }) {
+  const imageUrl = getSafePublicImageSrc(article.imageUrl);
+
   return (
     <>
       <div
@@ -276,9 +280,9 @@ function NewsCardContent({
           overflow: "hidden",
         }}
       >
-        {article.imageUrl ? (
+        {imageUrl ? (
           <>
-            <div style={coverImageStyle(article.imageUrl)} aria-hidden="true" />
+            <div style={coverImageStyle(imageUrl)} aria-hidden="true" />
             <div
               style={{
                 position: "absolute",

@@ -11,6 +11,7 @@ import {
   getPublishedNewsDetailBySlugHu,
 } from "@/lib/db/queries/news";
 import { SEO_DATA } from "@/lib/seo-data";
+import { getSafePublicImageSrc } from "@/lib/safe-public-image";
 
 export const revalidate = 3600;
 
@@ -18,27 +19,21 @@ const INDEX_PATH = "/hu/hirek";
 const INDEX_URL = `${SEO_DATA.url}${INDEX_PATH}`;
 
 export async function generateStaticParams() {
-  return getAllPublishedNewsPathsHuForBuild(
+  const paths = await getAllPublishedNewsPathsHuForBuild(
     "article detail generateStaticParams",
   );
+  return paths.map(({ locale, slug }) => ({ locale, slug }));
 }
 
 function articleUrl(slug: string): string {
   return `${INDEX_URL}/${slug}`;
 }
 
-function safeImageUrl(imageUrl: string | null): string {
-  if (!imageUrl) return SEO_DATA.ogImageUrl;
-  if (imageUrl.startsWith("/")) return `${SEO_DATA.url}${imageUrl}`;
-  try {
-    const url = new URL(imageUrl);
-    if (url.protocol === "http:" || url.protocol === "https:") {
-      return url.toString();
-    }
-  } catch {
-    return SEO_DATA.ogImageUrl;
-  }
-  return SEO_DATA.ogImageUrl;
+function articleMetadataImageUrl(imageUrl: string | null): string {
+  const safeSrc = getSafePublicImageSrc(imageUrl);
+  return safeSrc
+    ? new URL(safeSrc, SEO_DATA.url).toString()
+    : SEO_DATA.ogImageUrl;
 }
 
 export async function generateMetadata({
@@ -58,7 +53,7 @@ export async function generateMetadata({
 
   const url = articleUrl(article.slug);
   const title = `${article.title} - ${SEO_DATA.legalNameShort}`;
-  const image = safeImageUrl(article.imageUrl);
+  const image = articleMetadataImageUrl(article.imageUrl);
 
   return {
     metadataBase: new URL(SEO_DATA.url),
@@ -149,7 +144,8 @@ export default async function NewsDetailPage({
 
   const t = getTranslation("hu");
   const url = articleUrl(article.slug);
-  const image = safeImageUrl(article.imageUrl);
+  const image = articleMetadataImageUrl(article.imageUrl);
+  const coverImage = getSafePublicImageSrc(article.imageUrl);
 
   const breadcrumb = {
     "@context": "https://schema.org",
@@ -285,7 +281,7 @@ export default async function NewsDetailPage({
 
         <article style={{ padding: "72px 5vw 88px" }}>
           <div style={{ maxWidth: 860, margin: "0 auto" }}>
-            {article.imageUrl ? (
+            {coverImage ? (
               <div
                 style={{
                   position: "relative",
@@ -296,7 +292,7 @@ export default async function NewsDetailPage({
                   marginBottom: 36,
                 }}
               >
-                <div style={coverImageStyle(article.imageUrl)} aria-hidden="true" />
+                <div style={coverImageStyle(coverImage)} aria-hidden="true" />
               </div>
             ) : (
               <div

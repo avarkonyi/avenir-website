@@ -11,6 +11,7 @@ import {
   newsDetailHrefHu,
 } from "@/lib/db/queries/news";
 import { SEO_DATA } from "@/lib/seo-data";
+import { getSafePublicImageSrc } from "@/lib/safe-public-image";
 
 export const revalidate = 3600;
 
@@ -178,10 +179,12 @@ export default async function NewsIndexPage({
                       overflow: "hidden",
                     }}
                   >
-                    {article.imageUrl ? (
+                    {getSafePublicImageSrc(article.imageUrl) ? (
                       <>
                         <div
-                          style={coverImageStyle(article.imageUrl)}
+                          style={coverImageStyle(
+                            getSafePublicImageSrc(article.imageUrl)!,
+                          )}
                           aria-hidden="true"
                         />
                         <div
