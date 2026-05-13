@@ -1,6 +1,6 @@
 # Avenir Website Code Architecture
 
-Last updated: 2026-05-13
+Last updated: 2026-05-14
 
 Status: current architecture reference for `staging-service-pages`.
 
@@ -18,9 +18,12 @@ SEO/GEO/AI-search grounding.
 The current product layers are:
 
 - Public website: locale homepages, public legal pages, services, references,
-  certifications, news teasers, career block, and contact form.
+  certifications, HU public articles/news teasers, career block, and contact
+  form.
 - Service detail layer: eight ready Hungarian service detail pages, using
   canonical public slugs and DB-backed readiness checks.
+- Article layer: HU-first public article index and detail routes backed by the
+  existing news admin table and strict readiness checks.
 - Trust/partner layer: admin-managed partner records with a proof-gated
   homepage logo strip.
 - Lead intake: contact form with canonical and legacy service prefill, DB
@@ -45,12 +48,13 @@ Public user
   -> Next.js public routes
      -> /[locale]
      -> /[locale]/szolgaltatasok/[slug]
+     -> /hu/hirek and /hu/hirek/[slug]
      -> /[locale]/adatvedelem | /aszf | /impresszum
      -> /sitemap.xml | /robots.txt | /llms.txt | /llms-full.txt
   -> DB-backed public queries
      -> services readiness and content
      -> partner logo proof gating
-     -> news/certification listings
+     -> news/article/certification listings
   -> Contact form
      -> /api/contact
      -> Zod validation, honeypot, origin/rate controls
@@ -67,7 +71,7 @@ Admin user
 
 Build/SEO systems
   -> generateStaticParams and sitemap
-  -> DB-backed published service path query
+  -> DB-backed published service and HU article path queries
   -> sanitized fail-loud behavior on DB lookup failure
   -> AI-search grounding files
 ```
@@ -102,7 +106,7 @@ The page is server-rendered with ISR (`revalidate = 3600`). It fetches:
 
 - active top-level services for service cards, footer, and contact options;
 - DB-backed ready HU service detail slugs for homepage/footer detail links;
-- locale-published news teasers;
+- locale-published news teasers, with HU links only for HU-ready articles;
 - partner logos indirectly through `PartnerLogoStrip`.
 
 ### Service Detail Pages
@@ -113,6 +117,33 @@ This route renders public service detail pages only when the DB row is active,
 published, and has the required localized detail fields for the requested
 locale. Missing, inactive, unpublished, legacy, or incomplete-locale pages
 return `notFound()`.
+
+### HU Public Article Routes
+
+Routes:
+
+- `app/[locale]/hirek/page.tsx`
+- `app/[locale]/hirek/[slug]/page.tsx`
+
+The current public article layer is HU-first:
+
+- `/hu/hirek`
+- `/hu/hirek/[slug]`
+
+EN/DE/ZH article routes are intentionally not public yet and return 404.
+
+The shared news queries in `lib/db/queries/news.ts` publish an article only
+when the row is not deleted, `publishedHu = true`, `slug`, `titleHu`, `leadHu`,
+`bodyHu`, and `date` are present, and `date <= now()`.
+
+Article detail pages render safe plain text paragraphs, not raw HTML and not
+Markdown. Article metadata/JSON-LD images accept only relative local paths or
+approved Vercel Blob public URLs; arbitrary third-party image hotlinks are
+ignored.
+
+Build-time article path generation uses
+`getAllPublishedNewsPathsHuForBuild(surface)`, which fails loudly with
+sanitized DB target information if the DB-backed path query cannot run.
 
 ### Legal Pages
 
@@ -474,7 +505,8 @@ Current modules:
   state, sort order, related slugs.
 - Partners: logo/reference records, logo-strip proof fields, publish/active
   state, sort order.
-- News: locale-published news teasers and admin image support.
+- News: locale-published news teasers, HU public article source data, safe
+  plain-text body editing, and admin image support.
 - Messages: contact-form messages and mini-CRM lead fields.
 - Certifications: certificate metadata and PDF/image support.
 - Positions: career/job rows.
@@ -502,6 +534,9 @@ cards, footer links, detail pages, and sitemap can all depend on service data.
 
 Admin partner mutations revalidate the partner admin paths and locale
 homepages, because the homepage logo strip depends on partner data.
+
+Admin news mutations revalidate `/hu`, `/hu/hirek`, affected HU article detail
+paths when the slug is known, and `/sitemap.xml`.
 
 ## 9. Database / Migration Architecture
 
@@ -672,13 +707,16 @@ For the current service layer that means HU and `x-default`.
 
 - `/hu`, `/en`, `/de`, `/zh`;
 - `/hu/adatvedelem`, `/hu/aszf`, `/hu/impresszum`;
-- ready service detail URLs from the DB-backed readiness helper.
+- ready service detail URLs from the DB-backed readiness helper;
+- `/hu/hirek` and ready HU article detail URLs when at least one HU-ready
+  article exists.
 
 It intentionally excludes:
 
 - non-HU legal pages;
 - legacy service detail URLs;
 - non-ready EN/DE/ZH service detail URLs;
+- EN/DE/ZH article URLs;
 - admin/API/draft/internal routes.
 
 ### Robots
@@ -710,6 +748,12 @@ Service detail pages include:
 - Service;
 - FAQPage only when visible FAQ content renders.
 
+HU article detail pages include:
+
+- BreadcrumbList;
+- Article;
+- publisher and author as the Avenir organization, not invented people.
+
 Do not add unverified partner/customer/award/rating/schema relationships.
 Partner logos are visual trust assets, not schema proof.
 
@@ -723,8 +767,12 @@ Rules:
 
 - include only canonical public URLs;
 - include the eight canonical HU service detail URLs;
+- add public article URLs only after the article content is approved for
+  AI-search grounding;
 - exclude legacy slugs;
 - exclude EN/DE/ZH service detail URLs until ready;
+- exclude EN/DE/ZH article URLs until localized article routes and content are
+  approved;
 - exclude admin/API/internal URLs;
 - exclude unapproved partner/client names;
 - exclude OPTEN/EcoVadis/award/rating claims unless verified;
@@ -886,15 +934,24 @@ rating/medal/assessment exists.
    relationship claim.
 9. Record proof in `docs/verified_claims.md` or the approved proof registry.
 
-### Add a Future Article/News Page
+### Extend the Article/News Layer
 
-1. Decide route structure for locale-specific article pages.
-2. Add detail route and slug policy.
-3. Reuse existing news admin data where possible.
-4. Add per-article metadata.
-5. Add Article/NewsArticle JSON-LD only for visible article pages.
-6. Add sitemap inclusion only for published locale-ready articles.
-7. Keep draft and untranslated articles out of public routes and sitemap.
+The HU article layer already uses `/hu/hirek` and `/hu/hirek/[slug]`.
+
+For future article work:
+
+1. Keep HU readiness strict: not deleted, HU-published, slug, title, lead,
+   body, date, and no future date.
+2. Keep EN/DE/ZH article routes private until their localized content and
+   route policy are approved.
+3. Add per-locale metadata and hreflang only when a locale is actually ready.
+4. Add sitemap inclusion only for published locale-ready articles.
+5. Keep draft, future-dated, deleted, incomplete, and untranslated articles out
+   of public routes and sitemap.
+6. Keep body rendering safe; add sanitized Markdown only as a separate approved
+   phase.
+7. Do not add client, partner, testimonial, case-study, award, rating, OPTEN,
+   or EcoVadis claims unless verified.
 
 ### Add EN/DE/ZH Service Translations Later
 

@@ -1,6 +1,6 @@
 # Staging Runbook — Avenir Website
 
-Last updated: 2026-05-13
+Last updated: 2026-05-14
 
 ## Purpose
 
@@ -94,10 +94,43 @@ Used for:
 Local commands:
 
 ```bash
+npm ci
+npm run dev
 npm run build
 npm run lint
 npx tsc --noEmit
 ```
+
+`npm run build` is a manual/local or Vercel Preview gate. It can depend on
+DB-backed static generation and Google Fonts network fetching, so it is not
+part of the lightweight CI workflow yet.
+
+### Lightweight CI
+
+GitHub Actions workflow: `.github/workflows/ci.yml`
+
+Runs on:
+
+- pull requests;
+- pushes to `main`;
+- pushes to `staging-service-pages`.
+
+CI runs:
+
+- `npm ci`;
+- `npx tsc --noEmit`;
+- `npm run lint`.
+
+CI must not run seed scripts, migrations, `db:push`, production commands,
+deploy commands, or IndexNow submission. Production build remains a manual /
+Vercel Preview verification step until the DB and external-network build
+dependencies are CI-stable.
+
+### Onboarding Docs
+
+Use `README.md` as the short contributor onboarding entry point. Use
+`docs/code_architecture.md` for the current route, content, DB, seed, SEO/GEO,
+admin, and future-AOS architecture reference.
 
 ### Vercel Preview
 
