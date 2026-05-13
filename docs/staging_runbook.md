@@ -1,6 +1,6 @@
 # Staging Runbook — Avenir Website
 
-Last updated: 2026-05-10
+Last updated: 2026-05-13
 
 ## Purpose
 
@@ -112,6 +112,25 @@ Used for:
 The Vercel Preview `/sitemap.xml` must be checked after service seed/content updates.
 
 Do not rely on local `.next` sitemap artifacts for final SEO QA. They may be stale or generated from a different DB snapshot. Live Preview is the source of truth for pre-merge indexing checks.
+
+### AI-search file QA
+
+The Vercel Preview should expose:
+
+- `/llms.txt`
+- `/llms-full.txt`
+
+Before merging SEO / GEO / AI-search changes, verify:
+
+- both files return 200 on Preview;
+- both files include only canonical public URLs;
+- the eight HU service detail URLs are present;
+- legacy service detail URLs are absent;
+- EN/DE/ZH service detail URLs are absent until localized service detail content is ready;
+- admin, API, draft, migration, seed, and internal URLs are absent;
+- unapproved partner names, customer names, testimonials, case studies, ratings, awards, and EcoVadis claims are absent;
+- future concepts such as Shadow Audit sub-branding, AOS Guard Log, and AI Report Assistant are not described as current public products;
+- `/sitemap.xml` still follows the current policy: locale homepages, HU legal pages, and ready HU service detail pages only.
 
 ### Build-time service path DB dependency
 

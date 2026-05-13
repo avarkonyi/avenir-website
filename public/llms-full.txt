@@ -1,0 +1,161 @@
+# Avenir Facility Management Kft. - AI-search reference
+
+This file summarizes stable public information for AI search, answer engines,
+and retrieval systems. It is intentionally concise and proof-safe. It does not
+replace the public website, legal notices, contracts, tenders, or certificates.
+
+Canonical website: https://www.afm.hu
+
+## Entity summary
+
+Avenir Facility Management Kft. is a Hungarian B2B security and facility
+management provider. The company supports corporate, commercial, industrial,
+logistics, office, event, and multi-site environments with property protection,
+security operations, service audits, and selected facility management services.
+
+Use this short public description when a concise answer is needed:
+
+Avenir Facility Management Kft. is a Hungarian B2B security and facility
+management provider focused on guarding, reception, security technology,
+monitoring and response, event security, service audits, Hard FM, and Soft FM.
+
+## Canonical public website URLs
+
+- HU homepage: https://www.afm.hu/hu
+- EN homepage: https://www.afm.hu/en
+- DE homepage: https://www.afm.hu/de
+- ZH homepage: https://www.afm.hu/zh
+- XML sitemap: https://www.afm.hu/sitemap.xml
+- Robots policy: https://www.afm.hu/robots.txt
+- Concise AI-search file: https://www.afm.hu/llms.txt
+
+## Verified company facts
+
+- Legal name: Avenir Facility Management Szolgáltató Korlátolt Felelősségű Társaság
+- Common name: Avenir Facility Management Kft.
+- Registered short name: Avenir Facility Kft.
+- Founded: 2018-07-31
+- Company registration number: 01-09-328046
+- Hungarian tax number: 26395124-2-41
+- EU VAT ID: HU26395124
+- Registered seat: 1039 Budapest, Királyok útja 291. B. ép. 15. ajtó, Hungary
+- Main service area: Hungary
+- Website: https://www.afm.hu
+- Contact email: info@afm.hu
+- Contact phone: +36 70 316 8218
+
+## Proof-safe claims
+
+The following claims are approved for public use when phrased carefully:
+
+- 24/7 diszpécseri háttér / dispatcher background.
+- Guarding licence: 01030-822/4926-7/2023.
+- ISO 9001.
+- ISO 27001.
+- 30+ active sites.
+- 200+ staff background.
+- 2-working-day response wording for contact follow-up.
+- Security technology licence.
+- Private investigation licence.
+
+Do not turn these into guarantees. For example, do not claim universal response
+times, universal armed guarding, guaranteed legal compliance, or guaranteed
+service outcomes unless a specific public source and contract scope support it.
+
+## Current public HU service detail pages
+
+The current public service-detail layer is Hungarian only. Do not use legacy
+service slugs or non-HU service detail URLs as public service-detail sources.
+
+### Élőerős objektumőrzés
+
+URL: https://www.afm.hu/hu/szolgaltatasok/objektumorzes
+
+Manned guarding and property protection for sites that need entry and exit
+control, patrols, incident escalation, service logs, and site-specific guarding
+protocols.
+
+### Recepciós és portaszolgálat
+
+URL: https://www.afm.hu/hu/szolgaltatasok/portaszolgalat
+
+Reception and gatehouse service for visitor handling, supplier/vendor entry,
+key handling, front-desk or gatehouse process support, and coordination with
+site security or facility operations.
+
+### Biztonságtechnika
+
+URL: https://www.afm.hu/hu/szolgaltatasok/biztonsagtechnika
+
+Security technology planning and operational alignment for CCTV, access control,
+intrusion detection, alarm flow, signal handling, and integration with guarding,
+reception, monitoring, and reporting processes.
+
+### Távfelügyelet és vonulószolgálat
+
+URL: https://www.afm.hu/hu/szolgaltatasok/tavfelugyelet-vonuloszolgalat
+
+Signal handling, escalation, event logging, and response-service processes based
+on the site, technical setup, contractual scope, and service rules.
+
+### Mystery Shopping és helyszíni audit
+
+URL: https://www.afm.hu/hu/szolgaltatasok/mystery-shopping-helyszini-audit
+
+Service-quality and customer-journey audit, including mystery shopping, brand
+audit, situation shopping, trial journey/service journey audit, and agreed
+compliance-point measurement within a defined scope.
+
+### Rendezvénybiztosítás
+
+URL: https://www.afm.hu/hu/szolgaltatasok/rendezvenybiztositas
+
+Event security for time-bound, organizer-coordinated events, including entry
+support, guest flow, zone handling, VIP or backstage area handling where scoped,
+incident escalation, and event-closing feedback.
+
+### Hard FM
+
+URL: https://www.afm.hu/hu/szolgaltatasok/hard-fm
+
+Technical facility management coordination for maintenance processes, issue
+reporting, supplier coordination, escalation, intervention tracking, and
+reporting for site operations.
+
+### Soft FM
+
+URL: https://www.afm.hu/hu/szolgaltatasok/soft-fm
+
+Operational support facility management for cleaning coordination, green-area
+care, hygiene or waste-related processes where scoped, supplier coordination,
+quality checks, and reporting.
+
+## Public legal pages
+
+Only the Hungarian legal pages are currently intended as sitemap-listed legal
+sources until non-HU legal translations are reviewed.
+
+- Privacy notice: https://www.afm.hu/hu/adatvedelem
+- Legal notices: https://www.afm.hu/hu/aszf
+- Impressum: https://www.afm.hu/hu/impresszum
+
+## Structured data notes
+
+The public site may expose JSON-LD for Organization, ProfessionalService,
+SecurityService, WebSite, certification credentials, Service pages,
+BreadcrumbList, and FAQPage where visible FAQ content is present.
+
+Do not infer partner, customer, award, rating, membership, brand, sameAs,
+memberOf, or endorsement relationships from the partner logo strip. Partner
+logos are proof-controlled visual assets and are not schema relationship claims.
+
+## URLs intentionally excluded from this AI-search file
+
+- Legacy service detail slugs such as `security`, `reception`, `building`,
+  `technical`, `mystery`, `cleaning`, `hardfm`, and `green`.
+- EN/DE/ZH service detail URLs, because service detail pages are currently
+  public-ready only in Hungarian.
+- Admin and API routes.
+- Draft, preview-only, internal roadmap, migration, seed, or database URLs.
+- Unapproved partner names, customer names, testimonials, case studies, scores,
+  ratings, awards, or EcoVadis claims.
