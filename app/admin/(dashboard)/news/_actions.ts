@@ -7,6 +7,7 @@ import { db, news } from "@/lib/db";
 import { FALLBACK_SLUG, SLUG_MAX_LENGTH, slugify } from "@/lib/utils/slugify";
 
 const PUBLIC_NEWS_PATHS = ["/hu", "/en", "/de", "/zh"] as const;
+const PUBLIC_NEWS_INDEX_PATH_HU = "/hu/hirek";
 
 // Server actions for the News CRUD module.
 //
@@ -126,7 +127,10 @@ function resolveBaseSlug(payload: NewsFormPayload): string {
   return slugify(payload.titleHu || "");
 }
 
-function revalidateNewsViews(newsId?: number) {
+function revalidateNewsViews(
+  newsId?: number,
+  slugs: readonly (string | null | undefined)[] = [],
+) {
   revalidatePath("/admin/news");
   if (newsId !== undefined) {
     revalidatePath(`/admin/news/${newsId}/edit`);
@@ -134,6 +138,14 @@ function revalidateNewsViews(newsId?: number) {
   revalidatePath("/admin");
   for (const path of PUBLIC_NEWS_PATHS) {
     revalidatePath(path);
+  }
+  revalidatePath(PUBLIC_NEWS_INDEX_PATH_HU);
+  revalidatePath("/sitemap.xml");
+  const uniqueSlugs = new Set(
+    slugs.map((slug) => slug?.trim()).filter((slug): slug is string => !!slug),
+  );
+  for (const slug of uniqueSlugs) {
+    revalidatePath(`/hu/hirek/${slug}`);
   }
 }
 
@@ -175,7 +187,7 @@ export async function createNews(
       })
       .returning({ id: news.id });
 
-    revalidateNewsViews(inserted.id);
+    revalidateNewsViews(inserted.id, [finalSlug]);
 
     return {
       ok: true,
@@ -203,6 +215,12 @@ export async function updateNews(
   }
 
   try {
+    const [existing] = await db
+      .select({ slug: news.slug })
+      .from(news)
+      .where(and(eq(news.id, id), isNull(news.deletedAt)))
+      .limit(1);
+
     const baseSlug = resolveBaseSlug(payload);
     const finalSlug = await uniqueSlug(baseSlug, id);
 
@@ -232,7 +250,7 @@ export async function updateNews(
       })
       .where(eq(news.id, id));
 
-    revalidateNewsViews(id);
+    revalidateNewsViews(id, [existing?.slug, finalSlug]);
 
     return { ok: true, message: "Hír frissítve." };
   } catch (err) {
@@ -249,11 +267,17 @@ export async function deleteNews(id: number): Promise<DeleteNewsResult> {
   await requireAdmin();
 
   try {
+    const [existing] = await db
+      .select({ slug: news.slug })
+      .from(news)
+      .where(and(eq(news.id, id), isNull(news.deletedAt)))
+      .limit(1);
+
     await db
       .update(news)
       .set({ deletedAt: new Date() })
       .where(eq(news.id, id));
-    revalidateNewsViews(id);
+    revalidateNewsViews(id, [existing?.slug]);
     return { ok: true, message: "Hír törölve." };
   } catch (err) {
     console.error("deleteNews error:", err);

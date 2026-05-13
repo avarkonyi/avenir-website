@@ -130,7 +130,7 @@ Before merging SEO / GEO / AI-search changes, verify:
 - admin, API, draft, migration, seed, and internal URLs are absent;
 - unapproved partner names, customer names, testimonials, case studies, ratings, awards, and EcoVadis claims are absent;
 - future concepts such as Shadow Audit sub-branding, AOS Guard Log, and AI Report Assistant are not described as current public products;
-- `/sitemap.xml` still follows the current policy: locale homepages, HU legal pages, and ready HU service detail pages only.
+- `/sitemap.xml` still follows the current policy: locale homepages, HU legal pages, ready HU service detail pages, and ready HU article pages only.
 
 ### Build-time service path DB dependency
 
@@ -141,6 +141,26 @@ If that query fails during build or sitemap generation because `DATABASE_URL` is
 The error may print only a credential-free DB target summary such as host and database name. It must never print the full `DATABASE_URL`.
 
 This is intentional: a Preview or production build with an unavailable service-readiness source is not a reliable SEO artifact. Fix the DB target or retry the build, then verify the live Preview `/sitemap.xml`.
+
+## Public News / Article QA Checklist
+
+Status: HU-first public article layer.
+
+Before merging public news/article work, verify on the Vercel Preview URL:
+
+- `/hu/hirek` returns 200 only when at least one HU-ready article exists;
+- `/hu/hirek` returns 404 if there are no HU-ready articles;
+- `/hu/hirek/[slug]` returns 200 only for HU-ready articles;
+- draft, soft-deleted, future-dated, title-only, lead-empty, and body-empty articles return 404 on detail URLs;
+- EN/DE/ZH article detail/index URLs are not linked and are not included in the sitemap;
+- homepage HU news cards link to `/hu/hirek/[slug]` only for HU-ready articles;
+- EN/DE/ZH homepage news cards keep the existing safe modal behavior and do not link to non-ready article routes;
+- `/sitemap.xml` includes `/hu/hirek` only when at least one HU-ready article exists;
+- `/sitemap.xml` includes only ready HU article detail URLs;
+- Article JSON-LD uses `Article`, not `NewsArticle`, unless the content type is explicitly changed later;
+- BreadcrumbList JSON-LD is present on article detail pages;
+- article body rendering does not render raw HTML or unsanitized Markdown;
+- no client, partner, testimonial, case-study, award, OPTEN, EcoVadis, or unverified claims appear unless separately approved in `docs/verified_claims.md`.
 
 ## Service Detail QA Checklist
 

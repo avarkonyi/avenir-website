@@ -1,11 +1,14 @@
 import type { MetadataRoute } from "next";
 import { SEO_DATA, SEO_LOCALES } from "@/lib/seo-data";
 import { getAllPublishedServicePathsForBuild } from "@/lib/db/queries/services";
+import { getAllPublishedNewsPathsHu } from "@/lib/db/queries/news";
 
 const LEGAL_SLUGS = ["adatvedelem", "aszf", "impresszum"] as const;
 const LEGAL_SITEMAP_LOCALES = ["hu"] as const;
 const SITE_LAST_MODIFIED = new Date("2026-05-07T00:00:00.000Z");
 const SERVICE_URL_SEGMENT = "szolgaltatasok";
+const NEWS_INDEX_PATH_HU = "/hu/hirek";
+const NEWS_URL_SEGMENT_HU = "hirek";
 
 function localeAlternates(path = "") {
   return {
@@ -30,6 +33,15 @@ function legalAlternates(path = "") {
   };
 }
 
+function huOnlyAlternates(path: string) {
+  return {
+    languages: {
+      hu: `${SEO_DATA.url}${path}`,
+      "x-default": `${SEO_DATA.url}${path}`,
+    },
+  };
+}
+
 // Sitemap is async (Next 16 supports async sitemaps) so we can pull
 // the live list of published+active service slugs from the DB. Drafts
 // (isPublished=false), soft-deleted rows (isActive=false), and
@@ -38,8 +50,10 @@ function legalAlternates(path = "") {
 // indexable" P5 guarantee. If the DB lookup fails, generation fails
 // loudly instead of emitting stale or incomplete service URLs.
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const servicePaths =
-    await getAllPublishedServicePathsForBuild("sitemap.xml");
+  const [servicePaths, newsPaths] = await Promise.all([
+    getAllPublishedServicePathsForBuild("sitemap.xml"),
+    getAllPublishedNewsPathsHu(),
+  ]);
   const serviceLocalesBySlug = new Map<string, string[]>();
 
   for (const { locale, slug } of servicePaths) {
@@ -89,5 +103,26 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.7,
       alternates: serviceAlternates(slug),
     })),
+    ...(newsPaths.length > 0
+      ? [
+          {
+            url: `${SEO_DATA.url}${NEWS_INDEX_PATH_HU}`,
+            lastModified: SITE_LAST_MODIFIED,
+            changeFrequency: "monthly" as const,
+            priority: 0.55,
+            alternates: huOnlyAlternates(NEWS_INDEX_PATH_HU),
+          },
+        ]
+      : []),
+    ...newsPaths.map(({ slug }) => {
+      const path = `/hu/${NEWS_URL_SEGMENT_HU}/${slug}`;
+      return {
+        url: `${SEO_DATA.url}${path}`,
+        lastModified: SITE_LAST_MODIFIED,
+        changeFrequency: "monthly" as const,
+        priority: 0.5,
+        alternates: huOnlyAlternates(path),
+      };
+    }),
   ];
 }

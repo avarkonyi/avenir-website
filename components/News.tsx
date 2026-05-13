@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import type { Translation } from "@/lib/i18n";
 import { Icon } from "./Icon";
@@ -9,9 +10,10 @@ export type Article = {
   id: number;
   title: string;
   lead: string;
-  body: string;
+  body?: string;
   date: string;
   imageUrl?: string | null;
+  href?: string;
 };
 
 function formatDate(iso: string, locale: string) {
@@ -116,105 +118,26 @@ export function News({
               gap: 28,
             }}
           >
-            {articles.map((art) => (
-              <article
-                key={art.id}
-                className="news-card"
-                onClick={() => setActive(art)}
-              >
-                <div
-                  style={{
-                    position: "relative",
-                    aspectRatio: "16/9",
-                    background: "linear-gradient(135deg, #0B1E3E, #1a3a6b)",
-                    overflow: "hidden",
-                  }}
+            {articles.map((art) =>
+              art.href ? (
+                <Link
+                  key={art.id}
+                  href={art.href}
+                  className="news-card"
+                  style={{ color: "inherit", textDecoration: "none" }}
                 >
-                  {art.imageUrl ? (
-                    <>
-                      <div style={coverImageStyle(art.imageUrl)} aria-hidden="true" />
-                      <div
-                        style={{
-                          position: "absolute",
-                          inset: 0,
-                          background:
-                            "linear-gradient(180deg, rgba(11,30,62,0.12), rgba(11,30,62,0.28))",
-                        }}
-                      />
-                    </>
-                  ) : (
-                    <div
-                      style={{
-                        position: "absolute",
-                        inset: 0,
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                      }}
-                    >
-                      <AvenirLogo size={36} />
-                    </div>
-                  )}
-                  <div
-                    style={{
-                      position: "absolute",
-                      top: 16,
-                      left: 16,
-                      background: "#D1172E",
-                      color: "#fff",
-                      fontFamily: "var(--font-head)",
-                      fontSize: 11,
-                      fontWeight: 700,
-                      letterSpacing: 1,
-                      padding: "4px 10px",
-                      borderRadius: 2,
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    {formatDate(art.date, locale)}
-                  </div>
-                </div>
-                <div
-                  style={{
-                    padding: "24px 24px 28px",
-                    flex: 1,
-                    display: "flex",
-                    flexDirection: "column",
-                  }}
+                  <NewsCardContent article={art} locale={locale} cta={t.newsReadMore} />
+                </Link>
+              ) : (
+                <article
+                  key={art.id}
+                  className="news-card"
+                  onClick={() => setActive(art)}
                 >
-                  <h3
-                    style={{
-                      fontFamily: "var(--font-head)",
-                      fontWeight: 700,
-                      fontSize: 22,
-                      color: "#0B1E3E",
-                      lineHeight: 1.25,
-                      marginBottom: 12,
-                    }}
-                  >
-                    {art.title}
-                  </h3>
-                  <p style={{ color: "#667788", fontSize: 14.5, lineHeight: 1.6, fontWeight: 300, flex: 1 }}>
-                    {art.lead}
-                  </p>
-                  <div style={{ marginTop: 18, display: "flex", alignItems: "center", gap: 8 }}>
-                    <span
-                      style={{
-                        fontFamily: "var(--font-head)",
-                        fontWeight: 700,
-                        fontSize: 13,
-                        letterSpacing: 1.2,
-                        color: "#D1172E",
-                        textTransform: "uppercase",
-                      }}
-                    >
-                      {t.newsReadMore}
-                    </span>
-                    <Icon name="arrow" size={14} color="#D1172E" />
-                  </div>
-                </div>
-              </article>
-            ))}
+                  <NewsCardContent article={art} locale={locale} cta={t.newsReadMore} />
+                </article>
+              ),
+            )}
           </div>
         )}
       </div>
@@ -324,12 +247,133 @@ export function News({
                   whiteSpace: "pre-wrap",
                 }}
               >
-                {active.body}
+                {active.body ?? ""}
               </div>
             </div>
           </div>
         </div>
       )}
     </section>
+  );
+}
+
+function NewsCardContent({
+  article,
+  locale,
+  cta,
+}: {
+  article: Article;
+  locale: string;
+  cta: string;
+}) {
+  return (
+    <>
+      <div
+        style={{
+          position: "relative",
+          aspectRatio: "16/9",
+          background: "linear-gradient(135deg, #0B1E3E, #1a3a6b)",
+          overflow: "hidden",
+        }}
+      >
+        {article.imageUrl ? (
+          <>
+            <div style={coverImageStyle(article.imageUrl)} aria-hidden="true" />
+            <div
+              style={{
+                position: "absolute",
+                inset: 0,
+                background:
+                  "linear-gradient(180deg, rgba(11,30,62,0.12), rgba(11,30,62,0.28))",
+              }}
+            />
+          </>
+        ) : (
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <AvenirLogo size={36} />
+          </div>
+        )}
+        <div
+          style={{
+            position: "absolute",
+            top: 16,
+            left: 16,
+            background: "#D1172E",
+            color: "#fff",
+            fontFamily: "var(--font-head)",
+            fontSize: 11,
+            fontWeight: 700,
+            letterSpacing: 1,
+            padding: "4px 10px",
+            borderRadius: 2,
+            textTransform: "uppercase",
+          }}
+        >
+          {formatDate(article.date, locale)}
+        </div>
+      </div>
+      <div
+        style={{
+          padding: "24px 24px 28px",
+          flex: 1,
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <h3
+          style={{
+            fontFamily: "var(--font-head)",
+            fontWeight: 700,
+            fontSize: 22,
+            color: "#0B1E3E",
+            lineHeight: 1.25,
+            marginBottom: 12,
+          }}
+        >
+          {article.title}
+        </h3>
+        <p
+          style={{
+            color: "#667788",
+            fontSize: 14.5,
+            lineHeight: 1.6,
+            fontWeight: 300,
+            flex: 1,
+          }}
+        >
+          {article.lead}
+        </p>
+        <div
+          style={{
+            marginTop: 18,
+            display: "flex",
+            alignItems: "center",
+            gap: 8,
+          }}
+        >
+          <span
+            style={{
+              fontFamily: "var(--font-head)",
+              fontWeight: 700,
+              fontSize: 13,
+              letterSpacing: 1.2,
+              color: "#D1172E",
+              textTransform: "uppercase",
+            }}
+          >
+            {cta}
+          </span>
+          <Icon name="arrow" size={14} color="#D1172E" />
+        </div>
+      </div>
+    </>
   );
 }
