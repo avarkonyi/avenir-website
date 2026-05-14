@@ -28,6 +28,7 @@ const SERVICE_LABELS_HU: Record<string, string> = {
   "mystery-shopping-helyszini-audit": "Mystery Shopping és helyszíni audit",
   hardfm: "Hard FM",
   "hard-fm": "Hard FM",
+  magannyomozas: "Magánnyomozás",
 };
 
 function formatTimestamp(date: Date): string {

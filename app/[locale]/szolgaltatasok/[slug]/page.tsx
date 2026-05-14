@@ -7,12 +7,13 @@ import { JsonLd } from "@/components/JsonLd";
 import { Icon, ICON_NAMES, type IconName } from "@/components/Icon";
 import { getTranslation, LOCALES, type Locale } from "@/lib/i18n";
 import {
-  getPublishedServiceDetailBySlug,
-  getPublishedServicesBySlugs,
   getAllPublishedServicePathsForBuild,
-  getPublishedServiceLocalesBySlug,
+  getPublishedServiceDetailBySlugForPublic,
+  getPublishedServiceLocalesBySlugForPublic,
+  getPublishedServicesBySlugsForPublic,
 } from "@/lib/db/queries/services";
 import { SEO_DATA, SEO_LOCALES, type SeoLocale } from "@/lib/seo-data";
+import { getSafeAbsolutePublicImageUrl } from "@/lib/safe-public-image";
 
 // Public service detail page (P5 Phase 1).
 //
@@ -49,7 +50,11 @@ export async function generateMetadata({
   if (!SEO_LOCALES.includes(locale as SeoLocale)) {
     return {};
   }
-  const detail = await getPublishedServiceDetailBySlug(slug, locale);
+  const detail = await getPublishedServiceDetailBySlugForPublic(
+    slug,
+    locale,
+    "service metadata detail",
+  );
   if (!detail) {
     // Returning empty metadata is fine — the page itself will call
     // notFound() and the route returns 404 + the not-found.tsx UI.
@@ -69,7 +74,11 @@ export async function generateMetadata({
 
   const path = `/${locale}/${URL_SEGMENT}/${slug}`;
   const canonical = `${SEO_DATA.url}${path}`;
-  const readyLocales = await getPublishedServiceLocalesBySlug(slug);
+  const image = getSafeAbsolutePublicImageUrl(detail.imageUrl, SEO_DATA.url);
+  const readyLocales = await getPublishedServiceLocalesBySlugForPublic(
+    slug,
+    "service metadata locale alternates",
+  );
   const languages: Record<string, string> = {};
   for (const l of readyLocales) {
     languages[l] = `${SEO_DATA.url}/${l}/${URL_SEGMENT}/${slug}`;
@@ -93,8 +102,14 @@ export async function generateMetadata({
       description,
       url: canonical,
       siteName: SEO_DATA.name,
+      ...(image ? { images: [{ url: image }] } : {}),
     },
-    twitter: { card: "summary_large_image", title, description },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      ...(image ? { images: [image] } : {}),
+    },
   };
 }
 
@@ -113,13 +128,18 @@ export default async function ServiceDetailPage({
   const { locale, slug } = await params;
   if (!LOCALES.includes(locale as Locale)) notFound();
 
-  const detail = await getPublishedServiceDetailBySlug(slug, locale);
+  const detail = await getPublishedServiceDetailBySlugForPublic(
+    slug,
+    locale,
+    "service detail page",
+  );
   if (!detail) notFound();
 
   const t = getTranslation(locale);
-  const related = await getPublishedServicesBySlugs(
+  const related = await getPublishedServicesBySlugsForPublic(
     detail.relatedSlugs,
     locale,
+    "service detail related services",
   );
 
   const pageUrl = `${SEO_DATA.url}/${locale}/${URL_SEGMENT}/${slug}`;
@@ -173,10 +193,12 @@ export default async function ServiceDetailPage({
     areaServed: { "@type": "Country", name: "Magyarország" },
     provider: { "@id": `${SEO_DATA.url}/#organization` },
   };
-  if (detail.imageUrl) {
-    serviceSchema.image = detail.imageUrl.startsWith("http")
-      ? detail.imageUrl
-      : `${SEO_DATA.url}${detail.imageUrl}`;
+  const serviceImage = getSafeAbsolutePublicImageUrl(
+    detail.imageUrl,
+    SEO_DATA.url,
+  );
+  if (serviceImage) {
+    serviceSchema.image = serviceImage;
   }
 
   const schemas: Record<string, unknown>[] = [breadcrumb, serviceSchema];
@@ -776,7 +798,10 @@ function Breadcrumbs({
         {servicesLabel}
       </Link>
       <span aria-hidden>›</span>
-      <span style={{ color: "rgba(255,255,255,0.95)", fontWeight: 600 }}>
+      <span
+        aria-current="page"
+        style={{ color: "rgba(255,255,255,0.95)", fontWeight: 600 }}
+      >
         {currentLabel}
       </span>
     </nav>

@@ -4,6 +4,7 @@ import { and, eq, isNull, ne } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { auth } from "@/auth";
 import { db, news } from "@/lib/db";
+import { sanitizeDbErrorMessage } from "@/lib/db/redact";
 import { FALLBACK_SLUG, SLUG_MAX_LENGTH, slugify } from "@/lib/utils/slugify";
 
 const PUBLIC_NEWS_PATHS = ["/hu", "/en", "/de", "/zh"] as const;
@@ -149,6 +150,12 @@ function revalidateNewsViews(
   }
 }
 
+function logNewsActionError(action: string, error: unknown) {
+  console.error(
+    `[news-admin] ${action} failed: ${sanitizeDbErrorMessage(error)}`,
+  );
+}
+
 export async function createNews(
   payload: NewsFormPayload,
 ): Promise<CreateNewsResult> {
@@ -195,11 +202,10 @@ export async function createNews(
       message: "Hír sikeresen létrehozva.",
     };
   } catch (err) {
-    console.error("createNews error:", err);
+    logNewsActionError("createNews", err);
     return {
       ok: false,
-      error:
-        err instanceof Error ? err.message : "A hír mentése sikertelen.",
+      error: "A hír mentése sikertelen.",
     };
   }
 }
@@ -254,11 +260,10 @@ export async function updateNews(
 
     return { ok: true, message: "Hír frissítve." };
   } catch (err) {
-    console.error("updateNews error:", err);
+    logNewsActionError("updateNews", err);
     return {
       ok: false,
-      error:
-        err instanceof Error ? err.message : "A hír frissítése sikertelen.",
+      error: "A hír frissítése sikertelen.",
     };
   }
 }
@@ -280,10 +285,10 @@ export async function deleteNews(id: number): Promise<DeleteNewsResult> {
     revalidateNewsViews(id, [existing?.slug]);
     return { ok: true, message: "Hír törölve." };
   } catch (err) {
-    console.error("deleteNews error:", err);
+    logNewsActionError("deleteNews", err);
     return {
       ok: false,
-      error: err instanceof Error ? err.message : "A hír törlése sikertelen.",
+      error: "A hír törlése sikertelen.",
     };
   }
 }

@@ -1,5 +1,6 @@
 import { and, asc, eq, inArray, isNull, sql } from "drizzle-orm";
 import { db, services } from "@/lib/db";
+import { redactedDbIdentity, sanitizeDbErrorMessage } from "@/lib/db/redact";
 import { LOCALES, type Locale } from "@/lib/i18n";
 
 // Normalized row shape returned to public renderers. Locale fallback
@@ -384,38 +385,6 @@ export async function getAllPublishedServicePaths(): Promise<PublishedServicePat
   return results.flat();
 }
 
-function redactedDbIdentity(): string {
-  const raw = process.env.DATABASE_URL;
-  if (!raw) return "DATABASE_URL is not set";
-
-  try {
-    const url = new URL(raw);
-    const database = url.pathname.replace(/^\/+/, "") || "(unknown)";
-    return `host=${url.hostname} db=${database}`;
-  } catch {
-    return "DATABASE_URL is set but could not be parsed";
-  }
-}
-
-function sanitizeDbErrorMessage(error: unknown): string {
-  const rawMessage =
-    error instanceof Error
-      ? error.message
-      : typeof error === "string"
-        ? error
-        : "Unknown database error";
-
-  const databaseUrl = process.env.DATABASE_URL;
-  let message = rawMessage;
-  if (databaseUrl) {
-    message = message.split(databaseUrl).join("[redacted DATABASE_URL]");
-  }
-
-  return message
-    .replace(/postgres(?:ql)?:\/\/[^\s"'`<>]+/gi, "postgres://[redacted]")
-    .replace(/(password=)[^&\s"'`<>]+/gi, "$1[redacted]");
-}
-
 export async function getAllPublishedServicePathsForBuild(
   surface: string,
 ): Promise<PublishedServicePath[]> {
@@ -436,6 +405,57 @@ export async function getAllPublishedServicePathsForBuild(
       `[service-paths] ${surface}: service path generation requires a reachable database.`,
     );
   }
+}
+
+async function runSanitizedServiceQuery<T>(
+  surface: string,
+  query: () => Promise<T>,
+): Promise<T> {
+  try {
+    return await query();
+  } catch (error) {
+    console.error(
+      [
+        `[service-detail] ${surface}: failed to read DB-backed service detail data.`,
+        `DB target: ${redactedDbIdentity()}.`,
+        `Cause: ${sanitizeDbErrorMessage(error)}.`,
+        "Full DATABASE_URL was not printed.",
+      ].join(" "),
+    );
+
+    throw new Error(
+      `[service-detail] ${surface}: service detail data requires a reachable database.`,
+    );
+  }
+}
+
+export function getPublishedServiceDetailBySlugForPublic(
+  slug: string,
+  locale: string,
+  surface: string,
+): Promise<LocalizedServiceDetail | null> {
+  return runSanitizedServiceQuery(surface, () =>
+    getPublishedServiceDetailBySlug(slug, locale),
+  );
+}
+
+export function getPublishedServiceLocalesBySlugForPublic(
+  slug: string,
+  surface: string,
+): Promise<Locale[]> {
+  return runSanitizedServiceQuery(surface, () =>
+    getPublishedServiceLocalesBySlug(slug),
+  );
+}
+
+export function getPublishedServicesBySlugsForPublic(
+  slugs: readonly string[],
+  locale: string,
+  surface: string,
+): Promise<LocalizedServiceRow[]> {
+  return runSanitizedServiceQuery(surface, () =>
+    getPublishedServicesBySlugs(slugs, locale),
+  );
 }
 
 export async function getPublishedServiceLocalesBySlug(

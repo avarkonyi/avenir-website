@@ -22,3 +22,11 @@ export function getSafePublicImageSrc(
 
   return null;
 }
+
+export function getSafeAbsolutePublicImageUrl(
+  imageUrl: string | null | undefined,
+  baseUrl: string,
+): string | null {
+  const safeSrc = getSafePublicImageSrc(imageUrl);
+  return safeSrc ? new URL(safeSrc, baseUrl).toString() : null;
+}

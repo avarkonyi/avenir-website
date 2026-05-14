@@ -57,7 +57,7 @@ async function prepareImageUpload(
   }
 
   const input = Buffer.from(await file.arrayBuffer());
-  const optimized = await sharp(input, { failOn: "none" })
+  const optimized = await sharp(input, { failOn: "error" })
     .rotate()
     .resize({
       width: PHOTO_MAX_DIMENSION,

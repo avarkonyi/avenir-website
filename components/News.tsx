@@ -2,7 +2,12 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import {
+  type KeyboardEvent as ReactKeyboardEvent,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import type { Translation } from "@/lib/i18n";
 import { getSafePublicImageSrc } from "@/lib/safe-public-image";
 import { Icon } from "./Icon";
@@ -43,7 +48,56 @@ export function News({
   articles: Article[];
 }) {
   const [active, setActive] = useState<Article | null>(null);
+  const modalCloseButtonRef = useRef<HTMLButtonElement>(null);
+  const lastActivatorRef = useRef<HTMLElement | null>(null);
+  const wasModalOpenRef = useRef(false);
   const activeImageUrl = getSafePublicImageSrc(active?.imageUrl);
+  const activeTitleId = active ? `news-modal-title-${active.id}` : undefined;
+  const activeBodyId = active ? `news-modal-body-${active.id}` : undefined;
+
+  function openArticle(article: Article, activator: HTMLElement) {
+    lastActivatorRef.current = activator;
+    setActive(article);
+  }
+
+  function closeArticle() {
+    setActive(null);
+  }
+
+  function handleModalCardKeyDown(
+    event: ReactKeyboardEvent<HTMLElement>,
+    article: Article,
+  ) {
+    if (event.key !== "Enter" && event.key !== " ") return;
+    event.preventDefault();
+    openArticle(article, event.currentTarget);
+  }
+
+  useEffect(() => {
+    if (active) {
+      wasModalOpenRef.current = true;
+      modalCloseButtonRef.current?.focus();
+      return;
+    }
+
+    if (wasModalOpenRef.current) {
+      wasModalOpenRef.current = false;
+      lastActivatorRef.current?.focus();
+    }
+  }, [active]);
+
+  useEffect(() => {
+    if (!active) return;
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        closeArticle();
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [active]);
 
   return (
     <section id="news" style={{ padding: "100px 5vw", background: "#fff" }}>
@@ -127,7 +181,11 @@ export function News({
                 <article
                   key={art.id}
                   className="news-card"
-                  onClick={() => setActive(art)}
+                  role="button"
+                  tabIndex={0}
+                  aria-label={`${art.title} - ${t.newsReadMore}`}
+                  onClick={(event) => openArticle(art, event.currentTarget)}
+                  onKeyDown={(event) => handleModalCardKeyDown(event, art)}
                 >
                   <NewsCardContent article={art} locale={locale} cta={t.newsReadMore} />
                 </article>
@@ -141,7 +199,7 @@ export function News({
       {active && (
         <div
           onClick={(e) => {
-            if (e.target === e.currentTarget) setActive(null);
+            if (e.target === e.currentTarget) closeArticle();
           }}
           style={{
             position: "fixed",
@@ -156,6 +214,10 @@ export function News({
           }}
         >
           <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby={activeTitleId}
+            aria-describedby={activeBodyId}
             style={{
               background: "#fff",
               borderRadius: 4,
@@ -194,7 +256,9 @@ export function News({
               </div>
             )}
             <button
-              onClick={() => setActive(null)}
+              ref={modalCloseButtonRef}
+              className="news-modal-close"
+              onClick={closeArticle}
               style={{
                 position: "absolute",
                 top: 16,
@@ -229,6 +293,7 @@ export function News({
                 {formatDate(active.date, locale)}
               </div>
               <h2
+                id={activeTitleId}
                 style={{
                   fontFamily: "var(--font-head)",
                   fontWeight: 800,
@@ -241,6 +306,7 @@ export function News({
                 {active.title}
               </h2>
               <div
+                id={activeBodyId}
                 style={{
                   color: "#445566",
                   fontSize: 16,

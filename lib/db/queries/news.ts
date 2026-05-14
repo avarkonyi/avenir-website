@@ -1,9 +1,10 @@
-import { and, desc, eq, isNull, lte, sql } from "drizzle-orm";
+import { and, desc, eq, isNull, sql } from "drizzle-orm";
 import { db, news } from "@/lib/db";
+import { redactedDbIdentity, sanitizeDbErrorMessage } from "@/lib/db/redact";
 
 const NEWS_URL_SEGMENT_HU = "hirek";
 
-function publishedNewsHuPredicate(now = new Date()) {
+function publishedNewsHuPredicate() {
   return and(
     isNull(news.deletedAt),
     eq(news.publishedHu, true),
@@ -11,7 +12,7 @@ function publishedNewsHuPredicate(now = new Date()) {
     sql`nullif(trim(${news.titleHu}), '') is not null`,
     sql`nullif(trim(${news.leadHu}), '') is not null`,
     sql`nullif(trim(${news.bodyHu}), '') is not null`,
-    lte(news.date, now),
+    sql`${news.date} <= now()`,
   );
 }
 
@@ -110,38 +111,6 @@ export async function getAllPublishedNewsPathsHu(): Promise<
     date: row.date,
     updatedAt: row.updatedAt,
   }));
-}
-
-function redactedDbIdentity(): string {
-  const raw = process.env.DATABASE_URL;
-  if (!raw) return "DATABASE_URL is not set";
-
-  try {
-    const url = new URL(raw);
-    const database = url.pathname.replace(/^\/+/, "") || "(unknown)";
-    return `host=${url.hostname} db=${database}`;
-  } catch {
-    return "DATABASE_URL is set but could not be parsed";
-  }
-}
-
-function sanitizeDbErrorMessage(error: unknown): string {
-  const rawMessage =
-    error instanceof Error
-      ? error.message
-      : typeof error === "string"
-        ? error
-        : "Unknown database error";
-
-  const databaseUrl = process.env.DATABASE_URL;
-  let message = rawMessage;
-  if (databaseUrl) {
-    message = message.split(databaseUrl).join("[redacted DATABASE_URL]");
-  }
-
-  return message
-    .replace(/postgres(?:ql)?:\/\/[^\s"'`<>]+/gi, "postgres://[redacted]")
-    .replace(/(password=)[^&\s"'`<>]+/gi, "$1[redacted]");
 }
 
 export async function getAllPublishedNewsPathsHuForBuild(

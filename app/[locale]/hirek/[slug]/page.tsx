@@ -12,7 +12,10 @@ import {
   getPublishedNewsDetailBySlugHu,
 } from "@/lib/db/queries/news";
 import { SEO_DATA } from "@/lib/seo-data";
-import { getSafePublicImageSrc } from "@/lib/safe-public-image";
+import {
+  getSafeAbsolutePublicImageUrl,
+  getSafePublicImageSrc,
+} from "@/lib/safe-public-image";
 
 export const revalidate = 3600;
 
@@ -31,10 +34,10 @@ function articleUrl(slug: string): string {
 }
 
 function articleMetadataImageUrl(imageUrl: string | null): string {
-  const safeSrc = getSafePublicImageSrc(imageUrl);
-  return safeSrc
-    ? new URL(safeSrc, SEO_DATA.url).toString()
-    : SEO_DATA.ogImageUrl;
+  return (
+    getSafeAbsolutePublicImageUrl(imageUrl, SEO_DATA.url) ??
+    SEO_DATA.ogImageUrl
+  );
 }
 
 export async function generateMetadata({
@@ -227,7 +230,10 @@ export default async function NewsDetailPage({
                 Hírek
               </Link>
               <span aria-hidden>›</span>
-              <span style={{ color: "rgba(255,255,255,0.95)", fontWeight: 600 }}>
+              <span
+                aria-current="page"
+                style={{ color: "rgba(255,255,255,0.95)", fontWeight: 600 }}
+              >
                 {article.title}
               </span>
             </nav>

@@ -276,6 +276,18 @@ a {
   transform: translateY(-3px);
 }
 
+.news-card:focus-visible {
+  outline: 3px solid rgba(209, 23, 46, 0.45);
+  outline-offset: 4px;
+  border-color: #D1172E;
+  box-shadow: 0 12px 30px rgba(11, 30, 62, 0.1);
+}
+
+.news-modal-close:focus-visible {
+  outline: 3px solid rgba(209, 23, 46, 0.55);
+  outline-offset: 3px;
+}
+
 /* Screen-reader-only utility (visually hidden, available to assistive
    tech and HTML-parsing crawlers). Standard sr-only pattern. */
 .sr-only {
