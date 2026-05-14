@@ -69,10 +69,10 @@ export async function Footer({
 
           {/* Column 2: Services links */}
           <div>
-            <h4
+            <p
               style={{
                 fontFamily: "var(--font-head)",
-                color: "rgba(255,255,255,0.85)",
+                color: "var(--avenir-on-dark)",
                 fontSize: 13,
                 letterSpacing: 1.5,
                 textTransform: "uppercase",
@@ -81,7 +81,7 @@ export async function Footer({
               }}
             >
               {t.servicesTitle}
-            </h4>
+            </p>
             <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 10 }}>
               {serviceLinks.map((link) => (
                 <li key={link.slug}>
@@ -90,7 +90,7 @@ export async function Footer({
                       href={link.href}
                       className="footer-link"
                       style={{
-                        color: "rgba(255,255,255,0.45)",
+                        color: "var(--avenir-on-dark-muted)",
                         fontSize: 13,
                         textDecoration: "none",
                       }}
@@ -102,7 +102,7 @@ export async function Footer({
                       href="#services"
                       className="footer-link"
                       style={{
-                        color: "rgba(255,255,255,0.45)",
+                        color: "var(--avenir-on-dark-muted)",
                         fontSize: 13,
                         textDecoration: "none",
                       }}
@@ -119,10 +119,10 @@ export async function Footer({
           {/* SOURCE OF TRUTH for company facts: lib/seo-data.ts */}
           {/* Keep these strings synced when seo-data is updated. */}
           <div>
-            <h4
+            <p
               style={{
                 fontFamily: "var(--font-head)",
-                color: "rgba(255,255,255,0.85)",
+                color: "var(--avenir-on-dark)",
                 fontSize: 13,
                 letterSpacing: 1.5,
                 textTransform: "uppercase",
@@ -131,8 +131,8 @@ export async function Footer({
               }}
             >
               {t.contactTitle}
-            </h4>
-            <div style={{ display: "flex", flexDirection: "column", gap: 10, color: "rgba(255,255,255,0.55)", fontSize: 13, lineHeight: 1.6, fontWeight: 300 }}>
+            </p>
+            <div style={{ display: "flex", flexDirection: "column", gap: 10, color: "var(--avenir-on-dark-muted)", fontSize: 13, lineHeight: 1.6, fontWeight: 300 }}>
               <div>
                 <a
                   href="https://www.google.com/maps/search/?api=1&query=1039+Budapest%2C+Kir%C3%A1lyok+%C3%BAtja+291"
@@ -169,10 +169,10 @@ export async function Footer({
 
           {/* Column 4: Legal links — locale-prefixed Next/Link */}
           <div>
-            <h4
+            <p
               style={{
                 fontFamily: "var(--font-head)",
-                color: "rgba(255,255,255,0.85)",
+                color: "var(--avenir-on-dark)",
                 fontSize: 13,
                 letterSpacing: 1.5,
                 textTransform: "uppercase",
@@ -181,20 +181,20 @@ export async function Footer({
               }}
             >
               {t.footer.legalTitle}
-            </h4>
+            </p>
             <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 10 }}>
               <li>
-                <Link href={`/${locale}/adatvedelem`} className="footer-link" style={{ color: "rgba(255,255,255,0.45)", fontSize: 13, textDecoration: "none" }}>
+                <Link href={`/${locale}/adatvedelem`} className="footer-link" style={{ color: "var(--avenir-on-dark-muted)", fontSize: 13, textDecoration: "none" }}>
                   {t.footer.privacy}
                 </Link>
               </li>
               <li>
-                <Link href={`/${locale}/aszf`} className="footer-link" style={{ color: "rgba(255,255,255,0.45)", fontSize: 13, textDecoration: "none" }}>
+                <Link href={`/${locale}/aszf`} className="footer-link" style={{ color: "var(--avenir-on-dark-muted)", fontSize: 13, textDecoration: "none" }}>
                   {t.footer.terms}
                 </Link>
               </li>
               <li>
-                <Link href={`/${locale}/impresszum`} className="footer-link" style={{ color: "rgba(255,255,255,0.45)", fontSize: 13, textDecoration: "none" }}>
+                <Link href={`/${locale}/impresszum`} className="footer-link" style={{ color: "var(--avenir-on-dark-muted)", fontSize: 13, textDecoration: "none" }}>
                   {t.footer.impressum}
                 </Link>
               </li>
@@ -204,14 +204,14 @@ export async function Footer({
 
         {/* Divider */}
         <div style={{ borderTop: "1px solid rgba(255,255,255,0.06)", paddingTop: 24 }}>
-          <p style={{ color: "rgba(255,255,255,0.35)", fontSize: 13, fontWeight: 300, marginBottom: 6 }}>
+          <p style={{ color: "var(--avenir-on-dark-muted)", fontSize: 13, fontWeight: 300, marginBottom: 6 }}>
             {t.footer.rights}
           </p>
-          <p style={{ color: "rgba(255,255,255,0.25)", fontSize: 12, fontWeight: 300 }}>
+          <p style={{ color: "var(--avenir-on-dark-soft)", fontSize: 12, fontWeight: 300 }}>
             {t.footer.companyNumberLabel}: 01-09-328046 · {t.footer.taxNumberLabel}: 26395124-2-41 · {t.footer.headquartersLabel}: 1039 Budapest, Királyok útja 291. B. ép. 15. ajtó
           </p>
           {t.footer.machineTranslationDisclaimer && (
-            <p style={{ color: "rgba(255,255,255,0.4)", fontSize: 11, fontWeight: 300, marginTop: 10, fontStyle: "italic" }}>
+            <p style={{ color: "var(--avenir-on-dark-soft)", fontSize: 11, fontWeight: 300, marginTop: 10, fontStyle: "italic" }}>
               {t.footer.machineTranslationDisclaimer}
             </p>
           )}

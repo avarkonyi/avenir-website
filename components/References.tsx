@@ -44,7 +44,7 @@ export function References({ t, locale }: { t: Translation; locale: string }) {
           >
             {t.refTitle}
           </h2>
-          <p style={{ color: "rgba(255,255,255,0.55)", fontSize: 17, lineHeight: 1.7, fontWeight: 300 }}>
+          <p style={{ color: "var(--avenir-on-dark-muted)", fontSize: 17, lineHeight: 1.7, fontWeight: 300 }}>
             {t.refText}
           </p>
         </div>

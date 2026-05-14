@@ -195,7 +195,7 @@ function ContactRow({ kind, label, text, href }: ContactRowProps) {
             letterSpacing: 1.8,
             textTransform: "uppercase",
             fontWeight: 700,
-            color: hover ? "#D1172E" : "#8A9BB0",
+            color: hover ? "#D1172E" : "var(--avenir-text-soft)",
             transition: "color 0.25s ease",
           }}
         >
@@ -205,7 +205,7 @@ function ContactRow({ kind, label, text, href }: ContactRowProps) {
           style={{
             fontSize: 16,
             fontWeight: 400,
-            color: hover ? "#0B1E3E" : "#556070",
+            color: hover ? "#0B1E3E" : "var(--avenir-text-muted)",
             transition: "color 0.25s ease",
           }}
         >
@@ -698,7 +698,7 @@ export function Contact({
                   }}
                   style={{
                     ...inputStyle(!!errors.service),
-                    color: selectedService ? "#0B1E3E" : "#9BA8B5",
+                    color: selectedService ? "#0B1E3E" : "var(--avenir-text-placeholder)",
                     appearance: "none",
                   }}
                   aria-invalid={!!errors.service}
@@ -774,7 +774,7 @@ export function Contact({
                 style={{
                   fontSize: 11,
                   lineHeight: 1.55,
-                  color: "rgba(11,30,62,0.55)",
+                  color: "var(--avenir-text-soft)",
                   margin: "8px 0 0",
                 }}
               >

@@ -49,7 +49,7 @@ export function About({ t }: { t: Translation }) {
               <p
                 key={index}
                 style={{
-                  color: "#556070",
+                  color: "var(--avenir-text-muted)",
                   fontSize: 17,
                   lineHeight: 1.75,
                   margin: index === 0 ? "0 0 16px" : 0,
@@ -81,7 +81,7 @@ export function About({ t }: { t: Translation }) {
                   <div style={{ fontFamily: "var(--font-head)", fontWeight: 700, fontSize: 17, color: "#0B1E3E", letterSpacing: 0.3 }}>
                     {v.t}
                   </div>
-                  <div style={{ color: "#778899", fontSize: 14, marginTop: 2, lineHeight: 1.5 }}>{v.d}</div>
+                  <div style={{ color: "var(--avenir-text-soft)", fontSize: 14, marginTop: 2, lineHeight: 1.5 }}>{v.d}</div>
                 </div>
               </div>
             ))}
@@ -103,7 +103,7 @@ export function About({ t }: { t: Translation }) {
               src="/uploads/company-photo.webp"
               alt={t.aboutTitle}
               fill
-              sizes="(max-width: 900px) 100vw, 50vw"
+              sizes="(max-width: 768px) calc(100vw - 10vw), (max-width: 1200px) 45vw, 560px"
               quality={82}
               style={{ objectFit: "cover", objectPosition: "center" }}
             />
