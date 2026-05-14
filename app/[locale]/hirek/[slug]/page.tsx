@@ -9,7 +9,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { getTranslation } from "@/lib/i18n";
 import {
   getAllPublishedNewsPathsHuForBuild,
-  getPublishedNewsDetailBySlugHu,
+  getPublishedNewsDetailBySlugHuForPublic,
 } from "@/lib/db/queries/news";
 import { SEO_DATA } from "@/lib/seo-data";
 import {
@@ -50,7 +50,10 @@ export async function generateMetadata({
     return { robots: { index: false, follow: false } };
   }
 
-  const article = await getPublishedNewsDetailBySlugHu(slug);
+  const article = await getPublishedNewsDetailBySlugHuForPublic(
+    slug,
+    "article metadata detail",
+  );
   if (!article) {
     return { robots: { index: false, follow: false } };
   }
@@ -133,7 +136,10 @@ export default async function NewsDetailPage({
   const { locale, slug } = await params;
   if (locale !== "hu") notFound();
 
-  const article = await getPublishedNewsDetailBySlugHu(slug);
+  const article = await getPublishedNewsDetailBySlugHuForPublic(
+    slug,
+    "article detail page",
+  );
   if (!article) notFound();
 
   const t = getTranslation("hu");

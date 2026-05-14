@@ -113,6 +113,43 @@ export async function getAllPublishedNewsPathsHu(): Promise<
   }));
 }
 
+async function runSanitizedNewsQuery<T>(
+  surface: string,
+  query: () => Promise<T>,
+): Promise<T> {
+  try {
+    return await query();
+  } catch (error) {
+    console.error(
+      [
+        `[news-public] ${surface}: failed to read DB-backed HU article data.`,
+        `DB target: ${redactedDbIdentity()}.`,
+        `Cause: ${sanitizeDbErrorMessage(error)}.`,
+        "Full DATABASE_URL was not printed.",
+      ].join(" "),
+    );
+
+    throw new Error(
+      `[news-public] ${surface}: HU article data requires a reachable database.`,
+    );
+  }
+}
+
+export function getPublishedNewsIndexHuForPublic(
+  surface: string,
+): Promise<PublishedNewsIndexItemHu[]> {
+  return runSanitizedNewsQuery(surface, () => getPublishedNewsIndexHu());
+}
+
+export function getPublishedNewsDetailBySlugHuForPublic(
+  slug: string,
+  surface: string,
+): Promise<PublishedNewsDetailHu | null> {
+  return runSanitizedNewsQuery(surface, () =>
+    getPublishedNewsDetailBySlugHu(slug),
+  );
+}
+
 export async function getAllPublishedNewsPathsHuForBuild(
   surface: string,
 ): Promise<PublishedNewsPathHu[]> {

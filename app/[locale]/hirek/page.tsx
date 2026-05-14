@@ -8,7 +8,7 @@ import { AvenirLogo } from "@/components/AvenirLogo";
 import { Icon } from "@/components/Icon";
 import { getTranslation } from "@/lib/i18n";
 import {
-  getPublishedNewsIndexHu,
+  getPublishedNewsIndexHuForPublic,
   newsDetailHrefHu,
 } from "@/lib/db/queries/news";
 import { SEO_DATA } from "@/lib/seo-data";
@@ -78,7 +78,7 @@ export default async function NewsIndexPage({
   const { locale } = await params;
   if (locale !== "hu") notFound();
 
-  const articles = await getPublishedNewsIndexHu();
+  const articles = await getPublishedNewsIndexHuForPublic("article index page");
   if (articles.length === 0) notFound();
 
   const t = getTranslation("hu");

@@ -4,6 +4,7 @@ import { and, eq, inArray, isNull, sql } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { auth } from "@/auth";
 import { db, neonSql, services } from "@/lib/db";
+import { safeActionError } from "@/lib/admin/safe-action-error";
 import { slugify } from "@/lib/utils/slugify";
 import { ICON_NAMES } from "@/components/Icon";
 
@@ -448,15 +449,13 @@ export async function toggleServiceActive(
     revalidatePublicServiceSurfaces([service.slug]);
     return { ok: true };
   } catch (err) {
-    console.error("toggleServiceActive error:", err);
     return {
       ok: false,
-      error:
-        err instanceof Error
-          ? err.message
-          : nextActive
-            ? "Az aktiválás sikertelen."
-            : "Az inaktiválás sikertelen.",
+      error: safeActionError(
+        "toggleServiceActive",
+        err,
+        nextActive ? "Az aktiválás sikertelen." : "Az inaktiválás sikertelen.",
+      ),
     };
   }
 }
@@ -547,13 +546,13 @@ export async function createService(
         error: `Ez a slug már foglalt: "${payload.slug.trim() || nameHu}". Válassz egyedit.`,
       };
     }
-    console.error("createService error:", err);
     return {
       ok: false,
-      error:
-        err instanceof Error
-          ? err.message
-          : "A szolgáltatás létrehozása sikertelen.",
+      error: safeActionError(
+        "createService",
+        err,
+        "A szolgáltatás létrehozása sikertelen.",
+      ),
     };
   }
 }
@@ -676,13 +675,13 @@ export async function updateService(
         error: `Ez a slug már foglalt: "${payload.slug.trim() || nameHu}". Válassz egyedit.`,
       };
     }
-    console.error("updateService error:", err);
     return {
       ok: false,
-      error:
-        err instanceof Error
-          ? err.message
-          : "A szolgáltatás frissítése sikertelen.",
+      error: safeActionError(
+        "updateService",
+        err,
+        "A szolgáltatás frissítése sikertelen.",
+      ),
     };
   }
 }
@@ -748,15 +747,15 @@ export async function togglePublishStatus(
     revalidatePublicServiceSurfaces([service.slug]);
     return { ok: true };
   } catch (err) {
-    console.error("togglePublishStatus error:", err);
     return {
       ok: false,
-      error:
-        err instanceof Error
-          ? err.message
-          : nextPublished
-            ? "Publikálás sikertelen."
-            : "A publikálás visszavonása sikertelen.",
+      error: safeActionError(
+        "togglePublishStatus",
+        err,
+        nextPublished
+          ? "Publikálás sikertelen."
+          : "A publikálás visszavonása sikertelen.",
+      ),
     };
   }
 }
@@ -831,11 +830,13 @@ export async function reorderTopLevelServices(
     revalidatePublicServiceSurfaces();
     return { ok: true };
   } catch (err) {
-    console.error("reorderTopLevelServices error:", err);
     return {
       ok: false,
-      error:
-        err instanceof Error ? err.message : "A sorrend mentése sikertelen.",
+      error: safeActionError(
+        "reorderTopLevelServices",
+        err,
+        "A sorrend mentése sikertelen.",
+      ),
     };
   }
 }
@@ -923,10 +924,9 @@ export async function deleteService(
       await db.delete(services).where(eq(services.id, serviceId));
     }
   } catch (err) {
-    console.error("deleteService error:", err);
     return {
       ok: false,
-      error: err instanceof Error ? err.message : "Törlés sikertelen.",
+      error: safeActionError("deleteService", err, "Törlés sikertelen."),
     };
   }
 

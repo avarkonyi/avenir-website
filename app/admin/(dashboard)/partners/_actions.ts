@@ -4,6 +4,7 @@ import { eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { auth } from "@/auth";
 import { db, neonSql, partners } from "@/lib/db";
+import { safeActionError } from "@/lib/admin/safe-action-error";
 import { slugify } from "@/lib/slugify";
 
 // Server actions for the Partners CRUD module. Auth check happens
@@ -221,10 +222,10 @@ export async function createPartner(
     logoUsageApprovedAt = resolveLogoUsageApprovedAt(
       payload.logoUsageApprovedAt,
     );
-  } catch (err) {
+  } catch {
     return {
       ok: false,
-      error: err instanceof Error ? err.message : "Érvénytelen weboldal cím.",
+      error: "Érvénytelen partner mezők.",
     };
   }
 
@@ -266,10 +267,9 @@ export async function createPartner(
     revalidatePartnerSurfaces(created.id);
     return { ok: true, id: created.id };
   } catch (err) {
-    console.error("createPartner error:", err);
     return {
       ok: false,
-      error: err instanceof Error ? err.message : "A partner mentése sikertelen.",
+      error: safeActionError("createPartner", err, "A partner mentése sikertelen."),
     };
   }
 }
@@ -304,10 +304,10 @@ export async function updatePartner(
     logoUsageApprovedAt = resolveLogoUsageApprovedAt(
       payload.logoUsageApprovedAt,
     );
-  } catch (err) {
+  } catch {
     return {
       ok: false,
-      error: err instanceof Error ? err.message : "Érvénytelen weboldal cím.",
+      error: "Érvénytelen partner mezők.",
     };
   }
 
@@ -352,10 +352,9 @@ export async function updatePartner(
     revalidatePartnerSurfaces(id);
     return { ok: true };
   } catch (err) {
-    console.error("updatePartner error:", err);
     return {
       ok: false,
-      error: err instanceof Error ? err.message : "A partner mentése sikertelen.",
+      error: safeActionError("updatePartner", err, "A partner mentése sikertelen."),
     };
   }
 }
@@ -383,10 +382,9 @@ export async function togglePartnerActive(
     revalidatePartnerSurfaces(id);
     return { ok: true };
   } catch (err) {
-    console.error("togglePartnerActive error:", err);
     return {
       ok: false,
-      error: err instanceof Error ? err.message : "A művelet sikertelen.",
+      error: safeActionError("togglePartnerActive", err, "A művelet sikertelen."),
     };
   }
 }
@@ -440,15 +438,15 @@ export async function togglePartnerPublished(
     revalidatePartnerSurfaces(id);
     return { ok: true };
   } catch (err) {
-    console.error("togglePartnerPublished error:", err);
     return {
       ok: false,
-      error:
-        err instanceof Error
-          ? err.message
-          : nextPublished
-            ? "Publikálás sikertelen."
-            : "A publikálás visszavonása sikertelen.",
+      error: safeActionError(
+        "togglePartnerPublished",
+        err,
+        nextPublished
+          ? "Publikálás sikertelen."
+          : "A publikálás visszavonása sikertelen.",
+      ),
     };
   }
 }
@@ -481,10 +479,9 @@ export async function deletePartner(
     revalidatePartnerSurfaces(id);
     return { ok: true };
   } catch (err) {
-    console.error("deletePartner error:", err);
     return {
       ok: false,
-      error: err instanceof Error ? err.message : "Törlés sikertelen.",
+      error: safeActionError("deletePartner", err, "Törlés sikertelen."),
     };
   }
 }
@@ -548,11 +545,13 @@ export async function reorderPartners(
     revalidatePartnerSurfaces();
     return { ok: true };
   } catch (err) {
-    console.error("reorderPartners error:", err);
     return {
       ok: false,
-      error:
-        err instanceof Error ? err.message : "A sorrend mentése sikertelen.",
+      error: safeActionError(
+        "reorderPartners",
+        err,
+        "A sorrend mentése sikertelen.",
+      ),
     };
   }
 }
