@@ -151,7 +151,9 @@ export default async function NewsIndexPage({
             <div
               style={{
                 display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+                gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 320px), 460px))",
+                justifyContent: "center",
+                alignItems: "stretch",
                 gap: 28,
               }}
             >
@@ -179,7 +181,8 @@ export default async function NewsIndexPage({
                           src={imageUrl}
                           alt=""
                           fill
-                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 380px"
+                          sizes="(max-width: 768px) 100vw, 460px"
+                          quality={85}
                           style={{ objectFit: "cover" }}
                         />
                         <div

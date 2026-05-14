@@ -33,7 +33,7 @@ const ALLOWED_MIME_TO_EXT: Record<string, string> = {
 const MAX_BYTES = 5 * 1024 * 1024;
 const PHOTO_FOLDERS = new Set(["news", "services"]);
 const PHOTO_MAX_DIMENSION = 1920;
-const PHOTO_WEBP_QUALITY = 80;
+const PHOTO_WEBP_QUALITY = 88;
 
 type PreparedUpload = {
   body: File | Blob;

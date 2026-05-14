@@ -288,7 +288,8 @@ export default async function NewsDetailPage({
                   alt=""
                   fill
                   priority
-                  sizes="(max-width: 900px) 90vw, 860px"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1100px) 90vw, 860px"
+                  quality={90}
                   style={{ objectFit: "cover" }}
                 />
               </div>

@@ -107,7 +107,9 @@ export function News({
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+              gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 300px), 380px))",
+              justifyContent: "center",
+              alignItems: "stretch",
               gap: 28,
             }}
           >
@@ -178,6 +180,7 @@ export function News({
                   alt=""
                   fill
                   sizes="(max-width: 820px) calc(100vw - 48px), 760px"
+                  quality={88}
                   style={{ objectFit: "cover" }}
                 />
                 <div
@@ -283,7 +286,8 @@ function NewsCardContent({
               src={imageUrl}
               alt=""
               fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 380px"
+              sizes="(max-width: 768px) 100vw, 380px"
+              quality={85}
               style={{ objectFit: "cover" }}
             />
             <div
