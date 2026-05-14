@@ -94,6 +94,21 @@ The article body currently renders as safe plain text split into paragraphs. It
 does not render Markdown and does not render raw HTML. A future Phase 2 may add
 sanitized Markdown if needed.
 
+## Contact Rate Limiting
+
+`/api/contact` uses a durable Upstash Redis / Vercel KV-compatible REST rate
+limiter when `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` are
+configured. The current policy is 5 submissions per minute per client IP. The
+IP value is hashed before it is used in Redis keys.
+
+Production contact submissions fail closed if Redis credentials are missing or
+Redis is unavailable, so a horizontally scaled Vercel deployment cannot fall
+back to a per-instance limiter. Local development and Vercel Preview may use
+the in-memory fallback and log a non-secret warning. The implementation assumes
+forwarded IP headers are controlled by Vercel or the trusted deployment proxy.
+
+Do not commit Redis credentials or print full Redis REST URLs/tokens.
+
 ## SEO / GEO / AI-Search
 
 The project includes:

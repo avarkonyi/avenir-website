@@ -262,3 +262,28 @@ Legacy alias examples:
 - `/hu?service=green#contact`
 
 Unknown service query values should be ignored safely.
+
+## Contact Rate-Limit QA
+
+`/api/contact` uses a durable Upstash Redis / Vercel KV-compatible REST rate
+limiter when these environment variables are configured:
+
+- `UPSTASH_REDIS_REST_URL`
+- `UPSTASH_REDIS_REST_TOKEN`
+
+Production requires both values. If they are missing or Redis is unavailable in
+production, contact submissions fail closed before DB insert/email. Local
+development and Vercel Preview may fall back to the in-memory limiter and log a
+non-secret warning so QA is not blocked.
+
+The current policy is 5 submissions per minute per client IP. The IP is derived
+from Vercel/proxy-controlled forwarded headers when available and is hashed
+before being used in Redis keys. Do not print Redis REST URLs or tokens in logs,
+screenshots, or support notes.
+
+For Preview QA, verify:
+
+- normal form submission still succeeds when the limit is not exceeded;
+- repeated submissions from the same client receive `429` after the limit;
+- missing Preview Redis credentials produce only a non-secret fallback warning;
+- production deploys have Redis credentials configured before contact testing.
