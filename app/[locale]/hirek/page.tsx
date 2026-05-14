@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Nav } from "@/components/Nav";
@@ -67,16 +68,6 @@ function formatDate(date: Date): string {
     month: "long",
     day: "numeric",
   });
-}
-
-function coverImageStyle(imageUrl: string): React.CSSProperties {
-  return {
-    position: "absolute",
-    inset: 0,
-    backgroundImage: `url(${JSON.stringify(imageUrl)})`,
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-  };
 }
 
 export default async function NewsIndexPage({
@@ -164,13 +155,16 @@ export default async function NewsIndexPage({
                 gap: 28,
               }}
             >
-              {articles.map((article) => (
-                <Link
-                  key={article.id}
-                  href={newsDetailHrefHu(article.slug)}
-                  className="news-card"
-                  style={{ color: "inherit", textDecoration: "none" }}
-                >
+              {articles.map((article) => {
+                const imageUrl = getSafePublicImageSrc(article.imageUrl);
+
+                return (
+                  <Link
+                    key={article.id}
+                    href={newsDetailHrefHu(article.slug)}
+                    className="news-card"
+                    style={{ color: "inherit", textDecoration: "none" }}
+                  >
                   <div
                     style={{
                       position: "relative",
@@ -179,13 +173,14 @@ export default async function NewsIndexPage({
                       overflow: "hidden",
                     }}
                   >
-                    {getSafePublicImageSrc(article.imageUrl) ? (
+                    {imageUrl ? (
                       <>
-                        <div
-                          style={coverImageStyle(
-                            getSafePublicImageSrc(article.imageUrl)!,
-                          )}
-                          aria-hidden="true"
+                        <Image
+                          src={imageUrl}
+                          alt=""
+                          fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 380px"
+                          style={{ objectFit: "cover" }}
                         />
                         <div
                           style={{
@@ -282,8 +277,9 @@ export default async function NewsIndexPage({
                       <Icon name="arrow" size={14} color="#D1172E" />
                     </div>
                   </div>
-                </Link>
-              ))}
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </section>

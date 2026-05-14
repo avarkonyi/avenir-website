@@ -1,7 +1,7 @@
 // Generic image upload endpoint shared by all admin forms (News,
 // Services, future modules). Uploads to Vercel Blob with a UUID
-// filename and a MIME-derived extension; the original filename is
-// never used in the destination path (prevents double-extension and
+// filename and a MIME-derived or normalized extension; the original
+// filename is never used in the destination path (prevents double-extension and
 // Unicode-tricks). Returns the public URL on success.
 //
 // Auth: middleware (proxy.ts) gates /api/admin/* by session, but
@@ -16,6 +16,7 @@
 
 import { put } from "@vercel/blob";
 import { type NextRequest, NextResponse } from "next/server";
+import sharp from "sharp";
 import { auth } from "@/auth";
 
 const ALLOWED_FOLDERS = new Set([
@@ -30,6 +31,49 @@ const ALLOWED_MIME_TO_EXT: Record<string, string> = {
   "image/webp": "webp",
 };
 const MAX_BYTES = 5 * 1024 * 1024;
+const PHOTO_FOLDERS = new Set(["news", "services"]);
+const PHOTO_MAX_DIMENSION = 1920;
+const PHOTO_WEBP_QUALITY = 80;
+
+type PreparedUpload = {
+  body: File | Blob;
+  contentType: string;
+  ext: string;
+};
+
+async function prepareImageUpload(
+  file: File,
+  folder: string,
+  originalExt: string,
+): Promise<PreparedUpload> {
+  // Partner/certification uploads may be logos or transparent brand assets.
+  // Keep their original raster format; photo-heavy folders get normalized.
+  if (!PHOTO_FOLDERS.has(folder)) {
+    return {
+      body: file,
+      contentType: file.type,
+      ext: originalExt,
+    };
+  }
+
+  const input = Buffer.from(await file.arrayBuffer());
+  const optimized = await sharp(input, { failOn: "none" })
+    .rotate()
+    .resize({
+      width: PHOTO_MAX_DIMENSION,
+      height: PHOTO_MAX_DIMENSION,
+      fit: "inside",
+      withoutEnlargement: true,
+    })
+    .webp({ quality: PHOTO_WEBP_QUALITY })
+    .toBuffer();
+
+  return {
+    body: new Blob([new Uint8Array(optimized)], { type: "image/webp" }),
+    contentType: "image/webp",
+    ext: "webp",
+  };
+}
 
 export async function POST(req: NextRequest): Promise<NextResponse> {
   const session = await auth();
@@ -98,13 +142,26 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     );
   }
 
-  // Filename is derived entirely from validated MIME — never from
-  // the user-supplied file.name. Prevents double-extension attacks
-  // (foo.jpg.exe), inconsistent extensions, and Unicode shenanigans.
-  const pathname = `${folder}/${crypto.randomUUID()}.${ext}`;
+  let upload: PreparedUpload;
+  try {
+    upload = await prepareImageUpload(file, folder, ext);
+  } catch (err) {
+    console.error("[upload-image] Image normalization failed:", err);
+    return NextResponse.json(
+      { ok: false, error: "A kep optimalizalasa nem sikerult." },
+      { status: 415 },
+    );
+  }
 
   try {
-    const blob = await put(pathname, file, { access: "public" });
+    // Filename is derived entirely from validated/normalized MIME - never from
+    // the user-supplied file.name. Prevents double-extension attacks
+    // (foo.jpg.exe), inconsistent extensions, and Unicode shenanigans.
+    const pathname = `${folder}/${crypto.randomUUID()}.${upload.ext}`;
+    const blob = await put(pathname, upload.body, {
+      access: "public",
+      contentType: upload.contentType,
+    });
     return NextResponse.json({ ok: true, url: blob.url });
   } catch (err) {
     // Most likely failure mode: missing BLOB_READ_WRITE_TOKEN env or

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import type { Translation } from "@/lib/i18n";
@@ -27,16 +28,6 @@ function formatDate(iso: string, locale: string) {
   } catch {
     return iso;
   }
-}
-
-function coverImageStyle(imageUrl: string): React.CSSProperties {
-  return {
-    position: "absolute",
-    inset: 0,
-    backgroundImage: `url(${JSON.stringify(imageUrl)})`,
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-  };
 }
 
 export function News({
@@ -182,7 +173,13 @@ export function News({
                   background: "#0B1E3E",
                 }}
               >
-                <div style={coverImageStyle(activeImageUrl)} aria-hidden="true" />
+                <Image
+                  src={activeImageUrl}
+                  alt=""
+                  fill
+                  sizes="(max-width: 820px) calc(100vw - 48px), 760px"
+                  style={{ objectFit: "cover" }}
+                />
                 <div
                   style={{
                     position: "absolute",
@@ -282,7 +279,13 @@ function NewsCardContent({
       >
         {imageUrl ? (
           <>
-            <div style={coverImageStyle(imageUrl)} aria-hidden="true" />
+            <Image
+              src={imageUrl}
+              alt=""
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 380px"
+              style={{ objectFit: "cover" }}
+            />
             <div
               style={{
                 position: "absolute",

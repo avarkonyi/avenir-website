@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Nav } from "@/components/Nav";
@@ -93,16 +94,6 @@ function formatDate(date: Date): string {
     month: "long",
     day: "numeric",
   });
-}
-
-function coverImageStyle(imageUrl: string): React.CSSProperties {
-  return {
-    position: "absolute",
-    inset: 0,
-    backgroundImage: `url(${JSON.stringify(imageUrl)})`,
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-  };
 }
 
 function RichText({ text }: { text: string }) {
@@ -292,7 +283,14 @@ export default async function NewsDetailPage({
                   marginBottom: 36,
                 }}
               >
-                <div style={coverImageStyle(coverImage)} aria-hidden="true" />
+                <Image
+                  src={coverImage}
+                  alt=""
+                  fill
+                  priority
+                  sizes="(max-width: 900px) 90vw, 860px"
+                  style={{ objectFit: "cover" }}
+                />
               </div>
             ) : (
               <div
