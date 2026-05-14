@@ -146,6 +146,30 @@ The Vercel Preview `/sitemap.xml` must be checked after service seed/content upd
 
 Do not rely on local `.next` sitemap artifacts for final SEO QA. They may be stale or generated from a different DB snapshot. Live Preview is the source of truth for pre-merge indexing checks.
 
+### Manual Preview Smoke Test
+
+After a Vercel Preview deploy is available, run the GET-only smoke test against
+the Preview URL:
+
+```bash
+npm run qa:preview -- https://avenir-website-git-staging-service-pages.vercel.app
+```
+
+The script checks the eight HU service pages, expected legacy/non-HU 404s,
+`/hu/hirek`, sitemap policy, robots policy, and `llms.txt` / `llms-full.txt`
+content safeguards. It does not require secrets, does not read `.env.local`, and
+does not submit forms or mutate data.
+
+The script refuses to run against `https://www.afm.hu` unless
+`--allow-production` is passed for an explicitly approved production smoke test:
+
+```bash
+npm run qa:preview -- https://www.afm.hu --allow-production
+```
+
+Do not add this smoke test to lightweight CI yet. It is a manual Vercel Preview
+QA gate.
+
 ### AI-search file QA
 
 The Vercel Preview should expose:

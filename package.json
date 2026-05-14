@@ -22,6 +22,7 @@
     "db:update-certs:prod": "node scripts/verify-db-target.mjs --target production --allow-production --runtime-only && tsx scripts/update-certifications-prod.ts",
     "db:update-positions": "node scripts/verify-db-target.mjs --target staging --runtime-only && tsx scripts/update-positions-prod.ts",
     "db:update-positions:prod": "node scripts/verify-db-target.mjs --target production --allow-production --runtime-only && tsx scripts/update-positions-prod.ts",
+    "qa:preview": "node scripts/qa-preview-smoke.mjs",
     "indexnow:dry-run": "node scripts/submit-indexnow.mjs --dry-run",
     "indexnow:submit": "node scripts/submit-indexnow.mjs"
   },
