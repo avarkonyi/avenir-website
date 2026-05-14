@@ -1,3 +1,4 @@
+import { cache } from "react";
 import { and, asc, eq, inArray, isNull, sql } from "drizzle-orm";
 import { db, services } from "@/lib/db";
 import { redactedDbIdentity, sanitizeDbErrorMessage } from "@/lib/db/redact";
@@ -25,7 +26,7 @@ export type LocalizedServiceRow = {
 //  - apply empty-field guards appropriate to the surface (Footer
 //    needs name only; JSON-LD ItemList needs both name + shortDesc).
 //  - map UI-coupled fields (e.g. icon → safeIconName).
-export async function getActiveTopLevelServices(
+async function loadActiveTopLevelServices(
   locale: string,
 ): Promise<LocalizedServiceRow[]> {
   const safeLocale: Locale = (LOCALES as readonly string[]).includes(locale)
@@ -80,6 +81,8 @@ export async function getActiveTopLevelServices(
     };
   });
 }
+
+export const getActiveTopLevelServices = cache(loadActiveTopLevelServices);
 
 // ────────────────────────────────────────────────────────────────────────
 // Service detail page queries (P5 Phase 1)
@@ -199,7 +202,7 @@ export type LocalizedServiceDetail = {
 // The detail page must call notFound() on null — this helper does
 // not throw, since "service exists but is unpublished" is a valid
 // state in the admin and not an error.
-export async function getPublishedServiceDetailBySlug(
+async function loadPublishedServiceDetailBySlug(
   slug: string,
   locale: string,
 ): Promise<LocalizedServiceDetail | null> {
@@ -363,6 +366,10 @@ export async function getPublishedServiceDetailBySlug(
   };
 }
 
+export const getPublishedServiceDetailBySlug = cache(
+  loadPublishedServiceDetailBySlug,
+);
+
 // All published+active service slugs, used by:
 //   - sitemap generation (one entry per locale × slug)
 //   - generateStaticParams for the detail route
@@ -371,19 +378,101 @@ export type PublishedServicePath = {
   readonly slug: string;
 };
 
-export async function getAllPublishedServicePaths(): Promise<PublishedServicePath[]> {
-  const results = await Promise.all(
-    LOCALES.map(async (locale) => {
-      const rows = await db
-        .select({ slug: services.slug })
-        .from(services)
-        .where(publishedDetailPredicate(locale))
-        .orderBy(asc(services.sortOrder));
-      return rows.map((row) => ({ locale, slug: row.slug }));
-    }),
-  );
-  return results.flat();
+type ServiceReadinessRow = {
+  readonly slug: string;
+  readonly seoTitleHu: string | null;
+  readonly seoDescriptionHu: string | null;
+  readonly longDescHu: string | null;
+  readonly valuePropositionHu: string | null;
+  readonly seoTitleEn: string | null;
+  readonly seoDescriptionEn: string | null;
+  readonly longDescEn: string | null;
+  readonly valuePropositionEn: string | null;
+  readonly seoTitleDe: string | null;
+  readonly seoDescriptionDe: string | null;
+  readonly longDescDe: string | null;
+  readonly valuePropositionDe: string | null;
+  readonly seoTitleZh: string | null;
+  readonly seoDescriptionZh: string | null;
+  readonly longDescZh: string | null;
+  readonly valuePropositionZh: string | null;
+};
+
+const SERVICE_READINESS_SELECT = {
+  slug: services.slug,
+  seoTitleHu: services.seoTitleHu,
+  seoDescriptionHu: services.seoDescriptionHu,
+  longDescHu: services.longDescHu,
+  valuePropositionHu: services.valuePropositionHu,
+  seoTitleEn: services.seoTitleEn,
+  seoDescriptionEn: services.seoDescriptionEn,
+  longDescEn: services.longDescEn,
+  valuePropositionEn: services.valuePropositionEn,
+  seoTitleDe: services.seoTitleDe,
+  seoDescriptionDe: services.seoDescriptionDe,
+  longDescDe: services.longDescDe,
+  valuePropositionDe: services.valuePropositionDe,
+  seoTitleZh: services.seoTitleZh,
+  seoDescriptionZh: services.seoDescriptionZh,
+  longDescZh: services.longDescZh,
+  valuePropositionZh: services.valuePropositionZh,
+} as const;
+
+function hasRequiredDetailFields(
+  row: ServiceReadinessRow,
+  locale: Locale,
+): boolean {
+  const values =
+    locale === "hu"
+      ? [
+          row.seoTitleHu,
+          row.seoDescriptionHu,
+          row.longDescHu,
+          row.valuePropositionHu,
+        ]
+      : locale === "en"
+        ? [
+            row.seoTitleEn,
+            row.seoDescriptionEn,
+            row.longDescEn,
+            row.valuePropositionEn,
+          ]
+        : locale === "de"
+          ? [
+              row.seoTitleDe,
+              row.seoDescriptionDe,
+              row.longDescDe,
+              row.valuePropositionDe,
+            ]
+          : [
+              row.seoTitleZh,
+              row.seoDescriptionZh,
+              row.longDescZh,
+              row.valuePropositionZh,
+            ];
+
+  return values.every((value) => value !== null && value.trim().length > 0);
 }
+
+async function loadAllPublishedServicePaths(): Promise<
+  PublishedServicePath[]
+> {
+  const rows = await db
+    .select(SERVICE_READINESS_SELECT)
+    .from(services)
+    .where(and(eq(services.isPublished, true), eq(services.isActive, true)))
+    .orderBy(asc(services.sortOrder));
+
+  return LOCALES.flatMap((locale) =>
+    rows
+      .filter((row) => hasRequiredDetailFields(row, locale))
+      .map((row) => ({ locale, slug: row.slug })),
+  );
+}
+
+export const getAllPublishedServicePaths = cache(
+  loadAllPublishedServicePaths,
+);
 
 export async function getAllPublishedServicePathsForBuild(
   surface: string,
@@ -458,27 +547,35 @@ export function getPublishedServicesBySlugsForPublic(
   );
 }
 
-export async function getPublishedServiceLocalesBySlug(
+async function loadPublishedServiceLocalesBySlug(
   slug: string,
 ): Promise<Locale[]> {
-  const results = await Promise.all(
-    LOCALES.map(async (locale) => {
-      const [row] = await db
-        .select({ slug: services.slug })
-        .from(services)
-        .where(and(eq(services.slug, slug), publishedDetailPredicate(locale)))
-        .limit(1);
-      return row ? locale : null;
-    }),
-  );
-  return results.filter((locale): locale is Locale => locale !== null);
+  const [row] = await db
+    .select(SERVICE_READINESS_SELECT)
+    .from(services)
+    .where(
+      and(
+        eq(services.slug, slug),
+        eq(services.isPublished, true),
+        eq(services.isActive, true),
+      ),
+    )
+    .limit(1);
+
+  if (!row) return [];
+
+  return LOCALES.filter((locale) => hasRequiredDetailFields(row, locale));
 }
+
+export const getPublishedServiceLocalesBySlug = cache(
+  loadPublishedServiceLocalesBySlug,
+);
 
 // Hydrate related-service link cards (name + shortDesc only). Returns
 // rows in the order requested by `slugs`; missing or unpublished slugs
 // are silently dropped (admin can list a slug that was later
 // unpublished — better to skip it than 404 the entire detail page).
-export async function getPublishedServicesBySlugs(
+async function loadPublishedServicesBySlugs(
   slugs: readonly string[],
   locale: string,
 ): Promise<LocalizedServiceRow[]> {
@@ -532,3 +629,5 @@ export async function getPublishedServicesBySlugs(
       return { slug: row.slug, icon: row.icon, name, shortDesc };
     });
 }
+
+export const getPublishedServicesBySlugs = cache(loadPublishedServicesBySlugs);
