@@ -166,6 +166,29 @@ async function checkStatus(baseUrl, path, expectedStatus) {
   }
 }
 
+function includesForbidden(text, needle) {
+  if (!needle.startsWith("/")) {
+    return text.includes(needle);
+  }
+
+  // Prefix checks intentionally catch whole URL spaces such as /admin/...
+  // and /en/szolgaltatasok/..., while avoiding false positives where a legacy
+  // slug is only the start of a canonical slug, for example:
+  // /hu/szolgaltatasok/mystery-shopping-helyszini-audit.
+  const pathBoundary = /[\s"'<>),?#/]/;
+  const index = text.indexOf(needle);
+  if (index === -1) return false;
+
+  let cursor = index;
+  while (cursor !== -1) {
+    const nextChar = text[cursor + needle.length] ?? "";
+    if (nextChar === "" || pathBoundary.test(nextChar)) return true;
+    cursor = text.indexOf(needle, cursor + 1);
+  }
+
+  return false;
+}
+
 function checkContains({ text, path, required, forbidden }) {
   const failures = [];
 
@@ -180,7 +203,7 @@ function checkContains({ text, path, required, forbidden }) {
   }
 
   for (const needle of forbidden) {
-    if (text.includes(needle)) {
+    if (includesForbidden(text, needle)) {
       failures.push({
         ok: false,
         label: `${path} excludes ${needle}`,
