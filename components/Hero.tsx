@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import type { Translation } from "@/lib/i18n";
 
@@ -122,67 +120,13 @@ export function Hero({ t }: { t: Pick<Translation, "hero" | "stats"> }) {
           >
             {t.hero.sub}
           </p>
-          <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
-            <button
-              onClick={() => {
-                const el = document.getElementById("services");
-                if (el) window.scrollTo({ top: el.offsetTop - 72, behavior: "smooth" });
-              }}
-              style={{
-                background: "rgba(255,255,255,0.08)",
-                border: "2px solid rgba(255,255,255,0.5)",
-                cursor: "pointer",
-                color: "#fff",
-                fontFamily: "var(--font-head)",
-                fontWeight: 700,
-                fontSize: 14,
-                letterSpacing: 1.5,
-                textTransform: "uppercase",
-                padding: "14px 32px",
-                borderRadius: 2,
-                transition: "all 0.2s",
-                backdropFilter: "blur(4px)",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = "#fff";
-                e.currentTarget.style.background = "rgba(255,255,255,0.18)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = "rgba(255,255,255,0.5)";
-                e.currentTarget.style.background = "rgba(255,255,255,0.08)";
-              }}
-            >
+          <div className="hero-cta-row">
+            <a href="#services" className="hero-cta hero-cta--secondary">
               {t.hero.cta1}
-            </button>
-            <button
-              onClick={() => {
-                const el = document.getElementById("contact");
-                if (el) window.scrollTo({ top: el.offsetTop - 72, behavior: "smooth" });
-              }}
-              style={{
-                background: "#D1172E",
-                border: "2px solid #D1172E",
-                cursor: "pointer",
-                color: "#fff",
-                fontFamily: "var(--font-head)",
-                fontWeight: 700,
-                fontSize: 14,
-                letterSpacing: 1.5,
-                textTransform: "uppercase",
-                padding: "14px 32px",
-                borderRadius: 2,
-                transition: "all 0.2s",
-                boxShadow: "0 4px 20px rgba(209,23,46,0.4)",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = "#a80f24";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = "#D1172E";
-              }}
-            >
+            </a>
+            <a href="#contact" className="hero-cta hero-cta--primary">
               {t.hero.cta2}
-            </button>
+            </a>
           </div>
         </div>
       </div>
