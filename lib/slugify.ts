@@ -6,12 +6,12 @@
 // - Result is lowercase, with no leading/trailing hyphens
 //
 // Examples:
-//   slugify("Új partnerséget kötöttünk a Kifli.hu-val")
-//     → "uj-partnerseget-kotottunk-a-kifli-hu-val"
+//   slugify("Megújult weboldal")
+//     → "megujult-weboldal"
 //   slugify("Ipari és logisztikai parkok")
 //     → "ipari-es-logisztikai-parkok"
-//   slugify("kifli-hu-partnerseg")
-//     → "kifli-hu-partnerseg"  (idempotent on already-slug input)
+//   slugify("teszt-partner-hir")
+//     → "teszt-partner-hir"  (idempotent on already-slug input)
 
 const HU_MAP: Record<string, string> = {
   á: "a", é: "e", í: "i", ó: "o", ö: "o", ő: "o",

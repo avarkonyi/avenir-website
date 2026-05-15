@@ -163,10 +163,10 @@ async function main() {
     };
 
     const article2 = {
-      slug: "bovulo-szolgaltatas-portfolio-2026",
-      title: "Bővülő szolgáltatás-portfólió 2026-ban",
-      lead: "Új technikai karbantartási és Hard FM csomagok minden ügyfelünk számára.",
-      body: "Az idei évtől kibővítjük szolgáltatási palettánkat: minden meglévő ügyfelünk számára elérhetővé válnak a tervszerű HVAC-karbantartási csomagok, valamint a 24 órás riasztási készenléttel működő Hard FM szolgáltatás. Részletekért keresse kapcsolattartóját.",
+      slug: "avenir-tudastar-elokeszites",
+      title: "Tudástár előkészítése az Avenir weboldalán",
+      lead: "Az Avenir weboldalán új szakmai tartalmi felület előkészítése indult el.",
+      body: "Az Avenir weboldalán olyan tudástár jellegű tartalmak előkészítése indult el, amelyek később a vállalati biztonsági, portaszolgálati, rendezvénybiztosítási és facility management témákban segíthetik a tájékozódást. A cél, hogy az érdeklődők közérthető, szakmai és proof-safe háttéranyagokat találjanak a szolgáltatási döntések előkészítéséhez.",
       date: new Date("2026-03-01T00:00:00Z"),
     };
 
@@ -253,30 +253,27 @@ async function main() {
         descriptionHu:
           "Az ISO 9001 a minőségirányítási rendszerek nemzetközi szabványa. " +
           "Az ISO 9001 tanúsítványon szereplő hatókör megnevezése: \"Teljeskörű biztonsági szolgáltatás\". " +
-          "A NAH-akkreditált MARTON Szakértő Iroda auditja igazolja, hogy az Avenir érintett " +
-          "vagyonvédelmi és facility management szolgáltatási folyamatai megfelelnek a 2015-ös " +
-          "szabvány követelményeinek. A tanúsítvány az IAF MLA megállapodás " +
-          "keretében nemzetközileg is elismert.",
+          "A tanúsított irányítási rendszer a tanúsítványon meghatározott hatókör szerint " +
+          "került auditálásra a NAH-akkreditált MARTON Szakértő Iroda által. " +
+          "A tanúsítvány az IAF MLA megállapodás keretében nemzetközileg is elismert.",
         // TRANSLATION DRAFT: review by user
         descriptionEn:
           "ISO 9001 is the international standard for quality management systems. " +
-          "The certificate scope is listed as \"Comprehensive security services\". The audit " +
-          "by NAH-accredited MARTON Szakértő Iroda verifies that Avenir's relevant property protection and " +
-          "facility management service processes meet the 2015 standard's requirements. " +
+          "The certificate scope is listed as \"Comprehensive security services\". The certified management system " +
+          "was audited within the certificate-defined scope by NAH-accredited MARTON Szakértő Iroda. " +
           "The certificate is internationally recognized under the IAF MLA agreement.",
         // TRANSLATION DRAFT: review by user
         descriptionDe:
           "ISO 9001 ist der internationale Standard für Qualitätsmanagementsysteme. " +
           "Der im Zertifikat angegebene Geltungsbereich lautet \"Comprehensive security services\". Das " +
-          "Audit der NAH-akkreditierten MARTON Szakértő Iroda bestätigt, dass Avenirs betroffene Eigentumsschutz- " +
-          "und Facility-Management-Serviceprozesse den Anforderungen der Norm von 2015 " +
-          "entsprechen. Das Zertifikat ist im Rahmen des IAF MLA-Abkommens international " +
+          "zertifizierte Managementsystem wurde innerhalb des im Zertifikat definierten Geltungsbereichs " +
+          "durch die NAH-akkreditierte MARTON Szakértő Iroda auditiert. Das Zertifikat ist im Rahmen des IAF MLA-Abkommens international " +
           "anerkannt.",
         // TRANSLATION DRAFT: review by user
         descriptionZh:
           "ISO 9001 是质量管理体系的国际标准。证书中列明的范围为 “Comprehensive security services”。" +
-          "NAH 认可的 MARTON Szakértő Iroda 审核证明，Avenir 相关的财产保护和设施管理服务流程符合 2015 " +
-          "年标准要求。该证书在 IAF MLA 协议下获得国际认可。",
+          "该认证管理体系已由 NAH 认可的 MARTON Szakértő Iroda 按证书定义的范围进行审核。" +
+          "该证书在 IAF MLA 协议下获得国际认可。",
 
         // verbatim from PDF
         scopeHu: "Teljeskörű biztonsági szolgáltatás",
@@ -327,43 +324,30 @@ async function main() {
 
         descriptionHu:
           "Az ISO/IEC 27001:2022 az információbiztonsági irányítási rendszerek " +
-          "(ISMS) nemzetközi szabványa. Az Avenir tanúsítása igazolja, hogy a " +
-          "vagyonvédelmi munkánk során kezelt ügyfélinformációk, beléptetési " +
-          "naplók, kameraadatok és pénzügyi adatok kezelése a tanúsítványon meghatározott " +
-          "biztonsági szolgáltatási hatókörben megfelel a szabvány " +
-          "bizalmasság-, sértetlenség- és rendelkezésre állás-követelményeinek. " +
-          "A NAH-akkreditált MARTON Szakértő Iroda auditja igazolja a rendszer " +
-          "megfelelőségét. A tanúsítvány az IAF MLA megállapodás keretében " +
-          "nemzetközileg is elismert.",
+          "(ISMS) nemzetközi szabványa. Az Avenir tanúsított információbiztonsági " +
+          "irányítási rendszere a tanúsítványon meghatározott hatókör szerint " +
+          "került auditálásra a NAH-akkreditált MARTON Szakértő Iroda által. " +
+          "A tanúsítvány az IAF MLA megállapodás keretében nemzetközileg is elismert.",
         // TRANSLATION DRAFT: review by user
         descriptionEn:
           "ISO/IEC 27001:2022 is the international standard for information " +
-          "security management systems (ISMS). Avenir's certification verifies " +
-          "that the customer information, access logs, camera data, and " +
-          "financial records handled in our property protection work meet the " +
-          "standard's confidentiality, integrity, and availability requirements " +
-          "within the certificate-defined security service scope. The audit by NAH-accredited " +
-          "MARTON Szakértő Iroda confirms the system's conformance. The " +
+          "security management systems (ISMS). Avenir's certified information security " +
+          "management system was audited within the certificate-defined scope by NAH-accredited " +
+          "MARTON Szakértő Iroda. The " +
           "certificate is internationally recognized under the IAF MLA agreement.",
         // TRANSLATION DRAFT: review by user
         descriptionDe:
           "ISO/IEC 27001:2022 ist der internationale Standard für " +
-          "Informationssicherheits-Managementsysteme (ISMS). Avenirs " +
-          "Zertifizierung bestätigt, dass die im Rahmen unserer Eigentumsschutz-" +
-          "Tätigkeit verarbeiteten Kundeninformationen, Zutrittsprotokolle, " +
-          "Kameradaten und Finanzdaten die Vertraulichkeits-, Integritäts- und " +
-          "Verfügbarkeitsanforderungen der Norm innerhalb des im Zertifikat definierten " +
-          "Sicherheitsdienstleistungsbereichs erfüllen. Das Audit der " +
-          "NAH-akkreditierten MARTON Szakértő Iroda bestätigt die Konformität " +
-          "des Systems. Das Zertifikat ist im Rahmen des IAF MLA-Abkommens " +
+          "Informationssicherheits-Managementsysteme (ISMS). Avenirs zertifiziertes " +
+          "Informationssicherheits-Managementsystem wurde innerhalb des im Zertifikat definierten " +
+          "Geltungsbereichs durch die NAH-akkreditierte MARTON Szakértő Iroda auditiert. " +
+          "Das Zertifikat ist im Rahmen des IAF MLA-Abkommens " +
           "international anerkannt.",
         // TRANSLATION DRAFT: review by user
         descriptionZh:
           "ISO/IEC 27001:2022 是信息安全管理体系（ISMS）的国际标准。Avenir 的认证" +
-          "证明，我们在财产保护工作中对客户信息、门禁日志、摄像数据和财务记录的处理" +
-          "在证书定义的安保服务范围内符合该标准的保密性、完整性和可用性要求。NAH 认可的 " +
-          "MARTON Szakértő Iroda 审核证实了体系的合规性。该证书在 IAF MLA 协议下" +
-          "获得国际认可。",
+          "信息安全管理体系已由 NAH 认可的 MARTON Szakértő Iroda 按证书定义的范围进行审核。" +
+          "该证书在 IAF MLA 协议下获得国际认可。",
 
         // verbatim from PDF
         scopeHu: "Teljes körű biztonsági szolgáltatás",
