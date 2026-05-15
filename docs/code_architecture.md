@@ -5,8 +5,8 @@ Last updated: 2026-05-15
 Status: current architecture reference for `staging-service-pages`.
 
 This document describes the current code architecture of the Avenir website and
-the intended evolution path toward Avenir Operating System (AOS). It is a
-technical orientation document, not an implementation ticket list.
+its boundary with the separate Avenir Operating System (AOS) application track.
+It is a technical orientation document, not an implementation ticket list.
 
 ## 1. Executive Overview
 
@@ -37,13 +37,13 @@ The current product layers are:
 - Hardening baseline: durable contact rate limiter code, admin/public error
   sanitization, safe image handling, Hero server-component refactor, and
   request-scoped service query deduplication.
-- Future AOS: mini-CRM, Guard Log, AI Report Assistant, document workflows,
-  proposal generation, Trust Center, and tender material flows. These are
-  documented future concepts, not current implementation.
+- Separate AOS application track: internal operations features such as Guard
+  Log, AI Report Assistant, document workflows, proposal generation, and future
+  portals belong to the separate `avenir-aos` app/repo, not website `/admin`.
 
-The current priority is proof/trust population, service copy review, HU
-tudastar depth, live Preview QA, and production release planning before deeper
-AOS modules or EN/DE/ZH service rollout.
+The current website priority is proof/trust population, service copy review, HU
+tudastar depth, live Preview QA, and production release planning. AOS may
+continue separately, but it is not part of the website release.
 
 ## 2. High-Level Architecture Diagram
 
@@ -854,8 +854,34 @@ Admin upload routes:
 
 ## 13. Future AOS Architecture
 
-Future AOS concepts are documented for direction only. They are not current
-implementation and should not overtake public website/trust/SEO priorities.
+### Separate AOS Application
+
+The Avenir Operating System is a separate internal operations application. It is
+not implemented inside website `/admin`.
+
+| System | Purpose | Repo | Domain | DB |
+| --- | --- | --- | --- | --- |
+| Avenir Website | Public lead-generation + CMS | `avenir-website` | `www.afm.hu` | Website Neon DB |
+| Avenir Operating System | Internal operations app | `avenir-aos` | `aos.afm.hu` | AOS Neon DB |
+
+Website `/admin` remains the CMS/admin surface for website content. AOS uses a
+separate repository, Vercel project, Neon database, domain, release process, and
+database migration process.
+
+AOS production domain target is `aos.afm.hu`. AOS staging target is
+`aos-staging.afm.hu` or Vercel Preview.
+
+Website releases must not run AOS migrations, seed AOS data, deploy AOS, or
+assume AOS production readiness. If website and AOS work happen in parallel,
+treat them as two separate releases.
+
+See `docs/aos_separation_decision.md`.
+
+### Website Documentation of AOS Concepts
+
+AOS concepts are documented here only to preserve architectural context and
+public-communication boundaries. Current implementation belongs to the separate
+`avenir-aos` app/repo unless an explicit website integration is approved.
 
 ### Mini-CRM
 

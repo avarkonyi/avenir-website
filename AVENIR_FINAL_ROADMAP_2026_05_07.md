@@ -41,9 +41,10 @@ The current strategic direction is:
 4. complete live Preview QA;
 5. build a production release plan.
 
-Do not start AOS implementation, EN/DE/ZH service rollout, case studies, or
-partner/client name publication until the proof and release gates below are
-closed.
+AOS may continue in the separate `avenir-aos` application track, but it is not
+part of the website release. Do not start EN/DE/ZH service rollout, case
+studies, or partner/client name publication in the website until the proof and
+release gates below are closed.
 
 ## 2. Completed / Staging-Complete Phases
 
@@ -288,6 +289,21 @@ Create a separate production release checklist before merge/deploy:
 - legal review where needed;
 - rollback plan.
 
+### AOS Separate Track Decision
+
+AOS development has started as a separate app/repo track in `avenir-aos`.
+
+Decision: Avenir Operating System is not part of the website production release.
+The website release scope remains limited to the public website, CMS, service
+detail pages, article layer, Partner Logo Strip, contact flow, SEO/GEO files,
+and related documentation.
+
+AOS release scope is handled separately in the `avenir-aos` repository. AOS may
+continue in parallel, but it must not block, replace, or be bundled into the
+website proof/release workflow.
+
+Reference: `docs/aos_separation_decision.md`.
+
 ## 6. Deferred / Future-Only
 
 These are intentionally deferred:
@@ -296,17 +312,13 @@ These are intentionally deferred:
 - EN/DE/ZH article routes;
 - client case studies;
 - named partner/customer references without proof;
-- Mini-CRM expansion beyond current message fields;
-- AOS Guard Log;
-- AI Report Assistant;
-- proposal generation;
-- document workflows;
 - Shadow Audit microsite or sub-brand;
 - full Trust Center/tender-material portal;
 - heavy article taxonomy or rich editor work.
 
-Future AOS concepts remain useful, but they must not overtake the public
-website, proof, trust, SEO/GEO, and conversion foundation.
+AOS items such as Mini-CRM expansion, AOS Guard Log, AI Report Assistant,
+proposal generation, and document workflows are no longer website-admin scope.
+They belong to the separate `avenir-aos` application and release track.
 
 ## 7. Production Release Warning
 
@@ -324,6 +336,9 @@ Production requires:
 8. production Redis/KV configuration for contact rate limiting;
 9. final legal/SEO/schema/sitemap/robots/llms QA;
 10. Vercel Preview smoke test and production release checklist.
+
+The website production release must not deploy AOS, run AOS migrations, seed
+AOS data, or assume AOS production readiness.
 
 Do not treat staging-complete as production-approved.
 
@@ -388,7 +403,8 @@ Current practical order:
 7. Trust Center / Megfeleloseg page.
 8. Article Phase 2 and sector pages.
 9. Conversion improvements.
-10. Mini-CRM/AOS/document/proposal work.
+10. Coordinate separately with the `avenir-aos` application track if internal
+    operations work is active in parallel.
 
-This keeps the public lead-generation and proof layer ahead of internal AOS
-development.
+This keeps the public lead-generation and proof layer separate from internal
+AOS application development.

@@ -4,7 +4,7 @@
 
 This repository contains the Avenir website at afm.hu.
 
-The project is not just a brochure website. It is being developed into a serious B2B lead-generation, SEO/GEO-ready platform, and later into the foundation of the Avenir Operating System: CRM, document workflows, service operations, reporting, and internal admin tooling.
+The project is not just a brochure website. It is being developed into a serious B2B lead-generation, SEO/GEO-ready platform, and the public website/CMS counterpart to the separate Avenir Operating System application track.
 
 ## Current priority order
 
@@ -23,7 +23,7 @@ Follow this order unless the user explicitly says otherwise:
 
 Special services, compliance/document layers, Shadow Audit, and AOS Guard Log are important roadmap items, but they must not overtake the current public website/service-page, trust, SEO, and conversion priorities unless the user explicitly reprioritizes them.
 
-Do not prioritize internal AOS features ahead of the public lead-generation layer unless explicitly requested.
+Do not implement internal AOS features inside the website unless explicitly approved.
 
 Current staging-complete layers:
 
@@ -40,9 +40,25 @@ Current staging-complete layers:
 - baseline hardening including durable contact rate limiter code, Hero refactor,
   and service DB query deduplication.
 
-Do not start AOS implementation, EN/DE/ZH service rollout, EN/DE/ZH article
-routes, case studies, or named partner/client publication until the proof,
-content, and production-release gates are explicitly closed.
+Do not start EN/DE/ZH service rollout, EN/DE/ZH article routes, case studies,
+or named partner/client publication in the website until the proof, content,
+and production-release gates are explicitly closed. AOS may continue separately
+in `avenir-aos`, but it is not part of the website release.
+
+## AOS separation rule
+
+AOS is a separate internal application, not part of the website admin.
+
+- Do not implement AOS modules inside `avenir-website` unless explicitly
+  approved.
+- AOS work belongs in the separate `avenir-aos` app/repo.
+- Website `/admin` remains the CMS/admin surface for website content, not the
+  internal AOS operations app.
+- Website production release must not assume or include AOS deployment, AOS
+  migrations, AOS seed data, or AOS production readiness.
+- If website and AOS work happen in parallel, treat them as two separate
+  releases with separate Vercel projects, Neon databases, domains, migration
+  plans, QA, and approval gates.
 
 ## Future AOS Guard Log Scope
 

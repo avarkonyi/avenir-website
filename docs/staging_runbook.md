@@ -67,6 +67,29 @@ Known approval gates before production:
 
 Do not treat staging-complete as production-approved.
 
+## AOS Release Separation
+
+AOS is a separate internal operations application in the `avenir-aos`
+repository. It is not part of this website application and is not implemented
+inside website `/admin`.
+
+Website staging/production QA does not cover AOS. AOS has a separate:
+
+- repository;
+- Vercel project;
+- Neon database;
+- migration process;
+- staging or preview environment;
+- production domain target: `aos.afm.hu`;
+- staging domain target: `aos-staging.afm.hu` or Vercel Preview;
+- release checklist and approval flow.
+
+Do not run AOS migrations, AOS seed scripts, AOS deploy steps, or AOS production
+checks as part of a website release. If both website and AOS are prepared in
+parallel, treat them as two separate releases.
+
+See `docs/aos_separation_decision.md`.
+
 ## Current HU Service Detail Layer
 
 Status: current staging HU service detail layer.
