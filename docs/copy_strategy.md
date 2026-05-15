@@ -1,5 +1,15 @@
 # Avenir Copy Strategy
 
+## Current approval status
+
+The eight HU service detail pages are implemented on staging, but service copy
+is still under human review before production approval. Do not treat staging
+copy as final production-approved copy until Andras explicitly approves it.
+
+The next content/business layer should focus on proof-safe trust assets and 3-5
+HU tudastar articles. Do not start EN/DE/ZH service copy rollout, case studies,
+or named partner/client references without separate approval and proof.
+
 ## Positioning
 
 Avenir should communicate as a serious B2B operational partner, not as a generic security or facility service provider.

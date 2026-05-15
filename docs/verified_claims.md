@@ -1,6 +1,6 @@
 # Verified Claims — Avenir
 
-Last updated: 2026-05-11
+Last updated: 2026-05-15
 
 This file tracks business-approved claims that may be used in public website copy for Avenir. It is a copywriting guardrail, not a substitute for the underlying legal, certificate, contract, or operational proof documents.
 
@@ -31,6 +31,17 @@ The following claims may be used in public website copy when the wording follows
 - Do not overstate ISO scope.
 - Do not claim that ISO 9001 or ISO 27001 covers a specific operational process unless the certification scope explicitly supports it.
 - Prefer precise B2B wording over informal, generic, or marketing-heavy phrasing.
+
+## Pending / Not Approved Claims
+
+The following items are not approved for new public use until proof is reviewed
+and explicitly accepted:
+
+- OPTEN A+ / Bonitasi minosites.
+
+Do not add this as a verified claim, schema claim, AI-search claim, partner
+claim, rating claim, or production-release approval item until the proof
+decision is recorded.
 
 ## Preferred Wording Patterns
 

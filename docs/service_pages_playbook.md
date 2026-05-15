@@ -59,6 +59,10 @@ The first HU service-page MVP is complete on staging when these eight canonical
 HU pages are seeded, public, sitemap-visible, and their legacy detail URLs
 return 404.
 
+Current status: the eight-page HU MVP is staging-complete. Service copy remains
+under human review before production approval. Production release also requires
+the separate migration/content/proof plan described in the staging runbook.
+
 ## Main vs special services
 
 The existing 8 homepage service cards remain the main public service layer.

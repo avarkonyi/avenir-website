@@ -1,6 +1,6 @@
 # Staging Runbook — Avenir Website
 
-Last updated: 2026-05-14
+Last updated: 2026-05-15
 
 ## Purpose
 
@@ -36,6 +36,36 @@ Locales:
 Current important branch:
 
 `staging-service-pages`
+
+## Current Branch Status
+
+Status: staging-complete public foundation, not production-approved.
+
+The current branch includes:
+
+- eight HU service detail pages;
+- readiness-driven homepage/footer service links;
+- related services and contact prefill;
+- Partner Logo Strip MVP with proof gating;
+- HU public article layer: `/hu/hirek` and `/hu/hirek/[slug]`;
+- SEO/GEO files: `/llms.txt` and `/llms-full.txt`;
+- CI workflow, README cleanup, code architecture docs, and Preview smoke test;
+- admin/news/service hardening;
+- durable contact rate limiter code;
+- Hero performance refactor;
+- DB service query deduplication.
+
+Known approval gates before production:
+
+- service copy human review;
+- OPTEN A+ / Bonitasi minosites proof decision or replacement;
+- approved partner logo population and proof records;
+- production Upstash/Vercel Redis environment variables;
+- live Vercel Preview QA;
+- production migration/content/proof plan;
+- explicit approval from Andras.
+
+Do not treat staging-complete as production-approved.
 
 ## Current HU Service Detail Layer
 

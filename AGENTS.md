@@ -11,18 +11,38 @@ The project is not just a brochure website. It is being developed into a serious
 Follow this order unless the user explicitly says otherwise:
 
 1. Staging and preview safety
-2. Service detail pages
-3. References and partner trust signals
-4. SEO / GEO / AI-search readiness
-5. Conversion improvements
-6. Mini-CRM / AOS modules
-7. OneDrive / SharePoint workflows
-8. Proposal generator
-9. Trust Center and tender materials
+2. Service copy review, proof decisions, and production-release planning
+3. References, approved partner logos, and other trust signals
+4. HU tudastar / article depth
+5. SEO / GEO / AI-search readiness
+6. Conversion improvements
+7. Trust Center and tender materials
+8. Mini-CRM / AOS modules
+9. OneDrive / SharePoint workflows
+10. Proposal generator
 
 Special services, compliance/document layers, Shadow Audit, and AOS Guard Log are important roadmap items, but they must not overtake the current public website/service-page, trust, SEO, and conversion priorities unless the user explicitly reprioritizes them.
 
 Do not prioritize internal AOS features ahead of the public lead-generation layer unless explicitly requested.
+
+Current staging-complete layers:
+
+- eight HU service detail pages;
+- canonical/legacy service slug model;
+- service readiness gating;
+- homepage/footer service links to ready HU services;
+- related services;
+- contact prefill and server-side service allowlist;
+- Partner Logo Strip MVP with proof gating;
+- HU public article layer: `/hu/hirek` and `/hu/hirek/[slug]`;
+- SEO/GEO files: `llms.txt` and `llms-full.txt`;
+- CI, README, code architecture docs, staging runbook, and Preview smoke test;
+- baseline hardening including durable contact rate limiter code, Hero refactor,
+  and service DB query deduplication.
+
+Do not start AOS implementation, EN/DE/ZH service rollout, EN/DE/ZH article
+routes, case studies, or named partner/client publication until the proof,
+content, and production-release gates are explicitly closed.
 
 ## Future AOS Guard Log Scope
 

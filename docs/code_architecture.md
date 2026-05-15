@@ -1,6 +1,6 @@
 # Avenir Website Code Architecture
 
-Last updated: 2026-05-14
+Last updated: 2026-05-15
 
 Status: current architecture reference for `staging-service-pages`.
 
@@ -34,12 +34,16 @@ The current product layers are:
   `llms.txt`, and `llms-full.txt`.
 - Release safety: staging-first DB target checks, pilot seed guards, sanitized
   DB error output, preview noindex, and production approval rules.
+- Hardening baseline: durable contact rate limiter code, admin/public error
+  sanitization, safe image handling, Hero server-component refactor, and
+  request-scoped service query deduplication.
 - Future AOS: mini-CRM, Guard Log, AI Report Assistant, document workflows,
   proposal generation, Trust Center, and tender material flows. These are
   documented future concepts, not current implementation.
 
-The current priority remains public website stability, service pages, trust
-signals, SEO/GEO, and conversion before deeper AOS modules.
+The current priority is proof/trust population, service copy review, HU
+tudastar depth, live Preview QA, and production release planning before deeper
+AOS modules or EN/DE/ZH service rollout.
 
 ## 2. High-Level Architecture Diagram
 
@@ -473,12 +477,18 @@ Request pipeline:
 4. Zod validation through `lib/contact-schema.ts`.
 5. Honeypot check through `_website`; non-empty returns silent 200 with no DB
    write and no email.
-6. IP rate limit through `lib/rate-limit.ts` in production only.
+6. IP rate limit through `lib/rate-limit.ts`.
 7. DB insert into `messages`.
 8. Resend notification, fail-soft after DB storage.
 
 The DB insert is primary storage. If message storage fails, the endpoint returns
 500 because the lead cannot be safely accepted without persistence.
+
+Rate limiting uses Upstash/Vercel KV-compatible Redis when
+`UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` are configured.
+Production requires the durable limiter and fails closed before DB insert/email
+if Redis is missing or unavailable. Local development and Vercel Preview may
+fall back to the in-memory limiter with a non-secret warning.
 
 ### Email Notification Labels
 
