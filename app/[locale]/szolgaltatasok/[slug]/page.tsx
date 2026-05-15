@@ -151,7 +151,10 @@ export default async function ServiceDetailPage({
   const homeUrl = `${SEO_DATA.url}/${locale}`;
   const servicesAnchorUrl = `${homeUrl}#services`;
 
-  const hasFaq = detail.faq.length > 0;
+  const faqEntries = detail.faq.filter(
+    (entry) => entry.q.trim().length > 0 && entry.a.trim().length > 0,
+  );
+  const hasFaq = faqEntries.length > 0;
 
   // Query comes before the hash so a future Contact prefill can read
   // it via URLSearchParams. Today the hash still lands on the form.
@@ -212,7 +215,7 @@ export default async function ServiceDetailPage({
       "@context": "https://schema.org",
       "@type": "FAQPage",
       "@id": `${pageUrl}#faq`,
-      mainEntity: detail.faq.map((entry) => ({
+      mainEntity: faqEntries.map((entry) => ({
         "@type": "Question",
         name: entry.q,
         acceptedAnswer: {
@@ -467,7 +470,7 @@ export default async function ServiceDetailPage({
             background="#F8FAFC"
           >
             <div style={{ display: "grid", gap: 14 }}>
-              {detail.faq.map((entry, i) => (
+              {faqEntries.map((entry, i) => (
                 <details
                   key={`${i}-${entry.q}`}
                   style={{
