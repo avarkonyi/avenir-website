@@ -171,46 +171,6 @@ const PILOT_HU = {
         "a szolgálati naplót és az egyeztetett riportálást.",
     },
     {
-      q: "Hogyan történik a látogatók és beszállítók beléptetése?",
-      a: "A beléptetési rendet a helyszíni felmérés alapján alakítjuk ki. " +
-        "Meghatározható, ki, mikor, milyen jogosultsággal léphet be, hogyan " +
-        "történik a vendégregisztráció, a beszállítói beléptetés, a " +
-        "teherforgalom kezelése és a kiléptetés dokumentálása.",
-    },
-    {
-      q: "Van-e 24/7 háttértámogatás?",
-      a: "Igen, az objektumőrzési szolgáltatás 24/7 diszpécseri háttérrel " +
-        "támogatható, az eszkalációs és értesítési rendet pedig az " +
-        "együttműködés elején rögzítjük.",
-    },
-    {
-      q: "Fegyveres őrzés is kérhető?",
-      a: "A helyszín kockázati profiljától, a szerződéses igénytől és a " +
-        "jogi feltételek teljesülésétől függően fegyver nélküli vagy " +
-        "fegyveres vagyonőri jelenlét is kialakítható.",
-    },
-    {
-      q: "Kapunk-e szolgálati naplót vagy incidensriportot?",
-      a: "Igen, a szolgáltatás része lehet szolgálati napló, " +
-        "eseményrögzítés és egyeztetett riportálás. A pontos " +
-        "riportformátumot az együttműködés elején rögzítjük, hogy a " +
-        "megrendelő naprakész információt kapjon a helyszíni működésről.",
-    },
-    {
-      q: "Összeköthető az őrzés kamerarendszerrel vagy beléptető rendszerrel?",
-      a: "Igen, ahol erre lehetőség van, az élőerős őrzés összehangolható " +
-        "meglévő kamerarendszerhez, beléptető rendszerhez, riasztási " +
-        "folyamathoz vagy távfelügyeleti működéshez. Így az őri jelenlét " +
-        "és a technikai vagyonvédelem egymást erősítheti.",
-    },
-    {
-      q: "Mi történik incidens esetén?",
-      a: "Az incidenskezelést egyeztetett eszkalációs rend alapján " +
-        "alakítjuk ki. Ez meghatározza, milyen eseményt kell rögzíteni, kit " +
-        "kell értesíteni, milyen sorrendben történik a jelzés, és hogyan " +
-        "kerül dokumentálásra az eset.",
-    },
-    {
       q: "Mikor szükséges helyszíni biztonsági felmérés?",
       a: "Helyszíni biztonsági felmérés különösen akkor hasznos, ha új " +
         "objektumot kell őrizni, változik a beléptetési rend, nő a " +
@@ -224,6 +184,53 @@ const PILOT_HU = {
         "incidenskezelési rendjétől és riportálási elvárásaitól függ. " +
         "Ezeket az indulás előtt érdemes rögzíteni, hogy a szolgálat a " +
         "helyszín valós működéséhez igazodjon.",
+    },
+    {
+      q: "Hogyan történik a látogatók és beszállítók beléptetése?",
+      a: "A beléptetési rendet a helyszíni felmérés alapján alakítjuk ki. " +
+        "Meghatározható, ki, mikor, milyen jogosultsággal léphet be, hogyan " +
+        "történik a vendégregisztráció, a beszállítói beléptetés, a " +
+        "teherforgalom kezelése és a kiléptetés dokumentálása.",
+    },
+    {
+      q: "Összeköthető az őrzés kamerarendszerrel vagy beléptető rendszerrel?",
+      a: "Igen, ahol erre lehetőség van, az élőerős őrzés összehangolható " +
+        "meglévő kamerarendszerhez, beléptető rendszerhez, riasztási " +
+        "folyamathoz vagy távfelügyeleti működéshez. Így az őri jelenlét " +
+        "és a technikai vagyonvédelem egymást erősítheti.",
+    },
+    {
+      q: "Fegyveres őrzés is kérhető?",
+      a: "A helyszín kockázati profiljától, a szerződéses igénytől és a " +
+        "jogi feltételek teljesülésétől függően fegyver nélküli vagy " +
+        "fegyveres vagyonőri jelenlét is kialakítható.",
+    },
+    {
+      q: "Rendelkezik az Avenir a szükséges vagyonvédelmi engedéllyel?",
+      a: "Igen. Az élőerős objektumőrzés az alkalmazandó magyar személy- " +
+        "és vagyonvédelmi szabályozási keret szerint történik. Az engedélyre " +
+        "és a vagyonőri állomány engedélyezési dokumentációjára vonatkozó " +
+        "információk a szerződéses előkészítés során egyeztethetők.",
+    },
+    {
+      q: "Van-e 24/7 háttértámogatás?",
+      a: "Igen, az objektumőrzési szolgáltatás 24/7 diszpécseri háttérrel " +
+        "támogatható, az eszkalációs és értesítési rendet pedig az " +
+        "együttműködés elején rögzítjük.",
+    },
+    {
+      q: "Mi történik incidens esetén?",
+      a: "Az incidenskezelést egyeztetett eszkalációs rend alapján " +
+        "alakítjuk ki. Ez meghatározza, milyen eseményt kell rögzíteni, kit " +
+        "kell értesíteni, milyen sorrendben történik a jelzés, és hogyan " +
+        "kerül dokumentálásra az eset.",
+    },
+    {
+      q: "Kapunk-e szolgálati naplót vagy incidensriportot?",
+      a: "Igen, a szolgáltatás része lehet szolgálati napló, " +
+        "eseményrögzítés és egyeztetett riportálás. A pontos " +
+        "riportformátumot az együttműködés elején rögzítjük, hogy a " +
+        "megrendelő naprakész információt kapjon a helyszíni működésről.",
     },
   ],
   // Related services use future canonical Hungarian public slugs. Some

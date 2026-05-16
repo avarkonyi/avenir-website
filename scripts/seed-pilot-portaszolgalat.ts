@@ -184,6 +184,14 @@ const PILOT_HU = {
         "szolgálati naplót és egyeztetett riportálást.",
     },
     {
+      q: "Mikor érdemes portaszolgálati felmérést kérni?",
+      a:
+        "A felmérés akkor különösen hasznos, ha nő a látogatói vagy " +
+        "beszállítói forgalom, változik a beléptetési rend, több szereplő " +
+        "használja ugyanazt az objektumot, vagy rendezettebb naplózásra " +
+        "és felelősségi rendre van szükség.",
+    },
+    {
       q: "Miben különbözik a portaszolgálat az objektumőrzéstől?",
       a:
         "A portaszolgálat elsősorban a bejárati, recepciós és napi " +
@@ -207,6 +215,13 @@ const PILOT_HU = {
         "az együttműködés elején, helyszínre szabottan rögzítjük.",
     },
     {
+      q: "Összeköthető-e beléptető rendszerrel?",
+      a:
+        "Igen, ahol erre lehetőség van, a portaszolgálat kapcsolódhat " +
+        "meglévő beléptető rendszerhez, kamerarendszerhez vagy belső " +
+        "üzemeltetési folyamathoz.",
+    },
+    {
       q: "Hogyan kezelhetők a látogatóadatok a porta- és recepciós folyamatban?",
       a:
         "A látogatóadatok kezelésekor a célhoz kötöttség, az időben " +
@@ -222,21 +237,6 @@ const PILOT_HU = {
         "eseményrögzítés és egyeztetett riportálás kapcsolódhat. A pontos " +
         "riportformátumot a megrendelői igény és a helyszín működése alapján " +
         "rögzítjük.",
-    },
-    {
-      q: "Összeköthető-e beléptető rendszerrel?",
-      a:
-        "Igen, ahol erre lehetőség van, a portaszolgálat kapcsolódhat " +
-        "meglévő beléptető rendszerhez, kamerarendszerhez vagy belső " +
-        "üzemeltetési folyamathoz.",
-    },
-    {
-      q: "Mikor érdemes portaszolgálati felmérést kérni?",
-      a:
-        "A felmérés akkor különösen hasznos, ha nő a látogatói vagy " +
-        "beszállítói forgalom, változik a beléptetési rend, több szereplő " +
-        "használja ugyanazt az objektumot, vagy rendezettebb naplózásra " +
-        "és felelősségi rendre van szükség.",
     },
   ],
   // Related services use future canonical Hungarian public slugs. Some
