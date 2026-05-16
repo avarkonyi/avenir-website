@@ -174,6 +174,14 @@ function pickLocalized<T>(
   return null;
 }
 
+function pickLocalizedArray<T>(
+  byLocale: Record<Locale, T[] | null>,
+  locale: Locale,
+): T[] {
+  const value = byLocale[locale];
+  return Array.isArray(value) && value.length > 0 ? value : [];
+}
+
 export type LocalizedServiceDetail = {
   readonly id: number;
   readonly slug: string;
@@ -194,10 +202,12 @@ export type LocalizedServiceDetail = {
   readonly relatedSlugs: readonly string[];
 };
 
-// Fetch a single published+active service by slug, with HU fallback
-// applied to every locale-aware text/json column. Returns null when
-// the row is missing OR not eligible for public render (draft or
-// soft-deleted).
+// Fetch a single published+active service by slug. Required text fields are
+// already gated per requested locale by publishedDetailPredicate(), so HU
+// fallback here is only a defensive fallback for legacy nullable display
+// columns. Optional detail arrays and FAQ are deliberately locale-strict:
+// EN/DE/ZH pages must omit untranslated optional sections instead of leaking
+// HU content into non-HU pages.
 //
 // The detail page must call notFound() on null — this helper does
 // not throw, since "service exists but is unpublished" is a valid
@@ -282,68 +292,56 @@ async function loadPublishedServiceDetailBySlug(
       safeLocale,
     ) ?? "";
 
-  const highlights =
-    pickLocalized<string[]>(
-      {
-        hu: row.highlightsHu,
-        en: row.highlightsEn,
-        de: row.highlightsDe,
-        zh: row.highlightsZh,
-      },
-      row.highlightsHu,
-      safeLocale,
-    ) ?? [];
+  const highlights = pickLocalizedArray<string>(
+    {
+      hu: row.highlightsHu,
+      en: row.highlightsEn,
+      de: row.highlightsDe,
+      zh: row.highlightsZh,
+    },
+    safeLocale,
+  );
 
-  const useCases =
-    pickLocalized<string[]>(
-      {
-        hu: row.useCasesHu,
-        en: row.useCasesEn,
-        de: row.useCasesDe,
-        zh: row.useCasesZh,
-      },
-      row.useCasesHu,
-      safeLocale,
-    ) ?? [];
-  const includedItems =
-    pickLocalized<string[]>(
-      {
-        hu: row.includedItemsHu,
-        en: row.includedItemsEn,
-        de: row.includedItemsDe,
-        zh: row.includedItemsZh,
-      },
-      row.includedItemsHu,
-      safeLocale,
-    ) ?? [];
-  const processSteps =
-    pickLocalized<{ title: string; body: string }[]>(
-      {
-        hu: row.processStepsHu,
-        en: row.processStepsEn,
-        de: row.processStepsDe,
-        zh: row.processStepsZh,
-      },
-      row.processStepsHu,
-      safeLocale,
-    ) ?? [];
-  const trustItems =
-    pickLocalized<{ title: string; body: string }[]>(
-      {
-        hu: row.trustItemsHu,
-        en: row.trustItemsEn,
-        de: row.trustItemsDe,
-        zh: row.trustItemsZh,
-      },
-      row.trustItemsHu,
-      safeLocale,
-    ) ?? [];
-  const faq =
-    pickLocalized<{ q: string; a: string }[]>(
-      { hu: row.faqHu, en: row.faqEn, de: row.faqDe, zh: row.faqZh },
-      row.faqHu,
-      safeLocale,
-    ) ?? [];
+  const useCases = pickLocalizedArray<string>(
+    {
+      hu: row.useCasesHu,
+      en: row.useCasesEn,
+      de: row.useCasesDe,
+      zh: row.useCasesZh,
+    },
+    safeLocale,
+  );
+  const includedItems = pickLocalizedArray<string>(
+    {
+      hu: row.includedItemsHu,
+      en: row.includedItemsEn,
+      de: row.includedItemsDe,
+      zh: row.includedItemsZh,
+    },
+    safeLocale,
+  );
+  const processSteps = pickLocalizedArray<{ title: string; body: string }>(
+    {
+      hu: row.processStepsHu,
+      en: row.processStepsEn,
+      de: row.processStepsDe,
+      zh: row.processStepsZh,
+    },
+    safeLocale,
+  );
+  const trustItems = pickLocalizedArray<{ title: string; body: string }>(
+    {
+      hu: row.trustItemsHu,
+      en: row.trustItemsEn,
+      de: row.trustItemsDe,
+      zh: row.trustItemsZh,
+    },
+    safeLocale,
+  );
+  const faq = pickLocalizedArray<{ q: string; a: string }>(
+    { hu: row.faqHu, en: row.faqEn, de: row.faqDe, zh: row.faqZh },
+    safeLocale,
+  );
 
   return {
     id: row.id,

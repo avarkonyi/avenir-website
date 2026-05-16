@@ -327,14 +327,20 @@ export default async function ServiceDetailPage({
 
         {/* Use cases — "Kinek jó" */}
         {detail.useCases.length > 0 && (
-          <Section eyebrow="Kinek ajánljuk" title="Kinek jó">
+          <Section
+            eyebrow={t.serviceDetail.useCasesEyebrow}
+            title={t.serviceDetail.useCasesTitle}
+          >
             <BulletList items={detail.useCases} />
           </Section>
         )}
 
         {/* Included items — "Mit tartalmaz" */}
         {detail.includedItems.length > 0 && (
-          <Section eyebrow="Tartalom" title="Mit tartalmaz">
+          <Section
+            eyebrow={t.serviceDetail.includedEyebrow}
+            title={t.serviceDetail.includedTitle}
+          >
             <BulletList items={detail.includedItems} />
           </Section>
         )}
@@ -342,8 +348,8 @@ export default async function ServiceDetailPage({
         {/* Process steps — "Hogyan indul az együttműködés" */}
         {detail.processSteps.length > 0 && (
           <Section
-            eyebrow="Folyamat"
-            title="Hogyan indul az együttműködés"
+            eyebrow={t.serviceDetail.processEyebrow}
+            title={t.serviceDetail.processTitle}
             background="#F8FAFC"
           >
             <ol
@@ -416,7 +422,10 @@ export default async function ServiceDetailPage({
 
         {/* Trust elements */}
         {detail.trustItems.length > 0 && (
-          <Section eyebrow="Miért bízhat bennünk" title="Bizalmi elemek">
+          <Section
+            eyebrow={t.serviceDetail.trustEyebrow}
+            title={t.serviceDetail.trustTitle}
+          >
             <div
               style={{
                 display: "grid",
@@ -465,8 +474,8 @@ export default async function ServiceDetailPage({
         {/* FAQ — only present in JSON-LD when actually rendered (per spec) */}
         {hasFaq && (
           <Section
-            eyebrow="Gyakori kérdések"
-            title="Mit kérdeznek leggyakrabban"
+            eyebrow={t.serviceDetail.faqEyebrow}
+            title={t.serviceDetail.faqTitle}
             background="#F8FAFC"
           >
             <div style={{ display: "grid", gap: 14 }}>
@@ -511,7 +520,10 @@ export default async function ServiceDetailPage({
 
         {/* Related services */}
         {related.length > 0 && (
-          <Section eyebrow="Még az Avenirtől" title="Kapcsolódó szolgáltatások">
+          <Section
+            eyebrow={t.serviceDetail.relatedEyebrow}
+            title={t.serviceDetail.relatedTitle}
+          >
             <div className="service-detail-related-grid">
               {related.map((r) => (
                 <Link

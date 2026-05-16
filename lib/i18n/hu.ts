@@ -186,6 +186,20 @@ export const hu = {
     downloadPdf: "Tanúsítvány letöltése (PDF)",
     altText: "{name} tanúsítvány logó",
   },
+  serviceDetail: {
+    useCasesEyebrow: "Kinek ajánljuk",
+    useCasesTitle: "Kinek jó",
+    includedEyebrow: "Tartalom",
+    includedTitle: "Mit tartalmaz",
+    processEyebrow: "Folyamat",
+    processTitle: "Hogyan indul az együttműködés",
+    trustEyebrow: "Miért bízhat bennünk",
+    trustTitle: "Bizalmi elemek",
+    faqEyebrow: "Gyakori kérdések",
+    faqTitle: "Mit kérdeznek leggyakrabban",
+    relatedEyebrow: "Még az Avenirtől",
+    relatedTitle: "Kapcsolódó szolgáltatások",
+  },
   legal: {
     privacy: {
       title: "Adatvédelmi tájékoztató",

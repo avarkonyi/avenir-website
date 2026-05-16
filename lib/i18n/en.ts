@@ -187,6 +187,20 @@ export const en = {
     "downloadPdf": "Download certificate (PDF)",
     "altText": "{name} certification logo"
   },
+  "serviceDetail": {
+    "useCasesEyebrow": "Who it is for",
+    "useCasesTitle": "Best fit",
+    "includedEyebrow": "Scope",
+    "includedTitle": "What is included",
+    "processEyebrow": "Process",
+    "processTitle": "How cooperation starts",
+    "trustEyebrow": "Why clients choose us",
+    "trustTitle": "Trust signals",
+    "faqEyebrow": "Frequently asked questions",
+    "faqTitle": "Common questions",
+    "relatedEyebrow": "More from Avenir",
+    "relatedTitle": "Related services"
+  },
   "legal": {
     "privacy": {
       "title": "Privacy Policy",

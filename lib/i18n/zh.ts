@@ -187,6 +187,20 @@ export const zh = {
     "downloadPdf": "下载证书 (PDF)",
     "altText": "{name} 认证标志"
   },
+  "serviceDetail": {
+    "useCasesEyebrow": "适用对象",
+    "useCasesTitle": "适合哪些场景",
+    "includedEyebrow": "服务内容",
+    "includedTitle": "包含内容",
+    "processEyebrow": "流程",
+    "processTitle": "合作如何开始",
+    "trustEyebrow": "为什么选择 Avenir",
+    "trustTitle": "信任要素",
+    "faqEyebrow": "常见问题",
+    "faqTitle": "常见问题解答",
+    "relatedEyebrow": "Avenir 其他服务",
+    "relatedTitle": "相关服务"
+  },
   // LEGAL_REVIEW_PENDING_ZH — 以下 legal 内容为机器翻译；具有法律约束力的版本为匈牙利语版本。
   "legal": {
     "privacy": {

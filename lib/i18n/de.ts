@@ -187,6 +187,20 @@ export const de = {
     "downloadPdf": "Zertifikat herunterladen (PDF)",
     "altText": "{name} Zertifikatslogo"
   },
+  "serviceDetail": {
+    "useCasesEyebrow": "Für wen",
+    "useCasesTitle": "Geeignet für",
+    "includedEyebrow": "Umfang",
+    "includedTitle": "Was enthalten ist",
+    "processEyebrow": "Ablauf",
+    "processTitle": "So startet die Zusammenarbeit",
+    "trustEyebrow": "Warum Avenir",
+    "trustTitle": "Vertrauenselemente",
+    "faqEyebrow": "Häufige Fragen",
+    "faqTitle": "Die wichtigsten Fragen",
+    "relatedEyebrow": "Mehr von Avenir",
+    "relatedTitle": "Verwandte Leistungen"
+  },
   // LEGAL_REVIEW_PENDING_DE — die folgenden legal Inhalte sind maschinell aus der ungarischen/englischen Fassung übersetzt; rechtlich verbindlich ist die ungarische Fassung.
   "legal": {
     "privacy": {
