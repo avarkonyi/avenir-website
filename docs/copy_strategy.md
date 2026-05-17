@@ -80,9 +80,13 @@ Avoid vague CTAs:
 
 ## Special services wording
 
-Special services such as magánnyomozás, helyszíni biztonsági audit, and
-vizsgálati / ellenőrzési szolgáltatások must be written as discreet B2B
-services, not as aggressive consumer-style investigation offers.
+Special services such as helyszíni biztonsági audit, adatvédelmi és
+GDPR-folyamatfelmérés, and magánnyomozás are planned/discovery-only website
+scope. They are not AOS, not current public routes, and not part of the eight
+main operational service pages.
+
+They must be written as discreet B2B services, not as aggressive consumer-style
+investigation offers.
 
 Use careful wording:
 
@@ -100,6 +104,18 @@ Avoid:
 - recording claims unless explicitly approved;
 - guaranteed improvement numbers;
 - legal or compliance audit claims unless that scope is separately defined.
+
+Service-specific guardrails:
+
+- Mystery Shopping must stay separate from Private Investigation.
+- Site Security Audit must not sound like authority, police, or regulatory
+  inspection.
+- GDPR Process Review must not promise GDPR compliance or legal advice.
+- Private Investigation must not be framed as general surveillance, hidden
+  monitoring, employee surveillance, or automatic disciplinary reporting.
+- Special-service CTAs should point toward preliminary consultation and should
+  warn visitors not to submit sensitive personal data through the standard
+  contact form.
 
 ## Mystery Shopping / szolgáltatásaudit wording
 

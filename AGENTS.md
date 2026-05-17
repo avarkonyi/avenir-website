@@ -21,9 +21,38 @@ Follow this order unless the user explicitly says otherwise:
 9. OneDrive / SharePoint workflows
 10. Proposal generator
 
-Special services, compliance/document layers, Shadow Audit, and AOS Guard Log are important roadmap items, but they must not overtake the current public website/service-page, trust, SEO, and conversion priorities unless the user explicitly reprioritizes them.
+Special services, compliance/document layers, Shadow Audit, and AOS Guard Log are important roadmap items, but they must not overtake the current public website/service-page, translation, trust, SEO, and conversion priorities unless the user explicitly reprioritizes them.
 
 Do not implement internal AOS features inside the website unless explicitly approved.
+
+## Special Services separation rule
+
+Special Services are a future website-scope content layer, not AOS and not part
+of the current eight operational service pages.
+
+Planned/discovery-only candidates:
+
+- `helyszini-biztonsagi-audit` — Site Security Audit / On-site Security Audit;
+- `gdpr-adatvedelmi-folyamatfelmeres` — Data Protection and GDPR Process
+  Review;
+- `magannyomozas` — Private Investigation.
+
+Do not create routes, schema, seed scripts, contact options, sitemap entries, or
+public copy for these services unless explicitly requested. They require
+separate legal/proof review, content strategy, and contact/data-submission
+warnings before publication.
+
+Guardrails:
+
+- Mystery Shopping remains a service-quality/customer-journey audit, not
+  Private Investigation.
+- Site Security Audit must not be framed as authority, police, or regulatory
+  inspection.
+- GDPR Process Review must not promise GDPR compliance or legal advice.
+- Private Investigation must not be framed as general surveillance, hidden
+  monitoring, employee surveillance, or automatic disciplinary reporting.
+- Do not invite sensitive personal-data submissions through the standard
+  contact form.
 
 Current staging-complete layers:
 

@@ -938,6 +938,36 @@ complaint-handling, sustainability/compliance documentation, and tender
 materials. EcoVadis must remain preparation wording only until a verified
 rating/medal/assessment exists.
 
+### Special Services Layer
+
+Special Services are a future website-scope content layer, not AOS and not part
+of the current eight operational service pages.
+
+Planned/discovery-only candidates:
+
+| HU working title | EN working title | Documentation-only URL candidate |
+| --- | --- | --- |
+| Helyszíni biztonsági audit | Site Security Audit / On-site Security Audit | `/hu/szolgaltatasok/helyszini-biztonsagi-audit` |
+| Adatvédelmi és GDPR-folyamatfelmérés | Data Protection and GDPR Process Review | `/hu/szolgaltatasok/gdpr-adatvedelmi-folyamatfelmeres` |
+| Magánnyomozás | Private Investigation | `/hu/szolgaltatasok/magannyomozas` |
+
+Do not create these routes, sitemap entries, schema fields, seed scripts, or
+contact options until a separate legal/proof-reviewed content plan exists.
+Special Services should be visually and structurally separate from the main 8
+service cards, likely as a quieter tab or section with preliminary-consultation
+CTA wording.
+
+Guardrails:
+
+- Mystery Shopping remains separate from Private Investigation.
+- Site Security Audit must not be framed as authority, police, or regulatory
+  inspection.
+- GDPR Process Review must not promise GDPR compliance or legal advice.
+- Private Investigation must not imply general surveillance, hidden monitoring,
+  employee surveillance, or automatic disciplinary reporting.
+- Do not invite sensitive personal-data submissions through the standard
+  contact form.
+
 ## 14. Extension Playbooks
 
 ### Add a New Service Detail Page

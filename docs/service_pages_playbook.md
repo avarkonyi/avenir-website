@@ -67,9 +67,12 @@ the separate migration/content/proof plan described in the staging runbook.
 
 The existing 8 homepage service cards remain the main public service layer.
 
-Special services should not be added as loud 9th/10th/11th homepage cards.
-They belong in a secondary, visually quieter homepage block after the 8 main
-service cards and before trust/compliance/references.
+Special services are a future website-scope layer for sensitive,
+compliance-heavy services. They are planned/discovery only and must not be
+added as loud 9th/10th/11th homepage cards. They belong in a secondary,
+visually quieter homepage block or tab after the 8 main service cards and after
+the current service-page review, EN/DE/ZH translation workflow, partner/trust
+population, related-services curation, and SEO/GEO groundwork.
 
 Secondary block:
 
@@ -80,13 +83,44 @@ Secondary block:
 
 Planned special-service URLs:
 
-- /hu/szolgaltatasok/magannyomozas
 - /hu/szolgaltatasok/helyszini-biztonsagi-audit
-- /hu/szolgaltatasok/vizsgalati-ellenorzesi-szolgaltatasok
+- /hu/szolgaltatasok/gdpr-adatvedelmi-folyamatfelmeres
+- /hu/szolgaltatasok/magannyomozas
+
+Working names:
+
+- Helyszíni biztonsági audit — Site Security Audit / On-site Security Audit
+- Adatvédelmi és GDPR-folyamatfelmérés — Data Protection and GDPR Process
+  Review
+- Magánnyomozás — Private Investigation
 
 Special-service copy must be discreet, regulated, B2B, and compliance-aware.
 Do not imply unlawful covert surveillance, blanket employee monitoring,
 recording, or legal/compliance audit unless that scope is explicitly approved.
+
+Additional guardrails:
+
+- Mystery Shopping must remain separate from Private Investigation.
+- Site Security Audit must not be framed as authority, police, or regulatory
+  inspection.
+- GDPR Process Review must not promise GDPR compliance or legal advice.
+- Private Investigation must not be framed as general surveillance, hidden
+  monitoring, employee surveillance, or automatic disciplinary reporting.
+- Do not invite sensitive personal data through the standard contact form.
+- CTA language should emphasize preliminary consultation, not immediate
+  standard quote request.
+
+Future special-service page structure:
+
+- what this service is;
+- when it is appropriate;
+- when it is not the right service;
+- required preliminary consultation;
+- legal/data-protection boundaries;
+- what information not to send through the contact form;
+- what the client receives;
+- what Avenir does not undertake;
+- compliance-safe FAQ.
 
 ## Object guarding page angle
 

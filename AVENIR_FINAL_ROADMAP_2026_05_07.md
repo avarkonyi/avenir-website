@@ -274,6 +274,49 @@ Potential improvements:
 
 Do not add guarantees or hard response-time promises beyond verified claims.
 
+### Special Services Layer
+
+Status: **planned / discovery only; not public and not an implementation task**.
+
+Special Services are a future website-scope content layer for sensitive,
+compliance-heavy services. They are not AOS modules, not app features, and not
+part of the current eight operational service-page rollout.
+
+Candidate services:
+
+| HU working title | EN working title | Documentation-only URL candidate |
+| --- | --- | --- |
+| Helyszíni biztonsági audit | Site Security Audit / On-site Security Audit | `/hu/szolgaltatasok/helyszini-biztonsagi-audit` |
+| Adatvédelmi és GDPR-folyamatfelmérés | Data Protection and GDPR Process Review | `/hu/szolgaltatasok/gdpr-adatvedelmi-folyamatfelmeres` |
+| Magánnyomozás | Private Investigation | `/hu/szolgaltatasok/magannyomozas` |
+
+Sequencing:
+
+1. finish core service-page review and translation workflow;
+2. complete partner/trust proof population;
+3. curate related services;
+4. keep SEO/GEO groundwork stable;
+5. only then plan Special Services discovery and legal review.
+
+Guardrails:
+
+- keep Mystery Shopping separate from Private Investigation;
+- do not frame Site Security Audit as authority, police, or regulatory
+  inspection;
+- do not promise GDPR compliance or legal advice for GDPR Process Review;
+- do not frame Private Investigation as general surveillance, hidden
+  monitoring, employee surveillance, or disciplinary automation;
+- do not invite users to submit sensitive personal data through the standard
+  contact form;
+- use preliminary consultation wording, not a standard quote-request flow;
+- require legal/proof review before any public publication.
+
+Future page structure should cover: what the service is, when it is appropriate,
+when it is not the right service, required preliminary consultation,
+legal/data-protection boundaries, what not to send through the contact form,
+what the client receives, what Avenir does not undertake, and compliance-safe
+FAQ.
+
 ### Production Release Plan
 
 Create a separate production release checklist before merge/deploy:
@@ -310,6 +353,7 @@ These are intentionally deferred:
 
 - EN/DE/ZH service rollout;
 - EN/DE/ZH article routes;
+- Special Services public pages and routes;
 - client case studies;
 - named partner/customer references without proof;
 - Shadow Audit microsite or sub-brand;
@@ -403,7 +447,8 @@ Current practical order:
 7. Trust Center / Megfeleloseg page.
 8. Article Phase 2 and sector pages.
 9. Conversion improvements.
-10. Coordinate separately with the `avenir-aos` application track if internal
+10. Special Services discovery, legal/proof review, and content strategy.
+11. Coordinate separately with the `avenir-aos` application track if internal
     operations work is active in parallel.
 
 This keeps the public lead-generation and proof layer separate from internal
