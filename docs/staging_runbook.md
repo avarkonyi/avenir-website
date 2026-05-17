@@ -102,7 +102,7 @@ The current ready HU service detail pages on staging are:
 | Recepciós és portaszolgálat | `/hu/szolgaltatasok/portaszolgalat` | `reception` |
 | Biztonságtechnika | `/hu/szolgaltatasok/biztonsagtechnika` | `building` |
 | Távfelügyelet és vonulószolgálat | `/hu/szolgaltatasok/tavfelugyelet-vonuloszolgalat` | `technical` |
-| Mystery Shopping és helyszíni audit | `/hu/szolgaltatasok/mystery-shopping-helyszini-audit` | `mystery` |
+| Próbavásárlás és szolgáltatásaudit | `/hu/szolgaltatasok/mystery-shopping-helyszini-audit` | `mystery` |
 | Rendezvénybiztosítás | `/hu/szolgaltatasok/rendezvenybiztositas` | `cleaning` |
 | Hard FM | `/hu/szolgaltatasok/hard-fm` | `hardfm` |
 | Soft FM | `/hu/szolgaltatasok/soft-fm` | `green` |

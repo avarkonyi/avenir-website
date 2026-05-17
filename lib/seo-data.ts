@@ -76,7 +76,7 @@ export const SEO_DATA = {
 export const SEO_FAQS_HU = [
   {
     q: "Milyen szolgáltatásokat nyújt az Avenir Facility Management?",
-    a: "Az Avenir Facility Management Kft. nyolc fő szolgáltatási területet fog össze egy felelős kapcsolattartóval: élőerős objektumőrzés, recepciós és portaszolgálat, mystery shopping és helyszíni audit, rendezvénybiztosítás, biztonságtechnika, távfelügyelet és vonulószolgálat, Soft FM és Hard FM.",
+    a: "Az Avenir Facility Management Kft. nyolc fő szolgáltatási területet fog össze egy felelős kapcsolattartóval: élőerős objektumőrzés, recepciós és portaszolgálat, próbavásárlás és szolgáltatásaudit, rendezvénybiztosítás, biztonságtechnika, távfelügyelet és vonulószolgálat, Soft FM és Hard FM.",
   },
   {
     q: "Hol érhető el az Avenir Facility Management?",

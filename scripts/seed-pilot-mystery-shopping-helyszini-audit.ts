@@ -1,4 +1,4 @@
-// One-shot pilot data seeder for "Mystery Shopping és helyszíni audit" (P5 Phase 1).
+// One-shot pilot data seeder for "Próbavásárlás és szolgáltatásaudit" (P5 Phase 1).
 //
 // Usage:
 //   npx tsx scripts/seed-pilot-mystery-shopping-helyszini-audit.ts            # writes
@@ -27,7 +27,7 @@
 // pilot content. Other services and any admin-edited copy are
 // untouched. This script intentionally does not write nameHu: the
 // display name stays the short baseline/i18n name
-// "Mystery Shopping és helyszíni audit".
+// "Próbavásárlás és szolgáltatásaudit".
 //
 // Run after the 0011 migration has been applied; otherwise the new
 // columns won't exist in the target DB and the UPDATE will fail.

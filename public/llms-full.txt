@@ -98,7 +98,7 @@ URL: https://www.afm.hu/hu/szolgaltatasok/tavfelugyelet-vonuloszolgalat
 Signal handling, escalation, event logging, and response-service processes based
 on the site, technical setup, contractual scope, and service rules.
 
-### Mystery Shopping és helyszíni audit
+### Próbavásárlás és szolgáltatásaudit
 
 URL: https://www.afm.hu/hu/szolgaltatasok/mystery-shopping-helyszini-audit
 

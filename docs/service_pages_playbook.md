@@ -37,7 +37,7 @@ Status: current staging HU service detail layer.
 | 2 | Recepciós és portaszolgálat | `portaszolgalat` | `reception` |
 | 3 | Biztonságtechnika | `biztonsagtechnika` | `building` |
 | 4 | Távfelügyelet és vonulószolgálat | `tavfelugyelet-vonuloszolgalat` | `technical` |
-| 5 | Mystery Shopping és helyszíni audit | `mystery-shopping-helyszini-audit` | `mystery` |
+| 5 | Próbavásárlás és szolgáltatásaudit | `mystery-shopping-helyszini-audit` | `mystery` |
 | 6 | Rendezvénybiztosítás | `rendezvenybiztositas` | `cleaning` |
 | 7 | Hard FM | `hard-fm` | `hardfm` |
 | 8 | Soft FM | `soft-fm` | `green` |

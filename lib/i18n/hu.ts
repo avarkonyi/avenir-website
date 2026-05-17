@@ -85,7 +85,7 @@ export const hu = {
     {
       id: "mystery",
       icon: "eye",
-      t: "Mystery Shopping és helyszíni audit",
+      t: "Próbavásárlás és szolgáltatásaudit",
       d: "Mystery shopping, szolgáltatásminőségi ellenőrzés és helyszíni audit valós ügyfél- és működési helyzetekben, független méréssel és strukturált riporttal.",
     },
     {

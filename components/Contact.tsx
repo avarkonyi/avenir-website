@@ -253,7 +253,7 @@ const SERVICE_PREFILL_FALLBACKS: Record<string, ServiceOption> = {
   },
   "mystery-shopping-helyszini-audit": {
     slug: "mystery-shopping-helyszini-audit",
-    label: "Mystery Shopping és helyszíni audit",
+    label: "Próbavásárlás és szolgáltatásaudit",
   },
   "hard-fm": {
     slug: "hard-fm",

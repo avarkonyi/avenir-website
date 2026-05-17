@@ -54,7 +54,7 @@ type CanonicalEntry = {
 // Canonical seed sort order for the launch-facing portfolio:
 //   objektumorzes -> Élőerős objektumőrzés
 //   portaszolgalat -> Recepciós és portaszolgálat
-//   mystery-shopping-helyszini-audit -> Mystery Shopping és helyszíni audit
+//   mystery-shopping-helyszini-audit -> Próbavásárlás és szolgáltatásaudit
 //   rendezvenybiztositas -> Rendezvénybiztosítás
 //   biztonsagtechnika -> Biztonságtechnika
 //   tavfelugyelet-vonuloszolgalat -> Távfelügyelet és vonulószolgálat
