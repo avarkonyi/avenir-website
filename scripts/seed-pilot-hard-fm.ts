@@ -247,13 +247,10 @@ const PILOT_HU = {
   // only the legacy slug for this service. soft-fm is the canonical
   // Soft FM slug; green is only its legacy slug.
   relatedSlugs: [
-    "biztonsagtechnika",
-    "portaszolgalat",
-    "objektumorzes",
-    "tavfelugyelet-vonuloszolgalat",
-    "rendezvenybiztositas",
-    "mystery-shopping-helyszini-audit",
     "soft-fm",
+    "biztonsagtechnika",
+    "tavfelugyelet-vonuloszolgalat",
+    "objektumorzes",
   ],
 };
 

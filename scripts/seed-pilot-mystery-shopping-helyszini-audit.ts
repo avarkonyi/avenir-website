@@ -274,12 +274,9 @@ const PILOT_HU = {
   // related arrays: "mystery" is only the legacy slug for this service.
   relatedSlugs: [
     "portaszolgalat",
-    "objektumorzes",
-    "biztonsagtechnika",
-    "tavfelugyelet-vonuloszolgalat",
-    "rendezvenybiztositas",
-    "hard-fm",
     "soft-fm",
+    "rendezvenybiztositas",
+    "objektumorzes",
   ],
 };
 

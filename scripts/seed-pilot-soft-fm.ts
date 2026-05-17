@@ -247,11 +247,9 @@ const PILOT_HU = {
   relatedSlugs: [
     "hard-fm",
     "portaszolgalat",
+    "mystery-shopping-helyszini-audit",
     "objektumorzes",
     "rendezvenybiztositas",
-    "biztonsagtechnika",
-    "tavfelugyelet-vonuloszolgalat",
-    "mystery-shopping-helyszini-audit",
   ],
 };
 

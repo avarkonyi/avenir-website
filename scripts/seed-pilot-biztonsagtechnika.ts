@@ -266,13 +266,10 @@ const PILOT_HU = {
   // Do not replace tavfelugyelet-vonuloszolgalat with "technical" here:
   // "technical" is the legacy slug for the future monitoring service.
   relatedSlugs: [
+    "tavfelugyelet-vonuloszolgalat",
     "objektumorzes",
     "portaszolgalat",
-    "tavfelugyelet-vonuloszolgalat",
-    "mystery-shopping-helyszini-audit",
-    "rendezvenybiztositas",
     "hard-fm",
-    "soft-fm",
   ],
 };
 

@@ -251,10 +251,7 @@ const PILOT_HU = {
     "biztonsagtechnika",
     "objektumorzes",
     "portaszolgalat",
-    "mystery-shopping-helyszini-audit",
-    "rendezvenybiztositas",
     "hard-fm",
-    "soft-fm",
   ],
 };
 
