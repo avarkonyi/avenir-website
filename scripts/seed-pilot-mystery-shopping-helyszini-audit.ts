@@ -152,7 +152,7 @@ const PILOT_HU = {
       body:
         "A vizsgálat azt rögzíti, hogyan jelennek meg az egyeztetett " +
         "szolgáltatási lépések, brand elvárások és ügyfélút-pontok valós " +
-        "ügyfélhelyzetben, megfigyelési vagy fegyelmi keretezés nélkül.",
+        "ügyfélhelyzetben, felügyeleti vagy fegyelmi keretezés nélkül.",
     },
     {
       title: "Strukturált riport és ügyféloldali egyeztetés",
@@ -173,9 +173,10 @@ const PILOT_HU = {
       title: "Célhoz kötött és bizalmas riportálás",
       body:
         "A riportálás az egyeztetett scope-ra és a kijelölt megrendelői " +
-        "áttekintési folyamatra korlátozódik. Személyes adatot érintő " +
-        "riportálás nem standard elem, és az egyeztetett adatvédelmi keretek " +
-        "között kell maradnia.",
+        "áttekintési folyamatra korlátozódik. Az egyes munkatársakra vonatkozó " +
+        "adatok szerepeltetése nem alapértelmezett jelentési elem; ilyen " +
+        "tartalom csak előzetesen egyeztetett adatvédelmi keretek között " +
+        "jelenhet meg.",
     },
   ],
   faq: [
@@ -188,7 +189,7 @@ const PILOT_HU = {
         "megfigyelésből és a strukturált riport elkészítéséből áll.",
     },
     {
-      q: "Hogyan kerül meghatározásra és keretek között tartásra az audit scope-ja?",
+      q: "Hogyan határozzuk meg az audit scope-ját, és hogyan tartjuk a vizsgálatot az egyeztetett keretek között?",
       a:
         "Az audit scope-ja a végrehajtás előtt kerül meghatározásra. Az " +
         "Avenir előre rögzíti a célt, a forgatókönyvet, a vizsgálati " +
