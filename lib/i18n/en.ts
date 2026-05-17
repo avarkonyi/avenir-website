@@ -66,7 +66,7 @@ export const en = {
       "id": "cleaning",
       "icon": "sparkle",
       "t": "Event Security",
-      "d": "Security for corporate events, conferences and special events according to agreed protocols: access control, on-site presence, patrols and incident handling."
+      "d": "Security for corporate, invitation-only and public events under an agreed framework: access control, guest and audience flow, zone handling and incident escalation."
     },
     {
       "id": "building",

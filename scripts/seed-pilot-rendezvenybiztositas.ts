@@ -45,75 +45,82 @@ const TARGET_SLUG = "rendezvenybiztositas";
 const LEGACY_SLUG = "cleaning";
 
 const PILOT_HU = {
-  seoTitle: "Rendezvénybiztosítás vállalati és zártkörű eseményekre | Avenir",
+  seoTitle: "Rendezvénybiztosítás vállalati, zártkörű és nyilvános eseményekre | Avenir",
   seoDescription:
-    "Rendezvénybiztosítás beléptetéssel, vendégáramlás-támogatással, " +
-    "zónakezeléssel, incidensjelzéssel és szervezői kapcsolattartással.",
+    "Rendezvénybiztosítás beléptetéssel, vendég- és közönségáramlás " +
+    "támogatásával, zónakezeléssel, incidensjelzéssel és szervezői " +
+    "kapcsolattartással.",
   valueProposition:
-    "A rendezvénybiztosítás célja, hogy az esemény ideje alatt a " +
-    "vendégáramlás, a beléptetés, a zárt vagy kiemelt területek kezelése, " +
-    "a konfliktusmegelőzés és az incidensjelzés egyeztetett rend szerint " +
-    "történjen. Avenir az esemény jellegéhez, létszámához és szerződéses " +
-    "kereteihez igazított biztonsági jelenlétet biztosít.",
+    "A rendezvénybiztosítás célja, hogy a beléptetés, a vendég- és " +
+    "közönségáramlás, a zónakezelés, a konfliktusmegelőzés és az " +
+    "incidenskezelés vállalati, zártkörű és nyilvános eseményeken is " +
+    "egyeztetett keretben működjön.",
   longDesc:
-    "A rendezvénybiztosítás nem azonos a folyamatos objektumőrzéssel. A " +
-    "rendezvények időben, helyszínben és kockázati profilban is eltérő " +
-    "működést igényelnek: vendégek érkeznek, zónák nyílnak és záródnak, " +
-    "beszállítók és szervezők mozognak, VIP vagy backstage területek " +
-    "kezelése merülhet fel, és a helyszíni személyzetnek gyorsan kell " +
-    "együttműködnie a szervezőkkel.\n\n" +
-    "Avenir a rendezvénybiztosítást egyeztetett scope alapján szervezi. " +
-    "A helyszín, a résztvevői kör, a belépési pontok, a zárt " +
-    "területek, a szervezői kapcsolattartás, az incidensjelzési rend és a " +
-    "szükséges biztonsági személyzet az esemény jellegéhez, létszámához " +
-    "és szerződéses kereteihez igazítva kerül meghatározásra.\n\n" +
+    "A rendezvénybiztosítás nem kizárólag vállalati vagy zártkörű " +
+    "eseményekre vonatkozik. A rendezvény jellegétől függően az Avenir " +
+    "támogatja a beléptetést, a vendég- vagy közönségáramlás kezelését, a " +
+    "zárt területek és zónák kezelését, a peremterületek felügyeleti " +
+    "rendjét, a konfliktusmegelőzést, az incidensrögzítést és a szervező " +
+    "által meghatározott eszkalációs folyamatot.\n\n" +
+    "A vállalati és zártkörű eseményeknél ide tartozhatnak konferenciák, " +
+    "üzleti találkozók, kiállítások, termékbemutatók, VIP-, backstage- vagy " +
+    "más zárt területek. Nyilvános eseményeknél, fesztiváloknál, " +
+    "koncerteknél, sporteseményeknél és kulturális programoknál a hangsúly " +
+    "a közönségáramlás, a több belépési pont, a zónák és a szervezői " +
+    "kapcsolattartási lánc egyeztetett működésére kerül.\n\n" +
     "A cél nem az, hogy általános garanciát adjunk minden helyzetre, hanem " +
-    "hogy a rendezvény ideje alatt átlátható biztonsági rend álljon " +
-    "rendelkezésre: beléptetés támogatásával, " +
-    "vendégáramlás kezelésével, konfliktusmegelőző jelenléttel, " +
-    "eszkalációs renddel és rendezvényzáró visszajelzéssel.",
+    "hogy a rendezvény ideje alatt átlátható biztonsági keret működjön: " +
+    "beléptetés támogatásával, vendég- vagy közönségáramlás kezelésével, " +
+    "konfliktusmegelőző jelenléttel, incidensrögzítéssel, eszkalációs " +
+    "renddel és rendezvényzáró visszajelzéssel.",
   useCases: [
-    "Vállalati rendezvények és zártkörű események",
-    "Konferenciák, partnertalálkozók és üzleti események",
-    "VIP, backstage vagy zárt területekkel működő rendezvények",
-    "Kiállítások, bemutatók és promóciós események",
-    "Olyan helyszínek, ahol beléptetés, vendégáramlás vagy szervezői koordináció szükséges",
-    "Események, ahol incidensjelzési és eszkalációs rendet kell működtetni",
+    "Vállalati rendezvények, konferenciák és üzleti események",
+    "Zártkörű események, termékbemutatók és kiállítások",
+    "Fesztiválok és szabadtéri kulturális rendezvények",
+    "Koncertek és beltéri nyilvános előadások",
+    "Sportesemények és tornák",
+    "VIP-, backstage-, zárt vagy kiemelt területekkel rendelkező rendezvények",
+    "Több belépési ponttal, közönségáramlással vagy szervezői koordinációval járó események",
+    "Incidensrögzítést és eszkalációs keretet igénylő rendezvények",
   ],
   includedItems: [
-    "Beléptetési és vendégáramlási pontok támogatása",
-    "Rendezvényhelyszín biztonsági jelenléte",
-    "Zárt, VIP vagy backstage területek kezelése",
-    "Szervezői kapcsolattartás és helyszíni koordináció",
-    "Konfliktusmegelőző biztonsági jelenlét",
-    "Incidensjelzés és eszkaláció egyeztetett rend szerint",
-    "Eseménykezelés és rendezvényzáró visszajelzés",
+    "Beléptetés és belépési pontok kezelése",
+    "Vendég- és közönségáramlás támogatása",
+    "Zónák, peremterületek és zárt területek kezelése",
+    "VIP-, backstage- vagy kiemelt területek támogatása, ha a rendezvény jellege indokolja",
+    "Konfliktusmegelőzés és incidenseszkaláció",
+    "Incidensrögzítés és rendezvénybiztosítási jelentés",
+    "Több belépési pont kezelése nyilvános vagy nagyobb létszámú eseményeken",
+    "Kapcsolattartás a szervező által meghatározott felelősökkel és eszkalációs pontokkal",
   ],
   processSteps: [
     {
       title: "Rendezvény scope és helyszíni igények egyeztetése",
       body:
-        "Rögzítjük a rendezvény jellegét, időtartamát, várható résztvevői " +
-        "körét, helyszíni adottságait és a szervezői elvárásokat.",
+        "Rögzítjük a rendezvény típusát, időtartamát, várható vendég- vagy " +
+        "közönségáramlását, helyszíni adottságait, zónáit és a szervezői " +
+        "elvárásokat.",
     },
     {
       title: "Belépési pontok, zónák és szervezői kapcsolattartás feltérképezése",
       body:
         "Áttekintjük a beléptetési pontokat, zárt vagy kiemelt területeket, " +
-        "vendégáramlási irányokat és a szervezői kapcsolattartási rendet.",
+        "vendég- vagy közönségáramlási irányokat, peremterületeket és a " +
+        "szervezői kapcsolattartási rendet.",
     },
     {
       title: "Biztonsági személyzeti és eszkalációs rend kialakítása",
       body:
-        "A szükséges biztonsági jelenlétet, jogosultsági pontokat és " +
-        "incidensjelzési rendet az esemény scope-ja és szerződéses keretei " +
-        "alapján határozzuk meg.",
+        "A szükséges biztonsági jelenlétet, jogosultsági pontokat, " +
+        "kapcsolattartási láncot és incidensjelzési rendet az esemény " +
+        "scope-ja és szerződéses keretei alapján határozzuk meg.",
     },
     {
       title: "Rendezvény alatti beléptetési, zónakezelési és incidensjelzési támogatás",
       body:
-        "A rendezvény alatt a biztonsági személyzet a beléptetés, zónakezelés, " +
-        "vendégáramlás és incidensjelzés egyeztetett rendjét támogatja.",
+        "A rendezvény alatt a biztonsági személyzet a beléptetés, a " +
+        "zónakezelés, a vendég- vagy közönségáramlás és az incidensjelzés " +
+        "egyeztetett rendjét támogatja.",
     },
     {
       title: "Események, eltérések és beavatkozások dokumentálása",
@@ -148,10 +155,11 @@ const PILOT_HU = {
         "és dokumentálási rend támogatja.",
     },
     {
-      title: "Biztonsági személyzet az esemény jellegéhez igazítva",
+      title: "A rendezvény típusához és közönségáramlásához igazítva",
       body:
-        "A szükséges jelenlétet az esemény típusa, helyszíne, résztvevői köre " +
-        "és szerződéses scope-ja alapján kell kialakítani.",
+        "A biztonsági jelenlét a rendezvény jellegéhez, a várható vendég- " +
+        "vagy közönségáramláshoz, a belépési pontokhoz, a zónákhoz és a " +
+        "szervező által meghatározott eszkalációs útvonalakhoz igazodik.",
     },
     {
       title: "Zárt és kiemelt területek kezelése",
@@ -182,12 +190,14 @@ const PILOT_HU = {
         "zónakezelés, szervezői kapcsolattartás és incidensjelzés kerül előtérbe.",
     },
     {
-      q: "Milyen rendezvényekhez kérhető biztonsági jelenlét?",
+      q: "Fesztiválokra, koncertekre és sporteseményekre is kérhető rendezvénybiztosítás?",
       a:
-        "Rendezvénybiztosítás kérhető például vállalati eseményekhez, " +
-        "konferenciákhoz, partnertalálkozókhoz, zártkörű rendezvényekhez, " +
-        "kiállításokhoz, bemutatókhoz vagy olyan eseményekhez, ahol beléptetési, " +
-        "vendégáramlási vagy zónakezelési feladatok merülnek fel.",
+        "Igen. A rendezvénybiztosítás vállalati, zártkörű és nyilvános " +
+        "eseményekre is kialakítható, ideértve a fesztiválokat, koncerteket, " +
+        "sporteseményeket és kulturális programokat. A szolgáltatási keret a " +
+        "rendezvény típusához, a vendég- vagy közönségáramláshoz, a belépési " +
+        "pontokhoz, a zónákhoz, a szervezői kapcsolattartási lánchoz és az " +
+        "incidensrögzítési igényekhez igazodik.",
     },
     {
       q: "Kezelhető VIP vagy backstage terület?",

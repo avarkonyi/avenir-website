@@ -56,7 +56,7 @@ export const hu = {
       id: "cleaning",
       icon: "sparkle",
       t: "Rendezvénybiztosítás",
-      d: "Céges események, konferenciák és alkalmi rendezvények biztosítása egyeztetett protokoll szerint: beléptetés, helyszíni jelenlét, járőrözés és incidenskezelés.",
+      d: "Vállalati, zártkörű és nyilvános események biztosítása egyeztetett keret szerint: beléptetés, vendég- és közönségáramlás, zónakezelés és incidenskezelés.",
     },
     {
       id: "building",
