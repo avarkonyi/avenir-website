@@ -141,54 +141,41 @@ const PILOT_HU = {
   ],
   trustItems: [
     {
-      title: "Egyeztetett audit scope",
+      title: "Végrehajtás előtt meghatározott scope",
       body:
-        "A vizsgálat célját, módszerét, érintett folyamatait és értékelési " +
-        "szempontjait az audit előtt rögzíteni kell.",
+        "Az audit célját, forgatókönyvét, szempontjait és riportálási formáját " +
+        "a végrehajtás előtt egyeztetni kell, hogy a megfigyelések a " +
+        "meghatározott szolgáltatásminőségi scope keretein belül maradjanak.",
     },
     {
-      title: "Strukturált értékelési szempontok",
+      title: "Semleges ügyfélút-megfigyelés",
       body:
-        "Az audit összehasonlítható szempontok alapján méri az ügyfélutat, a " +
-        "kommunikációt, a brand standardokat és a folyamatkövetést.",
+        "A vizsgálat azt rögzíti, hogyan jelennek meg az egyeztetett " +
+        "szolgáltatási lépések, brand elvárások és ügyfélút-pontok valós " +
+        "ügyfélhelyzetben, megfigyelési vagy fegyelmi keretezés nélkül.",
     },
     {
-      title: "Brand Audit és Situation Shopping módszertan",
+      title: "Strukturált riport és ügyféloldali egyeztetés",
       body:
-        "A vizsgálat kialakítható arculati, szolgáltatási, interakciós vagy " +
-        "konkrét ügyfélhelyzetre épülő forgatókönyv szerint.",
+        "Az Avenir strukturált riportot készít megfigyelésekkel, visszatérő " +
+        "mintákkal, kockázati pontokkal és fejlesztési javaslatokkal, majd a " +
+        "megállapításokat a megrendelővel áttekinti a szolgáltatásminőségi " +
+        "döntések támogatására.",
     },
     {
-      title: "Rögzített ügyfélút vagy szolgáltatási folyamat",
+      title: "Több helyszín összehasonlítható képe",
       body:
-        "A riport az ügyfélhelyzetben megtapasztalt folyamatot, eltéréseket, " +
-        "megfelelési pontokat és fejlesztési lehetőségeket rögzíti.",
+        "Ugyanaz a forgatókönyv több helyszínen vagy szolgáltatónál is " +
+        "megismételhető a szolgáltatási konzisztencia, folyamatbeli " +
+        "eltérések és visszatérő fejlesztési pontok összevetésére.",
     },
     {
-      title: "Szolgáltatásminőség és megfelelési pontok együttes vizsgálata",
+      title: "Célhoz kötött és bizalmas riportálás",
       body:
-        "Az audit egyszerre vizsgálhat ügyfélélményt, tájékoztatást, " +
-        "folyamatkövetést, számlázási vagy más egyeztetett megfelelési " +
-        "szempontokat.",
-    },
-    {
-      title: "Több helyszín vagy szolgáltató összehasonlítható riportja",
-      body:
-        "Egységes mérési szempontrendszerrel több egység, szolgáltató vagy " +
-        "időszak eredménye is összehasonlíthatóvá válik.",
-    },
-    {
-      title: "Vezetői összefoglaló és fejlesztési javaslatok",
-      body:
-        "Az eredmények nem önmagukért készülnek: a riport döntéstámogató " +
-        "javaslatokat adhat a szolgáltatásminőség, kontroll vagy megfelelés " +
-        "javításához.",
-    },
-    {
-      title: "Jogszerű, célhoz kötött és arányos vizsgálati keretek",
-      body:
-        "A vizsgálat nem korlátlan ellenőrzés: a cél, módszer, scope és " +
-        "értékelési keret az együttműködés elején kerül rögzítésre.",
+        "A riportálás az egyeztetett scope-ra és a kijelölt megrendelői " +
+        "áttekintési folyamatra korlátozódik. Személyes adatot érintő " +
+        "riportálás nem standard elem, és az egyeztetett adatvédelmi keretek " +
+        "között kell maradnia.",
     },
   ],
   faq: [
@@ -201,12 +188,14 @@ const PILOT_HU = {
         "megfigyelésből és a strukturált riport elkészítéséből áll.",
     },
     {
-      q: "Hogyan kerül meghatározásra az audit scope-ja?",
+      q: "Hogyan kerül meghatározásra és keretek között tartásra az audit scope-ja?",
       a:
-        "Avenir a megrendelővel együtt rögzíti az audit célját, a vizsgált " +
-        "folyamatokat, a forgatókönyvet, az értékelési szempontokat, a " +
-        "riportformátumot és azokat a megfigyeléseket, amelyek az audit " +
-        "keretébe tartoznak.",
+        "Az audit scope-ja a végrehajtás előtt kerül meghatározásra. Az " +
+        "Avenir előre rögzíti a célt, a forgatókönyvet, a vizsgálati " +
+        "szempontokat, a riportálási formát és a megengedett megfigyelési " +
+        "pontokat. A megállapítások az egyeztetett szolgáltatási kritériumokhoz " +
+        "és fejlesztési célokhoz kapcsolódnak, nem jogi következtetésként vagy " +
+        "fegyelmi bizonyítékként jelennek meg.",
     },
     {
       q: "Mi vizsgálható a szolgáltatásaudit során?",
@@ -256,16 +245,6 @@ const PILOT_HU = {
         "folyamatkövetést, ügyfélutat és egyeztetett megfelelési pontokat mér " +
         "egy meghatározott scope alapján. Nem magánnyomozás, nem korlátlan " +
         "megfigyelés, nem bizonyítékgyűjtés és nem fegyelmi automatizmus.",
-    },
-    {
-      q: "Hogyan marad az audit az egyeztetett keretek között?",
-      a:
-        "Az audit scope-ját a végrehajtás előtt kell rögzíteni. Avenir előre " +
-        "rögzíti a célt, a forgatókönyvet, az értékelési szempontokat, a " +
-        "riportformátumot és a megengedett megfigyeléseket. A megállapítások " +
-        "az egyeztetett szolgáltatási szempontokhoz és fejlesztési célokhoz " +
-        "kapcsolódnak, nem jogi következtetésként vagy fegyelmi " +
-        "bizonyítékként készülnek.",
     },
   ],
   // Related services use canonical Hungarian public slugs. Missing or
