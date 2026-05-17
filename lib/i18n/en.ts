@@ -96,7 +96,7 @@ export const en = {
       "id": "mystery",
       "icon": "eye",
       "t": "Mystery Shopping and Service Audit",
-      "d": "Mystery shopping, service quality checks and service audits in real customer and operational situations, with independent assessment and structured reporting."
+      "d": "Mystery shopping, service quality checks and service audits in real customer and operational situations, with structured observation and reporting."
     },
     {
       "id": "hardfm",

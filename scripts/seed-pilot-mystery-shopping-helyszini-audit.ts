@@ -193,28 +193,61 @@ const PILOT_HU = {
   ],
   faq: [
     {
-      q: "Mit jelent a próbavásárlás vagy Mystery Shopping?",
+      q: "Mit tartalmaz a Mystery Shopping és szolgáltatásaudit?",
       a:
-        "A próbavásárlás olyan előre megtervezett szolgáltatásminőség-mérés, " +
-        "amelyben a próbavásárló vagy auditor valós ügyfélhelyzetben járja " +
-        "végig az adott folyamatot. Ez lehet vásárlás, ügyintézés, helyszíni " +
-        "látogatás, próbautazás vagy más ügyfélkapcsolati pont.",
+        "A szolgáltatás az audit céljának, scope-jának és értékelési " +
+        "szempontjainak rögzítéséből, a próbavásárlási vagy ügyfélút-" +
+        "forgatókönyv kialakításából, a valós ügyfélhelyzetben történő " +
+        "megfigyelésből és a strukturált riport elkészítéséből áll.",
     },
     {
-      q: "Mi az a Brand Audit?",
+      q: "Hogyan kerül meghatározásra az audit scope-ja?",
       a:
-        "A Brand Audit az arculati, vizuális, tisztasági, hangulati és " +
-        "szolgáltatási standardokat vizsgálja. Segít megmutatni, hogy a " +
-        "helyszín vagy szolgáltatási pont mennyire felel meg a márka elvárt " +
-        "működésének és ügyfélélményének.",
+        "Avenir a megrendelővel együtt rögzíti az audit célját, a vizsgált " +
+        "folyamatokat, a forgatókönyvet, az értékelési szempontokat, a " +
+        "riportformátumot és azokat a megfigyeléseket, amelyek az audit " +
+        "keretébe tartoznak.",
     },
     {
-      q: "Mi az a Situation Shopping?",
+      q: "Mi vizsgálható a szolgáltatásaudit során?",
       a:
-        "A Situation Shopping interakciós próbavásárlás, ahol egyeztetett " +
-        "ügyfélhelyzeteket, kérdéseket, konfliktusokat vagy folyamatlépéseket " +
-        "tesztelünk. Így nem csak a környezet, hanem a kommunikáció, reakció " +
-        "és folyamatkövetés is mérhető.",
+        "Az audit vizsgálhat brand audit szempontokat, Situation Shopping " +
+        "forgatókönyveket, ügyfélút-lépéseket, szolgáltatásminőségi " +
+        "kritériumokat, egyeztetett megfelelési pontokat és több helyszín " +
+        "közötti konzisztenciát. Példák lehetnek a kommunikáció, tájékoztatás, " +
+        "kiszolgálás, számlázási vagy nyugtaadási folyamatok, ha ezek az " +
+        "egyeztetett scope részét képezik.",
+    },
+    {
+      q: "Készül riport az eredményekről?",
+      a:
+        "Igen. Avenir strukturált riportot készít a megfigyelt folyamatról, " +
+        "az eltérésekről, visszatérő mintákról, kockázati pontokról és " +
+        "fejlesztési javaslatokról az egyeztetett scope szerint.",
+    },
+    {
+      q: "Név szerint szerepelnek a munkatársak a jelentésben?",
+      a:
+        "A jelentés alapértelmezés szerint folyamat- és szolgáltatásminőségi " +
+        "fókuszú. Név szerinti vagy személyes adatot érintő megjelenítés csak " +
+        "előzetesen egyeztetett keretek között, az alkalmazandó adatvédelmi " +
+        "követelményekkel összhangban történhet.",
+    },
+    {
+      q: "Megismételhető ugyanaz a forgatókönyv több helyszínen?",
+      a:
+        "Igen, egységes forgatókönyv és értékelési szempontok alapján több " +
+        "helyszín, szolgáltató, egység vagy időszak is összehasonlítható. Ez " +
+        "segít az eltérések, visszatérő minták és fejlesztési prioritások " +
+        "azonosításában.",
+    },
+    {
+      q: "Alkalmazható közlekedési vagy szolgáltatási ügyfélútra?",
+      a:
+        "Igen. Próbautazás vagy szolgáltatási ügyfélút keretében vizsgálható " +
+        "például a tájékoztatás, a kiszolgálás, a számlázási vagy nyugtaadási " +
+        "folyamat, a viselkedési protokoll és az előre meghatározott " +
+        "szolgáltatási vagy megfelelési szempontok teljesülése.",
     },
     {
       q: "Mi a különbség a Mystery Shopping és a magánnyomozás között?",
@@ -225,44 +258,14 @@ const PILOT_HU = {
         "megfigyelés, nem bizonyítékgyűjtés és nem fegyelmi automatizmus.",
     },
     {
-      q: "Alkalmazható közlekedési vagy taxi jellegű szolgáltatásnál?",
+      q: "Hogyan marad az audit az egyeztetett keretek között?",
       a:
-        "Igen. Próbautazás keretében vizsgálható például az utazás teljes " +
-        "ügyfélútja, a tájékoztatás, a kiszolgálás, a számlázási vagy " +
-        "nyugtaadási folyamat, a viselkedési protokoll és az előre " +
-        "meghatározott szolgáltatási vagy megfelelési szempontok teljesülése.",
-    },
-    {
-      q: "Milyen megfelelési szempontok vizsgálhatók?",
-      a:
-        "Az audit egyeztetett scope alapján vizsgálhat tájékoztatási, " +
-        "árkommunikációs, számlázási, nyugtaadási, ügyfélkezelési, brand " +
-        "standardhoz vagy szerződéses szolgáltatási szinthez kapcsolódó " +
-        "szempontokat. Jogi vagy compliance auditként csak külön rögzített " +
-        "szakmai keretben kezelhető.",
-    },
-    {
-      q: "Készül riport az eredményekről?",
-      a:
-        "Igen, az audit eredménye strukturált riportban foglalható össze. A " +
-        "riport tartalmazhatja a tapasztalt folyamatot, az eltéréseket, a " +
-        "kockázati pontokat, a megfelelési megállapításokat és a fejlesztési " +
-        "javaslatokat.",
-    },
-    {
-      q: "Használható több helyszín vagy szolgáltató összehasonlítására?",
-      a:
-        "Igen, egységes értékelési szempontok alapján több helyszín, " +
-        "szolgáltató, egység vagy időszak is összehasonlítható. Ez segít az " +
-        "eltérések, visszatérő minták és fejlesztési prioritások azonosításában.",
-    },
-    {
-      q: "Hogyan biztosítható a jogszerűség?",
-      a:
-        "A vizsgálat célját, módszerét, scope-ját és értékelési szempontjait " +
-        "előre rögzíteni kell. Az auditnak jogszerű, célhoz kötött és arányos " +
-        "keretek között kell történnie, különösen akkor, ha munkavállalói, " +
-        "ügyféloldali vagy szolgáltatói folyamatokat érint.",
+        "Az audit scope-ját a végrehajtás előtt kell rögzíteni. Avenir előre " +
+        "rögzíti a célt, a forgatókönyvet, az értékelési szempontokat, a " +
+        "riportformátumot és a megengedett megfigyeléseket. A megállapítások " +
+        "az egyeztetett szolgáltatási szempontokhoz és fejlesztési célokhoz " +
+        "kapcsolódnak, nem jogi következtetésként vagy fegyelmi " +
+        "bizonyítékként készülnek.",
     },
   ],
   // Related services use canonical Hungarian public slugs. Missing or
