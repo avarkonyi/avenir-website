@@ -436,6 +436,7 @@ export default async function ServiceDetailPage({
               {detail.trustItems.map((item, i) => (
                 <div
                   key={`${i}-${item.title}`}
+                  className="service-detail-trust-card"
                   style={{
                     border: "1px solid #E2E8F0",
                     borderRadius: 4,
