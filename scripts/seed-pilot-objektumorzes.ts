@@ -58,26 +58,7 @@ const PILOT_HU = {
     "irodaházak, logisztikai és ipari helyszínek biztonsági rendjét: " +
     "beléptetés, kiléptetés, járőrözés, incidenskezelés, szolgálati napló " +
     "és egyeztetett eszkaláció alapján.",
-  longDesc:
-    "Az élőerős objektumőrzés célja, hogy a helyszínen ne csak őri " +
-    "jelenlét legyen, hanem helyszínhez igazított vagyonvédelmi rend. " +
-    "Avenir a helyszíni felmérés alapján szolgálati utasítást " +
-    "készít: meghatározza a belépési és kilépési pontokat, a látogatók és " +
-    "beszállítók kezelését, a járőrútvonalakat, a kulcskezelési " +
-    "szabályokat, az incidensek dokumentálását és az eszkalációs rendet.\n\n" +
-    "A szolgáltatás igény szerint összehangolható meglévő kamerarendszerrel, " +
-    "beléptető rendszerrel vagy riasztási folyamattal. A cél, hogy a " +
-    "megrendelő ne csak jelenlétet kapjon, hanem egyértelmű szolgálati " +
-    "keretet: naplózással, eseményjelentéssel, rendszeres egyeztetéssel " +
-    "és kijelölt felelős kapcsolattartóval.\n\n" +
-    "A vagyonőri jelenlét a helyszín kockázati profiljához és a " +
-    "szerződéses igényhez igazodik: fegyver nélküli vagy a jogi feltételek " +
-    "teljesülése esetén fegyveres vagyonőri szolgáltatás is kialakítható. " +
-    "Avenir SzVMt. szerinti vagyonvédelmi tevékenységi engedélyének száma: " +
-    "01030-822/4926-7/2023. A szolgálati rend ISO 9001 és " +
-    "ISO 27001 tanúsított irányítási rendszerekhez illeszkedő, " +
-    "szabályozott folyamatokra építhető, 24/7 diszpécseri háttérrel " +
-    "támogatva.",
+  longDesc: "Az élőerős objektumőrzés célja nem pusztán az őri jelenlét biztosítása, hanem a helyszínhez igazított vagyonvédelmi rend kialakítása. Avenir a helyszíni felmérés alapján szolgálati utasítást készít: meghatározza a belépési és kilépési pontokat, a látogatók és beszállítók kezelését, a járőrútvonalakat, a kulcskezelési szabályokat, az incidensek dokumentálását és az eszkalációs rendet.\n\nA szolgálat összekapcsolható a megrendelő meglévő kamerarendszerével, beléptető rendszerével vagy riasztási folyamatával. A cél, hogy a megrendelő ne csak jelenlétet kapjon, hanem visszakövethető működést: szolgálati naplóval, eseményjelentéssel, rendszeres egyeztetéssel és kijelölt felelős kapcsolattartóval.\n\nA vagyonőri jelenlét a helyszín kockázati profiljához és a szerződéses igényhez igazodik: fegyver nélküli, vagy a jogszabályi feltételek teljesülése esetén fegyveres vagyonőri szolgáltatás is kialakítható. Az Avenir a szolgáltatást az alkalmazandó magyar személy- és vagyonvédelmi szabályozási keret szerint nyújtja.",
   useCases: [
     "Logisztikai központok, raktárak és teherkapus helyszínek",
     "Ipari és gyártási telephelyek",
@@ -148,8 +129,7 @@ const PILOT_HU = {
     },
     {
       title: "ISO 9001 és ISO 27001",
-      body: "A szolgálati folyamatok ISO 9001 és ISO 27001 tanúsított " +
-        "irányítási rendszerekhez illeszkedő szabályozott működésre épülnek.",
+      body: "A szolgálati folyamatokat az Avenir ISO 9001 és ISO 27001 tanúsított irányítási rendszerei támogatják, amennyiben az adott folyamatok a tanúsított működési körbe tartoznak.",
     },
     {
       title: "Helyszínhez igazított szolgálati modell",
@@ -158,8 +138,7 @@ const PILOT_HU = {
     },
     {
       title: "Vagyonvédelmi engedély",
-      body: "Avenir SzVMt. szerinti vagyonvédelmi tevékenységi " +
-        "engedélyének száma: 01030-822/4926-7/2023.",
+      body: "Az Avenir az alkalmazandó magyar személy- és vagyonvédelmi szabályozási keret szerint nyújtja a szolgáltatást; az engedélyezési dokumentáció a szerződéses előkészítés során egyeztethető.",
     },
   ],
   faq: [

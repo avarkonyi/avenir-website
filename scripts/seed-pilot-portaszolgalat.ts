@@ -57,25 +57,7 @@ const PILOT_HU = {
     "beszállítók, munkatársak és bérlők találkoznak a helyszín szabályaival. " +
     "Avenir célja, hogy ez a pont rendezett, udvarias és biztonsági " +
     "szempontból következetes legyen.",
-  longDesc:
-    "A portaszolgálat nem egyszerű jelenlét a bejáratnál: a napi működés " +
-    "egyik legfontosabb kontrollpontja. A szolgáltatás a helyszín igényei " +
-    "szerint támogathatja a látogatók fogadását, a vendégregisztrációt, a " +
-    "beszállítók és alvállalkozók beléptetését, a kulcskezelést, a csomagok " +
-    "átvételét, az információadást és a rendkívüli események jelzését.\n\n" +
-    "Avenir a helyszíni felmérés alapján rögzíti a portaszolgálati és " +
-    "recepciós protokollt: ki léphet be, milyen jogosultsággal, milyen " +
-    "dokumentáció mellett, mikor szükséges értesítés, és milyen eseményt " +
-    "kell naplózni vagy eszkalálni. Látogató- és beléptetési adatok " +
-    "kezelésekor a célhoz kötöttség, az időben korlátozott megőrzés és a " +
-    "megfelelő tájékoztatás szempontjai is részei a porta- és recepciós " +
-    "folyamatnak.\n\n" +
-    "A portaszolgálat kapcsolódhat élőerős objektumőrzéshez, beléptető " +
-    "rendszerhez, kamerarendszerhez vagy belső üzemeltetési folyamathoz. " +
-    "A működés ISO 9001 és ISO 27001 tanúsított irányítási rendszerekhez " +
-    "illeszkedő szabályozott folyamatokra építhető, 24/7 diszpécseri " +
-    "háttérrel támogatható, szolgálati naplóval, egyeztetett riportálással " +
-    "és kijelölt felelős kapcsolattartóval.",
+  longDesc: "A portaszolgálat nem egyszerű jelenlét a bejáratnál: a napi működés egyik legfontosabb kontrollpontja. A szolgáltatás a helyszín igényei szerint támogathatja a látogatók fogadását, a vendégregisztrációt, a beszállítók és alvállalkozók beléptetését, a kulcskezelést, a csomagok átvételét, az információadást és a rendkívüli események jelzését.\n\nAvenir a helyszíni felmérés alapján rögzíti a portaszolgálati és recepciós protokollt: ki léphet be, milyen jogosultsággal, milyen dokumentáció mellett, mikor szükséges értesítés, és milyen eseményt kell naplózni vagy eszkalálni. Látogató- és beléptetési adatok kezelésekor a célhoz kötöttség, az időben korlátozott megőrzés és a megfelelő tájékoztatás szempontjai is részei a porta- és recepciós folyamatnak.\n\nA portaszolgálat kapcsolódhat élőerős objektumőrzéshez, beléptető rendszerhez, kamerarendszerhez vagy belső üzemeltetési folyamathoz. A megrendelő egyértelmű szolgálati keretet kap: szolgálati naplóval, egyeztetett riportálással és kijelölt felelős kapcsolattartóval.",
   useCases: [
     "Irodaházak és üzleti központok recepciós működése",
     "Logisztikai és ipari telephelyek porta- és beléptetési pontjai",
