@@ -66,12 +66,13 @@ const PILOT_HU = {
     "visszatérő események, kritikus területek és olyan folyamatok, ahol a " +
     "technológia az őrzést, a portaszolgálatot vagy a távfelügyeletet " +
     "támogatni tudja.\n\n" +
-    "Az adatvédelmi szempontok a technikai kialakítás részét képezik. A " +
-    "kameraképek lefedettségét, a látómezőt, a hozzáférési jogosultságokat, " +
-    "az érintettek tájékoztatását és a megőrzési logikát a dokumentált " +
-    "célhoz és az ügyfél adatvédelmi keretéhez kell igazítani. Az Avenir " +
-    "technikai inputot ad ehhez a felméréshez, de a jogalap és a végső " +
-    "adatvédelmi döntések az ügyfél és tanácsadói körében maradnak.\n\n" +
+    "Az Avenir a biztonságtechnikai felmérés és tervezés során az " +
+    "adatvédelmi szempontokat is beépíti: a dokumentált célt, az arányos " +
+    "látómezőt, a hozzáférési jogosultságokat, az érintetti tájékoztatást " +
+    "és a megőrzési logikát a helyszín működéséhez és az ügyfél adatvédelmi " +
+    "keretéhez igazítja. Ez támogatja az ügyfél adatvédelmi felülvizsgálatát; " +
+    "a jogalap és a végső adatvédelmi döntések az ügyfél és tanácsadói " +
+    "körében maradnak.\n\n" +
     "A cél egy átlátható, karbantartható és napi működésben is használható " +
     "biztonságtechnikai réteg: olyan megoldás, amely nem csak rögzít, " +
     "hanem segíti az észlelést, az eszkalációt, a beléptetést, a " +
@@ -161,11 +162,11 @@ const PILOT_HU = {
         "munkatársi beléptetést, valamint a jogosultsági szabályok követését.",
     },
     {
-      title: "Adatvédelmi szempontokat figyelembe vevő technikai javaslat",
+      title: "Adatvédelmi szempontokat beépítő biztonságtechnikai tervezés",
       body:
         "A kameraképek lefedettsége, a látómező, a hozzáférési jogosultságok, " +
-        "az érintetti tájékoztatás és a megőrzési logika a dokumentált célhoz " +
-        "és az ügyfél adatvédelmi keretéhez igazítandó.",
+        "az érintetti tájékoztatás és a megőrzési logika a " +
+        "biztonságtechnikai felmérés és tervezés részeként kezelendő.",
     },
     {
       title: "Dokumentált megállapítások és megvalósítási javaslat",
