@@ -60,49 +60,49 @@ export const en = {
       "id": "security",
       "icon": "shield",
       "t": "On-site Security Guarding",
-      "d": "Protection of people and assets with trained security guards: site guarding, patrol services, access control support and incident handling in industrial, retail and office environments."
+      "d": "On-site guarding for access, patrol, incident handling, service logging and agreed escalation at business sites."
     },
     {
       "id": "cleaning",
       "icon": "sparkle",
       "t": "Event Security",
-      "d": "Security for corporate, invitation-only and public events under an agreed framework: access control, guest and audience flow, zone handling and incident escalation."
+      "d": "Event security for corporate, invitation-only and public events, with access handling, audience-flow support, zone management, incident reporting and organiser-defined escalation."
     },
     {
       "id": "building",
       "icon": "camera",
       "t": "Security Technology",
-      "d": "Site-specific CCTV, access-control and alarm-system planning integrated with guarding, gatehouse workflows, escalation and reporting."
+      "d": "Security technology for CCTV, access control and alarm processes, integrated into a site-specific security model with data-protection-aware technical design."
     },
     {
       "id": "reception",
       "icon": "desk",
       "t": "Reception and Gatehouse Services",
-      "d": "Professional gatehouse and reception presence: visitor reception, access control, key management, parcel acceptance and tenant liaison to support daily operations."
+      "d": "Reception and gatehouse service for visitors, suppliers, employees, keys, packages, logging and agreed escalation."
     },
     {
       "id": "green",
       "icon": "leaf",
       "t": "Soft FM",
-      "d": "Coordination of cleaning, grounds maintenance and caretaking tasks as complementary services, with controlled quality and one accountable point of contact."
+      "d": "Soft FM for cleaning, landscaping, hygiene, waste-handling support and provider management, delivered to an agreed scope with quality checks and written reporting."
     },
     {
       "id": "technical",
       "icon": "radar",
       "t": "Remote Monitoring and Response Service",
-      "d": "Handling alarm and camera alerts with dispatcher support, with on-site response when needed, according to agreed protocols."
+      "d": "Remote monitoring and response service with signal reception, alarm verification, escalation, event logging and response process under agreed conditions."
     },
     {
       "id": "mystery",
       "icon": "eye",
       "t": "Mystery Shopping and Service Audit",
-      "d": "Mystery shopping, service quality checks and service audits in real customer and operational situations, with structured observation and reporting."
+      "d": "Mystery shopping, service-quality checks and service audits in real customer and operational situations, with structured observation, reporting and improvement recommendations."
     },
     {
       "id": "hardfm",
       "icon": "gear",
       "t": "Hard FM",
-      "d": "Planned preventive maintenance, reactive fault handling and technical operations coordination for complex sites."
+      "d": "Hard FM for planned preventive maintenance, reactive fault handling, specialist subcontractor coordination, documented fault logs and operations reporting."
     }
   ],
   "refTitle": "Partners",

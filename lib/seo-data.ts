@@ -118,7 +118,7 @@ export const META_TAGLINES: Record<SeoLocale, string> = {
 // Per-locale meta descriptions. Keep these concise for search snippets;
 // the longer hero copy remains visible on-page.
 export const META_DESCRIPTIONS: Record<SeoLocale, string> = {
-  hu: "Vagyonvédelem, biztonságtechnika, helyszíni audit és FM-támogatás országosan. Egy szerződés, egy felelős kapcsolattartó.",
+  hu: "Vagyonvédelem, biztonságtechnika, szolgáltatásaudit és FM-támogatás országosan. Egy szerződés, egy felelős kapcsolattartó.",
   en: "Security services, security technology, service audits and FM support in Hungary. One contract, one accountable point of contact.",
   de: "Objektschutz, Sicherheitstechnik, Vor-Ort-Audits und FM-Unterstützung in Ungarn. Ein Vertrag, ein verantwortlicher Ansprechpartner.",
   zh: "Avenir 在匈牙利提供安保服务、安防技术、现场审核和设施管理支持，一份合同，一个责任明确的对接人。",
