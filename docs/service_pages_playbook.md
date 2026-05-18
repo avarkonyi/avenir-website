@@ -89,10 +89,20 @@ Planned special-service URLs:
 
 Working names:
 
-- Helyszíni biztonsági audit — Site Security Audit / On-site Security Audit
+- Helyszíni biztonsági audit — Site Security Audit
 - Adatvédelmi és GDPR-folyamatfelmérés — Data Protection and GDPR Process
   Review
 - Magánnyomozás — Private Investigation
+
+Naming decisions:
+
+- Use `Adatvédelmi és GDPR-folyamatfelmérés` as the HU title, not `GDPR
+  audit`.
+- Use `Data Protection and GDPR Process Review` as the EN title, not `GDPR
+  Audit`.
+- Treat the GDPR/data-protection service as process review,
+  technical/operational input, and data-protection-aware assessment. Do not
+  frame it as legal advice, formal certification, or guaranteed compliance.
 
 Special-service copy must be discreet, regulated, B2B, and compliance-aware.
 Do not imply unlawful covert surveillance, blanket employee monitoring,
@@ -103,7 +113,17 @@ Additional guardrails:
 - Mystery Shopping must remain separate from Private Investigation.
 - Site Security Audit must not be framed as authority, police, or regulatory
   inspection.
-- GDPR Process Review must not promise GDPR compliance or legal advice.
+- Site Security Audit may cover security processes, access control, guarding
+  model, escalation, camera/alarm process, documentation, and site-specific
+  risks.
+- Data Protection and GDPR Process Review may cover camera-system data points,
+  access-control processes, visitor logs, gatehouse/reception data flow,
+  retention logic, access rights, data-subject information, and operational
+  documentation.
+- Data Protection and GDPR Process Review must not promise GDPR compliance,
+  provide legal advice, or sign off legal basis, LIA, DPIA, or NAIH compliance.
+- Legal basis and final legal/data-protection decisions remain with the client
+  and its advisers.
 - Private Investigation must not be framed as general surveillance, hidden
   monitoring, employee surveillance, or automatic disciplinary reporting.
 - Do not invite sensitive personal data through the standard contact form.

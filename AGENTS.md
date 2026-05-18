@@ -32,10 +32,16 @@ of the current eight operational service pages.
 
 Planned/discovery-only candidates:
 
-- `helyszini-biztonsagi-audit` — Site Security Audit / On-site Security Audit;
+- `helyszini-biztonsagi-audit` — Site Security Audit;
 - `gdpr-adatvedelmi-folyamatfelmeres` — Data Protection and GDPR Process
   Review;
 - `magannyomozas` — Private Investigation.
+
+Naming decisions:
+
+- use `Adatvédelmi és GDPR-folyamatfelmérés` / `Data Protection and GDPR
+  Process Review`;
+- do not use `GDPR audit` / `GDPR Audit` as the main public title.
 
 Do not create routes, schema, seed scripts, contact options, sitemap entries, or
 public copy for these services unless explicitly requested. They require
@@ -48,7 +54,14 @@ Guardrails:
   Private Investigation.
 - Site Security Audit must not be framed as authority, police, or regulatory
   inspection.
-- GDPR Process Review must not promise GDPR compliance or legal advice.
+- Data Protection and GDPR Process Review may cover camera-system data points,
+  access-control processes, visitor logs, gatehouse/reception data flow,
+  retention logic, access rights, data-subject information, and operational
+  documentation.
+- Data Protection and GDPR Process Review must not promise GDPR compliance,
+  provide legal advice, or sign off legal basis, LIA, DPIA, or NAIH compliance.
+- Legal basis and final legal/data-protection decisions remain with the client
+  and its advisers.
 - Private Investigation must not be framed as general surveillance, hidden
   monitoring, employee surveillance, or automatic disciplinary reporting.
 - Do not invite sensitive personal-data submissions through the standard

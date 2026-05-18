@@ -286,9 +286,18 @@ Candidate services:
 
 | HU working title | EN working title | Documentation-only URL candidate |
 | --- | --- | --- |
-| Helyszíni biztonsági audit | Site Security Audit / On-site Security Audit | `/hu/szolgaltatasok/helyszini-biztonsagi-audit` |
+| Helyszíni biztonsági audit | Site Security Audit | `/hu/szolgaltatasok/helyszini-biztonsagi-audit` |
 | Adatvédelmi és GDPR-folyamatfelmérés | Data Protection and GDPR Process Review | `/hu/szolgaltatasok/gdpr-adatvedelmi-folyamatfelmeres` |
 | Magánnyomozás | Private Investigation | `/hu/szolgaltatasok/magannyomozas` |
+
+Naming decisions:
+
+- use `Adatvédelmi és GDPR-folyamatfelmérés` as the HU name, not `GDPR
+  audit`;
+- use `Data Protection and GDPR Process Review` as the EN name, not `GDPR
+  Audit`;
+- keep this service framed as process review, technical/operational input, and
+  data-protection-aware assessment.
 
 Sequencing:
 
@@ -303,7 +312,18 @@ Guardrails:
 - keep Mystery Shopping separate from Private Investigation;
 - do not frame Site Security Audit as authority, police, or regulatory
   inspection;
-- do not promise GDPR compliance or legal advice for GDPR Process Review;
+- Site Security Audit may cover security processes, access control, guarding
+  model, escalation, camera/alarm process, documentation, and site-specific
+  risks;
+- Data Protection and GDPR Process Review may cover camera-system data points,
+  access-control processes, visitor logs, gatehouse/reception data flow,
+  retention logic, access rights, data-subject information, and operational
+  documentation;
+- do not promise GDPR compliance, legal advice, legal-basis sign-off, LIA,
+  DPIA, or NAIH-compliance sign-off for Data Protection and GDPR Process
+  Review;
+- legal basis and final legal/data-protection decisions remain with the client
+  and its advisers;
 - do not frame Private Investigation as general surveillance, hidden
   monitoring, employee surveillance, or disciplinary automation;
 - do not invite users to submit sensitive personal data through the standard

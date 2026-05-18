@@ -88,6 +88,19 @@ main operational service pages.
 They must be written as discreet B2B services, not as aggressive consumer-style
 investigation offers.
 
+Preferred service names:
+
+- `Helyszíni biztonsági audit` / `Site Security Audit`;
+- `Adatvédelmi és GDPR-folyamatfelmérés` / `Data Protection and GDPR Process
+  Review`;
+- `Magánnyomozás` / `Private Investigation`.
+
+Use `Adatvédelmi és GDPR-folyamatfelmérés` as the HU name, not `GDPR audit`.
+Use `Data Protection and GDPR Process Review` as the EN name, not `GDPR
+Audit`. The GDPR/data-protection service should read as process review,
+technical/operational input, and data-protection-aware assessment, not legal
+advice, certification, or compliance sign-off.
+
 Use careful wording:
 
 - előre egyeztetett scope;
@@ -103,14 +116,26 @@ Avoid:
 - hidden employee monitoring without approved lawful scope;
 - recording claims unless explicitly approved;
 - guaranteed improvement numbers;
-- legal or compliance audit claims unless that scope is separately defined.
+- legal or compliance audit claims unless that scope is separately defined;
+- GDPR compliance guarantees, legal advice, or legal-basis/LIA/DPIA/NAIH
+  sign-off claims.
 
 Service-specific guardrails:
 
 - Mystery Shopping must stay separate from Private Investigation.
 - Site Security Audit must not sound like authority, police, or regulatory
   inspection.
-- GDPR Process Review must not promise GDPR compliance or legal advice.
+- Site Security Audit may cover security processes, access control, guarding
+  model, escalation, camera/alarm process, documentation, and site-specific
+  risks.
+- Data Protection and GDPR Process Review may cover camera-system data points,
+  access-control processes, visitor logs, gatehouse/reception data flow,
+  retention logic, access rights, data-subject information, and operational
+  documentation.
+- Data Protection and GDPR Process Review must not promise GDPR compliance,
+  provide legal advice, or sign off legal basis, LIA, DPIA, or NAIH compliance.
+- Legal basis and final legal/data-protection decisions remain with the client
+  and its advisers.
 - Private Investigation must not be framed as general surveillance, hidden
   monitoring, employee surveillance, or automatic disciplinary reporting.
 - Special-service CTAs should point toward preliminary consultation and should

@@ -947,9 +947,19 @@ Planned/discovery-only candidates:
 
 | HU working title | EN working title | Documentation-only URL candidate |
 | --- | --- | --- |
-| Helyszíni biztonsági audit | Site Security Audit / On-site Security Audit | `/hu/szolgaltatasok/helyszini-biztonsagi-audit` |
+| Helyszíni biztonsági audit | Site Security Audit | `/hu/szolgaltatasok/helyszini-biztonsagi-audit` |
 | Adatvédelmi és GDPR-folyamatfelmérés | Data Protection and GDPR Process Review | `/hu/szolgaltatasok/gdpr-adatvedelmi-folyamatfelmeres` |
 | Magánnyomozás | Private Investigation | `/hu/szolgaltatasok/magannyomozas` |
+
+Naming decisions:
+
+- Use `Adatvédelmi és GDPR-folyamatfelmérés` as the HU service name, not
+  `GDPR audit`.
+- Use `Data Protection and GDPR Process Review` as the EN service name, not
+  `GDPR Audit`.
+- Frame the GDPR/data-protection service as process review,
+  technical/operational input, and data-protection-aware assessment, not legal
+  advice, certification, or compliance sign-off.
 
 Do not create these routes, sitemap entries, schema fields, seed scripts, or
 contact options until a separate legal/proof-reviewed content plan exists.
@@ -962,7 +972,17 @@ Guardrails:
 - Mystery Shopping remains separate from Private Investigation.
 - Site Security Audit must not be framed as authority, police, or regulatory
   inspection.
-- GDPR Process Review must not promise GDPR compliance or legal advice.
+- Site Security Audit may cover security processes, access control, guarding
+  model, escalation, camera/alarm process, documentation, and site-specific
+  risks.
+- Data Protection and GDPR Process Review may cover camera-system data points,
+  access-control processes, visitor logs, gatehouse/reception data flow,
+  retention logic, access rights, data-subject information, and operational
+  documentation.
+- Data Protection and GDPR Process Review must not promise GDPR compliance,
+  provide legal advice, or sign off legal basis, LIA, DPIA, or NAIH compliance.
+- Legal basis and final legal/data-protection decisions remain with the client
+  and its advisers.
 - Private Investigation must not imply general surveillance, hidden monitoring,
   employee surveillance, or automatic disciplinary reporting.
 - Do not invite sensitive personal-data submissions through the standard
