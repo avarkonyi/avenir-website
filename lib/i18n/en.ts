@@ -89,7 +89,7 @@ export const en = {
     {
       "id": "technical",
       "icon": "radar",
-      "t": "Remote Monitoring and Response",
+      "t": "Remote Monitoring and Response Service",
       "d": "Handling alarm and camera alerts with dispatcher support, with on-site response when needed, according to agreed protocols."
     },
     {

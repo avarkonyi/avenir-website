@@ -46,47 +46,49 @@ const TARGET_SLUG = "tavfelugyelet-vonuloszolgalat";
 const LEGACY_SLUG = "technical";
 
 const PILOT_HU = {
-  seoTitle: "Távfelügyelet és vonulószolgálat vállalati helyszínekre | Avenir",
+  seoTitle: "Távfelügyelet és vonulószolgálat | Avenir",
   seoDescription:
     "Riasztási jelzések kezelése, eszkaláció, eseményrögzítés és " +
     "vonulószolgálati folyamat biztonságtechnikával és őrzéssel összehangolva.",
   valueProposition:
-    "A távfelügyelet és vonulószolgálat akkor ad valódi kontrollt, ha a " +
-    "jelzések nem önmagukban érkeznek be, hanem egyeztetett " +
-    "eszkalációs rend, kapcsolattartási lánc, eseményrögzítés és helyszíni " +
-    "reagálási folyamat kapcsolódik hozzájuk.",
+    "Az Avenir 24/7 diszpécseri háttérrel kezeli a csatlakoztatott " +
+    "helyszínekről érkező riasztási, behatolásjelzési és kamerajelzéseket; " +
+    "minden jelzés ellenőrzött eszkalációs folyamatba kerül, és az " +
+    "intézkedések eseménynaplóban rögzülnek.",
   longDesc:
-    "A távfelügyelet célja, hogy a riasztási, behatolásjelzési vagy más " +
-    "biztonságtechnikai események ne maradjanak elszigetelt jelzések. A " +
-    "működés lényege, hogy a jelzések fogadása, értékelése, dokumentálása " +
-    "és továbbítása rögzített szabályok szerint történjen.\n\n" +
-    "Avenir a távfelügyeleti és vonulószolgálati folyamatot a helyszín " +
-    "biztonságtechnikai adottságaihoz, őrzési rendjéhez és kapcsolattartási " +
-    "struktúrájához igazítja. A helyszíni felmérés során meghatározható, " +
-    "milyen eseményre milyen jelzési és eszkalációs rend vonatkozzon, kiket " +
-    "kell értesíteni, mikor indokolt helyszíni reagálás, és hogyan történjen " +
-    "az esemény dokumentálása. A jelzések, események és esetleges felvételek " +
-    "kezelése a helyszínre vonatkozó adatvédelmi és szolgálati szabályok " +
-    "szerint történik.\n\n" +
-    "A cél egy átlátható, szerződéses feltételekhez igazított " +
-    "jelzéskezelési rend: olyan folyamat, amely összekapcsolja " +
-    "a biztonságtechnikát, az objektumőrzést, a portaszolgálatot és a " +
-    "vonulószolgálati reagálást.",
+    "Az Avenir az egyeztetett távfelügyeleti beállítás szerint fogadja a " +
+    "csatlakoztatott helyszínekről érkező riasztási, behatolásjelzési és " +
+    "kamerához kapcsolódó jelzéseket. A jelzések az előre rögzített " +
+    "verifikációs protokoll szerint kerülnek ellenőrzésre az eszkaláció " +
+    "előtt. A téves jelzések naplózhatók és elemezhetők; a valós események " +
+    "a helyszíni protokoll szerint a kijelölt kapcsolattartóhoz, " +
+    "vonulószolgálathoz vagy külső eszkalációs útvonalhoz kerülnek. Az " +
+    "intézkedések eseménynaplóban rögzülnek.\n\n" +
+    "Ha a szolgáltatás távfelügyeleti jelzéskezelést tartalmaz, a " +
+    "verifikációs lépés a működési eljárás része, és eseményenként " +
+    "dokumentálásra kerül. A távfelügyelet és a vonulószolgálat jogi és " +
+    "szerződéses keretei az előkészítés során kerülnek egyeztetésre; a " +
+    "külső eszkaláció az egyeztetett helyszíni protokoll és az alkalmazandó " +
+    "szabályok szerint történik.\n\n" +
+    "A távfelügyelet akkor működik jól, ha kapcsolódik a helyszín többi " +
+    "biztonsági rétegéhez: a biztonságtechnikához, az élőerős őrzéshez, a " +
+    "portaszolgálathoz és az egyeztetett reagálási folyamathoz. Így a " +
+    "jelzéskezelés, az eszkaláció, az eseménynaplózás és a lezárás egy " +
+    "működési modellbe rendeződik.",
   useCases: [
-    "Ipari és logisztikai telephelyek riasztási jelzései",
-    "Irodaházak, raktárak és üzleti központok jelzéskezelése",
-    "Kamerarendszerrel, beléptetővel vagy behatolásjelzővel működő helyszínek",
-    "Olyan objektumok, ahol a jelzésekhez eszkalációs és értesítési rend szükséges",
-    "Meglévő távfelügyeleti vagy vonulószolgálati folyamat felülvizsgálata",
+    "Ipari és logisztikai helyszínek behatolásjelzési, riasztási vagy peremvédelmi jelzésekkel",
+    "Irodaházak, raktárak és üzleti központok kamerával felügyelt zónákkal",
+    "Beléptetéssel vagy behatolásjelzéssel működő helyszínek, ahol 24/7 jelzéskezelés szükséges",
+    "Több bérlős vagy több helyszínes működés dokumentált eszkalációs lánccal",
+    "Meglévő távfelügyeleti vagy vonulószolgálati folyamatok felülvizsgálata verifikációs, reagálási vagy riportálási hiányosságok miatt",
   ],
   includedItems: [
-    "Riasztási és behatolásjelzési folyamatok áttekintése",
-    "Jelzéskezelési és eszkalációs rend kialakítása",
-    "Kapcsolattartási lánc és értesítési szabályok rögzítése",
-    "Vonulószolgálati folyamat szerződéses feltételek szerinti kezelése",
-    "Eseményrögzítés és riportálás",
-    "Kapcsolódás kamerarendszerhez, beléptetéshez és objektumőrzéshez",
-    "Helyszíni biztonsági felmérés és működési javaslat",
+    "24/7 riasztási és kamerajelzések fogadása az egyeztetett távfelügyeleti beállítás szerint",
+    "Verifikált riasztási protokoll, eseményenként dokumentált ellenőrzési lépéssel",
+    "Név szerinti kapcsolattartási lánc, eszkalációs mátrix és értesítési szabályok",
+    "Saját vonulószolgálati folyamat egyeztetett szerződéses feltételek szerint",
+    "Időbélyegzett eseménynapló és eseményriport",
+    "Kapcsolódás a helyszín biztonságtechnikájához, élőerős őrzéséhez és portaszolgálatához",
   ],
   processSteps: [
     {
@@ -96,31 +98,34 @@ const PILOT_HU = {
         "adottságokat és a helyszín őrzési vagy portaszolgálati működését.",
     },
     {
-      title: "Riasztási, behatolásjelzési és jelzéskezelési folyamatok feltérképezése",
+      title: "Jelzésforrások és verifikációs pontok feltérképezése",
       body:
-        "Meghatározzuk, milyen jelzések keletkezhetnek, hova futnak be, ki " +
-        "értékeli őket, és milyen dokumentálás kapcsolódik hozzájuk.",
+        "Meghatározzuk, milyen jelzések keletkezhetnek, milyen forrásból " +
+        "érkeznek, milyen ellenőrzési pontok kapcsolódnak hozzájuk, és hogyan " +
+        "kell dokumentálni a verifikációt.",
     },
     {
-      title: "Kapcsolattartási és eszkalációs rend kialakítása",
+      title: "Kapcsolattartási lánc és eszkalációs mátrix kialakítása",
       body:
         "Rögzítjük, milyen esemény esetén kit kell értesíteni, milyen " +
-        "sorrendben történjen a jelzés, és mikor indokolt további reagálás.",
+        "sorrendben történjen az eszkaláció, és milyen esemény indít " +
+        "vonulószolgálati vagy külső reagálási folyamatot.",
     },
     {
-      title: "Vonulószolgálati folyamat szerződéses feltételeinek rögzítése",
+      title: "Vonulószolgálati működés egyeztetett feltételek szerint",
       body:
         "A helyszíni reagálási folyamatot a technikai adottságokhoz, a " +
         "szolgáltatási területhez és a szerződéses feltételekhez igazítjuk.",
     },
     {
-      title: "Eseményrögzítési és riportálási szabályok egyeztetése",
+      title: "Eseménynaplózási és riportálási szabályok",
       body:
-        "Meghatározzuk, mit kell naplózni, milyen riport készüljön, és milyen " +
-        "lezárási rend szerint kezelhető az esemény.",
+        "Meghatározzuk, mit kell naplózni, milyen riport készüljön, milyen " +
+        "lezárási státuszok használhatók, és hogyan legyen visszakereshető az " +
+        "eseménykezelés.",
     },
     {
-      title: "Működés elindítása, ellenőrzése és finomhangolása",
+      title: "Indítás, működéskövetés és finomhangolás",
       body:
         "Az indulás után a visszatérő jelzéseket, tapasztalatokat és " +
         "riportokat egyeztetjük, majd szükség szerint pontosítjuk a folyamatot.",
@@ -128,64 +133,55 @@ const PILOT_HU = {
   ],
   trustItems: [
     {
-      title: "24/7 diszpécseri háttérrel támogatható működés",
+      title: "24/7 jelzésfogadás verifikált eszkalációval",
       body:
-        "A jelzéskezelési folyamat 24/7 diszpécseri háttérrel támogatható; " +
-        "az értesítési és reagálási szabályokat a szerződéses működésben kell " +
-        "rögzíteni.",
+        "Az Avenir 24/7 jelzésfogadást biztosít a csatlakoztatott " +
+        "helyszínekhez, a riasztások pedig az egyeztetett verifikációs " +
+        "protokoll szerint kerülnek ellenőrzésre az eszkaláció előtt.",
     },
     {
-      title: "Jelzéskezelési folyamat",
+      title: "Dokumentált riasztás-verifikációs napló",
       body:
-        "A jelzések fogadása, értékelése, továbbítása és lezárása rögzített " +
-        "működési rend szerint történhet.",
+        "Minden jelzés, ellenőrzési lépés és eszkalációs döntés " +
+        "eseménynaplóban rögzül, amely a szolgáltatási megállapodás szerint " +
+        "visszakereshető.",
     },
     {
-      title: "Egyeztetett eszkalációs rend",
+      title: "Név szerinti kapcsolattartási lánc és eszkalációs mátrix",
       body:
-        "Az eszkalációs rend határozza meg, hogy riasztás vagy rendkívüli " +
-        "esemény esetén ki, mikor és milyen sorrendben kap értesítést.",
+        "Az értesítési sorrend, a kijelölt kapcsolattartók és a reagálási " +
+        "kiváltó pontok előre egyeztetve és helyszínenként dokumentálva vannak.",
     },
     {
-      title: "Kapcsolódás biztonságtechnikához",
+      title: "Működési integráció biztonságtechnikával, őrzéssel és portaszolgálattal",
       body:
-        "A távfelügyeleti működés kamerarendszerhez, behatolásjelzéshez, " +
-        "beléptetési eseményhez vagy más biztonságtechnikai jelzéshez " +
-        "kapcsolódhat.",
+        "A távfelügyelet a helyszín kamerarendszerével, beléptetésével, " +
+        "élőerős őrzésével és portaszolgálatával együtt működik, hogy a " +
+        "jelzéskezelés és a reagálás egy működési modell szerint történjen.",
     },
     {
-      title: "Kapcsolódás objektumőrzéshez és portaszolgálathoz",
+      title: "Eseményrögzítés és időszakos incidensriport",
       body:
-        "A jelzéskezelés akkor működik hatékonyan, ha az őrzési, porta- és " +
-        "kapcsolattartási folyamatok is illeszkednek hozzá.",
+        "Az ügyfél az egyeztetett gyakoriság szerint eseményriportot kap; az " +
+        "eseménynapló támogatja a téves jelzések, visszatérő események és " +
+        "fejlesztési pontok áttekintését.",
     },
     {
-      title: "Eseményrögzítés és riportálás",
+      title: "ISO 9001 és ISO 27001 irányítási rendszerek",
       body:
-        "A szolgáltatás része lehet eseményrögzítés és egyeztetett riportálás, " +
-        "hogy a helyszíni jelzéskezelés átlátható maradjon.",
-    },
-    {
-      title: "Szerződéses feltételekhez igazított vonulószolgálati folyamat",
-      body:
-        "A helyszíni reagálás feltételeit, területét és szabályait az " +
-        "együttműködés elején kell rögzíteni.",
-    },
-    {
-      title: "ISO 9001 és ISO 27001",
-      body:
-        "A működés ISO 9001 és ISO 27001 tanúsított irányítási rendszerekhez " +
-        "illeszkedő szabályozott folyamatokra építhető.",
+        "A távfelügyeleti működést az Avenir ISO 9001 és ISO 27001 " +
+        "tanúsított irányítási rendszerei támogatják, amennyiben ezek a " +
+        "folyamatok a tanúsított működési körbe tartoznak.",
     },
   ],
   faq: [
     {
       q: "Mit jelent a távfelügyelet az Avenir szolgáltatásában?",
       a:
-        "A távfelügyelet a riasztási, behatolásjelzési vagy más " +
-        "biztonságtechnikai jelzések fogadását, kezelését, továbbítását és " +
-        "dokumentálását jelenti. A cél, hogy a jelzések egyeztetett " +
-        "eszkalációs rend szerint kerüljenek feldolgozásra.",
+        "Az Avenir a csatlakoztatott helyszínekről érkező riasztási, " +
+        "behatolásjelzési, kamerához kapcsolódó vagy más biztonságtechnikai " +
+        "jelzéseket fogadja, ellenőrzi, naplózza és az egyeztetett protokoll " +
+        "szerint eszkalálja.",
     },
     {
       q: "Mi a különbség a távfelügyelet és a vonulószolgálat között?",
@@ -199,9 +195,27 @@ const PILOT_HU = {
       q: "Milyen jelzések kezelhetők?",
       a:
         "A folyamat kapcsolódhat behatolásjelzőhöz, riasztási eseményhez, " +
-        "kamerarendszerhez, beléptetési eseményhez vagy más " +
-        "biztonságtechnikai jelzéshez. A pontos jelzéstípusokat a helyszíni " +
-        "adottságok és a szerződéses igények alapján kell rögzíteni.",
+        "kamerarendszerhez, beléptetési eseményhez, peremvédelmi jelzéshez " +
+        "vagy más biztonságtechnikai jelzéshez. A pontos jelzéstípusokat a " +
+        "helyszíni adottságok és a szerződéses igények alapján kell rögzíteni.",
+    },
+    {
+      q: "Hogyan történik a riasztás ellenőrzése az eszkaláció előtt?",
+      a:
+        "A verifikációs lépés a helyszíni protokollban kerül meghatározásra. " +
+        "Az Avenir a rendelkezésre álló jelzésforrások és az egyeztetett " +
+        "ellenőrzési szabály alapján vizsgálja a riasztást az eszkaláció " +
+        "előtt. A téves jelzések naplózhatók és visszanézhetők; a valós " +
+        "események a dokumentált kapcsolattartási és reagálási protokoll " +
+        "szerint kerülnek eszkalálásra. Minden lépés eseménynaplóban rögzül.",
+    },
+    {
+      q: "Rendelkezik az Avenir a távfelügyelethez és vonulószolgálathoz szükséges engedélyekkel?",
+      a:
+        "Igen. A távfelügyelet és a vonulószolgálat az alkalmazandó magyar " +
+        "személy- és vagyonvédelmi szabályozási keret szerint történik. Az " +
+        "engedélyre és a szolgáltatási dokumentációra vonatkozó információk " +
+        "a szerződéses előkészítés során egyeztethetők.",
     },
     {
       q: "Van garantált kiérkezési idő?",
@@ -212,20 +226,29 @@ const PILOT_HU = {
         "az együttműködés elején érdemes pontosan rögzíteni.",
     },
     {
+      q: "Hogyan történik az eszkaláció?",
+      a:
+        "Az eszkaláció a helyszíni protokollban rögzített név szerinti " +
+        "kapcsolattartási lánc, értesítési sorrend és reagálási mátrix szerint " +
+        "történik. A protokoll határozza meg, mikor kell kijelölt " +
+        "kapcsolattartót, vonulószolgálatot vagy külső eszkalációs útvonalat " +
+        "bevonni.",
+    },
+    {
       q: "Kapunk eseményriportot?",
       a:
-        "Igen, a szolgáltatás része lehet eseményrögzítés és egyeztetett " +
-        "riportálás. A riport formátuma, gyakorisága és tartalma az " +
-        "együttműködés elején rögzíthető.",
+        "Igen. Az ügyfél az egyeztetett gyakoriság szerint eseményriportot " +
+        "kap; a riport formátuma, gyakorisága és tartalma az együttműködés " +
+        "elején rögzíthető.",
     },
     {
       q: "Hogyan dokumentálhatók a riasztási jelzések és események?",
       a:
-        "A jelzések eseménynaplóban rögzíthetők: mikor érkezett a jelzés, " +
-        "milyen értesítési lánc indult el, történt-e eszkaláció, milyen " +
-        "intézkedés következett, mi lett a lezárási státusz, és milyen " +
-        "riport készüljön a megrendelő felé. A részleteket a helyszíni és " +
-        "szerződéses szabályok alapján érdemes meghatározni.",
+        "A jelzések időbélyegzett eseménynaplóban rögzíthetők: mikor érkezett " +
+        "a jelzés, milyen ellenőrzési lépés történt, milyen értesítési lánc " +
+        "indult el, történt-e eszkaláció, milyen intézkedés következett, és " +
+        "mi lett a lezárási státusz. A részleteket a helyszíni és szerződéses " +
+        "szabályok alapján kell meghatározni.",
     },
     {
       q: "Összekapcsolható a távfelügyelet a biztonságtechnikával?",
@@ -233,6 +256,17 @@ const PILOT_HU = {
         "Igen. A távfelügyelet akkor működik jól, ha a kamerarendszer, " +
         "behatolásjelző, beléptetés, objektumőrzés és portaszolgálat " +
         "folyamatai összehangoltan támogatják egymást.",
+    },
+    {
+      q: "Hogyan kezeljük az adatvédelmi szempontokat a távfelügyeleti működésben?",
+      a:
+        "A távfelügyeletben használt jelzések, kameraképek és beléptetési " +
+        "események kizárólag az egyeztetett távfelügyeleti cél szerint és az " +
+        "ügyfél adatvédelmi keretei alapján kezelhetők. A megőrzés, a " +
+        "hozzáférésnaplózás és az adatminimalizálás szabályai helyszínenként " +
+        "kerülnek meghatározásra. Az Avenir a folyamat technikai és működési " +
+        "oldalát támogatja; a jogalap és a végső adatvédelmi döntések az " +
+        "ügyfél és tanácsadói körében maradnak.",
     },
     {
       q: "Mikor érdemes helyszíni biztonsági felmérést kérni?",
