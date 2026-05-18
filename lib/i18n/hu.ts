@@ -62,7 +62,7 @@ export const hu = {
       id: "building",
       icon: "camera",
       t: "Biztonságtechnika",
-      d: "CCTV-, beléptető- és riasztórendszerek tervezése, telepítése és karbantartása az élőerős vagyonvédelmet támogató technikai háttérrel.",
+      d: "Helyszínre szabott kamera-, beléptető- és riasztórendszer-tervezés őrzési, portaszolgálati, eszkalációs és riportálási folyamatokhoz illesztve.",
     },
     {
       id: "reception",

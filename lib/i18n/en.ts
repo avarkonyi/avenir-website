@@ -72,7 +72,7 @@ export const en = {
       "id": "building",
       "icon": "camera",
       "t": "Security Technology",
-      "d": "Design, installation and maintenance of CCTV, access control and alarm systems, providing the technical layer that supports on-site security."
+      "d": "Site-specific CCTV, access-control and alarm-system planning integrated with guarding, gatehouse workflows, escalation and reporting."
     },
     {
       "id": "reception",

@@ -50,11 +50,10 @@ const PILOT_HU = {
     "Kamerarendszer, beléptetés, behatolásjelzés és riasztási folyamatok " +
     "élőerős őrzéssel és portaszolgálattal összehangolva.",
   valueProposition:
-    "A biztonságtechnikai rendszer akkor működik jól, ha nem különálló " +
-    "eszközök halmaza, hanem a helyszín napi működéséhez illeszkedő " +
-    "védelmi réteg. Avenir a kamerarendszereket, beléptetési pontokat, " +
-    "riasztási folyamatokat és jelzéskezelést az élőerős őrzéssel, " +
-    "portaszolgálattal és távfelügyelettel összehangolva tervezi.",
+    "A biztonságtechnika a kamerarendszert, a beléptetést és a riasztási " +
+    "folyamatokat helyszínre szabott biztonsági rendszerré kapcsolja össze, " +
+    "dokumentált céllal, arányos lefedettséggel, eszkalációval és működési " +
+    "integrációval.",
   longDesc:
     "A biztonságtechnika célja, hogy a helyszíni vagyonvédelem ne csak " +
     "emberi jelenlétre támaszkodjon, hanem jól kezelhető technikai " +
@@ -67,14 +66,12 @@ const PILOT_HU = {
     "visszatérő események, kritikus területek és olyan folyamatok, ahol a " +
     "technológia az őrzést, a portaszolgálatot vagy a távfelügyeletet " +
     "támogatni tudja.\n\n" +
-    "A kamerás megfigyelés, a beléptetési adatok és a biztonságtechnikai " +
-    "jelzések kezelése adatvédelmi szempontból is tervezést igényel. A " +
-    "rendszer kialakításánál figyelembe kell venni a célhoz kötöttséget, " +
-    "a látószög arányosságát, a jogos érdek dokumentálását, az érintetti " +
-    "tájékoztatást és a felvételek megőrzési idejének szakmai indokolását. " +
-    "Avenir a biztonságtechnikai felmérés és tervezés során ezeket a " +
-    "szempontokat is beépíti a javaslatba, hogy a technikai védelem ne " +
-    "csak működőképes, hanem átlátható és felelősen kezelhető legyen.\n\n" +
+    "Az adatvédelmi szempontok a technikai kialakítás részét képezik. A " +
+    "kameraképek lefedettségét, a látómezőt, a hozzáférési jogosultságokat, " +
+    "az érintettek tájékoztatását és a megőrzési logikát a dokumentált " +
+    "célhoz és az ügyfél adatvédelmi keretéhez kell igazítani. Az Avenir " +
+    "technikai inputot ad ehhez a felméréshez, de a jogalap és a végső " +
+    "adatvédelmi döntések az ügyfél és tanácsadói körében maradnak.\n\n" +
     "A cél egy átlátható, karbantartható és napi működésben is használható " +
     "biztonságtechnikai réteg: olyan megoldás, amely nem csak rögzít, " +
     "hanem segíti az észlelést, az eszkalációt, a beléptetést, a " +
@@ -138,10 +135,10 @@ const PILOT_HU = {
   ],
   trustItems: [
     {
-      title: "Helyszíni felmérés",
+      title: "Helyszínre szabott biztonságtechnikai felmérés",
       body:
         "A technikai igényeket helyszíni felmérés és működési áttekintés " +
-        "alapján érdemes rögzíteni, nem önálló eszközlistaként.",
+        "alapján rögzítjük, nem önálló eszközlistaként.",
     },
     {
       title: "Biztonságtechnikai engedéllyel támogatott működés",
@@ -150,10 +147,12 @@ const PILOT_HU = {
         "szerződéses igényekhez igazodva alakítható ki.",
     },
     {
-      title: "Kapcsolódás élőerős objektumőrzéshez",
+      title: "Integráció a helyszíni működéssel és eszkalációs lánccal",
       body:
-        "A kamerás, beléptetési vagy riasztási jelzések az őri jelenléttel és " +
-        "az eszkalációs renddel összehangolva adnak valódi kontrollt.",
+        "A kamera-, beléptetési és riasztási jelzések akkor adnak valódi " +
+        "működési értéket, ha kapcsolódnak az őri jelenléthez, a portaszolgálati " +
+        "folyamatokhoz, a meghatározott eszkalációs útvonalakhoz és az " +
+        "egyértelműen kijelölt reagálási felelősségekhez.",
     },
     {
       title: "Kapcsolódás portaszolgálati és beléptetési folyamatokhoz",
@@ -162,25 +161,20 @@ const PILOT_HU = {
         "munkatársi beléptetést, valamint a jogosultsági szabályok követését.",
     },
     {
-      title: "Jelzéskezelési és eszkalációs rend",
+      title: "Adatvédelmi szempontokat figyelembe vevő technikai javaslat",
       body:
-        "A rendszer akkor hasznos a napi működésben, ha rögzített, ki " +
-        "mikor kap jelzést és milyen lépést kell tennie.",
+        "A kameraképek lefedettsége, a látómező, a hozzáférési jogosultságok, " +
+        "az érintetti tájékoztatás és a megőrzési logika a dokumentált célhoz " +
+        "és az ügyfél adatvédelmi keretéhez igazítandó.",
     },
     {
-      title: "Adatvédelmi szempontokat figyelembe vevő tervezés",
+      title: "Dokumentált megállapítások és megvalósítási javaslat",
       body:
-        "A kameraképek, beléptetési adatok és jelzések kezelésekor a cél, " +
-        "látószög, tájékoztatás és megőrzési rend is tervezési szempont.",
+        "A felmérés eredménye riportálható megállapításokban, prioritásokban, " +
+        "integrációs pontokban és megvalósítási javaslatban foglalható össze.",
     },
     {
-      title: "Karbantarthatóság és eseménykezelés",
-      body:
-        "A technikai rétegnek hosszabb távon is kezelhetőnek, karbantarthatónak " +
-        "és riportálhatónak kell maradnia.",
-    },
-    {
-      title: "ISO 9001 és ISO 27001",
+      title: "ISO 9001 és ISO 27001 által támogatott működési fegyelem",
       body:
         "A működés ISO 9001 és ISO 27001 tanúsított irányítási rendszerekhez " +
         "illeszkedő szabályozott folyamatokra építhető.",
