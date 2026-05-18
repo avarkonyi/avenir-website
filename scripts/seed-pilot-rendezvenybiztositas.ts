@@ -137,47 +137,45 @@ const PILOT_HU = {
   ],
   trustItems: [
     {
-      title: "Egyeztetett rendezvénybiztosítási scope",
+      title: "Rendezvényre szabott biztosítási terv",
       body:
-        "A biztonsági jelenlét, beléptetés, zónakezelés és kapcsolattartás " +
-        "kereteit az esemény előtt kell rögzíteni.",
+        "A biztonsági jelenlét, a belépési pontok, a zónák, a vendég- vagy " +
+        "közönségáramlás és az eszkalációs útvonalak a rendezvény típusához " +
+        "és az egyeztetett scope-hoz igazodnak.",
     },
     {
-      title: "Kijelölt szervezői kapcsolattartás",
+      title: "Közönségáramlás és belépési pontok kezelése",
       body:
-        "A gyors helyszíni döntésekhez és jelzésekhez a szervezői és " +
-        "biztonsági oldalon is egyértelmű kapcsolattartási pont szükséges.",
+        "A beléptetés, a vendég- vagy közönségmozgás és a több belépési pont " +
+        "kezelése a rendezvény elrendezéséhez, várható forgalmához és a " +
+        "szervező által meghatározott szabályokhoz igazodik.",
     },
     {
-      title: "Incidensjelzési és eszkalációs rend",
+      title: "Zónák, peremterületek és zárt területek kezelése",
       body:
-        "A váratlan helyzetek kezelését egyeztetett jelzési, értesítési " +
-        "és dokumentálási rend támogatja.",
+        "A VIP-, backstage-, zárt, kiemelt vagy peremterületek kezelése az " +
+        "egyeztetett rendezvénybiztosítási terv és belépési szabályok " +
+        "szerint történik.",
     },
     {
-      title: "A rendezvény típusához és közönségáramlásához igazítva",
+      title: "Incidensrögzítés és szervezői eszkaláció",
       body:
-        "A biztonsági jelenlét a rendezvény jellegéhez, a várható vendég- " +
-        "vagy közönségáramláshoz, a belépési pontokhoz, a zónákhoz és a " +
-        "szervező által meghatározott eszkalációs útvonalakhoz igazodik.",
+        "Az incidensek, eltérések és eszkalációs igények rögzítése és " +
+        "kezelése a szervező által meghatározott kapcsolattartási és " +
+        "eszkalációs lánc szerint történik.",
     },
     {
-      title: "Zárt és kiemelt területek kezelése",
+      title: "Egy kijelölt felelős kapcsolattartási pont",
       body:
-        "VIP, backstage vagy más zárt területek kezelése akkor része a " +
-        "szolgáltatásnak, ha ezt a rendezvény scope-ja tartalmazza.",
+        "A szervező kijelölt rendezvénybiztonsági kapcsolattartási pontot " +
+        "kap a koordinációhoz, a jelentéshez és az eseménynapi kommunikációhoz.",
     },
     {
-      title: "Kapcsolódás beléptetési és vendégáramlási folyamatokhoz",
+      title: "Utólagos áttekintés és fejlesztési pontok",
       body:
-        "A rendezvénybiztosítás a beléptetés, vendégirányítás és helyszíni " +
-        "koordináció gyakorlati működéséhez kapcsolódik.",
-    },
-    {
-      title: "Rendezvényzáró visszajelzés",
-      body:
-        "Az esemény után visszajelzés vagy riport készülhet a főbb " +
-        "tapasztalatokról, eltérésekről és fejlesztési pontokról.",
+        "A rendezvény után az Avenir támogatni tudja az incidensek, " +
+        "visszatérő problémák és fejlesztési pontok áttekintését a jövőbeli " +
+        "rendezvénytervezéshez.",
     },
   ],
   faq: [
