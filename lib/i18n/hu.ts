@@ -92,7 +92,7 @@ export const hu = {
       id: "hardfm",
       icon: "gear",
       t: "Hard FM",
-      d: "Műszaki üzemeltetés, karbantartás-koordináció és kisebb javítási feladatok támogatása kiegészítő szolgáltatásként, komplex ügyfélkörnyezetben.",
+      d: "Tervezett megelőző karbantartás, reaktív hibakezelés és műszaki működési koordináció összetett helyszínekre.",
     },
   ],
   refTitle: "Partnereink",

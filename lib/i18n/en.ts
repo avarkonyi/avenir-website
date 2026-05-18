@@ -102,7 +102,7 @@ export const en = {
       "id": "hardfm",
       "icon": "gear",
       "t": "Hard FM",
-      "d": "Support for technical operations, maintenance coordination and minor repair tasks as complementary services in complex client environments."
+      "d": "Planned preventive maintenance, reactive fault handling and technical operations coordination for complex sites."
     }
   ],
   "refTitle": "Partners",
