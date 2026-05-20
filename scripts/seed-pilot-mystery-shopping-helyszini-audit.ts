@@ -56,26 +56,28 @@ const PILOT_HU = {
     "a brand-, tájékoztatási és szolgáltatási szabályok, és hol jelenik meg " +
     "minőségi, reputációs vagy megfelelési kockázat.",
   longDesc:
-    "A Mystery Shopping nem egyszerű ellenőrzés, hanem megtervezett " +
-    "szolgáltatásminőség-mérés. A vizsgálat során a próbavásárló " +
-    "vagy auditor valós ügyfélhelyzetben járja végig az adott szolgáltatási " +
-    "folyamatot: vásárlást, ügyintézést, helyszíni látogatást, próbautazást " +
+    "A Mystery Shopping nem egyszerű ellenőrzés, hanem megtervezett és " +
+    "dokumentált szolgáltatásminőség-mérés. Az Avenir az ügyféllel egyeztetve " +
+    "rögzíti az audit scope-ját, kialakítja a forgatókönyvet és az értékelési " +
+    "szempontokat, betanítja az értékelőt, majd valós ügyfélhelyzetben végzi el " +
+    "a vizsgálatot: vásárlást, ügyintézést, helyszíni látogatást, próbautazást " +
     "vagy más ügyfélkapcsolati pontot.\n\n" +
     "A vizsgálat scope-ja rögzíti, milyen szolgáltatási pontokat, " +
     "folyamatlépéseket, brand standardokat, kommunikációs elvárásokat, " +
     "tájékoztatási kötelezettségeket vagy megfelelési szempontokat kell " +
     "vizsgálni. A cél nem az öncélú hibakeresés, hanem az, hogy a vezetés " +
-    "pontos, riportálható képet kapjon a tényleges ügyfélélményről.\n\n" +
+    "pontos, strukturált képet kapjon a tényleges ügyfélélményről.\n\n" +
     "A szolgáltatás több formában is alkalmazható. A Brand Audit az arculati, " +
     "vizuális, tisztasági, hangulati és szolgáltatási standardokat vizsgálja. " +
     "A Situation Shopping konkrét ügyfélhelyzeteket, kérdéseket, konfliktusokat " +
     "vagy folyamatlépéseket tesztel. A szolgáltatásaudit vagy próbautazás pedig " +
     "egy teljes ügyfélutat vizsgálhat, például személyszállítási, " +
     "ügyfélszolgálati vagy helyszíni kiszolgálási folyamatban.\n\n" +
-    "Az audit eredménye strukturált riport: mi történt az ügyfélút során, mi " +
-    "felelt meg az elvárt folyamatnak, hol volt eltérés, milyen kockázat jelent " +
-    "meg, és milyen fejlesztési javaslat segítheti a szolgáltatásminőség, a " +
-    "kontroll vagy a megfelelés javítását.",
+    "Az Avenir strukturált riportot készít a megfigyelésekről, visszatérő " +
+    "mintákról, kockázati pontokról és fejlesztési javaslatokról. Az " +
+    "eredményeket az ügyféllel közösen áttekintjük, hogy azok támogassák a " +
+    "szolgáltatásminőséggel, folyamatfejlesztéssel és egyeztetett " +
+    "kontrollpontokkal kapcsolatos döntéseket.",
   useCases: [
     "Próbavásárlás üzletekben, szolgáltatási pontokon vagy ügyfélszolgálati helyzetekben",
     "Próbautazás taxi, személyszállítási vagy közlekedési szolgáltatás esetén",
