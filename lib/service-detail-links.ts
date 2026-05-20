@@ -1,10 +1,22 @@
-export function getReadyHuServiceDetailHref(
-  locale: string,
-  slug: string,
-  readyHuServiceDetailSlugs: readonly string[],
-): string | null {
-  if (locale !== "hu") return null;
-  if (!readyHuServiceDetailSlugs.includes(slug)) return null;
+type ReadyServiceDetailPath = {
+  readonly locale: string;
+  readonly slug: string;
+};
 
-  return `/hu/szolgaltatasok/${slug}`;
+export function getReadyServiceDetailHref({
+  locale,
+  slug,
+  readyServiceDetailPaths,
+}: {
+  locale: string;
+  slug: string;
+  readyServiceDetailPaths: readonly ReadyServiceDetailPath[];
+}): string | null {
+  const isReady = readyServiceDetailPaths.some(
+    (path) => path.locale === locale && path.slug === slug,
+  );
+
+  if (!isReady) return null;
+
+  return `/${locale}/szolgaltatasok/${slug}`;
 }

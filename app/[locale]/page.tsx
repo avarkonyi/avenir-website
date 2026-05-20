@@ -70,11 +70,9 @@ export default async function HomePage({
   const serviceOptions = serviceRows
     .map((row) => ({ slug: row.slug, label: row.name }))
     .filter((opt) => opt.label.length > 0);
-  const readyHuServiceDetailSlugs = (
-    await getAllPublishedServicePathsForBuild("homepage service detail links")
-  )
-    .filter((path) => path.locale === "hu")
-    .map((path) => path.slug);
+  const readyServiceDetailPaths = await getAllPublishedServicePathsForBuild(
+    "homepage service detail links",
+  );
 
   return (
     <>
@@ -84,7 +82,7 @@ export default async function HomePage({
         <About t={t} />
         <Services
           locale={locale}
-          readyHuServiceDetailSlugs={readyHuServiceDetailSlugs}
+          readyServiceDetailPaths={readyServiceDetailPaths}
         />
         <References t={t} locale={locale} />
         <Certifications t={t} locale={locale} />
@@ -114,7 +112,7 @@ export default async function HomePage({
       <Footer
         t={t}
         locale={locale}
-        readyHuServiceDetailSlugs={readyHuServiceDetailSlugs}
+        readyServiceDetailPaths={readyServiceDetailPaths}
       />
     </>
   );

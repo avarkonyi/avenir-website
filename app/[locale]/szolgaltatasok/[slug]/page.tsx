@@ -141,11 +141,9 @@ export default async function ServiceDetailPage({
     locale,
     "service detail related services",
   );
-  const readyHuServiceDetailSlugs = (
-    await getAllPublishedServicePathsForBuild("service detail footer links")
-  )
-    .filter((path) => path.locale === "hu")
-    .map((path) => path.slug);
+  const readyServiceDetailPaths = await getAllPublishedServicePathsForBuild(
+    "service detail footer links",
+  );
 
   const pageUrl = `${SEO_DATA.url}/${locale}/${URL_SEGMENT}/${slug}`;
   const homeUrl = `${SEO_DATA.url}/${locale}`;
@@ -648,7 +646,7 @@ export default async function ServiceDetailPage({
       <Footer
         t={t}
         locale={locale}
-        readyHuServiceDetailSlugs={readyHuServiceDetailSlugs}
+        readyServiceDetailPaths={readyServiceDetailPaths}
       />
     </>
   );

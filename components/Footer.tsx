@@ -5,35 +5,33 @@ import {
   getActiveTopLevelServices,
   getAllPublishedServicePathsForBuild,
 } from "@/lib/db/queries/services";
-import { getReadyHuServiceDetailHref } from "@/lib/service-detail-links";
+import { getReadyServiceDetailHref } from "@/lib/service-detail-links";
 
 export async function Footer({
   t,
   locale,
-  readyHuServiceDetailSlugs,
+  readyServiceDetailPaths,
 }: {
   t: Translation;
   locale: string;
-  readyHuServiceDetailSlugs?: readonly string[];
+  readyServiceDetailPaths?: readonly { locale: string; slug: string }[];
 }) {
   // Locale-aware services-quick-links via shared helper
   // (lib/db/queries/services.ts). Footer surface needs name only;
   // empty-field guard drops rows with no usable title.
   const rows = await getActiveTopLevelServices(locale);
-  const effectiveReadyHuServiceDetailSlugs =
-    readyHuServiceDetailSlugs ??
-    (await getAllPublishedServicePathsForBuild("footer service detail links"))
-      .filter((path) => path.locale === "hu")
-      .map((path) => path.slug);
+  const effectiveReadyServiceDetailPaths =
+    readyServiceDetailPaths ??
+    (await getAllPublishedServicePathsForBuild("footer service detail links"));
   const serviceLinks = rows
     .map((row) => ({
       slug: row.slug,
       title: row.name,
-      href: getReadyHuServiceDetailHref(
+      href: getReadyServiceDetailHref({
         locale,
-        row.slug,
-        effectiveReadyHuServiceDetailSlugs,
-      ),
+        slug: row.slug,
+        readyServiceDetailPaths: effectiveReadyServiceDetailPaths,
+      }),
     }))
     .filter((link) => link.title.length > 0);
 

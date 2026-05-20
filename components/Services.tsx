@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { getTranslation } from "@/lib/i18n";
 import { getActiveTopLevelServices } from "@/lib/db/queries/services";
-import { getReadyHuServiceDetailHref } from "@/lib/service-detail-links";
+import { getReadyServiceDetailHref } from "@/lib/service-detail-links";
 import { Icon, ICON_NAMES, type IconName } from "./Icon";
 
 // Public Services grid — DB-backed via shared
@@ -15,10 +15,10 @@ import { Icon, ICON_NAMES, type IconName } from "./Icon";
 
 export async function Services({
   locale,
-  readyHuServiceDetailSlugs,
+  readyServiceDetailPaths,
 }: {
   locale: string;
-  readyHuServiceDetailSlugs: readonly string[];
+  readyServiceDetailPaths: readonly { locale: string; slug: string }[];
 }) {
   const t = getTranslation(locale);
   const rows = await getActiveTopLevelServices(locale);
@@ -29,11 +29,11 @@ export async function Services({
       icon: safeIconName(row.icon),
       title: row.name,
       description: row.shortDesc,
-      href: getReadyHuServiceDetailHref(
+      href: getReadyServiceDetailHref({
         locale,
-        row.slug,
-        readyHuServiceDetailSlugs,
-      ),
+        slug: row.slug,
+        readyServiceDetailPaths,
+      }),
     }))
     .filter((card) => card.title.length > 0 && card.description.length > 0);
 
