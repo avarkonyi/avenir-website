@@ -24,6 +24,7 @@
     "db:update-positions:prod": "node scripts/verify-db-target.mjs --target production --allow-production --runtime-only && tsx scripts/update-positions-prod.ts",
     "db:import-service-translations": "node scripts/verify-db-target.mjs --target staging --runtime-only && tsx scripts/import-service-translations.ts",
     "db:update-service-related-slugs": "node scripts/verify-db-target.mjs --target staging --runtime-only && tsx scripts/update-service-related-slugs.ts",
+    "db:update-service-display-copy": "node scripts/verify-db-target.mjs --target staging --runtime-only && tsx scripts/update-service-display-copy.ts",
     "qa:preview": "node scripts/qa-preview-smoke.mjs",
     "indexnow:dry-run": "node scripts/submit-indexnow.mjs --dry-run",
     "indexnow:submit": "node scripts/submit-indexnow.mjs"
