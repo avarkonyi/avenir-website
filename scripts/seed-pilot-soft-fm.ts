@@ -54,124 +54,137 @@ const PILOT_HU = {
     "működjenek: takarítási egyeztetéssel, zöldterület-gondozással, higiéniai " +
     "és operatív támogatással, szolgáltatói koordinációval és minőségellenőrzéssel.",
   longDesc:
-    "A Soft FM a helyszínek napi működését támogató, nem műszaki facility " +
-    "szolgáltatások szervezett kezelését jelenti. Ide tartozhat a takarítási " +
-    "működés, a zöldterület-gondozás, a higiéniai és hulladékkezelési folyamatok " +
-    "támogatása, a helyszíni operatív feladatok egyeztetése, valamint a " +
-    "szolgáltatók és alvállalkozók koordinációja.\n\n" +
-    "Avenir a Soft FM feladatokat nem elszigetelt napi teendőként kezeli, " +
-    "hanem működési rendszerként. A helyszíni igények alapján meghatározható, " +
-    "milyen gyakorisággal, milyen területeken, milyen minőségi elvárások szerint " +
-    "és milyen riportálással történjenek a támogató szolgáltatások.\n\n" +
-    "A cél az, hogy a megrendelő átláthatóbb és kiszámíthatóbb " +
-    "operatív rendet kapjon: kevesebb ad hoc egyeztetéssel, egyértelmű " +
-    "felelősségi pontokkal, egyeztetett minőségellenőrzéssel és olyan " +
-    "riportálással, amely segíti a helyszíni működés folyamatos javítását.",
+    "Az Avenir Soft FM szolgáltatása a helyszín napi, nem műszaki működését " +
+    "támogató feladatokat fogja össze: takarítás, kertészeti és higiéniai " +
+    "folyamatok, hulladékkezelési támogatás, szolgáltatói koordináció és " +
+    "helyszíni működési támogatás. A szerződés indulásakor az Avenir az " +
+    "ügyféllel együtt rögzíti a szolgáltatási modellt: saját munkatársak, " +
+    "jóváhagyott alvállalkozók vagy meglévő ügyféloldali szolgáltatók " +
+    "Avenir-koordináció alatt, az egyeztetett helyszíni modell szerint.\n\n" +
+    "A Soft FM együttműködés írásos scope-pal indul: területek, " +
+    "feladatgyakoriságok, minőségi elvárások, riportálási ritmus és " +
+    "eszkalációs útvonalak. A cél nem nyitott, „ahogy szükséges” jellegű " +
+    "működés, hanem előre rögzített, ellenőrizhető és riportálható " +
+    "szolgáltatási keret.\n\n" +
+    "Ha az ügyfél meglévő takarítási, kertészeti, higiéniai vagy egyéb " +
+    "szolgáltatókkal dolgozik, az Avenir átveheti a koordinációs réteget: " +
+    "a napi helyszíni egyeztetést, a minőségellenőrzést és a riportálást, " +
+    "hogy az ügyfél ne több széttagolt szerződésből, hanem egy összefogott " +
+    "működési képből dolgozzon.",
   useCases: [
-    "Irodaházak és üzleti központok napi működést támogató Soft FM folyamatai",
-    "Ipari és logisztikai telephelyek takarítási és operatív támogatása",
-    "Raktárak, szolgáltatási pontok és több helyszínes működések Soft FM koordinációja",
-    "Takarítási, higiéniai vagy zöldterület-gondozási folyamatok egyeztetése",
-    "Olyan helyszínek, ahol fontos a minőségellenőrzés, riportálás és szolgáltatói koordináció",
-    "Soft FM és Hard FM, portaszolgálati vagy biztonsági működés összehangolása",
+    "Irodaházak és üzleti központok, ahol a bérlők látható nappali szolgáltatási színvonalat várnak el",
+    "Ipari vagy logisztikai helyszínek, ahol a takarításnak, higiéniai folyamatoknak és hulladékkezelési támogatásnak a műszakrendhez kell igazodnia",
+    "Több helyszínes portfóliók, ahol egységes scope-ra, gyakoriságokra és riportálásra van szükség",
+    "Helyszínek, ahol több külön szolgáltató koordinációja ma az ügyfél feladata",
+    "Működések, ahol a Soft FM, Hard FM, portaszolgálat és őrzés egy operatív felületen kapcsolódhat össze",
+    "Helyzetek, ahol a beszerzési, ESG- vagy auditcsapat írásos riportot vár az egyeztetett KPI-k és minőségi szempontok alapján",
   ],
   includedItems: [
-    "Takarítási és operatív támogatási folyamatok koordinációja",
-    "Zöldterület-gondozási feladatok egyeztetése, ha a helyszín ezt igényli",
-    "Higiéniai és hulladékkezelési folyamatok támogatása, szerződéses scope szerint",
-    "Szolgáltatói és alvállalkozói koordináció",
-    "Minőségellenőrzési és visszajelzési folyamat kialakítása",
-    "Helyszíni eltérések, igények és visszatérő problémák rögzítése",
-    "Egyeztetett riportálás a megrendelő felé",
-    "Kapcsolódás Hard FM, portaszolgálati és helyszíni működéshez",
+    "Napi takarítási működés az egyeztetett területeken és feladatgyakoriságok szerint",
+    "Időszakos takarítási feladatok, például padló-, üveg- vagy szőnyegtisztítás, ha a scope tartalmazza",
+    "Kertészeti és külső területgondozási koordináció, ha a helyszíni modell része",
+    "Higiéniai fogyóanyagok és mosdóhigiéniai szolgáltatások koordinációja",
+    "Hulladékkezelési támogatás és szolgáltatói kapcsolattartás az egyeztetett működési modell szerint",
+    "Szolgáltatók és alvállalkozók koordinációja meglévő ügyféloldali beszállítók esetén",
+    "Helyszíni eltérések, visszatérő problémák és korrekciós intézkedések követése",
+    "Írásos riport az elvégzett feladatokról, minőségi megfigyelésekről, visszatérő problémákról és teendőkről",
   ],
   processSteps: [
     {
-      title: "Helyszíni Soft FM igények és működési területek áttekintése",
+      title: "Helyszíni bejárás és scope-felmérés",
       body:
-        "Áttekintjük, mely napi működést támogató szolgáltatások érintettek, " +
-        "milyen területeken jelentkezik igény, és hol szükséges koordináció vagy " +
-        "minőségellenőrzés.",
+        "Az Avenir a scope véglegesítése előtt áttekinti az érintett területeket, " +
+        "szolgáltatási pontokat, működési időablakokat és a meglévő szolgáltatói modellt.",
     },
     {
-      title: "Takarítási, higiéniai, zöldterület- és operatív folyamatok egyeztetése",
+      title: "Írásos scope, gyakoriságok és minőségi szempontok",
       body:
-        "Rögzíthető a feladatok köre, gyakorisága, helyszíni prioritása és az, " +
-        "hogy mely elemek tartoznak a szerződéses Soft FM scope-ba.",
+        "A szolgáltatási területeket, feladatgyakoriságokat, ellenőrzési pontokat, " +
+        "minőségi elvárásokat és riportálási ritmust az operatív indulás előtt rögzítjük.",
     },
     {
-      title: "Szolgáltatói / alvállalkozói koordinációs rend kialakítása",
+      title: "Szolgáltatási modell és csapatstruktúra rögzítése",
       body:
-        "Meghatározható, hogyan történjen a szolgáltatók, alvállalkozók vagy " +
-        "meglévő partnerek összehangolása, és ki felel az operatív egyeztetésért.",
+        "A scope egyeztetésekor az Avenir az ügyféllel együtt rögzíti a teljesítési " +
+        "modellt: saját munkatársak, jóváhagyott alvállalkozók vagy meglévő " +
+        "ügyféloldali szolgáltatók Avenir-koordináció alatt, a helyszíni modell szerint.",
     },
     {
-      title: "Minőségellenőrzési és visszajelzési pontok rögzítése",
+      title: "Mobilizáció és működési beállítás",
       body:
-        "Az ellenőrzési szempontok, visszajelzési útvonalak és eltéréskezelési " +
-        "pontok előre rögzíthetők, hogy a minőség ne általános ígéretre épüljön.",
+        "Az indulás előtt az Avenir előkészíti a működési keretet: felelősségek, " +
+        "kapcsolattartási pontok, eszkalációs útvonalak, helyszíni utasítások " +
+        "és a napi kontrollhoz szükséges nyilvántartások.",
     },
     {
-      title: "Riportálási és kapcsolattartási rend egyeztetése",
+      title: "Indítás és stabilizációs időszak",
       body:
-        "A megrendelővel egyeztethető, milyen gyakran és milyen tartalommal " +
-        "érkezzen riport a teljesített feladatokról, eltérésekről és nyitott pontokról.",
+        "Az első működési időszakban az Avenir követi a kezdeti eltéréseket, " +
+        "pontosítja a felelősségeket és stabilizálja a működési ritmust az " +
+        "egyeztetett scope-on belül.",
     },
     {
-      title: "Működés elindítása, ellenőrzése és finomhangolása",
+      title: "Rendszeres riportálás és ügyféloldali áttekintés",
       body:
-        "Az indulás után a helyszíni tapasztalatok alapján pontosíthatók a " +
-        "feladatok, szolgáltatói felelősségek, minőségellenőrzési pontok és riportok.",
+        "Az Avenir riportálja az elvégzett feladatokat, minőségi megfigyeléseket, " +
+        "visszatérő problémákat és egyeztetett intézkedéseket, majd rendszeresen " +
+        "áttekinti a szolgáltatást az ügyféllel.",
     },
   ],
   trustItems: [
     {
-      title: "Soft FM működési folyamat",
+      title: "Írásos scope, nem nyitott „ahogy szükséges” működés",
       body:
-        "A takarítási, higiéniai, zöldterület- és operatív feladatok egyeztetett " +
-        "módon követhetők, nem csak eseti kommunikációban kezelhetők.",
+        "Az Avenir a területeket, gyakoriságokat, minőségi szempontokat és " +
+        "riportálási ritmust a szerződés indulásakor rögzíti, így a megbízás " +
+        "kerete az operatív működés előtt egyértelmű.",
     },
     {
-      title: "Egyeztetett takarítási és operatív támogatási rend",
+      title: "Minőségellenőrzés meghatározott szempontok alapján",
       body:
-        "A feladatkör, gyakoriság és minőségi elvárás mindig a helyszíni igényekhez " +
-        "és a szerződéses scope-hoz igazodik.",
+        "Az Avenir a takarítási, higiéniai, kertészeti és operatív támogatási " +
+        "feladatokat egyeztetett ellenőrzési pontok alapján követi, nem általános " +
+        "elvárások szerint.",
+    },
+    {
+      title: "Egy operatív felület több szolgáltató között",
+      body:
+        "Az ügyfél egy összehangolt működési képet kap az Avenir munkatársai, " +
+        "jóváhagyott alvállalkozók és meglévő ügyféloldali szolgáltatók között, " +
+        "a helyszíni modell szerint.",
     },
     {
       title: "Szolgáltatói és alvállalkozói koordináció",
       body:
-        "A Soft FM működés támogathatja a kijelölt szolgáltatók, alvállalkozók " +
-        "vagy megrendelői partnerek összehangolását.",
+        "Az Avenir dokumentálja a felelősségeket, kapcsolattartási pontokat és " +
+        "eszkalációs útvonalakat, hogy a napi szolgáltatókezelés kontrollált legyen, " +
+        "ne széttagolt.",
     },
     {
-      title: "Minőségellenőrzési és visszajelzési pontok",
+      title: "Korrekciós intézkedések követése",
       body:
-        "Az ellenőrzési és visszajelzési pontok előre egyeztethetők, hogy az " +
-        "eltérések kezelése követhetőbb legyen.",
+        "Az Avenir követi a helyszíni eltéréseket, visszatérő problémákat és " +
+        "korrekciós intézkedéseket, hogy azok áttekinthetők és utánkövethetők legyenek.",
     },
     {
-      title: "Helyszíni eltérések és visszatérő problémák rögzítése",
+      title: "Írásos riportálás",
       body:
-        "A visszatérő operatív problémák, eltérések és javítási pontok riportálható " +
-        "formában összegyűjthetők.",
+        "Az Avenir az egyeztetett riportálási ritmus szerint beszámol az elvégzett " +
+        "scope-ról, minőségi megfigyelésekről, visszatérő problémákról és egyeztetett " +
+        "intézkedésekről.",
     },
     {
-      title: "Riportálás a megrendelő felé",
+      title: "Kapcsolódás Hard FM-hez, portaszolgálathoz és őrzéshez",
       body:
-        "A riport tartalma, gyakorisága és részletezettsége az együttműködés elején " +
-        "egyeztethető.",
+        "Ha ezek a szolgáltatások ugyanazon a helyszínen működnek, az Avenir " +
+        "összehangolja a Soft FM riportálását és eltéréskezelését a portaszolgálati, " +
+        "őrzési és Hard FM folyamatokkal.",
     },
     {
-      title: "Kapcsolódás Hard FM és helyszíni működéshez",
+      title: "Helyszínspecifikus működési modell",
       body:
-        "A Soft FM sok helyszínen a Hard FM, porta, recepció vagy biztonsági " +
-        "működéssel együtt ad átláthatóbb operatív képet.",
-    },
-    {
-      title: "Szerződéses és helyszíni igényekhez igazított működés",
-      body:
-        "A feladatok, szolgáltatói bevonás, gyakoriság és riportálás mindig a " +
-        "helyszín adottságaihoz és szerződéses kereteihez igazodik.",
+        "A létszám, szolgáltatói bevonás, gyakoriságok és riportálás a helyszíni " +
+        "modellhez és az egyeztetett szerződéses scope-hoz igazodik.",
     },
   ],
   faq: [
@@ -179,64 +192,65 @@ const PILOT_HU = {
       q: "Mit jelent a Soft FM?",
       a:
         "A Soft FM a helyszínek napi működését támogató, nem műszaki facility " +
-        "szolgáltatások szervezett kezelését jelenti. Ide tartozhat például a " +
-        "takarítási működés, a zöldterület-gondozás, a higiéniai folyamatok, az " +
-        "operatív támogatás és a szolgáltatói egyeztetés.",
+        "szolgáltatások összehangolt kezelését jelenti. Az Avenirnél ez takarítást, " +
+        "kertészeti folyamatokat, higiéniai és hulladékkezelési támogatást, " +
+        "operatív koordinációt és szolgáltatókezelést fed le az egyeztetett " +
+        "scope-on belül.",
     },
     {
       q: "Miben különbözik a Soft FM a Hard FM-től?",
       a:
-        "A Hard FM elsősorban műszaki, karbantartási és üzemeltetési folyamatokra " +
-        "fókuszál. A Soft FM inkább a napi működést támogató szolgáltatásokhoz " +
-        "kapcsolódik, például takarításhoz, zöldterülethez, higiéniai folyamatokhoz " +
-        "és helyszíni operatív támogatáshoz. A két terület sok helyszínen együtt " +
-        "működik hatékonyan.",
+        "A Hard FM elsősorban műszaki, karbantartási és épületüzemeltetési " +
+        "folyamatokra fókuszál. A Soft FM a napi támogató szolgáltatásokat fogja " +
+        "össze: takarítás, kertészet, higiéniai folyamatok és helyszíni operatív " +
+        "koordináció. Sok helyszínen a két terület akkor működik jól, ha a " +
+        "riportálási és eszkalációs útvonalak összehangoltak.",
     },
     {
       q: "Csak takarításról szól a Soft FM?",
       a:
-        "Nem. A takarítás fontos része lehet, de a Soft FM ennél szélesebb " +
-        "működési réteg. Magában foglalhatja a szolgáltatói koordinációt, " +
-        "zöldterület-gondozást, higiéniai folyamatokat, minőségellenőrzést, " +
-        "riportálást és a helyszíni operatív támogatást is.",
+        "Nem. A takarítás gyakran a Soft FM egyik központi eleme, de a szolgáltatás " +
+        "ennél szélesebb. Az Avenir a takarításhoz, szolgáltatókezeléshez, " +
+        "kertészeti folyamatokhoz, higiéniai működéshez, minőségellenőrzéshez, " +
+        "riportáláshoz és helyszíni támogatáshoz kapcsolódó működési réteget kezeli.",
     },
     {
-      q: "Kezelhető több szolgáltató vagy alvállalkozó koordinációja?",
+      q: "Koordinálhat az Avenir több szolgáltatót vagy alvállalkozót?",
       a:
-        "Igen, a Soft FM része lehet a szolgáltatók és alvállalkozók összehangolása. " +
-        "A pontos felelősségi köröket, kapcsolattartási pontokat és riportálási " +
-        "rendet az együttműködés elején érdemes rögzíteni.",
+        "Igen. Az egyeztetett Soft FM modellben az Avenir a szerződés indulásától " +
+        "koordinálja a szolgáltatói felelősségeket, kapcsolattartási pontokat, " +
+        "eszkalációs útvonalakat és riportálási elvárásokat.",
     },
     {
       q: "Van garantált takarítási minőség?",
       a:
-        "A minőségi elvárásokat, ellenőrzési szempontokat és visszajelzési " +
-        "folyamatokat előre kell rögzíteni. Így a szolgáltatás nem általános " +
-        "ígéretre, hanem egyeztetett scope-ra, ellenőrzési pontokra és riportálásra épül.",
+        "Az általános takarítási minőségre vonatkozó garancia nem helyettesítheti " +
+        "a meghatározott scope-ot. Az Avenir a minőséget egyeztetett feladatokkal, " +
+        "meghatározott szempontokkal, szolgáltatási ellenőrzésekkel, riportálással " +
+        "és korrekciós intézkedésekkel kezeli, így az elvárások konkrétak és áttekinthetők.",
     },
     {
       q: "Hogyan ellenőrizhető a Soft FM szolgáltatások minősége?",
       a:
-        "A minőség meghatározott scope-pal, gyakorisággal, ellenőrzési " +
-        "pontokkal, riportálással, visszatérő problémák kezelésével, " +
-        "visszajelzési körökkel és helyszínspecifikus elvárásokkal követhető. " +
-        "Általános minőségi garancia helyett az ellenőrzést az egyeztetett " +
-        "feladatokra és minőségi szempontokra érdemes építeni.",
+        "Az Avenir a minőséget egyeztetett ellenőrzési pontokon, szolgáltatási " +
+        "ellenőrzéseken, visszatérő problémák követésén, visszajelzési körökön " +
+        "és rendszeres írásos riportáláson keresztül követi, helyszínspecifikus " +
+        "elvárások alapján.",
     },
     {
-      q: "Kapunk riportot a Soft FM feladatokról?",
+      q: "Kapunk írásos riportot a Soft FM feladatokról?",
       a:
-        "Igen, a szolgáltatás része lehet egyeztetett riportálás. A riport " +
-        "tartalmazhatja a teljesített feladatokat, észlelt eltéréseket, visszatérő " +
-        "problémákat, minőségellenőrzési megállapításokat és fejlesztési javaslatokat.",
+        "Igen. A strukturált Soft FM együttműködések része a rendszeres írásos " +
+        "riportálás, amely lefedi az elvégzett scope-ot, minőségi megfigyeléseket, " +
+        "visszatérő problémákat és egyeztetett intézkedéseket.",
     },
     {
       q: "Kapcsolódhat a Soft FM portaszolgálati vagy biztonsági működéshez?",
       a:
-        "Igen. Sok helyszínen a porta, recepció, objektumőrzés vagy Hard FM működés " +
-        "jelzi először az operatív problémákat. A Soft FM akkor működik jól, ha a " +
-        "helyszíni jelzések, felelősök, szolgáltatók és riportálási folyamatok össze " +
-        "vannak hangolva.",
+        "Igen. Sok helyszínen a porta, recepció, objektumőrzés vagy Hard FM csapat " +
+        "jelzi először az operatív problémákat. A Soft FM akkor működik jobban, " +
+        "ha a jelzések, felelősségek, szolgáltatók és riportálási folyamatok egy " +
+        "működési modellben kapcsolódnak össze.",
     },
   ],
   // Canonical Hungarian public service slugs. Missing or unpublished
