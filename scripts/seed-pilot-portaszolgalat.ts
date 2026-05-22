@@ -55,8 +55,8 @@ const PILOT_HU = {
   valueProposition:
     "A recepciós és portaszolgálat az első működési pont, ahol a látogatók, " +
     "beszállítók, munkatársak és bérlők találkoznak a helyszín szabályaival. " +
-    "Avenir célja, hogy ez a pont rendezett, udvarias és biztonsági " +
-    "szempontból következetes legyen.",
+    "Avenir célja, hogy ez a pont rendezett, udvarias, visszakövethető és " +
+    "biztonsági szempontból következetes legyen.",
   longDesc: "A portaszolgálat nem egyszerű jelenlét a bejáratnál: a napi működés egyik legfontosabb kontrollpontja. A szolgáltatás a helyszín igényei szerint támogathatja a látogatók fogadását, a vendégregisztrációt, a beszállítók és alvállalkozók beléptetését, a kulcskezelést, a csomagok átvételét, az információadást és a rendkívüli események jelzését.\n\nAvenir a helyszíni felmérés alapján rögzíti a portaszolgálati és recepciós protokollt: ki léphet be, milyen jogosultsággal, milyen dokumentáció mellett, mikor szükséges értesítés, és milyen eseményt kell naplózni vagy eszkalálni. Látogató- és beléptetési adatok kezelésekor a célhoz kötöttség, az időben korlátozott megőrzés és a megfelelő tájékoztatás szempontjai is részei a porta- és recepciós folyamatnak.\n\nA portaszolgálat kapcsolódhat élőerős objektumőrzéshez, beléptető rendszerhez, kamerarendszerhez vagy belső üzemeltetési folyamathoz. A megrendelő egyértelmű szolgálati keretet kap: szolgálati naplóval, egyeztetett riportálással és kijelölt felelős kapcsolattartóval.",
   useCases: [
     "Irodaházak és üzleti központok recepciós működése",
@@ -138,8 +138,9 @@ const PILOT_HU = {
     {
       title: "ISO 9001 és ISO 27001",
       body:
-        "A folyamatok ISO 9001 és ISO 27001 tanúsított irányítási " +
-        "rendszerekhez illeszkedő szabályozott működésre épülnek.",
+        "A szolgálati folyamatokat az Avenir ISO 9001 és ISO 27001 tanúsított " +
+        "irányítási rendszerei támogatják, amennyiben az adott folyamatok a " +
+        "tanúsított működési körbe tartoznak.",
     },
     {
       title: "Látogatóadat-kezelési szempontok figyelembevétele",
@@ -149,11 +150,12 @@ const PILOT_HU = {
         "megőrzést.",
     },
     {
-      title: "Kapcsolódó vagyonvédelmi működés",
+      title: "Vendégfogadás és beléptetési kontroll egy folyamatban",
       body:
-        "A porta- és recepciós működés szükség esetén élőerős " +
-        "objektumőrzéssel, biztonságtechnikával vagy távfelügyeleti " +
-        "folyamattal is összehangolható.",
+        "A recepciós és portaszolgálati protokollok az udvarias " +
+        "látogatókezelést kontrollált beléptetéssel, eszkalációval és " +
+        "riportálással kapcsolják össze, így a front-of-house működés és a " +
+        "biztonsági rutinok ugyanazon helyszíni szabályok szerint működnek.",
     },
   ],
   faq: [

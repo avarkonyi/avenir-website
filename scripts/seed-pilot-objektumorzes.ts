@@ -132,9 +132,11 @@ const PILOT_HU = {
       body: "A szolgálati folyamatokat az Avenir ISO 9001 és ISO 27001 tanúsított irányítási rendszerei támogatják, amennyiben az adott folyamatok a tanúsított működési körbe tartoznak.",
     },
     {
-      title: "Helyszínhez igazított szolgálati modell",
-      body: "A szolgálati rendet a helyszín kockázati profilja, nyitvatartása, " +
-        "belépési pontjai és riportálási elvárásai alapján érdemes kialakítani.",
+      title: "Dokumentált helyszíni bevezetés",
+      body:
+        "A szolgálati utasítás a szolgálat indítása előtt rögzítésre kerül, " +
+        "és a felelős kapcsolattartóval egyeztetjük; tartalmazza a belépési " +
+        "pontokat, járőrútvonalakat, kulcskezelést, incidensrögzítést és eszkalációt.",
     },
     {
       title: "Vagyonvédelmi engedély",

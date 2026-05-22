@@ -49,10 +49,10 @@ const PILOT_HU = {
     "Soft FM szolgáltatások takarítási koordinációval, zöldterület-gondozással, " +
     "higiéniai folyamatokkal, operatív támogatással és riportálással.",
   valueProposition:
-    "A Soft FM célja, hogy a helyszínek napi működést támogató szolgáltatásai " +
-    "ne különálló feladatokként, hanem átlátható, riportálható folyamatként " +
-    "működjenek: takarítási egyeztetéssel, zöldterület-gondozással, higiéniai " +
-    "és operatív támogatással, szolgáltatói koordinációval és minőségellenőrzéssel.",
+    "A Soft FM a helyszín napi működését támogató szolgáltatásokat fogja össze: " +
+    "takarítás, kertészet, higiénia, hulladékkezelési támogatás és szolgáltatói " +
+    "koordináció, egyeztetett scope-on, meghatározott minőségi szempontok szerint, " +
+    "rendszeres riportálási ritmusban.",
   longDesc:
     "Az Avenir Soft FM szolgáltatása a helyszín napi, nem műszaki működését " +
     "támogató feladatokat fogja össze: takarítás, kertészeti és higiéniai " +
