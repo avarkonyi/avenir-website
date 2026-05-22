@@ -178,7 +178,8 @@ const PILOT_HU = {
       title: "ISO 9001 és ISO 27001 által támogatott működési fegyelem",
       body:
         "A működés ISO 9001 és ISO 27001 tanúsított irányítási rendszerekhez " +
-        "illeszkedő szabályozott folyamatokra építhető.",
+        "illeszkedő szabályozott folyamatokra építhető, amennyiben az adott " +
+        "folyamatok a tanúsított működési körbe tartoznak.",
     },
   ],
   faq: [
