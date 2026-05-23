@@ -2,9 +2,14 @@ import type { MetadataRoute } from "next";
 import { SEO_DATA, SEO_LOCALES } from "@/lib/seo-data";
 import { getAllPublishedServicePathsForBuild } from "@/lib/db/queries/services";
 import { getAllPublishedNewsPathsHuForBuild } from "@/lib/db/queries/news";
+import {
+  LEGAL_PAGE_LOCALES,
+  LEGAL_PAGE_SLUGS,
+  legalPageAlternateLanguages,
+  legalPageUrl,
+  type LegalPageSlug,
+} from "@/lib/legal-routes";
 
-const LEGAL_SLUGS = ["adatvedelem", "aszf", "impresszum"] as const;
-const LEGAL_SITEMAP_LOCALES = ["hu"] as const;
 const SITE_LAST_MODIFIED = new Date("2026-05-07T00:00:00.000Z");
 const SERVICE_URL_SEGMENT = "szolgaltatasok";
 const NEWS_INDEX_PATH_HU = "/hu/hirek";
@@ -24,12 +29,9 @@ function localeAlternates(path = "") {
   };
 }
 
-function legalAlternates(path = "") {
+function legalAlternates(slug: LegalPageSlug) {
   return {
-    languages: {
-      hu: `${SEO_DATA.url}/hu${path}`,
-      "x-default": `${SEO_DATA.url}/hu${path}`,
-    },
+    languages: legalPageAlternateLanguages(slug),
   };
 }
 
@@ -97,15 +99,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.9,
       alternates: localeAlternates(),
     })),
-    // Non-HU legal pages are intentionally excluded from the sitemap
-    // until localized legal content has been reviewed and approved.
-    ...LEGAL_SITEMAP_LOCALES.flatMap((locale) =>
-      LEGAL_SLUGS.map((slug) => ({
-        url: `${SEO_DATA.url}/${locale}/${slug}`,
+    // Legal pages are published only for reviewed HU/EN legal routes.
+    ...LEGAL_PAGE_LOCALES.flatMap((locale) =>
+      LEGAL_PAGE_SLUGS.map((slug) => ({
+        url: legalPageUrl(locale, slug),
         lastModified: SITE_LAST_MODIFIED,
         changeFrequency: "yearly" as const,
         priority: 0.3,
-        alternates: legalAlternates(`/${slug}`),
+        alternates: legalAlternates(slug),
       })),
     ),
     ...servicePaths.map(({ locale, slug }) => ({
