@@ -77,7 +77,7 @@ export default async function HomePage({
   return (
     <>
       <Nav t={{ nav: t.nav }} />
-      <main>
+      <main id="main">
         <Hero t={{ hero: t.hero, stats: t.stats }} />
         <About t={t} />
         <Services

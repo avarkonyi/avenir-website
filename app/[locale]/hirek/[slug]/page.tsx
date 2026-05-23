@@ -196,7 +196,7 @@ export default async function NewsDetailPage({
     <>
       <JsonLd schemas={[breadcrumb, articleSchema]} />
       <Nav t={{ nav: t.nav }} />
-      <main style={{ background: "#fff", color: "#0B1E3E" }}>
+      <main id="main" style={{ background: "#fff", color: "#0B1E3E" }}>
         <section
           style={{
             background: "linear-gradient(180deg,#0B1E3E 0%,#142a52 100%)",

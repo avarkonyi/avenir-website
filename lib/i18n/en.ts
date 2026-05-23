@@ -41,16 +41,16 @@ export const en = {
   "aboutText": "Avenir was founded in 2018, but its management team and specialists bring decades of experience in facility management and security services. Today, we work nationwide with a team of 200+ professionals across 30+ active sites — in corporate, retail, industrial and logistics environments.\n\nWe coordinate security operations: guarding, access control, patrol services, incident handling and reporting. Our goal is to reduce the need for day-to-day coordination on the client’s side, lower risk and make on-site operations more transparent.\n\nWhere needed, we complement our security focus with security technology, mystery shopping and related FM support — allowing our clients to work with one accountable partner instead of multiple separate service providers.",
   "values": [
     {
-      "t": "Reliability",
-      "d": "Consistent site presence, backed by documented processes, regular reporting and clear responsibilities."
+      "t": "Transparent control",
+      "d": "Documented processes, regular reports and clear responsibility points so you always know what is happening on site."
     },
     {
-      "t": "Expertise",
-      "d": "Trained teams, site-specific protocols and controlled delivery across all service areas."
+      "t": "Professional presence",
+      "d": "Trained personnel, site-specific protocols and controlled delivery across industrial, logistics, commercial and office environments."
     },
     {
-      "t": "Flexibility",
-      "d": "Tailored security, audit and FM support for each client, site and operational need."
+      "t": "Response and accountability",
+      "d": "When incidents occur, Avenir does not only provide presence on site: we document, report back and help reduce recurring operational issues."
     }
   ],
   "servicesTitle": "Our Services",

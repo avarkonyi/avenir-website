@@ -50,6 +50,33 @@ a {
   text-decoration: none;
 }
 
+.skip-link {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 10000;
+  padding: 10px 14px;
+  border-radius: 3px;
+  background: #D1172E;
+  color: #fff;
+  font-family: var(--font-head);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  box-shadow: 0 10px 30px rgba(11, 30, 62, 0.2);
+  transform: translateY(-72px);
+  transition: transform 0.18s ease;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  outline: 3px solid rgba(209, 23, 46, 0.35);
+  outline-offset: 3px;
+  transform: translateY(0);
+}
+
 #services,
 #contact {
   scroll-margin-top: 72px;
@@ -58,6 +85,10 @@ a {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .skip-link {
+    transition: none;
   }
 }
 
@@ -189,6 +220,13 @@ a {
     border-color 0.2s ease,
     box-shadow 0.2s ease,
     transform 0.2s ease;
+}
+
+.service-detail-faq-list details > summary:focus-visible,
+details > summary:focus-visible {
+  outline: 3px solid rgba(209, 23, 46, 0.45);
+  outline-offset: 4px;
+  border-radius: 3px;
 }
 
 .service-detail-trust-card:hover,

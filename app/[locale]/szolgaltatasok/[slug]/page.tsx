@@ -229,7 +229,7 @@ export default async function ServiceDetailPage({
       <JsonLd schemas={schemas} />
       <Nav t={{ nav: t.nav }} />
 
-      <main style={{ background: "#fff", color: "#0B1E3E" }}>
+      <main id="main" style={{ background: "#fff", color: "#0B1E3E" }}>
         {/* Hero */}
         <section
           style={{
@@ -477,7 +477,7 @@ export default async function ServiceDetailPage({
             title={t.serviceDetail.faqTitle}
             background="#F8FAFC"
           >
-            <div style={{ display: "grid", gap: 14 }}>
+            <div className="service-detail-faq-list" style={{ display: "grid", gap: 14 }}>
               {faqEntries.map((entry, i) => (
                 <details
                   key={`${i}-${entry.q}`}

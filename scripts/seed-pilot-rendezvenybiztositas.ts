@@ -45,7 +45,7 @@ const TARGET_SLUG = "rendezvenybiztositas";
 const LEGACY_SLUG = "cleaning";
 
 const PILOT_HU = {
-  seoTitle: "Rendezvénybiztosítás vállalati, zártkörű és nyilvános eseményekre | Avenir",
+  seoTitle: "Rendezvénybiztosítás | Avenir",
   seoDescription:
     "Rendezvénybiztosítás beléptetéssel, vendég- és közönségáramlás " +
     "támogatásával, zónakezeléssel, incidensjelzéssel és szervezői " +
