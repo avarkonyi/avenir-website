@@ -43,7 +43,7 @@ Status: staging-complete public foundation, not production-approved.
 
 The current branch includes:
 
-- eight HU service detail pages;
+- eight HU and EN service detail pages;
 - readiness-driven homepage/footer service links;
 - related services and contact prefill;
 - Partner Logo Strip MVP with proof gating;
@@ -90,22 +90,23 @@ parallel, treat them as two separate releases.
 
 See `docs/aos_separation_decision.md`.
 
-## Current HU Service Detail Layer
+## Current HU/EN Service Detail Layer
 
-Status: current staging HU service detail layer.
+Status: current staging HU/EN service detail layer.
 
-The current ready HU service detail pages on staging are:
+The current ready HU and EN service detail pages on staging use the same
+canonical slugs:
 
-| Service | Canonical public URL | Legacy slug |
+| Service | HU URL | EN URL | Legacy slug |
 | --- | --- | --- |
-| Élőerős objektumőrzés | `/hu/szolgaltatasok/objektumorzes` | `security` |
-| Recepciós és portaszolgálat | `/hu/szolgaltatasok/portaszolgalat` | `reception` |
-| Biztonságtechnika | `/hu/szolgaltatasok/biztonsagtechnika` | `building` |
-| Távfelügyelet és vonulószolgálat | `/hu/szolgaltatasok/tavfelugyelet-vonuloszolgalat` | `technical` |
-| Próbavásárlás és szolgáltatásaudit | `/hu/szolgaltatasok/mystery-shopping-helyszini-audit` | `mystery` |
-| Rendezvénybiztosítás | `/hu/szolgaltatasok/rendezvenybiztositas` | `cleaning` |
-| Hard FM | `/hu/szolgaltatasok/hard-fm` | `hardfm` |
-| Soft FM | `/hu/szolgaltatasok/soft-fm` | `green` |
+| Élőerős objektumőrzés / On-site Security Guarding | `/hu/szolgaltatasok/objektumorzes` | `/en/szolgaltatasok/objektumorzes` | `security` |
+| Recepciós és portaszolgálat / Reception and Gatehouse Services | `/hu/szolgaltatasok/portaszolgalat` | `/en/szolgaltatasok/portaszolgalat` | `reception` |
+| Biztonságtechnika / Security Technology | `/hu/szolgaltatasok/biztonsagtechnika` | `/en/szolgaltatasok/biztonsagtechnika` | `building` |
+| Távfelügyelet és vonulószolgálat / Remote Monitoring and Response Service | `/hu/szolgaltatasok/tavfelugyelet-vonuloszolgalat` | `/en/szolgaltatasok/tavfelugyelet-vonuloszolgalat` | `technical` |
+| Próbavásárlás és szolgáltatásaudit / Mystery Shopping and Service Audit | `/hu/szolgaltatasok/mystery-shopping-helyszini-audit` | `/en/szolgaltatasok/mystery-shopping-helyszini-audit` | `mystery` |
+| Rendezvénybiztosítás / Event Security | `/hu/szolgaltatasok/rendezvenybiztositas` | `/en/szolgaltatasok/rendezvenybiztositas` | `cleaning` |
+| Hard FM | `/hu/szolgaltatasok/hard-fm` | `/en/szolgaltatasok/hard-fm` | `hardfm` |
+| Soft FM | `/hu/szolgaltatasok/soft-fm` | `/en/szolgaltatasok/soft-fm` | `green` |
 
 Expected legacy detail URLs should return 404:
 
@@ -118,7 +119,9 @@ Expected legacy detail URLs should return 404:
 - `/hu/szolgaltatasok/hardfm`
 - `/hu/szolgaltatasok/green`
 
-Expected EN/DE/ZH service detail URLs should remain 404 until their own localized required content exists.
+Expected EN service detail URLs return 200 when EN localized required content
+is ready. DE/ZH service detail URLs should remain 404 until their own
+localized required content exists.
 
 ## Core Rule
 
@@ -208,10 +211,11 @@ the Preview URL:
 npm run qa:preview -- https://avenir-website-git-staging-service-pages.vercel.app
 ```
 
-The script checks the eight HU service pages, expected legacy/non-HU 404s,
-`/hu/hirek`, sitemap policy, robots policy, and `llms.txt` / `llms-full.txt`
-content safeguards. It does not require secrets, does not read `.env.local`, and
-does not submit forms or mutate data.
+The script checks the eight HU and eight EN service pages, expected legacy and
+DE/ZH service 404s, HU/EN legal pages, English legal alias 404s, `/hu/hirek`,
+sitemap policy, Preview robots/noindex policy, and `llms.txt` /
+`llms-full.txt` content safeguards. It does not require secrets, does not read
+`.env.local`, and does not submit forms or mutate data.
 
 The script refuses to run against `https://www.afm.hu` unless
 `--allow-production` is passed for an explicitly approved production smoke test:
@@ -236,11 +240,12 @@ Before merging SEO / GEO / AI-search changes, verify:
 - both files include only canonical public URLs;
 - the eight HU service detail URLs are present;
 - legacy service detail URLs are absent;
-- EN/DE/ZH service detail URLs are absent until localized service detail content is ready;
+- EN service detail URLs are present when EN localized service detail content is ready;
+- DE/ZH service detail URLs are absent until localized service detail content is ready;
 - admin, API, draft, migration, seed, and internal URLs are absent;
 - unapproved partner names, customer names, testimonials, case studies, ratings, awards, and EcoVadis claims are absent;
 - future concepts such as Shadow Audit sub-branding, AOS Guard Log, and AI Report Assistant are not described as current public products;
-- `/sitemap.xml` still follows the current policy: locale homepages, HU legal pages, ready HU service detail pages, and ready HU article pages only.
+- `/sitemap.xml` still follows the current policy: locale homepages, reviewed HU/EN legal pages, ready HU/EN service detail pages, and ready HU article pages only.
 
 ### Build-time service path DB dependency
 
@@ -277,11 +282,12 @@ Before merging public news/article work, verify on the Vercel Preview URL:
 Before merging service-detail work, verify on the Vercel Preview URL:
 
 - the eight canonical HU service detail URLs return 200;
+- the eight canonical EN service detail URLs return 200 when EN detail content is ready;
 - the eight legacy detail URLs listed above return 404;
-- EN/DE/ZH service detail URLs for the eight services return 404;
-- `/sitemap.xml` includes exactly the eight ready HU service detail URLs;
+- DE/ZH service detail URLs for the eight services return 404 until ready;
+- `/sitemap.xml` includes the ready HU/EN service detail URLs;
 - `/sitemap.xml` does not include legacy service detail URLs;
-- `/sitemap.xml` does not include EN/DE/ZH service detail URLs;
+- `/sitemap.xml` does not include DE/ZH service detail URLs until ready;
 - canonical URLs point to the ready HU URLs;
 - hreflang advertises only ready locales;
 - FAQPage JSON-LD exists only where the visible FAQ block renders;

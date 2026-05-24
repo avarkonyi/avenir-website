@@ -4,7 +4,7 @@ Next.js App Router website for Avenir Facility Management.
 
 This repo is the public B2B lead-generation website and SEO/GEO-ready service
 platform for Avenir. It currently includes the public marketing site, admin CMS,
-Hungarian service detail pages, a proof-gated partner logo strip, HU-first
+Hungarian and English service detail pages, a proof-gated partner logo strip, HU-first
 public articles, contact intake, and search/AI-search grounding files. Longer
 term, the codebase is expected to evolve toward the Avenir Operating System
 (AOS), but public website, trust, SEO, and conversion work remain the current
@@ -25,8 +25,8 @@ priority.
 ## Current Public Layers
 
 - Locale homepages: `/hu`, `/en`, `/de`, `/zh`
-- Eight ready HU service detail pages
-- Homepage/footer links to ready HU service details
+- Eight ready HU and EN service detail pages
+- Homepage/footer links to ready locale-specific service details
 - Admin-managed Partner Logo Strip with proof gating
 - HU public article layer: `/hu/hirek` and `/hu/hirek/[slug]`
 - Contact form with service prefill
@@ -38,20 +38,28 @@ priority.
 
 ## Service Detail Layer
 
-Current HU service detail URLs:
+Current HU and EN service detail URLs use the same canonical slugs:
 
 - `/hu/szolgaltatasok/objektumorzes`
+- `/en/szolgaltatasok/objektumorzes`
 - `/hu/szolgaltatasok/portaszolgalat`
+- `/en/szolgaltatasok/portaszolgalat`
 - `/hu/szolgaltatasok/biztonsagtechnika`
+- `/en/szolgaltatasok/biztonsagtechnika`
 - `/hu/szolgaltatasok/tavfelugyelet-vonuloszolgalat`
+- `/en/szolgaltatasok/tavfelugyelet-vonuloszolgalat`
 - `/hu/szolgaltatasok/mystery-shopping-helyszini-audit`
+- `/en/szolgaltatasok/mystery-shopping-helyszini-audit`
 - `/hu/szolgaltatasok/rendezvenybiztositas`
+- `/en/szolgaltatasok/rendezvenybiztositas`
 - `/hu/szolgaltatasok/hard-fm`
+- `/en/szolgaltatasok/hard-fm`
 - `/hu/szolgaltatasok/soft-fm`
+- `/en/szolgaltatasok/soft-fm`
 
 Legacy detail URLs remain 404 unless a redirect policy is explicitly approved.
 Legacy slugs may still be accepted as contact aliases and email-label fallback
-values. EN/DE/ZH service detail pages are intentionally gated until their own
+values. DE/ZH service detail pages are intentionally gated until their own
 localized required content exists.
 
 Canonical/legacy service slug map:
