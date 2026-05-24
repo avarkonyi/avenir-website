@@ -18,6 +18,7 @@ import {
   isAdminUnauthorizedError,
   requireAdmin,
 } from "@/lib/admin/require-admin";
+import { hasPdfSignature } from "@/lib/upload-file-signatures";
 
 const ALLOWED_FOLDERS = new Set(["certifications"]);
 const MAX_BYTES = 10 * 1024 * 1024;
@@ -83,13 +84,24 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     );
   }
 
+  const fileBuffer = Buffer.from(await file.arrayBuffer());
+  if (!hasPdfSignature(fileBuffer)) {
+    return NextResponse.json(
+      { ok: false, error: "Érvénytelen PDF fájl." },
+      { status: 400 },
+    );
+  }
+
   // Filename is derived entirely from validated MIME — never from the
   // user-supplied file.name. Prevents double-extension attacks
   // (foo.pdf.exe), inconsistent extensions, and Unicode shenanigans.
   const pathname = `${folder}/${crypto.randomUUID()}.pdf`;
 
   try {
-    const blob = await put(pathname, file, { access: "public" });
+    const blob = await put(pathname, new Blob([new Uint8Array(fileBuffer)], { type: file.type }), {
+      access: "public",
+      contentType: file.type,
+    });
     return NextResponse.json({ ok: true, url: blob.url });
   } catch (err) {
     // Most likely failure mode: missing BLOB_READ_WRITE_TOKEN env or a

@@ -21,6 +21,7 @@ import {
   isAdminUnauthorizedError,
   requireAdmin,
 } from "@/lib/admin/require-admin";
+import { imageSignatureMatchesMime } from "@/lib/upload-file-signatures";
 
 const ALLOWED_FOLDERS = new Set([
   "news",
@@ -45,22 +46,22 @@ type PreparedUpload = {
 };
 
 async function prepareImageUpload(
-  file: File,
+  fileBuffer: Buffer,
   folder: string,
+  originalMime: string,
   originalExt: string,
 ): Promise<PreparedUpload> {
   // Partner/certification uploads may be logos or transparent brand assets.
   // Keep their original raster format; photo-heavy folders get normalized.
   if (!PHOTO_FOLDERS.has(folder)) {
     return {
-      body: file,
-      contentType: file.type,
+      body: new Blob([new Uint8Array(fileBuffer)], { type: originalMime }),
+      contentType: originalMime,
       ext: originalExt,
     };
   }
 
-  const input = Buffer.from(await file.arrayBuffer());
-  const optimized = await sharp(input, { failOn: "error" })
+  const optimized = await sharp(fileBuffer, { failOn: "error" })
     .rotate()
     .resize({
       width: PHOTO_MAX_DIMENSION,
@@ -149,9 +150,17 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     );
   }
 
+  const fileBuffer = Buffer.from(await file.arrayBuffer());
+  if (!imageSignatureMatchesMime(fileBuffer, file.type)) {
+    return NextResponse.json(
+      { ok: false, error: "A képfájl típusa nem egyezik a tartalmával." },
+      { status: 400 },
+    );
+  }
+
   let upload: PreparedUpload;
   try {
-    upload = await prepareImageUpload(file, folder, ext);
+    upload = await prepareImageUpload(fileBuffer, folder, file.type, ext);
   } catch (err) {
     console.error("[upload-image] Image normalization failed:", err);
     return NextResponse.json(
