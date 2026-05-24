@@ -12,7 +12,14 @@ import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 import { getTranslation } from "@/lib/i18n";
 import { db, news } from "@/lib/db";
-import { getActiveTopLevelServices } from "@/lib/db/queries/services";
+import {
+  getActiveTopLevelServices,
+  getAllPublishedServicePathsForBuild,
+} from "@/lib/db/queries/services";
+import {
+  getPublishedNewsIndexHu,
+  newsDetailHrefHu,
+} from "@/lib/db/queries/news";
 
 const LOCALES = ["hu", "en", "de", "zh"] as const;
 type Locale = (typeof LOCALES)[number];
@@ -38,40 +45,18 @@ export default async function HomePage({
   const { locale } = await params;
   if (!LOCALES.includes(locale as Locale)) notFound();
   const t = getTranslation(locale);
-  const cols = NEWS_COLS[locale as Locale];
 
-  // EN/DE/ZH locale columns are nullable post-Iter 3A. We only surface
-  // rows where the picked locale has a non-null title (defensive: an
-  // admin could in theory flip publishedXx without filling titleXx).
-  // Lead/body fall back to empty strings since the locale model permits
-  // title-only teasers.
-  const newsRows = await db
-    .select({
-      id: news.id,
-      title: cols.title,
-      lead: cols.lead,
-      body: cols.body,
-      date: news.date,
-      imageUrl: news.imageUrl,
-    })
-    .from(news)
-    .where(
-      and(
-        eq(cols.published, true),
-        isNotNull(cols.title),
-        isNull(news.deletedAt),
-      ),
-    )
-    .orderBy(desc(news.date));
-
-  const articles = newsRows.map((r) => ({
-    id: r.id,
-    title: r.title ?? "",
-    lead: r.lead ?? "",
-    body: r.body ?? "",
-    date: r.date.toISOString(),
-    imageUrl: r.imageUrl,
-  }));
+  const articles =
+    locale === "hu"
+      ? (await getPublishedNewsIndexHu()).map((r) => ({
+          id: r.id,
+          title: r.title,
+          lead: r.lead,
+          date: r.date.toISOString(),
+          imageUrl: r.imageUrl,
+          href: newsDetailHrefHu(r.slug),
+        }))
+      : await getHomepageModalArticles(locale as Locale);
 
   // Service-of-interest dropdown options for the Contact form via
   // shared helper (lib/db/queries/services.ts). Contact is a client
@@ -85,15 +70,21 @@ export default async function HomePage({
   const serviceOptions = serviceRows
     .map((row) => ({ slug: row.slug, label: row.name }))
     .filter((opt) => opt.label.length > 0);
+  const readyServiceDetailPaths = await getAllPublishedServicePathsForBuild(
+    "homepage service detail links",
+  );
 
   return (
     <>
       <Nav t={{ nav: t.nav }} />
-      <main>
+      <main id="main">
         <Hero t={{ hero: t.hero, stats: t.stats }} />
         <About t={t} />
-        <Services locale={locale} />
-        <References t={t} />
+        <Services
+          locale={locale}
+          readyServiceDetailPaths={readyServiceDetailPaths}
+        />
+        <References t={t} locale={locale} />
         <Certifications t={t} locale={locale} />
         <News
           t={{
@@ -118,7 +109,49 @@ export default async function HomePage({
           serviceOptions={serviceOptions}
         />
       </main>
-      <Footer t={t} locale={locale} />
+      <Footer
+        t={t}
+        locale={locale}
+        readyServiceDetailPaths={readyServiceDetailPaths}
+      />
     </>
   );
+}
+
+async function getHomepageModalArticles(locale: Locale) {
+  const cols = NEWS_COLS[locale];
+
+  // EN/DE/ZH locale columns are nullable post-Iter 3A. We only surface
+  // rows where the picked locale has a non-null title (defensive: an
+  // admin could in theory flip publishedXx without filling titleXx).
+  // Lead/body fall back to empty strings since the locale model permits
+  // title-only teasers. Non-HU public article detail routes are not
+  // exposed yet, so these cards keep the existing homepage modal flow.
+  const newsRows = await db
+    .select({
+      id: news.id,
+      title: cols.title,
+      lead: cols.lead,
+      body: cols.body,
+      date: news.date,
+      imageUrl: news.imageUrl,
+    })
+    .from(news)
+    .where(
+      and(
+        eq(cols.published, true),
+        isNotNull(cols.title),
+        isNull(news.deletedAt),
+      ),
+    )
+    .orderBy(desc(news.date));
+
+  return newsRows.map((r) => ({
+    id: r.id,
+    title: r.title ?? "",
+    lead: r.lead ?? "",
+    body: r.body ?? "",
+    date: r.date.toISOString(),
+    imageUrl: r.imageUrl,
+  }));
 }

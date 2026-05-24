@@ -4,6 +4,7 @@ import { eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { auth } from "@/auth";
 import { db, neonSql, positions } from "@/lib/db";
+import { safeActionError } from "@/lib/admin/safe-action-error";
 
 // Server actions for the Positions CRUD module. Auth check happens
 // inside each function — middleware gates /admin/* but actions are
@@ -116,10 +117,13 @@ export async function createPosition(
     revalidatePath("/admin/positions");
     return { ok: true, id: created.id };
   } catch (err) {
-    console.error("createPosition error:", err);
     return {
       ok: false,
-      error: err instanceof Error ? err.message : "A pozíció mentése sikertelen.",
+      error: safeActionError(
+        "createPosition",
+        err,
+        "A pozíció mentése sikertelen.",
+      ),
     };
   }
 }
@@ -151,10 +155,13 @@ export async function updatePosition(
     revalidatePath(`/admin/positions/${id}/edit`);
     return { ok: true };
   } catch (err) {
-    console.error("updatePosition error:", err);
     return {
       ok: false,
-      error: err instanceof Error ? err.message : "A pozíció mentése sikertelen.",
+      error: safeActionError(
+        "updatePosition",
+        err,
+        "A pozíció mentése sikertelen.",
+      ),
     };
   }
 }
@@ -187,10 +194,9 @@ export async function togglePositionActive(
     revalidatePath("/admin/positions");
     return { ok: true };
   } catch (err) {
-    console.error("togglePositionActive error:", err);
     return {
       ok: false,
-      error: err instanceof Error ? err.message : "A művelet sikertelen.",
+      error: safeActionError("togglePositionActive", err, "A művelet sikertelen."),
     };
   }
 }
@@ -219,10 +225,9 @@ export async function deletePosition(
     revalidatePath("/admin/positions");
     return { ok: true };
   } catch (err) {
-    console.error("deletePosition error:", err);
     return {
       ok: false,
-      error: err instanceof Error ? err.message : "Törlés sikertelen.",
+      error: safeActionError("deletePosition", err, "Törlés sikertelen."),
     };
   }
 }
@@ -293,11 +298,13 @@ export async function reorderPositions(
     revalidatePath("/admin/positions");
     return { ok: true };
   } catch (err) {
-    console.error("reorderPositions error:", err);
     return {
       ok: false,
-      error:
-        err instanceof Error ? err.message : "A sorrend mentése sikertelen.",
+      error: safeActionError(
+        "reorderPositions",
+        err,
+        "A sorrend mentése sikertelen.",
+      ),
     };
   }
 }

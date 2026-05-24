@@ -1,7 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import {
+  type KeyboardEvent as ReactKeyboardEvent,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import type { Translation } from "@/lib/i18n";
+import { getSafePublicImageSrc } from "@/lib/safe-public-image";
 import { Icon } from "./Icon";
 import { AvenirLogo } from "./AvenirLogo";
 
@@ -9,9 +17,10 @@ export type Article = {
   id: number;
   title: string;
   lead: string;
-  body: string;
+  body?: string;
   date: string;
   imageUrl?: string | null;
+  href?: string;
 };
 
 function formatDate(iso: string, locale: string) {
@@ -24,16 +33,6 @@ function formatDate(iso: string, locale: string) {
   } catch {
     return iso;
   }
-}
-
-function coverImageStyle(imageUrl: string): React.CSSProperties {
-  return {
-    position: "absolute",
-    inset: 0,
-    backgroundImage: `url(${JSON.stringify(imageUrl)})`,
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-  };
 }
 
 export function News({
@@ -49,6 +48,56 @@ export function News({
   articles: Article[];
 }) {
   const [active, setActive] = useState<Article | null>(null);
+  const modalCloseButtonRef = useRef<HTMLButtonElement>(null);
+  const lastActivatorRef = useRef<HTMLElement | null>(null);
+  const wasModalOpenRef = useRef(false);
+  const activeImageUrl = getSafePublicImageSrc(active?.imageUrl);
+  const activeTitleId = active ? `news-modal-title-${active.id}` : undefined;
+  const activeBodyId = active ? `news-modal-body-${active.id}` : undefined;
+
+  function openArticle(article: Article, activator: HTMLElement) {
+    lastActivatorRef.current = activator;
+    setActive(article);
+  }
+
+  function closeArticle() {
+    setActive(null);
+  }
+
+  function handleModalCardKeyDown(
+    event: ReactKeyboardEvent<HTMLElement>,
+    article: Article,
+  ) {
+    if (event.key !== "Enter" && event.key !== " ") return;
+    event.preventDefault();
+    openArticle(article, event.currentTarget);
+  }
+
+  useEffect(() => {
+    if (active) {
+      wasModalOpenRef.current = true;
+      modalCloseButtonRef.current?.focus();
+      return;
+    }
+
+    if (wasModalOpenRef.current) {
+      wasModalOpenRef.current = false;
+      lastActivatorRef.current?.focus();
+    }
+  }, [active]);
+
+  useEffect(() => {
+    if (!active) return;
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        closeArticle();
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [active]);
 
   return (
     <section id="news" style={{ padding: "100px 5vw", background: "#fff" }}>
@@ -112,109 +161,36 @@ export function News({
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+              gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 300px), 380px))",
+              justifyContent: "center",
+              alignItems: "stretch",
               gap: 28,
             }}
           >
-            {articles.map((art) => (
-              <article
-                key={art.id}
-                className="news-card"
-                onClick={() => setActive(art)}
-              >
-                <div
-                  style={{
-                    position: "relative",
-                    aspectRatio: "16/9",
-                    background: "linear-gradient(135deg, #0B1E3E, #1a3a6b)",
-                    overflow: "hidden",
-                  }}
+            {articles.map((art) =>
+              art.href ? (
+                <Link
+                  key={art.id}
+                  href={art.href}
+                  className="news-card"
+                  style={{ color: "inherit", textDecoration: "none" }}
                 >
-                  {art.imageUrl ? (
-                    <>
-                      <div style={coverImageStyle(art.imageUrl)} aria-hidden="true" />
-                      <div
-                        style={{
-                          position: "absolute",
-                          inset: 0,
-                          background:
-                            "linear-gradient(180deg, rgba(11,30,62,0.12), rgba(11,30,62,0.28))",
-                        }}
-                      />
-                    </>
-                  ) : (
-                    <div
-                      style={{
-                        position: "absolute",
-                        inset: 0,
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                      }}
-                    >
-                      <AvenirLogo size={36} />
-                    </div>
-                  )}
-                  <div
-                    style={{
-                      position: "absolute",
-                      top: 16,
-                      left: 16,
-                      background: "#D1172E",
-                      color: "#fff",
-                      fontFamily: "var(--font-head)",
-                      fontSize: 11,
-                      fontWeight: 700,
-                      letterSpacing: 1,
-                      padding: "4px 10px",
-                      borderRadius: 2,
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    {formatDate(art.date, locale)}
-                  </div>
-                </div>
-                <div
-                  style={{
-                    padding: "24px 24px 28px",
-                    flex: 1,
-                    display: "flex",
-                    flexDirection: "column",
-                  }}
+                  <NewsCardContent article={art} locale={locale} cta={t.newsReadMore} />
+                </Link>
+              ) : (
+                <article
+                  key={art.id}
+                  className="news-card"
+                  role="button"
+                  tabIndex={0}
+                  aria-label={`${art.title} - ${t.newsReadMore}`}
+                  onClick={(event) => openArticle(art, event.currentTarget)}
+                  onKeyDown={(event) => handleModalCardKeyDown(event, art)}
                 >
-                  <h3
-                    style={{
-                      fontFamily: "var(--font-head)",
-                      fontWeight: 700,
-                      fontSize: 22,
-                      color: "#0B1E3E",
-                      lineHeight: 1.25,
-                      marginBottom: 12,
-                    }}
-                  >
-                    {art.title}
-                  </h3>
-                  <p style={{ color: "#667788", fontSize: 14.5, lineHeight: 1.6, fontWeight: 300, flex: 1 }}>
-                    {art.lead}
-                  </p>
-                  <div style={{ marginTop: 18, display: "flex", alignItems: "center", gap: 8 }}>
-                    <span
-                      style={{
-                        fontFamily: "var(--font-head)",
-                        fontWeight: 700,
-                        fontSize: 13,
-                        letterSpacing: 1.2,
-                        color: "#D1172E",
-                        textTransform: "uppercase",
-                      }}
-                    >
-                      {t.newsReadMore}
-                    </span>
-                    <Icon name="arrow" size={14} color="#D1172E" />
-                  </div>
-                </div>
-              </article>
-            ))}
+                  <NewsCardContent article={art} locale={locale} cta={t.newsReadMore} />
+                </article>
+              ),
+            )}
           </div>
         )}
       </div>
@@ -223,7 +199,7 @@ export function News({
       {active && (
         <div
           onClick={(e) => {
-            if (e.target === e.currentTarget) setActive(null);
+            if (e.target === e.currentTarget) closeArticle();
           }}
           style={{
             position: "fixed",
@@ -238,6 +214,10 @@ export function News({
           }}
         >
           <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby={activeTitleId}
+            aria-describedby={activeBodyId}
             style={{
               background: "#fff",
               borderRadius: 4,
@@ -248,7 +228,7 @@ export function News({
               position: "relative",
             }}
           >
-            {active.imageUrl && (
+            {activeImageUrl && (
               <div
                 style={{
                   position: "relative",
@@ -257,7 +237,14 @@ export function News({
                   background: "#0B1E3E",
                 }}
               >
-                <div style={coverImageStyle(active.imageUrl)} aria-hidden="true" />
+                <Image
+                  src={activeImageUrl}
+                  alt=""
+                  fill
+                  sizes="(max-width: 820px) calc(100vw - 48px), 760px"
+                  quality={88}
+                  style={{ objectFit: "cover" }}
+                />
                 <div
                   style={{
                     position: "absolute",
@@ -269,7 +256,9 @@ export function News({
               </div>
             )}
             <button
-              onClick={() => setActive(null)}
+              ref={modalCloseButtonRef}
+              className="news-modal-close"
+              onClick={closeArticle}
               style={{
                 position: "absolute",
                 top: 16,
@@ -304,6 +293,7 @@ export function News({
                 {formatDate(active.date, locale)}
               </div>
               <h2
+                id={activeTitleId}
                 style={{
                   fontFamily: "var(--font-head)",
                   fontWeight: 800,
@@ -316,6 +306,7 @@ export function News({
                 {active.title}
               </h2>
               <div
+                id={activeBodyId}
                 style={{
                   color: "#445566",
                   fontSize: 16,
@@ -324,12 +315,142 @@ export function News({
                   whiteSpace: "pre-wrap",
                 }}
               >
-                {active.body}
+                {active.body ?? ""}
               </div>
             </div>
           </div>
         </div>
       )}
     </section>
+  );
+}
+
+function NewsCardContent({
+  article,
+  locale,
+  cta,
+}: {
+  article: Article;
+  locale: string;
+  cta: string;
+}) {
+  const imageUrl = getSafePublicImageSrc(article.imageUrl);
+
+  return (
+    <>
+      <div
+        style={{
+          position: "relative",
+          aspectRatio: "16/9",
+          background: "linear-gradient(135deg, #0B1E3E, #1a3a6b)",
+          overflow: "hidden",
+        }}
+      >
+        {imageUrl ? (
+          <>
+            <Image
+              src={imageUrl}
+              alt=""
+              fill
+              sizes="(max-width: 768px) 100vw, 380px"
+              quality={85}
+              style={{ objectFit: "cover" }}
+            />
+            <div
+              style={{
+                position: "absolute",
+                inset: 0,
+                background:
+                  "linear-gradient(180deg, rgba(11,30,62,0.12), rgba(11,30,62,0.28))",
+              }}
+            />
+          </>
+        ) : (
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <AvenirLogo size={36} />
+          </div>
+        )}
+        <div
+          style={{
+            position: "absolute",
+            top: 16,
+            left: 16,
+            background: "#D1172E",
+            color: "#fff",
+            fontFamily: "var(--font-head)",
+            fontSize: 11,
+            fontWeight: 700,
+            letterSpacing: 1,
+            padding: "4px 10px",
+            borderRadius: 2,
+            textTransform: "uppercase",
+          }}
+        >
+          {formatDate(article.date, locale)}
+        </div>
+      </div>
+      <div
+        style={{
+          padding: "24px 24px 28px",
+          flex: 1,
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <h3
+          style={{
+            fontFamily: "var(--font-head)",
+            fontWeight: 700,
+            fontSize: 22,
+            color: "#0B1E3E",
+            lineHeight: 1.25,
+            marginBottom: 12,
+          }}
+        >
+          {article.title}
+        </h3>
+        <p
+          style={{
+            color: "#667788",
+            fontSize: 14.5,
+            lineHeight: 1.6,
+            fontWeight: 300,
+            flex: 1,
+          }}
+        >
+          {article.lead}
+        </p>
+        <div
+          style={{
+            marginTop: 18,
+            display: "flex",
+            alignItems: "center",
+            gap: 8,
+          }}
+        >
+          <span
+            style={{
+              fontFamily: "var(--font-head)",
+              fontWeight: 700,
+              fontSize: 13,
+              letterSpacing: 1.2,
+              color: "#D1172E",
+              textTransform: "uppercase",
+            }}
+          >
+            {cta}
+          </span>
+          <Icon name="arrow" size={14} color="#D1172E" />
+        </div>
+      </div>
+    </>
   );
 }

@@ -1,8 +1,14 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getTranslation, LOCALES, type Locale } from "@/lib/i18n";
+import { getTranslation } from "@/lib/i18n";
 import { getPrivacyContent } from "@/lib/legal-content";
 import { SEO_DATA } from "@/lib/seo-data";
+import {
+  isLegalPageLocale,
+  legalPageAlternateLanguages,
+  legalPageStaticParams,
+  legalPageUrl,
+} from "@/lib/legal-routes";
 import {
   LegalPageChrome,
   LegalHeader,
@@ -10,7 +16,7 @@ import {
 } from "@/components/LegalPageChrome";
 
 export function generateStaticParams() {
-  return LOCALES.map((locale) => ({ locale }));
+  return legalPageStaticParams();
 }
 
 export async function generateMetadata({
@@ -19,12 +25,12 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  if (!LOCALES.includes(locale as Locale)) notFound();
+  if (!isLegalPageLocale(locale)) notFound();
   const t = getTranslation(locale);
   const privacy = getPrivacyContent(locale, t);
   const title = `${privacy.title} — ${SEO_DATA.legalNameShort}`;
   const description = privacy.intro.slice(0, 160);
-  const url = `${SEO_DATA.url}/${locale}/adatvedelem`;
+  const url = legalPageUrl(locale, "adatvedelem");
 
   return {
     metadataBase: new URL(SEO_DATA.url),
@@ -33,13 +39,7 @@ export async function generateMetadata({
     robots: { index: true, follow: true },
     alternates: {
       canonical: url,
-      languages: {
-        hu: `${SEO_DATA.url}/hu/adatvedelem`,
-        en: `${SEO_DATA.url}/en/adatvedelem`,
-        de: `${SEO_DATA.url}/de/adatvedelem`,
-        zh: `${SEO_DATA.url}/zh/adatvedelem`,
-        "x-default": `${SEO_DATA.url}/hu/adatvedelem`,
-      },
+      languages: legalPageAlternateLanguages("adatvedelem"),
     },
     openGraph: { type: "article", title, description, url },
   };
@@ -51,7 +51,7 @@ export default async function PrivacyPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  if (!LOCALES.includes(locale as Locale)) notFound();
+  if (!isLegalPageLocale(locale)) notFound();
   const t = getTranslation(locale);
   const privacy = getPrivacyContent(locale, t);
 

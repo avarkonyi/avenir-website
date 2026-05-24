@@ -1,9 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getTranslation, LOCALES, type Locale } from "@/lib/i18n";
+import { getTranslation } from "@/lib/i18n";
 import { getTermsContent } from "@/lib/legal-content";
 import { SEO_DATA } from "@/lib/seo-data";
+import {
+  isLegalPageLocale,
+  legalPageAlternateLanguages,
+  legalPageStaticParams,
+  legalPageUrl,
+} from "@/lib/legal-routes";
 import {
   LegalPageChrome,
   LegalHeader,
@@ -11,7 +17,7 @@ import {
 } from "@/components/LegalPageChrome";
 
 export function generateStaticParams() {
-  return LOCALES.map((locale) => ({ locale }));
+  return legalPageStaticParams();
 }
 
 export async function generateMetadata({
@@ -20,12 +26,12 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  if (!LOCALES.includes(locale as Locale)) notFound();
+  if (!isLegalPageLocale(locale)) notFound();
   const t = getTranslation(locale);
   const terms = getTermsContent(locale, t);
   const title = `${terms.title} — ${SEO_DATA.legalNameShort}`;
   const description = terms.intro.slice(0, 160);
-  const url = `${SEO_DATA.url}/${locale}/aszf`;
+  const url = legalPageUrl(locale, "aszf");
 
   return {
     metadataBase: new URL(SEO_DATA.url),
@@ -34,13 +40,7 @@ export async function generateMetadata({
     robots: { index: true, follow: true },
     alternates: {
       canonical: url,
-      languages: {
-        hu: `${SEO_DATA.url}/hu/aszf`,
-        en: `${SEO_DATA.url}/en/aszf`,
-        de: `${SEO_DATA.url}/de/aszf`,
-        zh: `${SEO_DATA.url}/zh/aszf`,
-        "x-default": `${SEO_DATA.url}/hu/aszf`,
-      },
+      languages: legalPageAlternateLanguages("aszf"),
     },
     openGraph: { type: "article", title, description, url },
   };
@@ -52,7 +52,7 @@ export default async function TermsPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  if (!LOCALES.includes(locale as Locale)) notFound();
+  if (!isLegalPageLocale(locale)) notFound();
   const t = getTranslation(locale);
   const terms = getTermsContent(locale, t);
 

@@ -25,6 +25,9 @@ import { db, messages } from "@/lib/db";
 
 const MAX_BODY_BYTES = 32 * 1024;
 
+// Contact rate limiting is Redis/KV-backed in production when configured.
+// Local development and Vercel Preview may use an in-memory fallback for QA.
+
 // Default same-site allowlist for production. Override via the
 // ALLOWED_ORIGINS env var (comma-separated) to add Vercel preview
 // domains or staging hostnames without code changes.
@@ -101,8 +104,18 @@ export async function POST(request: Request) {
   }
 
   const ip = getClientIp(request);
-  const rate = checkRateLimit(ip);
+  const rate = await checkRateLimit(ip);
   if (!rate.allowed) {
+    if (rate.reason === "unavailable") {
+      return NextResponse.json(
+        { error: "rate-limit-unavailable" },
+        {
+          status: 503,
+          headers: { "Retry-After": String(rate.retryAfter) },
+        },
+      );
+    }
+
     return NextResponse.json(
       { error: "throttled" },
       {

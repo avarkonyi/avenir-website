@@ -4,6 +4,7 @@ import { and, eq, inArray, isNull, sql } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { auth } from "@/auth";
 import { db, neonSql, services } from "@/lib/db";
+import { safeActionError } from "@/lib/admin/safe-action-error";
 import { slugify } from "@/lib/utils/slugify";
 import { ICON_NAMES } from "@/components/Icon";
 
@@ -53,6 +54,54 @@ export type ServicePayload = {
   highlightsDeRaw: string;
   highlightsZhRaw: string;
 
+  // Service-detail-page fields (P5 Phase 1).
+  seoTitleHu: string;
+  seoTitleEn: string;
+  seoTitleDe: string;
+  seoTitleZh: string;
+
+  seoDescriptionHu: string;
+  seoDescriptionEn: string;
+  seoDescriptionDe: string;
+  seoDescriptionZh: string;
+
+  valuePropositionHu: string;
+  valuePropositionEn: string;
+  valuePropositionDe: string;
+  valuePropositionZh: string;
+
+  // Line-separated raw strings for string[] fields.
+  useCasesHuRaw: string;
+  useCasesEnRaw: string;
+  useCasesDeRaw: string;
+  useCasesZhRaw: string;
+
+  includedItemsHuRaw: string;
+  includedItemsEnRaw: string;
+  includedItemsDeRaw: string;
+  includedItemsZhRaw: string;
+
+  // Per-line "Title || Body" raw strings for compound items.
+  processStepsHuRaw: string;
+  processStepsEnRaw: string;
+  processStepsDeRaw: string;
+  processStepsZhRaw: string;
+
+  trustItemsHuRaw: string;
+  trustItemsEnRaw: string;
+  trustItemsDeRaw: string;
+  trustItemsZhRaw: string;
+
+  // Per-line "Question || Answer" raw strings.
+  faqHuRaw: string;
+  faqEnRaw: string;
+  faqDeRaw: string;
+  faqZhRaw: string;
+
+  // Comma-or-line separated slugs of related services. Locale-
+  // independent.
+  relatedServiceSlugsRaw: string;
+
   sortOrder: number;
   isFeatured: boolean;
   isPublished: boolean;
@@ -68,6 +117,30 @@ export type UpdateServiceResult =
   | { ok: false; error: string };
 
 const ICON_NAME_SET = new Set<string>(ICON_NAMES);
+const PUBLIC_LOCALES = ["hu", "en", "de", "zh"] as const;
+const SERVICE_DETAIL_SEGMENT = "szolgaltatasok";
+
+function revalidatePublicServiceSurfaces(
+  affectedSlugs: readonly (string | null | undefined)[] = [],
+): void {
+  revalidatePath("/sitemap.xml");
+
+  for (const locale of PUBLIC_LOCALES) {
+    revalidatePath(`/${locale}`);
+  }
+
+  const uniqueSlugs = new Set(
+    affectedSlugs
+      .map((slug) => slug?.trim())
+      .filter((slug): slug is string => Boolean(slug)),
+  );
+
+  for (const slug of uniqueSlugs) {
+    for (const locale of PUBLIC_LOCALES) {
+      revalidatePath(`/${locale}/${SERVICE_DETAIL_SEGMENT}/${slug}`);
+    }
+  }
+}
 
 function normLocale(value: string | null | undefined): string | null {
   if (value === null || value === undefined) return null;
@@ -95,6 +168,171 @@ function normalizeHighlights(raw: string | null | undefined): string[] {
     }
   }
   return lines;
+}
+
+// Generic line-array normalizer (no per-item count cap; the highlights
+// helper above keeps its 6-item / 160-char limit because it backs the
+// already-shipped homepage card pattern). Each line is trimmed; empty
+// lines collapse out. Per-line length capped at 400 to avoid pathological
+// admin paste-bombs filling the jsonb column unbounded.
+function normalizeLines(raw: string | null | undefined): string[] {
+  if (!raw) return [];
+  const lines = raw
+    .split("\n")
+    .map((line) => line.trim())
+    .filter((line) => line.length > 0);
+  for (const line of lines) {
+    if (line.length > 400) {
+      throw new Error(
+        `Egy sor maximum 400 karakter (talált: ${line.length}).`,
+      );
+    }
+  }
+  return lines;
+}
+
+// Compound items: each non-empty line is "Title || Body". Lines without
+// the "||" separator are treated as title-only (body = "").
+function normalizeCompound(
+  raw: string | null | undefined,
+): { title: string; body: string }[] {
+  if (!raw) return [];
+  return raw
+    .split("\n")
+    .map((line) => line.trim())
+    .filter((line) => line.length > 0)
+    .map((line) => {
+      const sep = line.indexOf("||");
+      if (sep === -1) return { title: line, body: "" };
+      const title = line.slice(0, sep).trim();
+      const body = line.slice(sep + 2).trim();
+      return { title, body };
+    })
+    .filter((entry) => entry.title.length > 0);
+}
+
+// FAQ entries reuse the "Q || A" same separator, but the canonical
+// shape has q/a keys (matches FAQPage schema.org property names).
+function normalizeFaq(
+  raw: string | null | undefined,
+): { q: string; a: string }[] {
+  return normalizeCompound(raw).map(({ title, body }) => ({
+    q: title,
+    a: body,
+  }));
+}
+
+// Related-service slugs: comma- or newline-separated, slugified per
+// entry so admin can paste display names. Empty entries drop. The
+// detail page query (getPublishedServicesBySlugs) silently filters
+// any slug that's missing or unpublished — we don't FK-validate here
+// because the related target may be added later.
+function normalizeRelatedSlugs(raw: string | null | undefined): string[] {
+  if (!raw) return [];
+  const seen = new Set<string>();
+  const out: string[] = [];
+  for (const piece of raw.split(/[\n,]/)) {
+    const trimmed = piece.trim();
+    if (trimmed.length === 0) continue;
+    const slug = slugify(trimmed);
+    if (!slug || slug === "hir" || seen.has(slug)) continue;
+    seen.add(slug);
+    out.push(slug);
+  }
+  return out;
+}
+
+// Bundles every detail-page column write into a single object spread
+// into the values()/set() call. Keeps the CRUD bodies short and
+// guarantees create/update parity (any new detail column added here
+// flows to both paths automatically).
+function normalizeDetailFields(payload: ServicePayload) {
+  return {
+    seoTitleHu: normLocale(payload.seoTitleHu),
+    seoTitleEn: normLocale(payload.seoTitleEn),
+    seoTitleDe: normLocale(payload.seoTitleDe),
+    seoTitleZh: normLocale(payload.seoTitleZh),
+
+    seoDescriptionHu: normLocale(payload.seoDescriptionHu),
+    seoDescriptionEn: normLocale(payload.seoDescriptionEn),
+    seoDescriptionDe: normLocale(payload.seoDescriptionDe),
+    seoDescriptionZh: normLocale(payload.seoDescriptionZh),
+
+    valuePropositionHu: normLocale(payload.valuePropositionHu),
+    valuePropositionEn: normLocale(payload.valuePropositionEn),
+    valuePropositionDe: normLocale(payload.valuePropositionDe),
+    valuePropositionZh: normLocale(payload.valuePropositionZh),
+
+    useCasesHu: normalizeLines(payload.useCasesHuRaw),
+    useCasesEn: normalizeLines(payload.useCasesEnRaw),
+    useCasesDe: normalizeLines(payload.useCasesDeRaw),
+    useCasesZh: normalizeLines(payload.useCasesZhRaw),
+
+    includedItemsHu: normalizeLines(payload.includedItemsHuRaw),
+    includedItemsEn: normalizeLines(payload.includedItemsEnRaw),
+    includedItemsDe: normalizeLines(payload.includedItemsDeRaw),
+    includedItemsZh: normalizeLines(payload.includedItemsZhRaw),
+
+    processStepsHu: normalizeCompound(payload.processStepsHuRaw),
+    processStepsEn: normalizeCompound(payload.processStepsEnRaw),
+    processStepsDe: normalizeCompound(payload.processStepsDeRaw),
+    processStepsZh: normalizeCompound(payload.processStepsZhRaw),
+
+    trustItemsHu: normalizeCompound(payload.trustItemsHuRaw),
+    trustItemsEn: normalizeCompound(payload.trustItemsEnRaw),
+    trustItemsDe: normalizeCompound(payload.trustItemsDeRaw),
+    trustItemsZh: normalizeCompound(payload.trustItemsZhRaw),
+
+    faqHu: normalizeFaq(payload.faqHuRaw),
+    faqEn: normalizeFaq(payload.faqEnRaw),
+    faqDe: normalizeFaq(payload.faqDeRaw),
+    faqZh: normalizeFaq(payload.faqZhRaw),
+
+    relatedServiceSlugs: normalizeRelatedSlugs(payload.relatedServiceSlugsRaw),
+  };
+}
+
+// Admin publish gate (P5 Phase 1): a service can only flip
+// isPublished=true when the HU baseline is present. Public service
+// detail routes apply a stricter locale-specific readiness gate, so
+// EN/DE/ZH detail pages stay 404 until their own required fields exist.
+function assertCanPublishDetail(
+  payload: ServicePayload,
+  slug: string,
+): void {
+  if (!payload.isPublished) return;
+  const missing: string[] = [];
+  if (slug.trim().length === 0) missing.push("slug");
+  if (payload.seoTitleHu.trim().length === 0) missing.push("SEO cím (HU)");
+  if (payload.seoDescriptionHu.trim().length === 0)
+    missing.push("SEO leírás (HU)");
+  if (payload.longDescHu.trim().length === 0)
+    missing.push("Hosszú leírás (HU)");
+  if (payload.valuePropositionHu.trim().length === 0)
+    missing.push("Értékajánlat (HU)");
+  if (missing.length > 0) {
+    throw new Error(
+      `A publikáláshoz a következő mezők szükségesek: ${missing.join(", ")}.`,
+    );
+  }
+}
+
+function assertExistingCanPublishDetail(
+  service: typeof services.$inferSelect,
+): void {
+  if (!service.isPublished) return;
+  const missing: string[] = [];
+  if (service.slug.trim().length === 0) missing.push("slug");
+  if (!service.seoTitleHu?.trim()) missing.push("SEO cím (HU)");
+  if (!service.seoDescriptionHu?.trim()) missing.push("SEO leírás (HU)");
+  if (!service.longDescHu?.trim()) missing.push("Hosszú leírás (HU)");
+  if (!service.valuePropositionHu?.trim())
+    missing.push("Értékajánlat (HU)");
+  if (missing.length > 0) {
+    throw new Error(
+      `A publikáláshoz a következő mezők szükségesek: ${missing.join(", ")}.`,
+    );
+  }
 }
 
 // Slug pipeline: canonicalize first, validate after.
@@ -208,17 +446,16 @@ export async function toggleServiceActive(
       .set({ isActive: nextActive, updatedAt: new Date() })
       .where(eq(services.id, id));
     revalidatePath("/admin/services");
+    revalidatePublicServiceSurfaces([service.slug]);
     return { ok: true };
   } catch (err) {
-    console.error("toggleServiceActive error:", err);
     return {
       ok: false,
-      error:
-        err instanceof Error
-          ? err.message
-          : nextActive
-            ? "Az aktiválás sikertelen."
-            : "Az inaktiválás sikertelen.",
+      error: safeActionError(
+        "toggleServiceActive",
+        err,
+        nextActive ? "Az aktiválás sikertelen." : "Az inaktiválás sikertelen.",
+      ),
     };
   }
 }
@@ -248,6 +485,9 @@ export async function createService(
     const highlightsEn = normalizeHighlights(payload.highlightsEnRaw);
     const highlightsDe = normalizeHighlights(payload.highlightsDeRaw);
     const highlightsZh = normalizeHighlights(payload.highlightsZhRaw);
+
+    const detail = normalizeDetailFields(payload);
+    assertCanPublishDetail(payload, slug);
 
     const sortOrder = Number.isFinite(payload.sortOrder)
       ? Math.max(0, Math.trunc(payload.sortOrder))
@@ -281,6 +521,8 @@ export async function createService(
         highlightsDe,
         highlightsZh,
 
+        ...detail,
+
         sortOrder,
         isFeatured: payload.isFeatured,
         isPublished: payload.isPublished,
@@ -289,6 +531,7 @@ export async function createService(
       .returning({ id: services.id });
 
     revalidatePath("/admin/services");
+    revalidatePublicServiceSurfaces([slug]);
 
     return {
       ok: true,
@@ -303,13 +546,13 @@ export async function createService(
         error: `Ez a slug már foglalt: "${payload.slug.trim() || nameHu}". Válassz egyedit.`,
       };
     }
-    console.error("createService error:", err);
     return {
       ok: false,
-      error:
-        err instanceof Error
-          ? err.message
-          : "A szolgáltatás létrehozása sikertelen.",
+      error: safeActionError(
+        "createService",
+        err,
+        "A szolgáltatás létrehozása sikertelen.",
+      ),
     };
   }
 }
@@ -370,6 +613,9 @@ export async function updateService(
     const highlightsDe = normalizeHighlights(payload.highlightsDeRaw);
     const highlightsZh = normalizeHighlights(payload.highlightsZhRaw);
 
+    const detail = normalizeDetailFields(payload);
+    assertCanPublishDetail(payload, slug);
+
     const sortOrder = Number.isFinite(payload.sortOrder)
       ? Math.max(0, Math.trunc(payload.sortOrder))
       : 0;
@@ -402,6 +648,8 @@ export async function updateService(
         highlightsDe,
         highlightsZh,
 
+        ...detail,
+
         sortOrder,
         isFeatured: payload.isFeatured,
         isPublished: payload.isPublished,
@@ -413,6 +661,7 @@ export async function updateService(
 
     revalidatePath("/admin/services");
     revalidatePath(`/admin/services/${id}/edit`);
+    revalidatePublicServiceSurfaces([existing.slug, slug]);
 
     return {
       ok: true,
@@ -426,13 +675,13 @@ export async function updateService(
         error: `Ez a slug már foglalt: "${payload.slug.trim() || nameHu}". Válassz egyedit.`,
       };
     }
-    console.error("updateService error:", err);
     return {
       ok: false,
-      error:
-        err instanceof Error
-          ? err.message
-          : "A szolgáltatás frissítése sikertelen.",
+      error: safeActionError(
+        "updateService",
+        err,
+        "A szolgáltatás frissítése sikertelen.",
+      ),
     };
   }
 }
@@ -483,22 +732,30 @@ export async function togglePublishStatus(
   }
 
   try {
+    if (nextPublished) {
+      assertExistingCanPublishDetail({
+        ...service,
+        isPublished: true,
+      });
+    }
+
     await db
       .update(services)
       .set({ isPublished: nextPublished, updatedAt: new Date() })
       .where(eq(services.id, id));
     revalidatePath("/admin/services");
+    revalidatePublicServiceSurfaces([service.slug]);
     return { ok: true };
   } catch (err) {
-    console.error("togglePublishStatus error:", err);
     return {
       ok: false,
-      error:
-        err instanceof Error
-          ? err.message
-          : nextPublished
-            ? "Publikálás sikertelen."
-            : "A publikálás visszavonása sikertelen.",
+      error: safeActionError(
+        "togglePublishStatus",
+        err,
+        nextPublished
+          ? "Publikálás sikertelen."
+          : "A publikálás visszavonása sikertelen.",
+      ),
     };
   }
 }
@@ -570,13 +827,16 @@ export async function reorderTopLevelServices(
         .where(eq(services.id, orderedIds[i]));
     }
     revalidatePath("/admin/services");
+    revalidatePublicServiceSurfaces();
     return { ok: true };
   } catch (err) {
-    console.error("reorderTopLevelServices error:", err);
     return {
       ok: false,
-      error:
-        err instanceof Error ? err.message : "A sorrend mentése sikertelen.",
+      error: safeActionError(
+        "reorderTopLevelServices",
+        err,
+        "A sorrend mentése sikertelen.",
+      ),
     };
   }
 }
@@ -613,7 +873,7 @@ export async function deleteService(
   await requireAdmin();
 
   const [svc] = await db
-    .select({ id: services.id })
+    .select({ id: services.id, slug: services.slug })
     .from(services)
     .where(eq(services.id, serviceId))
     .limit(1);
@@ -622,7 +882,7 @@ export async function deleteService(
   }
 
   const children = await db
-    .select({ id: services.id })
+    .select({ id: services.id, slug: services.slug })
     .from(services)
     .where(eq(services.parentId, serviceId));
 
@@ -664,15 +924,15 @@ export async function deleteService(
       await db.delete(services).where(eq(services.id, serviceId));
     }
   } catch (err) {
-    console.error("deleteService error:", err);
     return {
       ok: false,
-      error: err instanceof Error ? err.message : "Törlés sikertelen.",
+      error: safeActionError("deleteService", err, "Törlés sikertelen."),
     };
   }
 
   revalidatePath("/admin/services");
   revalidatePath("/admin", "layout");
+  revalidatePublicServiceSurfaces([svc.slug, ...children.map((c) => c.slug)]);
 
   return { ok: true };
 }

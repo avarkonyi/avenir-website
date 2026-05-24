@@ -58,7 +58,7 @@ export function LegalPageChrome({
     <>
       <JsonLd schemas={[breadcrumb, webpage]} />
       <Nav t={t} />
-      <main style={{ minHeight: "60vh", background: "#fff" }}>
+      <main id="main" style={{ minHeight: "60vh", background: "#fff" }}>
         <div
           style={{
             maxWidth: 880,

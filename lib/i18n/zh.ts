@@ -105,9 +105,9 @@ export const zh = {
       "d": "作为补充服务，支持技术设施运营、维护协调和小型维修工作，适用于复杂客户环境。"
     }
   ],
-  "refTitle": "参考案例",
-  "refSub": "他们信任我们",
-  "refText": "每个现场都不尽相同，但客户的期待是一致的：安全、透明且可预期的运营。Avenir 与各类合作伙伴携手合作，服务范围涵盖物流中心、购物中心、工业园区及公共机构——对他们而言，安全、秩序和运营质量都不容妥协。",
+  "refTitle": "合作伙伴",
+  "refSub": "精选合作",
+  "refText": "每个现场都不尽相同，但运营期待是一致的：安全、透明且可预期。Avenir 服务于多种企业、机构和运营环境，在这些场景中，安全、秩序和服务质量都是重要的运营重点。",
   "refs": [
     "办公楼",
     "购物中心",
@@ -186,6 +186,20 @@ export const zh = {
     "iafMember": "IAF MLA 成员",
     "downloadPdf": "下载证书 (PDF)",
     "altText": "{name} 认证标志"
+  },
+  "serviceDetail": {
+    "useCasesEyebrow": "适用对象",
+    "useCasesTitle": "适合哪些场景",
+    "includedEyebrow": "服务内容",
+    "includedTitle": "包含内容",
+    "processEyebrow": "流程",
+    "processTitle": "合作如何开始",
+    "trustEyebrow": "为什么选择 Avenir",
+    "trustTitle": "信任要素",
+    "faqEyebrow": "常见问题",
+    "faqTitle": "常见问题解答",
+    "relatedEyebrow": "Avenir 其他服务",
+    "relatedTitle": "相关服务"
   },
   // LEGAL_REVIEW_PENDING_ZH — 以下 legal 内容为机器翻译；具有法律约束力的版本为匈牙利语版本。
   "legal": {

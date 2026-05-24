@@ -1,5 +1,21 @@
 import type { NextConfig } from "next";
 
+// Vercel Live injects a preview-only feedback script on Preview deployments.
+// Keep production CSP strict; only the preview environment gets this source.
+const isVercelPreview = process.env.VERCEL_ENV === "preview";
+const scriptSrc = [
+  "script-src 'self' 'unsafe-inline'",
+  isVercelPreview ? "https://vercel.live" : null,
+]
+  .filter(Boolean)
+  .join(" ");
+const connectSrc = [
+  "connect-src 'self'",
+  isVercelPreview ? "https://vercel.live" : null,
+]
+  .filter(Boolean)
+  .join(" ");
+
 // Hardened security headers per Codex audit 2026-04-30 (P1-A finding).
 // Applied to every route via the headers() async function below.
 const securityHeaders = [
@@ -48,11 +64,11 @@ const securityHeaders = [
     key: "Content-Security-Policy",
     value: [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline'",
+      scriptSrc,
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data: blob: https://*.public.blob.vercel-storage.com",
       "font-src 'self'",
-      "connect-src 'self'",
+      connectSrc,
       "frame-ancestors 'none'",
       "base-uri 'self'",
       "form-action 'self'",
@@ -76,6 +92,14 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "*.public.blob.vercel-storage.com",
+      },
+    ],
+  },
   async headers() {
     return [
       {

@@ -4,6 +4,7 @@ import { eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { auth } from "@/auth";
 import { db, siteSettings } from "@/lib/db";
+import { safeActionError } from "@/lib/admin/safe-action-error";
 import { SEO_DATA } from "@/lib/seo-data";
 
 export type SiteSettingsPayload = {
@@ -161,10 +162,10 @@ export async function updateSiteSettings(
   let values: ReturnType<typeof normalize>;
   try {
     values = normalize(payload);
-  } catch (err) {
+  } catch {
     return {
       ok: false,
-      error: err instanceof Error ? err.message : "Érvénytelen beállítások.",
+      error: "Érvénytelen beállítások.",
     };
   }
 
@@ -179,11 +180,13 @@ export async function updateSiteSettings(
     revalidatePath("/admin/settings");
     return { ok: true };
   } catch (err) {
-    console.error("updateSiteSettings error:", err);
     return {
       ok: false,
-      error:
-        err instanceof Error ? err.message : "A beállítások mentése sikertelen.",
+      error: safeActionError(
+        "updateSiteSettings",
+        err,
+        "A beállítások mentése sikertelen.",
+      ),
     };
   }
 }

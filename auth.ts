@@ -15,6 +15,12 @@ const ALLOWED_ADMIN_EMAILS = [
   "peter.vagi@afm.hu",
 ] as const;
 
+function redactEmailForLog(email: string): string {
+  const [local = "", domain = "unknown"] = email.toLowerCase().split("@");
+  const visible = local.length <= 2 ? local.slice(0, 1) : local.slice(0, 2);
+  return `${visible}***@${domain}`;
+}
+
 export const { handlers, signIn, signOut, auth } = NextAuth({
   // NextAuth v5 strict host-check. On Vercel this is auto-true via
   // VERCEL=1 env detection; for non-Vercel deploys (or local prod
@@ -40,7 +46,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         user.email.toLowerCase() as (typeof ALLOWED_ADMIN_EMAILS)[number],
       );
       if (!allowed) {
-        console.warn(`[auth] Denied: ${user.email} not in allowlist`);
+        console.warn(
+          `[auth] Denied admin sign-in: ${redactEmailForLog(user.email)} not in allowlist`,
+        );
       }
       return allowed;
     },

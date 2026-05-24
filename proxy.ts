@@ -10,6 +10,19 @@ const DEFAULT_LOCALE = "hu";
 const NOINDEX_HEADER = "noindex, nofollow";
 const LEGACY_GONE_PATHS = ["/cgi-sys", "/mall", "/tw"] as const;
 
+function adminPathWithoutLocale(pathname: string): string | null {
+  const parts = pathname.split("/");
+  const localeSegment = parts[1]?.toLowerCase();
+  const routeSegment = parts[2]?.toLowerCase();
+
+  if (!localeSegment || !LOCALES.includes(localeSegment)) return null;
+  if (routeSegment !== "admin") return null;
+
+  const adminParts = parts.slice(2);
+  adminParts[0] = "admin";
+  return `/${adminParts.join("/")}`;
+}
+
 function shouldNoindex(req: NextRequest): boolean {
   const host = req.headers.get("host")?.toLowerCase() ?? "";
   return (
@@ -69,6 +82,13 @@ export default function proxy(req: NextRequest, event: NextFetchEvent) {
   }
 
   if (pathname.startsWith("/admin")) return adminProxy(req, event);
+
+  const adminPath = adminPathWithoutLocale(pathname);
+  if (adminPath) {
+    const redirectUrl = req.nextUrl.clone();
+    redirectUrl.pathname = adminPath;
+    return withNoindexHeader(req, NextResponse.redirect(redirectUrl, 308));
+  }
 
   const localeSegment = pathname.split("/")[1];
   const normalizedLocale = localeSegment?.toLowerCase();

@@ -1,6 +1,7 @@
 import type { Translation } from "@/lib/i18n";
+import { PartnerLogoStrip } from "@/components/PartnerLogoStrip";
 
-export function References({ t }: { t: Translation }) {
+export function References({ t, locale }: { t: Translation; locale: string }) {
   return (
     <section
       id="references"
@@ -29,7 +30,7 @@ export function References({ t }: { t: Translation }) {
             gridTemplateColumns: "1fr 1fr",
             gap: 60,
             alignItems: "center",
-            marginBottom: 60,
+            marginBottom: 44,
           }}
         >
           <h2
@@ -43,32 +44,11 @@ export function References({ t }: { t: Translation }) {
           >
             {t.refTitle}
           </h2>
-          <p style={{ color: "rgba(255,255,255,0.55)", fontSize: 17, lineHeight: 1.7, fontWeight: 300 }}>
+          <p style={{ color: "var(--avenir-on-dark-muted)", fontSize: 17, lineHeight: 1.7, fontWeight: 300 }}>
             {t.refText}
           </p>
         </div>
-        {/* Category pills */}
-        <div style={{ display: "flex", flexWrap: "wrap", gap: 16 }}>
-          {t.refs.map((r, i) => (
-            <div
-              key={i}
-              style={{
-                background: "rgba(255,255,255,0.07)",
-                border: "1px solid rgba(255,255,255,0.12)",
-                padding: "12px 24px",
-                borderRadius: 2,
-                display: "flex",
-                alignItems: "center",
-                gap: 10,
-              }}
-            >
-              <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#D1172E" }} />
-              <span style={{ fontFamily: "var(--font-head)", color: "rgba(255,255,255,0.8)", fontSize: 14, fontWeight: 600, letterSpacing: 0.5 }}>
-                {r}
-              </span>
-            </div>
-          ))}
-        </div>
+        <PartnerLogoStrip locale={locale} />
       </div>
     </section>
   );

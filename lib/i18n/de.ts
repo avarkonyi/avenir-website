@@ -105,9 +105,9 @@ export const de = {
       "d": "Unterstützung bei technischem Betrieb, Wartungskoordination und kleineren Reparaturarbeiten als ergänzende Leistung in komplexen Kundenumgebungen."
     }
   ],
-  "refTitle": "Referenzen",
-  "refSub": "Sie vertrauen uns",
-  "refText": "Jeder Standort ist anders, doch die Erwartung ist dieselbe: ein sicherer, transparenter und planbarer Betrieb. Avenir arbeitet mit Partnern von Logistikzentren und Einkaufszentren bis hin zu Industrieparks und öffentlichen Einrichtungen zusammen — Organisationen, für die Sicherheit, Ordnung und Betriebsqualität keine Frage von Kompromissen sind.",
+  "refTitle": "Partner",
+  "refSub": "Ausgewählte Kooperationen",
+  "refText": "Jeder Standort ist anders, doch die Erwartung ist dieselbe: ein sicherer, transparenter und planbarer Betrieb. Avenir arbeitet in unterschiedlichen Unternehmens-, Institutions- und Betriebsumgebungen, in denen Sicherheit, Ordnung und Servicequalität wichtige operative Prioritäten sind.",
   "refs": [
     "Bürogebäude",
     "Einkaufszentren",
@@ -186,6 +186,20 @@ export const de = {
     "iafMember": "IAF MLA-Mitglied",
     "downloadPdf": "Zertifikat herunterladen (PDF)",
     "altText": "{name} Zertifikatslogo"
+  },
+  "serviceDetail": {
+    "useCasesEyebrow": "Für wen",
+    "useCasesTitle": "Geeignet für",
+    "includedEyebrow": "Umfang",
+    "includedTitle": "Was enthalten ist",
+    "processEyebrow": "Ablauf",
+    "processTitle": "So startet die Zusammenarbeit",
+    "trustEyebrow": "Warum Avenir",
+    "trustTitle": "Vertrauenselemente",
+    "faqEyebrow": "Häufige Fragen",
+    "faqTitle": "Die wichtigsten Fragen",
+    "relatedEyebrow": "Mehr von Avenir",
+    "relatedTitle": "Verwandte Leistungen"
   },
   // LEGAL_REVIEW_PENDING_DE — die folgenden legal Inhalte sind maschinell aus der ungarischen/englischen Fassung übersetzt; rechtlich verbindlich ist die ungarische Fassung.
   "legal": {

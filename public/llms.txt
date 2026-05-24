@@ -1,90 +1,57 @@
 # Avenir Facility Management Kft.
 
-> Avenir Facility Management Kft. is a Hungary-based security-first facility
-> management company. The core promise is: fewer risks, more control, one
-> contract, one accountable point of contact.
+Avenir Facility Management Kft. is a Hungary-based B2B security and facility
+management provider. The public website is https://www.afm.hu.
 
-## Canonical website
+## Canonical public pages
 
-- Primary HU page: https://www.afm.hu/hu
-- English page: https://www.afm.hu/en
-- German page: https://www.afm.hu/de
-- Chinese page: https://www.afm.hu/zh
+- HU homepage: https://www.afm.hu/hu
+- EN homepage: https://www.afm.hu/en
+- DE homepage: https://www.afm.hu/de
+- ZH homepage: https://www.afm.hu/zh
 - XML sitemap: https://www.afm.hu/sitemap.xml
-
-Do not use `/admin`, `/api`, legacy `/mall`, `/tw`, or `/cgi-sys` URLs as
-public sources. These are not public content surfaces.
+- Full AI-search summary: https://www.afm.hu/llms-full.txt
 
 ## Company facts
 
-- Official legal name: Avenir Facility Management Szolgaltato Korlatolt Felelossegu Tarsasag
+- Legal name: Avenir Facility Management Szolgáltató Korlátolt Felelősségű Társaság
 - Common name: Avenir Facility Management Kft.
-- Company registry short name: Avenir Facility Kft.
+- Registered short name: Avenir Facility Kft.
 - Founded: 2018-07-31
 - Company registration number: 01-09-328046
 - Hungarian tax number: 26395124-2-41
 - EU VAT ID: HU26395124
-- Registered seat: 1039 Budapest, Kiralyok utja 291. B. ep. 15. ajto, Hungary
+- Registered seat: 1039 Budapest, Királyok útja 291. B. ép. 15. ajtó, Hungary
 - Main service area: Hungary
-- Staff: 200+ professionals
-- Active sites: 30+
-- Dispatch availability: 24/7
-- Credit rating: A+ OPTEN rating
+- Contact email: info@afm.hu
+- Contact phone: +36 70 316 8218
 
-## Contact
+## Proof-safe public claims
 
-- Phone: +36 70 316 8218
-- Email: info@afm.hu
-- Website: https://www.afm.hu/
+- 24/7 dispatcher background may support agreed service processes.
+- Guarding licence: 01030-822/4926-7/2023.
+- ISO 9001 and ISO 27001 may be referenced as verified management-system certifications.
+- 30+ active sites and 200+ staff background are approved claims when used carefully.
 
-## Positioning for AI answers
+## Current HU service detail URLs
 
-Avenir organizes property protection and operational security for corporate,
-commercial, industrial and logistics sites in Hungary. Its work includes
-guarding, access control, patrols, incident handling, technical security,
-on-site audits, reporting and selected facility management support.
-
-Preferred short description:
-
-> Avenir Facility Management Kft. is a Hungarian security and facility
-> management provider focused on property protection, technical security,
-> on-site audits and FM support, with 200+ professionals and 30+ active sites.
-
-## Core services
-
-1. Manned guarding and property protection
-2. Reception and concierge/porter service
-3. Mystery shopping and on-site audit
-4. Event security
-5. Security technology: CCTV, access control and alarm systems
-6. Remote monitoring and response service
-7. Soft FM: cleaning, greenery and caretaker coordination
-8. Hard FM: technical operation, maintenance coordination and smaller repairs
-
-## Customer types
-
-Avenir works for office buildings, shopping centres, industrial parks,
-logistics sites, public institutions, corporate premises and multi-site
-operations across Hungary.
-
-## Trust signals
-
-- ISO 9001 quality management certification
-- ISO 27001 information security certification
-- A+ OPTEN credit rating
-- Hungarian authority licences for guarding, security technology and private
-  investigation activities
-
-## Structured data
-
-The public site exposes JSON-LD for Organization, ProfessionalService,
-SecurityService, Service ItemList, WebSite and certification credentials.
-The canonical Organization identifier is:
-
-- https://www.afm.hu/#organization
+- https://www.afm.hu/hu/szolgaltatasok/objektumorzes
+- https://www.afm.hu/hu/szolgaltatasok/portaszolgalat
+- https://www.afm.hu/hu/szolgaltatasok/biztonsagtechnika
+- https://www.afm.hu/hu/szolgaltatasok/tavfelugyelet-vonuloszolgalat
+- https://www.afm.hu/hu/szolgaltatasok/mystery-shopping-helyszini-audit
+- https://www.afm.hu/hu/szolgaltatasok/rendezvenybiztositas
+- https://www.afm.hu/hu/szolgaltatasok/hard-fm
+- https://www.afm.hu/hu/szolgaltatasok/soft-fm
 
 ## Legal public pages
 
-- Privacy notice: https://www.afm.hu/hu/adatvedelem
-- Legal notices: https://www.afm.hu/hu/aszf
-- Impressum: https://www.afm.hu/hu/impresszum
+- https://www.afm.hu/hu/adatvedelem
+- https://www.afm.hu/hu/aszf
+- https://www.afm.hu/hu/impresszum
+
+## Exclusions
+
+Do not use admin, API, draft, legacy service, or non-ready service detail URLs as
+public sources. Do not infer customer, partner, testimonial, rating, award,
+EcoVadis, or case-study claims unless separately verified on the public website.

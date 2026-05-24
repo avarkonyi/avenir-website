@@ -8,14 +8,27 @@
 import type { ContactPayload } from "../contact-schema";
 
 const SERVICE_LABELS_HU: Record<string, string> = {
+  // P5 Phase 1: "security" → "objektumorzes" rename for the public
+  // detail-page URL. Both keys map to the same Hungarian label so any
+  // in-flight contact submissions or sites still posting the legacy
+  // slug keep rendering correctly in the notification email.
   security: "Élőerős objektumőrzés",
+  objektumorzes: "Élőerős objektumőrzés",
   cleaning: "Rendezvénybiztosítás",
+  rendezvenybiztositas: "Rendezvénybiztosítás",
   building: "Biztonságtechnika",
+  biztonsagtechnika: "Biztonságtechnika",
   reception: "Recepciós és portaszolgálat",
+  portaszolgalat: "Recepciós és portaszolgálat",
   green: "Soft FM",
+  "soft-fm": "Soft FM",
   technical: "Távfelügyelet és vonulószolgálat",
-  mystery: "Mystery Shopping és helyszíni audit",
+  "tavfelugyelet-vonuloszolgalat": "Távfelügyelet és vonulószolgálat",
+  mystery: "Próbavásárlás és szolgáltatásaudit",
+  "mystery-shopping-helyszini-audit": "Próbavásárlás és szolgáltatásaudit",
   hardfm: "Hard FM",
+  "hard-fm": "Hard FM",
+  magannyomozas: "Magánnyomozás",
 };
 
 function formatTimestamp(date: Date): string {

@@ -41,16 +41,16 @@ export const en = {
   "aboutText": "Avenir was founded in 2018, but its management team and specialists bring decades of experience in facility management and security services. Today, we work nationwide with a team of 200+ professionals across 30+ active sites — in corporate, retail, industrial and logistics environments.\n\nWe coordinate security operations: guarding, access control, patrol services, incident handling and reporting. Our goal is to reduce the need for day-to-day coordination on the client’s side, lower risk and make on-site operations more transparent.\n\nWhere needed, we complement our security focus with security technology, mystery shopping and related FM support — allowing our clients to work with one accountable partner instead of multiple separate service providers.",
   "values": [
     {
-      "t": "Reliability",
-      "d": "Consistent site presence, backed by documented processes, regular reporting and clear responsibilities."
+      "t": "Transparent control",
+      "d": "Documented processes, regular reports and clear responsibility points so you always know what is happening on site."
     },
     {
-      "t": "Expertise",
-      "d": "Trained teams, site-specific protocols and controlled delivery across all service areas."
+      "t": "Professional presence",
+      "d": "Trained personnel, site-specific protocols and controlled delivery across industrial, logistics, commercial and office environments."
     },
     {
-      "t": "Flexibility",
-      "d": "Tailored security, audit and FM support for each client, site and operational need."
+      "t": "Response and accountability",
+      "d": "When incidents occur, Avenir does not only provide presence on site: we document, report back and help reduce recurring operational issues."
     }
   ],
   "servicesTitle": "Our Services",
@@ -60,54 +60,54 @@ export const en = {
       "id": "security",
       "icon": "shield",
       "t": "On-site Security Guarding",
-      "d": "Protection of people and assets with trained security guards: site guarding, patrol services, access control support and incident handling in industrial, retail and office environments."
+      "d": "On-site guarding for access, patrol, incident handling, service logging and agreed escalation at business sites."
     },
     {
       "id": "cleaning",
       "icon": "sparkle",
       "t": "Event Security",
-      "d": "Security for corporate events, conferences and special events according to agreed protocols: access control, on-site presence, patrols and incident handling."
+      "d": "Event security for corporate, invitation-only and public events, with access handling, audience-flow support, zone management, incident reporting and organiser-defined escalation."
     },
     {
       "id": "building",
       "icon": "camera",
       "t": "Security Technology",
-      "d": "Design, installation and maintenance of CCTV, access control and alarm systems, providing the technical layer that supports on-site security."
+      "d": "Security technology for CCTV, access control and alarm processes, integrated into a site-specific security model with data-protection-aware technical design."
     },
     {
       "id": "reception",
       "icon": "desk",
       "t": "Reception and Gatehouse Services",
-      "d": "Professional gatehouse and reception presence: visitor reception, access control, key management, parcel acceptance and tenant liaison to support daily operations."
+      "d": "Reception and gatehouse service for visitors, suppliers, employees, keys, packages, logging and agreed escalation."
     },
     {
       "id": "green",
       "icon": "leaf",
       "t": "Soft FM",
-      "d": "Coordination of cleaning, grounds maintenance and caretaking tasks as complementary services, with controlled quality and one accountable point of contact."
+      "d": "Soft FM for cleaning, landscaping, hygiene, waste-handling support and provider management, delivered to an agreed scope with quality checks and written reporting."
     },
     {
       "id": "technical",
       "icon": "radar",
-      "t": "Remote Monitoring and Response",
-      "d": "Handling alarm and camera alerts with dispatcher support, with on-site response when needed, according to agreed protocols."
+      "t": "Remote Monitoring and Response Service",
+      "d": "Remote monitoring and response service with signal reception, alarm verification, escalation, event logging and response process under agreed conditions."
     },
     {
       "id": "mystery",
       "icon": "eye",
-      "t": "Mystery Shopping and On-site Audits",
-      "d": "Mystery shopping, service quality checks and on-site audits in real customer and operational situations, with independent assessment and structured reporting."
+      "t": "Mystery Shopping and Service Audit",
+      "d": "Mystery shopping, service-quality checks and service audits in real customer and operational situations, with structured observation, reporting and improvement recommendations."
     },
     {
       "id": "hardfm",
       "icon": "gear",
       "t": "Hard FM",
-      "d": "Support for technical operations, maintenance coordination and minor repair tasks as complementary services in complex client environments."
+      "d": "Hard FM for planned preventive maintenance, reactive fault handling, specialist subcontractor coordination, documented fault logs and operations reporting."
     }
   ],
-  "refTitle": "References",
-  "refSub": "They trust us",
-  "refText": "Every site is different, but the expectation is the same: safe, transparent and predictable operations. Avenir works with partners ranging from logistics centres and shopping centres to industrial parks and public institutions — organisations for whom security, order and operational quality are not open to compromise.",
+  "refTitle": "Partners",
+  "refSub": "Selected collaborations",
+  "refText": "Every site is different, but the expectation is the same: safe, transparent and predictable operations. Avenir works across corporate, institutional and operational environments where security, order and service quality are important operating priorities.",
   "refs": [
     "Office Buildings",
     "Shopping Centres",
@@ -186,6 +186,20 @@ export const en = {
     "iafMember": "IAF MLA member",
     "downloadPdf": "Download certificate (PDF)",
     "altText": "{name} certification logo"
+  },
+  "serviceDetail": {
+    "useCasesEyebrow": "Who it is for",
+    "useCasesTitle": "Best fit",
+    "includedEyebrow": "Scope",
+    "includedTitle": "What is included",
+    "processEyebrow": "Process",
+    "processTitle": "How cooperation starts",
+    "trustEyebrow": "Why clients choose us",
+    "trustTitle": "Trust signals",
+    "faqEyebrow": "Frequently asked questions",
+    "faqTitle": "Common questions",
+    "relatedEyebrow": "More from Avenir",
+    "relatedTitle": "Related services"
   },
   "legal": {
     "privacy": {

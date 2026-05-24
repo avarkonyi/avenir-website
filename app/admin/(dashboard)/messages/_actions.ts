@@ -5,6 +5,7 @@ import { revalidatePath } from "next/cache";
 import { Resend } from "resend";
 import { auth } from "@/auth";
 import { db, messages } from "@/lib/db";
+import { safeActionError } from "@/lib/admin/safe-action-error";
 import { renderReplyEmail } from "@/lib/email-templates";
 
 // Server actions for the Messages CRUD module. Auth check happens
@@ -79,11 +80,9 @@ export async function archiveMessage(
     revalidatePath("/admin", "layout");
     return { ok: true };
   } catch (err) {
-    console.error("archiveMessage error:", err);
     return {
       ok: false,
-      error:
-        err instanceof Error ? err.message : "Az archiválás sikertelen.",
+      error: safeActionError("archiveMessage", err, "Az archiválás sikertelen."),
     };
   }
 }
@@ -107,13 +106,13 @@ export async function unarchiveMessage(
     revalidatePath("/admin", "layout");
     return { ok: true };
   } catch (err) {
-    console.error("unarchiveMessage error:", err);
     return {
       ok: false,
-      error:
-        err instanceof Error
-          ? err.message
-          : "A visszaállítás sikertelen.",
+      error: safeActionError(
+        "unarchiveMessage",
+        err,
+        "A visszaállítás sikertelen.",
+      ),
     };
   }
 }
@@ -241,17 +240,17 @@ export async function sendReply(
     if (error) {
       return {
         ok: false,
-        error:
-          typeof error === "object" && error !== null && "message" in error
-            ? String((error as { message: unknown }).message)
-            : "Resend hibát adott vissza a küldéskor.",
+        error: safeActionError(
+          "sendReply.resend",
+          error,
+          "Email küldés sikertelen.",
+        ),
       };
     }
   } catch (err) {
     return {
       ok: false,
-      error:
-        err instanceof Error ? err.message : "Email küldés sikertelen.",
+      error: safeActionError("sendReply.resend", err, "Email küldés sikertelen."),
     };
   }
 
@@ -270,14 +269,14 @@ export async function sendReply(
       })
       .where(eq(messages.id, messageId));
   } catch (err) {
-    console.error("CRITICAL: Email sent but DB update failed", {
-      messageId,
-      error: err,
-    });
     return {
       ok: false,
       error:
-        "Az email elküldve, de a DB-frissítés sikertelen. " +
+        safeActionError(
+          `sendReply.dbUpdateAfterSend messageId=${messageId}`,
+          err,
+          "Az email elküldve, de a DB-frissítés sikertelen. ",
+        ) +
         "Frissítsd manuálisan a Neon-ban (replied_at, reply_subject, reply_body).",
     };
   }

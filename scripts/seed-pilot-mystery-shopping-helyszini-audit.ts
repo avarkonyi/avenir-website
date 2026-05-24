@@ -1,0 +1,423 @@
+// One-shot pilot data seeder for "Próbavásárlás és szolgáltatásaudit" (P5 Phase 1).
+//
+// Usage:
+//   npx tsx scripts/seed-pilot-mystery-shopping-helyszini-audit.ts            # writes
+//   npx tsx scripts/seed-pilot-mystery-shopping-helyszini-audit.ts --dry-run  # read-only preview
+//
+// What it does (normal mode):
+//   1. Resolves exactly one existing row by slug, looking for the
+//      canonical "mystery-shopping-helyszini-audit" slug or the
+//      legacy "mystery" slug. The row is renamed in-place if it still
+//      uses the legacy slug.
+//   2. Writes Hungarian pilot copy into service-detail-page columns
+//      only (SEO, value proposition, use cases, included items,
+//      process steps, trust items, FAQ, related services).
+//   3. Sets isPublished=true so the HU public detail page renders.
+//
+// Dry-run mode (--dry-run):
+//   - Loads env identically to live mode.
+//   - Prints a credential-free DATABASE_URL identity (host + db only)
+//     so the operator can confirm staging vs production.
+//   - SELECTs the same target row.
+//   - Prints id / current slug / isPublished / isActive plus a
+//     side-by-side diff of every field that would change.
+//   - Performs no UPDATE.
+//
+// Idempotent: running multiple times re-applies the same canonical
+// pilot content. Other services and any admin-edited copy are
+// untouched. This script intentionally does not write nameHu: the
+// display name stays the short baseline/i18n name
+// "Próbavásárlás és szolgáltatásaudit".
+//
+// Run after the 0011 migration has been applied; otherwise the new
+// columns won't exist in the target DB and the UPDATE will fail.
+//
+// Safety: pilot seeds are staging-only. The runtime DB target guard
+// verifies DATABASE_URL before any SELECT/UPDATE, including direct
+// `npx tsx scripts/seed-pilot-*.ts` execution, and never prints the
+// full connection string.
+
+import "./load-env";
+import { ensureStagingDbTarget } from "./ensure-staging-db";
+import { eq, or } from "drizzle-orm";
+import { db, services } from "../lib/db";
+
+const TARGET_SLUG = "mystery-shopping-helyszini-audit";
+const LEGACY_SLUG = "mystery";
+
+const PILOT_HU = {
+  seoTitle: "Próbavásárlás és szolgáltatásaudit | Avenir",
+  seoDescription:
+    "Mystery Shopping, brand audit, próbautazás és szolgáltatásaudit " +
+    "ügyfélélmény, folyamatkövetés és megfelelési szempontok vizsgálatára.",
+  valueProposition:
+    "A próbavásárlás és szolgáltatásaudit valós ügyfélhelyzetben mutatja meg, " +
+    "mit tapasztal az ügyfél, követik-e az elvárt folyamatot, teljesülnek-e " +
+    "a brand-, tájékoztatási és szolgáltatási szabályok, és hol jelenik meg " +
+    "minőségi, reputációs vagy megfelelési kockázat.",
+  longDesc:
+    "A Mystery Shopping nem egyszerű ellenőrzés, hanem megtervezett és " +
+    "dokumentált szolgáltatásminőség-mérés. Az Avenir az ügyféllel egyeztetve " +
+    "rögzíti az audit scope-ját, kialakítja a forgatókönyvet és az értékelési " +
+    "szempontokat, betanítja az értékelőt, majd valós ügyfélhelyzetben végzi el " +
+    "a vizsgálatot: vásárlást, ügyintézést, helyszíni látogatást, próbautazást " +
+    "vagy más ügyfélkapcsolati pontot.\n\n" +
+    "A vizsgálat scope-ja rögzíti, milyen szolgáltatási pontokat, " +
+    "folyamatlépéseket, brand standardokat, kommunikációs elvárásokat, " +
+    "tájékoztatási kötelezettségeket vagy megfelelési szempontokat kell " +
+    "vizsgálni. A cél nem az öncélú hibakeresés, hanem az, hogy a vezetés " +
+    "pontos, strukturált képet kapjon a tényleges ügyfélélményről.\n\n" +
+    "A szolgáltatás több formában is alkalmazható. A Brand Audit az arculati, " +
+    "vizuális, tisztasági, hangulati és szolgáltatási standardokat vizsgálja. " +
+    "A Situation Shopping konkrét ügyfélhelyzeteket, kérdéseket, konfliktusokat " +
+    "vagy folyamatlépéseket tesztel. A szolgáltatásaudit vagy próbautazás pedig " +
+    "egy teljes ügyfélutat vizsgálhat, például személyszállítási, " +
+    "ügyfélszolgálati vagy helyszíni kiszolgálási folyamatban.\n\n" +
+    "Az Avenir strukturált riportot készít a megfigyelésekről, visszatérő " +
+    "mintákról, kockázati pontokról és fejlesztési javaslatokról. Az " +
+    "eredményeket az ügyféllel közösen áttekintjük, hogy azok támogassák a " +
+    "szolgáltatásminőséggel, folyamatfejlesztéssel és egyeztetett " +
+    "kontrollpontokkal kapcsolatos döntéseket.",
+  useCases: [
+    "Próbavásárlás üzletekben, szolgáltatási pontokon vagy ügyfélszolgálati helyzetekben",
+    "Próbautazás taxi, személyszállítási vagy közlekedési szolgáltatás esetén",
+    "Brand Audit: arculat, tisztaság, vizuális megjelenés és szolgáltatási standardok ellenőrzése",
+    "Situation Shopping: konkrét ügyfélhelyzetek, kérdések vagy konfliktushelyzetek tesztelése",
+    "Ügyfélút és látogatói élmény vizsgálata",
+    "Tájékoztatási, árkommunikációs, számlázási, nyugtaadási vagy más megfelelési szempontok vizsgálata egyeztetett scope alapján",
+    "Több helyszín, szolgáltató vagy egység összehasonlítható auditja",
+  ],
+  includedItems: [
+    "Audit cél, scope és értékelési szempontok egyeztetése",
+    "Próbavásárlási, próbautazási vagy ügyfélút-forgatókönyv kialakítása",
+    "Brand Audit vagy Situation Shopping módszertan kiválasztása",
+    "Valós ügyfélhelyzetben történő szolgáltatásminőség-mérés",
+    "Ügyfélút, kommunikáció, folyamatkövetés és kiszolgálás értékelése",
+    "Egyeztetett megfelelési szempontok vizsgálata",
+    "Eltérések, kockázatok és fejlesztési pontok dokumentálása",
+    "Strukturált riport és vezetői összefoglaló",
+  ],
+  processSteps: [
+    {
+      title: "Audit cél és scope egyeztetése",
+      body:
+        "Rögzítjük, milyen üzleti, szolgáltatásminőségi vagy megfelelési " +
+        "kérdésre kell választ adnia az auditnak, és pontosan milyen folyamatok " +
+        "tartoznak a vizsgálatba.",
+    },
+    {
+      title: "Értékelési szempontok és forgatókönyv kialakítása",
+      body:
+        "Meghatározzuk a mérési pontokat, a brand standardokat, a " +
+        "kommunikációs és tájékoztatási elvárásokat, valamint a próbavásárlási, " +
+        "próbautazási vagy ügyfélút-forgatókönyvet.",
+    },
+    {
+      title: "Brand Audit, Situation Shopping, próbavásárlás vagy próbautazás elvégzése",
+      body:
+        "Az audit a jóváhagyott scope szerint, valós ügyfélhelyzetben történik, " +
+        "a szolgáltatási folyamat, az ügyfélélmény és az előre rögzített " +
+        "megfelelési pontok mérésére fókuszálva.",
+    },
+    {
+      title: "Tapasztalatok, eltérések és megfelelési pontok dokumentálása",
+      body:
+        "A tapasztalatokat strukturált módon rögzítjük: mi történt az ügyfélút " +
+        "során, mi felelt meg az elvárt működésnek, hol volt eltérés, és milyen " +
+        "kockázat vagy javítási pont jelent meg.",
+    },
+    {
+      title: "Riport, vezetői összefoglaló és fejlesztési javaslatok elkészítése",
+      body:
+        "Az eredményeket vezetői szinten is áttekinthető riportba rendezzük, " +
+        "amely tartalmazhat megfelelési megállapításokat, visszatérő mintákat " +
+        "és konkrét fejlesztési javaslatokat.",
+    },
+    {
+      title: "Eredmények egyeztetése és következő lépések meghatározása",
+      body:
+        "Az audit eredményeit közösen áttekintjük, hogy a megrendelő dönteni " +
+        "tudjon protokollmódosításról, képzésről, brand standard pontosításról " +
+        "vagy további mérésről.",
+    },
+  ],
+  trustItems: [
+    {
+      title: "Végrehajtás előtt meghatározott scope",
+      body:
+        "Az audit célját, forgatókönyvét, szempontjait és riportálási formáját " +
+        "a végrehajtás előtt egyeztetni kell, hogy a megfigyelések a " +
+        "meghatározott szolgáltatásminőségi scope keretein belül maradjanak.",
+    },
+    {
+      title: "Semleges ügyfélút-megfigyelés",
+      body:
+        "A vizsgálat azt rögzíti, hogyan jelennek meg az egyeztetett " +
+        "szolgáltatási lépések, brand elvárások és ügyfélút-pontok valós " +
+        "ügyfélhelyzetben, felügyeleti vagy fegyelmi keretezés nélkül.",
+    },
+    {
+      title: "Strukturált riport és ügyféloldali egyeztetés",
+      body:
+        "Az Avenir strukturált riportot készít megfigyelésekkel, visszatérő " +
+        "mintákkal, kockázati pontokkal és fejlesztési javaslatokkal, majd a " +
+        "megállapításokat a megrendelővel áttekinti a szolgáltatásminőségi " +
+        "döntések támogatására.",
+    },
+    {
+      title: "Több helyszín összehasonlítható képe",
+      body:
+        "Ugyanaz a forgatókönyv több helyszínen vagy szolgáltatónál is " +
+        "megismételhető a szolgáltatási konzisztencia, folyamatbeli " +
+        "eltérések és visszatérő fejlesztési pontok összevetésére.",
+    },
+    {
+      title: "Célhoz kötött és bizalmas riportálás",
+      body:
+        "A riportálás az egyeztetett scope-ra és a kijelölt megrendelői " +
+        "áttekintési folyamatra korlátozódik. Az egyes munkatársakra vonatkozó " +
+        "adatok szerepeltetése nem alapértelmezett jelentési elem; ilyen " +
+        "tartalom csak előzetesen egyeztetett adatvédelmi keretek között " +
+        "jelenhet meg.",
+    },
+  ],
+  faq: [
+    {
+      q: "Mit tartalmaz a Mystery Shopping és szolgáltatásaudit?",
+      a:
+        "A szolgáltatás az audit céljának, scope-jának és értékelési " +
+        "szempontjainak rögzítéséből, a próbavásárlási vagy ügyfélút-" +
+        "forgatókönyv kialakításából, a valós ügyfélhelyzetben történő " +
+        "megfigyelésből és a strukturált riport elkészítéséből áll.",
+    },
+    {
+      q: "Hogyan határozzuk meg az audit scope-ját, és hogyan tartjuk a vizsgálatot az egyeztetett keretek között?",
+      a:
+        "Az audit scope-ja a végrehajtás előtt kerül meghatározásra. Az " +
+        "Avenir előre rögzíti a célt, a forgatókönyvet, a vizsgálati " +
+        "szempontokat, a riportálási formát és a megengedett megfigyelési " +
+        "pontokat. A megállapítások az egyeztetett szolgáltatási kritériumokhoz " +
+        "és fejlesztési célokhoz kapcsolódnak, nem jogi következtetésként vagy " +
+        "fegyelmi bizonyítékként jelennek meg.",
+    },
+    {
+      q: "Mi vizsgálható a szolgáltatásaudit során?",
+      a:
+        "Az audit vizsgálhat brand audit szempontokat, Situation Shopping " +
+        "forgatókönyveket, ügyfélút-lépéseket, szolgáltatásminőségi " +
+        "kritériumokat, egyeztetett megfelelési pontokat és több helyszín " +
+        "közötti konzisztenciát. Példák lehetnek a kommunikáció, tájékoztatás, " +
+        "kiszolgálás, számlázási vagy nyugtaadási folyamatok, ha ezek az " +
+        "egyeztetett scope részét képezik.",
+    },
+    {
+      q: "Készül riport az eredményekről?",
+      a:
+        "Igen. Avenir strukturált riportot készít a megfigyelt folyamatról, " +
+        "az eltérésekről, visszatérő mintákról, kockázati pontokról és " +
+        "fejlesztési javaslatokról az egyeztetett scope szerint.",
+    },
+    {
+      q: "Név szerint szerepelnek a munkatársak a jelentésben?",
+      a:
+        "A jelentés alapértelmezés szerint folyamat- és szolgáltatásminőségi " +
+        "fókuszú. Név szerinti vagy személyes adatot érintő megjelenítés csak " +
+        "előzetesen egyeztetett keretek között, az alkalmazandó adatvédelmi " +
+        "követelményekkel összhangban történhet.",
+    },
+    {
+      q: "Megismételhető ugyanaz a forgatókönyv több helyszínen?",
+      a:
+        "Igen, egységes forgatókönyv és értékelési szempontok alapján több " +
+        "helyszín, szolgáltató, egység vagy időszak is összehasonlítható. Ez " +
+        "segít az eltérések, visszatérő minták és fejlesztési prioritások " +
+        "azonosításában.",
+    },
+    {
+      q: "Alkalmazható közlekedési vagy szolgáltatási ügyfélútra?",
+      a:
+        "Igen. Próbautazás vagy szolgáltatási ügyfélút keretében vizsgálható " +
+        "például a tájékoztatás, a kiszolgálás, a számlázási vagy nyugtaadási " +
+        "folyamat, a viselkedési protokoll és az előre meghatározott " +
+        "szolgáltatási vagy megfelelési szempontok teljesülése.",
+    },
+    {
+      q: "Mi a különbség a Mystery Shopping és a magánnyomozás között?",
+      a:
+        "A Mystery Shopping és szolgáltatásaudit szolgáltatásminőséget, " +
+        "folyamatkövetést, ügyfélutat és egyeztetett megfelelési pontokat mér " +
+        "egy meghatározott scope alapján. Nem magánnyomozás, nem korlátlan " +
+        "megfigyelés, nem bizonyítékgyűjtés és nem fegyelmi automatizmus.",
+    },
+  ],
+  // Related services use canonical Hungarian public slugs. Missing or
+  // unpublished services are filtered safely by the public service query.
+  // Do not replace mystery-shopping-helyszini-audit with "mystery" in
+  // related arrays: "mystery" is only the legacy slug for this service.
+  relatedSlugs: [
+    "portaszolgalat",
+    "soft-fm",
+    "rendezvenybiztositas",
+    "objektumorzes",
+  ],
+};
+
+function buildUpdateValues() {
+  return {
+    slug: TARGET_SLUG,
+    isPublished: true,
+    isActive: true,
+
+    seoTitleHu: PILOT_HU.seoTitle,
+    seoDescriptionHu: PILOT_HU.seoDescription,
+    valuePropositionHu: PILOT_HU.valueProposition,
+    longDescHu: PILOT_HU.longDesc,
+    useCasesHu: PILOT_HU.useCases,
+    includedItemsHu: PILOT_HU.includedItems,
+    processStepsHu: PILOT_HU.processSteps,
+    trustItemsHu: PILOT_HU.trustItems,
+    faqHu: PILOT_HU.faq,
+    relatedServiceSlugs: PILOT_HU.relatedSlugs,
+  };
+}
+
+function redactedDbIdentity(): string {
+  const raw = process.env.DATABASE_URL;
+  if (!raw) return "<unknown - DATABASE_URL is not set>";
+  try {
+    const u = new URL(raw);
+    const host = u.host || "<no-host>";
+    const dbName = u.pathname.replace(/^\//, "") || "<no-db>";
+    return `${host}/${dbName}`;
+  } catch {
+    return "<unparseable DATABASE_URL>";
+  }
+}
+
+function summarise(value: unknown): string {
+  if (value === null || value === undefined) return "(null)";
+  if (typeof value === "string") {
+    const oneLine = value.replace(/\s+/g, " ").trim();
+    if (oneLine.length <= 80) return JSON.stringify(oneLine);
+    return `${JSON.stringify(oneLine.slice(0, 77))}... [${value.length} chars]`;
+  }
+  if (Array.isArray(value)) {
+    return `[${value.length} item${value.length === 1 ? "" : "s"}]`;
+  }
+  return JSON.stringify(value);
+}
+
+function printDiff(
+  fieldLabel: string,
+  current: unknown,
+  proposed: unknown,
+): void {
+  const same =
+    JSON.stringify(current ?? null) === JSON.stringify(proposed ?? null);
+  const marker = same ? "  =" : "  ~";
+  console.log(`${marker} ${fieldLabel}`);
+  console.log(`      from: ${summarise(current)}`);
+  console.log(`      to:   ${summarise(proposed)}`);
+}
+
+async function main() {
+  const isDryRun = process.argv.includes("--dry-run");
+  const banner = isDryRun
+    ? "--- seed-pilot-mystery-shopping-helyszini-audit DRY-RUN start ---"
+    : "--- seed-pilot-mystery-shopping-helyszini-audit start ---";
+  console.log(banner);
+  ensureStagingDbTarget({
+    scriptName: "seed-pilot-mystery-shopping-helyszini-audit",
+    isDryRun,
+  });
+  console.log(`DB target (host/db): ${redactedDbIdentity()}`);
+
+  const matches = await db
+    .select()
+    .from(services)
+    .where(or(eq(services.slug, TARGET_SLUG), eq(services.slug, LEGACY_SLUG)))
+    .orderBy(services.id);
+
+  if (matches.length === 0) {
+    console.error(
+      `No existing canonical row found (looked for slug "${TARGET_SLUG}" ` +
+        `or "${LEGACY_SLUG}"). Run "npm run db:seed-services" first to ` +
+        `create the baseline rows, then re-run this script.`,
+    );
+    process.exit(1);
+  }
+
+  if (matches.length > 1) {
+    console.error(
+      `Expected exactly one target row but found ${matches.length} ` +
+        `matching "${TARGET_SLUG}" or "${LEGACY_SLUG}". Resolve duplicate ` +
+        `service rows before running this pilot seed.`,
+    );
+    process.exit(1);
+  }
+
+  const existing = matches[0];
+  const values = buildUpdateValues();
+
+  console.log("");
+  console.log("Target row:");
+  console.log(`  id:           ${existing.id}`);
+  console.log(`  slug:         ${existing.slug}`);
+  console.log(`  isPublished:  ${existing.isPublished}`);
+  console.log(`  isActive:     ${existing.isActive}`);
+
+  console.log("");
+  console.log("Planned changes (= unchanged, ~ would change):");
+  printDiff("slug", existing.slug, values.slug);
+  printDiff("isPublished", existing.isPublished, values.isPublished);
+  printDiff("isActive", existing.isActive, values.isActive);
+  printDiff("seoTitleHu", existing.seoTitleHu, values.seoTitleHu);
+  printDiff(
+    "seoDescriptionHu",
+    existing.seoDescriptionHu,
+    values.seoDescriptionHu,
+  );
+  printDiff(
+    "valuePropositionHu",
+    existing.valuePropositionHu,
+    values.valuePropositionHu,
+  );
+  printDiff("longDescHu", existing.longDescHu, values.longDescHu);
+  printDiff("useCasesHu", existing.useCasesHu, values.useCasesHu);
+  printDiff("includedItemsHu", existing.includedItemsHu, values.includedItemsHu);
+  printDiff("processStepsHu", existing.processStepsHu, values.processStepsHu);
+  printDiff("trustItemsHu", existing.trustItemsHu, values.trustItemsHu);
+  printDiff("faqHu", existing.faqHu, values.faqHu);
+  printDiff(
+    "relatedServiceSlugs",
+    existing.relatedServiceSlugs,
+    values.relatedServiceSlugs,
+  );
+
+  if (isDryRun) {
+    console.log("");
+    console.log(
+      "--- seed-pilot-mystery-shopping-helyszini-audit DRY-RUN done - no rows written. " +
+        "Re-run without --dry-run to apply. ---",
+    );
+    return;
+  }
+
+  console.log("");
+  console.log(`Applying pilot content to row id=${existing.id}...`);
+
+  await db
+    .update(services)
+    .set({ ...values, updatedAt: new Date() })
+    .where(eq(services.id, existing.id));
+
+  console.log(
+    `--- seed-pilot-mystery-shopping-helyszini-audit done - row id=${existing.id} updated, ` +
+      `slug=${TARGET_SLUG} published. ---`,
+  );
+}
+
+main().catch((err) => {
+  console.error("seed-pilot-mystery-shopping-helyszini-audit FAILED:", err);
+  process.exit(1);
+});

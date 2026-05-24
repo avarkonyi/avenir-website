@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - staging-service-pages
+
+jobs:
+  verify:
+    name: Typecheck and lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Typecheck
+        run: npx tsc --noEmit
+
+      - name: Lint
+        run: npm run lint
+
+      # The production build is intentionally excluded from this lightweight CI.
+      # `next build` currently depends on DB-backed static generation and Google
+      # Fonts network fetching, so it remains a manual/Vercel Preview gate until
+      # those dependencies are made CI-stable.

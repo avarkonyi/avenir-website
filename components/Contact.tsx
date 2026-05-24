@@ -1,6 +1,6 @@
 "use client";
 
-import { type ReactElement, useState } from "react";
+import { type ReactElement, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import type { Translation } from "@/lib/i18n";
 import { Icon } from "./Icon";
@@ -48,6 +48,21 @@ const FORM_FIELDS = [
 ] as const;
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+function subscribeToServiceQuery(onStoreChange: () => void) {
+  if (typeof window === "undefined") return () => {};
+  window.addEventListener("popstate", onStoreChange);
+  return () => window.removeEventListener("popstate", onStoreChange);
+}
+
+function getServiceQuerySnapshot(): string {
+  if (typeof window === "undefined") return "";
+  return new URLSearchParams(window.location.search).get("service")?.trim() ?? "";
+}
+
+function getEmptyServiceQuerySnapshot(): string {
+  return "";
+}
 
 type ContactRowKind = "address" | "phone" | "email";
 
@@ -180,7 +195,7 @@ function ContactRow({ kind, label, text, href }: ContactRowProps) {
             letterSpacing: 1.8,
             textTransform: "uppercase",
             fontWeight: 700,
-            color: hover ? "#D1172E" : "#8A9BB0",
+            color: hover ? "#D1172E" : "var(--avenir-text-soft)",
             transition: "color 0.25s ease",
           }}
         >
@@ -190,7 +205,7 @@ function ContactRow({ kind, label, text, href }: ContactRowProps) {
           style={{
             fontSize: 16,
             fontWeight: 400,
-            color: hover ? "#0B1E3E" : "#556070",
+            color: hover ? "#0B1E3E" : "var(--avenir-text-muted)",
             transition: "color 0.25s ease",
           }}
         >
@@ -207,6 +222,77 @@ function ContactRow({ kind, label, text, href }: ContactRowProps) {
 // /api/contact validates and notification.ts SERVICE_LABELS_HU keys
 // off — never substitute services.id (numeric) here.
 export type ServiceOption = { slug: string; label: string };
+
+const SERVICE_SLUG_ALIASES: Record<string, string> = {
+  security: "objektumorzes",
+  reception: "portaszolgalat",
+  building: "biztonsagtechnika",
+  technical: "tavfelugyelet-vonuloszolgalat",
+  mystery: "mystery-shopping-helyszini-audit",
+  cleaning: "rendezvenybiztositas",
+  hardfm: "hard-fm",
+  green: "soft-fm",
+};
+
+const SERVICE_PREFILL_FALLBACKS: Record<string, ServiceOption> = {
+  objektumorzes: {
+    slug: "objektumorzes",
+    label: "Élőerős objektumőrzés",
+  },
+  portaszolgalat: {
+    slug: "portaszolgalat",
+    label: "Recepciós és portaszolgálat",
+  },
+  biztonsagtechnika: {
+    slug: "biztonsagtechnika",
+    label: "Biztonságtechnika",
+  },
+  "tavfelugyelet-vonuloszolgalat": {
+    slug: "tavfelugyelet-vonuloszolgalat",
+    label: "Távfelügyelet és vonulószolgálat",
+  },
+  "mystery-shopping-helyszini-audit": {
+    slug: "mystery-shopping-helyszini-audit",
+    label: "Próbavásárlás és szolgáltatásaudit",
+  },
+  "hard-fm": {
+    slug: "hard-fm",
+    label: "Hard FM",
+  },
+  "soft-fm": {
+    slug: "soft-fm",
+    label: "Soft FM",
+  },
+  rendezvenybiztositas: {
+    slug: "rendezvenybiztositas",
+    label: "Rendezvénybiztosítás",
+  },
+};
+
+function canonicalServiceSlug(slug: string): string {
+  return SERVICE_SLUG_ALIASES[slug] ?? slug;
+}
+
+function canonicalServiceOptions(
+  options: ServiceOption[],
+  requestedCanonicalSlug: string,
+): ServiceOption[] {
+  const bySlug = new Map<string, ServiceOption>();
+
+  for (const option of options) {
+    const slug = canonicalServiceSlug(option.slug);
+    if (!bySlug.has(slug)) {
+      bySlug.set(slug, { ...option, slug });
+    }
+  }
+
+  const fallback = SERVICE_PREFILL_FALLBACKS[requestedCanonicalSlug];
+  if (fallback && !bySlug.has(fallback.slug)) {
+    bySlug.set(fallback.slug, fallback);
+  }
+
+  return [...bySlug.values()];
+}
 
 export function Contact({
   t,
@@ -229,6 +315,26 @@ export function Contact({
   const [errors, setErrors] = useState<Errors>({});
   const [submitting, setSubmitting] = useState(false);
   const [sent, setSent] = useState(false);
+  const [serviceTouched, setServiceTouched] = useState(false);
+
+  const requestedService = useSyncExternalStore(
+    subscribeToServiceQuery,
+    getServiceQuerySnapshot,
+    getEmptyServiceQuerySnapshot,
+  );
+  const canonicalRequestedService = canonicalServiceSlug(requestedService);
+  const normalizedServiceOptions = canonicalServiceOptions(
+    serviceOptions,
+    canonicalRequestedService,
+  );
+  const prefilledService =
+    canonicalRequestedService &&
+    normalizedServiceOptions.some(
+      (option) => option.slug === canonicalRequestedService,
+    )
+      ? canonicalRequestedService
+      : "";
+  const selectedService = serviceTouched ? form.service : prefilledService;
 
   // Map a Zod issue code (returned by /api/contact for 400 responses) to
   // the localized error string under t.form.errors. Falls back to the
@@ -263,7 +369,7 @@ export function Contact({
           company: form.company.trim(),
           email: form.email.trim(),
           phone: form.phone.trim(),
-          service: form.service,
+          service: selectedService,
           message: form.message.trim(),
           locale,
           _website: form._website,
@@ -431,7 +537,7 @@ export function Contact({
                   "magannyomozas"). Az érzékeny-adat tilalom kifejezetten
                   a magánnyomozói tevékenységhez kapcsolódó B2B-megkeresések
                   esetén releváns. */}
-              {form.service === "magannyomozas" && (
+              {selectedService === "magannyomozas" && (
                 <div
                   style={{
                     background: "rgba(251,191,36,0.08)",
@@ -584,14 +690,15 @@ export function Contact({
                 <select
                   id="contact-service"
                   name="service"
-                  value={form.service}
+                  value={selectedService}
                   onChange={(e) => {
+                    setServiceTouched(true);
                     setForm({ ...form, service: e.target.value });
                     if (errors.service) setErrors({ ...errors, service: undefined });
                   }}
                   style={{
                     ...inputStyle(!!errors.service),
-                    color: form.service ? "#0B1E3E" : "#9BA8B5",
+                    color: selectedService ? "#0B1E3E" : "var(--avenir-text-placeholder)",
                     appearance: "none",
                   }}
                   aria-invalid={!!errors.service}
@@ -601,7 +708,7 @@ export function Contact({
                   {/* DB-backed since P2 C4. opt.slug (string) becomes the
                       <option value> — wire-format contract with
                       /api/contact + notification.ts SERVICE_LABELS_HU. */}
-                  {serviceOptions.map((opt) => (
+                  {normalizedServiceOptions.map((opt) => (
                     <option key={opt.slug} value={opt.slug}>
                       {opt.label}
                     </option>
@@ -667,7 +774,7 @@ export function Contact({
                 style={{
                   fontSize: 11,
                   lineHeight: 1.55,
-                  color: "rgba(11,30,62,0.55)",
+                  color: "var(--avenir-text-soft)",
                   margin: "8px 0 0",
                 }}
               >

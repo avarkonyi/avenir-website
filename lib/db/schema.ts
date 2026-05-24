@@ -375,6 +375,54 @@ export const services = pgTable(
     highlightsDe: jsonb("highlights_de").$type<string[]>().notNull().default([]),
     highlightsZh: jsonb("highlights_zh").$type<string[]>().notNull().default([]),
 
+    // Service-detail-page fields (P5 Phase 1). All locale-aware text
+    // columns are nullable; HU is the only locale guarded by the publish
+    // gate (see assertCanPublishDetail in _actions.ts). Compound jsonb
+    // columns keep `[]` defaults to avoid nullish guards in renderers.
+    seoTitleHu: text("seo_title_hu"),
+    seoTitleEn: text("seo_title_en"),
+    seoTitleDe: text("seo_title_de"),
+    seoTitleZh: text("seo_title_zh"),
+
+    seoDescriptionHu: text("seo_description_hu"),
+    seoDescriptionEn: text("seo_description_en"),
+    seoDescriptionDe: text("seo_description_de"),
+    seoDescriptionZh: text("seo_description_zh"),
+
+    valuePropositionHu: text("value_proposition_hu"),
+    valuePropositionEn: text("value_proposition_en"),
+    valuePropositionDe: text("value_proposition_de"),
+    valuePropositionZh: text("value_proposition_zh"),
+
+    useCasesHu: jsonb("use_cases_hu").$type<string[]>().notNull().default([]),
+    useCasesEn: jsonb("use_cases_en").$type<string[]>().notNull().default([]),
+    useCasesDe: jsonb("use_cases_de").$type<string[]>().notNull().default([]),
+    useCasesZh: jsonb("use_cases_zh").$type<string[]>().notNull().default([]),
+
+    includedItemsHu: jsonb("included_items_hu").$type<string[]>().notNull().default([]),
+    includedItemsEn: jsonb("included_items_en").$type<string[]>().notNull().default([]),
+    includedItemsDe: jsonb("included_items_de").$type<string[]>().notNull().default([]),
+    includedItemsZh: jsonb("included_items_zh").$type<string[]>().notNull().default([]),
+
+    processStepsHu: jsonb("process_steps_hu").$type<{ title: string; body: string }[]>().notNull().default([]),
+    processStepsEn: jsonb("process_steps_en").$type<{ title: string; body: string }[]>().notNull().default([]),
+    processStepsDe: jsonb("process_steps_de").$type<{ title: string; body: string }[]>().notNull().default([]),
+    processStepsZh: jsonb("process_steps_zh").$type<{ title: string; body: string }[]>().notNull().default([]),
+
+    trustItemsHu: jsonb("trust_items_hu").$type<{ title: string; body: string }[]>().notNull().default([]),
+    trustItemsEn: jsonb("trust_items_en").$type<{ title: string; body: string }[]>().notNull().default([]),
+    trustItemsDe: jsonb("trust_items_de").$type<{ title: string; body: string }[]>().notNull().default([]),
+    trustItemsZh: jsonb("trust_items_zh").$type<{ title: string; body: string }[]>().notNull().default([]),
+
+    faqHu: jsonb("faq_hu").$type<{ q: string; a: string }[]>().notNull().default([]),
+    faqEn: jsonb("faq_en").$type<{ q: string; a: string }[]>().notNull().default([]),
+    faqDe: jsonb("faq_de").$type<{ q: string; a: string }[]>().notNull().default([]),
+    faqZh: jsonb("faq_zh").$type<{ q: string; a: string }[]>().notNull().default([]),
+
+    // Locale-independent — slugs are shared across locales. Empty array
+    // = no related links.
+    relatedServiceSlugs: jsonb("related_service_slugs").$type<string[]>().notNull().default([]),
+
     sortOrder: integer("sort_order").notNull().default(0),
     isFeatured: boolean("is_featured").notNull().default(false),
     isPublished: boolean("is_published").notNull().default(false),
@@ -434,15 +482,16 @@ export const servicesRelations = relations(services, ({ one, many }) => ({
 //    partners save as drafts even with no logo; publish requires a
 //    deliberate later toggle once logo + name are present.
 //
-//    No public consumer in Iter 5. The `is_published` flag is stored
-//    for a future Phase 5 visibility strategy; no `app/[locale]/*` code
-//    path queries this table in this iteration.
+//    Public logo strip: homepage rendering is proof-gated. A partner logo
+//    can appear only when the row is active, published, has a logo asset,
+//    is explicitly opted into the logo strip, and public logo usage approval
+//    has been recorded. Partner rows are not public relationship/schema claims.
 //
 //    Index: `idx_partners_active_sort` partial composite on
 //    `(is_active, sort_order)` filtered to `is_active = true` —
 //    mirrors the active+sort pattern from client_references and
-//    certifications. Adequate for the admin list and any future
-//    public render.
+//    certifications. `idx_partners_logo_strip_public` supports the
+//    proof-gated homepage logo-strip query.
 // ────────────────────────────────────────────────────────────────────────────
 export const partners = pgTable(
   "partners",
@@ -454,6 +503,12 @@ export const partners = pgTable(
     websiteUrl: text("website_url"),
     isActive: boolean("is_active").notNull().default(true),
     isPublished: boolean("is_published").notNull().default(false),
+    showInLogoStrip: boolean("show_in_logo_strip").notNull().default(false),
+    logoUsageApprovedAt: timestamp("logo_usage_approved_at", {
+      withTimezone: true,
+    }),
+    logoUsageApprovedBy: text("logo_usage_approved_by"),
+    logoUsageScope: text("logo_usage_scope"),
     sortOrder: integer("sort_order").notNull().default(0),
     createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
     updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
@@ -462,6 +517,11 @@ export const partners = pgTable(
     index("idx_partners_active_sort")
       .on(table.isActive, table.sortOrder)
       .where(sql`${table.isActive} = true`),
+    index("idx_partners_logo_strip_public")
+      .on(table.sortOrder, table.name)
+      .where(
+        sql`${table.isActive} = true AND ${table.isPublished} = true AND ${table.showInLogoStrip} = true AND ${table.logoUrl} IS NOT NULL AND btrim(${table.logoUrl}) <> '' AND ${table.logoUsageApprovedAt} IS NOT NULL AND ${table.logoUsageApprovedBy} IS NOT NULL AND btrim(${table.logoUsageApprovedBy}) <> '' AND ${table.logoUsageScope} IS NOT NULL AND btrim(${table.logoUsageScope}) <> ''`,
+      ),
   ],
 );
 

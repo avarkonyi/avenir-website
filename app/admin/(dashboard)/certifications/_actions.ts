@@ -4,6 +4,7 @@ import { eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { auth } from "@/auth";
 import { db, neonSql, certifications } from "@/lib/db";
+import { safeActionError } from "@/lib/admin/safe-action-error";
 import { slugify } from "@/lib/slugify";
 
 // Server actions for the Certifications CRUD module. Auth check
@@ -229,10 +230,10 @@ export async function createCertification(
   try {
     issuerUrl = resolveHttpsUrl(payload.issuerUrl, "kiállító URL");
     verifyUrl = resolveHttpsUrl(payload.verifyUrl, "ellenőrző URL");
-  } catch (err) {
+  } catch {
     return {
       ok: false,
-      error: err instanceof Error ? err.message : "Érvénytelen URL.",
+      error: "Érvénytelen URL.",
     };
   }
 
@@ -284,13 +285,13 @@ export async function createCertification(
     revalidatePath("/admin/certifications");
     return { ok: true, id: created.id };
   } catch (err) {
-    console.error("createCertification error:", err);
     return {
       ok: false,
-      error:
-        err instanceof Error
-          ? err.message
-          : "A tanúsítvány mentése sikertelen.",
+      error: safeActionError(
+        "createCertification",
+        err,
+        "A tanúsítvány mentése sikertelen.",
+      ),
     };
   }
 }
@@ -321,10 +322,10 @@ export async function updateCertification(
   try {
     issuerUrl = resolveHttpsUrl(payload.issuerUrl, "kiállító URL");
     verifyUrl = resolveHttpsUrl(payload.verifyUrl, "ellenőrző URL");
-  } catch (err) {
+  } catch {
     return {
       ok: false,
-      error: err instanceof Error ? err.message : "Érvénytelen URL.",
+      error: "Érvénytelen URL.",
     };
   }
 
@@ -381,13 +382,13 @@ export async function updateCertification(
     revalidatePath(`/admin/certifications/${id}/edit`);
     return { ok: true };
   } catch (err) {
-    console.error("updateCertification error:", err);
     return {
       ok: false,
-      error:
-        err instanceof Error
-          ? err.message
-          : "A tanúsítvány mentése sikertelen.",
+      error: safeActionError(
+        "updateCertification",
+        err,
+        "A tanúsítvány mentése sikertelen.",
+      ),
     };
   }
 }
@@ -412,10 +413,13 @@ export async function toggleCertificationActive(
     revalidatePath("/admin/certifications");
     return { ok: true };
   } catch (err) {
-    console.error("toggleCertificationActive error:", err);
     return {
       ok: false,
-      error: err instanceof Error ? err.message : "A művelet sikertelen.",
+      error: safeActionError(
+        "toggleCertificationActive",
+        err,
+        "A művelet sikertelen.",
+      ),
     };
   }
 }
@@ -465,15 +469,15 @@ export async function toggleCertificationPublished(
     revalidatePath("/admin/certifications");
     return { ok: true };
   } catch (err) {
-    console.error("toggleCertificationPublished error:", err);
     return {
       ok: false,
-      error:
-        err instanceof Error
-          ? err.message
-          : nextPublished
-            ? "Publikálás sikertelen."
-            : "A publikálás visszavonása sikertelen.",
+      error: safeActionError(
+        "toggleCertificationPublished",
+        err,
+        nextPublished
+          ? "Publikálás sikertelen."
+          : "A publikálás visszavonása sikertelen.",
+      ),
     };
   }
 }
@@ -504,10 +508,9 @@ export async function deleteCertification(
     revalidatePath("/admin/certifications");
     return { ok: true };
   } catch (err) {
-    console.error("deleteCertification error:", err);
     return {
       ok: false,
-      error: err instanceof Error ? err.message : "Törlés sikertelen.",
+      error: safeActionError("deleteCertification", err, "Törlés sikertelen."),
     };
   }
 }
@@ -565,11 +568,13 @@ export async function reorderCertifications(
     revalidatePath("/admin/certifications");
     return { ok: true };
   } catch (err) {
-    console.error("reorderCertifications error:", err);
     return {
       ok: false,
-      error:
-        err instanceof Error ? err.message : "A sorrend mentése sikertelen.",
+      error: safeActionError(
+        "reorderCertifications",
+        err,
+        "A sorrend mentése sikertelen.",
+      ),
     };
   }
 }

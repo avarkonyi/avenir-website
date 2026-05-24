@@ -364,12 +364,18 @@ export default async function LocaleLayout({
     .filter((s) => s.name.length > 0 && s.description.length > 0);
 
   const schemas = buildJsonLdSchemas(seoLocale, serviceItems, certs);
+  const skipLinkText =
+    seoLocale === "hu" ? "Ugrás a tartalomhoz" : "Skip to content";
+
   return (
     <html
       lang={locale}
       className={`${geistSans.variable} ${barlowCondensed.variable}`}
     >
       <body>
+        <a href="#main" className="skip-link">
+          {skipLinkText}
+        </a>
         <JsonLd schemas={schemas} />
         {children}
       </body>

@@ -66,7 +66,7 @@ export async function Career({
           >
             {t.careerTitle}
           </h2>
-          <p style={{ color: "#556070", fontSize: 17, lineHeight: 1.7, fontWeight: 300, paddingTop: 8, whiteSpace: "pre-line" }}>
+          <p style={{ color: "var(--avenir-text-muted)", fontSize: 17, lineHeight: 1.7, fontWeight: 300, paddingTop: 8, whiteSpace: "pre-line" }}>
             {t.careerText}
           </p>
         </div>
@@ -85,12 +85,12 @@ export async function Career({
                 </h3>
                 <div style={{ display: "flex", gap: 16 }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
-                    <Icon name="pin" size={13} color="#8A9BB0" />
-                    <span style={{ fontSize: 13, color: "#8A9BB0" }}>{p.location}</span>
+                    <Icon name="pin" size={13} color="#475569" />
+                    <span style={{ fontSize: 13, color: "var(--avenir-text-soft)" }}>{p.location}</span>
                   </div>
                   <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
-                    <Icon name="clock" size={13} color="#8A9BB0" />
-                    <span style={{ fontSize: 13, color: "#8A9BB0" }}>{p.type}</span>
+                    <Icon name="clock" size={13} color="#475569" />
+                    <span style={{ fontSize: 13, color: "var(--avenir-text-soft)" }}>{p.type}</span>
                   </div>
                 </div>
               </div>
