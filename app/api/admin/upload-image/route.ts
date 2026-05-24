@@ -17,7 +17,10 @@
 import { put } from "@vercel/blob";
 import { type NextRequest, NextResponse } from "next/server";
 import sharp from "sharp";
-import { auth } from "@/auth";
+import {
+  isAdminUnauthorizedError,
+  requireAdmin,
+} from "@/lib/admin/require-admin";
 
 const ALLOWED_FOLDERS = new Set([
   "news",
@@ -76,8 +79,12 @@ async function prepareImageUpload(
 }
 
 export async function POST(req: NextRequest): Promise<NextResponse> {
-  const session = await auth();
-  if (!session?.user?.email) {
+  try {
+    await requireAdmin();
+  } catch (error) {
+    if (!isAdminUnauthorizedError(error)) {
+      throw error;
+    }
     return NextResponse.json(
       { ok: false, error: "Nincs jogosultság." },
       { status: 401 },

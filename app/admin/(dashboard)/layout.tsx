@@ -1,5 +1,9 @@
 import { Toaster } from "sonner";
-import { auth } from "@/auth";
+import { redirect } from "next/navigation";
+import {
+  isAdminUnauthorizedError,
+  requireAdmin,
+} from "@/lib/admin/require-admin";
 import { AdminSidebar } from "../_components/AdminSidebar";
 import { AdminTopbar } from "../_components/AdminTopbar";
 
@@ -19,13 +23,21 @@ export default async function DashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const session = await auth();
+  let admin;
+  try {
+    admin = await requireAdmin();
+  } catch (error) {
+    if (isAdminUnauthorizedError(error)) {
+      redirect("/admin/login");
+    }
+    throw error;
+  }
 
   return (
     <div style={{ display: "flex", minHeight: "100vh" }}>
       <AdminSidebar />
       <div style={{ flex: 1, display: "flex", flexDirection: "column", minWidth: 0 }}>
-        <AdminTopbar user={session?.user ?? undefined} />
+        <AdminTopbar user={{ name: admin.name, email: admin.email }} />
         <main style={{ flex: 1, padding: "32px" }}>{children}</main>
       </div>
       <Toaster position="top-right" richColors closeButton />

@@ -9,7 +9,7 @@ import MicrosoftEntraID from "next-auth/providers/microsoft-entra-id";
 //
 // To grant a new admin: add the email here and redeploy.
 // Emails are compared case-insensitively (lowercased on both sides).
-const ALLOWED_ADMIN_EMAILS = [
+export const ALLOWED_ADMIN_EMAILS = [
   "varkonyi@afm.hu",
   "fanni.csegeny@afm.hu",
   "peter.vagi@afm.hu",

@@ -2,8 +2,11 @@ import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { connection } from "next/server";
 import { eq } from "drizzle-orm";
-import { auth } from "@/auth";
 import { db, messages } from "@/lib/db";
+import {
+  isAdminUnauthorizedError,
+  requireAdmin,
+} from "@/lib/admin/require-admin";
 import { formatTimestampHu } from "../_components/formatRelative";
 import { ArchiveButton } from "./_components/ArchiveButton";
 import { MarkAsReadOnMount } from "./_components/MarkAsReadOnMount";
@@ -51,9 +54,13 @@ export default async function MessageDetailPage({
   // resolves a session to populate the topbar — this duplicate check
   // ensures the page-level data fetch never runs without a session
   // even if either of those layers is misconfigured.
-  const session = await auth();
-  if (!session?.user?.email) {
-    redirect("/admin/login");
+  try {
+    await requireAdmin();
+  } catch (error) {
+    if (isAdminUnauthorizedError(error)) {
+      redirect("/admin/login");
+    }
+    throw error;
   }
 
   const { id: idParam } = await params;

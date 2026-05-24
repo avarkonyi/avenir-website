@@ -2,8 +2,8 @@
 
 import { eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
-import { auth } from "@/auth";
 import { db, siteSettings } from "@/lib/db";
+import { requireAdmin } from "@/lib/admin/require-admin";
 import { safeActionError } from "@/lib/admin/safe-action-error";
 import { SEO_DATA } from "@/lib/seo-data";
 
@@ -29,14 +29,6 @@ export type SiteSettingsPayload = {
 export type SiteSettingsResult =
   | { ok: true }
   | { ok: false; error: string };
-
-async function requireAdmin(): Promise<string> {
-  const session = await auth();
-  if (!session?.user?.email) {
-    throw new Error("Unauthorized");
-  }
-  return session.user.email;
-}
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 

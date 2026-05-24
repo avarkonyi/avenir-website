@@ -3,8 +3,8 @@
 import { and, eq, isNull } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { Resend } from "resend";
-import { auth } from "@/auth";
 import { db, messages } from "@/lib/db";
+import { requireAdmin } from "@/lib/admin/require-admin";
 import { safeActionError } from "@/lib/admin/safe-action-error";
 import { renderReplyEmail } from "@/lib/email-templates";
 
@@ -17,14 +17,6 @@ import { renderReplyEmail } from "@/lib/email-templates";
 // is handled implicitly by Next's tag-less invalidation when the parent
 // path is revalidated (state on /admin/messages/[id] re-renders when
 // the data changes).
-
-async function requireAdmin() {
-  const session = await auth();
-  if (!session?.user?.email) {
-    throw new Error("Unauthorized");
-  }
-  return session.user.email;
-}
 
 // Idempotent — only writes if currently unread. Called both by the
 // auto-mount client component on the detail page (fire-and-forget) and
@@ -141,7 +133,7 @@ export async function sendReply(
   subject: string,
   body: string,
 ): Promise<{ ok: true } | { ok: false; error: string }> {
-  const replyTo = await requireAdmin();
+  const { email: replyTo } = await requireAdmin();
 
   const trimmedSubject = subject.trim();
   const trimmedBody = body.trim();

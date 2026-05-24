@@ -2,8 +2,8 @@
 
 import { eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
-import { auth } from "@/auth";
 import { db, neonSql, partners } from "@/lib/db";
+import { requireAdmin } from "@/lib/admin/require-admin";
 import { safeActionError } from "@/lib/admin/safe-action-error";
 import { slugify } from "@/lib/slugify";
 
@@ -60,14 +60,6 @@ export type CreatePartnerResult =
 export type UpdatePartnerResult =
   | { ok: true }
   | { ok: false; error: string };
-
-async function requireAdmin(): Promise<string> {
-  const session = await auth();
-  if (!session?.user?.email) {
-    throw new Error("Unauthorized");
-  }
-  return session.user.email;
-}
 
 const PUBLIC_HOME_PATHS = ["/hu", "/en", "/de", "/zh"] as const;
 
@@ -555,4 +547,3 @@ export async function reorderPartners(
     };
   }
 }
-

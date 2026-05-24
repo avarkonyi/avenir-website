@@ -2,8 +2,8 @@
 
 import { eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
-import { auth } from "@/auth";
 import { db, neonSql, certifications } from "@/lib/db";
+import { requireAdmin } from "@/lib/admin/require-admin";
 import { safeActionError } from "@/lib/admin/safe-action-error";
 import { slugify } from "@/lib/slugify";
 
@@ -82,14 +82,6 @@ export type CreateCertificationResult =
 export type UpdateCertificationResult =
   | { ok: true }
   | { ok: false; error: string };
-
-async function requireAdmin(): Promise<string> {
-  const session = await auth();
-  if (!session?.user?.email) {
-    throw new Error("Unauthorized");
-  }
-  return session.user.email;
-}
 
 // Auto-derive a unique slug from `name`, suffixing `-2`/`-3`/… on
 // collision. Mirrors partners.uniqueSlugFromName but clamps to

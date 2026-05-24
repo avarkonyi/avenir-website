@@ -1,14 +1,14 @@
 import Link from "next/link";
 import { connection } from "next/server";
 import { and, eq, isNull, or, sql } from "drizzle-orm";
-import { auth } from "@/auth";
 import { db, messages, news } from "@/lib/db";
+import { requireAdmin } from "@/lib/admin/require-admin";
 
 // Admin dashboard. Iter 2: Üzenetek live counts. Iter 3A: Hírek card
 // linked to the news inbox with total + published/draft split.
 // "Published" here = at least one locale_X published.
 export default async function AdminDashboard() {
-  const session = await auth();
+  const admin = await requireAdmin();
 
   await connection();
   const [{ value: totalMessages }] = await db
@@ -56,7 +56,7 @@ export default async function AdminDashboard() {
           Vezérlőpult
         </h1>
         <p style={{ color: "#64748B", marginTop: 4, fontSize: 14 }}>
-          Üdvözöljük, {session?.user?.name ?? session?.user?.email ?? "Admin"}.
+          Üdvözöljük, {admin.name ?? admin.email}.
         </p>
       </header>
 

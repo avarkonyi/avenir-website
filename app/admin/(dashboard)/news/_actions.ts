@@ -2,8 +2,8 @@
 
 import { and, eq, isNull, ne } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
-import { auth } from "@/auth";
 import { db, news } from "@/lib/db";
+import { requireAdmin } from "@/lib/admin/require-admin";
 import { sanitizeDbErrorMessage } from "@/lib/db/redact";
 import { FALLBACK_SLUG, SLUG_MAX_LENGTH, slugify } from "@/lib/utils/slugify";
 
@@ -60,14 +60,6 @@ export type UpdateNewsResult =
 export type DeleteNewsResult =
   | { ok: true; message: string }
   | { ok: false; error: string };
-
-async function requireAdmin(): Promise<string> {
-  const session = await auth();
-  if (!session?.user?.email) {
-    throw new Error("Unauthorized");
-  }
-  return session.user.email;
-}
 
 async function uniqueSlug(
   baseSlug: string,

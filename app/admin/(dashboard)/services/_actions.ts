@@ -2,8 +2,8 @@
 
 import { and, eq, inArray, isNull, sql } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
-import { auth } from "@/auth";
 import { db, neonSql, services } from "@/lib/db";
+import { requireAdmin } from "@/lib/admin/require-admin";
 import { safeActionError } from "@/lib/admin/safe-action-error";
 import { slugify } from "@/lib/utils/slugify";
 import { ICON_NAMES } from "@/components/Icon";
@@ -16,14 +16,6 @@ import { ICON_NAMES } from "@/components/Icon";
 // Result-object shape (matching the rest of the admin UI: News,
 // Messages reply, etc.) — actions never call redirect(); the client
 // shows a toast and routes via router.push/refresh.
-
-async function requireAdmin(): Promise<string> {
-  const session = await auth();
-  if (!session?.user?.email) {
-    throw new Error("Unauthorized");
-  }
-  return session.user.email;
-}
 
 // ── shared payload + helpers ────────────────────────────────────────────
 

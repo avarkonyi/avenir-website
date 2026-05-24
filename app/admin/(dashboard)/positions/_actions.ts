@@ -2,8 +2,8 @@
 
 import { eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
-import { auth } from "@/auth";
 import { db, neonSql, positions } from "@/lib/db";
+import { requireAdmin } from "@/lib/admin/require-admin";
 import { safeActionError } from "@/lib/admin/safe-action-error";
 
 // Server actions for the Positions CRUD module. Auth check happens
@@ -41,14 +41,6 @@ export type CreatePositionResult =
 export type UpdatePositionResult =
   | { ok: true }
   | { ok: false; error: string };
-
-async function requireAdmin(): Promise<string> {
-  const session = await auth();
-  if (!session?.user?.email) {
-    throw new Error("Unauthorized");
-  }
-  return session.user.email;
-}
 
 // Same minimal regex used by the public contact form's zod schema;
 // good enough for "is this plausibly an address" without rejecting
