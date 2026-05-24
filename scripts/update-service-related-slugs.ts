@@ -1,11 +1,12 @@
-// Guarded staging-only updater for curated service relatedServiceSlugs.
+// Guarded updater for curated service relatedServiceSlugs.
 //
 // Usage:
 //   npm run db:update-service-related-slugs -- --dry-run
 //   npm run db:update-service-related-slugs -- --apply
 //
 // Safety:
-//   - staging DB only; the runtime DB target guard runs before SELECT/UPDATE;
+//   - staging by default; production requires --target production --allow-production;
+//   - the runtime DB target guard runs before SELECT/UPDATE;
 //   - never prints the full DATABASE_URL;
 //   - validates the approved related-service graph before DB I/O;
 //   - writes only services.relatedServiceSlugs for the eight canonical services;
@@ -13,7 +14,7 @@
 
 import "./load-env";
 import { eq, inArray } from "drizzle-orm";
-import { ensureStagingDbTarget } from "./ensure-staging-db";
+import { ensureDbTarget, readDbTargetArgs } from "./ensure-staging-db";
 import { db, services } from "../lib/db";
 
 const SCRIPT_NAME = "update-service-related-slugs";
@@ -113,10 +114,16 @@ function usageAndExit(message?: string): never {
       "Usage:",
       "  tsx scripts/update-service-related-slugs.ts --dry-run",
       "  tsx scripts/update-service-related-slugs.ts --apply",
+      "  tsx scripts/update-service-related-slugs.ts --target production --allow-production --dry-run",
+      "  tsx scripts/update-service-related-slugs.ts --target production --allow-production --apply",
       "",
       "Run through npm so the external staging guard also runs:",
       "  npm run db:update-service-related-slugs -- --dry-run",
       "  npm run db:update-service-related-slugs -- --apply",
+      "  npm run db:update-service-related-slugs:prod -- --dry-run",
+      "  npm run db:update-service-related-slugs:prod -- --apply",
+      "",
+      "If neither --dry-run nor --apply is supplied, the script defaults to dry-run.",
     ].join("\n"),
   );
   process.exit(1);
@@ -211,15 +218,18 @@ function indexRowsBySlug(rows: ServiceRow[]): Map<CanonicalServiceSlug, ServiceR
 }
 
 async function main(): Promise<void> {
-  const isDryRun = hasArg("--dry-run");
   const isApply = hasArg("--apply");
+  const explicitDryRun = hasArg("--dry-run");
 
-  if (isDryRun === isApply) {
-    usageAndExit("use exactly one of --dry-run or --apply");
+  if (explicitDryRun && isApply) {
+    usageAndExit("use only one of --dry-run or --apply");
   }
 
+  const isDryRun = !isApply;
+  const { target, allowProduction } = readDbTargetArgs();
+
   validateRelatedMap();
-  ensureStagingDbTarget({ scriptName: SCRIPT_NAME, isDryRun });
+  ensureDbTarget({ scriptName: SCRIPT_NAME, isDryRun, target, allowProduction });
 
   const rows = await db
     .select({
@@ -249,7 +259,7 @@ async function main(): Promise<void> {
 
   console.log(
     `Curated relatedServiceSlugs ${isDryRun ? "dry run" : "apply"} for ` +
-      `${plannedUpdates.length} canonical services.`,
+      `${plannedUpdates.length} canonical services on ${target}.`,
   );
 
   for (const update of plannedUpdates) {

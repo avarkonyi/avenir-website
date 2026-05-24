@@ -1,4 +1,4 @@
-// Guarded staging importer for reviewed service-detail translations.
+// Guarded importer for reviewed service-detail translations.
 //
 // Usage examples:
 //   npm run db:import-service-translations -- --locale en --file docs/translations/public_site_translation_matrix_en.csv --include-draft --include-legal-review --dry-run
@@ -7,7 +7,8 @@
 //   npm run db:import-service-translations -- --clear-locale en --apply
 //
 // Safety:
-//   - staging DB only; the runtime DB target guard runs before SELECT/UPDATE;
+//   - staging by default; production requires --target production --allow-production;
+//   - the runtime DB target guard runs before SELECT/UPDATE;
 //   - never prints the full DATABASE_URL;
 //   - imports service_detail_pilot rows only;
 //   - writes only EN service-detail columns for the selected services;
@@ -17,7 +18,7 @@ import "./load-env";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { eq, inArray } from "drizzle-orm";
-import { ensureStagingDbTarget } from "./ensure-staging-db";
+import { ensureDbTarget, readDbTargetArgs } from "./ensure-staging-db";
 import { db, services } from "../lib/db";
 
 const SCRIPT_NAME = "import-service-translations";
@@ -112,6 +113,8 @@ function usageAndExit(message?: string): never {
       "Usage:",
       "  tsx scripts/import-service-translations.ts --locale en --file docs/translations/public_site_translation_matrix_en.csv --include-draft --include-legal-review --dry-run",
       "  tsx scripts/import-service-translations.ts --locale en --file docs/translations/public_site_translation_matrix_en.csv --include-draft --include-legal-review --apply",
+      "  tsx scripts/import-service-translations.ts --target production --allow-production --locale en --file docs/translations/public_site_translation_matrix_en.csv --include-draft --include-legal-review --dry-run",
+      "  tsx scripts/import-service-translations.ts --target production --allow-production --locale en --file docs/translations/public_site_translation_matrix_en.csv --include-draft --include-legal-review --apply",
       "  tsx scripts/import-service-translations.ts --clear-locale en --dry-run",
       "  tsx scripts/import-service-translations.ts --clear-locale en --apply",
     ].join("\n"),
@@ -545,7 +548,11 @@ async function loadServiceRows(targetSlugs: readonly KnownServiceSlug[]) {
   return bySlug;
 }
 
-async function runClearLocale(isApply: boolean): Promise<void> {
+async function runClearLocale(isApply: boolean, target: string): Promise<void> {
+  if (target === "production") {
+    usageAndExit("--clear-locale is disabled for production targets.");
+  }
+
   const targetSlugs = [...KNOWN_SERVICE_SLUGS];
   const rows = await loadServiceRows(targetSlugs);
   const values = clearValues();
@@ -566,12 +573,12 @@ async function runClearLocale(isApply: boolean): Promise<void> {
 
   console.log(
     isApply
-      ? "Rollback applied on staging: EN detail fields cleared."
+      ? `Rollback applied on ${target}: EN detail fields cleared.`
       : "Rollback dry-run complete: no rows written.",
   );
 }
 
-async function runImport(filePath: string, isApply: boolean): Promise<void> {
+async function runImport(filePath: string, isApply: boolean, target: string): Promise<void> {
   const includeDraft = hasArg("--include-draft");
   const includeLegalReview = hasArg("--include-legal-review");
   const parsed = parseMatrix(filePath, includeDraft, includeLegalReview);
@@ -638,7 +645,7 @@ async function runImport(filePath: string, isApply: boolean): Promise<void> {
     );
     if (draft.legalReviewRows > 0) {
       console.log(
-        `    legal-review rows included for staging review: ${draft.legalReviewRows}`,
+        `    legal-review rows included for ${target} review: ${draft.legalReviewRows}`,
       );
     }
     console.log(
@@ -656,7 +663,7 @@ async function runImport(filePath: string, isApply: boolean): Promise<void> {
     }
   }
 
-  console.log(isApply ? "Import applied on staging." : "Dry-run complete: no rows written.");
+  console.log(isApply ? `Import applied on ${target}.` : "Dry-run complete: no rows written.");
 }
 
 async function main() {
@@ -669,6 +676,7 @@ async function main() {
   if (isDryRun === isApply) {
     usageAndExit("choose exactly one of --dry-run or --apply.");
   }
+  const { target, allowProduction } = readDbTargetArgs();
   if (locale && locale !== "en") usageAndExit("only --locale en is supported by this script.");
   if (clearLocale && clearLocale !== "en") {
     usageAndExit("only --clear-locale en is supported by this script.");
@@ -682,11 +690,11 @@ async function main() {
   const filePath = fileArg ? resolve(fileArg) : null;
 
   console.log(`--- ${SCRIPT_NAME} ${isDryRun ? "DRY-RUN" : "APPLY"} start ---`);
-  ensureStagingDbTarget({ scriptName: SCRIPT_NAME, isDryRun });
+  ensureDbTarget({ scriptName: SCRIPT_NAME, isDryRun, target, allowProduction });
   console.log(`DB target (host/db): ${redactedDbIdentity()}`);
 
-  if (clearLocale) await runClearLocale(isApply);
-  else if (filePath) await runImport(filePath, isApply);
+  if (clearLocale) await runClearLocale(isApply, target);
+  else if (filePath) await runImport(filePath, isApply, target);
 
   console.log(`--- ${SCRIPT_NAME} done ---`);
 }

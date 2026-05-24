@@ -23,8 +23,12 @@
     "db:update-positions": "node scripts/verify-db-target.mjs --target staging --runtime-only && tsx scripts/update-positions-prod.ts",
     "db:update-positions:prod": "node scripts/verify-db-target.mjs --target production --allow-production --runtime-only && tsx scripts/update-positions-prod.ts",
     "db:import-service-translations": "node scripts/verify-db-target.mjs --target staging --runtime-only && tsx scripts/import-service-translations.ts",
+    "db:import-service-translations:prod": "node scripts/verify-db-target.mjs --target production --allow-production --runtime-only && tsx scripts/import-service-translations.ts --target production --allow-production",
     "db:update-service-related-slugs": "node scripts/verify-db-target.mjs --target staging --runtime-only && tsx scripts/update-service-related-slugs.ts",
+    "db:update-service-related-slugs:prod": "node scripts/verify-db-target.mjs --target production --allow-production --runtime-only && tsx scripts/update-service-related-slugs.ts --target production --allow-production",
     "db:update-service-display-copy": "node scripts/verify-db-target.mjs --target staging --runtime-only && tsx scripts/update-service-display-copy.ts",
+    "db:update-service-display-copy:prod": "node scripts/verify-db-target.mjs --target production --allow-production --runtime-only && tsx scripts/update-service-display-copy.ts --target production --allow-production",
+    "db:sync-pilot-service-content:prod": "node scripts/verify-db-target.mjs --target production --allow-production --runtime-only && tsx scripts/sync-pilot-service-content.ts --target production --allow-production",
     "qa:preview": "node scripts/qa-preview-smoke.mjs",
     "indexnow:dry-run": "node scripts/submit-indexnow.mjs --dry-run",
     "indexnow:submit": "node scripts/submit-indexnow.mjs"

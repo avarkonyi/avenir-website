@@ -1,11 +1,12 @@
-// Guarded staging-only updater for service display labels and short descriptions.
+// Guarded updater for service display labels and short descriptions.
 //
 // Usage:
 //   npm run db:update-service-display-copy -- --dry-run
 //   npm run db:update-service-display-copy -- --apply
 //
 // Safety:
-//   - staging DB only; the runtime DB target guard runs before SELECT/UPDATE;
+//   - staging by default; production requires --target production --allow-production;
+//   - the runtime DB target guard runs before SELECT/UPDATE;
 //   - never prints the full DATABASE_URL;
 //   - targets exactly the eight canonical service rows;
 //   - writes only services.nameHu, nameEn, shortDescHu and shortDescEn;
@@ -14,7 +15,7 @@
 
 import "./load-env";
 import { eq, inArray } from "drizzle-orm";
-import { ensureStagingDbTarget } from "./ensure-staging-db";
+import { ensureDbTarget, readDbTargetArgs } from "./ensure-staging-db";
 import { db, services } from "../lib/db";
 
 const SCRIPT_NAME = "update-service-display-copy";
@@ -148,10 +149,14 @@ function usageAndExit(message?: string): never {
       "Usage:",
       "  tsx scripts/update-service-display-copy.ts --dry-run",
       "  tsx scripts/update-service-display-copy.ts --apply",
+      "  tsx scripts/update-service-display-copy.ts --target production --allow-production --dry-run",
+      "  tsx scripts/update-service-display-copy.ts --target production --allow-production --apply",
       "",
       "Run through npm so the external staging guard also runs:",
       "  npm run db:update-service-display-copy -- --dry-run",
       "  npm run db:update-service-display-copy -- --apply",
+      "  npm run db:update-service-display-copy:prod -- --dry-run",
+      "  npm run db:update-service-display-copy:prod -- --apply",
       "",
       "If neither --dry-run nor --apply is supplied, the script defaults to dry-run.",
     ].join("\n"),
@@ -289,9 +294,10 @@ async function main(): Promise<void> {
   }
 
   const isDryRun = !isApply;
+  const { target, allowProduction } = readDbTargetArgs();
 
   validateDisplayCopy();
-  ensureStagingDbTarget({ scriptName: SCRIPT_NAME, isDryRun });
+  ensureDbTarget({ scriptName: SCRIPT_NAME, isDryRun, target, allowProduction });
 
   const rows = await db
     .select({
@@ -317,7 +323,7 @@ async function main(): Promise<void> {
 
   console.log(
     `Service display copy ${isDryRun ? "dry run" : "apply"} for ` +
-      `${plannedUpdates.length} canonical services.`,
+      `${plannedUpdates.length} canonical services on ${target}.`,
   );
   console.log(
     `Planned changes: ${changedRows.length} row(s), ${changedFields} field(s).`,
