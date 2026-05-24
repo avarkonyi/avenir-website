@@ -22,6 +22,7 @@ import { checkRateLimit, getClientIp } from "@/lib/rate-limit";
 import { sendContactNotification } from "@/lib/resend";
 import { buildNotificationEmail } from "@/lib/email-templates";
 import { db, messages } from "@/lib/db";
+import { redactedDbIdentity, sanitizeDbErrorMessage } from "@/lib/db/redact";
 
 const MAX_BODY_BYTES = 32 * 1024;
 
@@ -107,6 +108,9 @@ export async function POST(request: Request) {
   const rate = await checkRateLimit(ip);
   if (!rate.allowed) {
     if (rate.reason === "unavailable") {
+      console.error(
+        "[contact] rate-limit unavailable; refusing submission before DB insert.",
+      );
       return NextResponse.json(
         { error: "rate-limit-unavailable" },
         {
@@ -137,7 +141,14 @@ export async function POST(request: Request) {
       locale: payload.locale,
     });
   } catch (err) {
-    console.error("[contact] db-insert failed:", err);
+    console.error(
+      [
+        "[contact] db-insert failed.",
+        `DB target: ${redactedDbIdentity()}.`,
+        `Cause: ${sanitizeDbErrorMessage(err)}.`,
+        "Personal form fields were not logged.",
+      ].join(" "),
+    );
     return NextResponse.json({ error: "server" }, { status: 500 });
   }
 
