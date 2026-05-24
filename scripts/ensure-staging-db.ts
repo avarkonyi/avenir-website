@@ -1,10 +1,35 @@
 const DEFAULT_STAGING_ENDPOINT = "ep-twilight-sound-al2b7jsb";
 const DEFAULT_PRODUCTION_ENDPOINT = "ep-young-meadow-aln5ux5m";
 
+type DbTarget = "staging" | "production";
+
 type EnsureStagingOptions = {
   scriptName: string;
   isDryRun: boolean;
 };
+
+type EnsureDbTargetOptions = EnsureStagingOptions & {
+  target: DbTarget;
+  allowProduction: boolean;
+};
+
+export function readDbTargetArgs(argv = process.argv): {
+  target: DbTarget;
+  allowProduction: boolean;
+} {
+  const targetIndex = argv.indexOf("--target");
+  const rawTarget = targetIndex === -1 ? "staging" : argv[targetIndex + 1];
+
+  if (rawTarget !== "staging" && rawTarget !== "production") {
+    console.error(`Unknown DB target "${rawTarget ?? ""}". Use "staging" or "production".`);
+    process.exit(1);
+  }
+
+  return {
+    target: rawTarget,
+    allowProduction: argv.includes("--allow-production"),
+  };
+}
 
 function endpointFromUrl(url: string): string | null {
   try {
@@ -27,10 +52,12 @@ function redactedDbIdentity(url: string): string {
   }
 }
 
-export function ensureStagingDbTarget({
+export function ensureDbTarget({
   scriptName,
   isDryRun,
-}: EnsureStagingOptions): void {
+  target,
+  allowProduction,
+}: EnsureDbTargetOptions): void {
   const raw = process.env.DATABASE_URL;
   if (!raw) {
     console.error(`${scriptName}: DATABASE_URL is not set.`);
@@ -39,10 +66,17 @@ export function ensureStagingDbTarget({
 
   const expectedStagingEndpoint =
     process.env.EXPECTED_STAGING_NEON_ENDPOINT ?? DEFAULT_STAGING_ENDPOINT;
-  const productionEndpoint =
+  const expectedProductionEndpoint =
     process.env.EXPECTED_PRODUCTION_NEON_ENDPOINT ?? DEFAULT_PRODUCTION_ENDPOINT;
+  const expectedEndpoint =
+    target === "staging" ? expectedStagingEndpoint : expectedProductionEndpoint;
   const endpoint = endpointFromUrl(raw);
   const identity = redactedDbIdentity(raw);
+
+  if (target === "production" && !allowProduction) {
+    console.error(`${scriptName}: production DB target requires --allow-production.`);
+    process.exit(1);
+  }
 
   if (!endpoint) {
     console.error(
@@ -51,23 +85,41 @@ export function ensureStagingDbTarget({
     process.exit(1);
   }
 
-  if (endpoint !== expectedStagingEndpoint) {
+  if (endpoint !== expectedEndpoint) {
     const productionHint =
-      endpoint === productionEndpoint ? " This looks like the production endpoint." : "";
+      endpoint === expectedProductionEndpoint && target !== "production"
+        ? " This looks like the production endpoint."
+        : "";
     console.error(
       `${scriptName}: refusing to ${isDryRun ? "read" : "write"} because ` +
-        `DATABASE_URL points at endpoint=${endpoint}, expected staging ` +
-        `endpoint=${expectedStagingEndpoint}. DB target: ${identity}.` +
+        `DATABASE_URL points at endpoint=${endpoint}, expected ${target} ` +
+        `endpoint=${expectedEndpoint}. DB target: ${identity}.` +
         productionHint,
     );
     console.error(
-      "Fix the active env target before running this pilot seed. Full DATABASE_URL was not printed.",
+      "Fix the active env target before running this command. Full DATABASE_URL was not printed.",
     );
     process.exit(1);
   }
 
   console.log(
     `DB target guard OK (${isDryRun ? "dry-run" : "write"}): ` +
-      `endpoint=${endpoint} target=${identity}`,
+      `target=${target} endpoint=${endpoint} db=${identity}`,
   );
+
+  if (target === "production") {
+    console.log(`${scriptName}: production DB target explicitly allowed.`);
+  }
+}
+
+export function ensureStagingDbTarget({
+  scriptName,
+  isDryRun,
+}: EnsureStagingOptions): void {
+  ensureDbTarget({
+    scriptName,
+    isDryRun,
+    target: "staging",
+    allowProduction: false,
+  });
 }
