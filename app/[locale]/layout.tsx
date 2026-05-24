@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
 import { Geist, Barlow_Condensed } from "next/font/google";
 import { and, asc, eq } from "drizzle-orm";
+import { Analytics } from "@vercel/analytics/next";
 import "../globals.css";
 import { LOCALES } from "@/lib/i18n";
 import { JsonLd } from "@/components/JsonLd";
@@ -378,6 +379,7 @@ export default async function LocaleLayout({
         </a>
         <JsonLd schemas={schemas} />
         {children}
+        <Analytics />
       </body>
     </html>
   );
