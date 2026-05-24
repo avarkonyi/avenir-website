@@ -1,30 +1,75 @@
 #!/usr/bin/env node
 
-const CANONICAL_SERVICE_PATHS = [
-  "/hu/szolgaltatasok/objektumorzes",
-  "/hu/szolgaltatasok/portaszolgalat",
-  "/hu/szolgaltatasok/biztonsagtechnika",
-  "/hu/szolgaltatasok/tavfelugyelet-vonuloszolgalat",
-  "/hu/szolgaltatasok/mystery-shopping-helyszini-audit",
-  "/hu/szolgaltatasok/rendezvenybiztositas",
-  "/hu/szolgaltatasok/hard-fm",
-  "/hu/szolgaltatasok/soft-fm",
+const CANONICAL_SERVICE_SLUGS = [
+  "objektumorzes",
+  "portaszolgalat",
+  "biztonsagtechnika",
+  "tavfelugyelet-vonuloszolgalat",
+  "mystery-shopping-helyszini-audit",
+  "rendezvenybiztositas",
+  "hard-fm",
+  "soft-fm",
 ];
 
-const LEGACY_SERVICE_PATHS = [
-  "/hu/szolgaltatasok/security",
-  "/hu/szolgaltatasok/reception",
-  "/hu/szolgaltatasok/building",
-  "/hu/szolgaltatasok/technical",
-  "/hu/szolgaltatasok/mystery",
-  "/hu/szolgaltatasok/cleaning",
-  "/hu/szolgaltatasok/hardfm",
-  "/hu/szolgaltatasok/green",
+const READY_SERVICE_LOCALES = ["hu", "en"];
+const UNREADY_SERVICE_LOCALES = ["de", "zh"];
+const SERVICE_SEGMENT = "szolgaltatasok";
+
+const READY_SERVICE_PATHS = READY_SERVICE_LOCALES.flatMap((locale) =>
+  CANONICAL_SERVICE_SLUGS.map((slug) => `/${locale}/${SERVICE_SEGMENT}/${slug}`),
+);
+
+const HU_SERVICE_PATHS = CANONICAL_SERVICE_SLUGS.map(
+  (slug) => `/hu/${SERVICE_SEGMENT}/${slug}`,
+);
+
+const UNREADY_SERVICE_PATHS = UNREADY_SERVICE_LOCALES.flatMap((locale) =>
+  CANONICAL_SERVICE_SLUGS.map((slug) => `/${locale}/${SERVICE_SEGMENT}/${slug}`),
+);
+
+const LEGACY_SERVICE_SLUGS = [
+  "security",
+  "reception",
+  "building",
+  "technical",
+  "mystery",
+  "cleaning",
+  "hardfm",
+  "green",
+];
+
+const LEGACY_SERVICE_PATHS = ["hu", "en", "de", "zh"].flatMap((locale) =>
+  LEGACY_SERVICE_SLUGS.map((slug) => `/${locale}/${SERVICE_SEGMENT}/${slug}`),
+);
+
+const PUBLISHABLE_LEGAL_PATHS = [
+  "/hu/adatvedelem",
+  "/hu/aszf",
+  "/hu/impresszum",
+  "/en/adatvedelem",
+  "/en/aszf",
+  "/en/impresszum",
+];
+
+const UNPUBLISHED_LEGAL_PATHS = [
+  "/en/privacy",
+  "/en/privacy-policy",
+  "/en/terms",
+  "/en/legal-notice",
+  "/en/imprint",
+  "/de/adatvedelem",
+  "/de/aszf",
+  "/de/impresszum",
+  "/zh/adatvedelem",
+  "/zh/aszf",
+  "/zh/impresszum",
 ];
 
 const EXPECTED_200 = [
   "/hu",
-  ...CANONICAL_SERVICE_PATHS,
+  "/en",
+  ...READY_SERVICE_PATHS,
+  ...PUBLISHABLE_LEGAL_PATHS,
   "/hu/hirek",
   "/sitemap.xml",
   "/robots.txt",
@@ -34,9 +79,8 @@ const EXPECTED_200 = [
 
 const EXPECTED_404 = [
   ...LEGACY_SERVICE_PATHS,
-  "/en/szolgaltatasok/objektumorzes",
-  "/de/szolgaltatasok/objektumorzes",
-  "/zh/szolgaltatasok/objektumorzes",
+  ...UNREADY_SERVICE_PATHS,
+  ...UNPUBLISHED_LEGAL_PATHS,
   "/en/hirek",
   "/de/hirek",
   "/zh/hirek",
@@ -44,9 +88,9 @@ const EXPECTED_404 = [
 
 const SITEMAP_FORBIDDEN = [
   ...LEGACY_SERVICE_PATHS,
-  "/en/szolgaltatasok/",
   "/de/szolgaltatasok/",
   "/zh/szolgaltatasok/",
+  ...UNPUBLISHED_LEGAL_PATHS,
   "/en/hirek",
   "/de/hirek",
   "/zh/hirek",
@@ -56,6 +100,7 @@ const SITEMAP_FORBIDDEN = [
 
 const LLMS_FORBIDDEN_URLS = [
   ...LEGACY_SERVICE_PATHS,
+  ...UNPUBLISHED_LEGAL_PATHS,
   "/admin",
   "/api",
 ];
@@ -142,6 +187,7 @@ async function fetchText(baseUrl, path) {
     finalUrl: response.url,
     status: response.status,
     ok: response.ok,
+    headers: response.headers,
     text,
   };
 }
@@ -232,7 +278,7 @@ async function checkSitemap(baseUrl) {
     ...checkContains({
       text: result.text,
       path: "/sitemap.xml",
-      required: CANONICAL_SERVICE_PATHS,
+      required: [...READY_SERVICE_PATHS, ...PUBLISHABLE_LEGAL_PATHS],
       forbidden: SITEMAP_FORBIDDEN,
     }),
   );
@@ -257,7 +303,7 @@ async function checkLlmsFile(baseUrl, path) {
     ...checkContains({
       text: result.text,
       path,
-      required: CANONICAL_SERVICE_PATHS,
+      required: HU_SERVICE_PATHS,
       forbidden: [...LLMS_FORBIDDEN_URLS, ...UNAPPROVED_PARTNER_NAME_EXAMPLES],
     }),
   );
@@ -287,6 +333,25 @@ async function checkRobots(baseUrl, allowProduction) {
   }
 
   return failures;
+}
+
+async function checkPreviewNoindexHeader(baseUrl, allowProduction) {
+  if (allowProduction) return [];
+
+  const result = await fetchText(baseUrl, "/hu");
+  const header = result.headers.get("x-robots-tag") ?? "";
+  const hasNoindex = /\bnoindex\b/i.test(header);
+  const hasNofollow = /\bnofollow\b/i.test(header);
+
+  if (hasNoindex && hasNofollow) return [];
+
+  return [
+    {
+      ok: false,
+      label: "Preview X-Robots-Tag",
+      detail: `expected noindex, nofollow on /hu; got ${JSON.stringify(header)}`,
+    },
+  ];
 }
 
 function printResults({ baseUrl, failures, totalChecks }) {
@@ -323,14 +388,18 @@ async function main() {
   failures.push(...statusResults.filter((result) => !result.ok));
 
   const sitemapFailures = await checkSitemap(baseUrl);
-  totalChecks += 1 + CANONICAL_SERVICE_PATHS.length + SITEMAP_FORBIDDEN.length;
+  totalChecks +=
+    1 +
+    READY_SERVICE_PATHS.length +
+    PUBLISHABLE_LEGAL_PATHS.length +
+    SITEMAP_FORBIDDEN.length;
   failures.push(...sitemapFailures);
 
   for (const path of ["/llms.txt", "/llms-full.txt"]) {
     const llmsFailures = await checkLlmsFile(baseUrl, path);
     totalChecks +=
       1 +
-      CANONICAL_SERVICE_PATHS.length +
+      HU_SERVICE_PATHS.length +
       LLMS_FORBIDDEN_URLS.length +
       UNAPPROVED_PARTNER_NAME_EXAMPLES.length;
     failures.push(...llmsFailures);
@@ -339,6 +408,13 @@ async function main() {
   const robotsFailures = await checkRobots(baseUrl, allowProduction);
   totalChecks += allowProduction ? 1 : 2;
   failures.push(...robotsFailures);
+
+  const noindexFailures = await checkPreviewNoindexHeader(
+    baseUrl,
+    allowProduction,
+  );
+  totalChecks += allowProduction ? 0 : 1;
+  failures.push(...noindexFailures);
 
   printResults({ baseUrl, failures, totalChecks });
   process.exit(failures.length === 0 ? 0 : 1);
