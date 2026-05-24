@@ -105,9 +105,10 @@ sanitized Markdown if needed.
 ## Contact Rate Limiting
 
 `/api/contact` uses a durable Upstash Redis / Vercel KV-compatible REST rate
-limiter when `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` are
-configured. The current policy is 5 submissions per minute per client IP. The
-IP value is hashed before it is used in Redis keys.
+limiter when either `UPSTASH_REDIS_REST_URL` + `UPSTASH_REDIS_REST_TOKEN` or
+Vercel KV's `KV_REST_API_URL` + `KV_REST_API_TOKEN` are configured. The current
+policy is 5 submissions per minute per client IP. The IP value is hashed before
+it is used in Redis keys.
 
 Production contact submissions fail closed if Redis credentials are missing or
 Redis is unavailable, so a horizontally scaled Vercel deployment cannot fall

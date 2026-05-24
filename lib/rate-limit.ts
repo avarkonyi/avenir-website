@@ -5,6 +5,9 @@ import { createHash } from "crypto";
 // Production must use durable Upstash/Vercel-KV-compatible Redis via REST:
 //   UPSTASH_REDIS_REST_URL
 //   UPSTASH_REDIS_REST_TOKEN
+// or Vercel KV's REST env names:
+//   KV_REST_API_URL
+//   KV_REST_API_TOKEN
 //
 // Local development and Vercel Preview may fall back to the in-memory limiter
 // so form QA is not blocked by missing local secrets. Production fails closed
@@ -108,14 +111,28 @@ function firstForwardedIp(value: string): string {
 }
 
 function getRedisConfig(): RedisConfig | null {
-  const url = process.env.UPSTASH_REDIS_REST_URL?.trim();
-  const token = process.env.UPSTASH_REDIS_REST_TOKEN?.trim();
+  const url = firstNonEmpty(
+    process.env.UPSTASH_REDIS_REST_URL,
+    process.env.KV_REST_API_URL,
+  );
+  const token = firstNonEmpty(
+    process.env.UPSTASH_REDIS_REST_TOKEN,
+    process.env.KV_REST_API_TOKEN,
+  );
 
   if (!url || !token) {
     return null;
   }
 
   return { url, token };
+}
+
+function firstNonEmpty(...values: Array<string | undefined>): string | null {
+  for (const value of values) {
+    const trimmed = value?.trim();
+    if (trimmed) return trimmed;
+  }
+  return null;
 }
 
 function isStrictProductionRuntime(): boolean {
@@ -229,7 +246,7 @@ function warnMissingRedisFallback() {
   }
   warnedMissingRedisFallback = true;
   console.warn(
-    "[contact-rate-limit] UPSTASH_REDIS_REST_URL/TOKEN not configured; using in-memory limiter outside production.",
+    "[contact-rate-limit] Redis REST URL/token not configured; using in-memory limiter outside production.",
   );
 }
 

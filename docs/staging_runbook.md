@@ -330,10 +330,18 @@ limiter when these environment variables are configured:
 - `UPSTASH_REDIS_REST_URL`
 - `UPSTASH_REDIS_REST_TOKEN`
 
-Production requires both values. If they are missing or Redis is unavailable in
-production, contact submissions fail closed before DB insert/email. Local
-development and Vercel Preview may fall back to the in-memory limiter and log a
-non-secret warning so QA is not blocked.
+Vercel KV REST env names are also supported:
+
+- `KV_REST_API_URL`
+- `KV_REST_API_TOKEN`
+
+Do not use `KV_REST_API_READ_ONLY_TOKEN` for contact rate limiting; the limiter
+must be able to increment counters.
+
+Production requires a usable REST URL/token pair. If they are missing or Redis
+is unavailable in production, contact submissions fail closed before DB
+insert/email. Local development and Vercel Preview may fall back to the
+in-memory limiter and log a non-secret warning so QA is not blocked.
 
 The current policy is 5 submissions per minute per client IP. The IP is derived
 from Vercel/proxy-controlled forwarded headers when available and is hashed
