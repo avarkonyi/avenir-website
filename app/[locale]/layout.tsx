@@ -44,6 +44,7 @@ export const viewport: Viewport = {
 };
 
 export const revalidate = 3600;
+const INDEXABLE_LOCALES = ["hu", "en"] as const;
 
 export function generateStaticParams() {
   return LOCALES.map((locale) => ({ locale }));
@@ -61,6 +62,9 @@ export async function generateMetadata({
   const title = `${SEO_DATA.legalNameShort} — ${tagline}`;
   const description = META_DESCRIPTIONS[seoLocale];
   const localeUrl = `${SEO_DATA.url}/${seoLocale}`;
+  const isIndexableLocale = (INDEXABLE_LOCALES as readonly string[]).includes(
+    seoLocale,
+  );
   const alternateLocales = SEO_LOCALES.filter((l) => l !== seoLocale).map(
     (l) => OG_LOCALE_MAP[l],
   );
@@ -72,7 +76,7 @@ export async function generateMetadata({
     keywords: META_KEYWORDS_HU,
     authors: [{ name: SEO_DATA.legalNameShort }],
     robots: {
-      index: true,
+      index: isIndexableLocale,
       follow: true,
       "max-image-preview": "large",
       "max-snippet": -1,
@@ -83,8 +87,6 @@ export async function generateMetadata({
       languages: {
         hu: `${SEO_DATA.url}/hu`,
         en: `${SEO_DATA.url}/en`,
-        de: `${SEO_DATA.url}/de`,
-        zh: `${SEO_DATA.url}/zh`,
         "x-default": `${SEO_DATA.url}/hu`,
       },
     },

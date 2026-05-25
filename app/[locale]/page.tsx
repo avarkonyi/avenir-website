@@ -1,5 +1,4 @@
 import { notFound } from "next/navigation";
-import { and, desc, eq, isNotNull, isNull } from "drizzle-orm";
 import { Nav } from "@/components/Nav";
 import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
@@ -11,7 +10,6 @@ import { Career } from "@/components/Career";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 import { getTranslation } from "@/lib/i18n";
-import { db, news } from "@/lib/db";
 import {
   getActiveTopLevelServices,
   getAllPublishedServicePathsForBuild,
@@ -25,13 +23,6 @@ const LOCALES = ["hu", "en", "de", "zh"] as const;
 type Locale = (typeof LOCALES)[number];
 
 export const revalidate = 3600;
-
-const NEWS_COLS = {
-  hu: { title: news.titleHu, lead: news.leadHu, body: news.bodyHu, published: news.publishedHu },
-  en: { title: news.titleEn, lead: news.leadEn, body: news.bodyEn, published: news.publishedEn },
-  de: { title: news.titleDe, lead: news.leadDe, body: news.bodyDe, published: news.publishedDe },
-  zh: { title: news.titleZh, lead: news.leadZh, body: news.bodyZh, published: news.publishedZh },
-} as const;
 
 export function generateStaticParams() {
   return LOCALES.map((locale) => ({ locale }));
@@ -56,7 +47,7 @@ export default async function HomePage({
           imageUrl: r.imageUrl,
           href: newsDetailHrefHu(r.slug),
         }))
-      : await getHomepageModalArticles(locale as Locale);
+      : [];
 
   // Service-of-interest dropdown options for the Contact form via
   // shared helper (lib/db/queries/services.ts). Contact is a client
@@ -86,17 +77,19 @@ export default async function HomePage({
         />
         <References t={t} locale={locale} />
         <Certifications t={t} locale={locale} />
-        <News
-          t={{
-            newsSub: t.newsSub,
-            newsTitle: t.newsTitle,
-            newsText: t.newsText,
-            newsEmpty: t.newsEmpty,
-            newsReadMore: t.newsReadMore,
-          }}
-          locale={locale}
-          articles={articles}
-        />
+        {locale === "hu" && (
+          <News
+            t={{
+              newsSub: t.newsSub,
+              newsTitle: t.newsTitle,
+              newsText: t.newsText,
+              newsEmpty: t.newsEmpty,
+              newsReadMore: t.newsReadMore,
+            }}
+            locale={locale}
+            articles={articles}
+          />
+        )}
         <Career t={t} locale={locale} />
         <Contact
           t={{
@@ -116,42 +109,4 @@ export default async function HomePage({
       />
     </>
   );
-}
-
-async function getHomepageModalArticles(locale: Locale) {
-  const cols = NEWS_COLS[locale];
-
-  // EN/DE/ZH locale columns are nullable post-Iter 3A. We only surface
-  // rows where the picked locale has a non-null title (defensive: an
-  // admin could in theory flip publishedXx without filling titleXx).
-  // Lead/body fall back to empty strings since the locale model permits
-  // title-only teasers. Non-HU public article detail routes are not
-  // exposed yet, so these cards keep the existing homepage modal flow.
-  const newsRows = await db
-    .select({
-      id: news.id,
-      title: cols.title,
-      lead: cols.lead,
-      body: cols.body,
-      date: news.date,
-      imageUrl: news.imageUrl,
-    })
-    .from(news)
-    .where(
-      and(
-        eq(cols.published, true),
-        isNotNull(cols.title),
-        isNull(news.deletedAt),
-      ),
-    )
-    .orderBy(desc(news.date));
-
-  return newsRows.map((r) => ({
-    id: r.id,
-    title: r.title ?? "",
-    lead: r.lead ?? "",
-    body: r.body ?? "",
-    date: r.date.toISOString(),
-    imageUrl: r.imageUrl,
-  }));
 }

@@ -8,9 +8,13 @@ import { Icon } from "./Icon";
 // Per-locale anchor target for the ÁSZF section #4 deep-link from the
 // magánnyomozói warning. HU keeps the Hungarian slug; EN/DE/ZH use the
 // English slug since the DE/ZH ÁSZF page reuses the EN section IDs.
+function legalLocaleFor(locale: string): "hu" | "en" {
+  return locale === "hu" ? "hu" : "en";
+}
+
 function getAszfPrivateInvestigationHref(locale: string): string {
   const anchor = locale === "hu" ? "magannyomozas" : "private-investigation";
-  return `/${locale}/aszf#${anchor}`;
+  return `/${legalLocaleFor(locale)}/aszf#${anchor}`;
 }
 
 type FormState = {
@@ -779,7 +783,7 @@ export function Contact({
               >
                 {t.form.layeredNotice}{" "}
                 <Link
-                  href={`/${locale}/adatvedelem`}
+                  href={`/${legalLocaleFor(locale)}/adatvedelem`}
                   style={{ color: "#D1172E", textDecoration: "underline", fontWeight: 500 }}
                 >
                   {t.form.layeredNoticeLink}

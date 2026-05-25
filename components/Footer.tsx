@@ -34,6 +34,15 @@ export async function Footer({
       }),
     }))
     .filter((link) => link.title.length > 0);
+  const legalLocale = locale === "hu" ? "hu" : "en";
+  const legalLabels =
+    locale === "de" || locale === "zh"
+      ? {
+          privacy: "Privacy Policy (English)",
+          terms: "Terms of Use (English)",
+          impressum: "Legal Notice (English)",
+        }
+      : t.footer;
 
   return (
     <footer style={{ background: "#070F1E", padding: "60px 5vw 28px", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
@@ -182,18 +191,18 @@ export async function Footer({
             </p>
             <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 10 }}>
               <li>
-                <Link href={`/${locale}/adatvedelem`} className="footer-link" style={{ color: "var(--avenir-on-dark-muted)", fontSize: 13, textDecoration: "none" }}>
-                  {t.footer.privacy}
+                <Link href={`/${legalLocale}/adatvedelem`} className="footer-link" style={{ color: "var(--avenir-on-dark-muted)", fontSize: 13, textDecoration: "none" }}>
+                  {legalLabels.privacy}
                 </Link>
               </li>
               <li>
-                <Link href={`/${locale}/aszf`} className="footer-link" style={{ color: "var(--avenir-on-dark-muted)", fontSize: 13, textDecoration: "none" }}>
-                  {t.footer.terms}
+                <Link href={`/${legalLocale}/aszf`} className="footer-link" style={{ color: "var(--avenir-on-dark-muted)", fontSize: 13, textDecoration: "none" }}>
+                  {legalLabels.terms}
                 </Link>
               </li>
               <li>
-                <Link href={`/${locale}/impresszum`} className="footer-link" style={{ color: "var(--avenir-on-dark-muted)", fontSize: 13, textDecoration: "none" }}>
-                  {t.footer.impressum}
+                <Link href={`/${legalLocale}/impresszum`} className="footer-link" style={{ color: "var(--avenir-on-dark-muted)", fontSize: 13, textDecoration: "none" }}>
+                  {legalLabels.impressum}
                 </Link>
               </li>
             </ul>

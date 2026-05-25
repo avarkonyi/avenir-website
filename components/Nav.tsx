@@ -9,6 +9,7 @@ import { Icon } from "./Icon";
 
 const SECTION_KEYS = ["about", "services", "references", "news", "career", "contact"] as const;
 const LOCALES = ["hu", "en", "de", "zh"] as const;
+const FULL_CONTENT_LOCALES = ["hu", "en"] as const;
 
 function normalizeHash(rawHash: string): string {
   if (!rawHash) return "";
@@ -23,6 +24,10 @@ export function Nav({ t }: { t: Pick<Translation, "nav"> }) {
   const params = useParams<{ locale: string }>();
   const pathname = usePathname();
   const currentLocale = params?.locale ?? "hu";
+  const visibleSectionKeys =
+    currentLocale === "hu"
+      ? SECTION_KEYS
+      : SECTION_KEYS.filter((key) => key !== "news");
 
   // True if currently on the locale homepage (where the section anchors
   // exist for in-page smooth scroll). False on legal pages and other
@@ -36,6 +41,16 @@ export function Nav({ t }: { t: Pick<Translation, "nav"> }) {
   // homepage's transparent-at-top nav style — readability hotfix:
   // force the navy nav background regardless of scroll position.
   const isLegalPage = /\/(impresszum|aszf|adatvedelem)\/?$/.test(pathname);
+  const isServiceDetailPage = /^\/(?:hu|en|de|zh)\/szolgaltatasok\/[^/]+\/?$/.test(
+    pathname,
+  );
+  const isNewsPage = /^\/(?:hu|en|de|zh)\/hirek(?:\/[^/]+)?\/?$/.test(pathname);
+  const availableLocales =
+    isNewsPage
+      ? (["hu"] as const)
+      : isServiceDetailPage || isLegalPage
+        ? FULL_CONTENT_LOCALES
+        : LOCALES;
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 60);
@@ -199,7 +214,7 @@ export function Nav({ t }: { t: Pick<Translation, "nav"> }) {
         {/* Desktop nav — Link with onClick: smooth-scroll on homepage,
             navigate to /[locale]#id on legal pages and other sub-routes. */}
         <div className="desktop-nav" style={{ display: "flex", gap: 28, alignItems: "center" }}>
-          {SECTION_KEYS.map((k) => (
+          {visibleSectionKeys.map((k) => (
             <Link
               key={k}
               href={`/${currentLocale}#${k}`}
@@ -227,7 +242,7 @@ export function Nav({ t }: { t: Pick<Translation, "nav"> }) {
 
           {/* Language switcher — preserves current path + scroll position */}
           <div style={{ display: "flex", gap: 6, marginLeft: 8 }}>
-            {LOCALES.map((l) => (
+            {availableLocales.map((l) => (
               <Link
                 key={l}
                 href={buildLocaleHref(l)}
@@ -311,7 +326,7 @@ export function Nav({ t }: { t: Pick<Translation, "nav"> }) {
             gap: 16,
           }}
         >
-          {SECTION_KEYS.map((k) => (
+          {visibleSectionKeys.map((k) => (
             <Link
               key={k}
               href={`/${currentLocale}#${k}`}
@@ -339,7 +354,7 @@ export function Nav({ t }: { t: Pick<Translation, "nav"> }) {
             </Link>
           ))}
           <div style={{ display: "flex", gap: 8, marginTop: 8 }}>
-            {LOCALES.map((l) => (
+            {availableLocales.map((l) => (
               <Link
                 key={l}
                 href={buildLocaleHref(l)}

@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { SEO_DATA, SEO_LOCALES } from "@/lib/seo-data";
+import { SEO_DATA } from "@/lib/seo-data";
 import { getAllPublishedServicePathsForBuild } from "@/lib/db/queries/services";
 import { getAllPublishedNewsPathsHuForBuild } from "@/lib/db/queries/news";
 import {
@@ -11,6 +11,7 @@ import {
 } from "@/lib/legal-routes";
 
 const SITE_LAST_MODIFIED = new Date("2026-05-07T00:00:00.000Z");
+const SITEMAP_HOME_LOCALES = ["hu", "en"] as const;
 const SERVICE_URL_SEGMENT = "szolgaltatasok";
 const NEWS_INDEX_PATH_HU = "/hu/hirek";
 const NEWS_URL_SEGMENT_HU = "hirek";
@@ -19,7 +20,7 @@ function localeAlternates(path = "") {
   return {
     languages: {
       ...Object.fromEntries(
-        SEO_LOCALES.map((locale) => [
+        SITEMAP_HOME_LOCALES.map((locale) => [
           locale,
           `${SEO_DATA.url}/${locale}${path}`,
         ]),
@@ -92,7 +93,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   };
 
   return [
-    ...SEO_LOCALES.map((locale) => ({
+    ...SITEMAP_HOME_LOCALES.map((locale) => ({
       url: `${SEO_DATA.url}/${locale}`,
       lastModified: SITE_LAST_MODIFIED,
       changeFrequency: "monthly" as const,
