@@ -6,6 +6,8 @@ import {
   getAllPublishedServicePathsForBuild,
 } from "@/lib/db/queries/services";
 import { getReadyServiceDetailHref } from "@/lib/service-detail-links";
+import { CookieSettingsButton } from "./analytics/CookieSettingsButton";
+import { TrackedContactLink } from "./analytics/TrackedContactLink";
 
 export async function Footer({
   t,
@@ -162,14 +164,26 @@ export async function Footer({
                 </a>
               </div>
               <div>
-                <a href="tel:+36703168218" className="footer-link" style={{ color: "inherit", textDecoration: "none" }}>
+                <TrackedContactLink
+                  href="tel:+36703168218"
+                  locale={locale}
+                  eventName="phone_click"
+                  className="footer-link"
+                  style={{ color: "inherit", textDecoration: "none" }}
+                >
                   +36 70 316 8218
-                </a>
+                </TrackedContactLink>
               </div>
               <div>
-                <a href="mailto:info@afm.hu" className="footer-link" style={{ color: "inherit", textDecoration: "none" }}>
+                <TrackedContactLink
+                  href="mailto:info@afm.hu"
+                  locale={locale}
+                  eventName="email_click"
+                  className="footer-link"
+                  style={{ color: "inherit", textDecoration: "none" }}
+                >
                   info@afm.hu
-                </a>
+                </TrackedContactLink>
               </div>
             </div>
           </div>
@@ -204,6 +218,9 @@ export async function Footer({
                 <Link href={`/${legalLocale}/impresszum`} className="footer-link" style={{ color: "var(--avenir-on-dark-muted)", fontSize: 13, textDecoration: "none" }}>
                   {legalLabels.impressum}
                 </Link>
+              </li>
+              <li>
+                <CookieSettingsButton locale={locale} />
               </li>
             </ul>
           </div>

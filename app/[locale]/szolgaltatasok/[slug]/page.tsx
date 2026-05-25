@@ -5,6 +5,7 @@ import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/components/JsonLd";
 import { Icon, ICON_NAMES, type IconName } from "@/components/Icon";
+import { TrackedServiceCtaLink } from "@/components/analytics/TrackedServiceCtaLink";
 import { getTranslation, LOCALES, type Locale } from "@/lib/i18n";
 import {
   getAllPublishedServicePathsForBuild,
@@ -294,8 +295,11 @@ export default async function ServiceDetailPage({
               </p>
             )}
             <div className="service-detail-cta-row" style={{ marginTop: 28 }}>
-              <Link
+              <TrackedServiceCtaLink
                 href={ctaUrl}
+                locale={locale}
+                serviceSlug={slug}
+                serviceLabel={detail.name}
                 className="service-detail-cta-button"
                 style={{
                   background: "#D1172E",
@@ -311,7 +315,7 @@ export default async function ServiceDetailPage({
                 }}
               >
                 {t.nav.cta}
-              </Link>
+              </TrackedServiceCtaLink>
             </div>
           </div>
         </section>
@@ -620,8 +624,11 @@ export default async function ServiceDetailPage({
               </p>
             )}
             <div className="service-detail-cta-row service-detail-cta-row--center">
-              <Link
+              <TrackedServiceCtaLink
                 href={ctaUrl}
+                locale={locale}
+                serviceSlug={slug}
+                serviceLabel={detail.name}
                 className="service-detail-cta-button"
                 style={{
                   background: "#D1172E",
@@ -637,7 +644,7 @@ export default async function ServiceDetailPage({
                 }}
               >
                 {t.nav.cta}
-              </Link>
+              </TrackedServiceCtaLink>
             </div>
           </div>
         </section>

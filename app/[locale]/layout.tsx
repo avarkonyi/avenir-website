@@ -5,6 +5,8 @@ import { and, asc, eq } from "drizzle-orm";
 import "../globals.css";
 import { LOCALES } from "@/lib/i18n";
 import { JsonLd } from "@/components/JsonLd";
+import { AnalyticsConsentBanner } from "@/components/analytics/AnalyticsConsentBanner";
+import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 import { db, certifications } from "@/lib/db";
 import { getActiveTopLevelServices } from "@/lib/db/queries/services";
 import {
@@ -379,7 +381,9 @@ export default async function LocaleLayout({
           {skipLinkText}
         </a>
         <JsonLd schemas={schemas} />
+        <GoogleAnalytics />
         {children}
+        <AnalyticsConsentBanner locale={locale} />
       </body>
     </html>
   );

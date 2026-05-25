@@ -1,7 +1,7 @@
-import Link from "next/link";
 import { getTranslation } from "@/lib/i18n";
 import { getActiveTopLevelServices } from "@/lib/db/queries/services";
 import { getReadyServiceDetailHref } from "@/lib/service-detail-links";
+import { TrackedServiceCardLink } from "./analytics/TrackedServiceCardLink";
 import { Icon, ICON_NAMES, type IconName } from "./Icon";
 
 // Public Services grid — DB-backed via shared
@@ -123,15 +123,15 @@ export async function Services({
             }
 
             return (
-              <Link
+              <TrackedServiceCardLink
                 key={card.id}
                 href={card.href}
-                className="service-card"
-                aria-label={`${card.title} részletei`}
-                style={{ display: "block", cursor: "pointer" }}
+                locale={locale}
+                serviceSlug={card.id}
+                serviceLabel={card.title}
               >
                 {content}
-              </Link>
+              </TrackedServiceCardLink>
             );
           })}
         </div>

@@ -619,6 +619,68 @@ details > summary:focus-visible {
 .footer-link:hover {
   color: #D1172E !important;
 }
+.cookie-settings-button {
+  appearance: none;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: var(--avenir-on-dark-muted);
+  font: inherit;
+  font-size: 13px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.cookie-settings-button:focus-visible {
+  outline: 3px solid rgba(209, 23, 46, 0.55);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.analytics-consent-button {
+  min-height: 40px;
+  padding: 10px 14px;
+  border-radius: 2px;
+  border: 1px solid transparent;
+  font-family: var(--font-head);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    color 0.2s ease;
+}
+
+.analytics-consent-button:focus-visible {
+  outline: 3px solid rgba(209, 23, 46, 0.55);
+  outline-offset: 3px;
+}
+
+.analytics-consent-button--primary {
+  background: #D1172E;
+  border-color: #D1172E;
+  color: #fff;
+}
+
+.analytics-consent-button--primary:hover {
+  background: #a80f24;
+  border-color: #a80f24;
+}
+
+.analytics-consent-button--secondary {
+  background: #fff;
+  border-color: #CBD5E1;
+  color: #0B1E3E;
+}
+
+.analytics-consent-button--secondary:hover {
+  border-color: #D1172E;
+  color: #D1172E;
+}
 
 .partner-logo-strip {
   margin: 0;
@@ -740,6 +802,10 @@ details > summary:focus-visible {
   .partner-logo-item:hover img {
     transform: none;
   }
+
+  .analytics-consent-button {
+    transition: none;
+  }
 }
 
 /* Responsive: nav switches to mobile menu earlier (1024px) so iPad
@@ -802,6 +868,12 @@ details > summary:focus-visible {
   }
   .partner-logo-item img {
     max-height: 62px;
+  }
+
+  .analytics-consent-banner {
+    right: 12px !important;
+    bottom: 12px !important;
+    width: calc(100vw - 24px) !important;
   }
 
   /* About visual block: tighter padding + hide decorative offset square */

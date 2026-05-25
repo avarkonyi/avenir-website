@@ -3,6 +3,7 @@
 import { type ReactElement, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import type { Translation } from "@/lib/i18n";
+import { trackAnalyticsEvent } from "@/lib/analytics/events";
 import { Icon } from "./Icon";
 
 // Per-locale anchor target for the ÁSZF section #4 deep-link from the
@@ -122,15 +123,24 @@ type ContactRowProps = {
   label: string;
   text: string;
   href: string;
+  locale: string;
 };
 
-function ContactRow({ kind, label, text, href }: ContactRowProps) {
+function ContactRow({ kind, label, text, href, locale }: ContactRowProps) {
   const [hover, setHover] = useState(false);
+  const analyticsEvent =
+    kind === "phone" ? "phone_click" : kind === "email" ? "email_click" : null;
+
   return (
     <a
       href={href}
       target={kind === "address" ? "_blank" : undefined}
       rel="noopener noreferrer"
+      onClick={() => {
+        if (analyticsEvent) {
+          trackAnalyticsEvent(analyticsEvent, { locale });
+        }
+      }}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       style={{
@@ -361,7 +371,13 @@ export function Contact({
     else if (!EMAIL_REGEX.test(form.email.trim()))
       newErrors.email = t.form.errors.emailInvalid;
     setErrors(newErrors);
-    if (Object.keys(newErrors).length > 0) return;
+    if (Object.keys(newErrors).length > 0) {
+      trackAnalyticsEvent("contact_submit_error", {
+        locale,
+        event_type: "client_validation",
+      });
+      return;
+    }
 
     setSubmitting(true);
     try {
@@ -381,11 +397,25 @@ export function Contact({
       });
 
       if (res.ok) {
+        trackAnalyticsEvent("contact_submit_success", {
+          locale,
+          selected_service_key: selectedService || undefined,
+          selected_service_label:
+            normalizedServiceOptions.find((option) => option.slug === selectedService)
+              ?.label ??
+            (selectedService === "magannyomozas"
+              ? t.form.privateInvestigation
+              : undefined),
+        });
         setSent(true);
         return;
       }
 
       if (res.status === 429) {
+        trackAnalyticsEvent("contact_submit_error", {
+          locale,
+          event_type: "rate_limited",
+        });
         setErrors({ general: t.form.errors.throttled });
         return;
       }
@@ -401,15 +431,31 @@ export function Contact({
             if (code) mapped[field] = errorText(code);
           }
           if (Object.keys(mapped).length === 0) mapped.general = t.form.errors.server;
+          trackAnalyticsEvent("contact_submit_error", {
+            locale,
+            event_type: "validation",
+          });
           setErrors(mapped);
           return;
         }
+        trackAnalyticsEvent("contact_submit_error", {
+          locale,
+          event_type: "bad_request",
+        });
         setErrors({ general: t.form.errors.server });
         return;
       }
 
+      trackAnalyticsEvent("contact_submit_error", {
+        locale,
+        event_type: `http_${res.status}`,
+      });
       setErrors({ general: t.form.errors.server });
     } catch {
+      trackAnalyticsEvent("contact_submit_error", {
+        locale,
+        event_type: "network",
+      });
       setErrors({ general: t.form.errors.server });
     } finally {
       setSubmitting(false);
@@ -492,7 +538,7 @@ export function Contact({
                 href: "mailto:info@afm.hu",
               },
             ].map((item) => (
-              <ContactRow key={item.kind} {...item} />
+              <ContactRow key={item.kind} {...item} locale={locale} />
             ))}
           </div>
         </div>
@@ -698,6 +744,13 @@ export function Contact({
                     setServiceTouched(true);
                     setForm({ ...form, service: e.target.value });
                     if (errors.service) setErrors({ ...errors, service: undefined });
+                    if (e.target.value === "magannyomozas") {
+                      trackAnalyticsEvent("special_service_option_selected", {
+                        locale,
+                        selected_service_key: "magannyomozas",
+                        selected_service_label: t.form.privateInvestigation,
+                      });
+                    }
                   }}
                   style={{
                     ...inputStyle(!!errors.service),

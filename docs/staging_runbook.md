@@ -354,3 +354,40 @@ For Preview QA, verify:
 - repeated submissions from the same client receive `429` after the limit;
 - missing Preview Redis credentials produce only a non-secret fallback warning;
 - production deploys have Redis credentials configured before contact testing.
+
+## Consent-Gated GA4 QA
+
+GA4 uses direct `gtag.js` loading after analytics consent. It does not use
+Google Tag Manager.
+
+Required environment variable:
+
+- `NEXT_PUBLIC_GA4_ID`
+
+Expected behavior:
+
+- Before consent: no request to `https://www.googletagmanager.com/gtag/js` and
+  no GA collect request.
+- Reject analytics: banner closes, the rejection persists in localStorage, and
+  GA4 remains unloaded after refresh.
+- Accept analytics: `gtag.js` loads with `NEXT_PUBLIC_GA4_ID`, and GA4 Realtime
+  should show a page view after the normal delay.
+- Footer Cookie settings reopens the consent choice.
+- If `NEXT_PUBLIC_GA4_ID` is missing, no GA script loads and the site remains
+  functional.
+
+Events emitted after consent only:
+
+- `contact_submit_success`
+- `contact_submit_error`
+- `phone_click`
+- `email_click`
+- `service_cta_click`
+- `special_service_option_selected`
+
+PII guardrails:
+
+- Do not send name, email, phone, company, message body, IP address or any
+  free-text form field to GA4.
+- Allowed parameters are limited to locale, path, predefined service key,
+  predefined service label and event type.

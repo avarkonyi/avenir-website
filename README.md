@@ -118,6 +118,40 @@ forwarded IP headers are controlled by Vercel or the trusted deployment proxy.
 
 Do not commit Redis credentials or print full Redis REST URLs/tokens.
 
+## Consent-Gated GA4 Analytics
+
+GA4 is integrated directly, not through Google Tag Manager. Configure the public
+measurement ID with:
+
+- `NEXT_PUBLIC_GA4_ID`
+
+The site does not inject `gtag.js` until the visitor accepts analytics consent.
+If the visitor rejects analytics, or if `NEXT_PUBLIC_GA4_ID` is missing, GA4 is
+not loaded and the site continues to work.
+
+Verification checklist:
+
+- Fresh profile before consent: no request to `googletagmanager.com/gtag/js`
+  and no GA collect request.
+- Reject analytics: banner hides, choice persists after refresh, GA4 remains
+  unloaded.
+- Accept analytics: `gtag.js` loads and GA4 Realtime should show a page view
+  after the usual processing delay.
+- Cookie settings in the footer reopens the analytics choice.
+
+Events emitted after consent only:
+
+- `contact_submit_success`
+- `contact_submit_error`
+- `phone_click`
+- `email_click`
+- `service_cta_click`
+- `special_service_option_selected`
+
+Analytics events must not include personal form content. Do not send names,
+email addresses, phone numbers, company names, message text, IP addresses or
+other free-text personal details.
+
 ## SEO / GEO / AI-Search
 
 The project includes:
