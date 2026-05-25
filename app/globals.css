@@ -90,6 +90,15 @@ a {
   .skip-link {
     transition: none;
   }
+
+  .service-card,
+  #contact input:not([type="hidden"]),
+  #contact select,
+  #contact textarea,
+  #contact button,
+  #contact a {
+    transition: none !important;
+  }
 }
 
 .hero-cta-row {
@@ -177,6 +186,14 @@ a {
   box-shadow: 0 16px 40px rgba(11, 30, 62, 0.15);
   color: #D1172E;
 }
+a.service-card:focus-visible {
+  outline: 3px solid #D1172E;
+  outline-offset: 4px;
+  background: #0B1E3E;
+  border-bottom-color: #D1172E;
+  box-shadow: 0 16px 40px rgba(11, 30, 62, 0.15);
+  color: #D1172E;
+}
 .service-icon-wrap {
   width: 56px;
   height: 56px;
@@ -191,6 +208,9 @@ a {
 .service-card:hover .service-icon-wrap {
   background: rgba(209, 23, 46, 0.15);
 }
+a.service-card:focus-visible .service-icon-wrap {
+  background: rgba(209, 23, 46, 0.15);
+}
 .service-title {
   font-weight: 700;
   font-size: 22px;
@@ -202,6 +222,9 @@ a {
 .service-card:hover .service-title {
   color: #fff;
 }
+a.service-card:focus-visible .service-title {
+  color: #fff;
+}
 .service-desc {
   color: #667788;
   font-size: 14px;
@@ -211,6 +234,25 @@ a {
 }
 .service-card:hover .service-desc {
   color: rgba(255, 255, 255, 0.65);
+}
+a.service-card:focus-visible .service-desc {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+#contact input:not([type="hidden"]):focus-visible,
+#contact select:focus-visible,
+#contact textarea:focus-visible {
+  outline: 3px solid #D1172E;
+  outline-offset: 2px;
+  border-color: #D1172E !important;
+  box-shadow: 0 0 0 4px rgba(209, 23, 46, 0.14);
+}
+
+#contact button:focus-visible,
+#contact a:focus-visible {
+  outline: 3px solid #D1172E;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 4px rgba(209, 23, 46, 0.14);
 }
 
 /* Service detail page responsive affordances */
