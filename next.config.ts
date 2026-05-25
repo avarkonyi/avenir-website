@@ -5,12 +5,20 @@ import type { NextConfig } from "next";
 const isVercelPreview = process.env.VERCEL_ENV === "preview";
 const scriptSrc = [
   "script-src 'self' 'unsafe-inline'",
+  "https://www.googletagmanager.com",
+  "https://*.googletagmanager.com",
   isVercelPreview ? "https://vercel.live" : null,
 ]
   .filter(Boolean)
   .join(" ");
 const connectSrc = [
   "connect-src 'self'",
+  "https://www.google-analytics.com",
+  "https://*.google-analytics.com",
+  "https://analytics.google.com",
+  "https://*.analytics.google.com",
+  "https://www.googletagmanager.com",
+  "https://*.googletagmanager.com",
   isVercelPreview ? "https://vercel.live" : null,
 ]
   .filter(Boolean)
@@ -55,6 +63,8 @@ const securityHeaders = [
     //     Nonce-based mitigation deferred to a later commit.
     //   'unsafe-inline' on style-src: required for inline-style usage
     //     across components (Hero, Footer, Contact, etc.).
+    //   GA4 domains are limited to direct gtag.js + analytics collection
+    //     endpoints; no Ads, DoubleClick, or Floodlight endpoints are allowed.
     //   img-src includes data: + blob: for next/image optimization output,
     //     plus *.public.blob.vercel-storage.com for admin-uploaded covers
     //     served from the Vercel Blob CDN (Iter 3D).
@@ -66,7 +76,7 @@ const securityHeaders = [
       "default-src 'self'",
       scriptSrc,
       "style-src 'self' 'unsafe-inline'",
-      "img-src 'self' data: blob: https://*.public.blob.vercel-storage.com",
+      "img-src 'self' data: blob: https://*.public.blob.vercel-storage.com https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com https://*.googletagmanager.com",
       "font-src 'self'",
       connectSrc,
       "frame-ancestors 'none'",
