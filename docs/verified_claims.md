@@ -1,6 +1,6 @@
 # Verified Claims — Avenir
 
-Last updated: 2026-05-15
+Last updated: 2026-05-26
 
 This file tracks business-approved claims that may be used in public website copy for Avenir. It is a copywriting guardrail, not a substitute for the underlying legal, certificate, contract, or operational proof documents.
 
@@ -15,11 +15,31 @@ The following claims may be used in public website copy when the wording follows
 - ISO 27001
 - 30+ aktív helyszín
 - 200+ munkatársi háttér
+- D&B AA High Creditworthy 2026
 - 2 munkanapon belüli visszajelzés
 - 1–3 munkanapos első egyeztetési / előkészítési folyamat
 - 5 munkanapon belüli ajánlati előkészítés az igény összetettségétől függően
 - Biztonságtechnikai engedély
 - Magánnyomozói engedély
+
+## Approved Creditworthiness Claim
+
+The following creditworthiness claim is approved for public use:
+
+- Issuer: Dun & Bradstreet
+- Certificate label: AA High Creditworthy 2026
+- Company: Avenir Facility Ltd.
+- Tax number: 26395124-2-41
+- D-U-N-S: 401251621
+- Certificate date: 26 May 2026
+- Proof file: `20260526 Avenir Facility Kft a.pdf`
+- Approved public wording:
+  - HU: "D&B magas hitelképességi minősítés"
+  - EN/DE/ZH: "D&B High Creditworthy 2026"
+
+This proof source supports a Dun & Bradstreet / D&B AA High Creditworthy 2026
+claim. It is not OPTEN A+ proof unless a separate OPTEN-specific document
+exists and is reviewed.
 
 ## Usage Rules
 
@@ -39,9 +59,10 @@ and explicitly accepted:
 
 - OPTEN A+ / Bonitasi minosites.
 
-Do not add this as a verified claim, schema claim, AI-search claim, partner
-claim, rating claim, or production-release approval item until the proof
-decision is recorded.
+Do not add OPTEN A+ as a verified claim, schema claim, AI-search claim, partner
+claim, rating claim, or production-release approval item unless a separate
+OPTEN-specific proof document is provided and reviewed. The Dun & Bradstreet
+certificate above must not be described as OPTEN proof.
 
 ## Preferred Wording Patterns
 

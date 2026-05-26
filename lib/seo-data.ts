@@ -88,7 +88,7 @@ export const SEO_FAQS_HU = [
   },
   {
     q: "Milyen ügyfeleknek dolgozik az Avenir?",
-    a: "Az Avenir ügyfélkörébe irodaházak, bevásárlóközpontok, ipari és logisztikai parkok, valamint közintézmények tartoznak. A cég OPTEN bonitási minősítése A+, közepes vállalkozási kategóriában működik.",
+    a: "Az Avenir ügyfélkörébe irodaházak, bevásárlóközpontok, ipari és logisztikai parkok, valamint közintézmények tartoznak. A vállalat Dun & Bradstreet AA High Creditworthy 2026 minősítéssel rendelkezik.",
   },
   {
     q: "Hogyan lehet ajánlatot kérni az Avenirtől?",

@@ -28,8 +28,8 @@ export const en = {
       "l": "Skilled employees"
     },
     {
-      "n": "A+",
-      "l": "Credit rating"
+      "n": "AA",
+      "l": "D&B High Creditworthy 2026"
     },
     {
       "n": "24/7",

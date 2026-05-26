@@ -28,8 +28,8 @@ export const de = {
       "l": "Geschulte Mitarbeiter"
     },
     {
-      "n": "A+",
-      "l": "Bonität"
+      "n": "AA",
+      "l": "D&B High Creditworthy 2026"
     },
     {
       "n": "24/7",

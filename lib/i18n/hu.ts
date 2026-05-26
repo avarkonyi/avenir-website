@@ -22,7 +22,7 @@ export const hu = {
   stats: [
     { n: "30+", l: "Aktív helyszín" },
     { n: "200+", l: "Szakképzett munkatárs" },
-    { n: "A+", l: "Bonitási minősítés" },
+    { n: "AA", l: "D&B magas hitelképességi minősítés" },
     { n: "24/7", l: "Diszpécseri készenlét" },
   ],
   aboutTitle: "Az Avenir-ről",

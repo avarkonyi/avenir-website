@@ -28,8 +28,8 @@ export const zh = {
       "l": "专业人员"
     },
     {
-      "n": "A+",
-      "l": "信用评级"
+      "n": "AA",
+      "l": "D&B High Creditworthy 2026"
     },
     {
       "n": "24/7",
