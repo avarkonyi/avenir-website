@@ -139,6 +139,26 @@ Verification checklist:
   after the usual processing delay.
 - Cookie settings in the footer reopens the analytics choice.
 
+Automated QA:
+
+```bash
+npm run qa:analytics
+npm run qa:analytics -- https://<preview-url>
+npm run qa:analytics -- https://www.afm.hu --allow-production
+```
+
+The automated analytics QA uses Playwright with Chromium. It mocks Google
+Analytics network endpoints and `/api/contact`, so contact-form tests do not
+reach the real API and do not write to the database. Production runs are
+blocked unless `--allow-production` or `ANALYTICS_QA_ALLOW_PRODUCTION=1` is
+provided.
+
+The test verifies consent gating, rejection persistence, accepted-consent
+`gtag.js` loading, `dataLayer` initialization, contact success/error events,
+private-investigation selection, phone/email click events, PII absence in event
+payloads, and CSP domain scope. It does not verify GA4 Realtime processing;
+check Realtime manually after a consented page view when needed.
+
 Events emitted after consent only:
 
 - `contact_submit_success`

@@ -376,6 +376,33 @@ Expected behavior:
 - If `NEXT_PUBLIC_GA4_ID` is missing, no GA script loads and the site remains
   functional.
 
+Automated QA commands:
+
+```bash
+npm run qa:analytics
+npm run qa:analytics -- https://<preview-url>
+npm run qa:analytics -- https://www.afm.hu --allow-production
+```
+
+`ANALYTICS_QA_BASE_URL` can be used instead of the CLI URL. Production targets
+require `--allow-production` or `ANALYTICS_QA_ALLOW_PRODUCTION=1`; otherwise
+the wrapper aborts before launching Playwright.
+
+The analytics QA:
+
+- mocks `https://www.googletagmanager.com/gtag/js` and GA collect endpoints;
+- intercepts `/api/contact` and returns test JSON, so no real contact request,
+  email or DB write happens;
+- verifies `window.dataLayer` entries for page config and business events;
+- fails if analytics event payloads contain the test name, email, phone,
+  company or message text;
+- checks CSP for direct GA4 domains and rejects Ads/DoubleClick/pagead
+  endpoints.
+
+The automated test deliberately does not verify GA4 Realtime ingestion. For
+that, accept analytics on a deployed environment and check GA4 Realtime after
+the normal processing delay.
+
 Events emitted after consent only:
 
 - `contact_submit_success`
