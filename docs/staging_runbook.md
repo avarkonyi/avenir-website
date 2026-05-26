@@ -58,7 +58,7 @@ The current branch includes:
 Known approval gates before production:
 
 - service copy human review;
-- OPTEN A+ / Bonitasi minosites proof decision or replacement;
+- D&B AA High Creditworthy 2026 public claim synced from the Dun & Bradstreet certificate dated 26 May 2026;
 - approved partner logo population and proof records;
 - production Upstash/Vercel Redis environment variables;
 - live Vercel Preview QA;

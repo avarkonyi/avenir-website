@@ -54,7 +54,8 @@ Rows marked `proof_pending` or `compliance_sensitive` need source validation bef
 
 Watch especially for:
 
-- OPTEN A+ / Bonitási minősítés: proof-pending; do not approve or expand it in translation.
+- D&B AA High Creditworthy 2026: approved for public use from the Dun & Bradstreet certificate dated 26 May 2026.
+- OPTEN A+ / Bonitási minősítés: not approved from the D&B certificate; do not use unless separate OPTEN-specific proof exists.
 - ISO 9001 / ISO 27001: keep certificate-scope framing; do not imply all processes or all data categories are certified unless proof supports it.
 - License numbers and SzVMt. wording: preserve exact numbers and legal meaning.
 - 24/7, 30+, 200+: translate only where the claim is approved in `docs/verified_claims.md`.
