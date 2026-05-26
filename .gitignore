@@ -57,3 +57,7 @@ drafts/
 *.orig
 *.swp
 *~
+
+# QA / Playwright artifacts
+test-results/
+playwright-report/
