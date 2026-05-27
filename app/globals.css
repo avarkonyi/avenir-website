@@ -619,6 +619,28 @@ details > summary:focus-visible {
 .footer-link:hover {
   color: #D1172E !important;
 }
+.footer-social-link {
+  color: var(--avenir-on-dark-muted);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 3px;
+  text-decoration: none;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease;
+}
+.footer-social-link:hover {
+  color: #fff;
+  background: rgba(209, 23, 46, 0.18);
+}
+.footer-social-link:focus-visible {
+  outline: 3px solid rgba(209, 23, 46, 0.55);
+  outline-offset: 3px;
+  color: #fff;
+}
 .cookie-settings-button {
   appearance: none;
   border: 0;
