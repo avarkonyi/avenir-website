@@ -30,6 +30,7 @@ const ALLOWED_EVENT_PARAM_KEYS = new Set([
 
 type AnalyticsNetwork = {
   gtagScriptRequests: string[];
+  gtagScriptResponseStatuses: number[];
   collectRequests: string[];
   contactRequests: string[];
 };
@@ -85,12 +86,12 @@ test.describe("consent-gated GA4", () => {
     await expectNoGa4Runtime(page);
   });
 
-  test("accepting analytics loads direct GA4 and initializes dataLayer", async ({
+  test("accepting analytics loads direct GA4 and sends collect requests", async ({
     page,
   }) => {
     const analytics = await mockAnalyticsNetwork(page);
 
-    await page.goto("/en", { waitUntil: "networkidle" });
+    await page.goto("/hu", { waitUntil: "networkidle" });
     await acceptAnalytics(page);
 
     await expect
@@ -102,11 +103,9 @@ test.describe("consent-gated GA4", () => {
     if (expectedId) expect(measurementId).toBe(expectedId);
     expect(measurementId).toMatch(/^G-[A-Z0-9]+$/);
 
-    await expect
-      .poll(() =>
-        page.evaluate(() => Boolean(window.__analyticsQaGtagScriptLoaded)),
-      )
-      .toBe(true);
+    expect(
+      analytics.gtagScriptResponseStatuses.some((status) => status >= 200 && status < 400),
+    ).toBe(true);
 
     const dataLayer = await readDataLayer(page);
     expect(
@@ -123,6 +122,21 @@ test.describe("consent-gated GA4", () => {
     await expect
       .poll(() => page.evaluate(() => typeof window.gtag))
       .toBe("function");
+
+    await expect
+      .poll(() => analytics.collectRequests.length)
+      .toBeGreaterThan(0);
+    expect(analytics.collectRequests.some(isGa4CollectUrl)).toBe(true);
+
+    const collectCountBeforeNavigation = analytics.collectRequests.length;
+    await page
+      .getByRole("link", { name: /Élőerős objektumőrzés/ })
+      .first()
+      .click();
+    await expect(page).toHaveURL(/\/hu\/szolgaltatasok\/objektumorzes$/);
+    await expect
+      .poll(() => analytics.collectRequests.length)
+      .toBeGreaterThan(collectCountBeforeNavigation);
   });
 
   test("cookie settings can reopen consent and change the decision", async ({
@@ -252,6 +266,8 @@ test.describe("consent-gated GA4", () => {
     expect(csp).toContain("googletagmanager.com");
     expect(csp).toContain("google-analytics.com");
     expect(csp).toContain("analytics.google.com");
+    expect(csp).not.toMatch(/fonts\.googleapis\.com/i);
+    expect(csp).not.toMatch(/fonts\.gstatic\.com/i);
     expect(csp).not.toMatch(/doubleclick\.net/i);
     expect(csp).not.toMatch(/googleadservices\.com/i);
     expect(csp).not.toMatch(/pagead/i);
@@ -262,6 +278,7 @@ test.describe("consent-gated GA4", () => {
 async function mockAnalyticsNetwork(page: Page): Promise<AnalyticsNetwork> {
   const analytics: AnalyticsNetwork = {
     gtagScriptRequests: [],
+    gtagScriptResponseStatuses: [],
     collectRequests: [],
     contactRequests: [],
   };
@@ -271,6 +288,11 @@ async function mockAnalyticsNetwork(page: Page): Promise<AnalyticsNetwork> {
     if (isGtagScriptUrl(url)) analytics.gtagScriptRequests.push(url);
     if (isAnalyticsCollectUrl(url)) analytics.collectRequests.push(url);
     if (new URL(url).pathname === "/api/contact") analytics.contactRequests.push(url);
+  });
+  page.on("response", (response) => {
+    if (isGtagScriptUrl(response.url())) {
+      analytics.gtagScriptResponseStatuses.push(response.status());
+    }
   });
 
   await page.route("**://www.googletagmanager.com/gtag/js**", fulfillGtagScript);
@@ -287,7 +309,29 @@ async function fulfillGtagScript(route: Route) {
   await route.fulfill({
     status: 200,
     contentType: "application/javascript",
-    body: "window.__analyticsQaGtagScriptLoaded = true;",
+    body: `
+      window.__analyticsQaGtagScriptLoaded = true;
+      window.dataLayer = window.dataLayer || [];
+      const existingDataLayer = window.dataLayer.slice();
+      const sendCollect = (args) => {
+        if (!Array.isArray(args) || args[0] !== "config" || !args[1]) return;
+        const params = new URLSearchParams({
+          v: "2",
+          tid: String(args[1]),
+          en: "page_view",
+          dl: window.location.href,
+          dp: window.location.pathname + window.location.search,
+        });
+        const pixel = new Image();
+        pixel.src = "https://www.google-analytics.com/g/collect?" + params.toString();
+      };
+      window.gtag = function gtag() {
+        const args = Array.from(arguments);
+        window.dataLayer.push(args);
+        sendCollect(args);
+      };
+      existingDataLayer.forEach(sendCollect);
+    `,
   });
 }
 
@@ -459,4 +503,15 @@ function isAnalyticsCollectUrl(url: string): boolean {
     host.endsWith(".analytics.google.com");
 
   return isAnalyticsHost && parsed.pathname.includes("/collect");
+}
+
+function isGa4CollectUrl(url: string): boolean {
+  const parsed = new URL(url);
+  const host = parsed.hostname;
+  const isAllowedCollectHost =
+    host === "www.google-analytics.com" ||
+    host === "region1.google-analytics.com" ||
+    host === "analytics.google.com";
+
+  return isAllowedCollectHost && parsed.pathname === "/g/collect";
 }
