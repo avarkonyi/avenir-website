@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import { Geist, Barlow_Condensed } from "next/font/google";
 import { and, asc, eq } from "drizzle-orm";
@@ -381,7 +382,9 @@ export default async function LocaleLayout({
           {skipLinkText}
         </a>
         <JsonLd schemas={schemas} />
-        <GoogleAnalytics />
+        <Suspense fallback={null}>
+          <GoogleAnalytics />
+        </Suspense>
         {children}
         <AnalyticsConsentBanner locale={locale} />
       </body>

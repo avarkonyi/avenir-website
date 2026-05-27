@@ -135,7 +135,8 @@ Verification checklist:
   and no GA collect request.
 - Reject analytics: banner hides, choice persists after refresh, GA4 remains
   unloaded.
-- Accept analytics: `gtag.js` loads and GA4 Realtime should show a page view
+- Accept analytics: `gtag.js` loads, the Network panel shows a GA4
+  `/g/collect` page-view request, and GA4 Realtime should show a page view
   after the usual processing delay.
 - Cookie settings in the footer reopens the analytics choice.
 

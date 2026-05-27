@@ -370,8 +370,9 @@ Expected behavior:
   no GA collect request.
 - Reject analytics: banner closes, the rejection persists in localStorage, and
   GA4 remains unloaded after refresh.
-- Accept analytics: `gtag.js` loads with `NEXT_PUBLIC_GA4_ID`, and GA4 Realtime
-  should show a page view after the normal delay.
+- Accept analytics: `gtag.js` loads with `NEXT_PUBLIC_GA4_ID`, the Network
+  panel shows a GA4 `/g/collect` page-view request, and GA4 Realtime should
+  show a page view after the normal delay.
 - Footer Cookie settings reopens the consent choice.
 - If `NEXT_PUBLIC_GA4_ID` is missing, no GA script loads and the site remains
   functional.
@@ -393,7 +394,8 @@ The analytics QA:
 - mocks `https://www.googletagmanager.com/gtag/js` and GA collect endpoints;
 - intercepts `/api/contact` and returns test JSON, so no real contact request,
   email or DB write happens;
-- verifies `window.dataLayer` entries for page config and business events;
+- verifies `window.dataLayer` entries for page config, explicit page-view
+  events and business events;
 - fails if analytics event payloads contain the test name, email, phone,
   company or message text;
 - checks CSP for direct GA4 domains and rejects Ads/DoubleClick/pagead

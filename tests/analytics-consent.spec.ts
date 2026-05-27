@@ -116,9 +116,16 @@ test.describe("consent-gated GA4", () => {
         (entry) =>
           Array.isArray(entry) &&
           entry[0] === "config" &&
-          entry[1] === measurementId,
+          entry[1] === measurementId &&
+          isRecord(entry[2]) &&
+          entry[2].send_page_view === false,
       ),
     ).toBe(true);
+    expectPageViewEvent(dataLayer, {
+      measurementId,
+      pagePath: "/hu",
+      pageUrlPattern: /\/hu$/,
+    });
     await expect
       .poll(() => page.evaluate(() => typeof window.gtag))
       .toBe("function");
@@ -137,6 +144,11 @@ test.describe("consent-gated GA4", () => {
     await expect
       .poll(() => analytics.collectRequests.length)
       .toBeGreaterThan(collectCountBeforeNavigation);
+    expectPageViewEvent(await readDataLayer(page), {
+      measurementId,
+      pagePath: "/hu/szolgaltatasok/objektumorzes",
+      pageUrlPattern: /\/hu\/szolgaltatasok\/objektumorzes$/,
+    });
   });
 
   test("cookie settings can reopen consent and change the decision", async ({
@@ -314,13 +326,18 @@ async function fulfillGtagScript(route: Route) {
       window.dataLayer = window.dataLayer || [];
       const existingDataLayer = window.dataLayer.slice();
       const sendCollect = (args) => {
-        if (!Array.isArray(args) || args[0] !== "config" || !args[1]) return;
+        if (
+          !Array.isArray(args) ||
+          args[0] !== "event" ||
+          args[1] !== "page_view" ||
+          !args[2]?.send_to
+        ) return;
         const params = new URLSearchParams({
           v: "2",
-          tid: String(args[1]),
+          tid: String(args[2].send_to),
           en: "page_view",
-          dl: window.location.href,
-          dp: window.location.pathname + window.location.search,
+          dl: String(args[2].page_location || window.location.href),
+          dp: String(args[2].page_path || window.location.pathname + window.location.search),
         });
         const pixel = new Image();
         pixel.src = "https://www.google-analytics.com/g/collect?" + params.toString();
@@ -483,6 +500,31 @@ function assertAllowedBusinessEventParams(
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
+}
+
+function expectPageViewEvent(
+  dataLayer: unknown[],
+  expected: {
+    measurementId: string;
+    pagePath: string;
+    pageUrlPattern: RegExp;
+  },
+) {
+  const pageView = dataLayer.find(
+    (entry) =>
+      Array.isArray(entry) &&
+      entry[0] === "event" &&
+      entry[1] === "page_view" &&
+      isRecord(entry[2]) &&
+      entry[2].send_to === expected.measurementId &&
+      entry[2].page_path === expected.pagePath &&
+      typeof entry[2].page_location === "string" &&
+      expected.pageUrlPattern.test(entry[2].page_location) &&
+      typeof entry[2].page_title === "string" &&
+      entry[2].page_title.length > 0,
+  );
+
+  expect(pageView).toBeTruthy();
 }
 
 function isGtagScriptUrl(url: string): boolean {

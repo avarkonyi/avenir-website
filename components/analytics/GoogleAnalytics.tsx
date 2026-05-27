@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
+import { usePathname, useSearchParams } from "next/navigation";
 import {
   ANALYTICS_CONSENT_EVENT,
   readAnalyticsConsent,
@@ -21,6 +21,9 @@ declare global {
 
 export function GoogleAnalytics() {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const search = searchParams.toString();
+  const lastPageViewKey = useRef<string | null>(null);
   const [consent, setConsent] = useState<AnalyticsConsentChoice | null>(null);
 
   useEffect(() => {
@@ -54,6 +57,10 @@ export function GoogleAnalytics() {
 
     if (!window.__avenirGa4Initialized) {
       window.gtag("js", new Date());
+      window.gtag("config", MEASUREMENT_ID, {
+        send_page_view: false,
+        anonymize_ip: true,
+      });
       window.__avenirGa4Initialized = true;
     }
 
@@ -67,11 +74,18 @@ export function GoogleAnalytics() {
       document.head.appendChild(script);
     }
 
-    window.gtag("config", MEASUREMENT_ID, {
-      page_path: pathname,
-      anonymize_ip: true,
+    const pagePath = `${window.location.pathname}${window.location.search}`;
+    const pageViewKey = `${MEASUREMENT_ID}:${pagePath}`;
+    if (lastPageViewKey.current === pageViewKey) return;
+    lastPageViewKey.current = pageViewKey;
+
+    window.gtag("event", "page_view", {
+      send_to: MEASUREMENT_ID,
+      page_path: pagePath,
+      page_location: window.location.href,
+      page_title: document.title,
     });
-  }, [consent, pathname]);
+  }, [consent, pathname, search]);
 
   return null;
 }
