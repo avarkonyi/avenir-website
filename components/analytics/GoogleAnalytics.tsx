@@ -16,6 +16,7 @@ declare global {
     dataLayer?: unknown[];
     gtag?: (...args: unknown[]) => void;
     __avenirGa4Initialized?: boolean;
+    __avenirGa4ScriptLoaded?: boolean;
   }
 }
 
@@ -25,6 +26,7 @@ export function GoogleAnalytics() {
   const search = searchParams.toString();
   const lastPageViewKey = useRef<string | null>(null);
   const [consent, setConsent] = useState<AnalyticsConsentChoice | null>(null);
+  const [scriptLoaded, setScriptLoaded] = useState(false);
 
   useEffect(() => {
     const frame = window.requestAnimationFrame(() => {
@@ -51,9 +53,59 @@ export function GoogleAnalytics() {
     window.dataLayer = window.dataLayer || [];
     window.gtag =
       window.gtag ||
-      function gtag(...args: unknown[]) {
-        window.dataLayer?.push(args);
+      function gtag() {
+        // Match Google's standard gtag bootstrap shape; the real loader reads
+        // these Arguments objects from dataLayer.
+        // eslint-disable-next-line prefer-rest-params
+        window.dataLayer?.push(arguments);
       };
+
+    if (window.__avenirGa4ScriptLoaded) {
+      const timeout = window.setTimeout(() => {
+        setScriptLoaded(true);
+      }, 0);
+      return () => {
+        window.clearTimeout(timeout);
+      };
+    }
+
+    const existingScript = document.getElementById(SCRIPT_ID);
+
+    function handleScriptLoad() {
+      window.__avenirGa4ScriptLoaded = true;
+      setScriptLoaded(true);
+    }
+
+    if (existingScript) {
+      existingScript.addEventListener("load", handleScriptLoad, { once: true });
+      return () => {
+        existingScript.removeEventListener("load", handleScriptLoad);
+      };
+    }
+
+    const script = document.createElement("script");
+    script.id = SCRIPT_ID;
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(
+      MEASUREMENT_ID,
+    )}`;
+    script.addEventListener("load", handleScriptLoad, { once: true });
+    document.head.appendChild(script);
+
+    return () => {
+      script.removeEventListener("load", handleScriptLoad);
+    };
+  }, [consent]);
+
+  useEffect(() => {
+    if (consent !== "accepted") {
+      lastPageViewKey.current = null;
+      return;
+    }
+
+    if (!MEASUREMENT_ID || !scriptLoaded || typeof window.gtag !== "function") {
+      return;
+    }
 
     if (!window.__avenirGa4Initialized) {
       window.gtag("js", new Date());
@@ -64,28 +116,26 @@ export function GoogleAnalytics() {
       window.__avenirGa4Initialized = true;
     }
 
-    if (!document.getElementById(SCRIPT_ID)) {
-      const script = document.createElement("script");
-      script.id = SCRIPT_ID;
-      script.async = true;
-      script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(
-        MEASUREMENT_ID,
-      )}`;
-      document.head.appendChild(script);
-    }
+    const timeout = window.setTimeout(() => {
+      if (typeof window.gtag !== "function") return;
 
-    const pagePath = `${window.location.pathname}${window.location.search}`;
-    const pageViewKey = `${MEASUREMENT_ID}:${pagePath}`;
-    if (lastPageViewKey.current === pageViewKey) return;
-    lastPageViewKey.current = pageViewKey;
+      const pagePath = `${window.location.pathname}${window.location.search}`;
+      const pageViewKey = `${MEASUREMENT_ID}:${pagePath}`;
+      if (lastPageViewKey.current === pageViewKey) return;
+      lastPageViewKey.current = pageViewKey;
 
-    window.gtag("event", "page_view", {
-      send_to: MEASUREMENT_ID,
-      page_path: pagePath,
-      page_location: window.location.href,
-      page_title: document.title,
-    });
-  }, [consent, pathname, search]);
+      window.gtag("event", "page_view", {
+        send_to: MEASUREMENT_ID,
+        page_path: pagePath,
+        page_location: window.location.href,
+        page_title: document.title,
+      });
+    }, 0);
+
+    return () => {
+      window.clearTimeout(timeout);
+    };
+  }, [consent, pathname, scriptLoaded, search]);
 
   return null;
 }

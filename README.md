@@ -148,11 +148,12 @@ npm run qa:analytics -- https://<preview-url>
 npm run qa:analytics -- https://www.afm.hu --allow-production
 ```
 
-The automated analytics QA uses Playwright with Chromium. It mocks Google
-Analytics network endpoints and `/api/contact`, so contact-form tests do not
-reach the real API and do not write to the database. Production runs are
-blocked unless `--allow-production` or `ANALYTICS_QA_ALLOW_PRODUCTION=1` is
-provided.
+The automated analytics QA uses Playwright with Chromium. Most tests mock
+`gtag.js`; the real-script smoke test allows `gtag.js` to load and intercepts
+GA collect endpoints with `204`, so no real GA test hit is sent. `/api/contact`
+is also intercepted, so contact-form tests do not reach the real API and do not
+write to the database. Production runs are blocked unless `--allow-production`
+or `ANALYTICS_QA_ALLOW_PRODUCTION=1` is provided.
 
 The test verifies consent gating, rejection persistence, accepted-consent
 `gtag.js` loading, `dataLayer` initialization, contact success/error events,

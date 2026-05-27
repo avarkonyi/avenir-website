@@ -107,21 +107,21 @@ test.describe("consent-gated GA4", () => {
       analytics.gtagScriptResponseStatuses.some((status) => status >= 200 && status < 400),
     ).toBe(true);
 
-    const dataLayer = await readDataLayer(page);
-    expect(
-      dataLayer.some((entry) => Array.isArray(entry) && entry[0] === "js"),
-    ).toBe(true);
-    expect(
-      dataLayer.some(
-        (entry) =>
-          Array.isArray(entry) &&
-          entry[0] === "config" &&
-          entry[1] === measurementId &&
-          isRecord(entry[2]) &&
-          entry[2].send_page_view === false,
-      ),
-    ).toBe(true);
-    expectPageViewEvent(dataLayer, {
+    await expect
+      .poll(async () => {
+        const dataLayer = await readDataLayer(page);
+        return (
+          hasJsEntry(dataLayer) &&
+          hasConfigEntry(dataLayer, measurementId) &&
+          hasPageViewEvent(dataLayer, {
+            measurementId,
+            pagePath: "/hu",
+            pageUrlPattern: /\/hu$/,
+          })
+        );
+      })
+      .toBe(true);
+    expectPageViewEvent(await readDataLayer(page), {
       measurementId,
       pagePath: "/hu",
       pageUrlPattern: /\/hu$/,
@@ -149,6 +149,35 @@ test.describe("consent-gated GA4", () => {
       pagePath: "/hu/szolgaltatasok/objektumorzes",
       pageUrlPattern: /\/hu\/szolgaltatasok\/objektumorzes$/,
     });
+  });
+
+  test("real gtag.js sends collect requests after consent and route changes", async ({
+    page,
+  }) => {
+    const analytics = await mockAnalyticsNetwork(page, {
+      mockGtagScript: false,
+    });
+
+    await page.goto("/hu", { waitUntil: "networkidle" });
+    await acceptAnalytics(page);
+
+    await expect
+      .poll(() => analytics.gtagScriptRequests.length)
+      .toBeGreaterThan(0);
+    await expect
+      .poll(() => analytics.collectRequests.filter(isGa4CollectUrl).length)
+      .toBeGreaterThan(0);
+
+    const collectCountBeforeNavigation =
+      analytics.collectRequests.filter(isGa4CollectUrl).length;
+    await page
+      .getByRole("link", { name: /Élőerős objektumőrzés/ })
+      .first()
+      .click();
+    await expect(page).toHaveURL(/\/hu\/szolgaltatasok\/objektumorzes$/);
+    await expect
+      .poll(() => analytics.collectRequests.filter(isGa4CollectUrl).length)
+      .toBeGreaterThan(collectCountBeforeNavigation);
   });
 
   test("cookie settings can reopen consent and change the decision", async ({
@@ -182,6 +211,7 @@ test.describe("consent-gated GA4", () => {
 
     await page.goto("/en", { waitUntil: "networkidle" });
     await acceptAnalytics(page);
+    await waitForGtagRuntime(page);
     await fillContactForm(page);
     await page.getByRole("button", { name: "Send Request" }).click();
 
@@ -203,6 +233,7 @@ test.describe("consent-gated GA4", () => {
 
     await page.goto("/en", { waitUntil: "networkidle" });
     await acceptAnalytics(page);
+    await waitForGtagRuntime(page);
     await fillContactForm(page);
     await page.getByRole("button", { name: "Send Request" }).click();
 
@@ -223,6 +254,7 @@ test.describe("consent-gated GA4", () => {
 
     await page.goto("/en", { waitUntil: "networkidle" });
     await acceptAnalytics(page);
+    await waitForGtagRuntime(page);
     await page.getByLabel("Service of interest").selectOption("magannyomozas");
 
     await expect(page.getByLabel("Special data warning")).toBeVisible();
@@ -245,6 +277,7 @@ test.describe("consent-gated GA4", () => {
 
     await page.goto("/en", { waitUntil: "networkidle" });
     await acceptAnalytics(page);
+    await waitForGtagRuntime(page);
     await preventTelAndMailtoNavigation(page);
 
     const phoneLink = page.locator('#contact a[href^="tel:"]').first();
@@ -287,7 +320,11 @@ test.describe("consent-gated GA4", () => {
   });
 });
 
-async function mockAnalyticsNetwork(page: Page): Promise<AnalyticsNetwork> {
+async function mockAnalyticsNetwork(
+  page: Page,
+  options: { mockGtagScript?: boolean } = {},
+): Promise<AnalyticsNetwork> {
+  const mockGtagScript = options.mockGtagScript ?? true;
   const analytics: AnalyticsNetwork = {
     gtagScriptRequests: [],
     gtagScriptResponseStatuses: [],
@@ -307,8 +344,10 @@ async function mockAnalyticsNetwork(page: Page): Promise<AnalyticsNetwork> {
     }
   });
 
-  await page.route("**://www.googletagmanager.com/gtag/js**", fulfillGtagScript);
-  await page.route("**://*.googletagmanager.com/gtag/js**", fulfillGtagScript);
+  if (mockGtagScript) {
+    await page.route("**://www.googletagmanager.com/gtag/js**", fulfillGtagScript);
+    await page.route("**://*.googletagmanager.com/gtag/js**", fulfillGtagScript);
+  }
   await page.route("**://www.google-analytics.com/**", fulfillNoContent);
   await page.route("**://*.google-analytics.com/**", fulfillNoContent);
   await page.route("**://analytics.google.com/**", fulfillNoContent);
@@ -327,7 +366,7 @@ async function fulfillGtagScript(route: Route) {
       const existingDataLayer = window.dataLayer.slice();
       const sendCollect = (args) => {
         if (
-          !Array.isArray(args) ||
+          !args ||
           args[0] !== "event" ||
           args[1] !== "page_view" ||
           !args[2]?.send_to
@@ -343,9 +382,8 @@ async function fulfillGtagScript(route: Route) {
         pixel.src = "https://www.google-analytics.com/g/collect?" + params.toString();
       };
       window.gtag = function gtag() {
-        const args = Array.from(arguments);
-        window.dataLayer.push(args);
-        sendCollect(args);
+        window.dataLayer.push(arguments);
+        sendCollect(arguments);
       };
       existingDataLayer.forEach(sendCollect);
     `,
@@ -389,6 +427,12 @@ async function acceptAnalytics(page: Page) {
   await expect(consentBanner(page)).toBeHidden();
 }
 
+async function waitForGtagRuntime(page: Page) {
+  await expect
+    .poll(() => page.evaluate(() => typeof window.gtag))
+    .toBe("function");
+}
+
 async function rejectAnalytics(page: Page) {
   await expect(consentBanner(page)).toBeVisible();
   await page.getByRole("button", { name: /^(Reject|Elutasítom)$/ }).click();
@@ -422,21 +466,37 @@ function observedMeasurementId(gtagScriptRequests: string[]): string {
 }
 
 async function readDataLayer(page: Page): Promise<unknown[]> {
-  return page.evaluate(() => window.dataLayer ?? []);
+  return page.evaluate(() => {
+    function normalizeEntry(entry: unknown): unknown {
+      if (Array.isArray(entry)) return entry;
+      if (
+        typeof entry === "object" &&
+        entry !== null &&
+        "length" in entry &&
+        Number.isInteger((entry as { length: unknown }).length)
+      ) {
+        return Array.from(entry as ArrayLike<unknown>);
+      }
+
+      return entry;
+    }
+
+    return (window.dataLayer ?? []).map(normalizeEntry);
+  });
 }
 
 async function analyticsEvents(page: Page, eventName: string) {
   const dataLayer = await readDataLayer(page);
   return dataLayer
-    .filter(
-      (entry) =>
-        Array.isArray(entry) && entry[0] === "event" && entry[1] === eventName,
-    )
+    .filter((entry) => {
+      const parts = dataLayerEntryParts(entry);
+      return parts?.[0] === "event" && parts[1] === eventName;
+    })
     .map((entry) => ({
       raw: entry,
       params:
-        Array.isArray(entry) && isRecord(entry[2])
-          ? (entry[2] as Record<string, unknown>)
+        isRecord(dataLayerEntryParts(entry)?.[2])
+          ? (dataLayerEntryParts(entry)?.[2] as Record<string, unknown>)
           : {},
     }));
 }
@@ -498,8 +558,36 @@ function assertAllowedBusinessEventParams(
   }
 }
 
+function hasJsEntry(dataLayer: unknown[]): boolean {
+  return dataLayer.some((entry) => dataLayerEntryParts(entry)?.[0] === "js");
+}
+
+function hasConfigEntry(dataLayer: unknown[], measurementId: string): boolean {
+  return dataLayer.some((entry) => {
+    const parts = dataLayerEntryParts(entry);
+    return (
+      parts?.[0] === "config" &&
+      parts[1] === measurementId &&
+      isRecord(parts[2]) &&
+      parts[2].send_page_view === false
+    );
+  });
+}
+
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
+}
+
+function dataLayerEntryParts(entry: unknown): unknown[] | null {
+  if (Array.isArray(entry)) return entry;
+  if (!isRecord(entry)) return null;
+
+  const length = entry.length;
+  if (!Number.isInteger(length) || typeof length !== "number" || length < 0) {
+    return null;
+  }
+
+  return Array.from({ length }, (_, index) => entry[String(index)]);
 }
 
 function expectPageViewEvent(
@@ -510,21 +598,33 @@ function expectPageViewEvent(
     pageUrlPattern: RegExp;
   },
 ) {
-  const pageView = dataLayer.find(
-    (entry) =>
-      Array.isArray(entry) &&
-      entry[0] === "event" &&
-      entry[1] === "page_view" &&
-      isRecord(entry[2]) &&
-      entry[2].send_to === expected.measurementId &&
-      entry[2].page_path === expected.pagePath &&
-      typeof entry[2].page_location === "string" &&
-      expected.pageUrlPattern.test(entry[2].page_location) &&
-      typeof entry[2].page_title === "string" &&
-      entry[2].page_title.length > 0,
-  );
+  const pageView = hasPageViewEvent(dataLayer, expected);
 
   expect(pageView).toBeTruthy();
+}
+
+function hasPageViewEvent(
+  dataLayer: unknown[],
+  expected: {
+    measurementId: string;
+    pagePath: string;
+    pageUrlPattern: RegExp;
+  },
+): boolean {
+  return dataLayer.some((entry) => {
+    const parts = dataLayerEntryParts(entry);
+    return (
+      parts?.[0] === "event" &&
+      parts[1] === "page_view" &&
+      isRecord(parts[2]) &&
+      parts[2].send_to === expected.measurementId &&
+      parts[2].page_path === expected.pagePath &&
+      typeof parts[2].page_location === "string" &&
+      expected.pageUrlPattern.test(parts[2].page_location) &&
+      typeof parts[2].page_title === "string" &&
+      parts[2].page_title.length > 0
+    );
+  });
 }
 
 function isGtagScriptUrl(url: string): boolean {
@@ -552,8 +652,9 @@ function isGa4CollectUrl(url: string): boolean {
   const host = parsed.hostname;
   const isAllowedCollectHost =
     host === "www.google-analytics.com" ||
-    host === "region1.google-analytics.com" ||
-    host === "analytics.google.com";
+    host.endsWith(".google-analytics.com") ||
+    host === "analytics.google.com" ||
+    host.endsWith(".analytics.google.com");
 
   return isAllowedCollectHost && parsed.pathname === "/g/collect";
 }

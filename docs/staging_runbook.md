@@ -391,7 +391,9 @@ the wrapper aborts before launching Playwright.
 
 The analytics QA:
 
-- mocks `https://www.googletagmanager.com/gtag/js` and GA collect endpoints;
+- mocks `https://www.googletagmanager.com/gtag/js` in most tests;
+- runs one real-script smoke that allows `gtag.js` to load and intercepts GA
+  collect endpoints with `204`, so no real GA test hit is sent;
 - intercepts `/api/contact` and returns test JSON, so no real contact request,
   email or DB write happens;
 - verifies `window.dataLayer` entries for page config, explicit page-view
