@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { type Translation } from "@/lib/i18n";
+import { SEO_DATA } from "@/lib/seo-data";
 import {
   getActiveTopLevelServices,
   getAllPublishedServicePathsForBuild,
@@ -45,6 +46,8 @@ export async function Footer({
           impressum: "Legal Notice (English)",
         }
       : t.footer;
+  const linkedInLabel =
+    locale === "hu" ? "Avenir a LinkedInen" : "Avenir on LinkedIn";
 
   return (
     <footer style={{ background: "#070F1E", padding: "60px 5vw 28px", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
@@ -184,6 +187,18 @@ export async function Footer({
                 >
                   info@afm.hu
                 </TrackedContactLink>
+              </div>
+              <div>
+                <a
+                  href={SEO_DATA.officialProfiles.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={linkedInLabel}
+                  className="footer-link"
+                  style={{ color: "inherit", textDecoration: "none" }}
+                >
+                  LinkedIn
+                </a>
               </div>
             </div>
           </div>

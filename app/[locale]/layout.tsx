@@ -205,7 +205,7 @@ function buildJsonLdSchemas(
         },
       ],
       hasCredential: credentialRefs,
-      sameAs: [],
+      sameAs: [SEO_DATA.officialProfiles.linkedin],
     },
     {
       "@context": "https://schema.org",
@@ -224,6 +224,7 @@ function buildJsonLdSchemas(
       address: postalAddress,
       areaServed: { "@type": "Country", name: "Magyarország" },
       hasCredential: credentialRefs,
+      sameAs: [SEO_DATA.officialProfiles.linkedin],
       openingHoursSpecification: [
         {
           "@type": "OpeningHoursSpecification",

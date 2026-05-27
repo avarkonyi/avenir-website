@@ -43,6 +43,7 @@ monitoring and response, event security, service audits, Hard FM, and Soft FM.
 - Website: https://www.afm.hu
 - Contact email: info@afm.hu
 - Contact phone: +36 70 316 8218
+- Official LinkedIn company profile: https://www.linkedin.com/company/avenir-facility-management
 
 ## Proof-safe claims
 

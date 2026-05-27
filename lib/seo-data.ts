@@ -25,6 +25,10 @@ export const SEO_DATA = {
   // Dynamic OG route (always 200) — replaces former /og-image.jpg
   // placeholder which never existed as a static asset
   ogImageUrl: "https://www.afm.hu/hu/opengraph-image",
+  officialProfiles: {
+    linkedin:
+      "https://www.linkedin.com/company/avenir-facility-management",
+  },
 
   // Identifiers (Hungarian company registry)
   foundingDate: "2018-07-31",

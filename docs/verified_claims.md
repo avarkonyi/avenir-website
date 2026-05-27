@@ -41,6 +41,14 @@ This proof source supports a Dun & Bradstreet / D&B AA High Creditworthy 2026
 claim. It is not OPTEN A+ proof unless a separate OPTEN-specific document
 exists and is reviewed.
 
+## Official Profile Links
+
+The following public profile link is approved as an official entity/profile
+link. It is not a proof claim, certification claim, partner claim, testimonial,
+client reference, or case study.
+
+- Official LinkedIn company profile: https://www.linkedin.com/company/avenir-facility-management
+
 ## Usage Rules
 
 - Do not invent new numbers.
