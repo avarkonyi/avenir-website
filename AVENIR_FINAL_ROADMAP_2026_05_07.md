@@ -1,21 +1,26 @@
-# Avenir Roadmap - Current Staging Status
+# Avenir Roadmap - Current Production Status
 
-**Last updated:** 2026-05-15  
-**Branch focus:** `staging-service-pages`  
-**Status:** decision roadmap and release guardrail, not an automatic production approval.
+**Last updated:** 2026-05-28
+**Branch focus:** `main`
+**Status:** post-launch roadmap and release guardrail for the production HU/EN website.
 
 This roadmap replaces the original May 2026 post-launch schedule with the
-current state of the Avenir website. The project has moved from "plan the public
-foundation" to "finish proof, content review, Preview QA, and production release
-planning".
+current state of the Avenir website. The project has moved from "finish proof,
+content review, Preview QA, and production release planning" to "operate the
+live HU/EN website safely, monitor launch quality, and continue proof/legal
+governance".
 
 ## 1. Current Status Summary
 
-The public website foundation is implemented on staging. The current staging
-branch includes:
+The public website foundation is live at `https://www.afm.hu`. The current
+production scope includes:
 
 - public lead-generation homepage;
 - eight ready HU service detail pages;
+- eight ready EN service detail pages;
+- HU/EN legal pages:
+  - `/hu/adatvedelem`, `/hu/aszf`, `/hu/impresszum`;
+  - `/en/adatvedelem`, `/en/aszf`, `/en/impresszum`;
 - canonical/legacy service slug model;
 - service readiness gating for route generation, sitemap, metadata, hreflang,
   related services, homepage links, and footer links;
@@ -27,24 +32,27 @@ branch includes:
 - SEO/GEO/AI-search files: `/llms.txt` and `/llms-full.txt`;
 - CI workflow, README cleanup, code architecture documentation, and staging
   runbook updates;
-- manual Vercel Preview smoke-test script;
+- manual Vercel Preview/production smoke-test script;
+- automated consent-gated analytics QA;
 - admin/news/service hardening and sanitized DB error handling;
 - durable contact rate limiter code using Upstash/Vercel KV-compatible Redis;
+- direct consent-gated GA4, not GTM;
+- official non-tracking LinkedIn company profile/entity link;
 - Hero performance refactor;
 - request-scoped service query deduplication.
 
 The current strategic direction is:
 
-1. finish proof and trust population;
-2. finish human service-copy review;
-3. prepare 3-5 HU tudastar articles;
-4. complete live Preview QA;
-5. build a production release plan.
+1. monitor the launched production site;
+2. complete post-launch contact, indexing, analytics and legal checks;
+3. continue proof/trust governance, including D&B AA versus OPTEN/A+ policy;
+4. prepare 3-5 HU tudastar articles;
+5. keep future DE/ZH rollout and Special Services behind review gates.
 
 AOS may continue in the separate `avenir-aos` application track, but it is not
-part of the website release. Do not start EN/DE/ZH service rollout, case
-studies, or partner/client name publication in the website until the proof and
-release gates below are closed.
+part of the website release. Do not start DE/ZH service rollout, case studies,
+or partner/client name publication in the website until the proof and review
+gates below are closed.
 
 ## 2. Completed / Staging-Complete Phases
 
@@ -61,31 +69,32 @@ Implemented:
 - admin CMS baseline;
 - DB-backed public content surfaces.
 
-### Service Detail MVP
+### Service Detail Rollout
 
-Status: **completed on staging**.
+Status: **completed in production for HU and EN**.
 
-The first HU service detail MVP contains exactly eight ready Hungarian service
-pages:
+The production service layer contains exactly eight ready Hungarian and eight
+ready English service pages:
 
-| Service | Canonical public URL | Legacy slug |
-| --- | --- | --- |
-| Elos objektumorzes | `/hu/szolgaltatasok/objektumorzes` | `security` |
-| Recepcios es portaszolgalat | `/hu/szolgaltatasok/portaszolgalat` | `reception` |
-| Biztonsagtechnika | `/hu/szolgaltatasok/biztonsagtechnika` | `building` |
-| Tavfelugyelet es vonuloszolgalat | `/hu/szolgaltatasok/tavfelugyelet-vonuloszolgalat` | `technical` |
-| Mystery Shopping es helyszini audit | `/hu/szolgaltatasok/mystery-shopping-helyszini-audit` | `mystery` |
-| Rendezvenybiztositas | `/hu/szolgaltatasok/rendezvenybiztositas` | `cleaning` |
-| Hard FM | `/hu/szolgaltatasok/hard-fm` | `hardfm` |
-| Soft FM | `/hu/szolgaltatasok/soft-fm` | `green` |
+| Service | HU URL | EN URL | Legacy slug |
+| --- | --- | --- | --- |
+| Élőerős objektumőrzés / On-site Security Guarding | `/hu/szolgaltatasok/objektumorzes` | `/en/szolgaltatasok/objektumorzes` | `security` |
+| Recepciós és portaszolgálat / Reception and Gatehouse Services | `/hu/szolgaltatasok/portaszolgalat` | `/en/szolgaltatasok/portaszolgalat` | `reception` |
+| Biztonságtechnika / Security Technology | `/hu/szolgaltatasok/biztonsagtechnika` | `/en/szolgaltatasok/biztonsagtechnika` | `building` |
+| Távfelügyelet és vonulószolgálat / Remote Monitoring and Response Service | `/hu/szolgaltatasok/tavfelugyelet-vonuloszolgalat` | `/en/szolgaltatasok/tavfelugyelet-vonuloszolgalat` | `technical` |
+| Próbavásárlás és szolgáltatásaudit / Mystery Shopping and Service Audit | `/hu/szolgaltatasok/mystery-shopping-helyszini-audit` | `/en/szolgaltatasok/mystery-shopping-helyszini-audit` | `mystery` |
+| Rendezvénybiztosítás / Event Security | `/hu/szolgaltatasok/rendezvenybiztositas` | `/en/szolgaltatasok/rendezvenybiztositas` | `cleaning` |
+| Hard FM | `/hu/szolgaltatasok/hard-fm` | `/en/szolgaltatasok/hard-fm` | `hardfm` |
+| Soft FM | `/hu/szolgaltatasok/soft-fm` | `/en/szolgaltatasok/soft-fm` | `green` |
 
 Rules that remain active:
 
-- canonical HU URLs are public when DB readiness fields are present;
+- canonical HU/EN URLs are public when DB readiness fields are present for the
+  exact locale;
 - legacy detail URLs return 404 unless redirects are explicitly approved later;
-- EN/DE/ZH service detail URLs remain 404 until localized required detail
-  fields exist;
-- sitemap includes only ready HU service detail URLs;
+- DE/ZH service detail URLs remain 404 until localized required detail fields
+  exist;
+- sitemap includes ready HU/EN service detail URLs;
 - hreflang advertises only ready service locales;
 - homepage and footer links are readiness-driven and use canonical slugs only;
 - pilot seed scripts are HU-only and may overwrite DB copy for their service.
@@ -115,8 +124,8 @@ Implemented:
 
 - canonical and metadata behavior for ready public pages;
 - service JSON-LD, article JSON-LD, FAQPage where visible, and BreadcrumbList;
-- sitemap policy for locale homepages, HU legal pages, ready HU service pages,
-  and ready HU article pages;
+- sitemap policy for HU/EN homepages, HU/EN legal pages, ready HU/EN service
+  pages, and ready HU article pages;
 - robots policy with Preview/noindex safeguards;
 - `/llms.txt`;
 - `/llms-full.txt`;
@@ -174,29 +183,37 @@ Implemented:
 - service DB query deduplication;
 - admin server-action error sanitization.
 
-## 3. In Progress / Approval Needed
+## 3. Post-Launch Backlog / Approval Needed
 
-The following items block production release approval even though the branch is
-safe to continue on staging:
+The following items remain open after production launch:
 
-- Service copy human review.
-- OPTEN A+ / Bonitasi minosites proof decision or replacement.
+- Contact form production smoke status if not separately recorded after env
+  changes.
+- Google Search Console and Bing sitemap monitoring.
+- GA4 Realtime/events monitoring after consented test visits.
+- OPTEN/A+ public-use governance remains owner-deferred; D&B AA High
+  Creditworthy 2026 is tracked separately as Dun & Bradstreet proof.
 - Approved partner logo population and logo-usage proof records.
-- Production Upstash/Vercel Redis environment setup for contact rate limiting.
-- Live Vercel Preview QA, including the manual smoke-test script.
-- Final sitemap, robots, schema, llms, legal, and SEO QA on the live Preview.
-- Production migration/content/proof plan.
-- Explicit release approval from Andras.
+- HU/EN privacy policy version sync and DPO/legal review.
+- DE/ZH 404-flow/noindex cleanup if any public links reappear.
+- EN news route/content policy.
+- Mobile overflow and consent-banner placement polish if still present in
+  manual QA.
 
 ## 4. Next Recommended Sprint
 
-Recommended next sprint: **proof/trust population plus HU tudastar planning**.
+Recommended next sprint: **post-launch monitoring plus proof/trust governance**.
 
 Scope:
 
+- verify contact form production smoke with non-sensitive test content;
+- check Search Console/Bing sitemap status and IndexNow only when explicitly
+  approved;
+- confirm GA4 Realtime/events after accepted consent;
 - collect and record approved partner logo proof;
 - populate only partner logos with explicit homepage usage approval;
-- decide OPTEN A+ wording: verify, soften, replace, or remove;
+- maintain D&B AA / OPTEN distinction: do not call the D&B certificate OPTEN
+  proof;
 - prepare 3-5 HU tudastar article outlines/drafts;
 - optionally plan a compact homepage "Hogyan dolgozunk" process block.
 
@@ -337,9 +354,10 @@ legal/data-protection boundaries, what not to send through the contact form,
 what the client receives, what Avenir does not undertake, and compliance-safe
 FAQ.
 
-### Production Release Plan
+### Production / Post-Launch Release Plan
 
-Create a separate production release checklist before merge/deploy:
+For future releases, create a separate production release checklist before
+merge/deploy:
 
 - migration list and status;
 - DB target verification;
@@ -347,7 +365,7 @@ Create a separate production release checklist before merge/deploy:
 - production content seed/admin plan;
 - service copy approval;
 - partner logo proof audit;
-- OPTEN decision;
+- D&B/OPTEN governance status;
 - sitemap/robots/schema/llms QA;
 - legal review where needed;
 - rollback plan.
@@ -371,7 +389,7 @@ Reference: `docs/aos_separation_decision.md`.
 
 These are intentionally deferred:
 
-- EN/DE/ZH service rollout;
+- DE/ZH service rollout;
 - EN/DE/ZH article routes;
 - Special Services public pages and routes;
 - client case studies;
@@ -384,27 +402,31 @@ AOS items such as Mini-CRM expansion, AOS Guard Log, AI Report Assistant,
 proposal generation, and document workflows are no longer website-admin scope.
 They belong to the separate `avenir-aos` application and release track.
 
-## 7. Production Release Warning
+## 7. Production Change Warning
 
-Production deploy is **not approved** from this roadmap status alone.
+The HU/EN website is live in production. Future production deploys, database
+operations, migrations, seed/import scripts, or content syncs are **not
+approved** from this roadmap status alone.
 
-Production requires:
+Future production changes require:
 
 1. explicit approval from Andras;
 2. production DB target verification;
-3. approved migration plan;
-4. approved production seed/content plan;
-5. service copy approval;
-6. partner proof audit;
-7. OPTEN proof decision or public-copy replacement;
-8. production Redis/KV configuration for contact rate limiting;
-9. final legal/SEO/schema/sitemap/robots/llms QA;
-10. Vercel Preview smoke test and production release checklist.
+3. approved migration plan when schema changes are involved;
+4. approved production content sync plan when DB content changes are involved;
+5. partner/proof audit where public proof surfaces are touched;
+6. D&B/OPTEN proof-policy check where creditworthiness wording is touched;
+7. Redis/KV configuration check when contact infrastructure is touched;
+8. final legal/SEO/schema/sitemap/robots/llms QA where those surfaces are
+   affected;
+9. Preview smoke, analytics QA if analytics is touched, and production smoke
+   after release approval.
 
 The website production release must not deploy AOS, run AOS migrations, seed
 AOS data, or assume AOS production readiness.
 
-Do not treat staging-complete as production-approved.
+Do not treat prior launch approval as blanket approval for later production
+changes.
 
 ## 8. Stale Roadmap Material Removed
 
@@ -453,6 +475,9 @@ Do not add or approve:
 
 Use `docs/verified_claims.md` as the public-claim guardrail. If a claim is not
 there and proof is missing, either remove it, soften it, or ask for approval.
+D&B AA High Creditworthy 2026 is the current approved creditworthiness claim
+from Dun & Bradstreet proof. It must not be described as OPTEN A+ unless a
+separate OPTEN-specific proof document is provided and reviewed.
 
 ## 11. Final Priority Order
 

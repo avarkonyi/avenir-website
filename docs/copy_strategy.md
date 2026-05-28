@@ -2,13 +2,18 @@
 
 ## Current approval status
 
-The eight HU service detail pages are implemented on staging, but service copy
-is still under human review before production approval. Do not treat staging
-copy as final production-approved copy until Andras explicitly approves it.
+The eight HU and eight EN service detail pages are production-live on
+`https://www.afm.hu`. Treat the current HU/EN service layer as the baseline
+production copy. Do not start a new creative rewrite unless a production audit
+finds an actual defect or the owner explicitly requests a new copy pass.
 
-The next content/business layer should focus on proof-safe trust assets and 3-5
-HU tudastar articles. Do not start EN/DE/ZH service copy rollout, case studies,
-or named partner/client references without separate approval and proof.
+DE/ZH are homepage/partial-localization surfaces only. Do not start DE/ZH
+service detail rollout, case studies, or named partner/client references without
+separate approval, localized content, and proof.
+
+The next content/business layer should focus on proof-safe trust governance,
+post-launch legal/privacy alignment, Search Console/Bing monitoring, and 3-5 HU
+tudastar articles.
 
 ## Positioning
 
@@ -214,4 +219,21 @@ Public document copy should clearly separate:
 
 Never suggest publishing confidential, personal, client-specific,
 contract-specific, or internal audit evidence publicly.
-- Kapcsolat
+
+## Current post-launch content/governance backlog
+
+P1/P2 content and governance items:
+
+- EN news route/content policy: keep EN news hidden or route clearly to HU
+  content until EN article routes are approved.
+- DE/ZH legal/service/news 404 avoidance and noindex strategy.
+- HU/EN privacy policy version sync and DPO/legal review.
+- D&B AA versus OPTEN/A+ governance: D&B AA High Creditworthy 2026 is a Dun &
+  Bradstreet proof item; do not call it OPTEN A+ unless separate OPTEN proof is
+  provided and reviewed.
+- Private investigation contact dropdown explanation and sensitive-data
+  warning review.
+- Meta/social polish after production indexing settles.
+- Analytics consent copy should remain privacy-first: no dark patterns, no
+  analytics before consent, reject keeps GA4 blocked, and no personal form
+  content in analytics events.

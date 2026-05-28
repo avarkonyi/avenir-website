@@ -1,6 +1,6 @@
 # Staging Runbook — Avenir Website
 
-Last updated: 2026-05-15
+Last updated: 2026-05-28
 
 ## Purpose
 
@@ -22,6 +22,10 @@ Repository:
 
 `C:\Users\andra\avenir-website`
 
+Production URL:
+
+https://www.afm.hu
+
 Main production route:
 
 `/hu`
@@ -35,37 +39,55 @@ Locales:
 
 Current important branch:
 
-`staging-service-pages`
+`main`
 
 ## Current Branch Status
 
-Status: staging-complete public foundation, not production-approved.
+Status: production-launched HU/EN public website with staging-first operations
+still required for future changes.
 
-The current branch includes:
+The current production scope includes:
 
 - eight HU and EN service detail pages;
 - readiness-driven homepage/footer service links;
 - related services and contact prefill;
 - Partner Logo Strip MVP with proof gating;
 - HU public article layer: `/hu/hirek` and `/hu/hirek/[slug]`;
+- HU and EN legal pages:
+  - `/hu/adatvedelem`, `/hu/aszf`, `/hu/impresszum`;
+  - `/en/adatvedelem`, `/en/aszf`, `/en/impresszum`;
 - SEO/GEO files: `/llms.txt` and `/llms-full.txt`;
-- CI workflow, README cleanup, code architecture docs, and Preview smoke test;
+- CI workflow, README cleanup, code architecture docs, Preview/production
+  smoke test, and consent-gated analytics QA;
 - admin/news/service hardening;
-- durable contact rate limiter code;
+- durable contact rate limiter code with Upstash and Vercel KV REST env-name
+  support;
+- direct consent-gated GA4, not GTM;
+- non-tracking LinkedIn company profile entity link;
 - Hero performance refactor;
 - DB service query deduplication.
 
-Known approval gates before production:
+Known production/post-launch notes:
 
-- service copy human review;
-- D&B AA High Creditworthy 2026 public claim synced from the Dun & Bradstreet certificate dated 26 May 2026;
+- production noindex is absent;
+- production sitemap includes HU/EN homepages, HU/EN legal routes, ready HU/EN
+  service detail pages, and ready HU article URLs;
+- DE/ZH are homepage/partial-localization surfaces only and are noindexed /
+  excluded from sitemap until full localization is ready;
+- `npm run qa:preview -- https://www.afm.hu --allow-production` is the
+  production route smoke command;
+- `npm run qa:analytics -- https://www.afm.hu --allow-production` is the
+  production consent/GA4 QA command;
+- D&B AA High Creditworthy 2026 public claim is synced from the Dun &
+  Bradstreet certificate dated 26 May 2026;
+- OPTEN/A+ public-use governance remains an owner-deferred exception unless a
+  separate OPTEN-specific proof document is provided and reviewed;
 - approved partner logo population and proof records;
-- production Upstash/Vercel Redis environment variables;
-- live Vercel Preview QA;
-- production migration/content/proof plan;
-- explicit approval from Andras.
+- contact form production smoke should be treated as pending unless a real
+  non-sensitive test submission is separately recorded.
 
-Do not treat staging-complete as production-approved.
+Do not treat this launch state as permission to run future production DB
+scripts, migrations, seeds, or deploys without a separate approval.
 
 ## AOS Release Separation
 
@@ -92,9 +114,9 @@ See `docs/aos_separation_decision.md`.
 
 ## Current HU/EN Service Detail Layer
 
-Status: current staging HU/EN service detail layer.
+Status: current production HU/EN service detail layer.
 
-The current ready HU and EN service detail pages on staging use the same
+The current ready HU and EN service detail pages in production use the same
 canonical slugs:
 
 | Service | HU URL | EN URL | Legacy slug |
@@ -111,17 +133,54 @@ canonical slugs:
 Expected legacy detail URLs should return 404:
 
 - `/hu/szolgaltatasok/security`
+- `/en/szolgaltatasok/security`
 - `/hu/szolgaltatasok/reception`
+- `/en/szolgaltatasok/reception`
 - `/hu/szolgaltatasok/building`
+- `/en/szolgaltatasok/building`
 - `/hu/szolgaltatasok/technical`
+- `/en/szolgaltatasok/technical`
 - `/hu/szolgaltatasok/mystery`
+- `/en/szolgaltatasok/mystery`
 - `/hu/szolgaltatasok/cleaning`
+- `/en/szolgaltatasok/cleaning`
 - `/hu/szolgaltatasok/hardfm`
+- `/en/szolgaltatasok/hardfm`
 - `/hu/szolgaltatasok/green`
+- `/en/szolgaltatasok/green`
 
-Expected EN service detail URLs return 200 when EN localized required content
-is ready. DE/ZH service detail URLs should remain 404 until their own
-localized required content exists.
+Expected EN service detail URLs currently return 200. DE/ZH service detail
+URLs should remain 404 until their own localized required content exists.
+
+## Production DB Launch Restore
+
+Production data was launched by Neon branch-level restore from the approved
+staging branch into the production/main branch. This was a database branch
+operation, not an application seed/import/migration run.
+
+Known Neon branches:
+
+| Purpose | Branch ID | Branch name |
+| --- | --- | --- |
+| Production/main | `br-divine-silence-almpoz68` | production/main |
+| Staging source | `br-round-fog-al4isa1i` | staging |
+| Backup before launch | `br-polished-tooth-al7hswta` | `prod-backup-before-afm-launch-20260524-1922` |
+| Preserved old production | `br-super-art-alhsoh24` | `prod-preserved-during-afm-launch-20260524-1930` |
+
+Known endpoints:
+
+- staging: `ep-twilight-sound-al2b7jsb`
+- production: `ep-young-meadow-aln5ux5m`
+
+Before any local DB operation after production work, restore and verify local
+`.env.local` is pointing back to staging:
+
+```bash
+node scripts/verify-db-target.mjs --target staging --runtime-only
+```
+
+Production DB operations require explicit target verification and explicit
+approval. Never run staging-only DB scripts against production.
 
 ## Core Rule
 
@@ -136,6 +195,17 @@ Never merge service-detail work directly to main without QA.
 Production deploy remains out of scope unless a migration/content release plan is explicitly approved.
 
 ## Environments
+
+Use these environments for different purposes:
+
+- Local development: coding, local type/lint/build checks, and non-production
+  UI review.
+- Vercel Preview: public route, sitemap, robots, metadata, legal-link,
+  analytics-consent, and admin QA before release.
+- Production: `https://www.afm.hu`; use only for approved smoke checks and
+  post-launch monitoring.
+- Production DB branch operations: explicit Neon branch-level operations only,
+  with backup/restore plan and target verification.
 
 ### Local Development
 
@@ -227,6 +297,24 @@ npm run qa:preview -- https://www.afm.hu --allow-production
 Do not add this smoke test to lightweight CI yet. It is a manual Vercel Preview
 QA gate.
 
+For post-launch production checks, the same script is the production smoke
+gate when explicitly allowed:
+
+```bash
+npm run qa:preview -- https://www.afm.hu --allow-production
+```
+
+Production expected behavior:
+
+- `/hu` and `/en` return 200 and are indexable;
+- eight HU service detail pages return 200;
+- eight EN service detail pages return 200;
+- HU and EN legal routes under Hungarian slugs return 200;
+- legacy service detail slugs return unavailable;
+- DE/ZH service, legal, and news detail routes remain unavailable unless
+  completed later;
+- production must not send `X-Robots-Tag: noindex, nofollow`.
+
 ### AI-search file QA
 
 The Vercel Preview should expose:
@@ -239,8 +327,8 @@ Before merging SEO / GEO / AI-search changes, verify:
 - both files return 200 on Preview;
 - both files include only canonical public URLs;
 - the eight HU service detail URLs are present;
+- the eight EN service detail URLs are present;
 - legacy service detail URLs are absent;
-- EN service detail URLs are present when EN localized service detail content is ready;
 - DE/ZH service detail URLs are absent until localized service detail content is ready;
 - admin, API, draft, migration, seed, and internal URLs are absent;
 - unapproved partner names, customer names, testimonials, case studies, ratings, awards, and EcoVadis claims are absent;
@@ -409,6 +497,7 @@ the normal processing delay.
 
 Events emitted after consent only:
 
+- `page_view`
 - `contact_submit_success`
 - `contact_submit_error`
 - `phone_click`
@@ -422,3 +511,38 @@ PII guardrails:
   free-text form field to GA4.
 - Allowed parameters are limited to locale, path, predefined service key,
   predefined service label and event type.
+
+## Post-Launch Backlog
+
+P1:
+
+- Contact form production smoke status: pending unless a real non-sensitive
+  production test submission is separately recorded after env changes.
+- Mobile overflow review if still present on narrow devices.
+- Consent banner placement/visual polish if it remains intrusive in manual QA.
+- DE/ZH public-flow cleanup: keep homepage-only surfaces noindexed and prevent
+  links to unfinished service/legal/news routes.
+- EN news route/content policy: keep EN news hidden or route to HU with clear
+  wording until EN article routes are approved.
+- Privacy Policy HU/EN version sync and DPO/legal review.
+- D&B AA versus OPTEN/A+ governance: keep D&B and OPTEN as separate proof
+  tracks; OPTEN/A+ remains owner-deferred unless separately proved.
+- Upload magic-byte sniff is implemented in source; continue regression tests
+  for admin upload routes.
+- Shared `requireAdmin()` allowlist enforcement is implemented in source;
+  continue regression checks for admin actions and upload APIs.
+
+P2:
+
+- Vercel Analytics / Speed Insights if the owner wants additional performance
+  monitoring beyond GA4.
+- Periodic Lighthouse and accessibility monitoring.
+- Google Search Console and Bing Webmaster Tools monitoring after sitemap
+  submission.
+- Sitemap `lastModified` from DB `updatedAt` where reliable.
+- CSP nonce/hash hardening beyond the current direct GA4-compatible policy.
+- NextAuth beta/stability review and pinning strategy.
+- Slugify/canonical slug utility consolidation.
+- Automated tests beyond smoke/analytics QA.
+- LinkedIn Insight Tag only if a separate marketing and consent decision is
+  approved later.

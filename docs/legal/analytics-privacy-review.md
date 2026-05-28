@@ -1,6 +1,6 @@
 # Analytics Privacy Review TODO
 
-Date: 2026-05-25
+Date: 2026-05-28
 
 ## Current Implementation Summary
 
@@ -9,7 +9,7 @@ Analytics is not loaded until the visitor accepts analytics consent in the
 first-party consent banner. The consent choice is stored client-side and can be
 changed from the footer Cookie settings control.
 
-Provider: Google
+Provider: Google Analytics / Google
 
 Integration type: direct GA4 `gtag.js`, not Google Tag Manager
 
@@ -24,6 +24,7 @@ Integration type: direct GA4 `gtag.js`, not Google Tag Manager
 
 The implementation may emit these events after consent only:
 
+- `page_view`
 - `contact_submit_success`
 - `contact_submit_error`
 - `phone_click`
@@ -56,3 +57,9 @@ Excluded from analytics:
 DPO/legal review is required before treating the public privacy notice as final
 for this analytics implementation. The privacy/legal pages were not rewritten
 as part of this implementation task.
+
+GA4 Enhanced Measurement settings should be reviewed before relying on the
+privacy notice as final, especially form interactions, outbound clicks, file
+downloads, site search, and any future measurement setting that could collect
+more detail than the current code-level event list. The implementation is
+privacy-first, but account-side GA4 settings remain a separate review item.

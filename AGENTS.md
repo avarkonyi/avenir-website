@@ -10,11 +10,11 @@ The project is not just a brochure website. It is being developed into a serious
 
 Follow this order unless the user explicitly says otherwise:
 
-1. Staging and preview safety
-2. Service copy review, proof decisions, and production-release planning
-3. References, approved partner logos, and other trust signals
+1. Production safety, staging-first workflow, and post-launch monitoring
+2. Contact/analytics/search smoke checks and legal/privacy follow-up
+3. Proof decisions, approved partner logos, and other trust signals
 4. HU tudastar / article depth
-5. SEO / GEO / AI-search readiness
+5. SEO / GEO / AI-search maintenance
 6. Conversion improvements
 7. Trust Center and tender materials
 8. Mini-CRM / AOS modules
@@ -67,25 +67,31 @@ Guardrails:
 - Do not invite sensitive personal-data submissions through the standard
   contact form.
 
-Current staging-complete layers:
+Current production-live website layers:
 
 - eight HU service detail pages;
+- eight EN service detail pages;
+- HU/EN legal pages under `/adatvedelem`, `/aszf`, and `/impresszum`;
 - canonical/legacy service slug model;
 - service readiness gating;
-- homepage/footer service links to ready HU services;
+- homepage/footer service links to ready HU/EN services;
 - related services;
 - contact prefill and server-side service allowlist;
 - Partner Logo Strip MVP with proof gating;
 - HU public article layer: `/hu/hirek` and `/hu/hirek/[slug]`;
 - SEO/GEO files: `llms.txt` and `llms-full.txt`;
-- CI, README, code architecture docs, staging runbook, and Preview smoke test;
+- CI, README, code architecture docs, staging runbook, Preview/production
+  smoke test, and analytics QA;
 - baseline hardening including durable contact rate limiter code, Hero refactor,
-  and service DB query deduplication.
+  service DB query deduplication, shared admin allowlist helper, upload
+  magic-byte validation, and consent-gated direct GA4.
 
-Do not start EN/DE/ZH service rollout, EN/DE/ZH article routes, case studies,
+DE/ZH are homepage/partial-localization surfaces only and should stay noindexed
+and out of the sitemap until fully localized. Do not start DE/ZH service
+rollout, EN/DE/ZH article routes, case studies,
 or named partner/client publication in the website until the proof, content,
-and production-release gates are explicitly closed. AOS may continue separately
-in `avenir-aos`, but it is not part of the website release.
+and release gates are explicitly closed. AOS may continue separately in
+`avenir-aos`, but it is not part of the website release.
 
 ## AOS separation rule
 
@@ -158,30 +164,30 @@ Service detail pages are currently implemented at:
 
 app/[locale]/szolgaltatasok/[slug]/page.tsx
 
-Current HU service detail layer:
+Current HU/EN service detail layer:
 
-Status: current staging HU service detail layer.
+Status: production-live HU and EN service detail layer.
 
-| Service | Canonical public slug | Legacy slug |
-| --- | --- | --- |
-| Élőerős objektumőrzés | `objektumorzes` | `security` |
-| Recepciós és portaszolgálat | `portaszolgalat` | `reception` |
-| Biztonságtechnika | `biztonsagtechnika` | `building` |
-| Távfelügyelet és vonulószolgálat | `tavfelugyelet-vonuloszolgalat` | `technical` |
-| Próbavásárlás és szolgáltatásaudit | `mystery-shopping-helyszini-audit` | `mystery` |
-| Rendezvénybiztosítás | `rendezvenybiztositas` | `cleaning` |
-| Hard FM | `hard-fm` | `hardfm` |
-| Soft FM | `soft-fm` | `green` |
+| HU label | EN label | Canonical public slug | Legacy slug |
+| --- | --- | --- | --- |
+| Élőerős objektumőrzés | On-site Security Guarding | `objektumorzes` | `security` |
+| Recepciós és portaszolgálat | Reception and Gatehouse Services | `portaszolgalat` | `reception` |
+| Biztonságtechnika | Security Technology | `biztonsagtechnika` | `building` |
+| Távfelügyelet és vonulószolgálat | Remote Monitoring and Response Service | `tavfelugyelet-vonuloszolgalat` | `technical` |
+| Próbavásárlás és szolgáltatásaudit | Mystery Shopping and Service Audit | `mystery-shopping-helyszini-audit` | `mystery` |
+| Rendezvénybiztosítás | Event Security | `rendezvenybiztositas` | `cleaning` |
+| Hard FM | Hard FM | `hard-fm` | `hardfm` |
+| Soft FM | Soft FM | `soft-fm` | `green` |
 
 Service detail pages are added one by one.
 
-Use canonical HU slugs in public service URLs and new CTA links. Legacy slugs may remain supported for seed lookup, contact query aliases, and email label safety, but legacy detail routes should keep returning 404 unless redirects are explicitly approved later.
+Use canonical slugs in HU/EN public service URLs and new CTA links. Legacy slugs may remain supported for seed lookup, contact query aliases, and email label safety, but legacy detail routes should keep returning 404 unless redirects are explicitly approved later.
 
 Do not bulk-generate pages for all old homepage service cards.
 
 A service detail URL is public only if the required detail fields are present.
 
-Before publishing multiple locales, verify that each locale has real localized content. Do not publish EN/DE/ZH pages from incomplete or weak fallback content.
+Before publishing additional locales, verify that each locale has real localized content. Do not publish DE/ZH pages from incomplete or weak fallback content.
 
 Sitemap generation, route generation, metadata generation, and related service linking should use the same service-publication readiness logic.
 

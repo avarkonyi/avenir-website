@@ -27,24 +27,26 @@ Required before public indexing:
 - related services
 - visible FAQ if FAQ schema is used
 
-## Current HU service detail layer
+## Current HU/EN service detail layer
 
-Status: current staging HU service detail layer.
+Status: production-live HU and EN service detail layer on `https://www.afm.hu`.
 
-| Order | Service | Canonical slug | Legacy slug |
-| --- | --- | --- | --- |
-| 1 | Élőerős objektumőrzés | `objektumorzes` | `security` |
-| 2 | Recepciós és portaszolgálat | `portaszolgalat` | `reception` |
-| 3 | Biztonságtechnika | `biztonsagtechnika` | `building` |
-| 4 | Távfelügyelet és vonulószolgálat | `tavfelugyelet-vonuloszolgalat` | `technical` |
-| 5 | Próbavásárlás és szolgáltatásaudit | `mystery-shopping-helyszini-audit` | `mystery` |
-| 6 | Rendezvénybiztosítás | `rendezvenybiztositas` | `cleaning` |
-| 7 | Hard FM | `hard-fm` | `hardfm` |
-| 8 | Soft FM | `soft-fm` | `green` |
+| Order | HU label | EN label | Canonical slug | Legacy slug |
+| --- | --- | --- | --- | --- |
+| 1 | Élőerős objektumőrzés | On-site Security Guarding | `objektumorzes` | `security` |
+| 2 | Recepciós és portaszolgálat | Reception and Gatehouse Services | `portaszolgalat` | `reception` |
+| 3 | Biztonságtechnika | Security Technology | `biztonsagtechnika` | `building` |
+| 4 | Távfelügyelet és vonulószolgálat | Remote Monitoring and Response Service | `tavfelugyelet-vonuloszolgalat` | `technical` |
+| 5 | Próbavásárlás és szolgáltatásaudit | Mystery Shopping and Service Audit | `mystery-shopping-helyszini-audit` | `mystery` |
+| 6 | Rendezvénybiztosítás | Event Security | `rendezvenybiztositas` | `cleaning` |
+| 7 | Hard FM | Hard FM | `hard-fm` | `hardfm` |
+| 8 | Soft FM | Soft FM | `soft-fm` | `green` |
 
-Canonical HU slugs are used in public URLs and new CTA links. Legacy slugs are only for seed/contact/email safety and should keep returning 404 as service-detail URLs unless explicit redirects are approved later.
+Canonical slugs are used in HU and EN public URLs and new CTA links. Legacy
+slugs are only for seed/contact/email safety and should keep returning 404 as
+service-detail URLs unless explicit redirects are approved later.
 
-## First HU service page order
+## Current service page order
 
 1. objektumorzes
 2. portaszolgalat
@@ -55,13 +57,26 @@ Canonical HU slugs are used in public URLs and new CTA links. Legacy slugs are o
 7. hard-fm
 8. soft-fm
 
-The first HU service-page MVP is complete on staging when these eight canonical
-HU pages are seeded, public, sitemap-visible, and their legacy detail URLs
-return 404.
+The HU and EN service-page rollout is production-live when these eight
+canonical pages in both locales return 200, are sitemap-visible, have reciprocal
+ready-locale hreflang, and legacy detail URLs return unavailable.
 
-Current status: the eight-page HU MVP is staging-complete. Service copy remains
-under human review before production approval. Production release also requires
-the separate migration/content/proof plan described in the staging runbook.
+Current status: the eight HU and eight EN service pages are production-live.
+DE/ZH service detail pages remain gated until their own localized required
+fields and review are completed.
+
+Standard service-detail structure:
+
+1. H1/service label and breadcrumb;
+2. hero value proposition;
+3. long body/description;
+4. best-fit/use case list;
+5. scope/included items and process steps;
+6. trust/control/reporting items, related services, FAQ and CTA.
+
+Related services use the curated canonical-slug graph stored in
+`relatedServiceSlugs`. Do not use legacy slugs, self-links, or
+everything-to-everything related-service maps.
 
 ## Main vs special services
 
@@ -71,8 +86,8 @@ Special services are a future website-scope layer for sensitive,
 compliance-heavy services. They are planned/discovery only and must not be
 added as loud 9th/10th/11th homepage cards. They belong in a secondary,
 visually quieter homepage block or tab after the 8 main service cards and after
-the current service-page review, EN/DE/ZH translation workflow, partner/trust
-population, related-services curation, and SEO/GEO groundwork.
+the current production service layer, future DE/ZH translation workflow,
+partner/trust population, related-services curation, and SEO/GEO groundwork.
 
 Secondary block:
 
@@ -229,7 +244,9 @@ Compliance notes:
 
 ## Event security planning note
 
-Rendezvénybiztosítás is part of the current staging HU service detail layer. It remains a separate service detail page, not a subsection of objektumőrzés.
+Rendezvénybiztosítás / Event Security is part of the current production HU/EN
+service detail layer. It remains a separate service detail page, not a
+subsection of objektumőrzés.
 
 Canonical slug:
 
@@ -267,7 +284,7 @@ Hard FM should focus on:
 
 ## Soft FM angle
 
-Soft FM is part of the current staging HU service detail layer.
+Soft FM is part of the current production HU/EN service detail layer.
 
 Canonical slug: `soft-fm`
 
@@ -290,8 +307,37 @@ Only add FAQPage JSON-LD if the FAQ is visibly rendered on the page.
 
 Service CTAs should link to:
 
-/hu?service=<canonical-slug>#contact
+/<locale>?service=<canonical-slug>#contact
 
 Example:
 
 /hu?service=objektumorzes#contact
+/en?service=objektumorzes#contact
+
+## Proof-sensitive facts rule
+
+These facts are approved business facts and should not be questioned as false
+in service-page review:
+
+- ISO 9001;
+- ISO 27001;
+- Hungarian security activity licence / vagyonvédelmi engedély;
+- 24/7 dispatch / monitoring background;
+- 30+ active sites;
+- 200+ professionals / staff.
+
+Review them only for placement, scope-safe wording, non-SLA interpretation,
+excessive repetition, and HU/EN consistency. Do not place the exact security
+licence number in service body copy, service trust cards, service card
+descriptions, or related-service descriptions; exact numbers belong in legal,
+proof, tender, Trust Center, or contractual onboarding contexts.
+
+Canonical naming guardrails:
+
+- HU: `Próbavásárlás és szolgáltatásaudit`, not `Mystery Shopping és
+  helyszíni audit` as the canonical label.
+- EN: `Mystery Shopping and Service Audit`, not `Mystery Shopping and On-site
+  Audits`.
+- EN: `Remote Monitoring and Response Service` as the service label; shorter
+  `Remote Monitoring and Response` may be used only in natural prose/SEO where
+  intentional.

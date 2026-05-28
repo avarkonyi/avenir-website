@@ -2,7 +2,10 @@
 
 Generated for the Avenir multilingual launch inventory in `docs/translations/public_site_translation_matrix.csv`.
 
-This is a source inventory and review aid. It does not publish EN/DE/ZH service detail pages, does not change routing, and does not imply legal or proof approval.
+This is a source inventory and review aid. HU and EN service detail pages are
+now production-live. DE/ZH remain partial-localization surfaces; this file does
+not publish DE/ZH service detail pages, does not change routing, and does not
+imply legal or proof approval.
 
 ## Scope
 
@@ -66,11 +69,33 @@ Watch especially for:
 - Legal rows are marked `legal_review_required`.
 - Legal/privacy pages should be translated by or reviewed with legal counsel.
 - The Hungarian legal source includes dynamic overrides in `lib/legal-content.ts`; confirm rendered HU legal pages before sending final legal translation packages.
-- Do not include non-HU legal URLs in the sitemap until localized legal text is reviewed and approved.
+- HU and EN legal URLs are currently live and may be included in the sitemap.
+  Do not include DE/ZH legal URLs until localized legal text is reviewed and
+  approved.
+
+## Production Translation Status
+
+- HU and EN homepages are live.
+- Eight HU and eight EN service detail pages are live.
+- HU and EN legal pages are live under Hungarian legal slugs:
+  `/hu|/en/adatvedelem`, `/hu|/en/aszf`, `/hu|/en/impresszum`.
+- DE/ZH are homepage/partial-localization surfaces only and should remain
+  noindexed/excluded from sitemap until full localization is approved.
+- Canonical service labels are:
+  - HU: Élőerős objektumőrzés; Recepciós és portaszolgálat;
+    Próbavásárlás és szolgáltatásaudit; Rendezvénybiztosítás;
+    Biztonságtechnika; Távfelügyelet és vonulószolgálat; Hard FM; Soft FM.
+  - EN: On-site Security Guarding; Reception and Gatehouse Services; Mystery
+    Shopping and Service Audit; Event Security; Security Technology; Remote
+    Monitoring and Response Service; Hard FM; Soft FM.
+- Analytics consent copy remains privacy-first: no analytics before consent,
+  reject keeps GA4 blocked, and no personal form content is sent to analytics.
 
 ## QA Checklist For Translated Pages
 
-- Verify route policy before publication: EN/DE/ZH service detail pages must remain gated until localized required fields exist.
+- Verify route policy before publication: DE/ZH service detail pages must
+  remain gated until localized required fields exist. Future new EN pages still
+  need the same per-locale readiness and review discipline.
 - Confirm canonical slugs and contact aliases are unchanged.
 - Check metadata title/description length and local search intent.
 - Validate JSON-LD after translation: Organization, Service, Article, BreadcrumbList, FAQPage.
@@ -109,5 +134,6 @@ Risk counts:
 
 - This is a source-code inventory only. DB-authored live article, partner, certification, or career content may need a separate DB export before full multilingual launch.
 - Current HU legal page rendering uses overrides and transformations; legal counsel should review rendered pages, not only CSV rows.
-- The matrix does not machine-translate missing EN/DE/ZH service detail fields.
-- Existing EN/DE/ZH static i18n text is marked for review, not accepted as final launch-ready localization.
+- The matrix does not machine-translate missing DE/ZH service detail fields.
+- Existing DE/ZH static i18n text is marked for review, not accepted as final
+  launch-ready localization.

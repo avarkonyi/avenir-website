@@ -2,6 +2,15 @@
 
 Next.js App Router website for Avenir Facility Management.
 
+Production URL: https://www.afm.hu
+
+Current launch status: HU and EN are live in production. The eight HU service
+detail pages, eight EN service detail pages, HU/EN legal pages, sitemap,
+robots, `llms.txt`, direct consent-gated GA4, and non-tracking LinkedIn entity
+link are production-live. DE/ZH remain homepage/partial-localization surfaces
+only; service, legal, and news detail routes are not production-ready for those
+locales unless explicitly completed later.
+
 This repo is the public B2B lead-generation website and SEO/GEO-ready service
 platform for Avenir. It currently includes the public marketing site, admin CMS,
 Hungarian and English service detail pages, a proof-gated partner logo strip, HU-first
@@ -26,6 +35,9 @@ priority.
 
 - Locale homepages: `/hu`, `/en`, `/de`, `/zh`
 - Eight ready HU and EN service detail pages
+- HU and EN legal pages:
+  - `/hu/adatvedelem`, `/hu/aszf`, `/hu/impresszum`
+  - `/en/adatvedelem`, `/en/aszf`, `/en/impresszum`
 - Homepage/footer links to ready locale-specific service details
 - Admin-managed Partner Logo Strip with proof gating
 - HU public article layer: `/hu/hirek` and `/hu/hirek/[slug]`
@@ -35,6 +47,11 @@ priority.
 - `/robots.txt`
 - `/llms.txt`
 - `/llms-full.txt`
+
+DE/ZH homepages are partial-localization surfaces and are currently noindexed
+and excluded from the sitemap. Do not link users to DE/ZH service, legal, or
+news detail routes until those routes have reviewed localized content and route
+approval.
 
 ## Service Detail Layer
 
@@ -163,6 +180,7 @@ check Realtime manually after a consented page view when needed.
 
 Events emitted after consent only:
 
+- `page_view`
 - `contact_submit_success`
 - `contact_submit_error`
 - `phone_click`
@@ -173,6 +191,16 @@ Events emitted after consent only:
 Analytics events must not include personal form content. Do not send names,
 email addresses, phone numbers, company names, message text, IP addresses or
 other free-text personal details.
+
+## Official Entity Links
+
+Official LinkedIn company profile:
+
+https://www.linkedin.com/company/avenir-facility-management
+
+This is a non-tracking public profile/entity link. The website does not use
+LinkedIn Insight Tag, LinkedIn tracking pixels, LinkedIn scripts, or UTM
+parameters.
 
 ## SEO / GEO / AI-Search
 
@@ -228,6 +256,10 @@ fetching. Vercel Preview remains the normal pre-merge build gate.
 ## Database and Migrations
 
 The database stack is Drizzle ORM + Neon PostgreSQL.
+
+Production launch data note: production was restored from the approved staging
+Neon branch during launch. Known branch IDs are documented in
+`docs/staging_runbook.md`.
 
 Use the npm scripts that run target verification before DB operations. Do not
 run `db:push` casually. Production migrations require explicit approval and a
@@ -297,8 +329,9 @@ Do not do these without explicit approval:
 Before merge or release, verify:
 
 - eight HU service detail URLs return 200
+- eight EN service detail URLs return 200
 - legacy service detail URLs return 404
-- EN/DE/ZH service detail URLs return 404 until localized fields exist
+- DE/ZH service detail URLs return 404 until localized fields exist
 - homepage/footer service links are readiness-driven
 - related services use canonical slugs only
 - contact prefill works for canonical and legacy aliases
@@ -309,6 +342,25 @@ Before merge or release, verify:
 - robots policy is correct for the environment
 - `llms.txt` and `llms-full.txt` are proof-safe
 - admin service/news mutations revalidate public paths and sitemap
+
+Production smoke commands:
+
+```bash
+npm run qa:preview -- https://www.afm.hu --allow-production
+npm run qa:analytics -- https://www.afm.hu --allow-production
+```
+
+Post-launch monitoring checklist:
+
+- submit `https://www.afm.hu/sitemap.xml` in Google Search Console;
+- submit the sitemap in Bing Webmaster Tools;
+- use IndexNow only when explicitly approved for the release;
+- run a real contact-form smoke with non-sensitive test content after env
+  changes;
+- check GA4 Realtime and consented events after accepting analytics;
+- review Vercel Analytics / Speed Insights if enabled later;
+- monitor Vercel function logs for contact, upload, and admin errors without
+  exposing personal data or secrets.
 
 ## Key Docs
 

@@ -1,6 +1,6 @@
 # Verified Claims — Avenir
 
-Last updated: 2026-05-26
+Last updated: 2026-05-28
 
 This file tracks business-approved claims that may be used in public website copy for Avenir. It is a copywriting guardrail, not a substitute for the underlying legal, certificate, contract, or operational proof documents.
 
@@ -32,7 +32,10 @@ The following creditworthiness claim is approved for public use:
 - Tax number: 26395124-2-41
 - D-U-N-S: 401251621
 - Certificate date: 26 May 2026
-- Proof file: `20260526 Avenir Facility Kft a.pdf`
+- Proof file: `20260526 Avenir Facility Kft a.pdf` was provided as the proof
+  source during review. It is not currently stored in this repository; if
+  repository proof archival is required, store or link it in a secure
+  proof-controlled location without exposing sensitive internal files.
 - Approved public wording:
   - HU: "D&B magas hitelképességi minősítés"
   - EN/DE/ZH: "D&B High Creditworthy 2026"
@@ -48,6 +51,11 @@ link. It is not a proof claim, certification claim, partner claim, testimonial,
 client reference, or case study.
 
 - Official LinkedIn company profile: https://www.linkedin.com/company/avenir-facility-management
+
+This profile link is also allowed in Organization / ProfessionalService
+JSON-LD `sameAs`, `llms.txt`, `llms-full.txt`, and footer profile links. Do
+not add LinkedIn Insight Tag, tracking pixels, LinkedIn scripts, or UTM
+parameters from this approval.
 
 ## Usage Rules
 
@@ -71,6 +79,12 @@ Do not add OPTEN A+ as a verified claim, schema claim, AI-search claim, partner
 claim, rating claim, or production-release approval item unless a separate
 OPTEN-specific proof document is provided and reviewed. The Dun & Bradstreet
 certificate above must not be described as OPTEN proof.
+
+Launch governance note: OPTEN/A+ public-use policy alignment was deferred by
+owner decision for launch. Treat any remaining OPTEN/A+ discussion as a
+governance/proof-policy exception, not as a D&B proof item. The public
+creditworthiness claim should use the D&B AA wording above unless and until a
+separate OPTEN-specific proof document is approved.
 
 ## Preferred Wording Patterns
 

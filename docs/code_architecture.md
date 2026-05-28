@@ -1,8 +1,9 @@
 # Avenir Website Code Architecture
 
-Last updated: 2026-05-15
+Last updated: 2026-05-28
 
-Status: current architecture reference for `staging-service-pages`.
+Status: current architecture reference for the production-launched HU/EN
+website on `main`.
 
 This document describes the current code architecture of the Avenir website and
 its boundary with the separate Avenir Operating System (AOS) application track.
@@ -20,8 +21,9 @@ The current product layers are:
 - Public website: locale homepages, public legal pages, services, references,
   certifications, HU public articles/news teasers, career block, and contact
   form.
-- Service detail layer: eight ready Hungarian service detail pages, using
-  canonical public slugs and DB-backed readiness checks.
+- Service detail layer: eight ready Hungarian and eight ready English service
+  detail pages, using canonical public slugs and DB-backed locale readiness
+  checks.
 - Article layer: HU-first public article index and detail routes backed by the
   existing news admin table and strict readiness checks.
 - Trust/partner layer: admin-managed partner records with a proof-gated
@@ -41,9 +43,10 @@ The current product layers are:
   Log, AI Report Assistant, document workflows, proposal generation, and future
   portals belong to the separate `avenir-aos` app/repo, not website `/admin`.
 
-The current website priority is proof/trust population, service copy review, HU
-tudastar depth, live Preview QA, and production release planning. AOS may
-continue separately, but it is not part of the website release.
+The current website priority is post-launch monitoring, proof/trust governance,
+HU tudastar depth, legal/privacy follow-up, and disciplined staging-first
+changes. AOS may continue separately, but it is not part of the website
+release.
 
 ## 2. High-Level Architecture Diagram
 
@@ -109,7 +112,8 @@ The homepage composes the public sections:
 The page is server-rendered with ISR (`revalidate = 3600`). It fetches:
 
 - active top-level services for service cards, footer, and contact options;
-- DB-backed ready HU service detail slugs for homepage/footer detail links;
+- DB-backed ready service detail locale/slug pairs for homepage/footer detail
+  links;
 - locale-published news teasers, with HU links only for HU-ready articles;
 - partner logos indirectly through `PartnerLogoStrip`.
 
@@ -157,8 +161,13 @@ The locale legal routes are:
 - `/[locale]/aszf`
 - `/[locale]/impresszum`
 
-All four locale pages can render, but the sitemap intentionally lists only the
-Hungarian legal URLs until non-HU legal translations are reviewed and approved.
+Reviewed HU and EN legal pages are public:
+
+- `/hu/adatvedelem`, `/hu/aszf`, `/hu/impresszum`
+- `/en/adatvedelem`, `/en/aszf`, `/en/impresszum`
+
+DE/ZH legal routes are not production-ready and must not be linked or included
+in the sitemap until reviewed localized legal text exists.
 
 ### Admin Routes
 
@@ -177,8 +186,11 @@ Current admin modules:
 - `/admin/settings`
 - `/admin/login`
 
-Admin is authenticated with NextAuth and Microsoft Entra ID. Server actions
-also call `auth()` directly as defense in depth.
+Admin is authenticated with NextAuth and Microsoft Entra ID. Dashboard layouts,
+server actions, and admin upload APIs use the shared
+`lib/admin/require-admin.ts` helper, which calls `auth()`, requires
+`session.user.email`, lowercases it, and checks it against
+`ALLOWED_ADMIN_EMAILS`. The allowlist is not exposed to the client.
 
 ### API Routes
 
@@ -211,39 +223,48 @@ Supported locales are defined across the i18n and SEO layers as:
 - `de`
 - `zh`
 
-The public homepage exists for all four locales. Service detail pages are
-locale-aware but currently ready only in Hungarian.
+The public homepage route exists for all four locales. HU and EN are the
+production-live/indexable locales. DE/ZH are homepage/partial-localization
+surfaces and are currently noindexed and excluded from the sitemap.
+
+Service detail pages are locale-aware. The current production service detail
+layer is ready in HU and EN only.
 
 Rules:
 
-- HU service detail pages are public only when HU required detail fields exist.
-- EN/DE/ZH service detail pages remain 404 until their own required localized
+- HU and EN service detail pages are public only when their locale-specific
+  required detail fields exist.
+- DE/ZH service detail pages remain 404 until their own required localized
   fields exist.
 - HU fallback is used for some listing surfaces such as names/descriptions, but
-  must not publish non-HU service detail pages.
+  must not publish a service detail page for any locale whose required detail
+  fields are incomplete.
 - Hreflang for service detail pages advertises only ready locales.
-- Service detail pages currently advertise `hu` and `x-default` only.
-- Non-HU legal pages are excluded from the sitemap until reviewed/approved.
+- Current service detail pages advertise ready HU/EN alternates and
+  `x-default` to the HU URL.
+- Legal hreflang advertises only reviewed HU/EN legal routes and `x-default`
+  to the HU route.
 
 Locale metadata is generated in `app/[locale]/layout.tsx` using `SEO_DATA`,
 `META_TAGLINES`, `META_DESCRIPTIONS`, and `OG_LOCALE_MAP`.
 
 ## 5. Service Detail Architecture
 
-### Current Ready HU Service Pages
+### Current Ready HU/EN Service Pages
 
-The current staging HU service detail layer contains these canonical URLs:
+The current production service detail layer contains these canonical HU and EN
+URLs:
 
-| Service | Canonical URL | Legacy slug |
-| --- | --- | --- |
-| Eloeros objektumorzes | `/hu/szolgaltatasok/objektumorzes` | `security` |
-| Recepcio es portaszolgalat | `/hu/szolgaltatasok/portaszolgalat` | `reception` |
-| Biztonsagtechnika | `/hu/szolgaltatasok/biztonsagtechnika` | `building` |
-| Tavfelugyelet es vonuloszolgalat | `/hu/szolgaltatasok/tavfelugyelet-vonuloszolgalat` | `technical` |
-| Mystery Shopping es helyszini audit | `/hu/szolgaltatasok/mystery-shopping-helyszini-audit` | `mystery` |
-| Rendezvenybiztositas | `/hu/szolgaltatasok/rendezvenybiztositas` | `cleaning` |
-| Hard FM | `/hu/szolgaltatasok/hard-fm` | `hardfm` |
-| Soft FM | `/hu/szolgaltatasok/soft-fm` | `green` |
+| Service | HU URL | EN URL | Legacy slug |
+| --- | --- | --- | --- |
+| Élőerős objektumőrzés / On-site Security Guarding | `/hu/szolgaltatasok/objektumorzes` | `/en/szolgaltatasok/objektumorzes` | `security` |
+| Recepciós és portaszolgálat / Reception and Gatehouse Services | `/hu/szolgaltatasok/portaszolgalat` | `/en/szolgaltatasok/portaszolgalat` | `reception` |
+| Biztonságtechnika / Security Technology | `/hu/szolgaltatasok/biztonsagtechnika` | `/en/szolgaltatasok/biztonsagtechnika` | `building` |
+| Távfelügyelet és vonulószolgálat / Remote Monitoring and Response Service | `/hu/szolgaltatasok/tavfelugyelet-vonuloszolgalat` | `/en/szolgaltatasok/tavfelugyelet-vonuloszolgalat` | `technical` |
+| Próbavásárlás és szolgáltatásaudit / Mystery Shopping and Service Audit | `/hu/szolgaltatasok/mystery-shopping-helyszini-audit` | `/en/szolgaltatasok/mystery-shopping-helyszini-audit` | `mystery` |
+| Rendezvénybiztosítás / Event Security | `/hu/szolgaltatasok/rendezvenybiztositas` | `/en/szolgaltatasok/rendezvenybiztositas` | `cleaning` |
+| Hard FM | `/hu/szolgaltatasok/hard-fm` | `/en/szolgaltatasok/hard-fm` | `hardfm` |
+| Soft FM | `/hu/szolgaltatasok/soft-fm` | `/en/szolgaltatasok/soft-fm` | `green` |
 
 Canonical/legacy map:
 
@@ -300,14 +321,15 @@ approved later.
 
 `app/sitemap.ts` includes:
 
-- locale homepages for `hu`, `en`, `de`, `zh`;
-- HU legal pages only;
+- indexable locale homepages for `hu` and `en`;
+- reviewed HU/EN legal pages only;
 - service detail paths returned by `getAllPublishedServicePathsForBuild`.
 
 It must not include:
 
 - legacy service detail URLs;
-- EN/DE/ZH service detail URLs until localized content is ready;
+- DE/ZH service detail URLs until localized content is ready;
+- DE/ZH homepage URLs while they remain partial/noindexed;
 - admin/API routes;
 - draft, inactive, or incomplete service pages.
 
@@ -321,8 +343,9 @@ safely, so a stale related slug should not break the page.
 ### Homepage and Footer Links
 
 Homepage service cards and footer service links are rendered from active
-top-level services. Detail links are HU-only and are added only when the slug is
-present in the DB-backed ready HU service detail slug list.
+top-level services. Detail links are locale-aware and are added only when the
+exact `locale + slug` pair is present in the DB-backed ready service detail
+path list.
 
 Files:
 
@@ -334,7 +357,9 @@ Files:
 Rules:
 
 - HU ready services link to `/hu/szolgaltatasok/<canonical-slug>`.
-- EN/DE/ZH service cards/footer entries do not link to service detail pages.
+- EN ready services link to `/en/szolgaltatasok/<canonical-slug>`.
+- DE/ZH service cards/footer entries remain unlinked/fallback unless their
+  locale-specific detail fields become ready later.
 - Unready services fall back to safe homepage anchor behavior.
 - Legacy slugs are never used for public service detail links.
 
@@ -355,7 +380,8 @@ safely.
 The Services admin module can edit homepage-card fields and service-detail
 fields. Publishing is guarded by a HU baseline requirement. Public routes still
 apply the stricter locale-specific readiness predicate, so admin publication
-does not accidentally publish EN/DE/ZH pages without their required fields.
+does not accidentally publish DE/ZH pages or any future localized page without
+its required fields.
 
 Service admin mutations revalidate:
 
@@ -484,11 +510,14 @@ Request pipeline:
 The DB insert is primary storage. If message storage fails, the endpoint returns
 500 because the lead cannot be safely accepted without persistence.
 
-Rate limiting uses Upstash/Vercel KV-compatible Redis when
-`UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` are configured.
-Production requires the durable limiter and fails closed before DB insert/email
-if Redis is missing or unavailable. Local development and Vercel Preview may
-fall back to the in-memory limiter with a non-secret warning.
+Rate limiting uses Upstash/Vercel KV-compatible Redis when either
+`UPSTASH_REDIS_REST_URL` + `UPSTASH_REDIS_REST_TOKEN` or Vercel KV's
+`KV_REST_API_URL` + `KV_REST_API_TOKEN` are configured. It must not use
+`KV_REST_API_READ_ONLY_TOKEN`, because the limiter needs write access to
+increment counters. Production requires the durable limiter and fails closed
+before DB insert/email if Redis is missing or unavailable. Local development
+and Vercel Preview may fall back to the in-memory limiter with a non-secret
+warning.
 
 ### Email Notification Labels
 
@@ -496,7 +525,45 @@ fall back to the in-memory limiter with a non-secret warning.
 slugs to Hungarian labels. This protects the notification email from stale
 legacy submissions while the public site moves to canonical slugs.
 
-## 8. Admin Architecture
+## 8. Analytics Architecture
+
+Analytics is direct GA4, not Google Tag Manager. The public measurement ID is
+provided through `NEXT_PUBLIC_GA4_ID`.
+
+Files:
+
+- `components/analytics/AnalyticsConsentBanner.tsx`
+- `components/analytics/GoogleAnalytics.tsx`
+- `components/analytics/CookieSettingsButton.tsx`
+- `lib/analytics/consent.ts`
+- `lib/analytics/events.ts`
+- `tests/analytics-consent.spec.ts`
+- `scripts/qa-analytics.mjs`
+
+Behavior:
+
+- before analytics consent, no `gtag.js` script is injected and no GA collect
+  request is sent;
+- rejection persists client-side and keeps GA4 blocked;
+- acceptance loads `https://www.googletagmanager.com/gtag/js` and then sends
+  explicit `page_view` events;
+- route changes send additional page views only after consent and script load;
+- missing `NEXT_PUBLIC_GA4_ID` disables GA4 loading without breaking the site;
+- business events are PII-guarded and do not include names, email addresses,
+  phone numbers, company names, message text, IP addresses, or free-text form
+  fields.
+
+Automated QA:
+
+```bash
+npm run qa:analytics -- https://www.afm.hu --allow-production
+```
+
+The QA wrapper requires explicit production allowance, intercepts `/api/contact`
+so no real contact request or DB write occurs, and intercepts GA collect in the
+real-script smoke so no real test hit is sent.
+
+## 9. Admin Architecture
 
 ### Authentication
 
@@ -534,6 +601,11 @@ The upload routes:
 - require an authenticated admin session;
 - validate folder allowlists;
 - validate MIME type and size;
+- validate file signatures before upload/processing:
+  - PDF must start with `%PDF`;
+  - JPEG must start with `FF D8 FF`;
+  - PNG must start with `89 50 4E 47 0D 0A 1A 0A`;
+  - WEBP must match `RIFF....WEBP`;
 - use UUID-derived filenames, not user-supplied filenames;
 - return public Blob URLs.
 
@@ -548,7 +620,7 @@ homepages, because the homepage logo strip depends on partner data.
 Admin news mutations revalidate `/hu`, `/hu/hirek`, affected HU article detail
 paths when the slug is known, and `/sitemap.xml`.
 
-## 9. Database / Migration Architecture
+## 10. Database / Migration Architecture
 
 ### Database Stack
 
@@ -560,6 +632,11 @@ The project uses:
 - `drizzle/meta/` journal and snapshot metadata;
 - `lib/db/schema.ts` as the TypeScript schema source;
 - `lib/db` as the DB connection export.
+
+Production launch note: the production Neon branch was restored from the
+approved staging branch during launch. Known branch IDs and backup branch names
+are tracked in `docs/staging_runbook.md`. Application seed/import scripts were
+not the production launch mechanism.
 
 ### Important Tables
 
@@ -623,7 +700,7 @@ Do not run migrations casually. The intended flow is:
 Do not use `db:push` casually. It is a schema-sync tool, not the normal release
 path for tracked migrations.
 
-## 10. Seed / Content Operations
+## 11. Seed / Content Operations
 
 ### Baseline Service Seed
 
@@ -685,7 +762,7 @@ endpoint for staging or production.
 `npx tsx scripts/seed-pilot-*.ts`, and refuses non-staging endpoints. It prints
 only redacted target information.
 
-## 11. SEO / GEO / AI-Search Architecture
+## 12. SEO / GEO / AI-Search Architecture
 
 ### Metadata
 
@@ -715,17 +792,19 @@ For the current service layer that means HU and `x-default`.
 
 `app/sitemap.ts` emits:
 
-- `/hu`, `/en`, `/de`, `/zh`;
+- `/hu`, `/en`;
 - `/hu/adatvedelem`, `/hu/aszf`, `/hu/impresszum`;
+- `/en/adatvedelem`, `/en/aszf`, `/en/impresszum`;
 - ready service detail URLs from the DB-backed readiness helper;
 - `/hu/hirek` and ready HU article detail URLs when at least one HU-ready
   article exists.
 
 It intentionally excludes:
 
-- non-HU legal pages;
+- DE/ZH homepage routes while they remain partial/noindexed;
+- DE/ZH legal pages;
 - legacy service detail URLs;
-- non-ready EN/DE/ZH service detail URLs;
+- non-ready DE/ZH service detail URLs;
 - EN/DE/ZH article URLs;
 - admin/API/draft/internal routes.
 
@@ -767,6 +846,14 @@ HU article detail pages include:
 Do not add unverified partner/customer/award/rating/schema relationships.
 Partner logos are visual trust assets, not schema proof.
 
+Organization and ProfessionalService JSON-LD include the official LinkedIn
+company profile in `sameAs`:
+
+`https://www.linkedin.com/company/avenir-facility-management`
+
+This is an official profile/entity link only. It is not a partner, client,
+testimonial, certification, or tracking claim.
+
 ### AI-Search Files
 
 `public/llms.txt` is the concise AI-search reference.
@@ -776,11 +863,11 @@ Partner logos are visual trust assets, not schema proof.
 Rules:
 
 - include only canonical public URLs;
-- include the eight canonical HU service detail URLs;
+- include the eight canonical HU and eight canonical EN service detail URLs;
 - add public article URLs only after the article content is approved for
   AI-search grounding;
 - exclude legacy slugs;
-- exclude EN/DE/ZH service detail URLs until ready;
+- exclude DE/ZH service detail URLs until ready;
 - exclude EN/DE/ZH article URLs until localized article routes and content are
   approved;
 - exclude admin/API/internal URLs;
@@ -801,7 +888,7 @@ Rules:
 
 New public claims must be checked against it before publishing.
 
-## 12. Security / Release Safety
+## 13. Security / Release Safety
 
 ### Production Safety
 
@@ -837,7 +924,7 @@ Rules:
 - preview/staging gets `noindex`;
 - non-ready service detail pages return 404;
 - legacy service detail URLs return 404;
-- non-HU service detail pages stay 404 until required fields exist;
+- DE/ZH service detail pages stay 404 until required fields exist;
 - build-time DB service path failure fails loudly rather than emitting stale
   SEO artifacts.
 
@@ -845,14 +932,15 @@ Rules:
 
 Admin upload routes:
 
-- require session;
+- require the shared `requireAdmin()` allowlist helper;
 - validate MIME type;
+- validate magic-byte signatures for PDF/JPEG/PNG/WEBP;
 - enforce file size;
 - whitelist folders;
 - use UUID filenames;
 - avoid user-supplied destination names.
 
-## 13. Future AOS Architecture
+## 14. Future AOS Architecture
 
 ### Separate AOS Application
 
@@ -988,7 +1076,7 @@ Guardrails:
 - Do not invite sensitive personal-data submissions through the standard
   contact form.
 
-## 14. Extension Playbooks
+## 15. Extension Playbooks
 
 ### Add a New Service Detail Page
 
@@ -1003,8 +1091,8 @@ Guardrails:
 8. Use canonical related service slugs only.
 9. Run dry-run against staging.
 10. Run write mode against staging only after review.
-11. QA route 200, legacy 404, EN/DE/ZH 404, sitemap, hreflang, related links,
-    contact prefill, and copy compliance.
+11. QA route 200, legacy 404, non-ready locale 404s, sitemap, hreflang,
+    related links, contact prefill, and copy compliance.
 12. Update AGENTS, staging runbook, service playbook, and roadmap as needed.
 
 ### Add Partner Logo Approval
@@ -1039,7 +1127,7 @@ For future article work:
 7. Do not add client, partner, testimonial, case-study, award, rating, OPTEN,
    or EcoVadis claims unless verified.
 
-### Add EN/DE/ZH Service Translations Later
+### Add Additional Service Translations Later
 
 1. Translate and review every required field for the target locale.
 2. Fill `seoTitle*`, `seoDescription*`, `longDesc*`, and
@@ -1051,13 +1139,12 @@ For future article work:
 7. Verify no HU fallback content is accidentally exposed as localized detail
    content.
 
-## 15. Do-Not-Break Rules
+## 16. Do-Not-Break Rules
 
 Before changing this project, check:
 
 - Do not publish legacy service detail URLs.
-- Do not publish EN/DE/ZH service detail pages without localized required
-  fields.
+- Do not publish DE/ZH service detail pages without localized required fields.
 - Do not use legacy slugs in public service detail links.
 - Do not print full DB URLs.
 - Do not run production migrations without explicit approval.
