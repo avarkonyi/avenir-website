@@ -252,7 +252,7 @@ async function main() {
 
         descriptionHu:
           "Az ISO 9001 a minőségirányítási rendszerek nemzetközi szabványa. " +
-          "Az ISO 9001 tanúsítványon szereplő hatókör megnevezése: \"Teljeskörű biztonsági szolgáltatás\". " +
+          "Az ISO 9001 tanúsítványon szereplő hatókör megnevezése: \"Teljes körű biztonsági szolgáltatás\". " +
           "A tanúsított irányítási rendszer a tanúsítványon meghatározott hatókör szerint " +
           "került auditálásra a NAH-akkreditált MARTON Szakértő Iroda által. " +
           "A tanúsítvány az IAF MLA megállapodás keretében nemzetközileg is elismert.",
@@ -276,7 +276,7 @@ async function main() {
           "该证书在 IAF MLA 协议下获得国际认可。",
 
         // verbatim from PDF
-        scopeHu: "Teljeskörű biztonsági szolgáltatás",
+        scopeHu: "Teljes körű biztonsági szolgáltatás",
         // TRANSLATION DRAFT: review by user
         scopeEn: "Comprehensive security services",
         // TRANSLATION DRAFT: review by user

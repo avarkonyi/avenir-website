@@ -128,11 +128,6 @@ export const META_DESCRIPTIONS: Record<SeoLocale, string> = {
   zh: "Avenir 在匈牙利提供安保服务、安防技术、现场审核和设施管理支持，一份合同，一个责任明确的对接人。",
 };
 
-// Keywords meta tag — HU primary; other locales fall back to HU since
-// keywords carry low SEO weight in 2026. Optimize per-locale later.
-export const META_KEYWORDS_HU =
-  "facility management, épületüzemeltetés, vagyonvédelem, őrzés-védelem, takarítás, portaszolgálat, Budapest, FM szolgáltató, hard FM, mystery shopping";
-
 // Security-first positioning: Avenir's primary expertise is property
 // protection (vagyonvédelem); integrated FM is complementary. Used as
 // description for both Organization and ProfessionalService schemas.

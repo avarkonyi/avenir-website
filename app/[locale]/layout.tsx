@@ -16,7 +16,6 @@ import {
   OG_LOCALE_MAP,
   META_DESCRIPTIONS,
   META_TAGLINES,
-  META_KEYWORDS_HU,
   SECURITY_FIRST_DESCRIPTION,
   SCHEMA_KNOWS_ABOUT,
   credentialId,
@@ -76,7 +75,6 @@ export async function generateMetadata({
     metadataBase: new URL(SEO_DATA.url),
     title,
     description,
-    keywords: META_KEYWORDS_HU,
     authors: [{ name: SEO_DATA.legalNameShort }],
     robots: {
       index: isIndexableLocale,

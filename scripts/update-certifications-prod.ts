@@ -38,7 +38,7 @@ async function main() {
       pdfUrl: "/certifications/iso-9001-marton-843579099.pdf",
       descriptionHu:
         "Az ISO 9001 a minőségirányítási rendszerek nemzetközi szabványa. " +
-        "Az ISO 9001 tanúsítványon szereplő hatókör megnevezése: \"Teljeskörű biztonsági szolgáltatás\". " +
+        "Az ISO 9001 tanúsítványon szereplő hatókör megnevezése: \"Teljes körű biztonsági szolgáltatás\". " +
         "A tanúsított irányítási rendszer a tanúsítványon meghatározott hatókör szerint " +
         "került auditálásra a NAH-akkreditált MARTON Szakértő Iroda által. " +
         "A tanúsítvány az IAF MLA megállapodás keretében nemzetközileg is elismert.",

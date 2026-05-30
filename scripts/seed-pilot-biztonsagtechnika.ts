@@ -60,7 +60,7 @@ const PILOT_HU = {
     "támogatást is kapjon. Ide tartozhat a kamerarendszer, a beléptető " +
     "rendszer, a behatolásjelzés, a riasztási folyamat, a jelzések " +
     "továbbítása és az események dokumentálása.\n\n" +
-    "Avenir a biztonságtechnikai működést nem elszigetelt " +
+    "Az Avenir a biztonságtechnikai működést nem elszigetelt " +
     "eszközbeszerzésként kezeli. A helyszíni felmérés alapján azt " +
     "vizsgáljuk, hol vannak belépési pontok, gyenge ellenőrzési zónák, " +
     "visszatérő események, kritikus területek és olyan folyamatok, ahol a " +

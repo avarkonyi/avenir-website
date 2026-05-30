@@ -48,7 +48,7 @@ const LEGACY_SLUG = "mystery";
 const PILOT_HU = {
   seoTitle: "Próbavásárlás és szolgáltatásaudit | Avenir",
   seoDescription:
-    "Mystery Shopping, brand audit, próbautazás és szolgáltatásaudit " +
+    "Mystery Shopping, Brand Audit, próbautazás és szolgáltatásaudit " +
     "ügyfélélmény, folyamatkövetés és megfelelési szempontok vizsgálatára.",
   valueProposition:
     "A próbavásárlás és szolgáltatásaudit valós ügyfélhelyzetben mutatja meg, " +
@@ -203,7 +203,7 @@ const PILOT_HU = {
     {
       q: "Mi vizsgálható a szolgáltatásaudit során?",
       a:
-        "Az audit vizsgálhat brand audit szempontokat, Situation Shopping " +
+        "Az audit vizsgálhat Brand Audit szempontokat, Situation Shopping " +
         "forgatókönyveket, ügyfélút-lépéseket, szolgáltatásminőségi " +
         "kritériumokat, egyeztetett megfelelési pontokat és több helyszín " +
         "közötti konzisztenciát. Példák lehetnek a kommunikáció, tájékoztatás, " +

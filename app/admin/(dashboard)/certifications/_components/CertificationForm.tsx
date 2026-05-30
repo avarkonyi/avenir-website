@@ -799,7 +799,7 @@ function LocaleFields({
           maxLength={1000}
           disabled={pending}
           style={{ ...inputStyle(), resize: "vertical", fontFamily: "inherit" }}
-          placeholder="pl. teljeskörű biztonsági szolgáltatás"
+          placeholder="pl. teljes körű biztonsági szolgáltatás"
         />
       </Field>
     </div>
