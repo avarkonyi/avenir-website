@@ -360,6 +360,50 @@ Production expected behavior:
   completed later;
 - production must not send `X-Robots-Tag: noindex, nofollow`.
 
+### Step 2 Foundation Test Baseline
+
+Before embedded service quote forms are added, keep this baseline green:
+
+```bash
+npm run test
+npm run qa:copy
+npm run ci:local
+```
+
+Current coverage:
+
+- `npm run test` covers pure contact payload validation, contact service-key
+  normalization, honeypot schema acceptance, and helper-level analytics PII
+  filtering. It does not call the contact API, database, Resend, Redis/KV, or
+  production services.
+- `npm run qa:preview -- <url>` covers public route status, HU/EN service
+  readiness, DE/ZH and legacy service unavailability, legal route policy,
+  sitemap/robots/llms safeguards, and production noindex policy when explicitly
+  allowed.
+- `npm run qa:analytics -- <url>` covers consent-gated direct GA4 behavior,
+  analytics rejection/acceptance, GA collect attempts, safe business events,
+  contact-form analytics with `/api/contact` mocked, and PII absence in
+  analytics payloads.
+- `npm run qa:copy` scans source/public service-marketing surfaces for stale
+  service labels, prohibited proof-sensitive wording, exact licence-number
+  placement in service seed copy, and known claim guardrails.
+- `npm run ci:local` runs lint, TypeScript, unit tests, copy guard, and a local
+  production build. It is for local/pre-release use where the local DB target
+  is intentionally configured and verified.
+
+Not yet covered:
+
+- real production contact-form submission; keep this as a manual, explicitly
+  approved non-sensitive smoke test;
+- database write-path integration tests;
+- Resend delivery integration;
+- Redis/KV live integration;
+- visual regression and mobile overflow automation.
+
+The GitHub Actions workflow runs the safe subset that does not require DB
+secrets: install, typecheck, lint, unit tests, and `qa:copy`. It does not run
+production smoke tests, migrations, seed scripts, or DB writes.
+
 ### AI-search file QA
 
 The Vercel Preview should expose:

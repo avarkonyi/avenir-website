@@ -241,6 +241,8 @@ Useful verification commands:
 ```bash
 npx tsc --noEmit
 npm run lint
+npm run test
+npm run qa:copy
 ```
 
 Run a production build only when DB, env, and network requirements are
@@ -252,6 +254,16 @@ npm run build
 
 The build can depend on DB-backed static generation and Google Fonts network
 fetching. Vercel Preview remains the normal pre-merge build gate.
+
+Before starting embedded service quote forms or other funnel changes, run the
+local foundation baseline:
+
+```bash
+npm run ci:local
+```
+
+`ci:local` runs lint, TypeScript, unit tests, copy guard, and build. It does not
+run production smoke checks and does not write to the database.
 
 ## Database and Migrations
 
