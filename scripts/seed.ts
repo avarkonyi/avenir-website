@@ -1,5 +1,7 @@
 // Seed initial data for the 4 tables.
-// Usage: npm run db:seed
+// Usage:
+//   npm run db:seed          # dry-run preview
+//   npm run db:seed:apply    # staging write
 //
 // Idempotent: each table is checked for existing rows before insert.
 // Re-running is always safe — populated tables are skipped with a log
@@ -11,10 +13,50 @@
 
 import "./load-env";
 import { count } from "drizzle-orm";
+import { ensureDbTarget, readDbTargetArgs } from "./ensure-staging-db";
 import { db, news, positions, clientReferences, certifications } from "../lib/db";
 
+const SCRIPT_NAME = "seed";
+
+function hasArg(name: string): boolean {
+  return process.argv.includes(name);
+}
+
+function usageAndExit(message: string): never {
+  console.error(`${SCRIPT_NAME}: ${message}`);
+  console.error(
+    [
+      "",
+      "Usage:",
+      "  tsx scripts/seed.ts --dry-run",
+      "  tsx scripts/seed.ts --apply",
+      "",
+      "If neither --dry-run nor --apply is supplied, the script defaults to dry-run.",
+      "Production is disabled for this broad baseline seed after launch.",
+    ].join("\n"),
+  );
+  process.exit(1);
+}
+
 async function main() {
-  console.log("--- seed start ---");
+  const explicitDryRun = hasArg("--dry-run");
+  const isApply = hasArg("--apply");
+
+  if (explicitDryRun && isApply) {
+    usageAndExit("use only one of --dry-run or --apply");
+  }
+
+  const isDryRun = !isApply;
+  const { target, allowProduction } = readDbTargetArgs();
+
+  console.log(`--- seed ${isDryRun ? "DRY-RUN" : "APPLY"} start ---`);
+  ensureDbTarget({ scriptName: SCRIPT_NAME, isDryRun, target, allowProduction });
+
+  if (target === "production") {
+    usageAndExit(
+      "production baseline seeding is disabled after launch; use Neon branch restore or a targeted guarded sync script instead",
+    );
+  }
 
   // Pre-flight: count existing rows in each table to gate inserts.
   const [{ value: refsCount }] = await db
@@ -35,6 +77,8 @@ async function main() {
     console.log(
       `client_references already populated (${refsCount} rows), skipping`,
     );
+  } else if (isDryRun) {
+    console.log("would seed client_references (4 rows)");
   } else {
     await db.insert(clientReferences).values([
       {
@@ -78,6 +122,8 @@ async function main() {
     console.log(
       `positions already populated (${positionsCount} rows), skipping`,
     );
+  } else if (isDryRun) {
+    console.log("would seed positions (4 rows)");
   } else {
     await db.insert(positions).values([
       {
@@ -153,6 +199,8 @@ async function main() {
 
   if (Number(newsCount) > 0) {
     console.log(`news already populated (${newsCount} rows), skipping`);
+  } else if (isDryRun) {
+    console.log("would seed news (2 rows)");
   } else {
     const article1 = {
       slug: "avenir-weboldal-szolgaltatasoldalak",
@@ -232,6 +280,8 @@ async function main() {
     console.log(
       `certifications already populated (${certsCount} rows), skipping`,
     );
+  } else if (isDryRun) {
+    console.log("would seed certifications (2 rows)");
   } else {
     await db.insert(certifications).values([
       // ─── ISO 9001 — VERIFIED (cert 843579099, MARTON Szakértő Iroda, 2026-03-19 → 2029-03-18) ───
@@ -385,7 +435,9 @@ async function main() {
   // (Populated by contact-form submissions once the contact API is wired.
   // No count-check or insert here — the table is intentionally untouched.)
 
-  console.log("--- seed complete ---");
+  console.log(
+    isDryRun ? "--- seed DRY-RUN complete; no rows written ---" : "--- seed complete ---",
+  );
 }
 
 main()

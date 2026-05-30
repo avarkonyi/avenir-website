@@ -1,10 +1,10 @@
 // One-shot pilot data seeder for "Élőerős objektumőrzés" (P5 Phase 1).
 //
 // Usage:
-//   npx tsx scripts/seed-pilot-objektumorzes.ts            # writes
+//   npx tsx scripts/seed-pilot-objektumorzes.ts --apply    # writes
 //   npx tsx scripts/seed-pilot-objektumorzes.ts --dry-run  # read-only preview
 //
-// What it does (normal mode):
+// What it does (--apply mode):
 //   1. Resolves the existing canonical row by slug — first looking for
 //      "objektumorzes", then falling back to the legacy "security"
 //      slug. The row is renamed in-place if it still uses the legacy
@@ -14,7 +14,7 @@
 //      process steps, trust items, FAQ, related services).
 //   3. Sets isPublished=true so the public detail page renders.
 //
-// Dry-run mode (--dry-run):
+// Dry-run mode (default, or --dry-run):
 //   - Loads env identically to the live mode.
 //   - Prints a credential-free DATABASE_URL identity (host + db only)
 //     so the operator can confirm they are pointing at staging, not
@@ -297,7 +297,15 @@ function printDiff(
 }
 
 async function main() {
-  const isDryRun = process.argv.includes("--dry-run");
+  const explicitDryRun = process.argv.includes("--dry-run");
+  const isApply = process.argv.includes("--apply");
+
+  if (explicitDryRun && isApply) {
+    console.error("Use only one of --dry-run or --apply.");
+    process.exit(1);
+  }
+
+  const isDryRun = !isApply;
   const banner = isDryRun
     ? "--- seed-pilot-objektumorzes DRY-RUN start ---"
     : "--- seed-pilot-objektumorzes start ---";
@@ -371,7 +379,7 @@ async function main() {
     console.log("");
     console.log(
       `--- seed-pilot-objektumorzes DRY-RUN done — no rows written. ` +
-        `Re-run without --dry-run to apply. ---`,
+        `Re-run with --apply to apply. ---`,
     );
     return;
   }

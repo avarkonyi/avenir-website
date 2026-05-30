@@ -281,6 +281,11 @@ npm run db:migrate:prod
 
 Never print full `DATABASE_URL` values.
 
+Post-launch write-script rule: dry-run first, then explicit apply. Production
+operations require `--allow-production` and endpoint verification for
+`ep-young-meadow-aln5ux5m`. Staging operations must verify
+`ep-twilight-sound-al2b7jsb`.
+
 ## Seed Scripts
 
 Service content operations are split:
@@ -289,9 +294,39 @@ Service content operations are split:
 - `scripts/seed-pilot-*.ts` scripts publish one HU service detail page at a
   time.
 
+Baseline seed scripts now default to dry-run. Staging writes require the
+explicit apply package scripts:
+
+```bash
+npm run db:seed
+npm run db:seed:apply
+npm run db:seed-services
+npm run db:seed-services:apply
+```
+
+Pilot seed scripts also default to dry-run and require `--apply` for writes:
+
+```bash
+npx tsx scripts/seed-pilot-hard-fm.ts
+npx tsx scripts/seed-pilot-hard-fm.ts --apply
+```
+
+Broad baseline seed package commands are disabled for production after launch.
+Use Neon branch-level restore or targeted guarded sync scripts for production
+data synchronization.
+
+Targeted guarded sync scripts include:
+
+- `db:update-service-display-copy`
+- `db:import-service-translations`
+- `db:update-service-related-slugs`
+- `db:sync-pilot-service-content`
+- `db:update-certs`
+- `db:update-positions`
+
 Run dry-runs first and verify the DB target before writing. Pilot seed scripts
 can overwrite service copy in the DB for their target service. Do not run seed
-scripts on production without an approved release plan.
+scripts on production.
 
 ## Safe Commands
 
@@ -308,7 +343,7 @@ Pilot seed dry-runs are acceptable only when the target is verified and the task
 explicitly allows seed script execution:
 
 ```bash
-npx tsx scripts/seed-pilot-hard-fm.ts --dry-run
+npx tsx scripts/seed-pilot-hard-fm.ts
 ```
 
 ## Forbidden / Dangerous Commands

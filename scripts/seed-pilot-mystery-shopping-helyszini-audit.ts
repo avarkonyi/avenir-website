@@ -1,10 +1,10 @@
 // One-shot pilot data seeder for "Próbavásárlás és szolgáltatásaudit" (P5 Phase 1).
 //
 // Usage:
-//   npx tsx scripts/seed-pilot-mystery-shopping-helyszini-audit.ts            # writes
+//   npx tsx scripts/seed-pilot-mystery-shopping-helyszini-audit.ts --apply    # writes
 //   npx tsx scripts/seed-pilot-mystery-shopping-helyszini-audit.ts --dry-run  # read-only preview
 //
-// What it does (normal mode):
+// What it does (--apply mode):
 //   1. Resolves exactly one existing row by slug, looking for the
 //      canonical "mystery-shopping-helyszini-audit" slug or the
 //      legacy "mystery" slug. The row is renamed in-place if it still
@@ -14,7 +14,7 @@
 //      process steps, trust items, FAQ, related services).
 //   3. Sets isPublished=true so the HU public detail page renders.
 //
-// Dry-run mode (--dry-run):
+// Dry-run mode (default, or --dry-run):
 //   - Loads env identically to live mode.
 //   - Prints a credential-free DATABASE_URL identity (host + db only)
 //     so the operator can confirm staging vs production.
@@ -321,7 +321,15 @@ function printDiff(
 }
 
 async function main() {
-  const isDryRun = process.argv.includes("--dry-run");
+  const explicitDryRun = process.argv.includes("--dry-run");
+  const isApply = process.argv.includes("--apply");
+
+  if (explicitDryRun && isApply) {
+    console.error("Use only one of --dry-run or --apply.");
+    process.exit(1);
+  }
+
+  const isDryRun = !isApply;
   const banner = isDryRun
     ? "--- seed-pilot-mystery-shopping-helyszini-audit DRY-RUN start ---"
     : "--- seed-pilot-mystery-shopping-helyszini-audit start ---";
@@ -398,7 +406,7 @@ async function main() {
     console.log("");
     console.log(
       "--- seed-pilot-mystery-shopping-helyszini-audit DRY-RUN done - no rows written. " +
-        "Re-run without --dry-run to apply. ---",
+        "Re-run with --apply to apply. ---",
     );
     return;
   }

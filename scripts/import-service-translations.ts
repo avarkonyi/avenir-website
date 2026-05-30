@@ -117,6 +117,8 @@ function usageAndExit(message?: string): never {
       "  tsx scripts/import-service-translations.ts --target production --allow-production --locale en --file docs/translations/public_site_translation_matrix_en.csv --include-draft --include-legal-review --apply",
       "  tsx scripts/import-service-translations.ts --clear-locale en --dry-run",
       "  tsx scripts/import-service-translations.ts --clear-locale en --apply",
+      "",
+      "If neither --dry-run nor --apply is supplied, the script defaults to dry-run.",
     ].join("\n"),
   );
   process.exit(1);
@@ -670,12 +672,13 @@ async function main() {
   const locale = readArg("--locale");
   const clearLocale = readArg("--clear-locale");
   const fileArg = readArg("--file");
-  const isDryRun = hasArg("--dry-run");
+  const explicitDryRun = hasArg("--dry-run");
   const isApply = hasArg("--apply");
 
-  if (isDryRun === isApply) {
-    usageAndExit("choose exactly one of --dry-run or --apply.");
+  if (explicitDryRun && isApply) {
+    usageAndExit("choose only one of --dry-run or --apply.");
   }
+  const isDryRun = !isApply;
   const { target, allowProduction } = readDbTargetArgs();
   if (locale && locale !== "en") usageAndExit("only --locale en is supported by this script.");
   if (clearLocale && clearLocale !== "en") {

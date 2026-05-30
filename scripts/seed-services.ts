@@ -1,7 +1,9 @@
 // Seed the canonical 8 services into the `services` table from the
 // i18n source data (lib/i18n/{hu,en,de,zh}.ts).
 //
-// Usage: npm run db:seed-services
+// Usage:
+//   npm run db:seed-services          # dry-run preview
+//   npm run db:seed-services:apply    # staging write
 //
 // Idempotent per-row upsert by slug — deliberately divergent from
 // scripts/seed.ts's all-or-nothing-per-table pattern. The services
@@ -34,8 +36,31 @@
 
 import "./load-env";
 import { eq, or } from "drizzle-orm";
+import { ensureDbTarget, readDbTargetArgs } from "./ensure-staging-db";
 import { db, services } from "../lib/db";
 import { getTranslation, type Locale } from "../lib/i18n";
+
+const SCRIPT_NAME = "seed-services";
+
+function hasArg(name: string): boolean {
+  return process.argv.includes(name);
+}
+
+function usageAndExit(message: string): never {
+  console.error(`${SCRIPT_NAME}: ${message}`);
+  console.error(
+    [
+      "",
+      "Usage:",
+      "  tsx scripts/seed-services.ts --dry-run",
+      "  tsx scripts/seed-services.ts --apply",
+      "",
+      "If neither --dry-run nor --apply is supplied, the script defaults to dry-run.",
+      "Production is disabled for this broad baseline service seed after launch.",
+    ].join("\n"),
+  );
+  process.exit(1);
+}
 
 type CanonicalEntry = {
   slug: string;
@@ -170,8 +195,27 @@ function pickFromLocale(locale: Locale, slug: string): LocalizedFields {
 }
 
 async function main() {
-  console.log("--- seed-services start ---");
+  const explicitDryRun = hasArg("--dry-run");
+  const isApply = hasArg("--apply");
 
+  if (explicitDryRun && isApply) {
+    usageAndExit("use only one of --dry-run or --apply");
+  }
+
+  const isDryRun = !isApply;
+  const { target, allowProduction } = readDbTargetArgs();
+
+  console.log(`--- seed-services ${isDryRun ? "DRY-RUN" : "APPLY"} start ---`);
+  ensureDbTarget({ scriptName: SCRIPT_NAME, isDryRun, target, allowProduction });
+
+  if (target === "production") {
+    usageAndExit(
+      "production baseline service seeding is disabled after launch; use Neon branch restore or a targeted guarded sync script instead",
+    );
+  }
+
+  let plannedInserted = 0;
+  let plannedUpdated = 0;
   let inserted = 0;
   let updated = 0;
 
@@ -229,29 +273,51 @@ async function main() {
       .limit(1);
 
     if (existing.length === 0) {
-      await db.insert(services).values(values);
-      inserted += 1;
-      console.log(
-        `  + INSERT slug=${meta.slug} sortOrder=${meta.sortOrder}`,
-      );
+      plannedInserted += 1;
+      if (isDryRun) {
+        console.log(
+          `  + WOULD INSERT slug=${meta.slug} sortOrder=${meta.sortOrder}`,
+        );
+      } else {
+        await db.insert(services).values(values);
+        inserted += 1;
+        console.log(
+          `  + INSERT slug=${meta.slug} sortOrder=${meta.sortOrder}`,
+        );
+      }
     } else {
       // Drizzle doesn't auto-touch defaultNow on UPDATE (only INSERT),
       // so set updatedAt explicitly here.
-      await db
-        .update(services)
-        .set({ ...values, updatedAt: new Date() })
-        .where(eq(services.id, existing[0].id));
-      updated += 1;
-      console.log(
-        `  ~ UPDATE slug=${meta.slug} sortOrder=${meta.sortOrder} ` +
-          `(id=${existing[0].id})`,
-      );
+      plannedUpdated += 1;
+      if (isDryRun) {
+        console.log(
+          `  ~ WOULD UPDATE slug=${meta.slug} sortOrder=${meta.sortOrder} ` +
+            `(id=${existing[0].id})`,
+        );
+      } else {
+        await db
+          .update(services)
+          .set({ ...values, updatedAt: new Date() })
+          .where(eq(services.id, existing[0].id));
+        updated += 1;
+        console.log(
+          `  ~ UPDATE slug=${meta.slug} sortOrder=${meta.sortOrder} ` +
+            `(id=${existing[0].id})`,
+        );
+      }
     }
   }
 
-  console.log(
-    `--- seed-services done — ${inserted} inserted, ${updated} updated ---`,
-  );
+  if (isDryRun) {
+    console.log(
+      `--- seed-services DRY-RUN done — ${plannedInserted} insert(s), ` +
+        `${plannedUpdated} update(s) planned; no rows written ---`,
+    );
+  } else {
+    console.log(
+      `--- seed-services done — ${inserted} inserted, ${updated} updated ---`,
+    );
+  }
 }
 
 main().catch((err) => {

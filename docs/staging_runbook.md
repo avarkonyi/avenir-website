@@ -182,6 +182,51 @@ node scripts/verify-db-target.mjs --target staging --runtime-only
 Production DB operations require explicit target verification and explicit
 approval. Never run staging-only DB scripts against production.
 
+## Post-Launch DB Script Safety Matrix
+
+All write-capable CLI scripts must run behind a target guard. The required
+Neon endpoints are:
+
+- staging: `ep-twilight-sound-al2b7jsb`
+- production: `ep-young-meadow-aln5ux5m`
+
+The local staging preflight remains:
+
+```bash
+node scripts/verify-db-target.mjs --target staging --runtime-only
+```
+
+The production preflight is allowed only for an explicitly approved production
+operation:
+
+```bash
+node scripts/verify-db-target.mjs --target production --allow-production --runtime-only
+```
+
+Dry-run before apply is mandatory. Post-launch package behavior is:
+
+| Script family | Default package behavior | Write command | Production behavior |
+| --- | --- | --- | --- |
+| `db:seed` | staging dry-run | `db:seed:apply` | `db:seed:prod` is disabled |
+| `db:seed-services` | staging dry-run | `db:seed-services:apply` | `db:seed-services:prod` is disabled |
+| `scripts/seed-pilot-*.ts` | staging dry-run | direct `--apply` only after explicit approval | staging-only guard; no production target |
+| `db:update-certs` | staging dry-run | `db:update-certs:apply` | `db:update-certs:prod` is production dry-run unless `-- --apply` is added |
+| `db:update-positions` | staging dry-run | `db:update-positions:apply` | `db:update-positions:prod` is production dry-run unless `-- --apply` is added |
+| `db:update-service-display-copy` | staging dry-run | add `-- --apply` | `:prod` requires production preflight and `--allow-production` |
+| `db:import-service-translations` | requires file/locale args; defaults to dry-run mode | add `--apply` | `:prod` requires production preflight and `--allow-production` |
+| `db:update-service-related-slugs` | staging dry-run | add `-- --apply` | `:prod` requires production preflight and `--allow-production` |
+| `db:sync-pilot-service-content` | staging dry-run | `db:sync-pilot-service-content:apply` | `:prod` requires production preflight and `--allow-production` |
+
+Broad baseline seeds are intentionally not production tools after launch.
+Production data synchronization should use Neon branch-level restore or the
+targeted guarded sync scripts that print planned field-level changes and
+support dry-run/apply. Never use `.env.local` target switching as the only
+safety mechanism; always run the explicit target verifier first.
+
+Migration tooling (`db:migrate:prod`, `db:push:prod`) remains separate from
+content synchronization. Use it only with a written migration plan, staging
+test result, backup/rollback path, and explicit production approval.
+
 ## Core Rule
 
 Production is protected.
