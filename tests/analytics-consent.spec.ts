@@ -26,6 +26,9 @@ const ALLOWED_EVENT_PARAM_KEYS = new Set([
   "path",
   "selected_service_key",
   "selected_service_label",
+  "service_slug",
+  "service_label",
+  "form_variant",
 ]);
 
 type AnalyticsNetwork = {

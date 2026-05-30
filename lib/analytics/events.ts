@@ -8,6 +8,11 @@ export type AnalyticsEventName =
   | "phone_click"
   | "email_click"
   | "service_cta_click"
+  | "service_quote_cta_click"
+  | "service_quote_form_open"
+  | "service_quote_form_start"
+  | "service_quote_form_submit_success"
+  | "service_quote_form_submit_error"
   | "special_service_option_selected";
 
 export type AnalyticsEventParams = {
@@ -15,6 +20,9 @@ export type AnalyticsEventParams = {
   path?: string;
   selected_service_key?: string;
   selected_service_label?: string;
+  service_slug?: string;
+  service_label?: string;
+  form_variant?: "service_embedded";
   event_type?: string;
 };
 
@@ -48,6 +56,9 @@ function sanitizeParams(params: AnalyticsEventParams): AnalyticsEventParams {
     ...(params.selected_service_label
       ? { selected_service_label: params.selected_service_label }
       : {}),
+    ...(params.service_slug ? { service_slug: params.service_slug } : {}),
+    ...(params.service_label ? { service_label: params.service_label } : {}),
+    ...(params.form_variant ? { form_variant: params.form_variant } : {}),
     ...(params.event_type ? { event_type: params.event_type } : {}),
   };
 }

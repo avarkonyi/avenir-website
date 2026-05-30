@@ -88,3 +88,25 @@ test("unknown service values are stripped before validation succeeds", () => {
   if (!result.success) return;
   assert.equal(result.data.service, undefined);
 });
+
+test("contact schema accepts embedded service quote metadata", () => {
+  const result = ContactPayloadSchema.safeParse({
+    ...validPayload,
+    form_variant: "service_embedded",
+    source_path: "/hu/szolgaltatasok/objektumorzes",
+  });
+
+  assert.equal(result.success, true);
+  if (!result.success) return;
+  assert.equal(result.data.form_variant, "service_embedded");
+  assert.equal(result.data.source_path, "/hu/szolgaltatasok/objektumorzes");
+});
+
+test("contact schema rejects unsupported form variants", () => {
+  const result = ContactPayloadSchema.safeParse({
+    ...validPayload,
+    form_variant: "unsupported_variant",
+  });
+
+  assert.equal(result.success, false);
+});

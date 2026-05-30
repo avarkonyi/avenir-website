@@ -5,6 +5,7 @@ import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/components/JsonLd";
 import { Icon, ICON_NAMES, type IconName } from "@/components/Icon";
+import { ServiceQuoteCta } from "@/components/ServiceQuoteCta";
 import { TrackedServiceCtaLink } from "@/components/analytics/TrackedServiceCtaLink";
 import { getTranslation, LOCALES, type Locale } from "@/lib/i18n";
 import {
@@ -155,9 +156,8 @@ export default async function ServiceDetailPage({
   );
   const hasFaq = faqEntries.length > 0;
 
-  // Query comes before the hash so a future Contact prefill can read
-  // it via URLSearchParams. Today the hash still lands on the form.
-  const ctaUrl = `/${locale}?service=${encodeURIComponent(slug)}#contact`;
+  const ctaUrl = "#service-quote";
+  const quoteCtaLabel = locale === "hu" ? "Ajánlatkérés" : "Request a quote";
 
   // ── JSON-LD ─────────────────────────────────────────────────────────
   const breadcrumb = {
@@ -314,7 +314,7 @@ export default async function ServiceDetailPage({
                   textDecoration: "none",
                 }}
               >
-                {t.nav.cta}
+                {quoteCtaLabel}
               </TrackedServiceCtaLink>
             </div>
           </div>
@@ -521,6 +521,12 @@ export default async function ServiceDetailPage({
           </Section>
         )}
 
+        <ServiceQuoteCta
+          locale={locale}
+          serviceSlug={slug}
+          serviceLabel={detail.name}
+        />
+
         {/* Related services */}
         {related.length > 0 && (
           <Section
@@ -581,73 +587,6 @@ export default async function ServiceDetailPage({
             </div>
           </Section>
         )}
-
-        {/* Final CTA */}
-        <section
-          style={{
-            background: "#0B1E3E",
-            color: "#fff",
-            padding: "80px 5vw",
-          }}
-        >
-          <div
-            style={{
-              maxWidth: 880,
-              margin: "0 auto",
-              textAlign: "center",
-            }}
-          >
-            <h2
-              style={{
-                fontFamily: "var(--font-head)",
-                fontSize: "clamp(28px, 3.4vw, 42px)",
-                fontWeight: 800,
-                lineHeight: 1.15,
-                marginBottom: 16,
-              }}
-            >
-              {t.contactTitle}
-            </h2>
-            {detail.valueProposition.trim().length > 0 && (
-              <p
-                style={{
-                  color: "rgba(255,255,255,0.78)",
-                  fontSize: 17,
-                  lineHeight: 1.6,
-                  marginBottom: 28,
-                  maxWidth: 640,
-                  marginLeft: "auto",
-                  marginRight: "auto",
-                }}
-              >
-                {detail.valueProposition}
-              </p>
-            )}
-            <div className="service-detail-cta-row service-detail-cta-row--center">
-              <TrackedServiceCtaLink
-                href={ctaUrl}
-                locale={locale}
-                serviceSlug={slug}
-                serviceLabel={detail.name}
-                className="service-detail-cta-button"
-                style={{
-                  background: "#D1172E",
-                  color: "#fff",
-                  fontFamily: "var(--font-head)",
-                  fontWeight: 700,
-                  fontSize: 14,
-                  letterSpacing: 1.5,
-                  textTransform: "uppercase",
-                  padding: "14px 28px",
-                  borderRadius: 2,
-                  textDecoration: "none",
-                }}
-              >
-                {t.nav.cta}
-              </TrackedServiceCtaLink>
-            </div>
-          </div>
-        </section>
       </main>
 
       <Footer
