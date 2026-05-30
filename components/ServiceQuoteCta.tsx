@@ -32,17 +32,17 @@ type Errors = {
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const FORM_VARIANT = "service_embedded" as const;
 
-const COPY = {
+export const SERVICE_QUOTE_COPY = {
   hu: {
     title: "Ajánlatkérés",
-    body: "Írja le röviden az igényt, és munkatársunk visszajelez a megadott elérhetőségen.",
     button: "Ajánlatkérés",
     close: "Mégsem",
     name: "Név",
     email: "E-mail",
     phone: "Telefon",
     company: "Cég (opcionális)",
-    message: "Igény rövid leírása",
+    message: "Üzenet",
+    messagePlaceholder: "Írja le röviden, miben segíthetünk.",
     send: "Küldés",
     sending: "Küldés folyamatban...",
     success:
@@ -55,14 +55,14 @@ const COPY = {
   },
   en: {
     title: "Request a quote",
-    body: "Briefly describe your request and our team will respond using the contact details provided.",
     button: "Request a quote",
     close: "Cancel",
     name: "Name",
     email: "Email",
     phone: "Phone",
     company: "Company (optional)",
-    message: "Request summary",
+    message: "Message",
+    messagePlaceholder: "Briefly describe how we can help.",
     send: "Send",
     sending: "Sending...",
     success:
@@ -84,7 +84,7 @@ export function ServiceQuoteCta({
   serviceSlug: string;
   serviceLabel: string;
 }) {
-  const copy = locale === "hu" ? COPY.hu : COPY.en;
+  const copy = locale === "hu" ? SERVICE_QUOTE_COPY.hu : SERVICE_QUOTE_COPY.en;
   const safeServiceSlug = CANONICAL_SERVICE_SLUGS.has(serviceSlug)
     ? serviceSlug
     : "";
@@ -223,11 +223,14 @@ export function ServiceQuoteCta({
       className="service-quote-cta-section"
       aria-labelledby="service-quote-title"
     >
-      <div className="service-quote-cta">
-        <div className="service-quote-cta__intro">
-          <h2 id="service-quote-title">{copy.title}</h2>
-          <p>{copy.body}</p>
-        </div>
+      <div
+        className={`service-quote-cta${
+          !isOpen && !isSent ? " service-quote-cta--collapsed" : ""
+        }`}
+      >
+        <h2 id="service-quote-title" className="sr-only">
+          {copy.title}
+        </h2>
 
         {!isOpen && !isSent && (
           <button
@@ -333,6 +336,7 @@ export function ServiceQuoteCta({
                 id="service-quote-message"
                 name="message"
                 rows={4}
+                placeholder={copy.messagePlaceholder}
                 value={form.message}
                 onChange={(event) => updateField("message", event.target.value)}
               />

@@ -361,26 +361,11 @@ details > summary:focus-visible {
   box-shadow: 0 8px 28px rgba(11, 30, 62, 0.06);
 }
 
-.service-quote-cta__intro {
-  display: grid;
-  gap: 10px;
-  max-width: 680px;
-}
-
-.service-quote-cta__intro h2 {
-  margin: 0;
-  color: #0B1E3E;
-  font-family: var(--font-head);
-  font-size: clamp(26px, 3vw, 36px);
-  font-weight: 800;
-  line-height: 1.15;
-}
-
-.service-quote-cta__intro p {
-  margin: 0;
-  color: rgba(11, 30, 62, 0.76);
-  font-size: 16px;
-  line-height: 1.65;
+.service-quote-cta--collapsed {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
 }
 
 .service-quote-cta__button,
