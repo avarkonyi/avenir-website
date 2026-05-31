@@ -75,6 +75,8 @@ export const SERVICE_QUOTE_COPY = {
   },
 } as const;
 
+type ServiceQuoteCopy = (typeof SERVICE_QUOTE_COPY)[keyof typeof SERVICE_QUOTE_COPY];
+
 export function ServiceQuoteCta({
   locale,
   serviceSlug,
@@ -218,6 +220,48 @@ export function ServiceQuoteCta({
   };
 
   return (
+    <ServiceQuoteCtaPanel
+      copy={copy}
+      form={form}
+      errors={errors}
+      isOpen={isOpen}
+      isSent={isSent}
+      isSubmitting={isSubmitting}
+      nameRef={nameRef}
+      onOpen={openForm}
+      onClose={closeForm}
+      onSubmit={handleSubmit}
+      onFieldChange={updateField}
+    />
+  );
+}
+
+export function ServiceQuoteCtaPanel({
+  copy,
+  form,
+  errors,
+  isOpen,
+  isSent,
+  isSubmitting,
+  nameRef,
+  onOpen,
+  onClose,
+  onSubmit,
+  onFieldChange,
+}: {
+  copy: ServiceQuoteCopy;
+  form: FormState;
+  errors: Errors;
+  isOpen: boolean;
+  isSent: boolean;
+  isSubmitting: boolean;
+  nameRef: React.RefObject<HTMLInputElement | null>;
+  onOpen: () => void;
+  onClose: () => void;
+  onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
+  onFieldChange: (field: keyof FormState, value: string) => void;
+}) {
+  return (
     <section
       id="service-quote"
       className="service-quote-cta-section"
@@ -228,9 +272,11 @@ export function ServiceQuoteCta({
           !isOpen && !isSent ? " service-quote-cta--collapsed" : ""
         }`}
       >
-        <h2 id="service-quote-title" className="sr-only">
-          {copy.title}
-        </h2>
+        {(!isOpen || isSent) && (
+          <h2 id="service-quote-title" className="sr-only">
+            {copy.title}
+          </h2>
+        )}
 
         {!isOpen && !isSent && (
           <button
@@ -238,7 +284,7 @@ export function ServiceQuoteCta({
             className="service-quote-cta__button"
             aria-expanded={isOpen}
             aria-controls="service-quote-form-panel"
-            onClick={openForm}
+            onClick={onOpen}
           >
             {copy.button}
           </button>
@@ -251,124 +297,141 @@ export function ServiceQuoteCta({
         )}
 
         {isOpen && !isSent && (
-          <form
-            id="service-quote-form-panel"
-            className="service-quote-form"
-            onSubmit={handleSubmit}
-            noValidate
-          >
-            <input
-              type="text"
-              name="_website"
-              value={form._website}
-              onChange={(event) => updateField("_website", event.target.value)}
-              tabIndex={-1}
-              autoComplete="off"
-              aria-hidden="true"
-              className="service-quote-form__honeypot"
-            />
-
-            <div className="service-quote-form__grid">
-              <Field
-                id="service-quote-name"
-                label={copy.name}
-                error={errors.name}
-              >
-                <input
-                  ref={nameRef}
-                  id="service-quote-name"
-                  name="name"
-                  type="text"
-                  autoComplete="name"
-                  value={form.name}
-                  onChange={(event) => updateField("name", event.target.value)}
-                  aria-invalid={!!errors.name}
-                  aria-describedby={
-                    errors.name ? "service-quote-name-error" : undefined
-                  }
-                />
-              </Field>
-
-              <Field
-                id="service-quote-email"
-                label={copy.email}
-                error={errors.email}
-              >
-                <input
-                  id="service-quote-email"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  value={form.email}
-                  onChange={(event) => updateField("email", event.target.value)}
-                  aria-invalid={!!errors.email}
-                  aria-describedby={
-                    errors.email ? "service-quote-email-error" : undefined
-                  }
-                />
-              </Field>
-
-              <Field id="service-quote-phone" label={copy.phone}>
-                <input
-                  id="service-quote-phone"
-                  name="phone"
-                  type="tel"
-                  autoComplete="tel"
-                  value={form.phone}
-                  onChange={(event) => updateField("phone", event.target.value)}
-                />
-              </Field>
-
-              <Field id="service-quote-company" label={copy.company}>
-                <input
-                  id="service-quote-company"
-                  name="company"
-                  type="text"
-                  autoComplete="organization"
-                  value={form.company}
-                  onChange={(event) => updateField("company", event.target.value)}
-                />
-              </Field>
-            </div>
-
-            <Field id="service-quote-message" label={copy.message}>
-              <textarea
-                id="service-quote-message"
-                name="message"
-                rows={4}
-                placeholder={copy.messagePlaceholder}
-                value={form.message}
-                onChange={(event) => updateField("message", event.target.value)}
+          <>
+            <h2 id="service-quote-title" className="service-quote-form__title">
+              {copy.title}
+            </h2>
+            <form
+              id="service-quote-form-panel"
+              className="service-quote-form"
+              onSubmit={onSubmit}
+              noValidate
+            >
+              <input
+                type="text"
+                name="_website"
+                value={form._website}
+                onChange={(event) =>
+                  onFieldChange("_website", event.target.value)
+                }
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                className="service-quote-form__honeypot"
               />
-            </Field>
 
-            {errors.general && (
-              <div
-                className="service-quote-form__error"
-                role="alert"
-                aria-live="assertive"
-              >
-                {errors.general}
+              <div className="service-quote-form__grid">
+                <Field
+                  id="service-quote-name"
+                  label={copy.name}
+                  error={errors.name}
+                >
+                  <input
+                    ref={nameRef}
+                    id="service-quote-name"
+                    name="name"
+                    type="text"
+                    autoComplete="name"
+                    value={form.name}
+                    onChange={(event) =>
+                      onFieldChange("name", event.target.value)
+                    }
+                    aria-invalid={!!errors.name}
+                    aria-describedby={
+                      errors.name ? "service-quote-name-error" : undefined
+                    }
+                  />
+                </Field>
+
+                <Field
+                  id="service-quote-email"
+                  label={copy.email}
+                  error={errors.email}
+                >
+                  <input
+                    id="service-quote-email"
+                    name="email"
+                    type="email"
+                    autoComplete="email"
+                    value={form.email}
+                    onChange={(event) =>
+                      onFieldChange("email", event.target.value)
+                    }
+                    aria-invalid={!!errors.email}
+                    aria-describedby={
+                      errors.email ? "service-quote-email-error" : undefined
+                    }
+                  />
+                </Field>
+
+                <Field id="service-quote-phone" label={copy.phone}>
+                  <input
+                    id="service-quote-phone"
+                    name="phone"
+                    type="tel"
+                    autoComplete="tel"
+                    value={form.phone}
+                    onChange={(event) =>
+                      onFieldChange("phone", event.target.value)
+                    }
+                  />
+                </Field>
+
+                <Field id="service-quote-company" label={copy.company}>
+                  <input
+                    id="service-quote-company"
+                    name="company"
+                    type="text"
+                    autoComplete="organization"
+                    value={form.company}
+                    onChange={(event) =>
+                      onFieldChange("company", event.target.value)
+                    }
+                  />
+                </Field>
               </div>
-            )}
 
-            <div className="service-quote-form__actions">
-              <button
-                type="submit"
-                className="service-quote-cta__button"
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? copy.sending : copy.send}
-              </button>
-              <button
-                type="button"
-                className="service-quote-form__secondary"
-                onClick={closeForm}
-              >
-                {copy.close}
-              </button>
-            </div>
-          </form>
+              <Field id="service-quote-message" label={copy.message}>
+                <textarea
+                  id="service-quote-message"
+                  name="message"
+                  rows={4}
+                  placeholder={copy.messagePlaceholder}
+                  value={form.message}
+                  onChange={(event) =>
+                    onFieldChange("message", event.target.value)
+                  }
+                />
+              </Field>
+
+              {errors.general && (
+                <div
+                  className="service-quote-form__error"
+                  role="alert"
+                  aria-live="assertive"
+                >
+                  {errors.general}
+                </div>
+              )}
+
+              <div className="service-quote-form__actions">
+                <button
+                  type="submit"
+                  className="service-quote-cta__button"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? copy.sending : copy.send}
+                </button>
+                <button
+                  type="button"
+                  className="service-quote-form__secondary"
+                  onClick={onClose}
+                >
+                  {copy.close}
+                </button>
+              </div>
+            </form>
+          </>
         )}
       </div>
     </section>

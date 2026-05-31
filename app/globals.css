@@ -404,6 +404,11 @@ details > summary:focus-visible {
   transform: translateY(-1px);
 }
 
+.service-quote-cta--collapsed .service-quote-cta__button,
+.service-quote-form__actions .service-quote-cta__button {
+  margin-top: 0;
+}
+
 .service-quote-cta__button:disabled {
   cursor: wait;
   background: #8A1320;
@@ -430,10 +435,19 @@ details > summary:focus-visible {
   line-height: 1.6;
 }
 
+.service-quote-form__title {
+  margin: 0 0 18px;
+  color: #0B1E3E;
+  font-family: var(--font-head);
+  font-size: clamp(24px, 2.5vw, 32px);
+  font-weight: 800;
+  line-height: 1.15;
+}
+
 .service-quote-form {
   display: grid;
-  gap: 18px;
-  margin-top: 28px;
+  gap: 16px;
+  margin-top: 0;
 }
 
 .service-quote-form__grid {
@@ -502,8 +516,10 @@ details > summary:focus-visible {
 .service-quote-form__actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 14px;
   align-items: center;
+  justify-content: flex-start;
+  margin-top: 2px;
 }
 
 .service-quote-form__secondary {
