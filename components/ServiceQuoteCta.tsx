@@ -31,6 +31,7 @@ type Errors = {
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const FORM_VARIANT = "service_embedded" as const;
+const EVENT_TYPE = "service_quote" as const;
 
 export const SERVICE_QUOTE_COPY = {
   hu: {
@@ -142,11 +143,13 @@ export function ServiceQuoteCta({
     service_slug: safeServiceSlug,
     service_label: serviceLabel,
     form_variant: FORM_VARIANT,
+    event_type: EVENT_TYPE,
   });
 
   const openForm = () => {
     trackAnalyticsEvent("service_quote_cta_click", analyticsParams());
     if (!isOpen) {
+      formStartedRef.current = false;
       trackAnalyticsEvent("service_quote_form_open", analyticsParams());
     }
     setIsOpen(true);
@@ -155,6 +158,7 @@ export function ServiceQuoteCta({
 
   const closeForm = () => {
     setIsOpen(false);
+    formStartedRef.current = false;
     setErrors({});
   };
 
@@ -191,10 +195,7 @@ export function ServiceQuoteCta({
     const nextErrors = validate();
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length > 0) {
-      trackAnalyticsEvent("service_quote_form_submit_error", {
-        ...analyticsParams(),
-        event_type: "client_validation",
-      });
+      trackAnalyticsEvent("service_quote_form_submit_error", analyticsParams());
       return;
     }
 
@@ -223,16 +224,10 @@ export function ServiceQuoteCta({
         return;
       }
 
-      trackAnalyticsEvent("service_quote_form_submit_error", {
-        ...analyticsParams(),
-        event_type: `http_${response.status}`,
-      });
+      trackAnalyticsEvent("service_quote_form_submit_error", analyticsParams());
       setErrors({ general: copy.error });
     } catch {
-      trackAnalyticsEvent("service_quote_form_submit_error", {
-        ...analyticsParams(),
-        event_type: "network",
-      });
+      trackAnalyticsEvent("service_quote_form_submit_error", analyticsParams());
       setErrors({ general: copy.error });
     } finally {
       setIsSubmitting(false);

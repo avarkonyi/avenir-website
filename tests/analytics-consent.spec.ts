@@ -250,6 +250,127 @@ test.describe("consent-gated GA4", () => {
     assertAllowedBusinessEventParams(events);
   });
 
+  test("service quote success funnel emits precise events without PII or a real API write", async ({
+    page,
+  }) => {
+    await mockAnalyticsNetwork(page);
+    const contact = await mockContactApi(page, 200, { ok: true });
+
+    await page.goto("/en/szolgaltatasok/objektumorzes", {
+      waitUntil: "networkidle",
+    });
+    await acceptAnalytics(page);
+    await waitForGtagRuntime(page);
+    await openServiceQuoteForm(page);
+
+    await expect
+      .poll(() => analyticsEvents(page, "service_quote_cta_click"))
+      .toHaveLength(1);
+    await expect
+      .poll(() => analyticsEvents(page, "service_quote_form_open"))
+      .toHaveLength(1);
+
+    await fillServiceQuoteForm(page);
+
+    await expect
+      .poll(() => analyticsEvents(page, "service_quote_form_start"))
+      .toHaveLength(1);
+    await page
+      .locator("#service-quote")
+      .getByLabel("Phone")
+      .fill(TEST_PII.phone + " 1");
+    await expect
+      .poll(() => analyticsEvents(page, "service_quote_form_start"))
+      .toHaveLength(1);
+
+    await page.locator("#service-quote").getByRole("button", { name: "Send" }).click();
+
+    await expect
+      .poll(() => analyticsEvents(page, "service_quote_form_submit_success"))
+      .toHaveLength(1);
+
+    expect(contact.requests).toHaveLength(1);
+    const events = await serviceQuoteEvents(page);
+    assertNoPii(events);
+    assertAllowedBusinessEventParams(events);
+    assertServiceQuoteEventParams(events, {
+      locale: "en",
+      serviceSlug: "objektumorzes",
+      serviceLabel: "On-site Security Guarding",
+      path: "/en/szolgaltatasok/objektumorzes",
+    });
+  });
+
+  test("service quote error funnel emits precise error event without PII or a real API write", async ({
+    page,
+  }) => {
+    await mockAnalyticsNetwork(page);
+    const contact = await mockContactApi(page, 500, { ok: false });
+
+    await page.goto("/en/szolgaltatasok/objektumorzes", {
+      waitUntil: "networkidle",
+    });
+    await acceptAnalytics(page);
+    await waitForGtagRuntime(page);
+    await openServiceQuoteForm(page);
+    await fillServiceQuoteForm(page);
+    await page.locator("#service-quote").getByRole("button", { name: "Send" }).click();
+
+    await expect
+      .poll(() => analyticsEvents(page, "service_quote_form_submit_error"))
+      .toHaveLength(1);
+
+    expect(contact.requests).toHaveLength(1);
+    const events = await serviceQuoteEvents(page);
+    assertNoPii(events);
+    assertAllowedBusinessEventParams(events);
+    assertServiceQuoteEventParams(events, {
+      locale: "en",
+      serviceSlug: "objektumorzes",
+      serviceLabel: "On-site Security Guarding",
+      path: "/en/szolgaltatasok/objektumorzes",
+    });
+  });
+
+  test("service quote form_start fires once per open form session", async ({
+    page,
+  }) => {
+    await mockAnalyticsNetwork(page);
+
+    await page.goto("/en/szolgaltatasok/objektumorzes", {
+      waitUntil: "networkidle",
+    });
+    await acceptAnalytics(page);
+    await waitForGtagRuntime(page);
+    await openServiceQuoteForm(page);
+
+    const quote = page.locator("#service-quote");
+    await quote.getByLabel("Name").fill(TEST_PII.name);
+    await quote.getByLabel("Email").fill(TEST_PII.email);
+
+    await expect
+      .poll(() => analyticsEvents(page, "service_quote_form_start"))
+      .toHaveLength(1);
+
+    await quote.getByRole("button", { name: "Cancel" }).click();
+    await openServiceQuoteForm(page);
+    await quote.getByLabel("Name").fill(`${TEST_PII.name} Second`);
+
+    await expect
+      .poll(() => analyticsEvents(page, "service_quote_form_start"))
+      .toHaveLength(2);
+
+    const events = await analyticsEvents(page, "service_quote_form_start");
+    assertNoPii(events);
+    assertAllowedBusinessEventParams(events);
+    assertServiceQuoteEventParams(events, {
+      locale: "en",
+      serviceSlug: "objektumorzes",
+      serviceLabel: "On-site Security Guarding",
+      path: "/en/szolgaltatasok/objektumorzes",
+    });
+  });
+
   test("special service selection emits a safe event and shows the warning", async ({
     page,
   }) => {
@@ -513,6 +634,23 @@ async function fillContactForm(page: Page) {
   await page.getByLabel("Message / Requirements").fill(TEST_PII.message);
 }
 
+async function openServiceQuoteForm(page: Page) {
+  await page
+    .locator("#service-quote")
+    .getByRole("button", { name: "Request a quote" })
+    .click();
+}
+
+async function fillServiceQuoteForm(page: Page) {
+  const quote = page.locator("#service-quote");
+
+  await quote.getByLabel("Name").fill(TEST_PII.name);
+  await quote.getByLabel("Email").fill(TEST_PII.email);
+  await quote.getByLabel("Phone").fill(TEST_PII.phone);
+  await quote.getByLabel("Company (optional)").fill(TEST_PII.company);
+  await quote.getByLabel("Message").fill(TEST_PII.message);
+}
+
 async function preventTelAndMailtoNavigation(page: Page) {
   await page.evaluate(() => {
     document.addEventListener(
@@ -551,6 +689,22 @@ function assertNoPii(
   }
 }
 
+async function serviceQuoteEvents(page: Page) {
+  const eventNames = [
+    "service_quote_cta_click",
+    "service_quote_form_open",
+    "service_quote_form_start",
+    "service_quote_form_submit_success",
+    "service_quote_form_submit_error",
+  ];
+
+  const events = await Promise.all(
+    eventNames.map((eventName) => analyticsEvents(page, eventName)),
+  );
+
+  return events.flat();
+}
+
 function assertAllowedBusinessEventParams(
   events: { params: Record<string, unknown> }[],
 ) {
@@ -558,6 +712,27 @@ function assertAllowedBusinessEventParams(
     for (const key of Object.keys(event.params)) {
       expect(ALLOWED_EVENT_PARAM_KEYS.has(key)).toBe(true);
     }
+  }
+}
+
+function assertServiceQuoteEventParams(
+  events: { params: Record<string, unknown> }[],
+  expected: {
+    locale: string;
+    serviceSlug: string;
+    serviceLabel: string;
+    path: string;
+  },
+) {
+  for (const event of events) {
+    expect(event.params).toEqual({
+      event_type: "service_quote",
+      form_variant: "service_embedded",
+      locale: expected.locale,
+      path: expected.path,
+      service_label: expected.serviceLabel,
+      service_slug: expected.serviceSlug,
+    });
   }
 }
 

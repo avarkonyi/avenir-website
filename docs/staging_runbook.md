@@ -537,6 +537,58 @@ explicit owner approval:
 - verify no name, email, phone, company, message body, or free-text field is
   present in the analytics event payload.
 
+## Service Quote Analytics QA
+
+The embedded service quote funnel is measured only after analytics consent and
+must never send submitted lead data to GA4.
+
+Expected event sequence:
+
+- `service_quote_cta_click`: the collapsed `Ajánlatkérés` / `Request a quote`
+  button is clicked;
+- `service_quote_form_open`: the inline form opens;
+- `service_quote_form_start`: the user first interacts with a visible form
+  field, once per open form session;
+- `service_quote_form_submit_success`: `/api/contact` returns success;
+- `service_quote_form_submit_error`: `/api/contact` returns an error or the
+  submission fails.
+
+Allowed parameters for these events:
+
+- `locale`;
+- `path`;
+- `service_slug`;
+- `service_label` when it is a predefined canonical service label;
+- `form_variant=service_embedded`;
+- `event_type=service_quote`.
+
+Forbidden parameters:
+
+- name;
+- email;
+- phone;
+- company;
+- message body;
+- any free-text form value;
+- IP address.
+
+Manual console check after accepting analytics:
+
+```js
+window.dataLayer?.filter(
+  (entry) =>
+    Array.from(entry).at(0) === "event" &&
+    String(Array.from(entry).at(1)).startsWith("service_quote_"),
+);
+```
+
+Use non-sensitive test data only. The expected event parameter object should
+contain the allowed keys above and no submitted field values. After production
+verification, `service_quote_form_submit_success` should be considered for GA4
+key-event marking. If reporting needs segmentation, register `service_slug`,
+`form_variant`, and `locale` as GA4 custom dimensions; do not register fields
+that could contain personal or free-text lead data.
+
 ## Contact Rate-Limit QA
 
 `/api/contact` uses a durable Upstash Redis / Vercel KV-compatible REST rate
