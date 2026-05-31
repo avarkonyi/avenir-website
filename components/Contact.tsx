@@ -233,8 +233,8 @@ function ContactRow({ kind, label, text, href, locale }: ContactRowProps) {
 // serviceOptions is fetched server-side in app/[locale]/page.tsx
 // (Contact stays a client component; it can't import db itself).
 // Wire-format contract: opt.slug becomes the <option value>, which
-// /api/contact validates and notification.ts SERVICE_LABELS_HU keys
-// off — never substitute services.id (numeric) here.
+// /api/contact validates and contact-service-labels.ts keys off this
+// slug — never substitute services.id (numeric) here.
 export type ServiceOption = { slug: string; label: string };
 
 const SERVICE_SLUG_ALIASES: Record<string, string> = {
@@ -763,7 +763,7 @@ export function Contact({
                   <option value="">{t.form.service}</option>
                   {/* DB-backed since P2 C4. opt.slug (string) becomes the
                       <option value> — wire-format contract with
-                      /api/contact + notification.ts SERVICE_LABELS_HU. */}
+                      /api/contact + contact-service-labels.ts. */}
                   {normalizedServiceOptions.map((opt) => (
                     <option key={opt.slug} value={opt.slug}>
                       {opt.label}

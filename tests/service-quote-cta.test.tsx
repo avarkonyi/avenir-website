@@ -3,6 +3,7 @@ import test from "node:test";
 import { renderToStaticMarkup } from "react-dom/server";
 import {
   SERVICE_QUOTE_COPY,
+  buildServiceQuotePayload,
   ServiceQuoteCtaPanel,
   ServiceQuoteCta,
 } from "../components/ServiceQuoteCta";
@@ -96,4 +97,33 @@ test("service quote CTA expanded state keeps the cancel action available", () =>
   );
 
   assert.match(html, /<button[^>]*type="button"[^>]*class="service-quote-form__secondary"[^>]*>Mégsem<\/button>/);
+});
+
+test("service quote payload includes canonical service context and embedded variant metadata", () => {
+  const payload = buildServiceQuotePayload({
+    form: {
+      name: " Teszt Elek ",
+      email: " teszt@example.com ",
+      phone: " +36 70 000 0000 ",
+      company: " Avenir QA ",
+      message: " Teszt üzenet ",
+      _website: "",
+    },
+    locale: "hu",
+    serviceSlug: "objektumorzes",
+    sourcePath: "/hu/szolgaltatasok/objektumorzes",
+  });
+
+  assert.deepEqual(payload, {
+    name: "Teszt Elek",
+    email: "teszt@example.com",
+    phone: "+36 70 000 0000",
+    company: "Avenir QA",
+    message: "Teszt üzenet",
+    service: "objektumorzes",
+    locale: "hu",
+    _website: "",
+    form_variant: "service_embedded",
+    source_path: "/hu/szolgaltatasok/objektumorzes",
+  });
 });

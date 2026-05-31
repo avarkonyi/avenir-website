@@ -6,30 +6,7 @@
 // custom fonts don't render reliably in mail clients.
 
 import type { ContactPayload } from "../contact-schema";
-
-const SERVICE_LABELS_HU: Record<string, string> = {
-  // P5 Phase 1: "security" → "objektumorzes" rename for the public
-  // detail-page URL. Both keys map to the same Hungarian label so any
-  // in-flight contact submissions or sites still posting the legacy
-  // slug keep rendering correctly in the notification email.
-  security: "Élőerős objektumőrzés",
-  objektumorzes: "Élőerős objektumőrzés",
-  cleaning: "Rendezvénybiztosítás",
-  rendezvenybiztositas: "Rendezvénybiztosítás",
-  building: "Biztonságtechnika",
-  biztonsagtechnika: "Biztonságtechnika",
-  reception: "Recepciós és portaszolgálat",
-  portaszolgalat: "Recepciós és portaszolgálat",
-  green: "Soft FM",
-  "soft-fm": "Soft FM",
-  technical: "Távfelügyelet és vonulószolgálat",
-  "tavfelugyelet-vonuloszolgalat": "Távfelügyelet és vonulószolgálat",
-  mystery: "Próbavásárlás és szolgáltatásaudit",
-  "mystery-shopping-helyszini-audit": "Próbavásárlás és szolgáltatásaudit",
-  hardfm: "Hard FM",
-  "hard-fm": "Hard FM",
-  magannyomozas: "Magánnyomozás",
-};
+import { getContactServiceLabel } from "../contact-service-labels";
 
 function formatTimestamp(date: Date): string {
   return new Intl.DateTimeFormat("hu-HU", {
@@ -54,9 +31,10 @@ export function buildNotificationEmail(
   payload: ContactPayload,
   createdAt: Date,
 ): { subject: string; html: string; text: string } {
-  const serviceLabel = payload.service
-    ? (SERVICE_LABELS_HU[payload.service] ?? payload.service)
-    : "—";
+  const serviceLabel = getContactServiceLabel(payload.service);
+  const serviceSlug = payload.service || "—";
+  const formVariant = payload.form_variant || "—";
+  const sourcePath = payload.source_path || "—";
   const company = payload.company || "";
   const subject = `Új ajánlatkérés — ${payload.name}${company ? ` (${company})` : ""}`;
   const dt = formatTimestamp(createdAt);
@@ -70,6 +48,9 @@ export function buildNotificationEmail(
     `  E-mail:         ${payload.email}`,
     `  Telefon:        ${payload.phone || "—"}`,
     `  Érdeklődés:     ${serviceLabel}`,
+    `  Szolgáltatás kulcs: ${serviceSlug}`,
+    `  Űrlap variáns:  ${formVariant}`,
+    `  Forrás oldal:   ${sourcePath}`,
     `  Felület nyelve: ${payload.locale}`,
     `  Beküldés ideje: ${dt}`,
     "",
@@ -113,6 +94,9 @@ export function buildNotificationEmail(
             ${row("E-mail", payload.email)}
             ${row("Telefon", payload.phone || "—")}
             ${row("Érdeklődés", serviceLabel)}
+            ${row("Szolgáltatás kulcs", serviceSlug)}
+            ${row("Űrlap variáns", formVariant)}
+            ${row("Forrás oldal", sourcePath)}
             ${row("Felület nyelve", payload.locale)}
             ${row("Beküldés ideje", dt)}
           </table>

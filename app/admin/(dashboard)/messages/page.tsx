@@ -2,6 +2,7 @@ import Link from "next/link";
 import { connection } from "next/server";
 import { and, desc, eq, ilike, isNotNull, isNull, or, sql } from "drizzle-orm";
 import { db, messages } from "@/lib/db";
+import { getContactServiceLabel } from "@/lib/contact-service-labels";
 import { MessagesFilters } from "./_components/MessagesFilters";
 import { formatRelativeHu, formatAbsoluteHu } from "./_components/formatRelative";
 
@@ -66,6 +67,7 @@ export default async function MessagesListPage({
     const search = or(
       ilike(messages.name, pattern),
       ilike(messages.email, pattern),
+      ilike(messages.service, pattern),
       ilike(messages.message, pattern),
     );
     if (search) conditions.push(search);
@@ -77,6 +79,7 @@ export default async function MessagesListPage({
       name: messages.name,
       company: messages.company,
       email: messages.email,
+      service: messages.service,
       message: messages.message,
       locale: messages.locale,
       readAt: messages.readAt,
@@ -131,6 +134,7 @@ export default async function MessagesListPage({
                 <Th>Név</Th>
                 <Th>Email</Th>
                 <Th>Cég</Th>
+                <Th>Szolgáltatás</Th>
                 <Th>Nyelv</Th>
                 <Th>Üzenet</Th>
                 <Th>Státusz</Th>
@@ -180,6 +184,11 @@ export default async function MessagesListPage({
                     <Td>
                       <span style={{ color: "#64748B" }}>
                         {m.company ?? "—"}
+                      </span>
+                    </Td>
+                    <Td>
+                      <span style={{ color: "#475569", fontSize: 12 }}>
+                        {getContactServiceLabel(m.service)}
                       </span>
                     </Td>
                     <Td>

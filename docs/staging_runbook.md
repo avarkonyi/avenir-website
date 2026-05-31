@@ -499,6 +499,44 @@ Legacy alias examples:
 
 Unknown service query values should be ignored safely.
 
+## Embedded Service Quote QA
+
+The service detail pages include an embedded quote CTA. The collapsed state is
+intentionally minimal and shows only the localized quote button:
+
+- HU: `Ajánlatkérés`
+- EN: `Request a quote`
+
+Embedded quote submissions post to the same `/api/contact` endpoint as the
+homepage contact form. They include the existing contact fields plus operational
+context:
+
+- `service`: canonical service slug;
+- `form_variant`: `service_embedded`;
+- `source_path`: current page path.
+
+No database schema change has been made for Step 4A. The `messages` table
+persists the existing `service` field, so admin list/detail views can show the
+selected service. `source_path` and `form_variant` are not persisted in the DB
+yet; they are included in the Resend lead notification email for operational
+triage. A future CRM/admin enhancement can add first-class columns if that
+context needs to be searchable or auditable in the admin UI.
+
+Real production smoke checklist, only with non-sensitive test content and
+explicit owner approval:
+
+- submit a non-sensitive embedded quote test on
+  `/hu/szolgaltatasok/objektumorzes`;
+- expect inline UI success;
+- expect one `admin/messages` row;
+- expect Resend notification delivery;
+- verify the admin row shows the selected service context;
+- verify the notification email includes service label, service slug,
+  `form_variant=service_embedded`, and `source_path`;
+- verify GA4 shows a consented `service_quote_form_submit_success` event;
+- verify no name, email, phone, company, message body, or free-text field is
+  present in the analytics event payload.
+
 ## Contact Rate-Limit QA
 
 `/api/contact` uses a durable Upstash Redis / Vercel KV-compatible REST rate
@@ -592,14 +630,19 @@ Events emitted after consent only:
 - `phone_click`
 - `email_click`
 - `service_cta_click`
+- `service_quote_cta_click`
+- `service_quote_form_open`
+- `service_quote_form_start`
+- `service_quote_form_submit_success`
+- `service_quote_form_submit_error`
 - `special_service_option_selected`
 
 PII guardrails:
 
 - Do not send name, email, phone, company, message body, IP address or any
   free-text form field to GA4.
-- Allowed parameters are limited to locale, path, predefined service key,
-  predefined service label and event type.
+- Allowed parameters are limited to locale, path, predefined service key or
+  service slug, predefined service label, form variant and event type.
 
 ## Post-Launch Backlog
 

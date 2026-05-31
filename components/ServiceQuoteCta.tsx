@@ -77,6 +77,31 @@ export const SERVICE_QUOTE_COPY = {
 
 type ServiceQuoteCopy = (typeof SERVICE_QUOTE_COPY)[keyof typeof SERVICE_QUOTE_COPY];
 
+export function buildServiceQuotePayload({
+  form,
+  locale,
+  serviceSlug,
+  sourcePath,
+}: {
+  form: FormState;
+  locale: string;
+  serviceSlug: string;
+  sourcePath: string;
+}) {
+  return {
+    name: form.name.trim(),
+    email: form.email.trim(),
+    phone: form.phone.trim(),
+    company: form.company.trim(),
+    message: form.message.trim(),
+    service: serviceSlug,
+    locale,
+    _website: form._website,
+    form_variant: FORM_VARIANT,
+    source_path: sourcePath,
+  };
+}
+
 export function ServiceQuoteCta({
   locale,
   serviceSlug,
@@ -175,23 +200,18 @@ export function ServiceQuoteCta({
 
     setIsSubmitting(true);
     try {
-      const sourcePath =
-        window.location.pathname + window.location.search + window.location.hash;
+      const sourcePath = window.location.pathname + window.location.search;
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: form.name.trim(),
-          email: form.email.trim(),
-          phone: form.phone.trim(),
-          company: form.company.trim(),
-          message: form.message.trim(),
-          service: safeServiceSlug,
-          locale,
-          _website: form._website,
-          form_variant: FORM_VARIANT,
-          source_path: sourcePath,
-        }),
+        body: JSON.stringify(
+          buildServiceQuotePayload({
+            form,
+            locale,
+            serviceSlug: safeServiceSlug,
+            sourcePath,
+          }),
+        ),
       });
 
       if (response.ok) {

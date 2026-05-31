@@ -3,6 +3,7 @@ import { notFound, redirect } from "next/navigation";
 import { connection } from "next/server";
 import { eq } from "drizzle-orm";
 import { db, messages } from "@/lib/db";
+import { getContactServiceLabel } from "@/lib/contact-service-labels";
 import {
   isAdminUnauthorizedError,
   requireAdmin,
@@ -169,6 +170,12 @@ export default async function MessageDetailPage({
 
           <Label>Cég</Label>
           <Value>{row.company ?? "—"}</Value>
+
+          <Label>Szolgáltatás</Label>
+          <Value>{getContactServiceLabel(row.service)}</Value>
+
+          <Label>Szolgáltatás kulcs</Label>
+          <Value>{row.service ?? "—"}</Value>
 
           <Label>Nyelv</Label>
           <Value>

@@ -56,7 +56,7 @@ export default async function HomePage({
   // Wire-format contract: option `value` MUST be services.slug
   // (string) — never the numeric services.id — so /api/contact
   // validation and lib/email-templates/notification.ts
-  // SERVICE_LABELS_HU keep working unchanged.
+  // contact-service-labels.ts keeps service slugs renderable in admin/email.
   const serviceRows = await getActiveTopLevelServices(locale);
   const serviceOptions = serviceRows
     .map((row) => ({ slug: row.slug, label: row.name }))
