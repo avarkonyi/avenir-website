@@ -31,6 +31,11 @@ The implementation may emit these events after consent only:
 - `email_click`
 - `service_cta_click`
 - `special_service_option_selected`
+- `service_quote_cta_click`
+- `service_quote_form_open`
+- `service_quote_form_start`
+- `service_quote_form_submit_success`
+- `service_quote_form_submit_error`
 
 ## Data Categories
 
@@ -41,6 +46,8 @@ Allowed event parameters:
 - predefined service key
 - predefined service label
 - event type
+- service slug
+- form variant, for example `service_embedded`
 
 Excluded from analytics:
 
@@ -55,8 +62,9 @@ Excluded from analytics:
 ## Review Status
 
 DPO/legal review is required before treating the public privacy notice as final
-for this analytics implementation. The privacy/legal pages were not rewritten
-as part of this implementation task.
+for this analytics implementation. The public HU/EN Privacy Policy text has been
+aligned to the current consent-gated GA4 implementation, but this repository
+change is not a legal approval.
 
 GA4 Enhanced Measurement settings should be reviewed before relying on the
 privacy notice as final, especially form interactions, outbound clicks, file

@@ -1,0 +1,181 @@
+import type { Translation } from "@/lib/i18n";
+
+type PrivacyContent = Translation["legal"]["privacy"];
+
+const PUBLICATION_DATE_HU = "2026. június 1.";
+const PUBLICATION_DATE_EN = "1 June 2026";
+
+export const CURRENT_PRIVACY_CONTENT: Partial<Record<"hu" | "en", PrivacyContent>> = {
+  hu: {
+    title: "Adatkezelési tájékoztató",
+    lastUpdated: `Hatályos: ${PUBLICATION_DATE_HU}`,
+    version: "1.2 verzió - hatály pontosítása és analitikai tájékoztatás",
+    intro:
+      "Ez a tájékoztató azt mutatja be, hogy az Avenir Facility Management Kft. hogyan kezeli a www.afm.hu weboldalon keresztül megadott személyes adatokat, különösen a kapcsolatfelvételi és ajánlatkérési folyamat során. A tájékoztató célja, hogy az érintettek tömör, átlátható, érthető és könnyen hozzáférhető információt kapjanak az adatkezelésről.\n\nE tájékoztató hatálya a www.afm.hu weboldal kapcsolatfelvételi és ajánlatkérési folyamatára, valamint a sikeres ajánlatkérést követő szerződéses adminisztrációra terjed ki. Az Adatkezelő egyéb adatkezeléseire - különösen az ügyfelek helyszínein végzett kamerás megfigyelésre, a magánnyomozói tevékenységre, a munkavállalói adatkezelésre, valamint az ügyfélprojektek keretében végzett adatkezelésre - külön adatkezelési tájékoztatók vonatkoznak. Ezek az info@afm.hu címen kérhetők, a helyszíni tájékoztatók pedig az érintett szolgáltatási helyszíneken elérhetők.",
+    sections: [
+      {
+        id: "controller",
+        title: "1. Adatkezelő",
+        body: "Adatkezelő: Avenir Facility Management Kft.\nHivatalos cégnév: Avenir Facility Management Szolgáltató Korlátolt Felelősségű Társaság\nSzékhely: 1039 Budapest, Királyok útja 291. B. ép. 15. ajtó\nCégjegyzékszám: 01-09-328046\nCégbíróság: Fővárosi Törvényszék Cégbírósága (1051 Budapest, Nádor u. 28.)\nAdószám: 26395124-2-41\nEU VAT azonosító: HU26395124\nAlapítás: 2018-07-31\nE-mail: info@afm.hu\nTelefon: +36 70 316 8218\nWeboldal: https://www.afm.hu",
+      },
+      {
+        id: "representative",
+        title: "2. Az adatkezelő képviselője",
+        body: "Képviselő: Kovács Attila ügyvezető\nE-mail: info@afm.hu\nTelefon: +36 70 312 5868",
+      },
+      {
+        id: "dpo",
+        title: "3. Adatvédelmi tisztviselő (Data Protection Officer, DPO)",
+        body: "Az Adatkezelő a GDPR 37. cikk (1) bekezdés b) és c) pontjai alapján adatvédelmi tisztviselőt jelölt ki.\n\nAdatvédelmi tisztviselő: Csegény Fanni\nE-mail: dpo@afm.hu\nTelefon: +36 70 622 6242\nPostai elérhetőség: 1039 Budapest, Királyok útja 291. B. ép. 15. ajtó\n\nAz adatvédelmi tisztviselő az adatkezeléssel kapcsolatos kérdésekben, valamint az érintetti jogok gyakorlásával összefüggésben érhető el. A NAIH-hoz történő bejelentés az Infotv. 25/L. § alapján megtörtént. A jogorvoslati lehetőségeket külön pont ismerteti.",
+      },
+      {
+        id: "contact-processing",
+        title: "4. A kapcsolatfelvételi folyamathoz kapcsolódó adatkezelések (GDPR 13. cikke)",
+        body: "A www.afm.hu weboldal kapcsolatfelvételi folyamatában az alábbi adatkezeléseket végezzük:\n\n4.1. Kapcsolatfelvétel és ajánlatkérés feldolgozása\n\nKezelt adatok: teljes név, cégnév, email cím, telefonszám, érdeklődési terület, üzenet szövegében rögzített személyes adatok.\n\nAz adatkezelés célja: a megkeresés fogadása, az ajánlatkérés feldolgozása, a válaszadás, valamint a megkereséshez kapcsolódó üzleti kommunikáció.\n\nJogalap: GDPR 6. cikk (1) bekezdés b) pontja, ha az ajánlatkérés az érintettel mint leendő szerződő féllel történő szerződéskötést megelőző lépések megtételéhez szükséges, például természetes személy vagy egyéni vállalkozó esetén. GDPR 6. cikk (1) bekezdés f) pontja, ha az érintett valamely jogi személy vagy szervezet kapcsolattartójaként jár el. Az Adatkezelő jogos érdeke ilyen esetben az üzleti kapcsolatfelvétel kezelése, az ajánlat előkészítése és a B2B ügyfélkommunikáció fenntartása.\n\nMegőrzési idő: sikertelen ajánlatkérés esetén az utolsó kapcsolatfelvételtől számított legfeljebb 12 hónap, kivéve, ha jogi igény érvényesítése vagy védekezés miatt hosszabb megőrzés szükséges.\n\nSzerződéskötés esetén: az ajánlatkérésből és üzleti levelezésből a szerződés előkészítéséhez, teljesítéséhez vagy igényérvényesítéshez szükséges adatok a szerződéses iratanyag részeként a szerződés megszűnésétől, illetve az adott követelés esedékességétől számított általános elévülési időig kezelhetők. A Polgári Törvénykönyv 6:22. § szerinti főszabály alapján ez 5 év.\n\nSzámviteli bizonylatok esetén az adatok megőrzési ideje 8 év. Ennek jogalapja a számvitelről szóló 2000. évi C. törvény, röviden Sztv.\n\n4.2. Visszaélés-megelőzés és weboldal-biztonság\n\nKezelt adatok: a kapcsolatfelvételi űrlap technikai használatához kapcsolódó naplóadatok, így különösen IP-cím, időbélyeg, böngésző- és eszközinformáció, valamint a beküldés technikai azonosítói.\n\nAz adatkezelés célja: a kapcsolatfelvételi űrlap visszaélésszerű használatának technikai megakadályozása.\n\nJogalap: GDPR 6. cikk (1) bekezdés f) pontja. Az Adatkezelő jogos érdeke a weboldal és az űrlap biztonságos működtetése, a jogosulatlan vagy tömeges beküldések megelőzése.\n\nMegőrzési idő: az adatok rögzítésétől számított legfeljebb 30 nap, kivéve, ha biztonsági incidens vagy jogi igény miatt hosszabb megőrzés szükséges.\n\n4.3. Sikeres ajánlatkérést követő szerződéses adminisztráció\n\nKezelt adatok: a kapcsolattartó neve, beosztása, e-mail címe, telefonszáma, a kommunikáció során a kapcsolattartó által megadott személyes adatok.\n\nAz adatkezelés célja: szerződés előkészítése, teljesítése, kapcsolattartás, teljesítésigazolás, számlázáshoz és igényérvényesítéshez kapcsolódó adminisztráció.\n\nJogalap: GDPR 6. cikk (1) bekezdés b) pontja, ha az érintett maga szerződő félként jár el. Jogi személy vagy szervezet kapcsolattartója esetén a GDPR 6. cikk (1) bekezdés f) pontja alapján az Adatkezelő jogos érdeke a szerződéses üzleti kapcsolat fenntartása és teljesítése.\n\nMegőrzési idő: a szerződés megszűnésétől, illetve az adott követelés esedékességétől számított általános elévülési időig, főszabály szerint 5 évig. Számviteli bizonylatok esetén az Sztv. alapján 8 évig.",
+      },
+      {
+        id: "excluded-data",
+        title: "5. Különleges, büntetőjogi és harmadik személyre vonatkozó adatok mellőzése",
+        body: "Kérjük, hogy a kapcsolatfelvételi űrlapon ne küldjön különleges adatot, büntetőjogi adatot, minősített adatot, üzleti titkot vagy harmadik személyre vonatkozó részletes magánéleti információt.\n\nIlyen adatok kezelését az Adatkezelő a weboldal kapcsolatfelvételi folyamatában nem kéri és nem végzi. Ha a beküldött üzenet ilyen adatot tartalmaz, az Adatkezelő a megkeresés kezeléséhez nem szükséges adatokat törölheti, illetve kérheti az érintettől a megkeresés ilyen adatok nélküli pontosítását.",
+      },
+      {
+        id: "processors",
+        title: "6. Adatfeldolgozóink (GDPR 28. cikke)",
+        body: "A weboldal és a kapcsolatfelvételi folyamat működtetéséhez az Adatkezelő adatfeldolgozókat vesz igénybe. Az adatfeldolgozók az Adatkezelő utasításai szerint járnak el. Az Adatkezelő az adatfeldolgozói feltételeket és az adattovábbítási garanciákat nyilvántartja; az érintett ezek tartalmáról további tájékoztatást kérhet.\n\n6.1. Resend - Plus Five Five, Inc.\nSzerep: tranzakcionális email továbbítás.\nSzékhely: 2261 Market Street #5039, San Francisco, CA 94114, USA\nAdatkezelés helye: EU Frankfurt (sending region)\nHarmadik országba történő adattovábbítási garancia: az Európai Bizottság 2021/914/EU határozata szerinti általános adatvédelmi kikötések, vagyis Standard Contractual Clauses (SCC), a GDPR 46. cikk (2) bekezdés d) pontja alapján, valamint kiegészítő technikai és szervezési intézkedések.\n\n6.2. Vercel - Vercel Inc.\nSzerep: hosting, edge/CDN szolgáltatás és szerveroldali naplózás.\nSzékhely: 440 N Barranca Avenue #4133, Covina, CA 91723, USA\nAdatkezelés helye: EU edge regions (configured)\nHarmadik országba történő adattovábbítási garancia: a Vercel Inc. a jelen tájékoztató készítésekor szerepel az EU-USA Data Privacy Framework listán, ezért a GDPR 45. cikke szerinti megfelelőségi határozat alapján történhet adattovábbítás.\n\n6.3. Neon (a Databricks, Inc. affiliate) - Neon, LLC\nSzerep: PostgreSQL adatbázis-szolgáltatás.\nSzékhely: 160 Spear Street, Suite 1300, San Francisco, CA 94105, USA\nAdatkezelés helye: EU AWS Frankfurt (eu-central-1)\nHarmadik országba történő adattovábbítási garancia: az Európai Bizottság 2021/914/EU határozata szerinti általános adatvédelmi kikötések, vagyis Standard Contractual Clauses (SCC), a GDPR 46. cikk (2) bekezdés d) pontja alapján, valamint kiegészítő technikai és szervezési intézkedések.",
+      },
+      {
+        id: "third-country-transfers",
+        title: "7. Harmadik országba történő adattovábbítások",
+        body: "A weboldal működtetéséhez igénybe vett egyes szolgáltatók az Európai Gazdasági Térségen kívüli, különösen amerikai hátterű szolgáltatók. Ilyen esetben az Adatkezelő csak akkor továbbít személyes adatot, ha a GDPR szerinti megfelelő garancia rendelkezésre áll.\n\nIlyen garancia lehet különösen:\n- az Európai Bizottság megfelelőségi határozata, például az EU-USA Data Privacy Framework alapján;\n- az Európai Bizottság által elfogadott általános adatvédelmi kikötések, vagyis Standard Contractual Clauses (SCC);\n- kiegészítő technikai és szervezési intézkedések.\n\nAz EU-USA Data Privacy Framework működéséről és az amerikai szolgáltatók tanúsításának ellenőrzéséről az Európai Adatvédelmi Testület magyar nyelvű tájékoztatója ad részletesebb információt:\nhttps://www.edpb.europa.eu/system/files/2024-12/edpb_dpf_faq-for-individuals_hu.pdf",
+      },
+      {
+        id: "cookies",
+        title: "8. Sütik és hasonló technológiák",
+        body: "A weboldal analitikai sütiket vagy hasonló technológiákat kizárólag az érintett hozzájárulása alapján használ. Az analitika jelenleg Google Analytics használatával történik.\n\nAz analitikai mérés nem indul el a hozzájárulás megadása előtt. Elutasítás esetén a Google Analytics nem töltődik be. Az analitikai eseményekbe nem kerül név, e-mail-cím, telefonszám, cégnév, üzenetszöveg vagy szabad szöveges űrlaptartalom.\n\nA kapcsolatfelvételi űrlap működéséhez és biztonságához szükséges technikai megoldások nem szolgálnak reklámcélú követésre. A felhasználó a Süti beállítások felületen módosíthatja döntését.\n\nA weboldal jelenleg nem használ Google Tag Managert és nem használ LinkedIn Insight Taget.",
+      },
+      {
+        id: "data-subject-rights",
+        title: "9. Az érintett jogai (GDPR 12-22. cikkei)",
+        body: "Az érintett a jelen tájékoztatóban megadott elérhetőségeken keresztül gyakorolhatja jogait.\n\nA hozzáféréshez való jog\n\nAz érintett jogosult arra, hogy az Adatkezelőtől tájékoztatást kérjen arra vonatkozóan, hogy személyes adatainak kezelése folyamatban van-e. Ha ilyen adatkezelés folyamatban van, jogosult megismerni, hogy az Adatkezelő milyen személyes adatait, milyen jogalapon, milyen adatkezelési célból és mennyi ideig kezeli.\n\nAz érintett jogosult továbbá tájékoztatást kapni arról, hogy az Adatkezelő kinek, mikor, milyen jogszabály alapján és mely személyes adataihoz biztosított hozzáférést, illetve kinek továbbította a személyes adatokat; milyen forrásból származnak a személyes adatai; valamint alkalmaz-e az Adatkezelő automatizált döntéshozatalt vagy profilalkotást.\n\nAz Adatkezelő az adatkezelés tárgyát képező személyes adatok másolatát az érintett kérésére első alkalommal díjmentesen bocsátja rendelkezésre. További másolatokért adminisztratív költségeken alapuló, ésszerű mértékű díj számítható fel.\n\nA helyesbítéshez való jog\n\nAz érintett kérheti, hogy az Adatkezelő módosítsa vagy pontosítsa valamely személyes adatát. Ha az érintett hitelt érdemlően igazolni tudja a helyesbített adat pontosságát, az Adatkezelő a kérést legfeljebb egy hónapon belül teljesíti, és erről az érintettet értesíti.\n\nA zároláshoz, vagyis az adatkezelés korlátozásához való jog\n\nAz érintett kérheti, hogy az Adatkezelő korlátozza személyes adatainak kezelését, ha vitatja az adatok pontosságát; ha az adatkezelés jogellenes, de az érintett ellenzi az adatok törlését; ha az Adatkezelőnek már nincs szüksége az adatokra, de az érintett jogi igény előterjesztéséhez, érvényesítéséhez vagy védelméhez igényli azokat; vagy ha az érintett tiltakozott az adatkezelés ellen, arra az időre, amíg megállapítható, hogy az Adatkezelő jogos indokai elsőbbséget élveznek-e.\n\nA tiltakozáshoz való jog\n\nAz érintett saját helyzetével kapcsolatos okokból bármikor tiltakozhat a GDPR 6. cikk (1) bekezdés f) pontján alapuló adatkezelés ellen. Ebben az esetben az Adatkezelőnek kell igazolnia, hogy az adatkezelést olyan kényszerítő erejű jogos okok indokolják, amelyek elsőbbséget élveznek az érintett érdekeivel, jogaival és szabadságaival szemben, vagy amelyek jogi igények előterjesztéséhez, érvényesítéséhez vagy védelméhez kapcsolódnak.\n\nA törléshez, vagyis az elfeledtetéshez való jog\n\nAz érintett kérheti személyes adatainak törlését, ha az adatok kezelésére már nincs szükség; ha tiltakozott az adatkezelés ellen és nincs elsőbbséget élvező jogszerű ok; ha az Adatkezelő az adatokat jogellenesen kezeli; vagy ha az adatokat jogszabály vagy uniós rendelkezés alapján törölni kell.\n\nAz adathordozhatósághoz való jog\n\nHa az adatkezelés jogalapja szerződés teljesítése vagy szerződéskötést megelőző lépések megtétele, és az adatkezelés automatizált módon történik, az érintett kérheti, hogy az általa megadott személyes adatokat tagolt, széles körben használt, géppel olvasható formátumban megkapja.\n\nHozzájárulás visszavonása\n\nA kapcsolatfelvételi folyamatban az Adatkezelő elsődlegesen nem hozzájárulás alapján kezel adatot. Ha valamely jövőbeni adatkezelés hozzájáruláson alapulna, az érintett jogosult lenne azt bármikor visszavonni.",
+      },
+      {
+        id: "automated-decision-making",
+        title: "10. Automatizált döntéshozatal és profilalkotás",
+        body: "Az Adatkezelő a weboldalon keresztül megadott személyes adatok alapján nem alkalmaz a GDPR 22. cikke szerinti automatizált döntéshozatalt, és nem végez profilalkotást.",
+      },
+      {
+        id: "rights-procedure",
+        title: "11. Érintetti jogok gyakorlásának módja",
+        body: "Az érintetti kérelmeket az Adatkezelő indokolatlan késedelem nélkül, de legfeljebb a kérelem beérkezésétől számított egy hónapon belül megválaszolja. Szükség esetén, figyelembe véve a kérelem összetettségét és a kérelmek számát, ez a határidő további két hónappal meghosszabbítható. A hosszabbításról az Adatkezelő egy hónapon belül tájékoztatja az érintettet.\n\nAz adatbiztonsági követelmények teljesülése és az érintett jogainak védelme érdekében az Adatkezelő jogosult meggyőződni arról, hogy a kérelmet valóban az érintett vagy az arra jogosult képviselője nyújtotta be. Ha az érintett személyazonosságával kapcsolatban megalapozott kétség merül fel, az Adatkezelő a GDPR 12. cikk (6) bekezdése alapján további, az azonosításhoz szükséges információkat kérhet.\n\nHa a kérelem egyértelműen megalapozatlan vagy túlzó, különösen ismétlődő jellege miatt, az Adatkezelő a GDPR 12. cikk (5) bekezdése alapján ésszerű díjat számíthat fel, vagy megtagadhatja a kérelem teljesítését.",
+      },
+      {
+        id: "remedies",
+        title: "12. Jogorvoslati lehetőségek",
+        body: "Az érintett adatkezeléssel kapcsolatos kérdéssel vagy panasszal elsőként az Adatkezelőhöz vagy az adatvédelmi tisztviselőhöz fordulhat.\n\nFelügyeleti hatóság:\nNemzeti Adatvédelmi és Információszabadság Hatóság (NAIH)\nCím: 1055 Budapest, Falk Miksa utca 9-11.\nPostacím: 1363 Budapest, Pf.: 9\nTelefon: +36 1 391 1400\nE-mail: ugyfelszolgalat@naih.hu\nWeb: https://www.naih.hu\n\nAz érintett bírósághoz is fordulhat. A pert az érintett választása szerint a lakóhelye vagy tartózkodási helye szerinti törvényszék előtt is megindíthatja.",
+      },
+      {
+        id: "breach",
+        title: "13. Adatvédelmi incidensek kezelése",
+        body: "Az Adatkezelő az adatvédelmi incidenseket nyilvántartja, kivizsgálja, és szükség esetén megteszi a GDPR szerinti bejelentési és tájékoztatási lépéseket.\n\nHa az incidens valószínűsíthetően kockázattal jár a természetes személyek jogaira és szabadságaira nézve, az Adatkezelő indokolatlan késedelem nélkül, lehetőség szerint 72 órán belül bejelenti azt a NAIH felé. Ha az incidens valószínűsíthetően magas kockázattal jár az érintettekre nézve, az Adatkezelő az érintetteket is tájékoztatja.",
+      },
+      {
+        id: "security",
+        title: "14. Adatbiztonsági intézkedések",
+        body: "Az Adatkezelő az adatkezelés biztonsága érdekében különösen az alábbi intézkedéseket alkalmazza: adattakarékosság, titkosított adatátvitel és -tárolás, hozzáférés-korlátozás, jogosultságkezelés, naplózás, biztonsági mentések, sérülékenység-kezelés, incidenskezelési folyamat, valamint adatvédelmi és információbiztonsági szervezeti intézkedések.\n\nAz Adatkezelő ISO 9001 és ISO/IEC 27001 tanúsítványokkal rendelkezik, amelyek a dokumentált, ellenőrzött és folyamatosan fejlesztett működést támogatják.",
+      },
+      {
+        id: "modification",
+        title: "15. A tájékoztató módosítása",
+        body: "Az Adatkezelő fenntartja a jogot a jelen tájékoztató módosítására. A mindenkor hatályos változat a https://www.afm.hu weboldalon érhető el. A lényeges módosításokról az Adatkezelő a weboldalon megfelelő tájékoztatást ad.",
+      },
+    ],
+    versionHistory:
+      `Verziótörténet: 1.2 verzió - Hatály: ${PUBLICATION_DATE_HU}-tól. A tájékoztató hatályának pontosítása, az Adatkezelő és az adatvédelmi tisztviselő adatainak kiegészítése, valamint a sütikre és analitikára vonatkozó szakasz igazítása a hozzájárulás-alapú Google Analytics működéshez. 1.1 verzió - Hatály: 2026. május 6-tól. A DPO észrevételei alapján pontosított adatkezelési folyamatok, közérthetőbb GDPR-hivatkozások, harmadik országbeli adattovábbítási garanciák és érintetti jogok. 1.0 verzió - Hatály: 2026. április 28-tól. Első közzététel.`,
+  },
+  en: {
+    title: "Privacy Policy",
+    lastUpdated: `Effective: ${PUBLICATION_DATE_EN}`,
+    version: "Version 1.2 - scope clarification and analytics notice",
+    intro:
+      "This Privacy Policy explains how Avenir Facility Management Kft. processes the personal data provided through the www.afm.hu website, in particular during the contact and quote-request process. Its purpose is to provide data subjects with concise, transparent, intelligible and easily accessible information about the processing.\n\nThe scope of this Policy covers the contact and quote-request process on the www.afm.hu website and the contractual administration following a successful quote request. Other processing activities of the Controller - in particular CCTV monitoring at client sites, private investigation activity, employee data processing and data processing carried out in client projects - are governed by separate privacy notices. These are available on request at info@afm.hu, and on-site notices are available at the relevant service locations.\n\nAuthoritative language: the authoritative version of this Policy is the Hungarian text published at https://www.afm.hu/hu/adatvedelem. The English version is provided for the convenience of non-Hungarian-speaking readers; in the event of any discrepancy between language versions, the Hungarian text prevails.",
+    sections: [
+      {
+        id: "controller",
+        title: "1. Controller",
+        body: "Controller: Avenir Facility Management Kft.\nLegal name: Avenir Facility Management Szolgáltató Korlátolt Felelősségű Társaság\nRegistered office: Királyok útja 291, building B, door 15, 1039 Budapest, Hungary\nCompany registration number: 01-09-328046\nCompany court: Court of Registration of the Budapest-Capital Regional Court (1051 Budapest, Nádor u. 28., Hungary)\nTax ID: 26395124-2-41\nEU VAT ID: HU26395124\nDate of incorporation: 31 July 2018\nEmail: info@afm.hu\nPhone: +36 70 316 8218\nWebsite: https://www.afm.hu",
+      },
+      {
+        id: "representative",
+        title: "2. The Controller's Representative",
+        body: "Representative: Attila Kovács, Managing Director\nEmail: info@afm.hu\nPhone: +36 70 312 5868",
+      },
+      {
+        id: "dpo",
+        title: "3. Data Protection Officer (DPO)",
+        body: "The Controller has appointed a Data Protection Officer pursuant to GDPR Article 37(1)(b) and (c).\n\nData Protection Officer: Fanni Csegény\nEmail: dpo@afm.hu\nPhone: +36 70 622 6242\nPostal contact: Királyok útja 291, building B, door 15, 1039 Budapest, Hungary\n\nThe Data Protection Officer can be contacted regarding questions relating to data processing and the exercise of data subject rights. Notification to NAIH has been completed pursuant to Section 25/L of the Hungarian Infotv. Remedies are described in a separate section.",
+      },
+      {
+        id: "contact-processing",
+        title: "4. Processing Activities Related to the Contact Process (GDPR Article 13)",
+        body: "In the contact process on the www.afm.hu website, we carry out the following processing activities:\n\n4.1. Handling of contact and quote requests\n\nPersonal data processed: full name, company name, email address, phone number, area of interest, and personal data recorded in the message text.\n\nPurpose of processing: receiving the enquiry, handling the quote request, responding, and the related business communication.\n\nLegal basis: GDPR Article 6(1)(b), where the quote request is necessary for steps to be taken prior to entering into a contract with the data subject as a prospective contracting party, for example in the case of a natural person or sole trader. GDPR Article 6(1)(f), where the data subject acts as a contact person of a legal person or organisation. In such cases, the Controller's legitimate interest is the handling of business contact, the preparation of the offer, and the maintenance of B2B client communication.\n\nRetention period: in the case of an unsuccessful quote request, no more than 12 months from the last contact, unless a longer retention period is necessary for the establishment or defence of legal claims.\n\nWhere a contract is concluded: the data necessary for the preparation, performance or enforcement of the contract may be processed as part of the contractual documentation until the general limitation period expires, calculated from the termination of the contract or the due date of the relevant claim. Under the general rule of Section 6:22 of the Hungarian Civil Code, this is 5 years.\n\nFor accounting documents, the retention period is 8 years, on the basis of Act C of 2000 on Accounting.\n\n4.2. Abuse prevention and website security\n\nPersonal data processed: log data related to the technical use of the contact form, in particular IP address, timestamp, browser and device information, and the technical identifiers of the submission.\n\nPurpose of processing: technical prevention of the abusive use of the contact form.\n\nLegal basis: GDPR Article 6(1)(f). The Controller's legitimate interest is the secure operation of the website and the form, and the prevention of unauthorised or mass submissions.\n\nRetention period: no more than 30 days from recording, unless a longer retention period is necessary due to a security incident or a legal claim.\n\n4.3. Contractual administration following a successful quote request\n\nPersonal data processed: the contact person's name, position, email address and phone number, and the personal data provided by the contact person during the communication.\n\nPurpose of processing: preparation and performance of the contract, keeping in contact, performance certification, and administration related to invoicing and the enforcement of claims.\n\nLegal basis: GDPR Article 6(1)(b), where the data subject acts as the contracting party. In the case of a contact person of a legal person or organisation, GDPR Article 6(1)(f), where the Controller's legitimate interest is the maintenance and performance of the contractual business relationship.\n\nRetention period: until the general limitation period expires, calculated from the termination of the contract or the due date of the relevant claim, as a general rule 5 years. For accounting documents, 8 years under the Accounting Act.",
+      },
+      {
+        id: "excluded-data",
+        title: "5. Exclusion of Special, Criminal and Third-Party Data",
+        body: "Please do not submit special-category data, criminal-offence data, classified data, trade secrets, or detailed private-life information about third parties via the contact form.\n\nThe Controller does not request and does not process such data in the website's contact process. If a submitted message contains such data, the Controller may delete the data not necessary for handling the enquiry, or may ask the data subject to resubmit the enquiry without such data.",
+      },
+      {
+        id: "processors",
+        title: "6. Our Data Processors (GDPR Article 28)",
+        body: "To operate the website and the contact process, the Controller engages data processors. The data processors act on the Controller's instructions. The Controller keeps records of the data-processor terms and the data-transfer safeguards; the data subject may request further information about their content.\n\n6.1. Resend - Plus Five Five, Inc.\nRole: transactional email delivery.\nRegistered office: 2261 Market Street #5039, San Francisco, CA 94114, USA\nPlace of processing: EU Frankfurt (sending region)\nSafeguard for third-country transfer: the Standard Contractual Clauses under Commission Implementing Decision (EU) 2021/914, i.e. SCCs, pursuant to GDPR Article 46(2)(d), together with supplementary technical and organisational measures.\n\n6.2. Vercel - Vercel Inc.\nRole: hosting, edge/CDN service and server-side logging.\nRegistered office: 440 N Barranca Avenue #4133, Covina, CA 91723, USA\nPlace of processing: EU edge regions (configured)\nSafeguard for third-country transfer: at the time this Policy was prepared, Vercel Inc. appears on the EU-U.S. Data Privacy Framework list; transfers may therefore take place on the basis of the adequacy decision under GDPR Article 45.\n\n6.3. Neon (an affiliate of Databricks, Inc.) - Neon, LLC\nRole: PostgreSQL database service.\nRegistered office: 160 Spear Street, Suite 1300, San Francisco, CA 94105, USA\nPlace of processing: EU AWS Frankfurt (eu-central-1)\nSafeguard for third-country transfer: the Standard Contractual Clauses under Commission Implementing Decision (EU) 2021/914, i.e. SCCs, pursuant to GDPR Article 46(2)(d), together with supplementary technical and organisational measures.",
+      },
+      {
+        id: "third-country-transfers",
+        title: "7. International Data Transfers",
+        body: "Some of the service providers engaged to operate the website are located outside the European Economic Area, in particular providers with a U.S. background. In such cases, the Controller transfers personal data only where an appropriate safeguard under the GDPR is available.\n\nSuch safeguards may include in particular:\n- an adequacy decision of the European Commission, for example under the EU-U.S. Data Privacy Framework;\n- the Standard Contractual Clauses (SCCs) adopted by the European Commission;\n- supplementary technical and organisational measures.\n\nFor more detailed information on how the EU-U.S. Data Privacy Framework works and on how to verify the certification of U.S. providers, see the information of the European Data Protection Board:\nhttps://www.edpb.europa.eu/system/files/2026-01/edpb_dpf_faq-for-individuals_v2_en.pdf",
+      },
+      {
+        id: "cookies",
+        title: "8. Cookies and Similar Technologies",
+        body: "The website uses analytics cookies or similar technologies only on the basis of the user's consent. Analytics is currently performed using Google Analytics.\n\nAnalytics does not start before consent is given. If analytics is rejected, Google Analytics does not load. Analytics events do not include name, email address, phone number, company name, message text or free-text form content.\n\nTechnical solutions necessary for the operation and security of the contact form do not serve advertising-related tracking. The user may change the choice through Cookie settings.\n\nThe site currently does not use Google Tag Manager or LinkedIn Insight Tag.",
+      },
+      {
+        id: "data-subject-rights",
+        title: "9. Rights of the Data Subject (GDPR Articles 12-22)",
+        body: "The data subject may exercise their rights through the contact details provided in this Policy.\n\nRight of access\n\nThe data subject has the right to request information from the Controller as to whether their personal data are being processed. If such processing is taking place, they are entitled to know which of their personal data the Controller processes, on what legal basis, for what processing purpose and for how long.\n\nThe data subject is further entitled to be informed about: to whom, when, on what legal basis and to which of their personal data the Controller has granted access, or to whom it has transferred the personal data; the source of their personal data; and whether the Controller applies automated decision-making or profiling.\n\nThe Controller provides a copy of the personal data undergoing processing free of charge on the first occasion at the data subject's request. For further copies, a reasonable fee based on administrative costs may be charged.\n\nRight to rectification\n\nThe data subject may request that the Controller modify or correct a personal datum. If the data subject can credibly demonstrate the accuracy of the corrected data, the Controller fulfils the request within one month at the latest and notifies the data subject accordingly.\n\nRight to restriction of processing (blocking)\n\nThe data subject may request that the Controller restrict the processing of their personal data where: they contest the accuracy of the data; the processing is unlawful but the data subject opposes erasure; the Controller no longer needs the data but the data subject requires them for the establishment, exercise or defence of legal claims; or the data subject has objected to the processing, for the period during which it is established whether the Controller's legitimate grounds override those of the data subject.\n\nRight to object\n\nThe data subject may object at any time, on grounds relating to their particular situation, to processing based on GDPR Article 6(1)(f). In such a case, the Controller must demonstrate that the processing is justified by compelling legitimate grounds which override the interests, rights and freedoms of the data subject, or that the processing relates to the establishment, exercise or defence of legal claims.\n\nRight to erasure (\"right to be forgotten\")\n\nThe data subject may request the erasure of their personal data where: the data are no longer needed; they have objected to the processing and there is no overriding legitimate ground; the Controller processes the data unlawfully; or the data must be erased under a legal or EU provision.\n\nRight to data portability\n\nWhere the legal basis of processing is the performance of a contract or steps taken prior to entering into a contract, and the processing is carried out by automated means, the data subject may request to receive the personal data they have provided in a structured, commonly used, machine-readable format.\n\nWithdrawal of consent\n\nIn the contact process, the Controller does not primarily process data on the basis of consent. If any future processing were based on consent, the data subject would be entitled to withdraw it at any time.",
+      },
+      {
+        id: "automated-decision-making",
+        title: "10. Automated Decision-Making and Profiling",
+        body: "The Controller does not apply automated decision-making within the meaning of GDPR Article 22, and does not carry out profiling, on the basis of the personal data provided through the website.",
+      },
+      {
+        id: "rights-procedure",
+        title: "11. How to Exercise Your Rights",
+        body: "The Controller responds to data-subject requests without undue delay, but within one month at the latest from receipt of the request. Where necessary, taking into account the complexity and the number of requests, this period may be extended by a further two months. The Controller informs the data subject of any such extension within one month.\n\nIn order to meet data-security requirements and to protect the data subject's rights, the Controller is entitled to verify that the request was indeed submitted by the data subject or their authorised representative. If there are reasonable doubts concerning the identity of the data subject, the Controller may request additional information necessary for identification, pursuant to GDPR Article 12(6).\n\nIf a request is manifestly unfounded or excessive, in particular due to its repetitive character, the Controller may charge a reasonable fee or refuse to act on the request, pursuant to GDPR Article 12(5).",
+      },
+      {
+        id: "remedies",
+        title: "12. Remedies",
+        body: "For any question or complaint relating to data processing, the data subject may first turn to the Controller or the Data Protection Officer.\n\nSupervisory authority:\nNational Authority for Data Protection and Freedom of Information (NAIH)\nAddress: Falk Miksa utca 9-11, 1055 Budapest\nPostal address: P.O. Box 9, 1363 Budapest\nPhone: +36 1 391 1400\nEmail: ugyfelszolgalat@naih.hu\nWeb: https://www.naih.hu\n\nThe data subject may also turn to the courts. At the data subject's choice, the action may be brought before the regional court (törvényszék) of their place of residence or stay.",
+      },
+      {
+        id: "breach",
+        title: "13. Handling of Data Breaches",
+        body: "The Controller records and investigates data breaches and, where necessary, takes the notification and communication steps required by the GDPR.\n\nIf the breach is likely to result in a risk to the rights and freedoms of natural persons, the Controller notifies NAIH without undue delay and, where feasible, within 72 hours. If the breach is likely to result in a high risk to data subjects, the Controller also informs the data subjects.",
+      },
+      {
+        id: "security",
+        title: "14. Data Security Measures",
+        body: "To ensure the security of processing, the Controller applies in particular the following measures: data minimisation, encrypted data transmission and storage, access restriction, identity and access management, logging, backups, vulnerability management, an incident-handling process, and organisational data-protection and information-security measures.\n\nThe Controller holds ISO 9001 and ISO/IEC 27001 certifications, which support documented, controlled and continuously improved operation.",
+      },
+      {
+        id: "modification",
+        title: "15. Modification of this Policy",
+        body: "The Controller reserves the right to modify this Policy. The version in force at any given time is available at https://www.afm.hu. The Controller provides appropriate notice of any material modification on the website.",
+      },
+    ],
+    versionHistory:
+      `Version history: Version 1.2 - Effective from ${PUBLICATION_DATE_EN}. Parity with Hungarian version 1.2; scope clarification; Controller and DPO details added; cookies and analytics wording aligned with consent-gated Google Analytics. Version 1.1 - Effective from 6 May 2026. On the basis of the DPO's comments: processing activities clarified, GDPR references made more intelligible, third-country transfer safeguards and data-subject rights revised. Version 1.0 - Effective from 28 April 2026. First publication.`,
+  },
+};
