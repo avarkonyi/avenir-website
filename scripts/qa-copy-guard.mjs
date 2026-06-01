@@ -47,6 +47,24 @@ const CHECKS = [
       (file.startsWith("public/llms") && /\bclaims?\.?$/i.test(line.trim())),
   },
   {
+    name: "OPTEN as public creditworthiness claim",
+    pattern: /\bOPTEN\b/i,
+    appliesTo: isPublicSource,
+    allowLine: isProtectiveOptenLine,
+  },
+  {
+    name: "A+ / Bonitási as public creditworthiness claim",
+    pattern: /\b(A\+\s*(Bonit|creditworthiness|hitelképess|minősítés)|Bonit[áa]si)\b/i,
+    appliesTo: isPublicSource,
+    allowLine: isProtectiveOptenLine,
+  },
+  {
+    name: "creditworthiness overclaim",
+    pattern: /\b(risk-free|guaranteed solvency|guaranteed creditworthiness|kockázatmentes|garantált fizetőképesség|garantált hitelképesség)\b/i,
+    appliesTo: isPublicSource,
+    allowLine: isProtectiveGuaranteeLine,
+  },
+  {
     name: "positive guaranteed arrival-time wording",
     pattern: /guaranteed arrival time/i,
     appliesTo: isServiceMarketingSource,
@@ -87,6 +105,12 @@ function isServiceMarketingSource(file) {
 
 function isProtectiveGuaranteeLine(line) {
   return /(\?|not|no universal|does not|without|nem jelent|nincs|függ|depends|provided\?)/i.test(
+    line,
+  );
+}
+
+function isProtectiveOptenLine(line) {
+  return /\b(not|no|without|unless|do not|unapproved|separate|separately|nem|ne|külön|nem azonos)\b/i.test(
     line,
   );
 }

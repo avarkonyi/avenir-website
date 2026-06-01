@@ -1,6 +1,6 @@
 # Verified Claims — Avenir
 
-Last updated: 2026-05-28
+Last updated: 2026-06-01
 
 This file tracks business-approved claims that may be used in public website copy for Avenir. It is a copywriting guardrail, not a substitute for the underlying legal, certificate, contract, or operational proof documents.
 
@@ -26,6 +26,8 @@ The following claims may be used in public website copy when the wording follows
 
 The following creditworthiness claim is approved for public use:
 
+- Claim: D&B AA High Creditworthy 2026
+- Status: Approved for public use
 - Issuer: Dun & Bradstreet
 - Certificate label: AA High Creditworthy 2026
 - Company: Avenir Facility Ltd.
@@ -39,6 +41,21 @@ The following creditworthiness claim is approved for public use:
 - Approved public wording:
   - HU: "D&B magas hitelképességi minősítés"
   - EN/DE/ZH: "D&B High Creditworthy 2026"
+  - Short stat: "AA"
+- Approved public surfaces:
+  - homepage stat tile
+  - `llms.txt` and `llms-full.txt` AI-search grounding files
+  - future Trust Center / document library
+  - future procurement / tender readiness page
+- Not approved without separate review:
+  - service body copy or service trust cards
+  - client testimonial or case-study usage
+  - partner/logo relationship claims
+- Restricted wording:
+  - do not call this OPTEN
+  - do not call this OPTEN A+
+  - do not imply guaranteed solvency, risk-free operation, financial advice, or
+    zero supplier risk
 
 This proof source supports a Dun & Bradstreet / D&B AA High Creditworthy 2026
 claim. It is not OPTEN A+ proof unless a separate OPTEN-specific document
@@ -80,11 +97,10 @@ claim, rating claim, or production-release approval item unless a separate
 OPTEN-specific proof document is provided and reviewed. The Dun & Bradstreet
 certificate above must not be described as OPTEN proof.
 
-Launch governance note: OPTEN/A+ public-use policy alignment was deferred by
-owner decision for launch. Treat any remaining OPTEN/A+ discussion as a
-governance/proof-policy exception, not as a D&B proof item. The public
-creditworthiness claim should use the D&B AA wording above unless and until a
-separate OPTEN-specific proof document is approved.
+Governance status: the public creditworthiness wording is resolved to D&B AA
+High Creditworthy 2026. Any remaining OPTEN/A+ discussion is historical or
+policy-context only. The public website must use the D&B AA wording above unless
+and until a separate OPTEN-specific proof document is approved.
 
 ## Preferred Wording Patterns
 

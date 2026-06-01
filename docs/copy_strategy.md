@@ -228,9 +228,9 @@ P1/P2 content and governance items:
   content until EN article routes are approved.
 - DE/ZH legal/service/news 404 avoidance and noindex strategy.
 - HU/EN privacy policy version sync and DPO/legal review.
-- D&B AA versus OPTEN/A+ governance: D&B AA High Creditworthy 2026 is a Dun &
-  Bradstreet proof item; do not call it OPTEN A+ unless separate OPTEN proof is
-  provided and reviewed.
+- D&B AA versus OPTEN/A+ governance: public wording now uses D&B AA High
+  Creditworthy 2026 as the Dun & Bradstreet proof item. Do not call it OPTEN
+  A+ unless separate OPTEN proof is provided and reviewed.
 - Private investigation contact dropdown explanation and sensitive-data
   warning review.
 - Meta/social polish after production indexing settles.

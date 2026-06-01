@@ -46,7 +46,8 @@ AOS internal product track outside the public website roadmap.
 - Analytics events are PII-guarded.
 - Official LinkedIn company profile is added as a non-tracking profile/entity
   link.
-- D&B AA High Creditworthy 2026 is tracked separately from OPTEN/A+.
+- D&B AA High Creditworthy 2026 is the current proof-backed public
+  creditworthiness wording; it is tracked separately from OPTEN/A+.
 - Contact rate limiter supports Upstash REST and Vercel KV REST env names.
 - Shared `requireAdmin()` allowlist enforcement is implemented.
 - Admin uploads include PDF/JPEG/PNG/WEBP magic-byte validation.
@@ -116,7 +117,9 @@ Scope:
 - GA4 Enhanced Measurement settings review, especially form interactions.
 - Private investigation dropdown explanation.
 - Sensitive-data warning improvements.
-- OPTEN vs D&B governance.
+- OPTEN vs D&B governance is resolved in public wording: use D&B AA High
+  Creditworthy 2026, and do not use OPTEN/A+ unless separate OPTEN-specific
+  proof is approved.
 - D&B AA High Creditworthy 2026 proof wording.
 - `docs/verified_claims.md` updates.
 - Proof-sensitive claim policy maintenance.
@@ -133,14 +136,15 @@ Exit criteria:
 
 - Privacy/legal pages describe the actual consent and contact behavior.
 - D&B AA and OPTEN/A+ are clearly separated.
+- Public creditworthiness surfaces use D&B AA wording only.
 - Special/sensitive service contact risks are documented.
 - Proof-sensitive claims have allowed wording, source, status and owner.
 
 Ownership / decision needed:
 
 - Legal/DPO review of analytics and privacy copy.
-- Owner decision on whether OPTEN/A+ remains deferred or receives separate
-  proof.
+- Separate owner/proof review only if an OPTEN-specific public claim is ever
+  requested later.
 
 ---
 
