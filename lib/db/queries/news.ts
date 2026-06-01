@@ -71,7 +71,6 @@ export async function getPublishedNewsDetailBySlugHu(
       lead: news.leadHu,
       body: news.bodyHu,
       date: news.date,
-      updatedAt: news.updatedAt,
       imageUrl: news.imageUrl,
     })
     .from(news)
@@ -82,6 +81,10 @@ export async function getPublishedNewsDetailBySlugHu(
   return {
     ...trimArticle(row),
     body: row.body.trim(),
+    // Public article rendering does not require the DB-only updated_at column.
+    // Use the publication date as the public modified timestamp fallback so
+    // static builds do not depend on a non-essential news metadata column.
+    updatedAt: row.date,
   };
 }
 
@@ -99,7 +102,6 @@ export async function getAllPublishedNewsPathsHu(): Promise<
     .select({
       slug: news.slug,
       date: news.date,
-      updatedAt: news.updatedAt,
     })
     .from(news)
     .where(publishedNewsHuPredicate())
@@ -109,7 +111,7 @@ export async function getAllPublishedNewsPathsHu(): Promise<
     locale: "hu" as const,
     slug: row.slug.trim(),
     date: row.date,
-    updatedAt: row.updatedAt,
+    updatedAt: row.date,
   }));
 }
 
@@ -159,16 +161,14 @@ export async function getAllPublishedNewsPathsHuForBuild(
     console.error(
       [
         `[news-paths] ${surface}: failed to read DB-backed published HU article paths.`,
-        "Failing generation instead of emitting an incomplete article layer.",
+        "Continuing with no pre-rendered news article paths; eligible HU articles can still render dynamically at request time.",
         `DB target: ${redactedDbIdentity()}.`,
         `Cause: ${sanitizeDbErrorMessage(error)}.`,
         "Full DATABASE_URL was not printed.",
       ].join(" "),
     );
 
-    throw new Error(
-      `[news-paths] ${surface}: HU article path generation requires a reachable database.`,
-    );
+    return [];
   }
 }
 

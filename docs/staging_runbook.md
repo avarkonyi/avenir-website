@@ -438,6 +438,14 @@ This is intentional: a Preview or production build with an unavailable service-r
 
 Status: HU-first public article layer.
 
+News detail static path generation is intentionally softer than service-detail
+readiness. If the build cannot read the HU article path list, the article detail
+route may continue with no pre-rendered article paths and rely on dynamic
+request-time rendering. This preserves build reliability without opening EN,
+DE, or ZH news routes. The public article query must still return `notFound()`
+for unsupported locales, unknown slugs, draft rows, soft-deleted rows,
+future-dated rows, or rows missing HU title/lead/body content.
+
 Before merging public news/article work, verify on the Vercel Preview URL:
 
 - `/hu/hirek` returns 200 only when at least one HU-ready article exists;

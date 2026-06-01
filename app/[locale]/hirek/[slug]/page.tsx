@@ -18,6 +18,7 @@ import {
 } from "@/lib/safe-public-image";
 
 export const revalidate = 3600;
+export const dynamicParams = true;
 
 const INDEX_PATH = "/hu/hirek";
 const INDEX_URL = `${SEO_DATA.url}${INDEX_PATH}`;
