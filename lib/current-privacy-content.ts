@@ -51,7 +51,7 @@ export const CURRENT_PRIVACY_CONTENT: Partial<Record<"hu" | "en", PrivacyContent
       {
         id: "cookies",
         title: "8. Sütik és hasonló technológiák",
-        body: "A weboldal analitikai sütiket vagy hasonló technológiákat kizárólag az érintett hozzájárulása alapján használ. Az analitika jelenleg Google Analytics használatával történik.\n\nAz analitikai mérés nem indul el a hozzájárulás megadása előtt. Elutasítás esetén a Google Analytics nem töltődik be. Az analitikai eseményekbe nem kerül név, e-mail-cím, telefonszám, cégnév, üzenetszöveg vagy szabad szöveges űrlaptartalom.\n\nA kapcsolatfelvételi űrlap működéséhez és biztonságához szükséges technikai megoldások nem szolgálnak reklámcélú követésre. A felhasználó a Süti beállítások felületen módosíthatja döntését.\n\nA weboldal jelenleg nem használ Google Tag Managert és nem használ LinkedIn Insight Taget.",
+        body: "A weboldal analitikai sütiket vagy hasonló technológiákat kizárólag az érintett hozzájárulása alapján használ. Az analitika jelenleg Google Analytics 4 (GA4) használatával történik.\n\nAz analitikai mérés nem indul el a hozzájárulás megadása előtt. Elutasítás esetén a Google Analytics nem töltődik be. Az analitikai eseményekbe nem kerül név, e-mail-cím, telefonszám, cégnév, üzenetszöveg vagy szabad szöveges űrlaptartalom.\n\nA kapcsolatfelvételi űrlap működéséhez és biztonságához szükséges technikai megoldások nem szolgálnak reklámcélú követésre. A felhasználó a Süti beállítások felületen módosíthatja döntését.\n\nA weboldal jelenleg nem használ Google Tag Managert, nem használ LinkedIn Insight Taget, és nem használ más marketingcélú követőpixelt.",
       },
       {
         id: "data-subject-rights",
@@ -137,7 +137,7 @@ export const CURRENT_PRIVACY_CONTENT: Partial<Record<"hu" | "en", PrivacyContent
       {
         id: "cookies",
         title: "8. Cookies and Similar Technologies",
-        body: "The website uses analytics cookies or similar technologies only on the basis of the user's consent. Analytics is currently performed using Google Analytics.\n\nAnalytics does not start before consent is given. If analytics is rejected, Google Analytics does not load. Analytics events do not include name, email address, phone number, company name, message text or free-text form content.\n\nTechnical solutions necessary for the operation and security of the contact form do not serve advertising-related tracking. The user may change the choice through Cookie settings.\n\nThe site currently does not use Google Tag Manager or LinkedIn Insight Tag.",
+        body: "The website uses analytics cookies or similar technologies only on the basis of the user's consent. Analytics is currently performed using Google Analytics 4 (GA4).\n\nAnalytics does not start before consent is given. If analytics is rejected, Google Analytics does not load. Analytics events do not include name, email address, phone number, company name, message text or free-text form content.\n\nTechnical solutions necessary for the operation and security of the contact form do not serve advertising-related tracking. The user may change the choice through Cookie settings.\n\nThe website currently does not use Google Tag Manager, LinkedIn Insight Tag or other marketing tracking pixels.",
       },
       {
         id: "data-subject-rights",
