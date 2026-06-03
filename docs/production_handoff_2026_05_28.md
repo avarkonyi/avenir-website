@@ -727,7 +727,7 @@ P1 / near-term:
 - Mobile overflow review on real devices/narrow viewports.
 - Consent banner placement review on mobile.
 - Partner logo proof population.
-- D&B/OPTEN governance finalization.
+- D&B/OPTEN governance resolved in public wording; monitor regressions.
 
 P2:
 
@@ -803,7 +803,8 @@ Work:
 - review `Magánnyomozás` / Private Investigation dropdown handling and warning;
 - decide how DE/ZH legal links should behave until full legal translations
   exist;
-- document owner decision for OPTEN/A+ public-use governance;
+- keep OPTEN/A+ unavailable for public use unless separate OPTEN-specific
+  proof is approved;
 - preserve D&B AA High Creditworthy 2026 as a separate Dun & Bradstreet proof
   item.
 

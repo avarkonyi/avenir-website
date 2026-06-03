@@ -80,8 +80,8 @@ Known production/post-launch notes:
   production consent/GA4 QA command;
 - D&B AA High Creditworthy 2026 public claim is synced from the Dun &
   Bradstreet certificate dated 26 May 2026;
-- OPTEN/A+ public-use governance remains an owner-deferred exception unless a
-  separate OPTEN-specific proof document is provided and reviewed;
+- OPTEN/A+ is not an approved public creditworthiness claim unless a separate
+  OPTEN-specific proof document is provided and reviewed;
 - approved partner logo population and proof records;
 - contact form production smoke should be treated as pending unless a real
   non-sensitive test submission is separately recorded.
@@ -717,8 +717,9 @@ P1:
 - EN news route/content policy: keep EN news hidden or route to HU with clear
   wording until EN article routes are approved.
 - Privacy Policy HU/EN version sync and DPO/legal review.
-- D&B AA versus OPTEN/A+ governance: keep D&B and OPTEN as separate proof
-  tracks; OPTEN/A+ remains owner-deferred unless separately proved.
+- D&B AA versus OPTEN/A+ governance: public wording uses D&B AA High
+  Creditworthy 2026. Keep D&B and OPTEN as separate proof tracks; OPTEN/A+
+  remains unavailable for public use unless separately proved.
 - Upload magic-byte sniff is implemented in source; continue regression tests
   for admin upload routes.
 - Shared `requireAdmin()` allowlist enforcement is implemented in source;
