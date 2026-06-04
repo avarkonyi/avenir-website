@@ -8,7 +8,7 @@ import type { Translation } from "@/lib/i18n";
 import { Icon } from "./Icon";
 
 const SECTION_KEYS = ["about", "services", "references", "news", "career", "contact"] as const;
-const LOCALES = ["hu", "en", "de", "zh"] as const;
+const LOCALES = ["hu", "en", "de", "zh", "ko"] as const;
 const FULL_CONTENT_LOCALES = ["hu", "en"] as const;
 
 function normalizeHash(rawHash: string): string {
@@ -41,10 +41,10 @@ export function Nav({ t }: { t: Pick<Translation, "nav"> }) {
   // homepage's transparent-at-top nav style — readability hotfix:
   // force the navy nav background regardless of scroll position.
   const isLegalPage = /\/(impresszum|aszf|adatvedelem)\/?$/.test(pathname);
-  const isServiceDetailPage = /^\/(?:hu|en|de|zh)\/szolgaltatasok\/[^/]+\/?$/.test(
+  const isServiceDetailPage = /^\/(?:hu|en|de|zh|ko)\/szolgaltatasok\/[^/]+\/?$/.test(
     pathname,
   );
-  const isNewsPage = /^\/(?:hu|en|de|zh)\/hirek(?:\/[^/]+)?\/?$/.test(pathname);
+  const isNewsPage = /^\/(?:hu|en|de|zh|ko)\/hirek(?:\/[^/]+)?\/?$/.test(pathname);
   const availableLocales =
     isNewsPage
       ? (["hu"] as const)
@@ -146,7 +146,7 @@ export function Nav({ t }: { t: Pick<Translation, "nav"> }) {
   // legal-page section IDs are also shared via t.legal.*.sections[i].id).
   //
   // Edge case — terms section §4 has #magannyomozas (HU) vs
-  // #private-investigation (EN/DE/ZH). Switching from /hu/aszf with
+  // #private-investigation (non-HU legal fallback). Switching from /hu/aszf with
   // that hash to EN gives /en/aszf#magannyomozas → not found → graceful
   // top-of-page render. Acceptable: 1 of ~30 IDs differs (~3% miss rate
   // for a corner-case scroll target). Locale-aware id mapping is a

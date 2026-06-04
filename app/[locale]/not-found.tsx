@@ -115,7 +115,7 @@ export default function LocaleNotFound() {
             borderTop: "1px solid rgba(255,255,255,0.08)",
           }}
         >
-          {(["hu", "en", "de", "zh"] as const).map((l) => (
+          {(["hu", "en", "de", "zh", "ko"] as const).map((l) => (
             <Link
               key={l}
               href={`/${l}`}

@@ -62,7 +62,7 @@ export const ContactPayloadSchema = z.object({
     z.string().max(50).optional(),
   ),
   message: z.string().trim().max(4000).optional(),
-  locale: z.enum(["hu", "en", "de", "zh"]),
+  locale: z.enum(["hu", "en", "de", "zh", "ko"]),
   form_variant: z.enum(FORM_VARIANTS).optional(),
   source_path: z.string().trim().max(240).optional(),
   // Honeypot: hidden field that humans don't see. Bots fill every input.

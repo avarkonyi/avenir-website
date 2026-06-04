@@ -39,7 +39,13 @@ export async function Footer({
     .filter((link) => link.title.length > 0);
   const legalLocale = locale === "hu" ? "hu" : "en";
   const legalLabels =
-    locale === "de" || locale === "zh"
+    locale === "ko"
+      ? {
+          privacy: "개인정보 처리방침 (영문)",
+          terms: "이용약관 (영문)",
+          impressum: "회사 정보 (영문)",
+        }
+      : locale === "de" || locale === "zh"
       ? {
           privacy: "Privacy Policy (English)",
           terms: "Terms of Use (English)",

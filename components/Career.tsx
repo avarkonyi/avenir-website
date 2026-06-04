@@ -12,6 +12,7 @@ const LOCALE_COLS = {
   en: { title: positions.titleEn, location: positions.locationEn, type: positions.typeEn },
   de: { title: positions.titleDe, location: positions.locationDe, type: positions.typeDe },
   zh: { title: positions.titleZh, location: positions.locationZh, type: positions.typeZh },
+  ko: { title: positions.titleEn, location: positions.locationEn, type: positions.typeEn },
 } as const;
 
 type Locale = keyof typeof LOCALE_COLS;

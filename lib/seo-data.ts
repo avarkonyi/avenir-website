@@ -100,7 +100,7 @@ export const SEO_FAQS_HU = [
   },
 ] as const;
 
-export const SEO_LOCALES = ["hu", "en", "de", "zh"] as const;
+export const SEO_LOCALES = ["hu", "en", "de", "zh", "ko"] as const;
 export type SeoLocale = (typeof SEO_LOCALES)[number];
 
 // Mapping for og:locale and og:locale:alternate.
@@ -109,6 +109,7 @@ export const OG_LOCALE_MAP: Record<SeoLocale, string> = {
   en: "en_US",
   de: "de_DE",
   zh: "zh_CN",
+  ko: "ko_KR",
 };
 
 // Per-locale taglines used in <title>: "{legalNameShort} — {tagline}".
@@ -117,6 +118,7 @@ export const META_TAGLINES: Record<SeoLocale, string> = {
   en: "Security and FM",
   de: "Objektschutz und FM",
   zh: "安保与设施管理",
+  ko: "보안 및 FM",
 };
 
 // Per-locale meta descriptions. Keep these concise for search snippets;
@@ -126,6 +128,7 @@ export const META_DESCRIPTIONS: Record<SeoLocale, string> = {
   en: "Security services, security technology, service audits and FM support in Hungary. One contract, one accountable point of contact.",
   de: "Objektschutz, Sicherheitstechnik, Vor-Ort-Audits und FM-Unterstützung in Ungarn. Ein Vertrag, ein verantwortlicher Ansprechpartner.",
   zh: "Avenir 在匈牙利提供安保服务、安防技术、现场审核和设施管理支持，一份合同，一个责任明确的对接人。",
+  ko: "Avenir는 헝가리에서 보안 서비스, 보안 기술, 서비스 감사 및 FM 지원을 제공합니다. 하나의 계약, 하나의 책임 연락 창구.",
 };
 
 // Security-first positioning: Avenir's primary expertise is property

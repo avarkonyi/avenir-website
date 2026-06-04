@@ -9,13 +9,13 @@ import {
   SEO_LIABILITY,
   SEO_LICENSES,
   SEO_REGULATORY_BODIES,
-  type SeoLocale,
 } from "@/lib/seo-data";
 import {
   isLegalPageLocale,
   legalPageAlternateLanguages,
   legalPageStaticParams,
   legalPageUrl,
+  type LegalPageLocale,
 } from "@/lib/legal-routes";
 import {
   LegalPageChrome,
@@ -99,16 +99,14 @@ function Row({ label, value }: { label: string; value: React.ReactNode }) {
   );
 }
 
-function getExecutiveTitle(locale: SeoLocale): string {
+function getExecutiveTitle(locale: LegalPageLocale): string {
   switch (locale) {
     case "hu": return SEO_EXECUTIVE.titleHu;
     case "en": return SEO_EXECUTIVE.titleEn;
-    case "de": return SEO_EXECUTIVE.titleDe;
-    case "zh": return SEO_EXECUTIVE.titleZh;
   }
 }
 
-function getExecutiveName(locale: SeoLocale): string {
+function getExecutiveName(locale: LegalPageLocale): string {
   return locale === "en" ? SEO_EXECUTIVE.nameEn : SEO_EXECUTIVE.name;
 }
 
@@ -132,7 +130,7 @@ export default async function ImpresszumPage({
   const { locale } = await params;
   if (!isLegalPageLocale(locale)) notFound();
   const t = getTranslation(locale);
-  const seoLocale = locale as SeoLocale;
+  const legalLocale = locale as LegalPageLocale;
   const L = t.legal.impressum.labels;
   const ST = t.legal.impressum.sectionTitles;
   const LT = t.legal.impressum.licenseTitles;
@@ -175,7 +173,7 @@ export default async function ImpresszumPage({
         <h2 style={sectionTitleStyle}>2. {ST.representative}</h2>
         <Row
           label={L.executiveTitle}
-          value={`${getExecutiveName(seoLocale)}, ${getExecutiveTitle(seoLocale)}`}
+          value={`${getExecutiveName(legalLocale)}, ${getExecutiveTitle(legalLocale)}`}
         />
         <Row label={L.guardCard} value={SEO_EXECUTIVE.guardCardNumber} />
         <Row label={L.pidetective} value={SEO_EXECUTIVE.pidetectiveNumber} />

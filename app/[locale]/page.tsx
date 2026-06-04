@@ -19,7 +19,7 @@ import {
   newsDetailHrefHu,
 } from "@/lib/db/queries/news";
 
-const LOCALES = ["hu", "en", "de", "zh"] as const;
+const LOCALES = ["hu", "en", "de", "zh", "ko"] as const;
 type Locale = (typeof LOCALES)[number];
 
 export const revalidate = 3600;

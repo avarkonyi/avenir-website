@@ -5,7 +5,7 @@ import {
 } from "next/server";
 import { auth } from "@/auth";
 
-const LOCALES = ["hu", "en", "de", "zh"];
+const LOCALES = ["hu", "en", "de", "zh", "ko"];
 const DEFAULT_LOCALE = "hu";
 const NOINDEX_HEADER = "noindex, nofollow";
 const LEGACY_GONE_PATHS = ["/cgi-sys", "/mall", "/tw"] as const;

@@ -17,7 +17,7 @@ The next development period is no longer a launch sprint. It is a
 post-launch product-development program: stabilize production, close legal and
 privacy gaps, build a public trust/document layer, add complaint and ethics
 process communication, grow educational content, improve conversion, decide the
-DE/ZH localization model, prepare Special Services separately, and keep the
+DE/ZH/KO localization model, prepare Special Services separately, and keep the
 AOS internal product track outside the public website roadmap.
 
 ## Status Model
@@ -40,7 +40,8 @@ AOS internal product track outside the public website roadmap.
   - `/en/adatvedelem`, `/en/aszf`, `/en/impresszum`
 - Production sitemap includes HU/EN services and legal routes.
 - Production noindex is absent from ready public HU/EN pages.
-- DE/ZH are homepage/partial-localization surfaces only.
+- DE/ZH are homepage/partial-localization surfaces only. KO has a homepage-only
+  draft scaffold and is translation-review-required.
 - Direct GA4 is implemented with analytics consent; Google Tag Manager is not
   used.
 - Analytics events are PII-guarded.
@@ -75,7 +76,7 @@ Scope:
 - Mobile overflow checks on realistic device widths.
 - Consent banner placement review, especially on mobile.
 - EN news broken-link handling.
-- DE/ZH partial-localization flow cleanup.
+- DE/ZH/KO partial-localization flow cleanup.
 
 Production QA commands:
 
@@ -90,7 +91,7 @@ Exit criteria:
 - Production sitemap is submitted and accepted for processing.
 - GA4 page views and business events appear after consent.
 - No ready-locale public navigation path leads to an avoidable 404.
-- DE/ZH remain intentionally partial and do not expose unfinished routes.
+- DE/ZH/KO remain intentionally partial and do not expose unfinished routes.
 
 Ownership / decision needed:
 
@@ -399,24 +400,24 @@ Ownership / decision needed:
 
 ---
 
-## Phase 6 — DE/ZH Localization
+## Phase 6 — DE/ZH/KO Localization
 
-Purpose: decide and implement the long-term German and Chinese localization
-model.
+Purpose: decide and implement the long-term German, Chinese and Korean
+localization model.
 
 Status: Strategic decision required.
 
-### Option A — Full DE/ZH rollout
+### Option A — Full DE/ZH/KO rollout
 
 Scope:
 
-- DE/ZH legal pages.
-- DE/ZH service detail pages.
-- DE/ZH news policy.
+- DE/ZH/KO legal pages.
+- DE/ZH/KO service detail pages.
+- DE/ZH/KO news policy.
 - Reviewed translations.
 - Hreflang and sitemap inclusion.
 - Route readiness rules.
-- QA smoke for DE/ZH.
+- QA smoke for DE/ZH/KO.
 
 Requirements:
 
@@ -424,18 +425,21 @@ Requirements:
 - no HU fallback masquerading as localized detail content;
 - route returns 200 only when locale content is complete;
 - service/legal/news links work for that locale.
+- Korean requires native/professional review before being treated as equivalent
+  to HU/EN production depth.
 
 ### Option B — Partial homepage-only localization
 
 Scope:
 
-- DE/ZH homepage only.
-- No DE/ZH service detail routes.
-- No DE/ZH legal/news routes.
+- DE/ZH/KO homepage only.
+- No DE/ZH/KO service detail routes.
+- No DE/ZH/KO legal/news routes.
 - Noindex if appropriate.
 - Route-aware language switcher.
 - Footer legal links point only to existing HU/EN legal pages.
-- No broken DE/ZH 404 user flows.
+- No broken DE/ZH/KO 404 user flows.
+- KO homepage draft remains noindex and excluded from sitemap until reviewed.
 
 Shared localization rules:
 
@@ -450,11 +454,11 @@ Exit criteria:
 
 - Strategic choice between full rollout and partial homepage-only model.
 - Sitemap, hreflang and language switcher match that choice.
-- No public DE/ZH route creates avoidable 404 flows.
+- No public DE/ZH/KO route creates avoidable 404 flows.
 
 Ownership / decision needed:
 
-- Owner decision on business value of DE/ZH.
+- Owner decision on business value of DE/ZH/KO.
 - Legal decision on non-HU legal translation requirements.
 
 ---

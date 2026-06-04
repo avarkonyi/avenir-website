@@ -4,6 +4,67 @@ import { db, services } from "@/lib/db";
 import { redactedDbIdentity, sanitizeDbErrorMessage } from "@/lib/db/redact";
 import { LOCALES, type Locale } from "@/lib/i18n";
 
+type DbLocale = Exclude<Locale, "ko">;
+
+const DB_LOCALES = ["hu", "en", "de", "zh"] as const satisfies readonly DbLocale[];
+
+const KOREAN_SERVICE_DISPLAY: Record<
+  string,
+  { readonly name: string; readonly shortDesc: string }
+> = {
+  objektumorzes: {
+    name: "현장 보안 인력 서비스",
+    shortDesc:
+      "사업장 출입 관리, 순찰, 사건 처리, 업무 기록 및 합의된 보고·에스컬레이션을 지원하는 현장 보안 인력 서비스입니다.",
+  },
+  portaszolgalat: {
+    name: "리셉션 및 게이트하우스 서비스",
+    shortDesc:
+      "방문객, 협력사, 임직원, 열쇠, 우편물·배송물, 출입 기록 및 합의된 에스컬레이션을 관리하는 리셉션 및 게이트하우스 서비스입니다.",
+  },
+  biztonsagtechnika: {
+    name: "보안 기술",
+    shortDesc:
+      "CCTV, 출입 통제 및 경보 프로세스를 현장별 보안 모델에 맞춰 설계·운영하도록 지원하는 보안 기술 서비스입니다.",
+  },
+  "tavfelugyelet-vonuloszolgalat": {
+    name: "원격 모니터링 및 출동 대응 서비스",
+    shortDesc:
+      "신호 접수, 경보 확인, 에스컬레이션, 이벤트 기록 및 합의된 조건의 대응 프로세스를 지원하는 원격 모니터링 서비스입니다.",
+  },
+  "mystery-shopping-helyszini-audit": {
+    name: "미스터리 쇼핑 및 서비스 감사",
+    shortDesc:
+      "실제 고객 접점과 운영 상황에서 서비스 품질을 확인하고, 구조화된 관찰·보고·개선 제안을 제공하는 서비스 감사입니다.",
+  },
+  rendezvenybiztositas: {
+    name: "행사 보안",
+    shortDesc:
+      "기업 행사, 초청 행사 및 공개 행사에서 출입 관리, 동선 지원, 구역 관리, 사건 기록 및 주최자 기준 에스컬레이션을 지원합니다.",
+  },
+  "hard-fm": {
+    name: "Hard FM",
+    shortDesc:
+      "계획 예방정비, 장애 대응, 전문 협력사 조율, 장애 기록 및 운영 보고를 지원하는 Hard FM 서비스입니다.",
+  },
+  "soft-fm": {
+    name: "Soft FM",
+    shortDesc:
+      "청소, 조경, 위생, 폐기물 처리 지원 및 서비스 제공자 관리를 합의된 범위와 품질 확인, 서면 보고에 따라 지원하는 Soft FM 서비스입니다.",
+  },
+};
+
+function safeDbLocaleOf(locale: string): DbLocale {
+  return (DB_LOCALES as readonly string[]).includes(locale)
+    ? (locale as DbLocale)
+    : "hu";
+}
+
+function nonEmptyTrimmed(value: string | null): string | null {
+  const trimmed = value?.trim() ?? "";
+  return trimmed.length > 0 ? trimmed : null;
+}
+
 // Normalized row shape returned to public renderers. Locale fallback
 // to HU is already applied to `name` and `shortDesc`; `shortDesc` may
 // be empty string when neither the requested locale nor HU has a
@@ -29,9 +90,7 @@ export type LocalizedServiceRow = {
 async function loadActiveTopLevelServices(
   locale: string,
 ): Promise<LocalizedServiceRow[]> {
-  const safeLocale: Locale = (LOCALES as readonly string[]).includes(locale)
-    ? (locale as Locale)
-    : "hu";
+  const safeLocale = safeDbLocaleOf(locale);
 
   const rows = await db
     .select({
@@ -57,22 +116,29 @@ async function loadActiveTopLevelServices(
     .orderBy(asc(services.sortOrder));
 
   return rows.map((row) => {
-    const namesByLocale: Record<Locale, string | null> = {
+    const namesByLocale: Record<DbLocale, string | null> = {
       hu: row.nameHu,
       en: row.nameEn,
       de: row.nameDe,
       zh: row.nameZh,
     };
-    const descsByLocale: Record<Locale, string | null> = {
+    const descsByLocale: Record<DbLocale, string | null> = {
       hu: row.shortDescHu,
       en: row.shortDescEn,
       de: row.shortDescDe,
       zh: row.shortDescZh,
     };
+    const koDisplay = locale === "ko" ? KOREAN_SERVICE_DISPLAY[row.slug] : null;
     const name =
-      namesByLocale[safeLocale]?.trim() || row.nameHu?.trim() || "";
+      koDisplay?.name ??
+      nonEmptyTrimmed(namesByLocale[safeLocale]) ??
+      nonEmptyTrimmed(row.nameHu) ??
+      "";
     const shortDesc =
-      descsByLocale[safeLocale]?.trim() || row.shortDescHu?.trim() || "";
+      koDisplay?.shortDesc ??
+      nonEmptyTrimmed(descsByLocale[safeLocale]) ??
+      nonEmptyTrimmed(row.shortDescHu) ??
+      "";
     return {
       slug: row.slug,
       icon: row.icon,
@@ -88,18 +154,12 @@ export const getActiveTopLevelServices = cache(loadActiveTopLevelServices);
 // Service detail page queries (P5 Phase 1)
 // ────────────────────────────────────────────────────────────────────────
 
-function safeLocaleOf(locale: string): Locale {
-  return (LOCALES as readonly string[]).includes(locale)
-    ? (locale as Locale)
-    : "hu";
-}
-
 // Homepage service-card publication predates detail pages, so
 // services.isPublished alone is not enough to expose a detail URL.
 // A service detail page is public only when that exact locale has the
 // mandatory detail baseline. EN/DE/ZH must not become public via HU
 // fallback content.
-function requiredDetailFieldsFor(locale: Locale) {
+function requiredDetailFieldsFor(locale: DbLocale) {
   switch (locale) {
     case "en":
       return [
@@ -133,7 +193,7 @@ function requiredDetailFieldsFor(locale: Locale) {
   }
 }
 
-function publishedDetailPredicate(locale: Locale) {
+function publishedDetailPredicate(locale: DbLocale) {
   const requiredFields = requiredDetailFieldsFor(locale);
   return and(
     eq(services.isPublished, true),
@@ -145,9 +205,9 @@ function publishedDetailPredicate(locale: Locale) {
 }
 
 function pickLocalized<T>(
-  byLocale: Record<Locale, T | null>,
+  byLocale: Record<DbLocale, T | null>,
   fallback: T | null,
-  locale: Locale,
+  locale: DbLocale,
 ): T | null {
   const value = byLocale[locale];
   if (value !== null && value !== undefined) {
@@ -175,8 +235,8 @@ function pickLocalized<T>(
 }
 
 function pickLocalizedArray<T>(
-  byLocale: Record<Locale, T[] | null>,
-  locale: Locale,
+  byLocale: Record<DbLocale, T[] | null>,
+  locale: DbLocale,
 ): T[] {
   const value = byLocale[locale];
   return Array.isArray(value) && value.length > 0 ? value : [];
@@ -216,7 +276,8 @@ async function loadPublishedServiceDetailBySlug(
   slug: string,
   locale: string,
 ): Promise<LocalizedServiceDetail | null> {
-  const safeLocale = safeLocaleOf(locale);
+  if (locale === "ko") return null;
+  const safeLocale = safeDbLocaleOf(locale);
   const [row] = await db
     .select()
     .from(services)
@@ -420,6 +481,8 @@ function hasRequiredDetailFields(
   row: ServiceReadinessRow,
   locale: Locale,
 ): boolean {
+  if (locale === "ko") return false;
+
   const values =
     locale === "hu"
       ? [
@@ -578,7 +641,8 @@ async function loadPublishedServicesBySlugs(
   locale: string,
 ): Promise<LocalizedServiceRow[]> {
   if (slugs.length === 0) return [];
-  const safeLocale = safeLocaleOf(locale);
+  if (locale === "ko") return [];
+  const safeLocale = safeDbLocaleOf(locale);
   const rows = await db
     .select({
       slug: services.slug,

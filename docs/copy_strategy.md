@@ -7,8 +7,9 @@ The eight HU and eight EN service detail pages are production-live on
 production copy. Do not start a new creative rewrite unless a production audit
 finds an actual defect or the owner explicitly requests a new copy pass.
 
-DE/ZH are homepage/partial-localization surfaces only. Do not start DE/ZH
-service detail rollout, case studies, or named partner/client references without
+DE/ZH are homepage/partial-localization surfaces only. KO has a homepage-only
+draft scaffold and is translation-review-required. Do not start DE/ZH/KO service
+detail rollout, case studies, or named partner/client references without
 separate approval, localized content, and proof.
 
 The next content/business layer should focus on proof-safe trust governance,
@@ -226,7 +227,7 @@ P1/P2 content and governance items:
 
 - EN news route/content policy: keep EN news hidden or route clearly to HU
   content until EN article routes are approved.
-- DE/ZH legal/service/news 404 avoidance and noindex strategy.
+- DE/ZH/KO legal/service/news 404 avoidance and noindex strategy.
 - HU/EN privacy policy version sync and DPO/legal review.
 - D&B AA versus OPTEN/A+ governance: public wording now uses D&B AA High
   Creditworthy 2026 as the Dun & Bradstreet proof item. Do not call it OPTEN

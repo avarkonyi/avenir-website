@@ -30,6 +30,7 @@ The production site is live for:
 
 - HU homepage: `/hu`
 - EN homepage: `/en`
+- KO homepage draft: `/ko`
 - 8 HU service detail pages
 - 8 EN service detail pages
 - HU legal pages:
@@ -45,9 +46,10 @@ The production site is live for:
   - `/hu/hirek/[slug]`
 - `sitemap.xml`, `robots.txt`, `llms.txt`, `llms-full.txt`
 
-DE/ZH are homepage/partial-localization surfaces only. They should not expose
-service detail, legal or news detail flows until a full localization decision
-and review process is completed.
+DE/ZH are homepage/partial-localization surfaces only. KO is a homepage-only
+draft scaffold and is translation-review-required. These locales should not
+expose service detail, legal or news detail flows until a full localization
+decision and review process is completed.
 
 ## Architecture Summary
 
@@ -119,9 +121,9 @@ Production sitemap should include:
 
 Production sitemap should exclude:
 
-- DE/ZH service detail routes;
-- DE/ZH legal routes;
-- DE/ZH news routes;
+- DE/ZH/KO service detail routes;
+- DE/ZH/KO legal routes;
+- DE/ZH/KO news routes;
 - legacy service slugs;
 - admin/API/internal routes.
 
@@ -234,7 +236,7 @@ The ongoing roadmap is Phase 0-8:
 - Phase 3: Complaint handling and ethics layer.
 - Phase 4: Content growth / Tudástár.
 - Phase 5: Conversion and measurement optimization.
-- Phase 6: DE/ZH localization.
+- Phase 6: DE/ZH/KO localization.
 - Phase 7: Special Services layer.
 - Phase 8: Separate AOS product track.
 

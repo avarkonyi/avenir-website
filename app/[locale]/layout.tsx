@@ -143,6 +143,10 @@ const CERT_SCHEMA_COLS = {
     fullName: certifications.fullNameZh,
     description: certifications.descriptionZh,
   },
+  ko: {
+    fullName: certifications.fullNameEn,
+    description: certifications.descriptionEn,
+  },
 } as const;
 
 function withHuFallback(
@@ -369,7 +373,11 @@ export default async function LocaleLayout({
 
   const schemas = buildJsonLdSchemas(seoLocale, serviceItems, certs);
   const skipLinkText =
-    seoLocale === "hu" ? "Ugrás a tartalomhoz" : "Skip to content";
+    seoLocale === "hu"
+      ? "Ugrás a tartalomhoz"
+      : seoLocale === "ko"
+        ? "본문으로 건너뛰기"
+        : "Skip to content";
 
   return (
     <html

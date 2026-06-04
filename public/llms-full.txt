@@ -155,8 +155,8 @@ logos are proof-controlled visual assets and are not schema relationship claims.
 
 - Legacy service detail slugs such as `security`, `reception`, `building`,
   `technical`, `mystery`, `cleaning`, `hardfm`, and `green`.
-- EN/DE/ZH service detail URLs, because service detail pages are currently
-  public-ready only in Hungarian.
+- DE/ZH/KO service detail URLs. Service detail pages are public-ready only in
+  Hungarian and English; Korean is homepage-only and translation-review-required.
 - Admin and API routes.
 - Draft, preview-only, internal roadmap, migration, seed, or database URLs.
 - Unapproved partner names, customer names, testimonials, case studies, scores,

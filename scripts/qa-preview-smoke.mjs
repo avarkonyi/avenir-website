@@ -12,7 +12,7 @@ const CANONICAL_SERVICE_SLUGS = [
 ];
 
 const READY_SERVICE_LOCALES = ["hu", "en"];
-const UNREADY_SERVICE_LOCALES = ["de", "zh"];
+const UNREADY_SERVICE_LOCALES = ["de", "zh", "ko"];
 const SERVICE_SEGMENT = "szolgaltatasok";
 
 const READY_SERVICE_PATHS = READY_SERVICE_LOCALES.flatMap((locale) =>
@@ -38,7 +38,7 @@ const LEGACY_SERVICE_SLUGS = [
   "green",
 ];
 
-const LEGACY_SERVICE_PATHS = ["hu", "en", "de", "zh"].flatMap((locale) =>
+const LEGACY_SERVICE_PATHS = ["hu", "en", "de", "zh", "ko"].flatMap((locale) =>
   LEGACY_SERVICE_SLUGS.map((slug) => `/${locale}/${SERVICE_SEGMENT}/${slug}`),
 );
 
@@ -63,11 +63,15 @@ const UNPUBLISHED_LEGAL_PATHS = [
   "/zh/adatvedelem",
   "/zh/aszf",
   "/zh/impresszum",
+  "/ko/adatvedelem",
+  "/ko/aszf",
+  "/ko/impresszum",
 ];
 
 const EXPECTED_200 = [
   "/hu",
   "/en",
+  "/ko",
   ...READY_SERVICE_PATHS,
   ...PUBLISHABLE_LEGAL_PATHS,
   "/hu/hirek",
@@ -84,16 +88,20 @@ const EXPECTED_404 = [
   "/en/hirek",
   "/de/hirek",
   "/zh/hirek",
+  "/ko/hirek",
 ];
 
 const SITEMAP_FORBIDDEN = [
   ...LEGACY_SERVICE_PATHS,
   "/de/szolgaltatasok/",
   "/zh/szolgaltatasok/",
+  "/ko",
+  "/ko/szolgaltatasok/",
   ...UNPUBLISHED_LEGAL_PATHS,
   "/en/hirek",
   "/de/hirek",
   "/zh/hirek",
+  "/ko/hirek",
   "/admin",
   "/api",
 ];

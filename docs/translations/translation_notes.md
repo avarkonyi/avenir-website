@@ -3,9 +3,10 @@
 Generated for the Avenir multilingual launch inventory in `docs/translations/public_site_translation_matrix.csv`.
 
 This is a source inventory and review aid. HU and EN service detail pages are
-now production-live. DE/ZH remain partial-localization surfaces; this file does
-not publish DE/ZH service detail pages, does not change routing, and does not
-imply legal or proof approval.
+now production-live. DE/ZH remain partial-localization surfaces. KO has a
+homepage-only draft scaffold and is translation-review-required. This file does
+not publish DE/ZH/KO service detail pages, does not change routing, and does
+not imply legal or proof approval.
 
 ## Scope
 
@@ -70,7 +71,7 @@ Watch especially for:
 - Legal/privacy pages should be translated by or reviewed with legal counsel.
 - The Hungarian legal source includes dynamic overrides in `lib/legal-content.ts`; confirm rendered HU legal pages before sending final legal translation packages.
 - HU and EN legal URLs are currently live and may be included in the sitemap.
-  Do not include DE/ZH legal URLs until localized legal text is reviewed and
+  Do not include DE/ZH/KO legal URLs until localized legal text is reviewed and
   approved.
 
 ## Production Translation Status
@@ -79,7 +80,8 @@ Watch especially for:
 - Eight HU and eight EN service detail pages are live.
 - HU and EN legal pages are live under Hungarian legal slugs:
   `/hu|/en/adatvedelem`, `/hu|/en/aszf`, `/hu|/en/impresszum`.
-- DE/ZH are homepage/partial-localization surfaces only and should remain
+- DE/ZH are homepage/partial-localization surfaces only. KO is homepage-only
+  draft and translation-review-required. These partial locales should remain
   noindexed/excluded from sitemap until full localization is approved.
 - Canonical service labels are:
   - HU: Élőerős objektumőrzés; Recepciós és portaszolgálat;
@@ -93,7 +95,7 @@ Watch especially for:
 
 ## QA Checklist For Translated Pages
 
-- Verify route policy before publication: DE/ZH service detail pages must
+- Verify route policy before publication: DE/ZH/KO service detail pages must
   remain gated until localized required fields exist. Future new EN pages still
   need the same per-locale readiness and review discipline.
 - Confirm canonical slugs and contact aliases are unchanged.
@@ -134,6 +136,6 @@ Risk counts:
 
 - This is a source-code inventory only. DB-authored live article, partner, certification, or career content may need a separate DB export before full multilingual launch.
 - Current HU legal page rendering uses overrides and transformations; legal counsel should review rendered pages, not only CSV rows.
-- The matrix does not machine-translate missing DE/ZH service detail fields.
-- Existing DE/ZH static i18n text is marked for review, not accepted as final
+- The matrix does not machine-translate missing DE/ZH/KO service detail fields.
+- Existing DE/ZH/KO static i18n text is marked for review, not accepted as final
   launch-ready localization.

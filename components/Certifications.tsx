@@ -25,6 +25,11 @@ const CERTS_COLS = {
     description: certifications.descriptionZh,
     scope: certifications.scopeZh,
   },
+  ko: {
+    fullName: certifications.fullNameEn,
+    description: certifications.descriptionEn,
+    scope: certifications.scopeEn,
+  },
 } as const;
 
 function formatDate(iso: string | null, locale: string): string {

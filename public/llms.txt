@@ -9,6 +9,7 @@ management provider. The public website is https://www.afm.hu.
 - EN homepage: https://www.afm.hu/en
 - DE homepage: https://www.afm.hu/de
 - ZH homepage: https://www.afm.hu/zh
+- KO homepage draft: https://www.afm.hu/ko
 - XML sitemap: https://www.afm.hu/sitemap.xml
 - Full AI-search summary: https://www.afm.hu/llms-full.txt
 
@@ -57,3 +58,5 @@ management provider. The public website is https://www.afm.hu.
 Do not use admin, API, draft, legacy service, or non-ready service detail URLs as
 public sources. Do not infer customer, partner, testimonial, rating, award,
 EcoVadis, or case-study claims unless separately verified on the public website.
+The Korean localization is homepage-only and translation-review-required; do not
+infer Korean service detail, legal, or news pages from the Korean homepage draft.

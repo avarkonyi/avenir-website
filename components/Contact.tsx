@@ -7,8 +7,8 @@ import { trackAnalyticsEvent } from "@/lib/analytics/events";
 import { Icon } from "./Icon";
 
 // Per-locale anchor target for the ÁSZF section #4 deep-link from the
-// magánnyomozói warning. HU keeps the Hungarian slug; EN/DE/ZH use the
-// English slug since the DE/ZH ÁSZF page reuses the EN section IDs.
+// magánnyomozói warning. HU keeps the Hungarian slug; EN/DE/ZH/KO use the
+// English legal route/slug because partial locales do not expose legal pages.
 function legalLocaleFor(locale: string): "hu" | "en" {
   return locale === "hu" ? "hu" : "en";
 }

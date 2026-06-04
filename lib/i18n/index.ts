@@ -2,6 +2,7 @@ import { hu } from "./hu";
 import { en } from "./en";
 import { de } from "./de";
 import { zh } from "./zh";
+import { ko } from "./ko";
 import { withLegalContent } from "../legal-content";
 
 // Widen literal types from `as const` exports back to their general types,
@@ -19,18 +20,20 @@ type Widen<T> = T extends readonly (infer U)[]
         : T;
 
 export type Translation = Widen<typeof hu>;
-export type Locale = "hu" | "en" | "de" | "zh";
+export type Locale = "hu" | "en" | "de" | "zh" | "ko";
 
 // Compile-time assertions that en/de/zh structurally match hu's shape.
 // If a key drifts (e.g. de loses footer.impressum), tsc fails here.
 const _check_en: Translation = en;
 const _check_de: Translation = de;
 const _check_zh: Translation = zh;
+const _check_ko: Translation = ko;
 void _check_en;
 void _check_de;
 void _check_zh;
+void _check_ko;
 
-export const translations: Record<Locale, Translation> = { hu, en, de, zh };
+export const translations: Record<Locale, Translation> = { hu, en, de, zh, ko };
 
 export function getTranslation(locale: string): Translation {
   if (locale in translations) {
@@ -39,5 +42,5 @@ export function getTranslation(locale: string): Translation {
   return withLegalContent(DEFAULT_LOCALE, translations.hu);
 }
 
-export const LOCALES: Locale[] = ["hu", "en", "de", "zh"];
+export const LOCALES: Locale[] = ["hu", "en", "de", "zh", "ko"];
 export const DEFAULT_LOCALE: Locale = "hu";

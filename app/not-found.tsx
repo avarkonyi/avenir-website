@@ -59,7 +59,7 @@ export default function GlobalNotFound() {
               justifyContent: "center",
             }}
           >
-            {(["hu", "en", "de", "zh"] as const).map((l) => (
+            {(["hu", "en", "de", "zh", "ko"] as const).map((l) => (
               <Link
                 key={l}
                 href={`/${l}`}
