@@ -7,7 +7,7 @@ export const de = {
     "news": "News",
     "career": "Karriere",
     "contact": "Kontakt",
-    "cta": "Angebot anfragen"
+    "cta": "Angebot anfordern"
   },
   "hero": {
     "tag": "OBJEKTSCHUTZ · SICHERHEITSTECHNIK · AUDITS",
@@ -15,7 +15,7 @@ export const de = {
     "h1b": "Mehr Kontrolle.",
     "sub": "Avenir bündelt Ihren Sicherheitsbetrieb aus einer Hand: Objektschutz, Zutrittskontrolle, Sicherheitstechnik, Vor-Ort-Kontrollen und Reporting. Ein Vertrag. Ein verantwortlicher Ansprechpartner.",
     "cta1": "Unsere Leistungen",
-    "cta2": "Angebot anfragen",
+    "cta2": "Angebot anfordern",
     "bgAlt": "Avenir Facility Management — Gebäudebetrieb und Sicherheit in Ungarn"
   },
   "stats": [
@@ -29,11 +29,11 @@ export const de = {
     },
     {
       "n": "AA",
-      "l": "D&B High Creditworthy 2026"
+      "l": "Hohe Bonitätsbewertung (D&B)"
     },
     {
       "n": "24/7",
-      "l": "Dispatcher-Bereitschaft"
+      "l": "Leitstellenbereitschaft"
     }
   ],
   "aboutTitle": "Über Avenir",
@@ -59,13 +59,13 @@ export const de = {
     {
       "id": "security",
       "icon": "shield",
-      "t": "Personeller Objektschutz",
+      "t": "Objektschutz vor Ort",
       "d": "Personen- und Sachschutz mit geschulten Sicherheitskräften: Objektschutz, Streifendienste, Unterstützung bei der Zutrittskontrolle und Vorfallbearbeitung in Industrie-, Handels- und Büroumgebungen."
     },
     {
       "id": "cleaning",
       "icon": "sparkle",
-      "t": "Veranstaltungsschutz",
+      "t": "Veranstaltungssicherheit",
       "d": "Absicherung von Firmenevents, Konferenzen und Sonderveranstaltungen nach abgestimmten Protokollen: Zutrittskontrolle, Präsenz vor Ort, Streifendienste und Vorfallbearbeitung."
     },
     {
@@ -83,7 +83,7 @@ export const de = {
     {
       "id": "green",
       "icon": "leaf",
-      "t": "Soft FM",
+      "t": "Soft FM – Infrastrukturelles Gebäudemanagement",
       "d": "Organisation von Reinigungs-, Grünpflege- und Hausmeisterleistungen als ergänzende Services, mit kontrollierter Qualität und einem verantwortlichen Ansprechpartner."
     },
     {
@@ -95,13 +95,13 @@ export const de = {
     {
       "id": "mystery",
       "icon": "eye",
-      "t": "Mystery Shopping und Vor-Ort-Audits",
+      "t": "Mystery Shopping und Serviceaudit",
       "d": "Mystery Shopping, Servicequalitätskontrollen und Vor-Ort-Audits in realen Kunden- und Betriebssituationen, mit unabhängiger Bewertung und strukturiertem Reporting."
     },
     {
       "id": "hardfm",
       "icon": "gear",
-      "t": "Hard FM",
+      "t": "Hard FM – Technisches Gebäudemanagement",
       "d": "Unterstützung bei technischem Betrieb, Wartungskoordination und kleineren Reparaturarbeiten als ergänzende Leistung in komplexen Kundenumgebungen."
     }
   ],
@@ -124,7 +124,7 @@ export const de = {
   "careerText": "Das Avenir-Team arbeitet landesweit an Standorten großer Unternehmenskunden. Wir suchen Mitarbeitende, die ihre Schicht verantwortungsvoll angehen und die Bedeutung von zuverlässiger Präsenz und sorgfältiger Arbeit verstehen.\n\nWir freuen uns über Bewerbungen für Sicherheits-, Reinigungs-, technische und leitende Positionen. Wir bieten einen stabilen Hintergrund, legale Beschäftigung, professionelle Einarbeitung und Entwicklungsmöglichkeiten.",
   "applyBtn": "Bewerben",
   "contactTitle": "Kontakt",
-  "contactSub": "Angebot anfragen",
+  "contactSub": "Angebot anfordern",
   "contactLabels": {
     "address": "Adresse",
     "phone": "Telefon",
@@ -140,12 +140,12 @@ export const de = {
     "send": "Anfrage senden",
     "sending": "Wird gesendet…",
     "success": "Wir haben Ihre Nachricht erhalten. Wir melden uns innerhalb von 2 Werktagen. Ihre Daten werden gemäß unserer Datenschutzerklärung verarbeitet.",
-    "successPrivacyLink": "Datenschutzerklärung",
+    "successPrivacyLink": "Datenschutzerklärung (Englisch)",
     "specialDataWarning": "Bitte übermitteln Sie über das Nachrichtenfeld keine besonderen Datenkategorien, strafrechtlichen Daten, klassifizierten Daten, Geschäftsgeheimnisse oder detaillierten Privatlebensinformationen über Dritte. Solche Angelegenheiten erfordern eine gesonderte Vertrags- und Datenschutzabstimmung.",
     "specialDataWarningLink": "Nutzungsbedingungen, Abschnitt 4",
     "privateInvestigation": "Privatermittlung",
     "layeredNotice": "Mit dem Absenden akzeptieren Sie unsere",
-    "layeredNoticeLink": "Datenschutzerklärung",
+    "layeredNoticeLink": "Datenschutzerklärung (Englisch)",
     // TRANSLATION DRAFT: review by user
     "errors": {
       "nameRequired": "Bitte geben Sie Ihren vollständigen Namen ein",
@@ -254,8 +254,8 @@ export const de = {
         "dpoName": "Fanni Csegény",
         "dpoEmail": "dpo@afm.hu",
         "dpoPhone": "+36 70 622 6242",
-        "privacyLinkText": "Die vollständige Datenschutzerklärung ist hier verfügbar",
-        "privacyLinkHref": "/de/adatvedelem"
+        "privacyLinkText": "Die vollständige Datenschutzerklärung (Englisch) ist hier verfügbar",
+        "privacyLinkHref": "/en/adatvedelem"
       }
     },
     "impressum": {

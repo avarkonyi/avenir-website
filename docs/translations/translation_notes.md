@@ -91,7 +91,11 @@ Watch especially for:
   - DE service detail routes are source-implemented as 200/noindex review
     routes after deploy;
   - DE legal and news routes return 404 by design;
-  - DE footer legal links point to existing EN legal pages;
+  - DE footer and contact legal links point to existing EN legal pages with
+    German `(Englisch)` labels until German legal pages are reviewed;
+  - DE homepage service-card labels, the `Details` card link label,
+    `Angebot anfordern`, `Leitstellenbereitschaft` and
+    `Hohe Bonitätsbewertung (D&B)` are interim-polished in source;
   - DE is not in the sitemap and is not advertised as a service/legal/news
     hreflang target;
   - production may still show the previous DE service 404 state until the

@@ -1,6 +1,10 @@
 import { getTranslation } from "@/lib/i18n";
 import { getActiveTopLevelServices } from "@/lib/db/queries/services";
 import { getReadyServiceDetailHref } from "@/lib/service-detail-links";
+import {
+  getLocaleServiceListLabel,
+  getServiceCardDetailLabel,
+} from "@/lib/locale-ui-helpers";
 import { TrackedServiceCardLink } from "./analytics/TrackedServiceCardLink";
 import { Icon, ICON_NAMES, type IconName } from "./Icon";
 
@@ -22,12 +26,13 @@ export async function Services({
 }) {
   const t = getTranslation(locale);
   const rows = await getActiveTopLevelServices(locale);
+  const detailLabel = getServiceCardDetailLabel(locale);
 
   const cards = rows
     .map((row) => ({
       id: row.slug,
       icon: safeIconName(row.icon),
-      title: row.name,
+      title: getLocaleServiceListLabel(locale, row.slug, row.name),
       description: row.shortDesc,
       href: getReadyServiceDetailHref({
         locale,
@@ -108,7 +113,7 @@ export async function Services({
                       color: "#D1172E",
                     }}
                   >
-                    Részletek
+                    {detailLabel}
                   </span>
                 )}
               </>

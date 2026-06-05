@@ -2,3 +2,5 @@ import "./contact-schema.test.ts";
 import "./analytics-events.test.ts";
 import "./notification-email.test.ts";
 import "./service-quote-cta.test.tsx";
+import "./de-service-details.test.ts";
+import "./de-homepage-polish.test.ts";

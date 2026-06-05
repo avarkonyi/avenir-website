@@ -19,6 +19,7 @@ import {
   getPublishedNewsIndexHu,
   newsDetailHrefHu,
 } from "@/lib/db/queries/news";
+import { getLocaleServiceListLabel } from "@/lib/locale-ui-helpers";
 
 const LOCALES = ["hu", "en", "de", "zh", "ko"] as const;
 type Locale = (typeof LOCALES)[number];
@@ -60,7 +61,10 @@ export default async function HomePage({
   // contact-service-labels.ts keeps service slugs renderable in admin/email.
   const serviceRows = await getActiveTopLevelServices(locale);
   const serviceOptions = serviceRows
-    .map((row) => ({ slug: row.slug, label: row.name }))
+    .map((row) => ({
+      slug: row.slug,
+      label: getLocaleServiceListLabel(locale, row.slug, row.name),
+    }))
     .filter((opt) => opt.label.length > 0);
   const publishedServiceDetailPaths = await getAllPublishedServicePathsForBuild(
     "homepage service detail links",

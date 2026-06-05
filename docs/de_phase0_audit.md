@@ -21,7 +21,8 @@ The current source prevents the main broken-flow risks:
 - service detail language switching is limited to HU/EN;
 - legal page language switching is limited to HU/EN;
 - news page language switching is HU-only;
-- DE footer legal links point to existing EN legal pages;
+- DE footer legal links point to existing EN legal pages with German
+  `(Englisch)` fallback labels;
 - DE service cards may link to the review-mode DE service detail pages after
   deploy;
 - `/de` is noindex and not in the sitemap.
@@ -94,25 +95,27 @@ Relevant source files and behavior:
 - `components/Nav.tsx` exposes all locale homepages from homepage routes, but
   limits service/legal switcher choices to HU/EN and news choices to HU.
 - `components/Footer.tsx` maps DE legal footer links to EN legal pages with
-  English fallback labels.
+  German fallback labels that explicitly mark the target language as English.
 - `scripts/qa-preview-smoke.mjs` expects DE service routes to return 200 with
   `noindex, follow`, while DE legal/news routes remain 404 and DE service URLs
   remain forbidden in the sitemap.
 
 ## Footer Legal Fallback
 
-Current DE production behavior:
+Current DE source behavior:
 
 - `/de` footer legal links point to existing EN legal pages:
   - `/en/adatvedelem`
   - `/en/aszf`
   - `/en/impresszum`
-- Labels are English fallback labels:
-  - `Privacy Policy (English)`
-  - `Terms of Use (English)`
-  - `Legal Notice (English)`
+- Labels are German fallback labels:
+  - `Datenschutzerklärung (Englisch)`
+  - `Rechtliche Hinweise (Englisch)`
+  - `Impressum (Englisch)`
 - The footer does not link to `/de/adatvedelem`, `/de/aszf` or
   `/de/impresszum`.
+- The DE contact form privacy notice link also points to `/en/adatvedelem`,
+  with visible label `Datenschutzerklärung (Englisch)`.
 
 This is safe for the current partial-locale model.
 
@@ -144,16 +147,20 @@ Findings:
   - `Flexibilität`
   They should be aligned later with the stronger HU/EN operational pillars:
   transparent control, professional presence, response/accountability.
-- Service card labels are broadly understandable but need native B2B review.
-  `Personeller Objektschutz`, `Empfangs- und Pförtnerdienst`,
-  `Sicherheitstechnik`, `Fernüberwachung und Interventionsdienst`, `Hard FM`
-  and `Soft FM` are acceptable draft directions.
-- `Mystery Shopping und Vor-Ort-Audits` should be reviewed because the current
-  canonical EN label is `Mystery Shopping and Service Audit`; the German label
-  should avoid implying surveillance, private investigation or an authority
-  audit.
-- `Veranstaltungsschutz` is understandable, but `Veranstaltungssicherheit` may
-  be more natural as the canonical reviewed label.
+- Service card and service-list labels have received an interim source polish
+  and now use: `Objektschutz vor Ort`, `Empfangs- und Pförtnerdienst`,
+  `Mystery Shopping und Serviceaudit`, `Veranstaltungssicherheit`,
+  `Sicherheitstechnik`, `Fernüberwachung und Interventionsdienst`,
+  `Hard FM – Technisches Gebäudemanagement` and
+  `Soft FM – Infrastrukturelles Gebäudemanagement`.
+- The DE service-card detail link label is `Details`, replacing the previous
+  Hungarian fallback label.
+- The DE creditworthiness stat label is `Hohe Bonitätsbewertung (D&B)`, with
+  `AA` as the stat value. It does not use OPTEN/A+ wording.
+- `Leitstellenbereitschaft` is used instead of the older
+  `Dispatcher-Bereitschaft`.
+- CTA wording has been aligned from `Angebot anfragen` to
+  `Angebot anfordern`.
 - The DE contact form includes partial German labels and an EN legal fallback
   for privacy/terms links. This is acceptable while DE legal pages are closed.
 - Cookie/analytics consent uses the EN fallback for DE. This is acceptable for

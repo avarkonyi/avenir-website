@@ -55,10 +55,13 @@ German current-state note:
 
 - `/de` is live as a partial homepage, but it is noindex and excluded from the
   sitemap.
-- `/de/szolgaltatasok/*`, `/de/adatvedelem`, `/de/aszf`,
-  `/de/impresszum`, `/de/hirek` and `/de/hirek/[slug]` are intentionally
-  closed.
-- DE footer legal links use EN legal pages as fallback.
+- `/de/szolgaltatasok/*` is implemented in review mode in the current source:
+  after deploy the eight canonical service detail routes return 200 with
+  `noindex, follow` and remain outside sitemap/hreflang.
+- `/de/adatvedelem`, `/de/aszf`, `/de/impresszum`, `/de/hirek` and
+  `/de/hirek/[slug]` are intentionally closed.
+- DE footer/contact legal links use EN legal pages as fallback with German
+  `(Englisch)` labels.
 - DE Phase 0 audit and rollout plan: `docs/de_phase0_audit.md`.
 - German terminology seed: `docs/translations/german_glossary.md`.
 

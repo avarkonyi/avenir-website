@@ -4,18 +4,18 @@ import { type ReactElement, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import type { Translation } from "@/lib/i18n";
 import { trackAnalyticsEvent } from "@/lib/analytics/events";
+import {
+  getContactPrivacyHref,
+  getLegalFallbackLocale,
+} from "@/lib/locale-ui-helpers";
 import { Icon } from "./Icon";
 
 // Per-locale anchor target for the ÁSZF section #4 deep-link from the
 // magánnyomozói warning. HU keeps the Hungarian slug; EN/DE/ZH/KO use the
 // English legal route/slug because partial locales do not expose legal pages.
-function legalLocaleFor(locale: string): "hu" | "en" {
-  return locale === "hu" ? "hu" : "en";
-}
-
 function getAszfPrivateInvestigationHref(locale: string): string {
   const anchor = locale === "hu" ? "magannyomozas" : "private-investigation";
-  return `/${legalLocaleFor(locale)}/aszf#${anchor}`;
+  return `/${getLegalFallbackLocale(locale)}/aszf#${anchor}`;
 }
 
 type FormState = {
@@ -836,7 +836,7 @@ export function Contact({
               >
                 {t.form.layeredNotice}{" "}
                 <Link
-                  href={`/${legalLocaleFor(locale)}/adatvedelem`}
+                  href={getContactPrivacyHref(locale)}
                   style={{ color: "#D1172E", textDecoration: "underline", fontWeight: 500 }}
                 >
                   {t.form.layeredNoticeLink}

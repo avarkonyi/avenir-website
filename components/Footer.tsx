@@ -7,6 +7,10 @@ import {
   getAllPublishedServicePathsForBuild,
 } from "@/lib/db/queries/services";
 import { getReadyServiceDetailHref } from "@/lib/service-detail-links";
+import {
+  getFooterLegalLinks,
+  getLocaleServiceListLabel,
+} from "@/lib/locale-ui-helpers";
 import { CookieSettingsButton } from "./analytics/CookieSettingsButton";
 import { TrackedContactLink } from "./analytics/TrackedContactLink";
 
@@ -29,7 +33,7 @@ export async function Footer({
   const serviceLinks = rows
     .map((row) => ({
       slug: row.slug,
-      title: row.name,
+      title: getLocaleServiceListLabel(locale, row.slug, row.name),
       href: getReadyServiceDetailHref({
         locale,
         slug: row.slug,
@@ -37,21 +41,7 @@ export async function Footer({
       }),
     }))
     .filter((link) => link.title.length > 0);
-  const legalLocale = locale === "hu" ? "hu" : "en";
-  const legalLabels =
-    locale === "ko"
-      ? {
-          privacy: "개인정보 처리방침 (영문)",
-          terms: "이용약관 (영문)",
-          impressum: "회사 정보 (영문)",
-        }
-      : locale === "de" || locale === "zh"
-      ? {
-          privacy: "Privacy Policy (English)",
-          terms: "Terms of Use (English)",
-          impressum: "Legal Notice (English)",
-        }
-      : t.footer;
+  const legalLinks = getFooterLegalLinks(locale, t.footer);
   const linkedInLabel =
     locale === "hu" ? "Avenir a LinkedInen" : "Avenir on LinkedIn";
 
@@ -213,21 +203,13 @@ export async function Footer({
               {t.footer.legalTitle}
             </p>
             <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 10 }}>
-              <li>
-                <Link href={`/${legalLocale}/adatvedelem`} className="footer-link" style={{ color: "var(--avenir-on-dark-muted)", fontSize: 13, textDecoration: "none" }}>
-                  {legalLabels.privacy}
-                </Link>
-              </li>
-              <li>
-                <Link href={`/${legalLocale}/aszf`} className="footer-link" style={{ color: "var(--avenir-on-dark-muted)", fontSize: 13, textDecoration: "none" }}>
-                  {legalLabels.terms}
-                </Link>
-              </li>
-              <li>
-                <Link href={`/${legalLocale}/impresszum`} className="footer-link" style={{ color: "var(--avenir-on-dark-muted)", fontSize: 13, textDecoration: "none" }}>
-                  {legalLabels.impressum}
-                </Link>
-              </li>
+              {legalLinks.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="footer-link" style={{ color: "var(--avenir-on-dark-muted)", fontSize: 13, textDecoration: "none" }}>
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
               <li>
                 <CookieSettingsButton locale={locale} />
               </li>
