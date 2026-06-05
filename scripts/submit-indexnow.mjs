@@ -18,12 +18,6 @@ const DEFAULT_URLS = [
   `${SITE_URL}/en/adatvedelem`,
   `${SITE_URL}/en/aszf`,
   `${SITE_URL}/en/impresszum`,
-  `${SITE_URL}/de/adatvedelem`,
-  `${SITE_URL}/de/aszf`,
-  `${SITE_URL}/de/impresszum`,
-  `${SITE_URL}/zh/adatvedelem`,
-  `${SITE_URL}/zh/aszf`,
-  `${SITE_URL}/zh/impresszum`,
 ];
 
 function getUrlsFromArgs(args) {

@@ -46,9 +46,10 @@ The production site is live for:
   - `/hu/hirek/[slug]`
 - `sitemap.xml`, `robots.txt`, `llms.txt`, `llms-full.txt`
 
-DE/ZH are homepage/partial-localization surfaces only. KO is a homepage-only
-draft scaffold and is translation-review-required. These locales should not
-expose service detail, legal or news detail flows until a full localization
+DE now has controlled review-mode service and legal routes. ZH remains a
+homepage/partial-localization surface only. KO is a homepage-only draft
+scaffold and is translation-review-required. These locales should not expose
+indexable service detail, legal or news detail flows until a full localization
 decision and review process is completed.
 
 German current-state note:
@@ -58,10 +59,11 @@ German current-state note:
 - `/de/szolgaltatasok/*` is implemented in review mode in the current source:
   after deploy the eight canonical service detail routes return 200 with
   `noindex, follow` and remain outside sitemap/hreflang.
-- `/de/adatvedelem`, `/de/aszf`, `/de/impresszum`, `/de/hirek` and
-  `/de/hirek/[slug]` are intentionally closed.
-- DE footer/contact legal links use EN legal pages as fallback with German
-  `(Englisch)` labels.
+- `/de/adatvedelem`, `/de/aszf` and `/de/impresszum` are implemented in legal
+  review mode: after deploy they return 200 with `noindex, follow` and remain
+  outside sitemap/hreflang.
+- `/de/hirek` and `/de/hirek/[slug]` are intentionally closed.
+- DE footer/contact legal links use the DE legal review-mode pages.
 - DE Phase 0 audit and rollout plan: `docs/de_phase0_audit.md`.
 - German terminology seed: `docs/translations/german_glossary.md`.
 

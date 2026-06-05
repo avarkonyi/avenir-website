@@ -10,6 +10,7 @@ import { Icon } from "./Icon";
 const SECTION_KEYS = ["about", "services", "references", "news", "career", "contact"] as const;
 const LOCALES = ["hu", "en", "de", "zh", "ko"] as const;
 const FULL_CONTENT_LOCALES = ["hu", "en"] as const;
+const LEGAL_CONTENT_LOCALES = ["hu", "en", "de"] as const;
 
 function normalizeHash(rawHash: string): string {
   if (!rawHash) return "";
@@ -48,8 +49,10 @@ export function Nav({ t }: { t: Pick<Translation, "nav"> }) {
   const availableLocales =
     isNewsPage
       ? (["hu"] as const)
-      : isServiceDetailPage || isLegalPage
+      : isServiceDetailPage
         ? FULL_CONTENT_LOCALES
+        : isLegalPage
+          ? LEGAL_CONTENT_LOCALES
         : LOCALES;
 
   useEffect(() => {

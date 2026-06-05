@@ -60,15 +60,18 @@ const PUBLISHABLE_LEGAL_PATHS = [
   "/en/impresszum",
 ];
 
+const DE_REVIEW_LEGAL_PATHS = [
+  "/de/adatvedelem",
+  "/de/aszf",
+  "/de/impresszum",
+];
+
 const UNPUBLISHED_LEGAL_PATHS = [
   "/en/privacy",
   "/en/privacy-policy",
   "/en/terms",
   "/en/legal-notice",
   "/en/imprint",
-  "/de/adatvedelem",
-  "/de/aszf",
-  "/de/impresszum",
   "/zh/adatvedelem",
   "/zh/aszf",
   "/zh/impresszum",
@@ -83,6 +86,7 @@ const EXPECTED_200 = [
   "/ko",
   ...READY_SERVICE_PATHS,
   ...PUBLISHABLE_LEGAL_PATHS,
+  ...DE_REVIEW_LEGAL_PATHS,
   "/hu/hirek",
   "/sitemap.xml",
   "/robots.txt",
@@ -107,6 +111,7 @@ const SITEMAP_FORBIDDEN = [
   "/ko",
   "/ko/szolgaltatasok/",
   ...UNPUBLISHED_LEGAL_PATHS,
+  ...DE_REVIEW_LEGAL_PATHS,
   "/en/hirek",
   "/de/hirek",
   "/zh/hirek",
@@ -118,6 +123,7 @@ const SITEMAP_FORBIDDEN = [
 const LLMS_FORBIDDEN_URLS = [
   ...LEGACY_SERVICE_PATHS,
   ...UNPUBLISHED_LEGAL_PATHS,
+  ...DE_REVIEW_LEGAL_PATHS,
   "/admin",
   "/api",
 ];
@@ -405,6 +411,40 @@ async function checkDeReviewServiceNoindex(baseUrl) {
   return failures;
 }
 
+async function checkNoindexFollow(baseUrl, paths, labelPrefix) {
+  const failures = [];
+
+  for (const path of paths) {
+    const result = await fetchText(baseUrl, path);
+    if (result.status !== 200) {
+      failures.push({
+        ok: false,
+        label: `${path} ${labelPrefix}`,
+        detail: `expected 200 before checking noindex, got ${result.status}`,
+      });
+      continue;
+    }
+
+    const header = result.headers.get("x-robots-tag") ?? "";
+    const metaMatch = result.text.match(
+      /<meta\s+name=["']robots["'][^>]*content=["']([^"']+)["'][^>]*>/i,
+    );
+    const robots = `${header} ${metaMatch?.[1] ?? ""}`;
+    const hasNoindex = /\bnoindex\b/i.test(robots);
+    const hasFollow = /\bfollow\b/i.test(robots);
+
+    if (!hasNoindex || !hasFollow) {
+      failures.push({
+        ok: false,
+        label: `${path} ${labelPrefix}`,
+        detail: `expected robots noindex, follow; got ${JSON.stringify(robots.trim())}`,
+      });
+    }
+  }
+
+  return failures;
+}
+
 function printResults({ baseUrl, failures, totalChecks }) {
   console.log(`Avenir Preview smoke test`);
   console.log(`Base URL: ${baseUrl.toString()}`);
@@ -470,6 +510,14 @@ async function main() {
   const deReviewNoindexFailures = await checkDeReviewServiceNoindex(baseUrl);
   totalChecks += DE_REVIEW_SERVICE_PATHS.length;
   failures.push(...deReviewNoindexFailures);
+
+  const deReviewLegalNoindexFailures = await checkNoindexFollow(
+    baseUrl,
+    DE_REVIEW_LEGAL_PATHS,
+    "review legal noindex",
+  );
+  totalChecks += DE_REVIEW_LEGAL_PATHS.length;
+  failures.push(...deReviewLegalNoindexFailures);
 
   printResults({ baseUrl, failures, totalChecks });
   process.exit(failures.length === 0 ? 0 : 1);

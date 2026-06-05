@@ -31,12 +31,13 @@ export async function generateMetadata({
   const title = `${privacy.title} — ${SEO_DATA.legalNameShort}`;
   const description = privacy.intro.slice(0, 160);
   const url = legalPageUrl(locale, "adatvedelem");
+  const isDeReviewPage = locale === "de";
 
   return {
     metadataBase: new URL(SEO_DATA.url),
     title,
     description,
-    robots: { index: true, follow: true },
+    robots: { index: !isDeReviewPage, follow: true },
     alternates: {
       canonical: url,
       languages: legalPageAlternateLanguages("adatvedelem"),

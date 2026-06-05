@@ -31,31 +31,31 @@ test("DE homepage polish uses German interim labels without touching other local
   );
 });
 
-test("DE service cards and legal fallbacks do not expose closed DE legal routes", () => {
+test("DE service cards and legal links use review-mode DE legal routes", () => {
   assert.equal(getServiceCardDetailLabel("de"), "Details");
   assert.equal(getServiceCardDetailLabel("hu"), "Részletek");
 
   assert.deepEqual(getFooterLegalLinks("de", de.footer), [
     {
-      href: "/en/adatvedelem",
-      label: "Datenschutzerklärung (Englisch)",
+      href: "/de/adatvedelem",
+      label: "Datenschutzerklärung",
     },
     {
-      href: "/en/aszf",
-      label: "Rechtliche Hinweise (Englisch)",
+      href: "/de/aszf",
+      label: "Rechtliche Hinweise",
     },
     {
-      href: "/en/impresszum",
-      label: "Impressum (Englisch)",
+      href: "/de/impresszum",
+      label: "Impressum",
     },
   ]);
 
-  assert.equal(getContactPrivacyHref("de"), "/en/adatvedelem");
-  assert.equal(de.form.layeredNoticeLink, "Datenschutzerklärung (Englisch)");
-  assert.equal(de.form.successPrivacyLink, "Datenschutzerklärung (Englisch)");
+  assert.equal(getContactPrivacyHref("de"), "/de/adatvedelem");
+  assert.equal(de.form.layeredNoticeLink, "Datenschutzerklärung");
+  assert.equal(de.form.successPrivacyLink, "Datenschutzerklärung");
   assert.equal(
     de.legal.terms.dataProtection.privacyLinkHref,
-    "/en/adatvedelem",
+    "/de/adatvedelem",
   );
 });
 

@@ -7,12 +7,13 @@ The eight HU and eight EN service detail pages are production-live on
 production copy. Do not start a new creative rewrite unless a production audit
 finds an actual defect or the owner explicitly requests a new copy pass.
 
-German service detail copy is implemented only in controlled review mode:
-after deploy, the eight `/de/szolgaltatasok/*` routes are 200/noindex and stay
+German service detail copy and German legal pages are implemented only in
+controlled review mode: after deploy, the eight `/de/szolgaltatasok/*` routes
+and `/de/adatvedelem`, `/de/aszf`, `/de/impresszum` are 200/noindex and stay
 outside sitemap/hreflang. ZH remains homepage/partial-only. KO has a
 homepage-only draft scaffold and is translation-review-required. German must
 still proceed through DE-0..DE-6: current-state audit, homepage polish, legal
-strategy, service draft translation, native/legal review,
+indexability decision, service draft translation, native/legal review,
 sitemap/hreflang/indexing enablement, and later German content growth. Do not
 start indexable DE/ZH/KO service rollout, case studies, or named partner/client
 references without separate approval, localized content, and proof.
@@ -237,6 +238,8 @@ P1/P2 content and governance items:
   seed is in `docs/translations/german_glossary.md`.
 - German homepage copy needs native B2B review before indexability: values,
   service labels, contact labels, consent copy and proof-sensitive claims.
+- German legal pages are staged under `docs/translations/de/legal/` and render
+  only as noindex review-mode pages until explicit legal/SEO approval.
 - German service tile translations are staged under
   `docs/translations/de/source/` and typed into
   `lib/services/de-service-details.ts` for review-mode rendering. They are not

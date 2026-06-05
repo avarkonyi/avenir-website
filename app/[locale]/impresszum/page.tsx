@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getTranslation } from "@/lib/i18n";
+import { getDeImpressumContent } from "@/lib/de-legal-content";
 import {
   SEO_DATA,
   SEO_EXECUTIVE,
@@ -20,6 +21,7 @@ import {
 import {
   LegalPageChrome,
   LegalHeader,
+  LegalSection,
 } from "@/components/LegalPageChrome";
 
 export function generateStaticParams() {
@@ -34,15 +36,20 @@ export async function generateMetadata({
   const { locale } = await params;
   if (!isLegalPageLocale(locale)) notFound();
   const t = getTranslation(locale);
-  const title = `${t.legal.impressum.title} — ${SEO_DATA.legalNameShort}`;
-  const description = `${SEO_DATA.legalName}. ${SEO_DATA.address.streetAddress}, ${SEO_DATA.address.postalCode} ${SEO_DATA.address.addressLocality}. Cégjegyzékszám: ${SEO_DATA.registrationId}.`;
+  const deImpressum = locale === "de" ? getDeImpressumContent() : null;
+  const pageTitle = deImpressum?.title ?? t.legal.impressum.title;
+  const title = `${pageTitle} — ${SEO_DATA.legalNameShort}`;
+  const description =
+    deImpressum?.sections[0]?.body.slice(0, 160) ??
+    `${SEO_DATA.legalName}. ${SEO_DATA.address.streetAddress}, ${SEO_DATA.address.postalCode} ${SEO_DATA.address.addressLocality}. Cégjegyzékszám: ${SEO_DATA.registrationId}.`;
   const url = legalPageUrl(locale, "impresszum");
+  const isDeReviewPage = locale === "de";
 
   return {
     metadataBase: new URL(SEO_DATA.url),
     title,
     description,
-    robots: { index: true, follow: true },
+    robots: { index: !isDeReviewPage, follow: true },
     alternates: {
       canonical: url,
       languages: legalPageAlternateLanguages("impresszum"),
@@ -103,6 +110,7 @@ function getExecutiveTitle(locale: LegalPageLocale): string {
   switch (locale) {
     case "hu": return SEO_EXECUTIVE.titleHu;
     case "en": return SEO_EXECUTIVE.titleEn;
+    case "de": return "Geschäftsführer";
   }
 }
 
@@ -130,6 +138,28 @@ export default async function ImpresszumPage({
   const { locale } = await params;
   if (!isLegalPageLocale(locale)) notFound();
   const t = getTranslation(locale);
+  if (locale === "de") {
+    const impressum = getDeImpressumContent();
+    return (
+      <LegalPageChrome
+        t={t}
+        locale={locale}
+        pageTitle={impressum.title}
+        pageDescription={impressum.sections[0]?.body.slice(0, 160) ?? impressum.title}
+        pageSlug="impresszum"
+      >
+        <LegalHeader
+          title={impressum.title}
+          lastUpdated={impressum.lastUpdated}
+          intro={impressum.intro}
+        />
+        {impressum.sections.map((s) => (
+          <LegalSection key={s.id} id={s.id} title={s.title} body={s.body} />
+        ))}
+      </LegalPageChrome>
+    );
+  }
+
   const legalLocale = locale as LegalPageLocale;
   const L = t.legal.impressum.labels;
   const ST = t.legal.impressum.sectionTitles;

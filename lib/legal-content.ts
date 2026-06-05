@@ -1,5 +1,9 @@
 import type { Translation } from "@/lib/i18n";
 import { CURRENT_PRIVACY_CONTENT } from "@/lib/current-privacy-content";
+import {
+  getDePrivacyContent,
+  getDeTermsContent,
+} from "@/lib/de-legal-content";
 
 type PrivacyContent = Translation["legal"]["privacy"];
 type TermsContent = Translation["legal"]["terms"];
@@ -12,10 +16,18 @@ function replaceTermsLanguage(text: string): string {
 }
 
 export function getPrivacyContent(locale: string, fallback: Translation): PrivacyContent {
+  if (locale === "de") {
+    return getDePrivacyContent();
+  }
+
   return CURRENT_PRIVACY_CONTENT[locale as "hu" | "en"] ?? fallback.legal.privacy;
 }
 
 export function getTermsContent(locale: string, fallback: Translation): TermsContent {
+  if (locale === "de") {
+    return getDeTermsContent();
+  }
+
   const base = fallback.legal.terms;
   if (locale !== "hu") {
     return base;
@@ -72,6 +84,18 @@ export function getTermsContent(locale: string, fallback: Translation): TermsCon
 
 export function withLegalContent(locale: string, fallback: Translation): Translation {
   const privacy = getPrivacyContent(locale, fallback);
+
+  if (locale === "de") {
+    const terms = getTermsContent(locale, fallback);
+    return {
+      ...fallback,
+      legal: {
+        ...fallback.legal,
+        privacy,
+        terms,
+      },
+    };
+  }
 
   if (locale !== "hu") {
     return {

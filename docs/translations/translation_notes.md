@@ -3,13 +3,14 @@
 Generated for the Avenir multilingual launch inventory in `docs/translations/public_site_translation_matrix.csv`.
 
 This is a source inventory and review aid. HU and EN service detail pages are
-production-live. German service detail translations now have a controlled
-review-mode runtime source; after deployment, the eight DE service routes are
-expected to return 200 with `noindex, follow`, while staying outside sitemap
-and hreflang. ZH remains a partial-localization surface. KO has a homepage-only
-draft scaffold and is translation-review-required. German must still follow the
-staged DE-0..DE-6 rollout documented in `docs/de_phase0_audit.md`; review-mode
-routes do not imply legal/proof/SEO approval.
+production-live. German service detail translations and German legal pages now
+have controlled review-mode runtime sources; after deployment, the eight DE
+service routes and three DE legal routes are expected to return 200 with
+`noindex, follow`, while staying outside sitemap and hreflang. ZH remains a
+partial-localization surface. KO has a homepage-only draft scaffold and is
+translation-review-required. German must still follow the staged DE-0..DE-6
+rollout documented in `docs/de_phase0_audit.md`; review-mode routes do not
+imply legal/proof/SEO approval.
 
 ## Scope
 
@@ -74,7 +75,9 @@ Watch especially for:
 - Legal/privacy pages should be translated by or reviewed with legal counsel.
 - The Hungarian legal source includes dynamic overrides in `lib/legal-content.ts`; confirm rendered HU legal pages before sending final legal translation packages.
 - HU and EN legal URLs are currently live and may be included in the sitemap.
-  Do not include DE/ZH/KO legal URLs until localized legal text is reviewed and
+  DE legal URLs render from reviewed source files only in `noindex, follow`
+  review mode and must stay outside sitemap/hreflang until legal/SEO approval.
+  Do not include ZH/KO legal URLs until localized legal text is reviewed and
   approved.
 
 ## Production Translation Status
@@ -90,9 +93,11 @@ Watch especially for:
   - `/de` returns 200 and is `noindex, follow`;
   - DE service detail routes are source-implemented as 200/noindex review
     routes after deploy;
-  - DE legal and news routes return 404 by design;
-  - DE footer and contact legal links point to existing EN legal pages with
-    German `(Englisch)` labels until German legal pages are reviewed;
+  - DE legal routes return 200/noindex after deploy:
+    `/de/adatvedelem`, `/de/aszf`, `/de/impresszum`;
+  - DE legal source files live under `docs/translations/de/legal/`;
+  - DE news routes return 404 by design;
+  - DE footer and contact legal links point to DE legal review-mode routes;
   - DE homepage service-card labels, the `Details` card link label,
     `Angebot anfordern`, `Leitstellenbereitschaft` and
     `Hohe Bonitätsbewertung (D&B)` are interim-polished in source;

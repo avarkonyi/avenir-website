@@ -10,19 +10,18 @@ German started as a partial homepage-level localization. Production serves
 `/de` successfully, and the German homepage is intentionally noindexed and
 excluded from the sitemap.
 
-The current source now includes a controlled review-mode implementation for the
-eight German service detail routes. After deployment, those service routes are
-expected to return 200 with `noindex, follow`, while still remaining outside
-sitemap and hreflang. This is not the German SEO launch and not legal/final
-approval.
+The current source now includes controlled review-mode implementations for the
+eight German service detail routes and the three German legal routes. After
+deployment, those routes are expected to return 200 with `noindex, follow`,
+while still remaining outside sitemap and hreflang. This is not the German SEO
+launch and not final indexability approval.
 
 The current source prevents the main broken-flow risks:
 
 - service detail language switching is limited to HU/EN;
-- legal page language switching is limited to HU/EN;
+- legal page language switching is limited to HU/EN/DE;
 - news page language switching is HU-only;
-- DE footer legal links point to existing EN legal pages with German
-  `(Englisch)` fallback labels;
+- DE footer and contact legal links point to the DE legal review-mode pages;
 - DE service cards may link to the review-mode DE service detail pages after
   deploy;
 - `/de` is noindex and not in the sitemap.
@@ -43,9 +42,9 @@ state until the review-mode source is deployed.
 | `/de/szolgaltatasok/rendezvenybiztositas` | 200 after deploy | review-mode service detail | `noindex, follow`; not in sitemap/hreflang. |
 | `/de/szolgaltatasok/hard-fm` | 200 after deploy | review-mode service detail | `noindex, follow`; not in sitemap/hreflang. |
 | `/de/szolgaltatasok/soft-fm` | 200 after deploy | review-mode service detail | `noindex, follow`; not in sitemap/hreflang. |
-| `/de/adatvedelem` | 404 | intentionally closed | No German legal page until legal review. |
-| `/de/aszf` | 404 | intentionally closed | No German legal page until legal review. |
-| `/de/impresszum` | 404 | intentionally closed | No German legal page until legal review. |
+| `/de/adatvedelem` | 200 after deploy | review-mode legal page | `noindex, follow`; not in sitemap/hreflang. |
+| `/de/aszf` | 200 after deploy | review-mode legal page | `noindex, follow`; not in sitemap/hreflang. |
+| `/de/impresszum` | 200 after deploy | review-mode legal page | `noindex, follow`; not in sitemap/hreflang. |
 | `/de/hirek` | 404 | intentionally closed | German news is not enabled. |
 | `/de/hirek/[slug]` | 404 expected | intentionally closed | Source only builds HU news params. |
 
@@ -61,7 +60,7 @@ Current production state:
   - `x-default`: `https://www.afm.hu/hu`
 - `/sitemap.xml` contains no DE URLs.
 - DE service, legal and news routes are not in the sitemap.
-- Service and legal hreflang remain HU/EN-only. DE service detail pages are
+- Service and legal hreflang remain HU/EN-only. DE service and legal pages are
   intentionally not added to hreflang while they are review/noindex pages.
 
 Recommended safe default:
@@ -89,35 +88,37 @@ Relevant source files and behavior:
 - `app/[locale]/szolgaltatasok/[slug]/page.tsx` renders the eight canonical DE
   service slugs from the static review-mode source and returns `notFound()` for
   unknown slugs.
-- `lib/legal-routes.ts` allows legal pages only for HU/EN.
+- `lib/legal-routes.ts` separates renderable legal locales from
+  sitemap/hreflang legal locales: HU/EN/DE render, while only HU/EN are
+  publishable in sitemap/hreflang.
 - `app/[locale]/hirek/page.tsx` and `app/[locale]/hirek/[slug]/page.tsx` are
   HU-only.
 - `components/Nav.tsx` exposes all locale homepages from homepage routes, but
-  limits service/legal switcher choices to HU/EN and news choices to HU.
-- `components/Footer.tsx` maps DE legal footer links to EN legal pages with
-  German fallback labels that explicitly mark the target language as English.
-- `scripts/qa-preview-smoke.mjs` expects DE service routes to return 200 with
-  `noindex, follow`, while DE legal/news routes remain 404 and DE service URLs
-  remain forbidden in the sitemap.
+  limits service switcher choices to HU/EN, legal switcher choices to HU/EN/DE
+  and news choices to HU.
+- `components/Footer.tsx` maps DE legal footer links to the DE legal
+  review-mode pages.
+- `scripts/qa-preview-smoke.mjs` expects DE service and legal routes to return
+  200 with `noindex, follow`, while DE news remains 404 and DE service/legal
+  URLs remain forbidden in the sitemap.
 
-## Footer Legal Fallback
+## Footer Legal Links
 
 Current DE source behavior:
 
-- `/de` footer legal links point to existing EN legal pages:
-  - `/en/adatvedelem`
-  - `/en/aszf`
-  - `/en/impresszum`
-- Labels are German fallback labels:
-  - `Datenschutzerklärung (Englisch)`
-  - `Rechtliche Hinweise (Englisch)`
-  - `Impressum (Englisch)`
-- The footer does not link to `/de/adatvedelem`, `/de/aszf` or
-  `/de/impresszum`.
-- The DE contact form privacy notice link also points to `/en/adatvedelem`,
-  with visible label `Datenschutzerklärung (Englisch)`.
+- `/de` footer legal links point to the DE legal review-mode pages:
+  - `/de/adatvedelem`
+  - `/de/aszf`
+  - `/de/impresszum`
+- Labels are German labels:
+  - `Datenschutzerklärung`
+  - `Rechtliche Hinweise`
+  - `Impressum`
+- The DE contact form privacy notice link points to `/de/adatvedelem`, with
+  visible label `Datenschutzerklärung`.
 
-This is safe for the current partial-locale model.
+These pages remain noindex and outside sitemap/hreflang until German legal SEO
+publication is explicitly approved.
 
 ## Language Switcher
 
@@ -125,12 +126,14 @@ Current source behavior:
 
 - Homepage routes: HU/EN/DE/ZH/KO are available in the switcher.
 - Service detail routes: only HU/EN are available.
-- Legal routes: only HU/EN are available.
+- Legal routes: HU/EN/DE are available.
 - News routes: only HU is available.
 
 This is the chosen review-mode behavior. HU/EN service detail pages do not
 advertise DE in the language switcher. DE service detail pages remain reachable
-directly and from DE service links, and their switcher offers HU/EN only.
+directly and from DE service links, and their switcher offers HU/EN only. DE
+legal pages are the exception: their switcher offers HU/EN/DE because the
+three German legal review routes now exist.
 
 ## German Homepage Copy Audit
 
@@ -161,8 +164,8 @@ Findings:
   `Dispatcher-Bereitschaft`.
 - CTA wording has been aligned from `Angebot anfragen` to
   `Angebot anfordern`.
-- The DE contact form includes partial German labels and an EN legal fallback
-  for privacy/terms links. This is acceptable while DE legal pages are closed.
+- The DE contact form includes partial German labels and links its privacy
+  notice to the DE legal review-mode privacy page.
 - Cookie/analytics consent uses the EN fallback for DE. This is acceptable for
   Phase 0, but DE-native consent copy should be part of DE homepage polish and
   legal review.
@@ -224,14 +227,15 @@ Done criteria:
 
 ### DE-2 German Legal Strategy
 
-Goal: decide whether and how German legal pages should exist.
+Goal: decide whether and how German legal pages become indexable after the
+review-mode release.
 
 Deliverables:
 
-- decision between EN fallback and reviewed DE legal pages;
-- legal translation workflow;
+- legal SEO publication policy;
+- legal translation/review workflow;
 - disclaimer/verbindliche Sprachfassung policy if non-HU legal text is used;
-- footer and language switcher policy.
+- sitemap, hreflang, footer and language switcher policy.
 
 Risk: high. Legal pages must not be machine-translated and published as final.
 
@@ -240,8 +244,9 @@ Owner / decision needed: legal/DPO/owner.
 Done criteria:
 
 - legal route policy approved;
-- no `/de/adatvedelem`, `/de/aszf` or `/de/impresszum` until reviewed;
-- footer legal fallback remains safe.
+- DE legal review pages may render 200/noindex;
+- no DE legal page becomes indexable until explicit legal/SEO approval;
+- footer/contact legal links remain safe.
 
 ### DE-3 German Service Detail Draft Translation
 
@@ -312,8 +317,8 @@ Done criteria:
 
 - approved DE pages return 200 and become indexable only after explicit
   sitemap/hreflang/noindex approval;
-- review-mode service pages remain 200/noindex;
-- non-approved legal/news pages remain 404/noindex;
+- review-mode service and legal pages remain 200/noindex;
+- non-approved news pages remain 404/noindex;
 - sitemap and hreflang match the approved route set;
 - production smoke matrix is updated intentionally.
 
@@ -347,9 +352,9 @@ Current `scripts/qa-preview-smoke.mjs` behavior is aligned with DE review mode:
 
 - `/de` homepage may return 200.
 - DE service detail routes are expected 200 with `noindex, follow`.
-- DE legal routes are expected 404.
+- DE legal routes are expected 200 with `noindex, follow`.
 - `/de/hirek` is expected 404.
-- DE URLs are forbidden in the sitemap while partial/noindex.
+- DE service and legal URLs are forbidden in the sitemap while partial/noindex.
 
 Run this smoke matrix against a preview deployment or production only after the
 review-mode source has been deployed. Production will fail the new DE route
@@ -357,11 +362,11 @@ expectation while it still serves the previous build.
 
 ## Recommended Next Implementation Step
 
-Next, deploy the DE review-mode service detail implementation to a preview and
-run route/noindex QA there. Keep `/de` and `/de/szolgaltatasok/*` noindexed and
-do not open DE legal/news detail routes. Full SEO publication remains gated
-until native/business review, legal/proof review and explicit sitemap/hreflang
-approval are complete.
+Next, deploy the DE service/legal review-mode implementation to a preview and
+run route/noindex QA there. Keep `/de`, `/de/szolgaltatasok/*` and
+`/de/{adatvedelem,aszf,impresszum}` noindexed and outside sitemap/hreflang.
+Full SEO publication remains gated until native/business review, legal/proof
+review and explicit sitemap/hreflang approval are complete.
 
 ## 2026-06-05 Service Tile Source Package Update
 
@@ -394,4 +399,7 @@ Runtime route policy after the review-mode implementation is deployed:
 - DE service detail routes return 200 with `noindex, follow`.
 - DE service URLs are not in sitemap.
 - DE service URLs are not in hreflang.
-- Legal/homepage/news German inputs remain separate future passes.
+- DE legal routes return 200 with `noindex, follow`.
+- DE legal URLs are not in sitemap.
+- DE legal URLs are not in hreflang.
+- Homepage indexability and German news remain separate future passes.

@@ -12,7 +12,8 @@ import { Icon } from "./Icon";
 
 // Per-locale anchor target for the ÁSZF section #4 deep-link from the
 // magánnyomozói warning. HU keeps the Hungarian slug; EN/DE/ZH/KO use the
-// English legal route/slug because partial locales do not expose legal pages.
+// DE now has review-mode legal pages. Other partial locales keep the English
+// legal route/slug because they do not expose legal pages.
 function getAszfPrivateInvestigationHref(locale: string): string {
   const anchor = locale === "hu" ? "magannyomozas" : "private-investigation";
   return `/${getLegalFallbackLocale(locale)}/aszf#${anchor}`;

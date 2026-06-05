@@ -21,8 +21,10 @@ export type FooterLegalLink = {
   readonly label: string;
 };
 
-export function getLegalFallbackLocale(locale: string): "hu" | "en" {
-  return locale === "hu" ? "hu" : "en";
+export function getLegalFallbackLocale(locale: string): "hu" | "en" | "de" {
+  if (locale === "hu") return "hu";
+  if (locale === "de") return "de";
+  return "en";
 }
 
 export function getContactPrivacyHref(locale: string): string {
@@ -62,9 +64,9 @@ function getFooterLegalLabels(
 ): FooterLabels {
   if (locale === "de") {
     return {
-      privacy: "Datenschutzerklärung (Englisch)",
-      terms: "Rechtliche Hinweise (Englisch)",
-      impressum: "Impressum (Englisch)",
+      privacy: "Datenschutzerklärung",
+      terms: "Rechtliche Hinweise",
+      impressum: "Impressum",
     };
   }
 

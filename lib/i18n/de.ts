@@ -140,12 +140,12 @@ export const de = {
     "send": "Anfrage senden",
     "sending": "Wird gesendet…",
     "success": "Wir haben Ihre Nachricht erhalten. Wir melden uns innerhalb von 2 Werktagen. Ihre Daten werden gemäß unserer Datenschutzerklärung verarbeitet.",
-    "successPrivacyLink": "Datenschutzerklärung (Englisch)",
+    "successPrivacyLink": "Datenschutzerklärung",
     "specialDataWarning": "Bitte übermitteln Sie über das Nachrichtenfeld keine besonderen Datenkategorien, strafrechtlichen Daten, klassifizierten Daten, Geschäftsgeheimnisse oder detaillierten Privatlebensinformationen über Dritte. Solche Angelegenheiten erfordern eine gesonderte Vertrags- und Datenschutzabstimmung.",
     "specialDataWarningLink": "Nutzungsbedingungen, Abschnitt 4",
     "privateInvestigation": "Privatermittlung",
     "layeredNotice": "Mit dem Absenden akzeptieren Sie unsere",
-    "layeredNoticeLink": "Datenschutzerklärung (Englisch)",
+    "layeredNoticeLink": "Datenschutzerklärung",
     // TRANSLATION DRAFT: review by user
     "errors": {
       "nameRequired": "Bitte geben Sie Ihren vollständigen Namen ein",
@@ -254,8 +254,8 @@ export const de = {
         "dpoName": "Fanni Csegény",
         "dpoEmail": "dpo@afm.hu",
         "dpoPhone": "+36 70 622 6242",
-        "privacyLinkText": "Die vollständige Datenschutzerklärung (Englisch) ist hier verfügbar",
-        "privacyLinkHref": "/en/adatvedelem"
+        "privacyLinkText": "Die vollständige Datenschutzerklärung ist hier verfügbar",
+        "privacyLinkHref": "/de/adatvedelem"
       }
     },
     "impressum": {
