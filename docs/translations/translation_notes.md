@@ -4,9 +4,11 @@ Generated for the Avenir multilingual launch inventory in `docs/translations/pub
 
 This is a source inventory and review aid. HU and EN service detail pages are
 now production-live. DE/ZH remain partial-localization surfaces. KO has a
-homepage-only draft scaffold and is translation-review-required. This file does
-not publish DE/ZH/KO service detail pages, does not change routing, and does
-not imply legal or proof approval.
+homepage-only draft scaffold and is translation-review-required. German is the
+next localization focus, but it must follow the staged DE-0..DE-6 rollout
+documented in `docs/de_phase0_audit.md`. This file does not publish DE/ZH/KO
+service detail pages, does not change routing, and does not imply legal or
+proof approval.
 
 ## Scope
 
@@ -83,6 +85,21 @@ Watch especially for:
 - DE/ZH are homepage/partial-localization surfaces only. KO is homepage-only
   draft and translation-review-required. These partial locales should remain
   noindexed/excluded from sitemap until full localization is approved.
+- German production state on 2026-06-05:
+  - `/de` returns 200 and is `noindex, follow`;
+  - DE service detail, legal and news routes return 404 by design;
+  - DE footer legal links point to existing EN legal pages;
+  - DE is not in the sitemap and is not advertised as a service/legal/news
+    hreflang target.
+- Initial German glossary: `docs/translations/german_glossary.md`.
+- German service tile source package:
+  - source files are staged under `docs/translations/de/source/`;
+  - `service_tiles_de_full.csv` contains 681 rows across 8 services plus 2
+    SHARED rows;
+  - `de_status` is preserved in the staged source file;
+  - 24 rows are `legal_review_required` and remain gated;
+  - validation report:
+    `docs/translations/de/service_tiles_de_full_validation.md`.
 - Canonical service labels are:
   - HU: Élőerős objektumőrzés; Recepciós és portaszolgálat;
     Próbavásárlás és szolgáltatásaudit; Rendezvénybiztosítás;

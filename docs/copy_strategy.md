@@ -8,9 +8,13 @@ production copy. Do not start a new creative rewrite unless a production audit
 finds an actual defect or the owner explicitly requests a new copy pass.
 
 DE/ZH are homepage/partial-localization surfaces only. KO has a homepage-only
-draft scaffold and is translation-review-required. Do not start DE/ZH/KO service
-detail rollout, case studies, or named partner/client references without
-separate approval, localized content, and proof.
+draft scaffold and is translation-review-required. German is the next
+localization focus, but it must proceed through DE-0..DE-6: current-state
+audit, homepage polish, legal strategy, service draft translation, native/legal
+review, sitemap/hreflang/indexing enablement, and later German content growth.
+Do not start DE/ZH/KO service detail rollout, case studies, or named
+partner/client references without separate approval, localized content, and
+proof.
 
 The next content/business layer should focus on proof-safe trust governance,
 post-launch legal/privacy alignment, Search Console/Bing monitoring, and 3-5 HU
@@ -228,6 +232,15 @@ P1/P2 content and governance items:
 - EN news route/content policy: keep EN news hidden or route clearly to HU
   content until EN article routes are approved.
 - DE/ZH/KO legal/service/news 404 avoidance and noindex strategy.
+- German Phase 0 is documented in `docs/de_phase0_audit.md`; German glossary
+  seed is in `docs/translations/german_glossary.md`.
+- German homepage copy needs native B2B review before indexability: values,
+  service labels, contact labels, consent copy and proof-sensitive claims.
+- German service tile translations are staged as source only under
+  `docs/translations/de/source/`. They are not imported to DB and do not open
+  DE service routes. Use
+  `docs/translations/de/service_tiles_de_full_validation.md` before any future
+  German service release pass.
 - HU/EN privacy policy version sync and DPO/legal review.
 - D&B AA versus OPTEN/A+ governance: public wording now uses D&B AA High
   Creditworthy 2026 as the Dun & Bradstreet proof item. Do not call it OPTEN

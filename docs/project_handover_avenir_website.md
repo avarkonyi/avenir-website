@@ -51,6 +51,17 @@ draft scaffold and is translation-review-required. These locales should not
 expose service detail, legal or news detail flows until a full localization
 decision and review process is completed.
 
+German current-state note:
+
+- `/de` is live as a partial homepage, but it is noindex and excluded from the
+  sitemap.
+- `/de/szolgaltatasok/*`, `/de/adatvedelem`, `/de/aszf`,
+  `/de/impresszum`, `/de/hirek` and `/de/hirek/[slug]` are intentionally
+  closed.
+- DE footer legal links use EN legal pages as fallback.
+- DE Phase 0 audit and rollout plan: `docs/de_phase0_audit.md`.
+- German terminology seed: `docs/translations/german_glossary.md`.
+
 ## Architecture Summary
 
 Technology:
