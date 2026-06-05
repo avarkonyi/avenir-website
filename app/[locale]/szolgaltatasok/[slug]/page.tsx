@@ -16,6 +16,12 @@ import {
 } from "@/lib/db/queries/services";
 import { SEO_DATA, SEO_LOCALES, type SeoLocale } from "@/lib/seo-data";
 import { getSafeAbsolutePublicImageUrl } from "@/lib/safe-public-image";
+import {
+  DE_REVIEW_SERVICE_PATHS,
+  getDeReviewRelatedServicesForServiceSlug,
+  getDeReviewServiceDetailBySlug,
+  getDeReviewServiceDetailSharedCopy,
+} from "@/lib/services/de-service-details";
 
 // Public service detail page (P5 Phase 1).
 //
@@ -38,9 +44,17 @@ const URL_SEGMENT = "szolgaltatasok";
 export const revalidate = 3600;
 
 export async function generateStaticParams() {
-  return getAllPublishedServicePathsForBuild(
+  const publishedPaths = await getAllPublishedServicePathsForBuild(
     "service detail generateStaticParams",
   );
+  return [
+    ...new Map(
+      [...publishedPaths, ...DE_REVIEW_SERVICE_PATHS].map((path) => [
+        `${path.locale}:${path.slug}`,
+        path,
+      ]),
+    ).values(),
+  ];
 }
 
 export async function generateMetadata({
@@ -52,11 +66,14 @@ export async function generateMetadata({
   if (!SEO_LOCALES.includes(locale as SeoLocale)) {
     return {};
   }
-  const detail = await getPublishedServiceDetailBySlugForPublic(
-    slug,
-    locale,
-    "service metadata detail",
-  );
+  const isDeReviewPage = locale === "de";
+  const detail = isDeReviewPage
+    ? getDeReviewServiceDetailBySlug(slug)
+    : await getPublishedServiceDetailBySlugForPublic(
+        slug,
+        locale,
+        "service metadata detail",
+      );
   if (!detail) {
     // Returning empty metadata is fine — the page itself will call
     // notFound() and the route returns 404 + the not-found.tsx UI.
@@ -77,10 +94,12 @@ export async function generateMetadata({
   const path = `/${locale}/${URL_SEGMENT}/${slug}`;
   const canonical = `${SEO_DATA.url}${path}`;
   const image = getSafeAbsolutePublicImageUrl(detail.imageUrl, SEO_DATA.url);
-  const readyLocales = await getPublishedServiceLocalesBySlugForPublic(
-    slug,
-    "service metadata locale alternates",
-  );
+  const readyLocales = isDeReviewPage
+    ? []
+    : await getPublishedServiceLocalesBySlugForPublic(
+        slug,
+        "service metadata locale alternates",
+      );
   const languages: Record<string, string> = {};
   for (const l of readyLocales) {
     languages[l] = `${SEO_DATA.url}/${l}/${URL_SEGMENT}/${slug}`;
@@ -93,10 +112,10 @@ export async function generateMetadata({
     metadataBase: new URL(SEO_DATA.url),
     title,
     description,
-    robots: { index: true, follow: true },
+    robots: { index: !isDeReviewPage, follow: true },
     alternates: {
       canonical,
-      languages,
+      ...(isDeReviewPage ? {} : { languages }),
     },
     openGraph: {
       type: "article",
@@ -130,22 +149,34 @@ export default async function ServiceDetailPage({
   const { locale, slug } = await params;
   if (!LOCALES.includes(locale as Locale)) notFound();
 
-  const detail = await getPublishedServiceDetailBySlugForPublic(
-    slug,
-    locale,
-    "service detail page",
-  );
+  const isDeReviewPage = locale === "de";
+  const detail = isDeReviewPage
+    ? getDeReviewServiceDetailBySlug(slug)
+    : await getPublishedServiceDetailBySlugForPublic(
+        slug,
+        locale,
+        "service detail page",
+      );
   if (!detail) notFound();
 
   const t = getTranslation(locale);
-  const related = await getPublishedServicesBySlugsForPublic(
-    detail.relatedSlugs,
-    locale,
-    "service detail related services",
-  );
-  const readyServiceDetailPaths = await getAllPublishedServicePathsForBuild(
+  const deSharedCopy = isDeReviewPage
+    ? getDeReviewServiceDetailSharedCopy()
+    : null;
+  const serviceDetailCopy = deSharedCopy?.serviceDetail ?? t.serviceDetail;
+  const related = isDeReviewPage
+    ? getDeReviewRelatedServicesForServiceSlug(slug)
+    : await getPublishedServicesBySlugsForPublic(
+        detail.relatedSlugs,
+        locale,
+        "service detail related services",
+      );
+  const publishedServiceDetailPaths = await getAllPublishedServicePathsForBuild(
     "service detail footer links",
   );
+  const readyServiceDetailPaths = isDeReviewPage
+    ? [...publishedServiceDetailPaths, ...DE_REVIEW_SERVICE_PATHS]
+    : publishedServiceDetailPaths;
 
   const pageUrl = `${SEO_DATA.url}/${locale}/${URL_SEGMENT}/${slug}`;
   const homeUrl = `${SEO_DATA.url}/${locale}`;
@@ -157,7 +188,10 @@ export default async function ServiceDetailPage({
   const hasFaq = faqEntries.length > 0;
 
   const ctaUrl = "#service-quote";
-  const quoteCtaLabel = locale === "hu" ? "Ajánlatkérés" : "Request a quote";
+  const quoteCtaLabel =
+    locale === "hu"
+      ? "Ajánlatkérés"
+      : deSharedCopy?.serviceQuote.button ?? "Request a quote";
 
   // ── JSON-LD ─────────────────────────────────────────────────────────
   const breadcrumb = {
@@ -330,8 +364,8 @@ export default async function ServiceDetailPage({
         {/* Use cases — "Kinek jó" */}
         {detail.useCases.length > 0 && (
           <Section
-            eyebrow={t.serviceDetail.useCasesEyebrow}
-            title={t.serviceDetail.useCasesTitle}
+            eyebrow={serviceDetailCopy.useCasesEyebrow}
+            title={serviceDetailCopy.useCasesTitle}
           >
             <BulletList items={detail.useCases} />
           </Section>
@@ -340,8 +374,8 @@ export default async function ServiceDetailPage({
         {/* Included items — "Mit tartalmaz" */}
         {detail.includedItems.length > 0 && (
           <Section
-            eyebrow={t.serviceDetail.includedEyebrow}
-            title={t.serviceDetail.includedTitle}
+            eyebrow={serviceDetailCopy.includedEyebrow}
+            title={serviceDetailCopy.includedTitle}
           >
             <BulletList items={detail.includedItems} />
           </Section>
@@ -350,8 +384,8 @@ export default async function ServiceDetailPage({
         {/* Process steps — "Hogyan indul az együttműködés" */}
         {detail.processSteps.length > 0 && (
           <Section
-            eyebrow={t.serviceDetail.processEyebrow}
-            title={t.serviceDetail.processTitle}
+            eyebrow={serviceDetailCopy.processEyebrow}
+            title={serviceDetailCopy.processTitle}
             background="#F8FAFC"
           >
             <ol
@@ -425,8 +459,8 @@ export default async function ServiceDetailPage({
         {/* Trust elements */}
         {detail.trustItems.length > 0 && (
           <Section
-            eyebrow={t.serviceDetail.trustEyebrow}
-            title={t.serviceDetail.trustTitle}
+            eyebrow={serviceDetailCopy.trustEyebrow}
+            title={serviceDetailCopy.trustTitle}
           >
             <div
               style={{
@@ -477,8 +511,8 @@ export default async function ServiceDetailPage({
         {/* FAQ — only present in JSON-LD when actually rendered (per spec) */}
         {hasFaq && (
           <Section
-            eyebrow={t.serviceDetail.faqEyebrow}
-            title={t.serviceDetail.faqTitle}
+            eyebrow={serviceDetailCopy.faqEyebrow}
+            title={serviceDetailCopy.faqTitle}
             background="#F8FAFC"
           >
             <div className="service-detail-faq-list" style={{ display: "grid", gap: 14 }}>
@@ -530,8 +564,8 @@ export default async function ServiceDetailPage({
         {/* Related services */}
         {related.length > 0 && (
           <Section
-            eyebrow={t.serviceDetail.relatedEyebrow}
-            title={t.serviceDetail.relatedTitle}
+            eyebrow={serviceDetailCopy.relatedEyebrow}
+            title={serviceDetailCopy.relatedTitle}
           >
             <div className="service-detail-related-grid">
               {related.map((r) => (

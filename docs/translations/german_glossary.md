@@ -33,8 +33,10 @@ production-ready.
 
 The full German service tile package is staged in
 `docs/translations/de/source/service_tiles_de_full.csv`. It preserves
-`de_status` per row and remains source-only until native/business and legal
-review gates pass.
+`de_status` per row. The current runtime source is
+`lib/services/de-service-details.ts`, which renders the eight German service
+detail pages in review mode only: 200 after deploy, `noindex, follow`, and no
+sitemap/hreflang inclusion until native/business and legal review gates pass.
 
 ## Shared Operational Terms
 

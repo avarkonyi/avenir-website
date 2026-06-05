@@ -11,12 +11,21 @@ const CANONICAL_SERVICE_SLUGS = [
   "soft-fm",
 ];
 
-const READY_SERVICE_LOCALES = ["hu", "en"];
-const UNREADY_SERVICE_LOCALES = ["de", "zh", "ko"];
+const READY_SERVICE_LOCALES = ["hu", "en", "de"];
+const UNREADY_SERVICE_LOCALES = ["zh", "ko"];
+const SITEMAP_SERVICE_LOCALES = ["hu", "en"];
 const SERVICE_SEGMENT = "szolgaltatasok";
 
 const READY_SERVICE_PATHS = READY_SERVICE_LOCALES.flatMap((locale) =>
   CANONICAL_SERVICE_SLUGS.map((slug) => `/${locale}/${SERVICE_SEGMENT}/${slug}`),
+);
+
+const SITEMAP_SERVICE_PATHS = SITEMAP_SERVICE_LOCALES.flatMap((locale) =>
+  CANONICAL_SERVICE_SLUGS.map((slug) => `/${locale}/${SERVICE_SEGMENT}/${slug}`),
+);
+
+const DE_REVIEW_SERVICE_PATHS = CANONICAL_SERVICE_SLUGS.map(
+  (slug) => `/de/${SERVICE_SEGMENT}/${slug}`,
 );
 
 const HU_SERVICE_PATHS = CANONICAL_SERVICE_SLUGS.map(
@@ -286,7 +295,7 @@ async function checkSitemap(baseUrl) {
     ...checkContains({
       text: result.text,
       path: "/sitemap.xml",
-      required: [...READY_SERVICE_PATHS, ...PUBLISHABLE_LEGAL_PATHS],
+      required: [...SITEMAP_SERVICE_PATHS, ...PUBLISHABLE_LEGAL_PATHS],
       forbidden: SITEMAP_FORBIDDEN,
     }),
   );
@@ -362,6 +371,40 @@ async function checkPreviewNoindexHeader(baseUrl, allowProduction) {
   ];
 }
 
+async function checkDeReviewServiceNoindex(baseUrl) {
+  const failures = [];
+
+  for (const path of DE_REVIEW_SERVICE_PATHS) {
+    const result = await fetchText(baseUrl, path);
+    if (result.status !== 200) {
+      failures.push({
+        ok: false,
+        label: `${path} review noindex`,
+        detail: `expected 200 before checking noindex, got ${result.status}`,
+      });
+      continue;
+    }
+
+    const header = result.headers.get("x-robots-tag") ?? "";
+    const metaMatch = result.text.match(
+      /<meta\s+name=["']robots["'][^>]*content=["']([^"']+)["'][^>]*>/i,
+    );
+    const robots = `${header} ${metaMatch?.[1] ?? ""}`;
+    const hasNoindex = /\bnoindex\b/i.test(robots);
+    const hasFollow = /\bfollow\b/i.test(robots);
+
+    if (!hasNoindex || !hasFollow) {
+      failures.push({
+        ok: false,
+        label: `${path} review noindex`,
+        detail: `expected robots noindex, follow; got ${JSON.stringify(robots.trim())}`,
+      });
+    }
+  }
+
+  return failures;
+}
+
 function printResults({ baseUrl, failures, totalChecks }) {
   console.log(`Avenir Preview smoke test`);
   console.log(`Base URL: ${baseUrl.toString()}`);
@@ -398,7 +441,7 @@ async function main() {
   const sitemapFailures = await checkSitemap(baseUrl);
   totalChecks +=
     1 +
-    READY_SERVICE_PATHS.length +
+    SITEMAP_SERVICE_PATHS.length +
     PUBLISHABLE_LEGAL_PATHS.length +
     SITEMAP_FORBIDDEN.length;
   failures.push(...sitemapFailures);
@@ -423,6 +466,10 @@ async function main() {
   );
   totalChecks += allowProduction ? 0 : 1;
   failures.push(...noindexFailures);
+
+  const deReviewNoindexFailures = await checkDeReviewServiceNoindex(baseUrl);
+  totalChecks += DE_REVIEW_SERVICE_PATHS.length;
+  failures.push(...deReviewNoindexFailures);
 
   printResults({ baseUrl, failures, totalChecks });
   process.exit(failures.length === 0 ? 0 : 1);

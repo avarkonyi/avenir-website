@@ -14,6 +14,7 @@ import {
   getActiveTopLevelServices,
   getAllPublishedServicePathsForBuild,
 } from "@/lib/db/queries/services";
+import { DE_REVIEW_SERVICE_PATHS } from "@/lib/services/de-service-details";
 import {
   getPublishedNewsIndexHu,
   newsDetailHrefHu,
@@ -61,9 +62,13 @@ export default async function HomePage({
   const serviceOptions = serviceRows
     .map((row) => ({ slug: row.slug, label: row.name }))
     .filter((opt) => opt.label.length > 0);
-  const readyServiceDetailPaths = await getAllPublishedServicePathsForBuild(
+  const publishedServiceDetailPaths = await getAllPublishedServicePathsForBuild(
     "homepage service detail links",
   );
+  const readyServiceDetailPaths =
+    locale === "de"
+      ? [...publishedServiceDetailPaths, ...DE_REVIEW_SERVICE_PATHS]
+      : publishedServiceDetailPaths;
 
   return (
     <>

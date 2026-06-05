@@ -6,39 +6,42 @@ Production URL: https://www.afm.hu
 
 ## Executive Summary
 
-German is currently a partial homepage-level localization. Production serves
-`/de` successfully, but the German homepage is intentionally noindexed and
-excluded from the sitemap. German service detail, legal and news routes are not
-production-ready and currently return 404. This matches the safe partial-locale
-policy: the homepage may exist as a discovery surface, while detail routes stay
-closed until translation, business review, legal review and indexing approval
-are complete.
+German started as a partial homepage-level localization. Production serves
+`/de` successfully, and the German homepage is intentionally noindexed and
+excluded from the sitemap.
 
-No runtime changes are required for DE Phase 0. The current source already
-prevents the main broken-flow risks:
+The current source now includes a controlled review-mode implementation for the
+eight German service detail routes. After deployment, those service routes are
+expected to return 200 with `noindex, follow`, while still remaining outside
+sitemap and hreflang. This is not the German SEO launch and not legal/final
+approval.
+
+The current source prevents the main broken-flow risks:
 
 - service detail language switching is limited to HU/EN;
 - legal page language switching is limited to HU/EN;
 - news page language switching is HU-only;
 - DE footer legal links point to existing EN legal pages;
-- DE service cards do not link to non-ready DE service detail pages;
+- DE service cards may link to the review-mode DE service detail pages after
+  deploy;
 - `/de` is noindex and not in the sitemap.
 
 ## Production Route Inventory
 
-Checked on 2026-06-05 with read-only GET requests.
+Checked/defined on 2026-06-05. Production may still show the previous 404
+state until the review-mode source is deployed.
 
 | Route | Production status | Classification | Notes |
 | --- | ---: | --- | --- |
 | `/de` | 200 | ready/live as partial homepage | `meta robots="noindex, follow"`; not sitemap-listed. |
-| `/de/szolgaltatasok/objektumorzes` | 404 | intentionally closed | Do not open until DE detail fields are translated and reviewed. |
-| `/de/szolgaltatasok/portaszolgalat` | 404 | intentionally closed | Same route-readiness rule as other services. |
-| `/de/szolgaltatasok/biztonsagtechnika` | 404 | intentionally closed | Same route-readiness rule as other services. |
-| `/de/szolgaltatasok/tavfelugyelet-vonuloszolgalat` | 404 | intentionally closed | Same route-readiness rule as other services. |
-| `/de/szolgaltatasok/mystery-shopping-helyszini-audit` | 404 | intentionally closed | Requires careful German wording to avoid surveillance/private-investigation drift. |
-| `/de/szolgaltatasok/rendezvenybiztositas` | 404 | intentionally closed | Same route-readiness rule as other services. |
-| `/de/szolgaltatasok/hard-fm` | 404 | intentionally closed | Same route-readiness rule as other services. |
-| `/de/szolgaltatasok/soft-fm` | 404 | intentionally closed | Same route-readiness rule as other services. |
+| `/de/szolgaltatasok/objektumorzes` | 200 after deploy | review-mode service detail | `noindex, follow`; not in sitemap/hreflang. |
+| `/de/szolgaltatasok/portaszolgalat` | 200 after deploy | review-mode service detail | `noindex, follow`; not in sitemap/hreflang. |
+| `/de/szolgaltatasok/biztonsagtechnika` | 200 after deploy | review-mode service detail | Includes DE-only FAQ 9-10; legal-review rows remain gated. |
+| `/de/szolgaltatasok/tavfelugyelet-vonuloszolgalat` | 200 after deploy | review-mode service detail | `noindex, follow`; not in sitemap/hreflang. |
+| `/de/szolgaltatasok/mystery-shopping-helyszini-audit` | 200 after deploy | review-mode service detail | Requires careful German wording to avoid surveillance/private-investigation drift. |
+| `/de/szolgaltatasok/rendezvenybiztositas` | 200 after deploy | review-mode service detail | `noindex, follow`; not in sitemap/hreflang. |
+| `/de/szolgaltatasok/hard-fm` | 200 after deploy | review-mode service detail | `noindex, follow`; not in sitemap/hreflang. |
+| `/de/szolgaltatasok/soft-fm` | 200 after deploy | review-mode service detail | `noindex, follow`; not in sitemap/hreflang. |
 | `/de/adatvedelem` | 404 | intentionally closed | No German legal page until legal review. |
 | `/de/aszf` | 404 | intentionally closed | No German legal page until legal review. |
 | `/de/impresszum` | 404 | intentionally closed | No German legal page until legal review. |
@@ -57,14 +60,14 @@ Current production state:
   - `x-default`: `https://www.afm.hu/hu`
 - `/sitemap.xml` contains no DE URLs.
 - DE service, legal and news routes are not in the sitemap.
-- Service and legal hreflang should remain HU/EN-only until German routes are
-  translated, reviewed and explicitly approved for publication.
+- Service and legal hreflang remain HU/EN-only. DE service detail pages are
+  intentionally not added to hreflang while they are review/noindex pages.
 
 Recommended safe default:
 
 - Keep `/de` noindexed until German homepage copy is reviewed.
 - Keep DE service/legal/news detail routes out of sitemap and hreflang until
-  the relevant pages exist and have review approval.
+  the relevant pages have review approval and indexing approval.
 - Do not mark German pages indexable as a side effect of importing translations.
 
 ## Source Behavior
@@ -78,10 +81,13 @@ Relevant source files and behavior:
 - `app/sitemap.ts` includes only HU/EN homepages and readiness-approved
   service/legal/article routes.
 - `lib/db/queries/services.ts` requires locale-specific service detail fields
-  before a service detail page can render. DE does not become public through HU
-  fallback.
-- `app/[locale]/szolgaltatasok/[slug]/page.tsx` returns `notFound()` when the
-  DE detail row is not ready.
+  before DB-backed service detail pages can render. DE does not become public
+  through HU fallback.
+- `lib/services/de-service-details.ts` provides the reviewed source package as
+  typed static DE review-mode content, without DB writes.
+- `app/[locale]/szolgaltatasok/[slug]/page.tsx` renders the eight canonical DE
+  service slugs from the static review-mode source and returns `notFound()` for
+  unknown slugs.
 - `lib/legal-routes.ts` allows legal pages only for HU/EN.
 - `app/[locale]/hirek/page.tsx` and `app/[locale]/hirek/[slug]/page.tsx` are
   HU-only.
@@ -89,8 +95,9 @@ Relevant source files and behavior:
   limits service/legal switcher choices to HU/EN and news choices to HU.
 - `components/Footer.tsx` maps DE legal footer links to EN legal pages with
   English fallback labels.
-- `scripts/qa-preview-smoke.mjs` expects DE service/legal/news routes to remain
-  404.
+- `scripts/qa-preview-smoke.mjs` expects DE service routes to return 200 with
+  `noindex, follow`, while DE legal/news routes remain 404 and DE service URLs
+  remain forbidden in the sitemap.
 
 ## Footer Legal Fallback
 
@@ -118,8 +125,9 @@ Current source behavior:
 - Legal routes: only HU/EN are available.
 - News routes: only HU is available.
 
-This is the correct behavior while DE service, legal and news detail routes are
-closed.
+This is the chosen review-mode behavior. HU/EN service detail pages do not
+advertise DE in the language switcher. DE service detail pages remain reachable
+directly and from DE service links, and their switcher offers HU/EN only.
 
 ## German Homepage Copy Audit
 
@@ -230,8 +238,8 @@ Done criteria:
 
 ### DE-3 German Service Detail Draft Translation
 
-Goal: create German drafts for the eight service detail pages without
-publishing them.
+Goal: create German drafts for the eight service detail pages and make them
+available in controlled review mode without SEO publication.
 
 Deliverables:
 
@@ -239,7 +247,9 @@ Deliverables:
 - use cases, included items, process steps, trust items and FAQ translated in
   the same count/order as HU/EN;
 - proof-sensitive rows marked for review;
-- no DB import/apply until review is approved.
+- no DB import/apply until review is approved;
+- review-mode runtime source may render the eight canonical DE service routes
+  with `noindex, follow`, outside sitemap and hreflang.
 
 Risk: medium/high. Service copy includes regulated activity, ISO, licence,
 24/7, reporting and audit language.
@@ -293,8 +303,10 @@ Owner / decision needed: owner/SEO/developer release approval.
 
 Done criteria:
 
-- approved DE pages return 200;
-- non-approved DE pages remain 404/noindex;
+- approved DE pages return 200 and become indexable only after explicit
+  sitemap/hreflang/noindex approval;
+- review-mode service pages remain 200/noindex;
+- non-approved legal/news pages remain 404/noindex;
 - sitemap and hreflang match the approved route set;
 - production smoke matrix is updated intentionally.
 
@@ -324,28 +336,30 @@ Done criteria:
 
 ## QA Expectations
 
-Current `scripts/qa-preview-smoke.mjs` behavior is aligned with DE Phase 0:
+Current `scripts/qa-preview-smoke.mjs` behavior is aligned with DE review mode:
 
 - `/de` homepage may return 200.
-- DE service detail routes are expected 404.
+- DE service detail routes are expected 200 with `noindex, follow`.
 - DE legal routes are expected 404.
 - `/de/hirek` is expected 404.
 - DE URLs are forbidden in the sitemap while partial/noindex.
 
-No QA script change is needed for this audit.
+Run this smoke matrix against a preview deployment or production only after the
+review-mode source has been deployed. Production will fail the new DE route
+expectation while it still serves the previous build.
 
 ## Recommended Next Implementation Step
 
-Start with DE-1: German homepage polish and glossary review. Keep `/de`
-noindexed and do not open service/legal/news detail routes. The first practical
-translation package should use the HU full service export and the reviewed EN
-service layer as reference, but publication should remain gated until DE-3 and
-DE-4 are complete.
+Next, deploy the DE review-mode service detail implementation to a preview and
+run route/noindex QA there. Keep `/de` and `/de/szolgaltatasok/*` noindexed and
+do not open DE legal/news detail routes. Full SEO publication remains gated
+until native/business review, legal/proof review and explicit sitemap/hreflang
+approval are complete.
 
 ## 2026-06-05 Service Tile Source Package Update
 
-The German service tile translation package has been staged as source input,
-without opening German service routes.
+The German service tile translation package has been staged as source input and
+is now wired into a controlled runtime review mode for German service routes.
 
 Validated files:
 
@@ -368,9 +382,9 @@ Validated state:
 - 24 `legal_review_required` rows.
 - DE-only `biztonsagtechnika` FAQ 9-10 rows are staged and gated.
 
-Route policy remains unchanged:
+Runtime route policy after the review-mode implementation is deployed:
 
-- DE service detail routes stay 404.
+- DE service detail routes return 200 with `noindex, follow`.
 - DE service URLs are not in sitemap.
 - DE service URLs are not in hreflang.
 - Legal/homepage/news German inputs remain separate future passes.

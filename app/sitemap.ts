@@ -12,6 +12,7 @@ import {
 
 const SITE_LAST_MODIFIED = new Date("2026-05-07T00:00:00.000Z");
 const SITEMAP_HOME_LOCALES = ["hu", "en"] as const;
+const SITEMAP_SERVICE_LOCALES = ["hu", "en"] as const;
 const SERVICE_URL_SEGMENT = "szolgaltatasok";
 const NEWS_INDEX_PATH_HU = "/hu/hirek";
 const NEWS_URL_SEGMENT_HU = "hirek";
@@ -64,6 +65,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     getAllPublishedServicePathsForBuild("sitemap.xml"),
     getAllPublishedNewsPathsHuForBuild("sitemap.xml"),
   ]);
+  const sitemapServicePaths = servicePaths.filter(({ locale }) =>
+    (SITEMAP_SERVICE_LOCALES as readonly string[]).includes(locale),
+  );
   const serviceLocalesBySlug = new Map<string, string[]>();
   const newsIndexLastModified =
     newsPaths.reduce<Date | null>((latest, article) => {
@@ -71,7 +75,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       return !latest || lastModified > latest ? lastModified : latest;
     }, null) ?? SITE_LAST_MODIFIED;
 
-  for (const { locale, slug } of servicePaths) {
+  for (const { locale, slug } of sitemapServicePaths) {
     const locales = serviceLocalesBySlug.get(slug) ?? [];
     locales.push(locale);
     serviceLocalesBySlug.set(slug, locales);
@@ -110,7 +114,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         alternates: legalAlternates(slug),
       })),
     ),
-    ...servicePaths.map(({ locale, slug }) => ({
+    ...sitemapServicePaths.map(({ locale, slug }) => ({
       url: `${SEO_DATA.url}/${locale}/${SERVICE_URL_SEGMENT}/${slug}`,
       lastModified: SITE_LAST_MODIFIED,
       changeFrequency: "monthly" as const,

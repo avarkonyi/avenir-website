@@ -3,12 +3,13 @@
 Generated for the Avenir multilingual launch inventory in `docs/translations/public_site_translation_matrix.csv`.
 
 This is a source inventory and review aid. HU and EN service detail pages are
-now production-live. DE/ZH remain partial-localization surfaces. KO has a
-homepage-only draft scaffold and is translation-review-required. German is the
-next localization focus, but it must follow the staged DE-0..DE-6 rollout
-documented in `docs/de_phase0_audit.md`. This file does not publish DE/ZH/KO
-service detail pages, does not change routing, and does not imply legal or
-proof approval.
+production-live. German service detail translations now have a controlled
+review-mode runtime source; after deployment, the eight DE service routes are
+expected to return 200 with `noindex, follow`, while staying outside sitemap
+and hreflang. ZH remains a partial-localization surface. KO has a homepage-only
+draft scaffold and is translation-review-required. German must still follow the
+staged DE-0..DE-6 rollout documented in `docs/de_phase0_audit.md`; review-mode
+routes do not imply legal/proof/SEO approval.
 
 ## Scope
 
@@ -85,17 +86,22 @@ Watch especially for:
 - DE/ZH are homepage/partial-localization surfaces only. KO is homepage-only
   draft and translation-review-required. These partial locales should remain
   noindexed/excluded from sitemap until full localization is approved.
-- German production state on 2026-06-05:
+- German source/runtime state on 2026-06-05:
   - `/de` returns 200 and is `noindex, follow`;
-  - DE service detail, legal and news routes return 404 by design;
+  - DE service detail routes are source-implemented as 200/noindex review
+    routes after deploy;
+  - DE legal and news routes return 404 by design;
   - DE footer legal links point to existing EN legal pages;
   - DE is not in the sitemap and is not advertised as a service/legal/news
-    hreflang target.
+    hreflang target;
+  - production may still show the previous DE service 404 state until the
+    review-mode build is deployed.
 - Initial German glossary: `docs/translations/german_glossary.md`.
 - German service tile source package:
   - source files are staged under `docs/translations/de/source/`;
   - `service_tiles_de_full.csv` contains 681 rows across 8 services plus 2
     SHARED rows;
+  - typed runtime source is `lib/services/de-service-details.ts`;
   - `de_status` is preserved in the staged source file;
   - 24 rows are `legal_review_required` and remain gated;
   - validation report:

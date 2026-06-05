@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { trackAnalyticsEvent } from "@/lib/analytics/events";
+import { DE_REVIEW_SERVICE_QUOTE_COPY } from "@/lib/services/de-service-shared-copy";
 
 const CANONICAL_SERVICE_SLUGS = new Set([
   "objektumorzes",
@@ -74,6 +75,7 @@ export const SERVICE_QUOTE_COPY = {
     emailRequired: "Please enter your email address.",
     emailInvalid: "Please enter a valid email address.",
   },
+  de: DE_REVIEW_SERVICE_QUOTE_COPY,
 } as const;
 
 type ServiceQuoteCopy = (typeof SERVICE_QUOTE_COPY)[keyof typeof SERVICE_QUOTE_COPY];
@@ -112,7 +114,12 @@ export function ServiceQuoteCta({
   serviceSlug: string;
   serviceLabel: string;
 }) {
-  const copy = locale === "hu" ? SERVICE_QUOTE_COPY.hu : SERVICE_QUOTE_COPY.en;
+  const copy =
+    locale === "hu"
+      ? SERVICE_QUOTE_COPY.hu
+      : locale === "de"
+        ? SERVICE_QUOTE_COPY.de
+        : SERVICE_QUOTE_COPY.en;
   const safeServiceSlug = CANONICAL_SERVICE_SLUGS.has(serviceSlug)
     ? serviceSlug
     : "";
