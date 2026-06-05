@@ -405,7 +405,31 @@ Ownership / decision needed:
 Purpose: decide and implement the long-term German, Chinese and Korean
 localization model.
 
-Status: Strategic decision required.
+Status: Strategic decision required. German is the next localization focus, but
+it must start with a staged rollout, not direct publication of service/legal
+detail routes.
+
+Current German Phase 0 state:
+
+- `/de` is live as a partial homepage surface.
+- `/de` is noindex and excluded from the sitemap.
+- German service detail, legal and news routes are closed.
+- Footer legal links on `/de` point to existing EN legal pages.
+- The language switcher does not advertise DE service/legal/news detail routes.
+- Detailed route and copy audit: `docs/de_phase0_audit.md`.
+- Terminology seed: `docs/translations/german_glossary.md`.
+
+### German phased rollout
+
+| German phase | Goal | Deliverables | Risk | Owner / decision needed | Done criteria |
+| --- | --- | --- | --- | --- | --- |
+| DE-0 Current-state audit and route safety | Document current DE behavior and prevent accidental route exposure. | Route inventory, indexing/sitemap/hreflang inventory, footer/legal fallback audit, language switcher audit, glossary seed. | Low. | Product owner confirms staged model. | DE audit and glossary exist; QA keeps DE detail routes closed. |
+| DE-1 German homepage polish | Make `/de` native-quality while still partial. | Hero, values, service card, contact and consent wording review; no indexing change. | Medium. | German native/business reviewer and proof-sensitive copy reviewer. | Homepage copy is reviewed; proof claims remain scope-safe. |
+| DE-2 German legal strategy | Decide whether German legal pages will exist and under what review model. | Legal route policy, translation/review workflow, footer fallback policy. | High. | Legal/DPO/owner. | No DE legal route opens until reviewed. |
+| DE-3 German service detail draft translation | Prepare service translations without publishing them. | Eight service translation drafts with matched counts/order and review markers. | Medium/high. | German translator plus proof/compliance reviewer. | Required fields drafted; no overclaims or generic licence-number exposure. Source package staged in `docs/translations/de/source/`; validation report in `docs/translations/de/service_tiles_de_full_validation.md`. |
+| DE-4 German native/legal review | Approve German wording for public use. | Native review, legal/compliance review, glossary decisions, proof wording signoff. | High if skipped. | German reviewer, legal/DPO and proof owner. | Page-level review signoff exists. |
+| DE-5 Sitemap/hreflang/indexing enablement | Publish only reviewed DE URLs. | DB readiness population, route smoke, sitemap/hreflang update, noindex removal if approved. | Medium. | Owner/SEO/developer release approval. | Approved DE routes return 200; non-approved routes remain closed. |
+| DE-6 German content growth / news | Add German articles after foundation is stable. | German article policy, translation workflow, Article JSON-LD/sitemap/hreflang rules. | Medium. | Editorial owner and German reviewer. | German news links exist only with reviewed content. |
 
 ### Option A — Full DE/ZH/KO rollout
 
