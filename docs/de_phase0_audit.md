@@ -1,6 +1,6 @@
 # DE Phase 0 Audit and Rollout Plan
 
-Last updated: 2026-06-05
+Last updated: 2026-06-06
 
 Production URL: https://www.afm.hu
 
@@ -144,12 +144,11 @@ Findings:
 
 - Hero headline and subhead are directionally aligned with the security-first
   positioning: `Weniger Risiko. Mehr Kontrolle.`
-- The three values/pillars are still generic:
-  - `Zuverlässigkeit`
-  - `Expertise`
-  - `Flexibilität`
-  They should be aligned later with the stronger HU/EN operational pillars:
-  transparent control, professional presence, response/accountability.
+- The three values/pillars were generic (`Zuverlässigkeit`, `Expertise`,
+  `Flexibilität`). **Resolved 2026-06-06:** aligned to the operative HU/EN
+  triad — `Transparente Kontrolle`, `Professionelle Präsenz`,
+  `Reaktion und Verantwortung` — and the forbidden "für jeden Bedarf"
+  ("egyedi igényekre szabva") phrasing was removed.
 - Service card and service-list labels have received an interim source polish
   and now use: `Objektschutz vor Ort`, `Empfangs- und Pförtnerdienst`,
   `Mystery Shopping und Serviceaudit`, `Veranstaltungssicherheit`,
@@ -166,9 +165,10 @@ Findings:
   `Angebot anfordern`.
 - The DE contact form includes partial German labels and links its privacy
   notice to the DE legal review-mode privacy page.
-- Cookie/analytics consent uses the EN fallback for DE. This is acceptable for
-  Phase 0, but DE-native consent copy should be part of DE homepage polish and
-  legal review.
+- Cookie/analytics consent used the EN fallback for DE. **Resolved
+  2026-06-06:** native German consent-banner and cookie-settings copy added
+  (`AnalyticsConsentBanner`, `CookieSettingsButton`); analytics runtime and
+  consent behaviour are unchanged (consent-gated, no PII in events).
 - Proof-sensitive claims visible on the homepage include 30+, 200+, D&B AA and
   24/7. These are real facts, but German wording should be reviewed for
   placement and scope-safety before indexing.
@@ -403,3 +403,51 @@ Runtime route policy after the review-mode implementation is deployed:
 - DE legal URLs are not in sitemap.
 - DE legal URLs are not in hreflang.
 - Homepage indexability and German news remain separate future passes.
+
+## 2026-06-06 DE Homepage/Framework Polish Pass
+
+Targeted runtime polish of the German homepage and site frame (DE-1, framework
+scope). No route/indexing change, no DB write, no deploy. HU/EN/ZH/KO content
+untouched.
+
+Changes:
+
+- Value pillars aligned to the operative triad (`Transparente Kontrolle`,
+  `Professionelle Präsenz`, `Reaktion und Verantwortung`); removed the
+  "für jeden Bedarf" phrasing.
+- Service-nav terminology standardised to `Dienstleistungen` (`nav.services`,
+  `servicesTitle`, hero `cta1`, contact `service` label).
+- Hero eyebrow changed from `… · AUDITS` to
+  `OBJEKTSCHUTZ · SICHERHEITSTECHNIK · FACILITY MANAGEMENT` to reflect the
+  integrated security + FM positioning and drop the gated-audit over-signal.
+  (A full-sentence eyebrow was considered but kept as a triad for cross-locale
+  design consistency; revisit during native review if a phrase is preferred.)
+- `200+` stat label made gender-neutral: `Geschulte Mitarbeitende`.
+- Native German cookie/analytics consent copy added (was EN fallback);
+  analytics runtime/consent behaviour unchanged.
+- Service quote CTA DE copy aligned: company `Unternehmen (optional)`, success
+  uses `Unser Team`. Button/heading `Angebot anfordern`, submit `Senden`,
+  cancel `Abbrechen` confirmed.
+- Nav news-hiding logic extracted to `getVisibleNavSectionKeys`
+  (`lib/locale-ui-helpers.ts`) so "DE has no news nav link" is unit-tested;
+  HU/EN behaviour identical.
+
+Already-correct (verified, no change needed): DE service card labels, `Details`
+link label, DE footer legal links/labels, DE contact privacy link target,
+`/de` metadata (`de_DE`, German title/description, noindex).
+
+Route/indexing policy unchanged: `/de` and DE service/legal routes stay
+`noindex, follow` and out of sitemap/hreflang; `/de/hirek` stays 404.
+
+Tests: `tests/de-homepage-framework-polish.test.ts` (wired into the runner).
+
+Deferred / backlog (see `post_launch_backlog.md`):
+
+- Career position titles need the `(m/w/d)` convention, but titles are
+  DB-backed (`positions.titleDe`) — requires a staging DB update, out of scope
+  for this runtime pass.
+- EN/ZH/KO service-card detail link label still renders the Hungarian word
+  `Részletek` (`getServiceCardDetailLabel`) — a separate non-DE fix.
+- Footer machine-translation disclaimer left unchanged (legal-adjacent;
+  re-confirm wording during DE legal review).
+- Full DE-native/business review still required before any noindex removal.

@@ -1,6 +1,6 @@
 # Avenir Website Project Handover
 
-Last updated: 2026-05-28
+Last updated: 2026-06-06
 
 Production URL: https://www.afm.hu
 
@@ -64,6 +64,10 @@ German current-state note:
   outside sitemap/hreflang.
 - `/de/hirek` and `/de/hirek/[slug]` are intentionally closed.
 - DE footer/contact legal links use the DE legal review-mode pages.
+- 2026-06-06 DE framework polish (runtime only): operative value pillars,
+  native German consent copy, `Dienstleistungen` nav terminology, FM-aligned
+  hero eyebrow and `Geschulte Mitarbeitende`; routes/indexing/DB unchanged;
+  native review pending.
 - DE Phase 0 audit and rollout plan: `docs/de_phase0_audit.md`.
 - German terminology seed: `docs/translations/german_glossary.md`.
 

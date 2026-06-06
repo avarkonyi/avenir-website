@@ -4,3 +4,5 @@ import "./notification-email.test.ts";
 import "./service-quote-cta.test.tsx";
 import "./de-service-details.test.ts";
 import "./de-homepage-polish.test.ts";
+import "./de-homepage-framework-polish.test.ts";
+import "./de-legal-release.test.ts";

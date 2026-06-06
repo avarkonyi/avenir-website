@@ -105,6 +105,12 @@ Watch especially for:
     hreflang target;
   - production may still show the previous DE service 404 state until the
     review-mode build is deployed.
+- German framework polish on 2026-06-06 (runtime only; no route/indexing/DB
+  change): DE value pillars use the operative triad (Transparente Kontrolle /
+  Professionelle Präsenz / Reaktion und Verantwortung); service-nav uses
+  `Dienstleistungen`; native German cookie/analytics consent copy added;
+  `200+` label is `Geschulte Mitarbeitende`; hero eyebrow ends
+  `… · FACILITY MANAGEMENT`. Native/business German review still pending.
 - Initial German glossary: `docs/translations/german_glossary.md`.
 - German service tile source package:
   - source files are staged under `docs/translations/de/source/`;

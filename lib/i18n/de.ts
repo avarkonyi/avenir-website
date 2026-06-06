@@ -2,7 +2,7 @@ export const de = {
   "nav": {
     "home": "Startseite",
     "about": "Über uns",
-    "services": "Leistungen",
+    "services": "Dienstleistungen",
     "references": "Referenzen",
     "news": "News",
     "career": "Karriere",
@@ -10,11 +10,11 @@ export const de = {
     "cta": "Angebot anfordern"
   },
   "hero": {
-    "tag": "OBJEKTSCHUTZ · SICHERHEITSTECHNIK · AUDITS",
+    "tag": "OBJEKTSCHUTZ · SICHERHEITSTECHNIK · FACILITY MANAGEMENT",
     "h1a": "Weniger Risiko.",
     "h1b": "Mehr Kontrolle.",
     "sub": "Avenir bündelt Ihren Sicherheitsbetrieb aus einer Hand: Objektschutz, Zutrittskontrolle, Sicherheitstechnik, Vor-Ort-Kontrollen und Reporting. Ein Vertrag. Ein verantwortlicher Ansprechpartner.",
-    "cta1": "Unsere Leistungen",
+    "cta1": "Unsere Dienstleistungen",
     "cta2": "Angebot anfordern",
     "bgAlt": "Avenir Facility Management — Gebäudebetrieb und Sicherheit in Ungarn"
   },
@@ -25,7 +25,7 @@ export const de = {
     },
     {
       "n": "200+",
-      "l": "Geschulte Mitarbeiter"
+      "l": "Geschulte Mitarbeitende"
     },
     {
       "n": "AA",
@@ -41,19 +41,19 @@ export const de = {
   "aboutText": "Avenir wurde 2018 gegründet, doch das Führungsteam und die Fachkräfte verfügen über jahrzehntelange Erfahrung im Facility Management und im Objektschutz. Heute sind wir mit einem Team von über 200 Fachkräften an mehr als 30 aktiven Standorten landesweit im Einsatz — in Unternehmens-, Handels-, Industrie- und Logistikumgebungen.\n\nWir organisieren Sicherheitsabläufe: Bewachung, Zutrittskontrolle, Streifendienste, Ereignismanagement und Reporting. Unser Ziel ist es, den Abstimmungsaufwand auf Kundenseite zu reduzieren, Risiken zu senken und den täglichen Betrieb vor Ort transparenter zu machen.\n\nBei Bedarf ergänzen wir unseren Sicherheitsfokus durch Sicherheitstechnik, Mystery Shopping und unterstützende FM-Leistungen — damit unsere Kunden mit einem verantwortlichen Partner arbeiten können, statt mehrere einzelne Dienstleister zu koordinieren.",
   "values": [
     {
-      "t": "Zuverlässigkeit",
-      "d": "Beständige Präsenz vor Ort, gestützt durch dokumentierte Prozesse, regelmäßige Berichte und klare Verantwortlichkeiten."
+      "t": "Transparente Kontrolle",
+      "d": "Klare Abläufe, nachvollziehbare Dokumentation und regelmäßige Abstimmung unterstützen die steuerbare Standortbetreuung."
     },
     {
-      "t": "Expertise",
-      "d": "Geschulte Teams, standortspezifische Abläufe und kontrollierte Leistung in allen Fachbereichen."
+      "t": "Professionelle Präsenz",
+      "d": "Geschulte Mitarbeitende und abgestimmte Routinen sorgen für eine verlässliche Präsenz am Standort."
     },
     {
-      "t": "Flexibilität",
-      "d": "Maßgeschneiderte Sicherheits-, Audit- und FM-Unterstützung für jeden Kunden, Standort und Bedarf."
+      "t": "Reaktion und Verantwortung",
+      "d": "Bei Abweichungen, Vorfällen oder Änderungsbedarf zählen klare Eskalationswege und verantwortliche Ansprechpartner."
     }
   ],
-  "servicesTitle": "Unsere Leistungen",
+  "servicesTitle": "Unsere Dienstleistungen",
   "servicesSub": "Integrierte Lösungen aus einer Hand",
   "services": [
     {
@@ -135,7 +135,7 @@ export const de = {
     "company": "Unternehmen",
     "email": "E-Mail-Adresse",
     "phone": "Telefonnummer",
-    "service": "Gewünschte Leistung",
+    "service": "Gewünschte Dienstleistung",
     "message": "Nachricht / Anforderungen",
     "send": "Anfrage senden",
     "sending": "Wird gesendet…",

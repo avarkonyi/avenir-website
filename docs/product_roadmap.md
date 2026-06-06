@@ -1,6 +1,6 @@
 # Avenir Website Product Roadmap
 
-Last updated: 2026-05-28
+Last updated: 2026-06-06
 
 Production URL: https://www.afm.hu
 
@@ -421,6 +421,10 @@ Current German Phase 0 state:
 - German legal routes are implemented as review/noindex routes in the current
   source and remain outside sitemap/hreflang.
 - German news routes are closed.
+- 2026-06-06 DE framework polish (runtime only; no route/indexing/DB change):
+  operative value pillars, native German consent copy, `Dienstleistungen` nav
+  terminology, FM-aligned hero eyebrow and `Geschulte Mitarbeitende`. Native
+  business/legal review still pending.
 - Footer legal links on `/de` point to the DE legal review-mode pages.
 - The language switcher does not advertise DE service/news detail routes; legal
   pages allow HU/EN/DE switching because the three DE legal review routes
@@ -433,7 +437,7 @@ Current German Phase 0 state:
 | German phase | Goal | Deliverables | Risk | Owner / decision needed | Done criteria |
 | --- | --- | --- | --- | --- | --- |
 | DE-0 Current-state audit and route safety | Document current DE behavior and prevent accidental route exposure. | Route inventory, indexing/sitemap/hreflang inventory, footer/legal fallback audit, language switcher audit, glossary seed. | Low. | Product owner confirms staged model. | DE audit and glossary exist; QA keeps DE detail routes closed. |
-| DE-1 German homepage polish | Make `/de` native-quality while still partial. | Hero, values, service card, contact and consent wording review; no indexing change. | Medium. | German native/business reviewer and proof-sensitive copy reviewer. | Homepage copy is reviewed; proof claims remain scope-safe. |
+| DE-1 German homepage polish | Make `/de` native-quality while still partial. | Hero, values, service card, contact and consent wording review; no indexing change. | Medium. | German native/business reviewer and proof-sensitive copy reviewer. | Framework polish done 2026-06-06 (pillars, consent, `Dienstleistungen` terminology, eyebrow); native hero/subhead/description review still pending; proof claims remain scope-safe. |
 | DE-2 German legal strategy | Decide whether German legal pages become indexable and under what final review model. | Legal route policy, translation/review workflow, sitemap/hreflang policy. | High. | Legal/DPO/owner. | DE legal review routes may render 200/noindex; indexability requires explicit approval. |
 | DE-3 German service detail draft translation | Prepare service translations in controlled review mode without SEO publication. | Eight service translation drafts with matched counts/order, review markers and static runtime source. | Medium/high. | German translator plus proof/compliance reviewer. | Required fields drafted; no overclaims or generic licence-number exposure. Source package staged in `docs/translations/de/source/`; typed runtime source in `lib/services/de-service-details.ts`; validation report in `docs/translations/de/service_tiles_de_full_validation.md`. |
 | DE-4 German native/legal review | Approve German wording for public use. | Native review, legal/compliance review, glossary decisions, proof wording signoff. | High if skipped. | German reviewer, legal/DPO and proof owner. | Page-level review signoff exists. |

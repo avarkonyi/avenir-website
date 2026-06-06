@@ -3,7 +3,12 @@
 import { openAnalyticsConsentSettings } from "@/lib/analytics/consent";
 
 export function CookieSettingsButton({ locale }: { locale: string }) {
-  const label = locale === "hu" ? "Süti beállítások" : "Cookie settings";
+  const label =
+    locale === "hu"
+      ? "Süti beállítások"
+      : locale === "de"
+        ? "Cookie-Einstellungen"
+        : "Cookie settings";
 
   return (
     <button

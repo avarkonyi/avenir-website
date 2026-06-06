@@ -5,9 +5,9 @@ import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import type { Translation } from "@/lib/i18n";
+import { getVisibleNavSectionKeys } from "@/lib/locale-ui-helpers";
 import { Icon } from "./Icon";
 
-const SECTION_KEYS = ["about", "services", "references", "news", "career", "contact"] as const;
 const LOCALES = ["hu", "en", "de", "zh", "ko"] as const;
 const FULL_CONTENT_LOCALES = ["hu", "en"] as const;
 const LEGAL_CONTENT_LOCALES = ["hu", "en", "de"] as const;
@@ -25,10 +25,7 @@ export function Nav({ t }: { t: Pick<Translation, "nav"> }) {
   const params = useParams<{ locale: string }>();
   const pathname = usePathname();
   const currentLocale = params?.locale ?? "hu";
-  const visibleSectionKeys =
-    currentLocale === "hu"
-      ? SECTION_KEYS
-      : SECTION_KEYS.filter((key) => key !== "news");
+  const visibleSectionKeys = getVisibleNavSectionKeys(currentLocale);
 
   // True if currently on the locale homepage (where the section anchors
   // exist for in-page smooth scroll). False on legal pages and other

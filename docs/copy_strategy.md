@@ -236,8 +236,11 @@ P1/P2 content and governance items:
 - DE/ZH/KO legal/service/news 404 avoidance and noindex strategy.
 - German Phase 0 is documented in `docs/de_phase0_audit.md`; German glossary
   seed is in `docs/translations/german_glossary.md`.
-- German homepage copy needs native B2B review before indexability: values,
-  service labels, contact labels, consent copy and proof-sensitive claims.
+- German homepage copy needs native B2B review before indexability. A
+  2026-06-06 framework polish landed the operative value pillars, native German
+  consent copy, the `Dienstleistungen` nav terminology and an FM-aligned hero
+  eyebrow; native review still covers the hero/subhead, service descriptions and
+  proof-sensitive claims. See `docs/de_phase0_audit.md`.
 - German legal pages are staged under `docs/translations/de/legal/` and render
   only as noindex review-mode pages until explicit legal/SEO approval.
 - German service tile translations are staged under

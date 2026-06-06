@@ -20,13 +20,13 @@ export const DE_REVIEW_SERVICE_QUOTE_COPY = {
   name: "Name",
   email: "E-Mail",
   phone: "Telefon",
-  company: "Firma (optional)",
+  company: "Unternehmen (optional)",
   message: "Nachricht",
   messagePlaceholder: "Beschreiben Sie kurz, wobei wir Sie unterstützen können.",
   send: "Senden",
   sending: "Wird gesendet...",
   success:
-    "Vielen Dank, wir haben Ihre Anfrage erhalten. Unser Mitarbeiter meldet sich über die angegebenen Kontaktdaten bei Ihnen.",
+    "Vielen Dank, wir haben Ihre Anfrage erhalten. Unser Team meldet sich über die angegebenen Kontaktdaten bei Ihnen.",
   error:
     "Beim Senden ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut oder rufen Sie uns an.",
   nameRequired: "Bitte geben Sie Ihren Namen an.",

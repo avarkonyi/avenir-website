@@ -38,6 +38,11 @@ test("service quote CTA uses short message labels and placeholders", () => {
     SERVICE_QUOTE_COPY.en.messagePlaceholder,
     "Briefly describe how we can help.",
   );
+  assert.equal(SERVICE_QUOTE_COPY.de.message, "Nachricht");
+  assert.equal(
+    SERVICE_QUOTE_COPY.de.messagePlaceholder,
+    "Beschreiben Sie kurz, wobei wir Sie unterstützen können.",
+  );
 });
 
 test("service quote CTA expanded state shows a visible heading above the form", () => {

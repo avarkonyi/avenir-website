@@ -35,6 +35,30 @@ export function getServiceCardDetailLabel(locale: string): string {
   return locale === "de" ? "Details" : "Részletek";
 }
 
+export const NAV_SECTION_KEYS = [
+  "about",
+  "services",
+  "references",
+  "news",
+  "career",
+  "contact",
+] as const;
+
+export type NavSectionKey = (typeof NAV_SECTION_KEYS)[number];
+
+// Homepage section nav keys. The News section renders only on the HU
+// homepage (app/[locale]/page.tsx gates <News> to locale === "hu"), and
+// /[locale]/hirek is 404 for non-HU locales — so the "news" nav item is
+// shown only for HU. Every other locale (en/de/zh/ko) gets the same set
+// minus "news", keeping the nav consistent with the rendered sections.
+export function getVisibleNavSectionKeys(
+  locale: string,
+): readonly NavSectionKey[] {
+  return locale === "hu"
+    ? NAV_SECTION_KEYS
+    : NAV_SECTION_KEYS.filter((key) => key !== "news");
+}
+
 export function getLocaleServiceListLabel(
   locale: string,
   slug: string,
