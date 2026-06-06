@@ -7,3 +7,4 @@ import "./de-homepage-polish.test.ts";
 import "./de-homepage-framework-polish.test.ts";
 import "./de-legal-release.test.ts";
 import "./certification-seed.test.ts";
+import "./news-localization.test.ts";

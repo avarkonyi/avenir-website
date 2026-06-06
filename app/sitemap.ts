@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { SEO_DATA } from "@/lib/seo-data";
 import { getAllPublishedServicePathsForBuild } from "@/lib/db/queries/services";
-import { getAllPublishedNewsPathsHuForBuild } from "@/lib/db/queries/news";
+import { getAllIndexablePublishedNewsPathsForBuild } from "@/lib/db/queries/news";
 import {
   LEGAL_PAGE_LOCALES,
   LEGAL_PAGE_SLUGS,
@@ -9,13 +9,18 @@ import {
   legalPageUrl,
   type LegalPageSlug,
 } from "@/lib/legal-routes";
+import {
+  NEWS_INDEXABLE_LOCALES,
+  type NewsIndexableLocale,
+  newsAlternateLanguages,
+  newsDetailUrl,
+  newsIndexUrl,
+} from "@/lib/news-routing";
 
 const SITE_LAST_MODIFIED = new Date("2026-05-07T00:00:00.000Z");
 const SITEMAP_HOME_LOCALES = ["hu", "en"] as const;
 const SITEMAP_SERVICE_LOCALES = ["hu", "en"] as const;
 const SERVICE_URL_SEGMENT = "szolgaltatasok";
-const NEWS_INDEX_PATH_HU = "/hu/hirek";
-const NEWS_URL_SEGMENT_HU = "hirek";
 
 function localeAlternates(path = "") {
   return {
@@ -37,15 +42,6 @@ function legalAlternates(slug: LegalPageSlug) {
   };
 }
 
-function huOnlyAlternates(path: string) {
-  return {
-    languages: {
-      hu: `${SEO_DATA.url}${path}`,
-      "x-default": `${SEO_DATA.url}${path}`,
-    },
-  };
-}
-
 function articleLastModified(article: {
   readonly updatedAt?: Date | null;
   readonly date?: Date | null;
@@ -63,7 +59,7 @@ function articleLastModified(article: {
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [servicePaths, newsPaths] = await Promise.all([
     getAllPublishedServicePathsForBuild("sitemap.xml"),
-    getAllPublishedNewsPathsHuForBuild("sitemap.xml"),
+    getAllIndexablePublishedNewsPathsForBuild("sitemap.xml"),
   ]);
   const sitemapServicePaths = servicePaths.filter(({ locale }) =>
     (SITEMAP_SERVICE_LOCALES as readonly string[]).includes(locale),
@@ -95,6 +91,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
     return { languages };
   };
+  const newsLocalesBySlug = new Map<string, NewsIndexableLocale[]>();
+  for (const { locale, slug } of newsPaths) {
+    const locales = newsLocalesBySlug.get(slug) ?? [];
+    locales.push(locale);
+    newsLocalesBySlug.set(slug, locales);
+  }
+  const newsIndexLocales = NEWS_INDEXABLE_LOCALES.filter((locale) =>
+    newsPaths.some((path) => path.locale === locale),
+  );
 
   return [
     ...SITEMAP_HOME_LOCALES.map((locale) => ({
@@ -121,26 +126,26 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.7,
       alternates: serviceAlternates(slug),
     })),
-    ...(newsPaths.length > 0
-      ? [
-          {
-            url: `${SEO_DATA.url}${NEWS_INDEX_PATH_HU}`,
-            lastModified: newsIndexLastModified,
-            changeFrequency: "monthly" as const,
-            priority: 0.55,
-            alternates: huOnlyAlternates(NEWS_INDEX_PATH_HU),
-          },
-        ]
-      : []),
-    ...newsPaths.map(({ slug, date, updatedAt }) => {
-      const path = `/hu/${NEWS_URL_SEGMENT_HU}/${slug}`;
-      return {
-        url: `${SEO_DATA.url}${path}`,
-        lastModified: articleLastModified({ date, updatedAt }),
-        changeFrequency: "monthly" as const,
-        priority: 0.5,
-        alternates: huOnlyAlternates(path),
-      };
-    }),
+    ...newsIndexLocales.map((locale) => ({
+      url: newsIndexUrl(locale),
+      lastModified: newsIndexLastModified,
+      changeFrequency: "monthly" as const,
+      priority: 0.55,
+      alternates: {
+        languages: newsAlternateLanguages(null, newsIndexLocales),
+      },
+    })),
+    ...newsPaths.map(({ locale, slug, date, updatedAt }) => ({
+      url: newsDetailUrl(locale, slug),
+      lastModified: articleLastModified({ date, updatedAt }),
+      changeFrequency: "monthly" as const,
+      priority: 0.5,
+      alternates: {
+        languages: newsAlternateLanguages(
+          slug,
+          newsLocalesBySlug.get(slug) ?? [],
+        ),
+      },
+    })),
   ];
 }

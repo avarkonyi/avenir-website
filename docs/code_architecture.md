@@ -126,23 +126,28 @@ published, and has the required localized detail fields for the requested
 locale. Missing, inactive, unpublished, legacy, or incomplete-locale pages
 return `notFound()`.
 
-### HU Public Article Routes
+### Public Article Routes
 
 Routes:
 
 - `app/[locale]/hirek/page.tsx`
 - `app/[locale]/hirek/[slug]/page.tsx`
 
-The current public article layer is HU-first:
+The public article layer is DB-backed and locale-aware:
 
 - `/hu/hirek`
 - `/hu/hirek/[slug]`
+- `/en/hirek`
+- `/en/hirek/[slug]`
+- `/de/hirek` (`noindex, follow` review mode)
+- `/de/hirek/[slug]` (`noindex, follow` review mode)
 
-EN/DE/ZH article routes are intentionally not public yet and return 404.
+ZH/KO article routes are intentionally not public and return 404.
 
 The shared news queries in `lib/db/queries/news.ts` publish an article only
-when the row is not deleted, `publishedHu = true`, `slug`, `titleHu`, `leadHu`,
-`bodyHu`, and `date` are present, and `date <= now()`.
+when the row is not deleted, the requested locale publish flag is true, `slug`,
+the requested locale `title`, `lead` and `body` fields are present, and
+`date <= now()`.
 
 Article detail pages render safe plain text paragraphs, not raw HTML and not
 Markdown. Article metadata/JSON-LD images accept only relative local paths or
@@ -150,8 +155,9 @@ approved Vercel Blob public URLs; arbitrary third-party image hotlinks are
 ignored.
 
 Build-time article path generation uses
-`getAllPublishedNewsPathsHuForBuild(surface)`, which fails loudly with
-sanitized DB target information if the DB-backed path query cannot run.
+`getAllPublishedNewsPathsForBuild(surface)`. If the DB-backed path query cannot
+run, it returns no pre-rendered article paths and logs sanitized DB target
+information; eligible articles can still render dynamically at request time.
 
 ### Legal Pages
 
@@ -617,8 +623,10 @@ cards, footer links, detail pages, and sitemap can all depend on service data.
 Admin partner mutations revalidate the partner admin paths and locale
 homepages, because the homepage logo strip depends on partner data.
 
-Admin news mutations revalidate `/hu`, `/hu/hirek`, affected HU article detail
-paths when the slug is known, and `/sitemap.xml`.
+Admin news mutations currently revalidate the legacy HU public paths and
+`/sitemap.xml`. If admin publishing becomes the primary EN/DE news workflow,
+extend revalidation to `/en/hirek`, `/de/hirek` and affected localized detail
+paths.
 
 ## 10. Database / Migration Architecture
 
@@ -796,8 +804,8 @@ For the current service layer that means HU and `x-default`.
 - `/hu/adatvedelem`, `/hu/aszf`, `/hu/impresszum`;
 - `/en/adatvedelem`, `/en/aszf`, `/en/impresszum`;
 - ready service detail URLs from the DB-backed readiness helper;
-- `/hu/hirek` and ready HU article detail URLs when at least one HU-ready
-  article exists.
+- `/hu/hirek`, `/en/hirek` and ready HU/EN article detail URLs when ready
+  articles exist.
 
 It intentionally excludes:
 
@@ -805,7 +813,8 @@ It intentionally excludes:
 - DE/ZH legal pages;
 - legacy service detail URLs;
 - non-ready DE/ZH service detail URLs;
-- EN/DE/ZH article URLs;
+- DE article URLs while they remain noindex review-mode;
+- ZH/KO article URLs;
 - admin/API/draft/internal routes.
 
 ### Robots

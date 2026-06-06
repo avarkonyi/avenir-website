@@ -9,7 +9,7 @@ Production URL: https://www.afm.hu
 The Avenir public website has completed its HU/EN production launch. The live
 site now contains the Hungarian and English homepages, the eight canonical
 service detail pages in both languages, reviewed HU/EN legal routes under the
-Hungarian legal slugs, HU-first news routes, proof-safe SEO/AI-search files,
+Hungarian legal slugs, HU/EN news routes, proof-safe SEO/AI-search files,
 consent-gated direct GA4 analytics, and the official non-tracking LinkedIn
 company profile link.
 
@@ -38,13 +38,18 @@ AOS internal product track outside the public website roadmap.
 - HU/EN legal pages live:
   - `/hu/adatvedelem`, `/hu/aszf`, `/hu/impresszum`
   - `/en/adatvedelem`, `/en/aszf`, `/en/impresszum`
+- HU/EN news index and launch article routes are source-ready:
+  - `/hu/hirek`
+  - `/hu/hirek/megujult-az-avenir-weboldala-es-arculata`
+  - `/en/hirek`
+  - `/en/hirek/megujult-az-avenir-weboldala-es-arculata`
 - Production sitemap includes HU/EN services and legal routes.
 - Production noindex is absent from ready public HU/EN pages.
-- DE has a homepage plus source-implemented service detail and legal
-  review-mode routes; after deploy, the eight DE service detail pages and
-  three DE legal pages are 200/noindex and stay outside sitemap/hreflang. ZH
-  remains homepage/partial-only. KO has a homepage-only draft scaffold and is
-  translation-review-required.
+- DE has a homepage plus source-implemented service detail, legal and news
+  review-mode routes; after deploy, the eight DE service detail pages, three DE
+  legal pages and launch news article layer are 200/noindex and stay outside
+  sitemap/hreflang. ZH remains homepage/partial-only. KO has a homepage-only
+  draft scaffold and is translation-review-required.
 - Direct GA4 is implemented with analytics consent; Google Tag Manager is not
   used.
 - Analytics events are PII-guarded.
@@ -53,11 +58,10 @@ AOS internal product track outside the public website roadmap.
 - D&B AA High Creditworthy 2026 is the current proof-backed public
   creditworthiness wording; it is tracked separately from OPTEN/A+.
 - AI-search grounding files and JSON-LD reflect the current locale/route status
-  (2026-06-06): llms files updated (HU+EN live service/legal, DE noindex review,
-  ZH/KO partial, HU-only news), private-investigation licence removed from AI
-  proof claims, JSON-LD `priceRange` removed, Organization/ProfessionalService
-  and Article author linked by `@id`, and the certification seed publishes its
-  rows.
+  (2026-06-06): llms files updated (HU+EN live service/legal/news, DE noindex
+  review, ZH/KO partial), private-investigation licence removed from AI proof
+  claims, JSON-LD `priceRange` removed, Organization/ProfessionalService and
+  Article author linked by `@id`, and the certification seed publishes its rows.
 - Contact rate limiter supports Upstash REST and Vercel KV REST env names.
 - Shared `requireAdmin()` allowlist enforcement is implemented.
 - Admin uploads include PDF/JPEG/PNG/WEBP magic-byte validation.
@@ -84,7 +88,7 @@ Scope:
 - Production route smoke monitoring.
 - Mobile overflow checks on realistic device widths.
 - Consent banner placement review, especially on mobile.
-- EN news broken-link handling.
+- EN news route smoke after deploy.
 - DE/ZH/KO partial-localization flow cleanup.
 
 Production QA commands:
@@ -426,15 +430,16 @@ Current German Phase 0 state:
   current source and remain outside sitemap/hreflang.
 - German legal routes are implemented as review/noindex routes in the current
   source and remain outside sitemap/hreflang.
-- German news routes are closed.
+- German news index and the launch article are implemented as review/noindex
+  routes in the current source and remain outside sitemap/hreflang.
 - 2026-06-06 DE framework polish (runtime only; no route/indexing/DB change):
   operative value pillars, native German consent copy, `Dienstleistungen` nav
   terminology, FM-aligned hero eyebrow and `Geschulte Mitarbeitende`. Native
   business/legal review still pending.
 - Footer legal links on `/de` point to the DE legal review-mode pages.
-- The language switcher does not advertise DE service/news detail routes; legal
-  pages allow HU/EN/DE switching because the three DE legal review routes
-  exist.
+- The language switcher does not advertise DE service detail routes; news pages
+  allow HU/EN/DE switching because the three locale variants exist, while DE
+  stays noindex/review-only.
 - Detailed route and copy audit: `docs/de_phase0_audit.md`.
 - Terminology seed: `docs/translations/german_glossary.md`.
 
@@ -447,8 +452,8 @@ Current German Phase 0 state:
 | DE-2 German legal strategy | Decide whether German legal pages become indexable and under what final review model. | Legal route policy, translation/review workflow, sitemap/hreflang policy. | High. | Legal/DPO/owner. | DE legal review routes may render 200/noindex; indexability requires explicit approval. |
 | DE-3 German service detail draft translation | Prepare service translations in controlled review mode without SEO publication. | Eight service translation drafts with matched counts/order, review markers and static runtime source. | Medium/high. | German translator plus proof/compliance reviewer. | Required fields drafted; no overclaims or generic licence-number exposure. Source package staged in `docs/translations/de/source/`; typed runtime source in `lib/services/de-service-details.ts`; validation report in `docs/translations/de/service_tiles_de_full_validation.md`. |
 | DE-4 German native/legal review | Approve German wording for public use. | Native review, legal/compliance review, glossary decisions, proof wording signoff. | High if skipped. | German reviewer, legal/DPO and proof owner. | Page-level review signoff exists. |
-| DE-5 Sitemap/hreflang/indexing enablement | Publish only reviewed DE URLs. | DB readiness population or approved static-source promotion, route smoke, sitemap/hreflang update, noindex removal if approved. | Medium. | Owner/SEO/developer release approval. | Approved DE routes are indexable and in reciprocal hreflang; review-mode routes stay 200/noindex until then; non-approved legal/news routes remain closed. |
-| DE-6 German content growth / news | Add German articles after foundation is stable. | German article policy, translation workflow, Article JSON-LD/sitemap/hreflang rules. | Medium. | Editorial owner and German reviewer. | German news links exist only with reviewed content. |
+| DE-5 Sitemap/hreflang/indexing enablement | Publish only reviewed DE URLs. | DB readiness population or approved static-source promotion, route smoke, sitemap/hreflang update, noindex removal if approved. | Medium. | Owner/SEO/developer release approval. | Approved DE routes are indexable and in reciprocal hreflang; review-mode routes stay 200/noindex until then; DE news/legal/service routes remain outside sitemap/hreflang while noindex. |
+| DE-6 German content growth / news | Add and review German articles after foundation is stable. | German article policy, translation workflow, Article JSON-LD/sitemap/hreflang rules. | Medium. | Editorial owner and German reviewer. | The launch article can render in DE noindex review mode; additional German articles and any indexable DE news launch require native/business/SEO approval. |
 
 ### Option A — Full DE/ZH/KO rollout
 
@@ -478,8 +483,8 @@ Scope:
 - DE homepage plus noindex DE service detail review pages if approved.
 - ZH/KO homepage only.
 - No DE/ZH/KO indexable service detail routes until approval.
-- No ZH/KO legal/news routes. DE legal routes may exist only as noindex review
-  pages until final approval.
+- No ZH/KO legal/news routes. DE legal and news routes may exist only as
+  noindex review pages until final approval.
 - Noindex if appropriate.
 - Route-aware language switcher.
 - Footer legal links point only to existing legal pages. For DE this means the

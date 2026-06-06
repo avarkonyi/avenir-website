@@ -33,9 +33,9 @@ Indexed production languages: Hungarian (hu) and English (en).
 
 Partial, non-indexed localization surfaces (do not treat these as full
 production languages): a German (de) homepage, a Chinese (zh) homepage, and a
-Korean (ko) homepage draft. German additionally serves service and legal pages
-in a noindex review mode; those pages are not in the sitemap or hreflang and are
-not a final SEO launch.
+Korean (ko) homepage draft. German additionally serves service, legal and news
+pages in a noindex review mode; those pages are not in the sitemap or hreflang
+and are not a final SEO launch.
 
 - DE homepage (partial, noindex): https://www.afm.hu/de
 - ZH homepage (partial, noindex): https://www.afm.hu/zh
@@ -165,10 +165,17 @@ Chinese and Korean legal pages are not published.
 
 ## News
 
-- Hungarian news index: https://www.afm.hu/hu/hirek
+Hungarian and English news routes are public. German news routes are available
+only in noindex review mode and are not final SEO/citation sources.
 
-News articles are currently Hungarian-only. Do not infer English, German,
-Chinese, or Korean news URLs.
+- Hungarian news index: https://www.afm.hu/hu/hirek
+- Hungarian launch article: https://www.afm.hu/hu/hirek/megujult-az-avenir-weboldala-es-arculata
+- English news index: https://www.afm.hu/en/hirek
+- English launch article: https://www.afm.hu/en/hirek/megujult-az-avenir-weboldala-es-arculata
+- German news index, review/noindex: https://www.afm.hu/de/hirek
+- German launch article, review/noindex: https://www.afm.hu/de/hirek/megujult-az-avenir-weboldala-es-arculata
+
+Do not infer Chinese or Korean news URLs.
 
 ## Structured data notes
 
@@ -188,6 +195,8 @@ logos are proof-controlled visual assets and are not schema relationship claims.
   are public-ready in Hungarian and English; German service detail pages are
   noindex review-mode only; Chinese and Korean are homepage-only and
   translation-review-required.
+- German news URLs as final SEO/citation sources while they remain noindex
+  review surfaces; Chinese and Korean news URLs are not available.
 - Admin and API routes.
 - Draft, preview-only, internal roadmap, migration, seed, or database URLs.
 - Unapproved partner names, customer names, testimonials, case studies, scores,

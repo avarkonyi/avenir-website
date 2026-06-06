@@ -8,30 +8,33 @@ import { AvenirLogo } from "@/components/AvenirLogo";
 import { JsonLd } from "@/components/JsonLd";
 import { getTranslation } from "@/lib/i18n";
 import {
-  getAllPublishedNewsPathsHuForBuild,
-  getPublishedNewsDetailBySlugHuForPublic,
+  getAllPublishedNewsPathsForBuild,
+  getPublishedNewsDetailBySlugForPublic,
+  getPublishedNewsLocalesForSlugForPublic,
 } from "@/lib/db/queries/news";
 import { SEO_DATA } from "@/lib/seo-data";
 import {
   getSafeAbsolutePublicImageUrl,
   getSafePublicImageSrc,
 } from "@/lib/safe-public-image";
+import {
+  isIndexableNewsLocale,
+  isPublicNewsLocale,
+  newsAlternateLanguages,
+  newsDetailUrl,
+  newsIndexPath,
+  newsIndexUrl,
+  type NewsPublicLocale,
+} from "@/lib/news-routing";
 
 export const revalidate = 3600;
 export const dynamicParams = true;
 
-const INDEX_PATH = "/hu/hirek";
-const INDEX_URL = `${SEO_DATA.url}${INDEX_PATH}`;
-
 export async function generateStaticParams() {
-  const paths = await getAllPublishedNewsPathsHuForBuild(
+  const paths = await getAllPublishedNewsPathsForBuild(
     "article detail generateStaticParams",
   );
   return paths.map(({ locale, slug }) => ({ locale, slug }));
-}
-
-function articleUrl(slug: string): string {
-  return `${INDEX_URL}/${slug}`;
 }
 
 function articleMetadataImageUrl(imageUrl: string | null): string {
@@ -41,17 +44,32 @@ function articleMetadataImageUrl(imageUrl: string | null): string {
   );
 }
 
+function dateLocale(locale: NewsPublicLocale): string {
+  if (locale === "hu") return "hu-HU";
+  if (locale === "de") return "de-DE";
+  return "en-GB";
+}
+
+function formatDate(date: Date, locale: NewsPublicLocale): string {
+  return date.toLocaleDateString(dateLocale(locale), {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}
+
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
   const { locale, slug } = await params;
-  if (locale !== "hu") {
+  if (!isPublicNewsLocale(locale)) {
     return { robots: { index: false, follow: false } };
   }
 
-  const article = await getPublishedNewsDetailBySlugHuForPublic(
+  const article = await getPublishedNewsDetailBySlugForPublic(
+    locale,
     slug,
     "article metadata detail",
   );
@@ -59,22 +77,26 @@ export async function generateMetadata({
     return { robots: { index: false, follow: false } };
   }
 
-  const url = articleUrl(article.slug);
+  const availableLocales = await getPublishedNewsLocalesForSlugForPublic(
+    article.slug,
+    "article metadata alternates",
+  );
+  const url = newsDetailUrl(locale, article.slug);
   const title = `${article.title} - ${SEO_DATA.legalNameShort}`;
   const image = articleMetadataImageUrl(article.imageUrl);
+  const indexable = isIndexableNewsLocale(locale);
 
   return {
     metadataBase: new URL(SEO_DATA.url),
     title,
     description: article.lead,
     authors: [{ name: SEO_DATA.legalNameShort }],
-    robots: { index: true, follow: true },
+    robots: { index: indexable, follow: true },
     alternates: {
       canonical: url,
-      languages: {
-        hu: url,
-        "x-default": url,
-      },
+      ...(indexable
+        ? { languages: newsAlternateLanguages(article.slug, availableLocales) }
+        : {}),
     },
     openGraph: {
       type: "article",
@@ -93,14 +115,6 @@ export async function generateMetadata({
       images: [image],
     },
   };
-}
-
-function formatDate(date: Date): string {
-  return date.toLocaleDateString("hu-HU", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
 }
 
 function RichText({ text }: { text: string }) {
@@ -135,18 +149,21 @@ export default async function NewsDetailPage({
   params: Promise<{ locale: string; slug: string }>;
 }) {
   const { locale, slug } = await params;
-  if (locale !== "hu") notFound();
+  if (!isPublicNewsLocale(locale)) notFound();
 
-  const article = await getPublishedNewsDetailBySlugHuForPublic(
+  const article = await getPublishedNewsDetailBySlugForPublic(
+    locale,
     slug,
     "article detail page",
   );
   if (!article) notFound();
 
-  const t = getTranslation("hu");
-  const url = articleUrl(article.slug);
+  const t = getTranslation(locale);
+  const url = newsDetailUrl(locale, article.slug);
   const image = articleMetadataImageUrl(article.imageUrl);
   const coverImage = getSafePublicImageSrc(article.imageUrl);
+  const indexPath = newsIndexPath(locale);
+  const indexUrl = newsIndexUrl(locale);
 
   const breadcrumb = {
     "@context": "https://schema.org",
@@ -157,13 +174,13 @@ export default async function NewsDetailPage({
         "@type": "ListItem",
         position: 1,
         name: t.nav.home,
-        item: `${SEO_DATA.url}/hu`,
+        item: `${SEO_DATA.url}/${locale}`,
       },
       {
         "@type": "ListItem",
         position: 2,
-        name: "Hírek",
-        item: INDEX_URL,
+        name: t.nav.news,
+        item: indexUrl,
       },
       {
         "@type": "ListItem",
@@ -184,7 +201,7 @@ export default async function NewsDetailPage({
     image,
     datePublished: article.date.toISOString(),
     dateModified: article.updatedAt.toISOString(),
-    inLanguage: "hu",
+    inLanguage: locale,
     author: { "@id": `${SEO_DATA.url}/#organization` },
     publisher: { "@id": `${SEO_DATA.url}/#organization` },
   };
@@ -214,7 +231,7 @@ export default async function NewsDetailPage({
               }}
             >
               <Link
-                href="/hu"
+                href={`/${locale}`}
                 style={{
                   color: "rgba(255,255,255,0.7)",
                   textDecoration: "none",
@@ -224,13 +241,13 @@ export default async function NewsDetailPage({
               </Link>
               <span aria-hidden>›</span>
               <Link
-                href={INDEX_PATH}
+                href={indexPath}
                 style={{
                   color: "rgba(255,255,255,0.7)",
                   textDecoration: "none",
                 }}
               >
-                Hírek
+                {t.nav.news}
               </Link>
               <span aria-hidden>›</span>
               <span
@@ -252,7 +269,7 @@ export default async function NewsDetailPage({
                 textTransform: "uppercase",
               }}
             >
-              {formatDate(article.date)}
+              {formatDate(article.date, locale)}
             </p>
             <h1
               style={{
@@ -324,7 +341,7 @@ export default async function NewsDetailPage({
           </div>
         </article>
       </main>
-      <Footer t={t} locale="hu" />
+      <Footer t={t} locale={locale} />
     </>
   );
 }

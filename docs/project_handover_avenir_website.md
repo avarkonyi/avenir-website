@@ -41,16 +41,18 @@ The production site is live for:
   - `/en/adatvedelem`
   - `/en/aszf`
   - `/en/impresszum`
-- HU news index/detail routes when article readiness passes:
+- HU/EN news index/detail routes for the launch article:
   - `/hu/hirek`
-  - `/hu/hirek/[slug]`
+  - `/hu/hirek/megujult-az-avenir-weboldala-es-arculata`
+  - `/en/hirek`
+  - `/en/hirek/megujult-az-avenir-weboldala-es-arculata`
 - `sitemap.xml`, `robots.txt`, `llms.txt`, `llms-full.txt`
 
-DE now has controlled review-mode service and legal routes. ZH remains a
-homepage/partial-localization surface only. KO is a homepage-only draft
-scaffold and is translation-review-required. These locales should not expose
-indexable service detail, legal or news detail flows until a full localization
-decision and review process is completed.
+DE now has controlled review-mode service, legal and launch-news routes. ZH
+remains a homepage/partial-localization surface only. KO is a homepage-only
+draft scaffold and is translation-review-required. These locales should not
+expose indexable service detail, legal or news detail flows until a full
+localization decision and review process is completed.
 
 German current-state note:
 
@@ -62,16 +64,19 @@ German current-state note:
 - `/de/adatvedelem`, `/de/aszf` and `/de/impresszum` are implemented in legal
   review mode: after deploy they return 200 with `noindex, follow` and remain
   outside sitemap/hreflang.
-- `/de/hirek` and `/de/hirek/[slug]` are intentionally closed.
+- `/de/hirek` and
+  `/de/hirek/megujult-az-avenir-weboldala-es-arculata` are implemented in
+  review mode: after deploy they return 200 with `noindex, follow` and remain
+  outside sitemap/hreflang.
 - DE footer/contact legal links use the DE legal review-mode pages.
 - 2026-06-06 DE framework polish (runtime only): operative value pillars,
   native German consent copy, `Dienstleistungen` nav terminology, FM-aligned
   hero eyebrow and `Geschulte Mitarbeitende`; routes/indexing/DB unchanged;
   native review pending.
 - 2026-06-06 AI/GEO + JSON-LD proof-safety pass: `llms.txt`/`llms-full.txt`
-  updated to current locale/route status (HU+EN live service/legal, DE noindex
-  review, ZH/KO partial, HU-only news; private-investigation licence removed
-  from AI proof claims; `Last updated` added). JSON-LD `priceRange` removed,
+  updated to current locale/route status (HU+EN live service/legal/news, DE
+  noindex review, ZH/KO partial; private-investigation licence removed from AI
+  proof claims; `Last updated` added). JSON-LD `priceRange` removed,
   ProfessionalService linked to the Organization `@id` via `parentOrganization`,
   Article `author` now uses the Organization `@id`. Cert seed `isPublished`
   hardened (source + test). No route/indexing/DB/deploy change.
@@ -144,13 +149,13 @@ Production sitemap should include:
 - HU and EN homepages;
 - HU and EN legal pages;
 - ready HU and EN service detail pages;
-- ready HU article URLs.
+- ready HU and EN article URLs.
 
 Production sitemap should exclude:
 
 - DE/ZH/KO service detail routes;
 - DE/ZH/KO legal routes;
-- DE/ZH/KO news routes;
+- DE review-mode news routes and all ZH/KO news routes;
 - legacy service slugs;
 - admin/API/internal routes.
 

@@ -16,9 +16,9 @@ Indexed production languages: Hungarian (hu) and English (en).
 
 Partial, non-indexed localization surfaces (do not treat these as full
 production languages): a German (de) homepage, a Chinese (zh) homepage, and a
-Korean (ko) homepage draft. German additionally serves service and legal pages
-in a noindex review mode; those pages are not in the sitemap or hreflang and are
-not a final SEO launch.
+Korean (ko) homepage draft. German additionally serves service, legal and news
+pages in a noindex review mode; those pages are not in the sitemap or hreflang
+and are not a final SEO launch.
 
 - DE homepage (partial, noindex): https://www.afm.hu/de
 - ZH homepage (partial, noindex): https://www.afm.hu/zh
@@ -78,17 +78,25 @@ Hungarian and English legal pages are public.
 ## News
 
 - Hungarian news index: https://www.afm.hu/hu/hirek
+- Hungarian launch article: https://www.afm.hu/hu/hirek/megujult-az-avenir-weboldala-es-arculata
+- English news index: https://www.afm.hu/en/hirek
+- English launch article: https://www.afm.hu/en/hirek/megujult-az-avenir-weboldala-es-arculata
 
-News articles are currently Hungarian-only. Do not infer English, German,
-Chinese, or Korean news URLs.
+German news routes are available only in noindex review mode and are not final
+SEO/citation sources:
+
+- German news index, review/noindex: https://www.afm.hu/de/hirek
+- German launch article, review/noindex: https://www.afm.hu/de/hirek/megujult-az-avenir-weboldala-es-arculata
+
+Do not infer Chinese or Korean news URLs.
 
 ## Exclusions
 
 Do not use admin, API, draft, legacy service, or non-ready service detail URLs as
 public sources. Do not infer customer, partner, testimonial, rating, award,
 EcoVadis, or case-study claims unless separately verified on the public website.
-German service and legal pages are noindex review-mode surfaces (not in the
-sitemap or hreflang) and are not a final SEO launch. The Chinese and Korean
+German service, legal and news pages are noindex review-mode surfaces (not in
+the sitemap or hreflang) and are not a final SEO launch. The Chinese and Korean
 localizations are homepage-only and translation-review-required; do not infer
 Chinese or Korean service detail, legal, or news pages from those homepage
 drafts.

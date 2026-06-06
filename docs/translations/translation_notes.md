@@ -89,14 +89,16 @@ Watch especially for:
 - DE/ZH are homepage/partial-localization surfaces only. KO is homepage-only
   draft and translation-review-required. These partial locales should remain
   noindexed/excluded from sitemap until full localization is approved.
-- German source/runtime state on 2026-06-05:
+- German source/runtime state on 2026-06-06:
   - `/de` returns 200 and is `noindex, follow`;
   - DE service detail routes are source-implemented as 200/noindex review
     routes after deploy;
   - DE legal routes return 200/noindex after deploy:
     `/de/adatvedelem`, `/de/aszf`, `/de/impresszum`;
   - DE legal source files live under `docs/translations/de/legal/`;
-  - DE news routes return 404 by design;
+  - DE news routes render 200/noindex review after deploy:
+    `/de/hirek`,
+    `/de/hirek/megujult-az-avenir-weboldala-es-arculata`;
   - DE footer and contact legal links point to DE legal review-mode routes;
   - DE homepage service-card labels, the `Details` card link label,
     `Angebot anfordern`, `Leitstellenbereitschaft` and
@@ -111,6 +113,15 @@ Watch especially for:
   `Dienstleistungen`; native German cookie/analytics consent copy added;
   `200+` label is `Geschulte Mitarbeitende`; hero eyebrow ends
   `… · FACILITY MANAGEMENT`. Native/business German review still pending.
+- News localization source state on 2026-06-06:
+  - the public news layer is DB-backed with locale-aware columns;
+  - the launch article
+    `megujult-az-avenir-weboldala-es-arculata` has HU, EN and DE content in
+    the database;
+  - HU and EN news index/detail routes are public and sitemap/hreflang-ready;
+  - DE news routes are review-mode only (`noindex, follow`) and must stay out
+    of sitemap/hreflang until native/business/SEO approval;
+  - ZH/KO news routes remain closed.
 - Initial German glossary: `docs/translations/german_glossary.md`.
 - German service tile source package:
   - source files are staged under `docs/translations/de/source/`;

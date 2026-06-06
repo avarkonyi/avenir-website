@@ -16,10 +16,13 @@ import {
 } from "@/lib/db/queries/services";
 import { DE_REVIEW_SERVICE_PATHS } from "@/lib/services/de-service-details";
 import {
-  getPublishedNewsIndexHu,
-  newsDetailHrefHu,
+  getPublishedNewsIndexForPublic,
 } from "@/lib/db/queries/news";
 import { getLocaleServiceListLabel } from "@/lib/locale-ui-helpers";
+import {
+  isPublicNewsLocale,
+  newsDetailHref,
+} from "@/lib/news-routing";
 
 const LOCALES = ["hu", "en", "de", "zh", "ko"] as const;
 type Locale = (typeof LOCALES)[number];
@@ -39,17 +42,16 @@ export default async function HomePage({
   if (!LOCALES.includes(locale as Locale)) notFound();
   const t = getTranslation(locale);
 
-  const articles =
-    locale === "hu"
-      ? (await getPublishedNewsIndexHu()).map((r) => ({
+  const articles = isPublicNewsLocale(locale)
+    ? (await getPublishedNewsIndexForPublic(locale, "homepage news cards")).map((r) => ({
           id: r.id,
           title: r.title,
           lead: r.lead,
           date: r.date.toISOString(),
           imageUrl: r.imageUrl,
-          href: newsDetailHrefHu(r.slug),
+          href: newsDetailHref(locale, r.slug),
         }))
-      : [];
+    : [];
 
   // Service-of-interest dropdown options for the Contact form via
   // shared helper (lib/db/queries/services.ts). Contact is a client
@@ -86,7 +88,7 @@ export default async function HomePage({
         />
         <References t={t} locale={locale} />
         <Certifications t={t} locale={locale} />
-        {locale === "hu" && (
+        {isPublicNewsLocale(locale) && (
           <News
             t={{
               newsSub: t.newsSub,

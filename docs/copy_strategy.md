@@ -231,9 +231,12 @@ contract-specific, or internal audit evidence publicly.
 
 P1/P2 content and governance items:
 
-- EN news route/content policy: keep EN news hidden or route clearly to HU
-  content until EN article routes are approved.
-- DE/ZH/KO legal/service/news 404 avoidance and noindex strategy.
+- EN news route/content policy is resolved in source for the launch article:
+  `/en/hirek` and `/en/hirek/megujult-az-avenir-weboldala-es-arculata`
+  are public/indexable after deploy.
+- DE/ZH/KO legal/service/news route policy: DE service/legal/news routes may
+  exist only as noindex review-mode surfaces until final approval; ZH/KO
+  service/legal/news detail routes remain closed.
 - German Phase 0 is documented in `docs/de_phase0_audit.md`; German glossary
   seed is in `docs/translations/german_glossary.md`.
 - German homepage copy needs native B2B review before indexability. A
@@ -243,6 +246,11 @@ P1/P2 content and governance items:
   proof-sensitive claims. See `docs/de_phase0_audit.md`.
 - German legal pages are staged under `docs/translations/de/legal/` and render
   only as noindex review-mode pages until explicit legal/SEO approval.
+- German news now follows the same review-mode pattern for the launch article:
+  `/de/hirek` and
+  `/de/hirek/megujult-az-avenir-weboldala-es-arculata` render 200/noindex
+  after deploy, stay outside sitemap/hreflang, and still need native/business
+  review before any DE SEO launch.
 - German service tile translations are staged under
   `docs/translations/de/source/` and typed into
   `lib/services/de-service-details.ts` for review-mode rendering. They are not
@@ -256,11 +264,12 @@ P1/P2 content and governance items:
   A+ unless separate OPTEN proof is provided and reviewed.
 - AI-search grounding files (`llms.txt`, `llms-full.txt`) must reflect the
   current locale/route status (updated 2026-06-06): HU and EN are indexed
-  production languages with live service and legal layers; DE service/legal
-  pages are noindex review-mode only (not in sitemap/hreflang); ZH/KO are
-  homepage-only/partial; news is HU-only. Do not state the service-detail layer
-  is "Hungarian only" once EN is live, and do not surface the private
-  investigation licence as an AI-search proof claim.
+  production languages with live service, legal and news layers; DE
+  service/legal/news pages are noindex review-mode only (not in
+  sitemap/hreflang); ZH/KO are homepage-only/partial and have no news routes.
+  Do not state the service-detail layer is "Hungarian only" once EN is live,
+  and do not surface the private investigation licence as an AI-search proof
+  claim.
 - Private investigation contact dropdown explanation and sensitive-data
   warning review.
 - Meta/social polish after production indexing settles.

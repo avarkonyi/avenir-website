@@ -436,27 +436,31 @@ This is intentional: a Preview or production build with an unavailable service-r
 
 ## Public News / Article QA Checklist
 
-Status: HU-first public article layer.
+Status: HU/EN public article layer plus DE noindex review layer.
 
 News detail static path generation is intentionally softer than service-detail
-readiness. If the build cannot read the HU article path list, the article detail
+readiness. If the build cannot read the article path list, the article detail
 route may continue with no pre-rendered article paths and rely on dynamic
-request-time rendering. This preserves build reliability without opening EN,
-DE, or ZH news routes. The public article query must still return `notFound()`
-for unsupported locales, unknown slugs, draft rows, soft-deleted rows,
-future-dated rows, or rows missing HU title/lead/body content.
+request-time rendering. This preserves build reliability while still enforcing
+the public locale policy. The public article query must return `notFound()` for
+unsupported locales, unknown slugs, draft rows, soft-deleted rows, future-dated
+rows, or rows missing the selected locale's title/lead/body content.
 
 Before merging public news/article work, verify on the Vercel Preview URL:
 
-- `/hu/hirek` returns 200 only when at least one HU-ready article exists;
-- `/hu/hirek` returns 404 if there are no HU-ready articles;
-- `/hu/hirek/[slug]` returns 200 only for HU-ready articles;
+- `/hu/hirek` and `/en/hirek` return 200 only when at least one ready article
+  exists for that locale;
+- `/de/hirek` may return 200 only as a `noindex, follow` review surface;
+- `/hu/hirek/[slug]` and `/en/hirek/[slug]` return 200 only for ready articles
+  in that locale;
+- `/de/hirek/[slug]` may return 200 only as a `noindex, follow` review surface;
 - draft, soft-deleted, future-dated, title-only, lead-empty, and body-empty articles return 404 on detail URLs;
-- EN/DE/ZH article detail/index URLs are not linked and are not included in the sitemap;
-- homepage HU news cards link to `/hu/hirek/[slug]` only for HU-ready articles;
-- EN/DE/ZH homepage news cards keep the existing safe modal behavior and do not link to non-ready article routes;
-- `/sitemap.xml` includes `/hu/hirek` only when at least one HU-ready article exists;
-- `/sitemap.xml` includes only ready HU article detail URLs;
+- ZH/KO article detail/index URLs are not linked and are not included in the sitemap;
+- homepage HU/EN/DE news cards link to the matching locale's `/hirek/[slug]`
+  only for locale-ready articles;
+- `/sitemap.xml` includes `/hu/hirek` and `/en/hirek` only when ready articles exist;
+- `/sitemap.xml` includes only ready HU/EN article detail URLs;
+- `/sitemap.xml` and hreflang do not include DE news while it is noindex review-mode;
 - Article JSON-LD uses `Article`, not `NewsArticle`, unless the content type is explicitly changed later;
 - BreadcrumbList JSON-LD is present on article detail pages;
 - article body rendering does not render raw HTML or unsanitized Markdown;
@@ -712,10 +716,11 @@ P1:
   production test submission is separately recorded after env changes.
 - Mobile overflow review if still present on narrow devices.
 - Consent banner placement/visual polish if it remains intrusive in manual QA.
-- DE/ZH public-flow cleanup: keep homepage-only surfaces noindexed and prevent
-  links to unfinished service/legal/news routes.
-- EN news route/content policy: keep EN news hidden or route to HU with clear
-  wording until EN article routes are approved.
+- DE/ZH/KO public-flow cleanup: keep partial surfaces noindexed and prevent
+  links to unfinished service/legal/news routes. DE service/legal/news may exist
+  as review-mode noindex routes only.
+- EN news route/content policy: source-resolved for the launch article; verify
+  `/en/hirek` and the EN launch article after deploy.
 - Privacy Policy HU/EN version sync and DPO/legal review.
 - D&B AA versus OPTEN/A+ governance: public wording uses D&B AA High
   Creditworthy 2026. Keep D&B and OPTEN as separate proof tracks; OPTEN/A+

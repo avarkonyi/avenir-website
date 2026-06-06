@@ -61,10 +61,12 @@ test("DE service card detail link label is 'Details'", () => {
   assert.notEqual(getServiceCardDetailLabel("de"), "Részletek");
 });
 
-test("DE nav omits the news link while HU keeps it", () => {
-  assert.ok(!getVisibleNavSectionKeys("de").includes("news"));
-  assert.ok(!getVisibleNavSectionKeys("en").includes("news"));
+test("HU, EN and DE nav include news while ZH/KO keep it closed", () => {
+  assert.ok(getVisibleNavSectionKeys("de").includes("news"));
+  assert.ok(getVisibleNavSectionKeys("en").includes("news"));
   assert.ok(getVisibleNavSectionKeys("hu").includes("news"));
+  assert.ok(!getVisibleNavSectionKeys("zh").includes("news"));
+  assert.ok(!getVisibleNavSectionKeys("ko").includes("news"));
 });
 
 test("DE footer legal links target review-mode DE routes with DE labels", () => {

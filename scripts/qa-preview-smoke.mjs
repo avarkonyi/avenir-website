@@ -28,6 +28,26 @@ const DE_REVIEW_SERVICE_PATHS = CANONICAL_SERVICE_SLUGS.map(
   (slug) => `/de/${SERVICE_SEGMENT}/${slug}`,
 );
 
+const NEWS_SLUG = "megujult-az-avenir-weboldala-es-arculata";
+const INDEXABLE_NEWS_PATHS = [
+  "/hu/hirek",
+  `/hu/hirek/${NEWS_SLUG}`,
+  "/en/hirek",
+  `/en/hirek/${NEWS_SLUG}`,
+];
+const DE_REVIEW_NEWS_PATHS = [
+  "/de/hirek",
+  `/de/hirek/${NEWS_SLUG}`,
+];
+const UNPUBLISHED_NEWS_PATHS = [
+  "/zh/hirek",
+  `/zh/hirek/${NEWS_SLUG}`,
+  "/ko/hirek",
+  `/ko/hirek/${NEWS_SLUG}`,
+  "/en/hirek/nem-letezo-hir",
+  "/de/hirek/nem-letezo-hir",
+];
+
 const HU_SERVICE_PATHS = CANONICAL_SERVICE_SLUGS.map(
   (slug) => `/hu/${SERVICE_SEGMENT}/${slug}`,
 );
@@ -87,7 +107,8 @@ const EXPECTED_200 = [
   ...READY_SERVICE_PATHS,
   ...PUBLISHABLE_LEGAL_PATHS,
   ...DE_REVIEW_LEGAL_PATHS,
-  "/hu/hirek",
+  ...INDEXABLE_NEWS_PATHS,
+  ...DE_REVIEW_NEWS_PATHS,
   "/sitemap.xml",
   "/robots.txt",
   "/llms.txt",
@@ -98,10 +119,7 @@ const EXPECTED_404 = [
   ...LEGACY_SERVICE_PATHS,
   ...UNREADY_SERVICE_PATHS,
   ...UNPUBLISHED_LEGAL_PATHS,
-  "/en/hirek",
-  "/de/hirek",
-  "/zh/hirek",
-  "/ko/hirek",
+  ...UNPUBLISHED_NEWS_PATHS,
 ];
 
 const SITEMAP_FORBIDDEN = [
@@ -112,7 +130,6 @@ const SITEMAP_FORBIDDEN = [
   "/ko/szolgaltatasok/",
   ...UNPUBLISHED_LEGAL_PATHS,
   ...DE_REVIEW_LEGAL_PATHS,
-  "/en/hirek",
   "/de/hirek",
   "/zh/hirek",
   "/ko/hirek",
@@ -301,7 +318,11 @@ async function checkSitemap(baseUrl) {
     ...checkContains({
       text: result.text,
       path: "/sitemap.xml",
-      required: [...SITEMAP_SERVICE_PATHS, ...PUBLISHABLE_LEGAL_PATHS],
+      required: [
+        ...SITEMAP_SERVICE_PATHS,
+        ...PUBLISHABLE_LEGAL_PATHS,
+        ...INDEXABLE_NEWS_PATHS,
+      ],
       forbidden: SITEMAP_FORBIDDEN,
     }),
   );
@@ -518,6 +539,14 @@ async function main() {
   );
   totalChecks += DE_REVIEW_LEGAL_PATHS.length;
   failures.push(...deReviewLegalNoindexFailures);
+
+  const deReviewNewsNoindexFailures = await checkNoindexFollow(
+    baseUrl,
+    DE_REVIEW_NEWS_PATHS,
+    "review news noindex",
+  );
+  totalChecks += DE_REVIEW_NEWS_PATHS.length;
+  failures.push(...deReviewNewsNoindexFailures);
 
   printResults({ baseUrl, failures, totalChecks });
   process.exit(failures.length === 0 ? 0 : 1);
