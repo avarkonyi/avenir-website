@@ -1,6 +1,6 @@
 # Verified Claims — Avenir
 
-Last updated: 2026-06-01
+Last updated: 2026-06-06
 
 This file tracks business-approved claims that may be used in public website copy for Avenir. It is a copywriting guardrail, not a substitute for the underlying legal, certificate, contract, or operational proof documents.
 
@@ -21,6 +21,26 @@ The following claims may be used in public website copy when the wording follows
 - 5 munkanapon belüli ajánlati előkészítés az igény összetettségétől függően
 - Biztonságtechnikai engedély
 - Magánnyomozói engedély
+
+## AI-search surface scope for licences
+
+Licence numbers, insurance details and registry identifiers are legal/proof
+context. They belong on the Impressum and legal pages, not in the AI-search
+grounding files (`llms.txt`, `llms-full.txt`) as marketing/proof claims.
+
+- The guarding licence (01030-822/4926-7/2023) remains an approved AI-search
+  claim — it is the primary regulated-activity authorization and is already
+  listed in both llms files and the proof-safe set.
+- The biztonságtechnikai (security technology) and magánnyomozói (private
+  investigation) licences are business-approved claims for legal/proof surfaces,
+  but are NOT surfaced as AI-search proof-safe claims and are not highlighted in
+  the llms files (removed on 2026-06-06). Private investigation in particular
+  stays discovery-only per AGENTS.md and must not be framed as AI
+  marketing/proof.
+- Licences are not added to JSON-LD `hasCredential` in the current scope.
+  Verified credential schema (ISO certificates already present; licences/D&B
+  later) is handled by a future Trust Center / proof catalog, not as decorative
+  structured data.
 
 ## Approved Creditworthiness Claim
 

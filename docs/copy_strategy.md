@@ -254,6 +254,13 @@ P1/P2 content and governance items:
 - D&B AA versus OPTEN/A+ governance: public wording now uses D&B AA High
   Creditworthy 2026 as the Dun & Bradstreet proof item. Do not call it OPTEN
   A+ unless separate OPTEN proof is provided and reviewed.
+- AI-search grounding files (`llms.txt`, `llms-full.txt`) must reflect the
+  current locale/route status (updated 2026-06-06): HU and EN are indexed
+  production languages with live service and legal layers; DE service/legal
+  pages are noindex review-mode only (not in sitemap/hreflang); ZH/KO are
+  homepage-only/partial; news is HU-only. Do not state the service-detail layer
+  is "Hungarian only" once EN is live, and do not surface the private
+  investigation licence as an AI-search proof claim.
 - Private investigation contact dropdown explanation and sensitive-data
   warning review.
 - Meta/social polish after production indexing settles.

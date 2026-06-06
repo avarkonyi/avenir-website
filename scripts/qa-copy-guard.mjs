@@ -93,6 +93,17 @@ const CHECKS = [
     pattern: /\b(police|public-authority|hatósági szerep|rendőrségi szerep)\b/i,
     appliesTo: isServiceMarketingSource,
   },
+  // AI-search drift guards (narrow, scoped to public/llms*.txt only).
+  {
+    name: "stale AI-file claim: Hungarian-only service-detail layer",
+    pattern: /service[- ]detail layer is Hungarian only/i,
+    appliesTo: isLlmsFile,
+  },
+  {
+    name: "private investigation licence surfaced as AI-search proof claim",
+    pattern: /private investigation licence/i,
+    appliesTo: isLlmsFile,
+  },
 ];
 
 function isPublicSource(file) {
@@ -101,6 +112,10 @@ function isPublicSource(file) {
 
 function isServiceMarketingSource(file) {
   return SERVICE_MARKETING_FILE.test(file);
+}
+
+function isLlmsFile(file) {
+  return file.startsWith("public/llms");
 }
 
 function isProtectiveGuaranteeLine(line) {

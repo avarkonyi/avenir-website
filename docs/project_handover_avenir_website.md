@@ -68,6 +68,13 @@ German current-state note:
   native German consent copy, `Dienstleistungen` nav terminology, FM-aligned
   hero eyebrow and `Geschulte Mitarbeitende`; routes/indexing/DB unchanged;
   native review pending.
+- 2026-06-06 AI/GEO + JSON-LD proof-safety pass: `llms.txt`/`llms-full.txt`
+  updated to current locale/route status (HU+EN live service/legal, DE noindex
+  review, ZH/KO partial, HU-only news; private-investigation licence removed
+  from AI proof claims; `Last updated` added). JSON-LD `priceRange` removed,
+  ProfessionalService linked to the Organization `@id` via `parentOrganization`,
+  Article `author` now uses the Organization `@id`. Cert seed `isPublished`
+  hardened (source + test). No route/indexing/DB/deploy change.
 - DE Phase 0 audit and rollout plan: `docs/de_phase0_audit.md`.
 - German terminology seed: `docs/translations/german_glossary.md`.
 

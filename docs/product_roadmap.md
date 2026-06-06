@@ -52,6 +52,12 @@ AOS internal product track outside the public website roadmap.
   link.
 - D&B AA High Creditworthy 2026 is the current proof-backed public
   creditworthiness wording; it is tracked separately from OPTEN/A+.
+- AI-search grounding files and JSON-LD reflect the current locale/route status
+  (2026-06-06): llms files updated (HU+EN live service/legal, DE noindex review,
+  ZH/KO partial, HU-only news), private-investigation licence removed from AI
+  proof claims, JSON-LD `priceRange` removed, Organization/ProfessionalService
+  and Article author linked by `@id`, and the certification seed publishes its
+  rows.
 - Contact rate limiter supports Upstash REST and Vercel KV REST env names.
 - Shared `requireAdmin()` allowlist enforcement is implemented.
 - Admin uploads include PDF/JPEG/PNG/WEBP magic-byte validation.

@@ -350,6 +350,7 @@ async function main() {
         pdfUrl: "/certifications/iso-9001-marton-843579099.pdf",
 
         active: true,
+        isPublished: true,
         sortOrder: 1,
       },
 
@@ -425,6 +426,7 @@ async function main() {
         pdfUrl: "/certifications/iso-27001-marton-988960032.pdf",
 
         active: true,
+        isPublished: true,
         sortOrder: 2,
       },
     ]);

@@ -185,11 +185,7 @@ export default async function NewsDetailPage({
     datePublished: article.date.toISOString(),
     dateModified: article.updatedAt.toISOString(),
     inLanguage: "hu",
-    author: {
-      "@type": "Organization",
-      name: SEO_DATA.legalNameShort,
-      url: SEO_DATA.url,
-    },
+    author: { "@id": `${SEO_DATA.url}/#organization` },
     publisher: { "@id": `${SEO_DATA.url}/#organization` },
   };
 

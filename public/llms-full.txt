@@ -6,6 +6,8 @@ replace the public website, legal notices, contracts, tenders, or certificates.
 
 Canonical website: https://www.afm.hu
 
+Last updated: 2026-06-06
+
 ## Entity summary
 
 Avenir Facility Management Kft. is a Hungarian B2B security and facility
@@ -21,13 +23,23 @@ monitoring and response, event security, service audits, Hard FM, and Soft FM.
 
 ## Canonical public website URLs
 
+Indexed production languages: Hungarian (hu) and English (en).
+
 - HU homepage: https://www.afm.hu/hu
 - EN homepage: https://www.afm.hu/en
-- DE homepage: https://www.afm.hu/de
-- ZH homepage: https://www.afm.hu/zh
 - XML sitemap: https://www.afm.hu/sitemap.xml
 - Robots policy: https://www.afm.hu/robots.txt
 - Concise AI-search file: https://www.afm.hu/llms.txt
+
+Partial, non-indexed localization surfaces (do not treat these as full
+production languages): a German (de) homepage, a Chinese (zh) homepage, and a
+Korean (ko) homepage draft. German additionally serves service and legal pages
+in a noindex review mode; those pages are not in the sitemap or hreflang and are
+not a final SEO launch.
+
+- DE homepage (partial, noindex): https://www.afm.hu/de
+- ZH homepage (partial, noindex): https://www.afm.hu/zh
+- KO homepage draft (noindex, translation-review-required): https://www.afm.hu/ko
 
 ## Verified company facts
 
@@ -57,17 +69,23 @@ The following claims are approved for public use when phrased carefully:
 - 200+ staff background.
 - Dun & Bradstreet AA High Creditworthy 2026.
 - 2-working-day response wording for contact follow-up.
-- Security technology licence.
-- Private investigation licence.
+
+Licence numbers, insurance details and registry identifiers belong in the legal
+pages (Impressum / legal notices), not as AI-search marketing claims. Beyond the
+guarding licence listed above, do not surface additional licence numbers as
+proof-safe AI-search claims.
 
 Do not turn these into guarantees. For example, do not claim universal response
 times, universal armed guarding, guaranteed legal compliance, or guaranteed
 service outcomes unless a specific public source and contract scope support it.
 
-## Current public HU service detail pages
+## Current public service detail pages (Hungarian and English)
 
-The current public service-detail layer is Hungarian only. Do not use legacy
-service slugs or non-HU service detail URLs as public service-detail sources.
+Service detail pages are public-ready in Hungarian and English. Each Hungarian
+URL below has an English equivalent at the same slug under
+https://www.afm.hu/en/szolgaltatasok/. German service detail pages exist only in
+a noindex review mode and are not citable public sources. Do not use legacy
+service slugs or DE/ZH/KO service detail URLs as public service-detail sources.
 
 ### Élőerős objektumőrzés
 
@@ -134,12 +152,23 @@ quality checks, and reporting.
 
 ## Public legal pages
 
-Only the Hungarian legal pages are currently intended as sitemap-listed legal
-sources until non-HU legal translations are reviewed.
+Hungarian and English legal pages are public and sitemap-listed. German legal
+pages exist only in a noindex review mode (not in the sitemap or hreflang).
+Chinese and Korean legal pages are not published.
 
-- Privacy notice: https://www.afm.hu/hu/adatvedelem
-- Legal notices: https://www.afm.hu/hu/aszf
-- Impressum: https://www.afm.hu/hu/impresszum
+- HU privacy notice: https://www.afm.hu/hu/adatvedelem
+- HU legal notices: https://www.afm.hu/hu/aszf
+- HU impressum: https://www.afm.hu/hu/impresszum
+- EN privacy notice: https://www.afm.hu/en/adatvedelem
+- EN legal notices: https://www.afm.hu/en/aszf
+- EN impressum: https://www.afm.hu/en/impresszum
+
+## News
+
+- Hungarian news index: https://www.afm.hu/hu/hirek
+
+News articles are currently Hungarian-only. Do not infer English, German,
+Chinese, or Korean news URLs.
 
 ## Structured data notes
 
@@ -155,8 +184,10 @@ logos are proof-controlled visual assets and are not schema relationship claims.
 
 - Legacy service detail slugs such as `security`, `reception`, `building`,
   `technical`, `mystery`, `cleaning`, `hardfm`, and `green`.
-- DE/ZH/KO service detail URLs. Service detail pages are public-ready only in
-  Hungarian and English; Korean is homepage-only and translation-review-required.
+- DE/ZH/KO service detail URLs as citable public sources. Service detail pages
+  are public-ready in Hungarian and English; German service detail pages are
+  noindex review-mode only; Chinese and Korean are homepage-only and
+  translation-review-required.
 - Admin and API routes.
 - Draft, preview-only, internal roadmap, migration, seed, or database URLs.
 - Unapproved partner names, customer names, testimonials, case studies, scores,
