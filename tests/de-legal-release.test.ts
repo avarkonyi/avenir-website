@@ -98,6 +98,51 @@ test("DE impressum source is available as markdown legal content", () => {
   assert.equal(impressum.lastUpdated, "Letzte Aktualisierung: 5. Juni 2026");
   assert.equal(impressum.sections.length, 10);
   assert.equal(impressum.intro.includes("[Datum der Veröffentlichung]"), false);
-  assert.equal(impressum.sections[0]?.title, "1. Unternehmensangaben");
+  assert.equal(impressum.sections[0]?.title, "1. Angaben zum Unternehmen");
   assert.match(impressum.sections[0]?.body ?? "", /Avenir Facility Management/);
+});
+
+test("DE impressum source follows HU/EN factual structure without fallback labels", () => {
+  const impressum = getDeImpressumContent();
+  const fullText = [
+    impressum.intro,
+    ...impressum.sections.flatMap((section) => [section.title, section.body]),
+  ].join("\n");
+
+  assert.deepEqual(
+    impressum.sections.map((section) => section.title),
+    [
+      "1. Angaben zum Unternehmen",
+      "2. Vertretung",
+      "3. Datenschutzbeauftragte",
+      "4. Sitz und Kontaktdaten",
+      "5. Reglementierter Beruf",
+      "6. Behördliche Genehmigungen",
+      "7. Aufsichtsbehörden",
+      "8. Berufshaftpflichtversicherung",
+      "9. Technischer Betrieb / Hosting",
+      "10. Urheberrecht und weitere rechtliche Hinweise",
+    ],
+  );
+
+  assert.match(fullText, /Handelsregisternummer: 01-09-328046/);
+  assert.match(fullText, /Steuernummer: 26395124-2-41/);
+  assert.match(fullText, /EU-USt-IdNr\.: HU26395124/);
+  assert.match(fullText, /Registergericht: Handelsregistergericht des Hauptstädtischen Gerichtshofs/);
+  assert.match(fullText, /Ausweis als Sicherheitskraft.*VS0000850/);
+  assert.match(fullText, /Privatermittlerausweis.*MA2001317/);
+  assert.match(fullText, /Datenschutzbeauftragte: Fanni Csegény/);
+  assert.match(fullText, /dpo@afm\.hu/);
+  assert.match(fullText, /01030-822\/4926-7\/2023/);
+  assert.match(fullText, /01030-822\/4927-3\/2018/);
+  assert.match(fullText, /01030-822\/4925-3\/2018/);
+  assert.match(fullText, /AH\/37595-14\/2024-2/);
+  assert.match(fullText, /Allianz Hungária Biztosító Zártkörűen Működő Részvénytársaság/);
+  assert.match(fullText, /Versicherungsschein-Nr\.: 341633910/);
+  assert.match(fullText, /Vercel Inc\./);
+  assert.match(fullText, /https:\/\/www\.afm\.hu\/de\/adatvedelem/);
+  assert.match(fullText, /https:\/\/www\.afm\.hu\/de\/aszf/);
+  assert.doesNotMatch(fullText, /\[Datum der Veröffentlichung\]/);
+  assert.doesNotMatch(fullText, /Legal Notice|Privacy Policy|Terms of Use/);
+  assert.doesNotMatch(fullText, /Adószám|Cégjegyzékszám|Székhely/);
 });

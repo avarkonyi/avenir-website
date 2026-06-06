@@ -96,6 +96,10 @@ Watch especially for:
   - DE legal routes return 200/noindex after deploy:
     `/de/adatvedelem`, `/de/aszf`, `/de/impresszum`;
   - DE legal source files live under `docs/translations/de/legal/`;
+  - DE Impressum parity/layout polish is completed in source: the page now
+    follows the HU/EN factual structure for company, representative, DPO,
+    licences, supervisory authorities, liability insurance, hosting and
+    internal legal links, while remaining `noindex, follow`;
   - DE news routes render 200/noindex review after deploy:
     `/de/hirek`,
     `/de/hirek/megujult-az-avenir-weboldala-es-arculata`;

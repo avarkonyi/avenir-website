@@ -245,7 +245,11 @@ P1/P2 content and governance items:
   eyebrow; native review still covers the hero/subhead, service descriptions and
   proof-sensitive claims. See `docs/de_phase0_audit.md`.
 - German legal pages are staged under `docs/translations/de/legal/` and render
-  only as noindex review-mode pages until explicit legal/SEO approval.
+  only as noindex review-mode pages until explicit legal/SEO approval. The DE
+  Impressum parity/layout polish is completed in source: it now follows the
+  HU/EN factual structure and labelled-row layout for company data, DPO,
+  licences, supervisory authorities, professional liability insurance and
+  hosting details.
 - German news now follows the same review-mode pattern for the launch article:
   `/de/hirek` and
   `/de/hirek/megujult-az-avenir-weboldala-es-arculata` render 200/noindex

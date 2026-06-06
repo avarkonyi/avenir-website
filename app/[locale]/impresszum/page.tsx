@@ -21,7 +21,6 @@ import {
 import {
   LegalPageChrome,
   LegalHeader,
-  LegalSection,
 } from "@/components/LegalPageChrome";
 
 export function generateStaticParams() {
@@ -44,16 +43,19 @@ export async function generateMetadata({
     `${SEO_DATA.legalName}. ${SEO_DATA.address.streetAddress}, ${SEO_DATA.address.postalCode} ${SEO_DATA.address.addressLocality}. Cégjegyzékszám: ${SEO_DATA.registrationId}.`;
   const url = legalPageUrl(locale, "impresszum");
   const isDeReviewPage = locale === "de";
+  const alternates = isDeReviewPage
+    ? { canonical: url }
+    : {
+        canonical: url,
+        languages: legalPageAlternateLanguages("impresszum"),
+      };
 
   return {
     metadataBase: new URL(SEO_DATA.url),
     title,
     description,
     robots: { index: !isDeReviewPage, follow: true },
-    alternates: {
-      canonical: url,
-      languages: legalPageAlternateLanguages("impresszum"),
-    },
+    alternates,
     openGraph: { type: "article", title, description, url },
   };
 }
@@ -106,6 +108,122 @@ function Row({ label, value }: { label: string; value: React.ReactNode }) {
   );
 }
 
+function telHref(value: string): string {
+  return `tel:${value.replace(/[^\d+]/g, "")}`;
+}
+
+function LegalValueLink({ value }: { value: string }) {
+  const trimmed = value.trim();
+  if (/^https:\/\//.test(trimmed)) {
+    return (
+      <a href={trimmed} style={{ color: "#D1172E", textDecoration: "none" }}>
+        {trimmed}
+      </a>
+    );
+  }
+
+  if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmed)) {
+    return (
+      <a href={`mailto:${trimmed}`} style={{ color: "#D1172E", textDecoration: "none" }}>
+        {trimmed}
+      </a>
+    );
+  }
+
+  if (/^\+\d[\d\s().-]+$/.test(trimmed)) {
+    return (
+      <a href={telHref(trimmed)} style={{ color: "#D1172E", textDecoration: "none" }}>
+        {trimmed}
+      </a>
+    );
+  }
+
+  return <>{value}</>;
+}
+
+function DeImpressumBody({ body }: { body: string }) {
+  return (
+    <div>
+      {body.split(/\n{2,}/).map((block, blockIndex) => {
+        const lines = block.split("\n").map((line) => line.trim()).filter(Boolean);
+        if (lines.length === 0) return null;
+
+        if (lines.length === 1 && !/^[a-d]\)\s+/.test(lines[0]) && !lines[0].includes(":")) {
+          return (
+            <p
+              key={blockIndex}
+              style={{
+                fontSize: 15,
+                lineHeight: 1.7,
+                color: "rgba(11,30,62,0.85)",
+                marginBottom: 16,
+              }}
+            >
+              {lines[0]}
+            </p>
+          );
+        }
+
+        return (
+          <div key={blockIndex} style={{ marginBottom: 18 }}>
+            {lines.map((line, lineIndex) => {
+              if (/^[a-d]\)\s+/.test(line)) {
+                return (
+                  <h3 key={`${blockIndex}-${lineIndex}`} style={subTitleStyle}>
+                    {line}
+                  </h3>
+                );
+              }
+
+              const row = line.match(/^([^:]+):\s*(.*)$/);
+              if (row) {
+                return (
+                  <Row
+                    key={`${blockIndex}-${lineIndex}`}
+                    label={row[1].trim()}
+                    value={<LegalValueLink value={row[2].trim()} />}
+                  />
+                );
+              }
+
+              return (
+                <p
+                  key={`${blockIndex}-${lineIndex}`}
+                  style={{
+                    fontSize: 15,
+                    lineHeight: 1.7,
+                    color: "rgba(11,30,62,0.85)",
+                    margin: "8px 0",
+                  }}
+                >
+                  {line}
+                </p>
+              );
+            })}
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+function DeImpressumSection({
+  id,
+  title,
+  body,
+}: {
+  id: string;
+  title: string;
+  body: string;
+}) {
+  return (
+    <section id={id} style={sectionStyle}>
+      <h2 style={sectionTitleStyle}>{title}</h2>
+      <DeImpressumBody body={body} />
+    </section>
+  );
+}
+
 function getExecutiveTitle(locale: LegalPageLocale): string {
   switch (locale) {
     case "hu": return SEO_EXECUTIVE.titleHu;
@@ -154,7 +272,7 @@ export default async function ImpresszumPage({
           intro={impressum.intro}
         />
         {impressum.sections.map((s) => (
-          <LegalSection key={s.id} id={s.id} title={s.title} body={s.body} />
+          <DeImpressumSection key={s.id} id={s.id} title={s.title} body={s.body} />
         ))}
       </LegalPageChrome>
     );

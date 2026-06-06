@@ -1,6 +1,6 @@
 # German Legal Pages Review Release
 
-Last updated: 2026-06-05
+Last updated: 2026-06-06
 
 This note documents the controlled German legal-page release state. It is a
 review-mode publication note, not a final SEO launch approval.
@@ -51,6 +51,18 @@ the website contact-form section. It now uses softer contact-response wording.
 All non-Hungarian-language clauses were generalized so they refer to all
 non-Hungarian versions, while preserving the Hungarian text as authoritative.
 
+The DE Impressum parity/layout polish is complete in source:
+
+- `docs/translations/de/legal/impressum-de.md` now follows the HU/EN factual
+  structure for company data, representative, DPO, general contact,
+  regulated-profession wording, authority licences, supervisory authorities,
+  professional liability insurance, hosting and copyright;
+- the publication date remains `5. Juni 2026`;
+- the DE Impressum page renders labelled rows and sub-sections instead of a
+  short plain markdown block;
+- DE Impressum internal links point to `/de/adatvedelem` and `/de/aszf`;
+- no sitemap, hreflang or indexing approval is implied by this polish pass.
+
 ## Processor / Transfer Wording
 
 The DE Privacy Policy keeps the existing processor and transfer wording:
@@ -72,7 +84,9 @@ DE footer legal links now point to the DE legal routes:
 DE contact privacy notices now point to `/de/adatvedelem`.
 
 The legal-page language switcher allows HU/EN/DE. Service-detail pages remain
-HU/EN only in the language switcher, and news remains HU-only.
+HU/EN only in the language switcher. News routes allow HU/EN and DE review
+mode where implemented; DE news remains outside sitemap/hreflang while
+noindex.
 
 ## Remaining Gates
 
