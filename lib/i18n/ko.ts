@@ -28,7 +28,7 @@ export const ko = {
   stats: [
     { n: "30+", l: "운영 현장" },
     { n: "200+", l: "전문 인력" },
-    { n: "AA", l: "D&B High Creditworthy 2026" },
+    { n: "AA", l: "D&B 높은 신용도 평가" },
     { n: "24/7", l: "관제·디스패처 지원" },
   ],
   aboutTitle: "Avenir 소개",
@@ -66,6 +66,18 @@ export const ko = {
   careerText:
     "Avenir 팀은 기업 고객의 현장에서 전국적으로 근무합니다. 우리는 근무를 책임감 있게 수행하고, 안정적인 현장 존재와 정확한 업무 수행의 중요성을 이해하는 동료를 찾고 있습니다.\n\n보안, 청소, 기술 및 현장 운영 관련 역할에 지원할 수 있습니다. 안정적인 회사 기반, 합법적인 고용, 전문적인 온보딩과 성장 기회를 제공합니다.",
   applyBtn: "지원하기",
+  careerFallbacks: {
+    titles: {
+      "Security Guard": "보안요원",
+      "Cleaning Team Leader": "청소팀 리더",
+    },
+    types: {
+      "Full-time": "풀타임",
+    },
+    locations: {
+      "Budapest, regional": "부다페스트 및 지역 현장",
+    },
+  },
   contactTitle: "문의",
   contactSub: "견적 문의",
   contactLabels: {

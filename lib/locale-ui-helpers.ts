@@ -32,7 +32,7 @@ export function getContactPrivacyHref(locale: string): string {
 }
 
 export function getServiceCardDetailLabel(locale: string): string {
-  return locale === "de" ? "Details" : "Részletek";
+  return locale === "hu" ? "Részletek" : "Details";
 }
 
 export const NAV_SECTION_KEYS = [

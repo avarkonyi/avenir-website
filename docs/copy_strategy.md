@@ -233,7 +233,10 @@ P1/P2 content and governance items:
 
 - EN news route/content policy is resolved in source for the launch article:
   `/en/hirek` and `/en/hirek/megujult-az-avenir-weboldala-es-arculata`
-  are public/indexable after deploy.
+  are public/indexable after deploy. The article body is DB-backed; the two
+  remaining legacy service-name phrases (`manned guarding`, `reception and
+  concierge services`) are covered by a guarded dry-run-default terminology
+  script and should be applied only with explicit DB-write approval.
 - DE/ZH/KO legal/service/news route policy: DE service/legal/news routes may
   exist only as noindex review-mode surfaces until final approval; ZH/KO
   service/legal/news detail routes remain closed.
@@ -274,6 +277,11 @@ P1/P2 content and governance items:
   Do not state the service-detail layer is "Hungarian only" once EN is live,
   and do not surface the private investigation licence as an AI-search proof
   claim.
+- Visible non-HU UI fallback cleanup on 2026-06-06: EN/ZH/KO service-card
+  detail links use `Details` instead of `Részletek`; ZH pillars use the
+  current operational triad; ZH/KO D&B labels are localized; KO career cards
+  use conservative source/UI fallbacks for English DB-backed labels without
+  changing the database.
 - Private investigation contact dropdown explanation and sensitive-data
   warning review.
 - Meta/social polish after production indexing settles.

@@ -17,6 +17,25 @@ const LOCALE_COLS = {
 
 type Locale = keyof typeof LOCALE_COLS;
 
+type CareerFallbacks = {
+  readonly titles?: Readonly<Record<string, string>>;
+  readonly locations?: Readonly<Record<string, string>>;
+  readonly types?: Readonly<Record<string, string>>;
+};
+
+type TranslationWithCareerFallbacks = Translation & {
+  readonly careerFallbacks?: CareerFallbacks;
+};
+
+function localizeCareerField(
+  locale: string,
+  value: string | null,
+  fallbackMap: Readonly<Record<string, string>> | undefined,
+): string | null {
+  if (locale !== "ko" || !value) return value;
+  return fallbackMap?.[value] ?? value;
+}
+
 export async function Career({
   t,
   locale,
@@ -25,6 +44,7 @@ export async function Career({
   locale: string;
 }) {
   const cols = LOCALE_COLS[(locale in LOCALE_COLS ? locale : "hu") as Locale];
+  const careerFallbacks = (t as TranslationWithCareerFallbacks).careerFallbacks;
   const rows = await db
     .select({
       id: positions.id,
@@ -78,31 +98,38 @@ export async function Career({
             gap: 16,
           }}
         >
-          {rows.map((p) => (
+          {rows.map((p) => {
+            const title = localizeCareerField(locale, p.title, careerFallbacks?.titles) ?? "";
+            const location =
+              localizeCareerField(locale, p.location, careerFallbacks?.locations) ?? "";
+            const type = localizeCareerField(locale, p.type, careerFallbacks?.types) ?? "";
+
+            return (
             <div key={p.id} className="career-card">
               <div>
                 <h3 style={{ fontFamily: "var(--font-head)", fontWeight: 700, fontSize: 20, color: "#0B1E3E", marginBottom: 8 }}>
-                  {p.title}
+                  {title}
                 </h3>
                 <div style={{ display: "flex", gap: 16 }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
                     <Icon name="pin" size={13} color="#475569" />
-                    <span style={{ fontSize: 13, color: "var(--avenir-text-soft)" }}>{p.location}</span>
+                    <span style={{ fontSize: 13, color: "var(--avenir-text-soft)" }}>{location}</span>
                   </div>
                   <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
                     <Icon name="clock" size={13} color="#475569" />
-                    <span style={{ fontSize: 13, color: "var(--avenir-text-soft)" }}>{p.type}</span>
+                    <span style={{ fontSize: 13, color: "var(--avenir-text-soft)" }}>{type}</span>
                   </div>
                 </div>
               </div>
               <a
-                href={`mailto:${p.applyEmail}?subject=${encodeURIComponent(`${t.applyBtn} - ${p.title}`)}`}
+                href={`mailto:${p.applyEmail}?subject=${encodeURIComponent(`${t.applyBtn} - ${title}`)}`}
                 className="career-apply-btn"
               >
                 {t.applyBtn}
               </a>
             </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

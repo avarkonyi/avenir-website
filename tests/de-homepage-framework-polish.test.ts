@@ -2,6 +2,8 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { de } from "../lib/i18n/de";
 import { en } from "../lib/i18n/en";
+import { ko } from "../lib/i18n/ko";
+import { zh } from "../lib/i18n/zh";
 import {
   getContactPrivacyHref,
   getFooterLegalLinks,
@@ -59,6 +61,38 @@ test("DE stat/trust labels are German and proof-safe", () => {
 test("DE service card detail link label is 'Details'", () => {
   assert.equal(getServiceCardDetailLabel("de"), "Details");
   assert.notEqual(getServiceCardDetailLabel("de"), "Részletek");
+});
+
+test("EN service card detail link label is 'Details' while HU remains Hungarian", () => {
+  assert.equal(getServiceCardDetailLabel("en"), "Details");
+  assert.notEqual(getServiceCardDetailLabel("en"), "Részletek");
+  assert.equal(getServiceCardDetailLabel("hu"), "Részletek");
+});
+
+test("ZH homepage pillars use the current operational triad", () => {
+  assert.deepEqual(
+    zh.values.map((v) => v.t),
+    ["透明管控", "专业现场支持", "响应与责任"],
+  );
+  for (const banned of ["可靠性", "专业性", "灵活性"]) {
+    assert.ok(!zh.values.some((v) => v.t === banned));
+  }
+});
+
+test("ZH and KO D&B labels are localized and proof-safe", () => {
+  assert.equal(zh.stats[2]?.l, "D&B 高信用评级");
+  assert.equal(ko.stats[2]?.l, "D&B 높은 신용도 평가");
+  const zhLabels: string[] = zh.stats.map((s) => s.l);
+  const koLabels: string[] = ko.stats.map((s) => s.l);
+  assert.ok(!zhLabels.includes("D&B High Creditworthy 2026"));
+  assert.ok(!koLabels.includes("D&B High Creditworthy 2026"));
+});
+
+test("KO career fallback labels are localized instead of English DB labels", () => {
+  assert.equal(ko.careerFallbacks?.titles["Security Guard"], "보안요원");
+  assert.equal(ko.careerFallbacks?.titles["Cleaning Team Leader"], "청소팀 리더");
+  assert.equal(ko.careerFallbacks?.types["Full-time"], "풀타임");
+  assert.equal(ko.careerFallbacks?.locations["Budapest, regional"], "부다페스트 및 지역 현장");
 });
 
 test("HU, EN and DE nav include news while ZH/KO keep it closed", () => {

@@ -145,6 +145,19 @@ Watch especially for:
     Monitoring and Response Service; Hard FM; Soft FM.
 - Analytics consent copy remains privacy-first: no analytics before consent,
   reject keeps GA4 blocked, and no personal form content is sent to analytics.
+- Visible i18n consistency pass on 2026-06-06:
+  - EN service-card detail links now use `Details`; HU remains `Részletek`;
+  - ZH homepage value pillars now use the operative triad
+    `透明管控` / `专业现场支持` / `响应与责任`;
+  - ZH/KO D&B stat labels are localized as `D&B 高信用评级` and
+    `D&B 높은 신용도 평가`;
+  - KO career cards use conservative source/UI fallbacks for English
+    DB-backed position labels while KO remains noindex/draft;
+  - the EN launch article is DB-backed, so service-name terminology alignment
+    is handled by a guarded dry-run-default script rather than a source copy
+    rewrite;
+  - the DE Privacy Policy date `5. Juni 2026` remains documented as the
+    German review-mode publication date.
 
 ## QA Checklist For Translated Pages
 
