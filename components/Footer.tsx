@@ -9,6 +9,7 @@ import {
 import { getReadyServiceDetailHref } from "@/lib/service-detail-links";
 import {
   getFooterLegalLinks,
+  getFooterMapLinkTitle,
   getLocaleServiceListLabel,
 } from "@/lib/locale-ui-helpers";
 import { CookieSettingsButton } from "./analytics/CookieSettingsButton";
@@ -147,7 +148,7 @@ export async function Footer({
                   target="_blank"
                   rel="noopener noreferrer"
                   className="footer-link"
-                  title="Megnyitás Google Maps-en"
+                  title={getFooterMapLinkTitle(locale)}
                   style={{
                     color: "inherit",
                     textDecoration: "none",

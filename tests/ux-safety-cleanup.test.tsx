@@ -15,7 +15,11 @@ import { en } from "../lib/i18n/en";
 import { de } from "../lib/i18n/de";
 import { zh } from "../lib/i18n/zh";
 import { ko } from "../lib/i18n/ko";
-import { getVisibleNavSectionKeys } from "../lib/locale-ui-helpers";
+import {
+  getContactFormCopy,
+  getFooterMapLinkTitle,
+  getVisibleNavSectionKeys,
+} from "../lib/locale-ui-helpers";
 
 const LOCALES = { hu, en, de, zh, ko } as const;
 
@@ -29,7 +33,9 @@ function renderHuContact(): string {
         contactSub: hu.contactSub,
         contactTitle: hu.contactTitle,
         contactLabels: hu.contactLabels,
-        form: hu.form,
+        // mirror app/[locale]/page.tsx: only the narrowed copy reaches
+        // the client component
+        form: getContactFormCopy(hu.form),
       }}
       locale="hu"
       serviceOptions={[
@@ -75,6 +81,64 @@ test("public contact dropdown no longer offers private investigation", () => {
 
 test("contact schema keeps accepting the legacy magannyomozas key server-side", () => {
   assert.equal(normalizeContactService("magannyomozas"), "magannyomozas");
+});
+
+test("contact client payload strips parked special-service strings in every locale", () => {
+  for (const [locale, t] of Object.entries(LOCALES)) {
+    const copy = getContactFormCopy(t.form);
+
+    for (const parkedKey of [
+      "privateInvestigation",
+      "specialDataWarning",
+      "specialDataWarningLink",
+    ]) {
+      assert.equal(
+        parkedKey in copy,
+        false,
+        `${parkedKey} must not ship to the client for ${locale}`,
+      );
+    }
+
+    // copy still carries everything the Contact component renders
+    for (const neededKey of [
+      "name",
+      "email",
+      "service",
+      "send",
+      "success",
+      "requiredField",
+      "nextStepHelper",
+      "layeredNotice",
+      "errors",
+    ]) {
+      assert.ok(
+        neededKey in copy,
+        `${neededKey} must stay in the client copy for ${locale}`,
+      );
+    }
+
+    const serialized = JSON.stringify(copy);
+    assert.equal(
+      serialized.includes(t.form.privateInvestigation),
+      false,
+      `serialized client copy must not contain the private investigation label for ${locale}`,
+    );
+    assert.equal(
+      serialized.includes(t.form.specialDataWarning),
+      false,
+      `serialized client copy must not contain the special data warning for ${locale}`,
+    );
+  }
+});
+
+test("footer map link title is localized per locale", () => {
+  assert.equal(getFooterMapLinkTitle("hu"), "Megnyitás Google Maps-en");
+  assert.equal(getFooterMapLinkTitle("en"), "Open in Google Maps");
+  assert.equal(getFooterMapLinkTitle("de"), "In Google Maps öffnen");
+  assert.equal(getFooterMapLinkTitle("zh"), "在 Google 地图中打开");
+  assert.equal(getFooterMapLinkTitle("ko"), "Google 지도에서 열기");
+  // unknown locale falls back to the site default (HU)
+  assert.equal(getFooterMapLinkTitle("fr"), "Megnyitás Google Maps-en");
 });
 
 test("contact form marks only schema-required fields and shows the required legend", () => {

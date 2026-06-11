@@ -392,6 +392,14 @@ test.describe("consent-gated GA4", () => {
         .locator('option[value="magannyomozas"]')
         .count(),
     ).toBe(0);
+
+    // The parked special-service strings must not ship in the page payload
+    // (RSC flight data) either — getContactFormCopy() strips them
+    // server-side. NOTE: fails against a production build older than the
+    // 2026-06-11 payload cleanup.
+    const content = await page.content();
+    expect(content).not.toContain("Private investigation");
+    expect(content).not.toContain("specialDataWarning");
   });
 
   test("phone and email clicks emit safe events without exposing contact values", async ({

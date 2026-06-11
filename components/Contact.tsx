@@ -4,7 +4,10 @@ import { type ReactElement, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import type { Translation } from "@/lib/i18n";
 import { trackAnalyticsEvent } from "@/lib/analytics/events";
-import { getContactPrivacyHref } from "@/lib/locale-ui-helpers";
+import {
+  getContactPrivacyHref,
+  type ContactFormCopy,
+} from "@/lib/locale-ui-helpers";
 import { Icon } from "./Icon";
 
 type FormState = {
@@ -302,7 +305,12 @@ export function Contact({
   locale,
   serviceOptions,
 }: {
-  t: Pick<Translation, "contactSub" | "contactTitle" | "contactLabels" | "form">;
+  // form is the narrowed ContactFormCopy (not the full Translation["form"])
+  // so parked special-service strings never enter the client payload —
+  // build it with getContactFormCopy() on the server side.
+  t: Pick<Translation, "contactSub" | "contactTitle" | "contactLabels"> & {
+    form: ContactFormCopy;
+  };
   locale: string;
   serviceOptions: ServiceOption[];
 }) {

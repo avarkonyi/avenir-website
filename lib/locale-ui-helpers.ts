@@ -1,3 +1,5 @@
+import type { Translation } from "@/lib/i18n";
+
 type FooterLabels = {
   readonly privacy: string;
   readonly terms: string;
@@ -33,6 +35,46 @@ export function getContactPrivacyHref(locale: string): string {
 
 export function getServiceCardDetailLabel(locale: string): string {
   return locale === "hu" ? "Részletek" : "Details";
+}
+
+// Contact-form copy actually needed by the client component. The parked
+// special-service strings (privateInvestigation, specialDataWarning,
+// specialDataWarningLink) stay in the i18n source for the ÁSZF legal context
+// and a future special-intake flow, but must not ship in the homepage client
+// payload now that the public dropdown no longer offers the option
+// (post_launch_backlog PL-015/PL-059).
+export type ContactFormCopy = Omit<
+  Translation["form"],
+  "privateInvestigation" | "specialDataWarning" | "specialDataWarningLink"
+>;
+
+export function getContactFormCopy(
+  form: Translation["form"],
+): ContactFormCopy {
+  const {
+    privateInvestigation,
+    specialDataWarning,
+    specialDataWarningLink,
+    ...contactFormCopy
+  } = form;
+  void privateInvestigation;
+  void specialDataWarning;
+  void specialDataWarningLink;
+  return contactFormCopy;
+}
+
+// The footer map link title was a hardcoded Hungarian string on every
+// locale; URL and visible address text are intentionally unchanged.
+const FOOTER_MAP_LINK_TITLES: Record<string, string> = {
+  hu: "Megnyitás Google Maps-en",
+  en: "Open in Google Maps",
+  de: "In Google Maps öffnen",
+  zh: "在 Google 地图中打开",
+  ko: "Google 지도에서 열기",
+};
+
+export function getFooterMapLinkTitle(locale: string): string {
+  return FOOTER_MAP_LINK_TITLES[locale] ?? FOOTER_MAP_LINK_TITLES.hu;
 }
 
 export const NAV_SECTION_KEYS = [

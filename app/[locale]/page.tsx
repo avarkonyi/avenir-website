@@ -18,7 +18,10 @@ import { DE_REVIEW_SERVICE_PATHS } from "@/lib/services/de-service-details";
 import {
   getPublishedNewsIndexForPublic,
 } from "@/lib/db/queries/news";
-import { getLocaleServiceListLabel } from "@/lib/locale-ui-helpers";
+import {
+  getContactFormCopy,
+  getLocaleServiceListLabel,
+} from "@/lib/locale-ui-helpers";
 import {
   isPublicNewsLocale,
   newsDetailHref,
@@ -107,7 +110,8 @@ export default async function HomePage({
             contactSub: t.contactSub,
             contactTitle: t.contactTitle,
             contactLabels: t.contactLabels,
-            form: t.form,
+            // narrowed copy: parked special-service strings stay server-side
+            form: getContactFormCopy(t.form),
           }}
           locale={locale}
           serviceOptions={serviceOptions}
