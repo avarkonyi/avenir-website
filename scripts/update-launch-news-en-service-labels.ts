@@ -17,21 +17,14 @@
 import "./load-env";
 import { and, eq, isNull } from "drizzle-orm";
 import { ensureDbTarget, readDbTargetArgs } from "./ensure-staging-db";
+import {
+  LAUNCH_NEWS_EN_SERVICE_LABEL_REPLACEMENTS as REPLACEMENTS,
+  applyLaunchNewsEnServiceLabelTerminology as applyTerminology,
+} from "./launch-news-en-service-label-replacements";
 import { db, news } from "../lib/db";
 
 const SCRIPT_NAME = "update-launch-news-en-service-labels";
 const ARTICLE_SLUG = "megujult-az-avenir-weboldala-es-arculata";
-
-const REPLACEMENTS = [
-  {
-    before: "manned guarding",
-    after: "On-site Security Guarding",
-  },
-  {
-    before: "reception and concierge services",
-    after: "Reception and Gatehouse Services",
-  },
-] as const;
 
 function hasArg(name: string): boolean {
   return process.argv.includes(name);
@@ -52,13 +45,6 @@ function usageAndExit(message?: string): never {
     ].join("\n"),
   );
   process.exit(1);
-}
-
-function applyTerminology(body: string): string {
-  return REPLACEMENTS.reduce(
-    (next, replacement) => next.replaceAll(replacement.before, replacement.after),
-    body,
-  );
 }
 
 function preview(value: string): string {
@@ -117,8 +103,12 @@ async function main(): Promise<void> {
   for (const replacement of REPLACEMENTS) {
     const beforeCount = row.bodyEn.split(replacement.before).length - 1;
     const afterCount = nextBodyEn.split(replacement.after).length - 1;
+    const verdict =
+      beforeCount > 0
+        ? "change"
+        : "NO MATCH — phrase not found in bodyEn (case-sensitive); nothing to replace";
     console.log(
-      `${replacement.before} -> ${replacement.after}: ${beforeCount > 0 ? "change" : "skip"} ` +
+      `${replacement.before} -> ${replacement.after}: ${verdict} ` +
         `(before occurrences=${beforeCount}, after occurrences=${afterCount})`,
     );
   }
