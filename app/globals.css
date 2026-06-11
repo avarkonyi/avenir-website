@@ -513,6 +513,13 @@ details > summary:focus-visible {
   font-size: 13px;
 }
 
+.service-quote-form__hint {
+  margin: 0;
+  color: rgba(11, 30, 62, 0.6);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
 .service-quote-form__actions {
   display: flex;
   flex-wrap: wrap;

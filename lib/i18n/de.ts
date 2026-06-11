@@ -139,8 +139,12 @@ export const de = {
     "message": "Nachricht / Anforderungen",
     "send": "Anfrage senden",
     "sending": "Wird gesendet…",
-    "success": "Wir haben Ihre Nachricht erhalten. Wir melden uns innerhalb von 2 Werktagen. Ihre Daten werden gemäß unserer Datenschutzerklärung verarbeitet.",
+    // No fixed response-time promise (SLA-like wording needs owner/legal
+    // approval) — the success and helper copy stays non-committal.
+    "success": "Wir haben Ihre Nachricht erhalten. Unser Team meldet sich über die angegebenen Kontaktdaten. Ihre Daten werden gemäß unserer Datenschutzerklärung verarbeitet.",
     "successPrivacyLink": "Datenschutzerklärung",
+    "requiredField": "* Pflichtfeld",
+    "nextStepHelper": "Unser Team meldet sich über die angegebenen Kontaktdaten. Die Angebotserstellung hängt vom Umfang und der Komplexität der Anfrage ab.",
     "specialDataWarning": "Bitte übermitteln Sie über das Nachrichtenfeld keine besonderen Datenkategorien, strafrechtlichen Daten, klassifizierten Daten, Geschäftsgeheimnisse oder detaillierten Privatlebensinformationen über Dritte. Solche Angelegenheiten erfordern eine gesonderte Vertrags- und Datenschutzabstimmung.",
     "specialDataWarningLink": "Nutzungsbedingungen, Abschnitt 4",
     "privateInvestigation": "Privatermittlung",

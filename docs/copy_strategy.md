@@ -282,8 +282,19 @@ P1/P2 content and governance items:
   current operational triad; ZH/KO D&B labels are localized; KO career cards
   use conservative source/UI fallbacks for English DB-backed labels without
   changing the database.
-- Private investigation contact dropdown explanation and sensitive-data
-  warning review.
+- Private investigation is removed from the public contact dropdown
+  (2026-06-11): the option returns only after a dedicated special-intake
+  flow with sensitive-data safeguards is approved (backlog PL-015/PL-059).
+  The backend keeps accepting the legacy `magannyomozas` key; Impresszum/ÁSZF
+  legal-fact mentions are unchanged.
+- Form copy is non-SLA (2026-06-11): the contact and embedded quote forms use
+  a "what happens next" helper without response-time promises, and the
+  previous "2 munkanapon belül / within 2 business days" success wording was
+  removed. Do not reintroduce fixed response times, guaranteed quotes or
+  SLA-like commitments in form/CTA copy without owner/legal approval.
+- The homepage "Referenciák" section and nav link stay hidden until approved
+  reference/partner proof exists (backlog PL-029). Do not fill the section
+  with generic placeholder claims.
 - Meta/social polish after production indexing settles.
 - Analytics consent copy should remain privacy-first: no dark patterns, no
   analytics before consent, reject keeps GA4 blocked, and no personal form

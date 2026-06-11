@@ -54,6 +54,9 @@ export const SERVICE_QUOTE_COPY = {
     nameRequired: "Kérjük, adja meg a nevét.",
     emailRequired: "Kérjük, adja meg az e-mail címét.",
     emailInvalid: "Kérjük, érvényes e-mail címet adjon meg.",
+    requiredField: "* Kötelező mező",
+    nextStepHelper:
+      "Munkatársunk a megadott elérhetőségen visszajelez. Az ajánlat előkészítése az igény összetettségétől függ.",
   },
   en: {
     title: "Request a quote",
@@ -74,6 +77,9 @@ export const SERVICE_QUOTE_COPY = {
     nameRequired: "Please enter your name.",
     emailRequired: "Please enter your email address.",
     emailInvalid: "Please enter a valid email address.",
+    requiredField: "* Required field",
+    nextStepHelper:
+      "Our team will respond using the contact details provided. Quote preparation depends on the scope and complexity of the request.",
   },
   de: DE_REVIEW_SERVICE_QUOTE_COPY,
 } as const;
@@ -342,10 +348,15 @@ export function ServiceQuoteCtaPanel({
                 className="service-quote-form__honeypot"
               />
 
+              {/* required markers follow the shared Zod schema
+                  (lib/contact-schema.ts): only name and email are required.
+                  The form keeps noValidate, so the required attribute is an
+                  a11y/visual signal, not a validation change. */}
               <div className="service-quote-form__grid">
                 <Field
                   id="service-quote-name"
                   label={copy.name}
+                  required
                   error={errors.name}
                 >
                   <input
@@ -354,6 +365,8 @@ export function ServiceQuoteCtaPanel({
                     name="name"
                     type="text"
                     autoComplete="name"
+                    required
+                    aria-required="true"
                     value={form.name}
                     onChange={(event) =>
                       onFieldChange("name", event.target.value)
@@ -368,6 +381,7 @@ export function ServiceQuoteCtaPanel({
                 <Field
                   id="service-quote-email"
                   label={copy.email}
+                  required
                   error={errors.email}
                 >
                   <input
@@ -375,6 +389,8 @@ export function ServiceQuoteCtaPanel({
                     name="email"
                     type="email"
                     autoComplete="email"
+                    required
+                    aria-required="true"
                     value={form.email}
                     onChange={(event) =>
                       onFieldChange("email", event.target.value)
@@ -436,6 +452,11 @@ export function ServiceQuoteCtaPanel({
                 </div>
               )}
 
+              {/* Required-field legend + non-SLA "what happens next" helper.
+                  No response-time promise — see docs/copy_strategy.md. */}
+              <p className="service-quote-form__hint">{copy.requiredField}</p>
+              <p className="service-quote-form__hint">{copy.nextStepHelper}</p>
+
               <div className="service-quote-form__actions">
                 <button
                   type="submit"
@@ -463,17 +484,22 @@ export function ServiceQuoteCtaPanel({
 function Field({
   id,
   label,
+  required = false,
   error,
   children,
 }: {
   id: string;
   label: string;
+  required?: boolean;
   error?: string;
   children: React.ReactNode;
 }) {
   return (
     <div className="service-quote-form__field">
-      <label htmlFor={id}>{label}</label>
+      <label htmlFor={id}>
+        {label}
+        {required && <span aria-hidden="true"> *</span>}
+      </label>
       {children}
       {error && (
         <div

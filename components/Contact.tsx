@@ -4,20 +4,8 @@ import { type ReactElement, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import type { Translation } from "@/lib/i18n";
 import { trackAnalyticsEvent } from "@/lib/analytics/events";
-import {
-  getContactPrivacyHref,
-  getLegalFallbackLocale,
-} from "@/lib/locale-ui-helpers";
+import { getContactPrivacyHref } from "@/lib/locale-ui-helpers";
 import { Icon } from "./Icon";
-
-// Per-locale anchor target for the ÁSZF section #4 deep-link from the
-// magánnyomozói warning. HU keeps the Hungarian slug; EN/DE/ZH/KO use the
-// DE now has review-mode legal pages. Other partial locales keep the English
-// legal route/slug because they do not expose legal pages.
-function getAszfPrivateInvestigationHref(locale: string): string {
-  const anchor = locale === "hu" ? "magannyomozas" : "private-investigation";
-  return `/${getLegalFallbackLocale(locale)}/aszf#${anchor}`;
-}
 
 type FormState = {
   name: string;
@@ -401,12 +389,9 @@ export function Contact({
         trackAnalyticsEvent("contact_submit_success", {
           locale,
           selected_service_key: selectedService || undefined,
-          selected_service_label:
-            normalizedServiceOptions.find((option) => option.slug === selectedService)
-              ?.label ??
-            (selectedService === "magannyomozas"
-              ? t.form.privateInvestigation
-              : undefined),
+          selected_service_label: normalizedServiceOptions.find(
+            (option) => option.slug === selectedService,
+          )?.label,
         });
         setSent(true);
         return;
@@ -581,38 +566,6 @@ export function Contact({
             </div>
           ) : (
             <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 16 }} noValidate>
-              {/* Magánnyomozói / különleges adat warning — CONDITIONAL:
-                  csak akkor jelenik meg, ha a "Magánnyomozás" opció van
-                  kiválasztva a service dropdown-ban (form.service ===
-                  "magannyomozas"). Az érzékeny-adat tilalom kifejezetten
-                  a magánnyomozói tevékenységhez kapcsolódó B2B-megkeresések
-                  esetén releváns. */}
-              {selectedService === "magannyomozas" && (
-                <div
-                  style={{
-                    background: "rgba(251,191,36,0.08)",
-                    border: "1px solid rgba(251,191,36,0.35)",
-                    borderRadius: 3,
-                    padding: "12px 14px",
-                    fontSize: 12,
-                    lineHeight: 1.55,
-                    color: "rgba(11,30,62,0.85)",
-                  }}
-                  role="note"
-                  aria-label="Special data warning"
-                >
-                  <strong style={{ color: "#92400e" }}>⚠️ </strong>
-                  {t.form.specialDataWarning}{" "}
-                  <Link
-                    href={getAszfPrivateInvestigationHref(locale)}
-                    style={{ color: "#D1172E", fontWeight: 600, textDecoration: "underline" }}
-                  >
-                    {t.form.specialDataWarningLink}
-                  </Link>
-                  .
-                </div>
-              )}
-
               {/* Honeypot — visually hidden, off the keyboard tab order. Bots
                   fill every input; humans don't see this. Server treats a
                   non-empty value as silent success (no DB write, no email). */}
@@ -637,12 +590,19 @@ export function Contact({
                 <label htmlFor="contact-name" className="sr-only">
                   {t.form.name}
                 </label>
+                {/* "*" markers + required follow the shared Zod schema
+                    (lib/contact-schema.ts): only name and email are
+                    required. The form keeps noValidate, so the required
+                    attribute is an a11y/visual signal, not a validation
+                    change. */}
                 <input
                   id="contact-name"
                   name="name"
                   type="text"
                   autoComplete="name"
-                  placeholder={t.form.name}
+                  required
+                  aria-required="true"
+                  placeholder={`${t.form.name} *`}
                   value={form.name}
                   onChange={(e) => {
                     setForm({ ...form, name: e.target.value });
@@ -692,7 +652,9 @@ export function Contact({
                   name="email"
                   type="email"
                   autoComplete="email"
-                  placeholder={t.form.email}
+                  required
+                  aria-required="true"
+                  placeholder={`${t.form.email} *`}
                   value={form.email}
                   onChange={(e) => {
                     setForm({ ...form, email: e.target.value });
@@ -745,13 +707,6 @@ export function Contact({
                     setServiceTouched(true);
                     setForm({ ...form, service: e.target.value });
                     if (errors.service) setErrors({ ...errors, service: undefined });
-                    if (e.target.value === "magannyomozas") {
-                      trackAnalyticsEvent("special_service_option_selected", {
-                        locale,
-                        selected_service_key: "magannyomozas",
-                        selected_service_label: t.form.privateInvestigation,
-                      });
-                    }
                   }}
                   style={{
                     ...inputStyle(!!errors.service),
@@ -770,12 +725,12 @@ export function Contact({
                       {opt.label}
                     </option>
                   ))}
-                  {/* 9th option — magánnyomozás. Tartja a hatósági engedély
-                      (01030-822/4925-3/2018) szerinti tevékenység transzparens
-                      megjelenítését. Választáskor a fenti specialDataWarning
-                      conditional render aktiválódik. Hardcoded — nem a services
-                      táblában él, regulált tevékenység. */}
-                  <option value="magannyomozas">{t.form.privateInvestigation}</option>
+                  {/* Magánnyomozás intentionally NOT offered here: the regulált
+                      tevékenység needs a dedicated intake flow with sensitive-
+                      data safeguards before it can return as a public option
+                      (post_launch_backlog PL-015/PL-059). The backend keeps
+                      accepting the legacy "magannyomozas" key so older or
+                      in-flight submits do not break. */}
                 </select>
                 {errors.service && (
                   <div id="contact-service-error" role="alert" style={{ color: "#D1172E", fontSize: 12, marginTop: 4 }}>
@@ -824,6 +779,28 @@ export function Contact({
                   {errors.general}
                 </div>
               )}
+              {/* Required-field legend + non-SLA "what happens next" helper.
+                  No response-time promise here — see docs/copy_strategy.md. */}
+              <p
+                style={{
+                  fontSize: 11,
+                  lineHeight: 1.55,
+                  color: "var(--avenir-text-soft)",
+                  margin: "8px 0 0",
+                }}
+              >
+                {t.form.requiredField}
+              </p>
+              <p
+                style={{
+                  fontSize: 12,
+                  lineHeight: 1.55,
+                  color: "var(--avenir-text-muted)",
+                  margin: 0,
+                }}
+              >
+                {t.form.nextStepHelper}
+              </p>
               {/* Layered notice — short summary above Send button + link
                   to full Privacy Policy (Codex 2 IMP-10: "notice" not
                   "consent" because basis is Art. 6(1)(b)/(f), not consent). */}
@@ -832,7 +809,7 @@ export function Contact({
                   fontSize: 11,
                   lineHeight: 1.55,
                   color: "var(--avenir-text-soft)",
-                  margin: "8px 0 0",
+                  margin: 0,
                 }}
               >
                 {t.form.layeredNotice}{" "}

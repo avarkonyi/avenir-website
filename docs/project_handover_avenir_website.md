@@ -213,6 +213,20 @@ Do not use `KV_REST_API_READ_ONLY_TOKEN` for rate limiting.
 Production contact submissions fail closed if durable Redis/KV REST limiting is
 not configured or unavailable.
 
+UX/safety state of the public forms (2026-06-11):
+
+- only the schema-required fields (name, email) carry `*` markers,
+  `required`/`aria-required` and a `* Kötelező mező` legend; validation rules
+  are unchanged;
+- the forms show a non-SLA "what happens next" helper and the success
+  messages no longer promise a fixed response time;
+- the public dropdown no longer offers `Magánnyomozás`; the backend keeps
+  accepting the legacy `magannyomozas` key (see backlog PL-015/PL-059);
+- `public/.well-known/security.txt` exists with `dpo@afm.hu` / `info@afm.hu`
+  contacts and `Expires: 2027-06-10` (see backlog PL-090);
+- the homepage `#references` section and nav link render only when
+  usage-approved partner logos exist (see backlog PL-029).
+
 ## Admin and Upload Security
 
 Admin access uses the shared `requireAdmin()` helper:

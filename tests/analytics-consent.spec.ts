@@ -371,27 +371,27 @@ test.describe("consent-gated GA4", () => {
     });
   });
 
-  test("special service selection emits a safe event and shows the warning", async ({
+  test("public contact dropdown does not offer the private investigation option", async ({
     page,
   }) => {
-    await mockAnalyticsNetwork(page);
-
+    // The "Magánnyomozás / Private investigation" option was removed from
+    // the public dropdown pending a dedicated special-intake flow
+    // (post_launch_backlog PL-015/PL-059). The backend keeps accepting the
+    // legacy "magannyomozas" key. NOTE: this expectation fails against a
+    // production build older than 2026-06-11.
     await page.goto("/en", { waitUntil: "networkidle" });
-    await acceptAnalytics(page);
-    await waitForGtagRuntime(page);
-    await page.getByLabel("Service of interest").selectOption("magannyomozas");
 
-    await expect(page.getByLabel("Special data warning")).toBeVisible();
-    await expect
-      .poll(() => analyticsEvents(page, "special_service_option_selected"))
-      .toHaveLength(1);
-
-    const events = await analyticsEvents(
-      page,
-      "special_service_option_selected",
-    );
-    assertNoPii(events);
-    assertAllowedBusinessEventParams(events);
+    const options = await page
+      .getByLabel("Service of interest")
+      .locator("option")
+      .allTextContents();
+    expect(options).not.toContain("Private investigation");
+    expect(
+      await page
+        .getByLabel("Service of interest")
+        .locator('option[value="magannyomozas"]')
+        .count(),
+    ).toBe(0);
   });
 
   test("phone and email clicks emit safe events without exposing contact values", async ({

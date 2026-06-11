@@ -132,9 +132,14 @@ export const hu = {
     message: "Üzenet / Igény leírása",
     send: "Ajánlatkérés küldése",
     sending: "Küldés folyamatban…",
+    // No fixed response-time promise (SLA-like wording needs owner/legal
+    // approval) — the success and helper copy stays non-committal.
     success:
-      "Üzenetét megkaptuk. 2 munkanapon belül felvesszük Önnel a kapcsolatot. Adatait az Adatvédelmi tájékoztatóban leírtak szerint kezeljük.",
+      "Üzenetét megkaptuk. Munkatársunk a megadott elérhetőségen visszajelez. Adatait az Adatvédelmi tájékoztatóban leírtak szerint kezeljük.",
     successPrivacyLink: "Adatvédelmi tájékoztatóban",
+    requiredField: "* Kötelező mező",
+    nextStepHelper:
+      "Munkatársunk a megadott elérhetőségen visszajelez. Az ajánlat előkészítése az igény összetettségétől függ.",
     specialDataWarning:
       "Kérjük, az üzenetmezőben ne küldjön különleges adatot, büntetőjogi adatot, minősített adatot, üzleti titkot vagy harmadik személyre vonatkozó részletes magánéleti információt. Ilyen ügyekben külön szerződéses és adatvédelmi egyeztetés szükséges.",
     specialDataWarningLink: "Jogi nyilatkozatok 4. szakasz",

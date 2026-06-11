@@ -1,7 +1,24 @@
 import type { Translation } from "@/lib/i18n";
-import { PartnerLogoStrip } from "@/components/PartnerLogoStrip";
+import {
+  PartnerLogoStrip,
+  getApprovedHomepagePartnerLogos,
+} from "@/components/PartnerLogoStrip";
 
-export function References({ t, locale }: { t: Translation; locale: string }) {
+// Proof-gated section: renders only when usage-approved partner logos exist.
+// Without approved proof the section would be a "Partnereink" heading over
+// generic text with an empty logo strip, so it stays hidden entirely. The
+// nav "references" key is also hidden (lib/locale-ui-helpers.ts) until an
+// approved reference/logo wall decision is made (post_launch_backlog PL-029).
+export async function References({
+  t,
+  locale,
+}: {
+  t: Translation;
+  locale: string;
+}) {
+  const partners = await getApprovedHomepagePartnerLogos();
+  if (partners.length === 0) return null;
+
   return (
     <section
       id="references"
@@ -48,7 +65,7 @@ export function References({ t, locale }: { t: Translation; locale: string }) {
             {t.refText}
           </p>
         </div>
-        <PartnerLogoStrip locale={locale} />
+        <PartnerLogoStrip locale={locale} partners={partners} />
       </div>
     </section>
   );

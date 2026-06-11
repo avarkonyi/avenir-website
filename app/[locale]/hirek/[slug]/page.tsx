@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { AvenirLogo } from "@/components/AvenirLogo";
+import { NewsRelatedServices } from "@/components/NewsRelatedServices";
 import { JsonLd } from "@/components/JsonLd";
 import { getTranslation } from "@/lib/i18n";
 import {
@@ -338,6 +339,8 @@ export default async function NewsDetailPage({
             )}
 
             <RichText text={article.body} />
+
+            <NewsRelatedServices locale={locale} />
           </div>
         </article>
       </main>

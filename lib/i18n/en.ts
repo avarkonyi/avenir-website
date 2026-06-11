@@ -139,8 +139,12 @@ export const en = {
     "message": "Message / Requirements",
     "send": "Send Request",
     "sending": "Sending…",
-    "success": "We have received your message. We will be in touch within 2 business days. Your data is processed in accordance with our Privacy Policy.",
+    // No fixed response-time promise (SLA-like wording needs owner/legal
+    // approval) — the success and helper copy stays non-committal.
+    "success": "We have received your message. Our team will respond using the contact details provided. Your data is processed in accordance with our Privacy Policy.",
     "successPrivacyLink": "Privacy Policy",
+    "requiredField": "* Required field",
+    "nextStepHelper": "Our team will respond using the contact details provided. Quote preparation depends on the scope and complexity of the request.",
     "specialDataWarning": "Please do not submit special categories of data, criminal-conviction data, classified data, trade secrets, or detailed private-life information about third parties via this contact form. Such matters require a separate engagement and data-protection consultation.",
     "specialDataWarningLink": "Terms of Use, section 4",
     "privateInvestigation": "Private investigation",

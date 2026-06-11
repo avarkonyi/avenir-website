@@ -145,6 +145,22 @@ Watch especially for:
     Monitoring and Response Service; Hard FM; Soft FM.
 - Analytics consent copy remains privacy-first: no analytics before consent,
   reject keeps GA4 blocked, and no personal form content is sent to analytics.
+- Form UX/safety strings added on 2026-06-11 (`lib/i18n/*.ts` `form` block and
+  the service quote copy):
+  - `form.requiredField` — HU `* Kötelező mező`, EN `* Required field`,
+    DE `* Pflichtfeld`, ZH `* 必填项` (draft), KO `* 필수 입력 항목` (draft);
+  - `form.nextStepHelper` — non-SLA "what happens next" helper; HU/EN/DE use
+    the approved conservative wording, ZH/KO are short conservative drafts
+    marked `TRANSLATION DRAFT` (both locales are partial/noindex);
+  - `form.success` no longer promises a 2-working-day response in HU/EN/DE/ZH
+    (KO already had non-SLA wording);
+  - the ZH privacy-policy legal section still contains a 2-working-day reply
+    sentence; legal text was intentionally not edited in this pass and needs
+    legal review before any ZH legal publication.
+- The public contact dropdown no longer offers `Magánnyomozás` /
+  `Private investigation` in any locale (2026-06-11); the i18n keys
+  (`form.privateInvestigation`, `form.specialDataWarning*`) are retained for
+  schema-shape stability and a future special-intake flow.
 - Visible i18n consistency pass on 2026-06-06:
   - EN service-card detail links now use `Details`; HU remains `Részletek`;
   - ZH homepage value pillars now use the operative triad

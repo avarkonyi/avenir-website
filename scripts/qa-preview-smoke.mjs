@@ -113,6 +113,7 @@ const EXPECTED_200 = [
   "/robots.txt",
   "/llms.txt",
   "/llms-full.txt",
+  "/.well-known/security.txt",
 ];
 
 const EXPECTED_404 = [
@@ -355,6 +356,39 @@ async function checkLlmsFile(baseUrl, path) {
   return failures;
 }
 
+async function checkSecurityTxt(baseUrl) {
+  const path = "/.well-known/security.txt";
+  const result = await fetchText(baseUrl, path);
+  const failures = [];
+
+  if (result.status !== 200) {
+    failures.push({
+      ok: false,
+      label: `${path} status`,
+      detail: `expected 200, got ${result.status}`,
+    });
+    return failures;
+  }
+
+  if (!/^Contact:\s*mailto:/im.test(result.text)) {
+    failures.push({
+      ok: false,
+      label: `${path} Contact line`,
+      detail: "expected at least one 'Contact: mailto:' line",
+    });
+  }
+
+  if (!/^Expires:\s*\d{4}-\d{2}-\d{2}T/im.test(result.text)) {
+    failures.push({
+      ok: false,
+      label: `${path} Expires line`,
+      detail: "expected an 'Expires:' line with an ISO timestamp",
+    });
+  }
+
+  return failures;
+}
+
 async function checkRobots(baseUrl, allowProduction) {
   const result = await fetchText(baseUrl, "/robots.txt");
   const failures = [];
@@ -516,6 +550,10 @@ async function main() {
       UNAPPROVED_PARTNER_NAME_EXAMPLES.length;
     failures.push(...llmsFailures);
   }
+
+  const securityTxtFailures = await checkSecurityTxt(baseUrl);
+  totalChecks += 3;
+  failures.push(...securityTxtFailures);
 
   const robotsFailures = await checkRobots(baseUrl, allowProduction);
   totalChecks += allowProduction ? 1 : 2;

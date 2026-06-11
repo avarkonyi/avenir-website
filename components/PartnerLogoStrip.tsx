@@ -1,4 +1,7 @@
-import { getHomepagePartnerLogos } from "@/lib/db/queries/partners";
+import {
+  getHomepagePartnerLogos,
+  type HomepagePartnerLogo,
+} from "@/lib/db/queries/partners";
 
 const MARQUEE_THRESHOLD = 8;
 
@@ -47,10 +50,26 @@ function LogoItem({
   );
 }
 
-export async function PartnerLogoStrip({ locale }: { locale: string }) {
-  const partners = (await getHomepagePartnerLogos()).filter((partner) =>
+// Shared proof gate: DB approval columns (getHomepagePartnerLogos) plus the
+// asset-URL allowlist. References.tsx uses this to decide whether the whole
+// #references section renders at all, so the gate must stay in one place.
+export async function getApprovedHomepagePartnerLogos(): Promise<
+  HomepagePartnerLogo[]
+> {
+  return (await getHomepagePartnerLogos()).filter((partner) =>
     isApprovedAssetUrl(partner.logoUrl),
   );
+}
+
+export async function PartnerLogoStrip({
+  locale,
+  partners: prefetchedPartners,
+}: {
+  locale: string;
+  partners?: HomepagePartnerLogo[];
+}) {
+  const partners =
+    prefetchedPartners ?? (await getApprovedHomepagePartnerLogos());
 
   if (partners.length === 0) return null;
 

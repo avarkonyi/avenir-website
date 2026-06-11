@@ -98,6 +98,10 @@ export const ko = {
     success:
       "문의가 접수되었습니다. 제공하신 연락처로 담당자가 회신합니다. 개인정보는 개인정보 처리방침에 따라 처리됩니다.",
     successPrivacyLink: "개인정보 처리방침",
+    // TRANSLATION DRAFT: review by user (partial/noindex locale)
+    requiredField: "* 필수 입력 항목",
+    nextStepHelper:
+      "담당자가 입력하신 연락처로 회신드립니다. 견적 준비는 요청의 범위와 복잡성에 따라 달라집니다.",
     specialDataWarning:
       "이 문의 양식에는 민감정보, 범죄경력 정보, 기밀 정보, 영업비밀 또는 제3자의 상세한 사생활 정보를 제출하지 마십시오. 이러한 사안은 별도의 계약 및 개인정보 검토가 필요합니다.",
     specialDataWarningLink: "이용약관 4항",

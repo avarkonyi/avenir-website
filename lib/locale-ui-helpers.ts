@@ -50,12 +50,18 @@ export type NavSectionKey = (typeof NAV_SECTION_KEYS)[number];
 // where the public article layer exists. HU/EN are indexable; DE is a
 // noindex review surface. ZH/KO keep the homepage-only frame and must not
 // advertise closed news routes.
+//
+// "references" is hidden in every locale until approved reference/partner
+// proof exists: the homepage #references section only renders when the DB
+// holds usage-approved partner logos, so a static nav link would point to
+// a missing/empty anchor (see post_launch_backlog PL-029/PL-090).
 export function getVisibleNavSectionKeys(
   locale: string,
 ): readonly NavSectionKey[] {
+  const keys = NAV_SECTION_KEYS.filter((key) => key !== "references");
   return locale === "hu" || locale === "en" || locale === "de"
-    ? NAV_SECTION_KEYS
-    : NAV_SECTION_KEYS.filter((key) => key !== "news");
+    ? keys
+    : keys.filter((key) => key !== "news");
 }
 
 export function getLocaleServiceListLabel(

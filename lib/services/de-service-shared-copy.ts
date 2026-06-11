@@ -32,4 +32,7 @@ export const DE_REVIEW_SERVICE_QUOTE_COPY = {
   nameRequired: "Bitte geben Sie Ihren Namen an.",
   emailRequired: "Bitte geben Sie Ihre E-Mail-Adresse an.",
   emailInvalid: "Bitte geben Sie eine gültige E-Mail-Adresse an.",
+  requiredField: "* Pflichtfeld",
+  nextStepHelper:
+    "Unser Team meldet sich über die angegebenen Kontaktdaten. Die Angebotserstellung hängt vom Umfang und der Komplexität der Anfrage ab.",
 } as const;

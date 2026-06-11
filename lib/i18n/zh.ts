@@ -139,8 +139,13 @@ export const zh = {
     "message": "留言 / 需求说明",
     "send": "发送报价申请",
     "sending": "发送中…",
-    "success": "我们已收到您的留言。我们将在2个工作日内与您联系。您的数据将依据我们的隐私政策进行处理。",
+    // No fixed response-time promise (SLA-like wording needs owner/legal
+    // approval) — the success and helper copy stays non-committal.
+    "success": "我们已收到您的留言。我们的同事将通过您提供的联系方式回复。您的数据将依据我们的隐私政策进行处理。",
     "successPrivacyLink": "隐私政策",
+    // TRANSLATION DRAFT: review by user (partial/noindex locale)
+    "requiredField": "* 必填项",
+    "nextStepHelper": "我们的同事将通过您提供的联系方式回复。报价的准备时间取决于需求的范围和复杂程度。",
     "specialDataWarning": "请勿通过本表单提交特殊类别数据、刑事记录数据、机密数据、商业秘密或涉及第三方详细私人信息的内容。此类事项需另行签署合同并进行数据保护协商。",
     "specialDataWarningLink": "使用条款 第4节",
     "privateInvestigation": "私家侦探",
