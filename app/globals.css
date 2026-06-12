@@ -1035,6 +1035,90 @@ details > summary:focus-visible {
   transform: scale(1.08);
 }
 
+.approved-reference-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 420px);
+  gap: 20px;
+}
+
+.approved-reference-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(180px, 240px) minmax(0, 1fr);
+  align-items: center;
+  gap: 24px;
+  overflow: hidden;
+  padding: 26px 28px 24px;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 18px 44px rgba(11, 30, 62, 0.08);
+}
+
+.approved-reference-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 4px;
+  background: #D1172E;
+}
+
+.approved-reference-logo-frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 84px;
+  padding: 12px 18px;
+  border: 1px solid #EEF2F7;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.approved-reference-logo-frame img {
+  display: block;
+  max-width: 180px;
+  max-height: 64px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: none;
+  opacity: 1;
+}
+
+.approved-reference-meta {
+  min-width: 0;
+}
+
+.approved-reference-meta p {
+  margin: 0 0 14px;
+  color: var(--avenir-text-soft);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.approved-reference-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.approved-reference-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 6px 10px;
+  border: 1px solid rgba(209, 23, 46, 0.18);
+  border-radius: 999px;
+  background: rgba(209, 23, 46, 0.055);
+  color: #0B1E3E;
+  font-family: var(--font-head);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
 @keyframes partner-logo-marquee {
   from {
     transform: translateX(0);
@@ -1130,6 +1214,20 @@ details > summary:focus-visible {
   }
   .partner-logo-item img {
     max-height: 62px;
+  }
+  .approved-reference-grid {
+    grid-template-columns: 1fr;
+  }
+  .approved-reference-card {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 22px 20px 20px;
+  }
+  .approved-reference-logo-frame {
+    min-height: 78px;
+  }
+  .approved-reference-logo-frame img {
+    max-height: 58px;
   }
 
   .analytics-consent-banner {

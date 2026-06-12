@@ -224,8 +224,11 @@ UX/safety state of the public forms (2026-06-11):
   accepting the legacy `magannyomozas` key (see backlog PL-015/PL-059);
 - `public/.well-known/security.txt` exists with `dpo@afm.hu` / `info@afm.hu`
   contacts and `Expires: 2027-06-10` (see backlog PL-090);
-- the homepage `#references` section and nav link render only when
-  usage-approved partner logos exist (see backlog PL-029).
+- the homepage `#references` section now renders the source-approved
+  AutoWallis Pest reference card for HU/EN/DE only; ZH/KO remain hidden for
+  the references section. The card uses the supplied logo asset and only the
+  approved service chips. Broader partner/logo-wall decisions remain in
+  backlog PL-029.
 
 ## Admin and Upload Security
 
@@ -320,7 +323,9 @@ Unless explicitly approved:
 - do not change service copy;
 - do not change routes or slugs;
 - do not change sitemap policy;
-- do not add client names, partner names, testimonials or case studies;
+- do not add client names, partner names, testimonials or case studies except
+  the explicitly approved AutoWallis Pest homepage reference-card use recorded
+  in `docs/verified_claims.md`;
 - do not add unverified certification, ESG, EcoVadis or OPTEN claims;
 - do not add legal/GDPR/NAIH guarantees;
 - do not add SLA or guaranteed response/arrival/repair-time wording;

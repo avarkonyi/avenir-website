@@ -1,5 +1,6 @@
 import type { Translation } from "@/lib/i18n";
 import { RECRUITMENT_PRIVACY_SLUGS } from "@/lib/recruitment-privacy-routes";
+import { shouldRenderHomepageReferences } from "@/lib/references";
 
 type FooterLabels = {
   readonly privacy: string;
@@ -138,19 +139,22 @@ export type NavSectionKey = (typeof NAV_SECTION_KEYS)[number];
 // Homepage section nav keys. The News section renders only for locales
 // where the public article layer exists. HU/EN are indexable; DE is a
 // noindex review surface. ZH/KO keep the homepage-only frame and must not
-// advertise closed news routes.
-//
-// "references" is hidden in every locale until approved reference/partner
-// proof exists: the homepage #references section only renders when the DB
-// holds usage-approved partner logos, so a static nav link would point to
-// a missing/empty anchor (see post_launch_backlog PL-029/PL-090).
+// advertise closed news routes. References render only for locales where
+// the approved source-gated reference card is available.
 export function getVisibleNavSectionKeys(
   locale: string,
 ): readonly NavSectionKey[] {
-  const keys = NAV_SECTION_KEYS.filter((key) => key !== "references");
-  return locale === "hu" || locale === "en" || locale === "de"
-    ? keys
-    : keys.filter((key) => key !== "news");
+  let keys = [...NAV_SECTION_KEYS];
+
+  if (!shouldRenderHomepageReferences(locale)) {
+    keys = keys.filter((key) => key !== "references");
+  }
+
+  if (locale !== "hu" && locale !== "en" && locale !== "de") {
+    keys = keys.filter((key) => key !== "news");
+  }
+
+  return keys;
 }
 
 export function getLocaleServiceListLabel(

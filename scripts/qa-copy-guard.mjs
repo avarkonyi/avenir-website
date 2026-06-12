@@ -65,6 +65,27 @@ const CHECKS = [
     allowLine: isProtectiveGuaranteeLine,
   },
   {
+    name: "AutoWallis promotional endorsement overclaim",
+    pattern: /AutoWallis\s+recommends\s+Avenir/i,
+    appliesTo: isPublicSource,
+  },
+  {
+    name: "BMW official-partner overclaim",
+    pattern: /official\s+(?:partner|partnership)\s+of\s+BMW|official\s+BMW\s+(?:partner|partnership)/i,
+    appliesTo: isPublicSource,
+  },
+  {
+    name: "incident-free reference overclaim",
+    pattern: /incident-free/i,
+    appliesTo: isPublicSource,
+    allowLine: isProtectiveGuaranteeLine,
+  },
+  {
+    name: "best-in-class reference overclaim",
+    pattern: /best-in-class/i,
+    appliesTo: isPublicSource,
+  },
+  {
     name: "positive guaranteed arrival-time wording",
     pattern: /guaranteed arrival time/i,
     appliesTo: isServiceMarketingSource,

@@ -292,9 +292,12 @@ P1/P2 content and governance items:
   previous "2 munkanapon belül / within 2 business days" success wording was
   removed. Do not reintroduce fixed response times, guaranteed quotes or
   SLA-like commitments in form/CTA copy without owner/legal approval.
-- The homepage "Referenciák" section and nav link stay hidden until approved
-  reference/partner proof exists (backlog PL-029). Do not fill the section
-  with generic placeholder claims.
+- The homepage "Referenciák" section may show only explicitly approved public
+  references. Current approved source reference: AutoWallis Pest, with the
+  supplied logo and service chips for Objektumőrzés / Recepciós és
+  portaszolgálat only. Do not add testimonial, case-study, "trusted by",
+  performance/result, manufacturer partnership or incident-free wording.
+  Broader logo wall / sector-icon decisions remain in backlog PL-029.
 - Meta/social polish after production indexing settles.
 - Analytics consent copy should remain privacy-first: no dark patterns, no
   analytics before consent, reject keeps GA4 blocked, and no personal form

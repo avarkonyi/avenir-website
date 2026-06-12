@@ -137,6 +137,34 @@ and until a separate OPTEN-specific proof document is approved.
 
 Partner names and logos are proof-controlled assets. Do not add partner names, logos, testimonials, relationship claims, or case-study wording to public code, copy, schema, seeds, or documentation unless public use has been explicitly approved and recorded.
 
+Approved public reference:
+
+- Public display name: AutoWallis Pest
+- Internal legal/proof entity: Wallis Motor Pest Kft.
+- Logo asset path: `public/references/autowallis-pest.png`
+- Approval status: approved for public website reference-card use
+- Approved public use:
+  - company logo
+  - brand/company name
+  - approved service type chips
+- Approved service types:
+  - Objektumőrzés
+  - Recepciós és portaszolgálat
+- Mapped service slugs:
+  - `objektumorzes`
+  - `portaszolgalat`
+- Allowed surfaces:
+  - homepage references section
+- Restrictions:
+  - no testimonial
+  - no case study
+  - no performance/result claim
+  - no "AutoWallis recommends Avenir" wording
+  - no "official BMW partner" or manufacturer relationship claim beyond the supplied logo artwork
+  - no service-outcome or incident-free claim
+- Note: logo is used as supplied/approved artwork. Do not publish the consent
+  PDF or other approval documents publicly.
+
 For each approved logo, record:
 
 - public display name;

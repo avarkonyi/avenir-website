@@ -60,11 +60,17 @@ test("security.txt exists with Contact and Expires lines and no invented securit
   assert.equal(/^Policy:/m.test(text), false);
 });
 
-test("references nav section is hidden in every locale until approved references exist", () => {
-  for (const locale of ["hu", "en", "de", "zh", "ko"]) {
+test("references nav section is visible only where approved references render", () => {
+  for (const locale of ["hu", "en", "de"]) {
+    assert.ok(
+      getVisibleNavSectionKeys(locale).includes("references"),
+      `references nav key must be visible for ${locale}`,
+    );
+  }
+  for (const locale of ["zh", "ko"]) {
     assert.ok(
       !getVisibleNavSectionKeys(locale).includes("references"),
-      `references nav key must be hidden for ${locale}`,
+      `references nav key must stay hidden for partial locale ${locale}`,
     );
   }
   // News visibility policy is unchanged by the references removal.
