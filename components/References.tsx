@@ -6,7 +6,6 @@ import {
   getReferenceDescription,
   getReferenceSectionCopy,
   getReferenceServiceChips,
-  getReferenceWebsiteCta,
 } from "@/lib/references";
 
 // Proof-gated section: renders only source-approved public reference cards.
@@ -28,32 +27,33 @@ export async function References({
   return (
     <section
       id="references"
-      style={{ padding: "96px 5vw", background: "#F8FAFC" }}
+      style={{ padding: "80px 5vw", background: "#F8FAFC" }}
     >
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-        <div style={{ width: 40, height: 3, background: "#D1172E", marginBottom: 16 }} />
         <div
           className="references-grid"
           style={{
             display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: 60,
-            alignItems: "center",
-            marginBottom: 36,
+            gap: 12,
+            justifyItems: "center",
+            margin: "0 auto 32px",
+            maxWidth: 720,
+            textAlign: "center",
           }}
         >
           <h2
             style={{
+              margin: 0,
               fontFamily: "var(--font-head)",
               fontWeight: 800,
-              fontSize: "clamp(36px, 4vw, 54px)",
+              fontSize: "clamp(30px, 3vw, 42px)",
               color: "#0B1E3E",
               lineHeight: 1.1,
             }}
           >
             {copy.title}
           </h2>
-          <p style={{ color: "var(--avenir-text-muted)", fontSize: 17, lineHeight: 1.7, fontWeight: 300 }}>
+          <p style={{ margin: 0, color: "var(--avenir-text-muted)", fontSize: 17, lineHeight: 1.7, fontWeight: 300 }}>
             {copy.intro}
           </p>
         </div>
@@ -84,9 +84,6 @@ export async function References({
                   <p className="approved-reference-description">
                     {getReferenceDescription(locale, reference)}
                   </p>
-                  <p className="approved-reference-entity">
-                    {reference.legalEntity}
-                  </p>
                 </div>
                 <div className="approved-reference-chips" aria-label={copy.intro}>
                   {getReferenceServiceChips(locale, reference.services).map((label) => (
@@ -95,10 +92,6 @@ export async function References({
                     </span>
                   ))}
                 </div>
-                <span className="approved-reference-cta" aria-hidden="true">
-                  {getReferenceWebsiteCta(locale)}
-                  <span aria-hidden="true">↗</span>
-                </span>
               </div>
             </a>
           ))}

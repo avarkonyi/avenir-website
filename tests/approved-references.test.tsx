@@ -94,7 +94,6 @@ test("References renders the AutoWallis card without testimonial or outcome clai
   assert.ok(html.includes("/references/autowallis-pest.png"));
   assert.ok(html.includes("AutoWallis Pest logó"));
   assert.ok(html.includes("AutoWallis Pest"));
-  assert.ok(html.includes("Wallis Motor Pest Kft."));
   assert.ok(html.includes("Budapesti prémium autókereskedelmi és szervizhálózat."));
   assert.ok(html.includes("Objektumőrzés"));
   assert.ok(html.includes("Recepciós és portaszolgálat"));
@@ -102,7 +101,12 @@ test("References renders the AutoWallis card without testimonial or outcome clai
   assert.ok(html.includes('target="_blank"'));
   assert.ok(html.includes('rel="noopener noreferrer"'));
   assert.ok(html.includes('aria-label="AutoWallis Pest hivatalos weboldal megnyitása"'));
-  assert.ok(html.includes("Cégoldal megnyitása"));
+  assert.equal(html.includes("Cégoldal megnyitása"), false);
+  assert.equal(html.includes("Visit website"), false);
+  assert.equal(html.includes("Website öffnen"), false);
+  assert.equal(html.includes("↗"), false);
+  assert.equal(html.includes("Wallis Motor Pest Kft."), false);
+  assert.equal(html.includes("Szolgáltatások"), false);
 
   for (const carouselUi of ["pagination", "carousel", "dots", "swiper", "slick", "aria-roledescription=\"carousel\""]) {
     assert.equal(html.toLowerCase().includes(carouselUi), false);
@@ -128,7 +132,8 @@ test("References renders locale service chips and hides partial locales", async 
   assert.ok(enHtml.includes("Reception and Gatehouse Services"));
   assert.ok(enHtml.includes("AutoWallis Pest logo"));
   assert.ok(enHtml.includes('aria-label="Open AutoWallis Pest official website"'));
-  assert.ok(enHtml.includes("Visit website"));
+  assert.equal(enHtml.includes("Visit website"), false);
+  assert.equal(enHtml.includes("↗"), false);
 
   const deHtml = renderToStaticMarkup(await References({ t: hu, locale: "de" }));
   assert.ok(deHtml.includes("Premium-Autohandels- und Servicenetz in Budapest."));
@@ -136,7 +141,8 @@ test("References renders locale service chips and hides partial locales", async 
   assert.ok(deHtml.includes("Empfangs- und Pförtnerdienst"));
   assert.ok(deHtml.includes("Logo von AutoWallis Pest"));
   assert.ok(deHtml.includes('aria-label="Offizielle Website von AutoWallis Pest öffnen"'));
-  assert.ok(deHtml.includes("Website öffnen"));
+  assert.equal(deHtml.includes("Website öffnen"), false);
+  assert.equal(deHtml.includes("↗"), false);
 
   assert.equal(await References({ t: hu, locale: "zh" }), null);
   assert.equal(await References({ t: hu, locale: "ko" }), null);

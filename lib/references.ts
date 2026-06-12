@@ -127,12 +127,6 @@ export function getReferenceAriaLabel(
     : reference.ariaLabel.en;
 }
 
-export function getReferenceWebsiteCta(locale: string): string {
-  if (locale === "hu") return "Cégoldal megnyitása";
-  if (locale === "de") return "Website öffnen";
-  return "Visit website";
-}
-
 export function getReferenceServiceChips(
   locale: string,
   services: readonly ReferenceServiceSlug[],
