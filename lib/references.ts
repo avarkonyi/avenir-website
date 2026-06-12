@@ -7,7 +7,10 @@ export type ApprovedHomepageReference = {
   readonly displayName: string;
   readonly legalEntity: string;
   readonly logoPath: string;
+  readonly websiteUrl: string;
   readonly alt: Readonly<Record<"hu" | "en" | "de", string>>;
+  readonly description: Readonly<Record<"hu" | "en" | "de", string>>;
+  readonly ariaLabel: Readonly<Record<"hu" | "en" | "de", string>>;
   readonly services: readonly ReferenceServiceSlug[];
   readonly approved: boolean;
   readonly usageApproved: boolean;
@@ -19,10 +22,21 @@ export const APPROVED_HOMEPAGE_REFERENCES: readonly ApprovedHomepageReference[] 
     displayName: "AutoWallis Pest",
     legalEntity: "Wallis Motor Pest Kft.",
     logoPath: "/references/autowallis-pest.png",
+    websiteUrl: "https://autowallispest.hu/",
     alt: {
       hu: "AutoWallis Pest logó",
       en: "AutoWallis Pest logo",
       de: "Logo von AutoWallis Pest",
+    },
+    description: {
+      hu: "Budapesti prémium autókereskedelmi és szervizhálózat.",
+      en: "Premium automotive retail and service network in Budapest.",
+      de: "Premium-Autohandels- und Servicenetz in Budapest.",
+    },
+    ariaLabel: {
+      hu: "AutoWallis Pest hivatalos weboldal megnyitása",
+      en: "Open AutoWallis Pest official website",
+      de: "Offizielle Website von AutoWallis Pest öffnen",
     },
     services: ["objektumorzes", "portaszolgalat"],
     approved: true,
@@ -93,6 +107,30 @@ export function getReferenceAlt(
   reference: ApprovedHomepageReference,
 ): string {
   return shouldRenderHomepageReferences(locale) ? reference.alt[locale] : reference.alt.en;
+}
+
+export function getReferenceDescription(
+  locale: string,
+  reference: ApprovedHomepageReference,
+): string {
+  return shouldRenderHomepageReferences(locale)
+    ? reference.description[locale]
+    : reference.description.en;
+}
+
+export function getReferenceAriaLabel(
+  locale: string,
+  reference: ApprovedHomepageReference,
+): string {
+  return shouldRenderHomepageReferences(locale)
+    ? reference.ariaLabel[locale]
+    : reference.ariaLabel.en;
+}
+
+export function getReferenceWebsiteCta(locale: string): string {
+  if (locale === "hu") return "Cégoldal megnyitása";
+  if (locale === "de") return "Website öffnen";
+  return "Visit website";
 }
 
 export function getReferenceServiceChips(

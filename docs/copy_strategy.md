@@ -295,9 +295,10 @@ P1/P2 content and governance items:
 - The homepage "Referenciák" section may show only explicitly approved public
   references. Current approved source reference: AutoWallis Pest, with the
   supplied logo and service chips for Objektumőrzés / Recepciós és
-  portaszolgálat only. Do not add testimonial, case-study, "trusted by",
-  performance/result, manufacturer partnership or incident-free wording.
-  Broader logo wall / sector-icon decisions remain in backlog PL-029.
+  portaszolgálat only. The card may link to the approved website URL, but
+  service chips remain informational tags. Do not add testimonial, case-study,
+  "trusted by", performance/result, manufacturer partnership or incident-free
+  wording. Broader logo wall / sector-icon decisions remain in backlog PL-029.
 - Meta/social polish after production indexing settles.
 - Analytics consent copy should remain privacy-first: no dark patterns, no
   analytics before consent, reject keeps GA4 blocked, and no personal form

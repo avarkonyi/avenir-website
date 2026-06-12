@@ -21,6 +21,7 @@ test("AutoWallis Pest is the only approved source reference and uses the supplie
   assert.equal(reference.displayName, "AutoWallis Pest");
   assert.equal(reference.legalEntity, "Wallis Motor Pest Kft.");
   assert.equal(reference.logoPath, "/references/autowallis-pest.png");
+  assert.equal(reference.websiteUrl, "https://autowallispest.hu/");
   assert.equal(reference.approved, true);
   assert.equal(reference.usageApproved, true);
   assert.deepEqual(reference.services, ["objektumorzes", "portaszolgalat"]);
@@ -57,6 +58,19 @@ test("reference service chips are locale-specific and limited to the approved se
   ]);
 });
 
+test("reference card copy is short, locale-specific and proof-safe", () => {
+  const [reference] = APPROVED_HOMEPAGE_REFERENCES;
+
+  assert.equal(reference.description.hu, "Budapesti prémium autókereskedelmi és szervizhálózat.");
+  assert.equal(reference.description.en, "Premium automotive retail and service network in Budapest.");
+  assert.equal(reference.description.de, "Premium-Autohandels- und Servicenetz in Budapest.");
+
+  const visibleCopy = Object.values(reference.description).join(" ");
+  for (const forbidden of ["ajánlja", "recommends", "official BMW partner", "incident-free"]) {
+    assert.equal(visibleCopy.includes(forbidden), false);
+  }
+});
+
 test("reference section copy uses approved neutral wording", () => {
   assert.deepEqual(getReferenceSectionCopy("hu"), {
     title: "Referenciák",
@@ -81,8 +95,18 @@ test("References renders the AutoWallis card without testimonial or outcome clai
   assert.ok(html.includes("AutoWallis Pest logó"));
   assert.ok(html.includes("AutoWallis Pest"));
   assert.ok(html.includes("Wallis Motor Pest Kft."));
+  assert.ok(html.includes("Budapesti prémium autókereskedelmi és szervizhálózat."));
   assert.ok(html.includes("Objektumőrzés"));
   assert.ok(html.includes("Recepciós és portaszolgálat"));
+  assert.ok(html.includes('href="https://autowallispest.hu/"'));
+  assert.ok(html.includes('target="_blank"'));
+  assert.ok(html.includes('rel="noopener noreferrer"'));
+  assert.ok(html.includes('aria-label="AutoWallis Pest hivatalos weboldal megnyitása"'));
+  assert.ok(html.includes("Cégoldal megnyitása"));
+
+  for (const carouselUi of ["pagination", "carousel", "dots", "swiper", "slick", "aria-roledescription=\"carousel\""]) {
+    assert.equal(html.toLowerCase().includes(carouselUi), false);
+  }
 
   for (const forbidden of [
     "testimonial",
@@ -99,14 +123,20 @@ test("References renders the AutoWallis card without testimonial or outcome clai
 
 test("References renders locale service chips and hides partial locales", async () => {
   const enHtml = renderToStaticMarkup(await References({ t: hu, locale: "en" }));
+  assert.ok(enHtml.includes("Premium automotive retail and service network in Budapest."));
   assert.ok(enHtml.includes("On-site Security Guarding"));
   assert.ok(enHtml.includes("Reception and Gatehouse Services"));
   assert.ok(enHtml.includes("AutoWallis Pest logo"));
+  assert.ok(enHtml.includes('aria-label="Open AutoWallis Pest official website"'));
+  assert.ok(enHtml.includes("Visit website"));
 
   const deHtml = renderToStaticMarkup(await References({ t: hu, locale: "de" }));
+  assert.ok(deHtml.includes("Premium-Autohandels- und Servicenetz in Budapest."));
   assert.ok(deHtml.includes("Objektschutz vor Ort"));
   assert.ok(deHtml.includes("Empfangs- und Pförtnerdienst"));
   assert.ok(deHtml.includes("Logo von AutoWallis Pest"));
+  assert.ok(deHtml.includes('aria-label="Offizielle Website von AutoWallis Pest öffnen"'));
+  assert.ok(deHtml.includes("Website öffnen"));
 
   assert.equal(await References({ t: hu, locale: "zh" }), null);
   assert.equal(await References({ t: hu, locale: "ko" }), null);

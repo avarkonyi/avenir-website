@@ -2,8 +2,11 @@ import type { Translation } from "@/lib/i18n";
 import {
   getApprovedHomepageReferences,
   getReferenceAlt,
+  getReferenceAriaLabel,
+  getReferenceDescription,
   getReferenceSectionCopy,
   getReferenceServiceChips,
+  getReferenceWebsiteCta,
 } from "@/lib/references";
 
 // Proof-gated section: renders only source-approved public reference cards.
@@ -56,10 +59,13 @@ export async function References({
         </div>
         <div className="approved-reference-grid">
           {references.map((reference) => (
-            <article
+            <a
               key={reference.key}
               className="approved-reference-card"
-              aria-label={`${reference.displayName} (${reference.legalEntity})`}
+              href={reference.websiteUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={getReferenceAriaLabel(locale, reference)}
             >
               <div className="approved-reference-logo-frame">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -73,7 +79,15 @@ export async function References({
                 />
               </div>
               <div className="approved-reference-meta">
-                <p>{reference.legalEntity}</p>
+                <div>
+                  <h3>{reference.displayName}</h3>
+                  <p className="approved-reference-description">
+                    {getReferenceDescription(locale, reference)}
+                  </p>
+                  <p className="approved-reference-entity">
+                    {reference.legalEntity}
+                  </p>
+                </div>
                 <div className="approved-reference-chips" aria-label={copy.intro}>
                   {getReferenceServiceChips(locale, reference.services).map((label) => (
                     <span key={label} className="approved-reference-chip">
@@ -81,8 +95,12 @@ export async function References({
                     </span>
                   ))}
                 </div>
+                <span className="approved-reference-cta" aria-hidden="true">
+                  {getReferenceWebsiteCta(locale)}
+                  <span aria-hidden="true">↗</span>
+                </span>
               </div>
-            </article>
+            </a>
           ))}
         </div>
       </div>

@@ -226,9 +226,9 @@ UX/safety state of the public forms (2026-06-11):
   contacts and `Expires: 2027-06-10` (see backlog PL-090);
 - the homepage `#references` section now renders the source-approved
   AutoWallis Pest reference card for HU/EN/DE only; ZH/KO remain hidden for
-  the references section. The card uses the supplied logo asset and only the
-  approved service chips. Broader partner/logo-wall decisions remain in
-  backlog PL-029.
+  the references section. The card is a full-card external link, uses the
+  supplied logo asset and only the approved service chips. Broader
+  partner/logo-wall decisions remain in backlog PL-029.
 
 ## Admin and Upload Security
 

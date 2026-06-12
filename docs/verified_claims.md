@@ -142,6 +142,7 @@ Approved public reference:
 - Public display name: AutoWallis Pest
 - Internal legal/proof entity: Wallis Motor Pest Kft.
 - Logo asset path: `public/references/autowallis-pest.png`
+- Website URL used by the public card: `https://autowallispest.hu/`
 - Approval status: approved for public website reference-card use
 - Approved public use:
   - company logo
@@ -154,7 +155,7 @@ Approved public reference:
   - `objektumorzes`
   - `portaszolgalat`
 - Allowed surfaces:
-  - homepage references section
+  - homepage references section as a clickable reference card
 - Restrictions:
   - no testimonial
   - no case study
