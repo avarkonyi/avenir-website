@@ -80,6 +80,25 @@ const PUBLISHABLE_LEGAL_PATHS = [
   "/en/impresszum",
 ];
 
+// Recruitment privacy notice (PL-091 Option B): locale-specific slug pair.
+// The HU slug exists only on /hu, the EN slug only on /en — every other
+// locale/slug combination must 404.
+const RECRUITMENT_PRIVACY_PATHS = [
+  "/hu/palyazoi-adatkezeles",
+  "/en/recruitment-privacy",
+];
+
+const RECRUITMENT_PRIVACY_404_PATHS = [
+  "/en/palyazoi-adatkezeles",
+  "/de/palyazoi-adatkezeles",
+  "/zh/palyazoi-adatkezeles",
+  "/ko/palyazoi-adatkezeles",
+  "/hu/recruitment-privacy",
+  "/de/recruitment-privacy",
+  "/zh/recruitment-privacy",
+  "/ko/recruitment-privacy",
+];
+
 const DE_REVIEW_LEGAL_PATHS = [
   "/de/adatvedelem",
   "/de/aszf",
@@ -106,6 +125,7 @@ const EXPECTED_200 = [
   "/ko",
   ...READY_SERVICE_PATHS,
   ...PUBLISHABLE_LEGAL_PATHS,
+  ...RECRUITMENT_PRIVACY_PATHS,
   ...DE_REVIEW_LEGAL_PATHS,
   ...INDEXABLE_NEWS_PATHS,
   ...DE_REVIEW_NEWS_PATHS,
@@ -121,6 +141,7 @@ const EXPECTED_404 = [
   ...UNREADY_SERVICE_PATHS,
   ...UNPUBLISHED_LEGAL_PATHS,
   ...UNPUBLISHED_NEWS_PATHS,
+  ...RECRUITMENT_PRIVACY_404_PATHS,
 ];
 
 const SITEMAP_FORBIDDEN = [
@@ -322,6 +343,7 @@ async function checkSitemap(baseUrl) {
       required: [
         ...SITEMAP_SERVICE_PATHS,
         ...PUBLISHABLE_LEGAL_PATHS,
+        ...RECRUITMENT_PRIVACY_PATHS,
         ...INDEXABLE_NEWS_PATHS,
       ],
       forbidden: SITEMAP_FORBIDDEN,
@@ -538,6 +560,7 @@ async function main() {
     1 +
     SITEMAP_SERVICE_PATHS.length +
     PUBLISHABLE_LEGAL_PATHS.length +
+    RECRUITMENT_PRIVACY_PATHS.length +
     SITEMAP_FORBIDDEN.length;
   failures.push(...sitemapFailures);
 

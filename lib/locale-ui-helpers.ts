@@ -1,4 +1,5 @@
 import type { Translation } from "@/lib/i18n";
+import { RECRUITMENT_PRIVACY_SLUGS } from "@/lib/recruitment-privacy-routes";
 
 type FooterLabels = {
   readonly privacy: string;
@@ -61,6 +62,52 @@ export function getContactFormCopy(
   void specialDataWarning;
   void specialDataWarningLink;
   return contactFormCopy;
+}
+
+// Career-section microcopy linking the recruitment privacy notice
+// (PL-091). HU/EN link their own locale's notice; DE shows the approved
+// German sentence but links the EN page because no reviewed DE notice
+// exists. ZH/KO return null — no reviewed translation, the line is
+// omitted on those partial/noindex locales (see
+// docs/legal/recruitment-privacy-review.md Section 2).
+export type CareerPrivacyNotice = {
+  readonly before: string;
+  readonly linkLabel: string;
+  readonly after: string;
+  readonly href: string;
+};
+
+export function getCareerPrivacyNotice(
+  locale: string,
+): CareerPrivacyNotice | null {
+  const huHref = `/hu/${RECRUITMENT_PRIVACY_SLUGS.hu}`;
+  const enHref = `/en/${RECRUITMENT_PRIVACY_SLUGS.en}`;
+
+  if (locale === "hu") {
+    return {
+      before: "Jelentkezés előtt kérjük, olvassa el a ",
+      linkLabel: "pályázói adatkezelési tájékoztatót",
+      after: ".",
+      href: huHref,
+    };
+  }
+  if (locale === "en") {
+    return {
+      before: "Before applying, please read the ",
+      linkLabel: "recruitment privacy notice",
+      after: ".",
+      href: enHref,
+    };
+  }
+  if (locale === "de") {
+    return {
+      before: "Bitte lesen Sie vor Ihrer Bewerbung die ",
+      linkLabel: "Datenschutzhinweise für Bewerbungen",
+      after: ".",
+      href: enHref,
+    };
+  }
+  return null;
 }
 
 // The footer map link title was a hardcoded Hungarian string on every

@@ -159,9 +159,11 @@ Chinese and Korean legal pages are not published.
 - HU privacy notice: https://www.afm.hu/hu/adatvedelem
 - HU legal notices: https://www.afm.hu/hu/aszf
 - HU impressum: https://www.afm.hu/hu/impresszum
+- HU recruitment privacy notice: https://www.afm.hu/hu/palyazoi-adatkezeles
 - EN privacy notice: https://www.afm.hu/en/adatvedelem
 - EN legal notices: https://www.afm.hu/en/aszf
 - EN impressum: https://www.afm.hu/en/impresszum
+- EN recruitment privacy notice: https://www.afm.hu/en/recruitment-privacy
 
 ## News
 

@@ -16,6 +16,11 @@ import {
   newsDetailUrl,
   newsIndexUrl,
 } from "@/lib/news-routing";
+import {
+  RECRUITMENT_PRIVACY_LOCALES,
+  recruitmentPrivacyAlternateLanguages,
+  recruitmentPrivacyUrl,
+} from "@/lib/recruitment-privacy-routes";
 
 const SITE_LAST_MODIFIED = new Date("2026-05-07T00:00:00.000Z");
 const SITEMAP_HOME_LOCALES = ["hu", "en"] as const;
@@ -119,6 +124,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         alternates: legalAlternates(slug),
       })),
     ),
+    // Recruitment privacy notice (PL-091 Option B): locale-specific slug
+    // pair, HU/EN only, published after DPO/legal sign-off.
+    ...RECRUITMENT_PRIVACY_LOCALES.map((locale) => ({
+      url: recruitmentPrivacyUrl(locale),
+      lastModified: SITE_LAST_MODIFIED,
+      changeFrequency: "yearly" as const,
+      priority: 0.3,
+      alternates: { languages: recruitmentPrivacyAlternateLanguages() },
+    })),
     ...sitemapServicePaths.map(({ locale, slug }) => ({
       url: `${SEO_DATA.url}/${locale}/${SERVICE_URL_SEGMENT}/${slug}`,
       lastModified: SITE_LAST_MODIFIED,

@@ -140,13 +140,27 @@ Still open:
    - the legitimate-interest assessment (LIA) for the 6(1)(f) processing;
    - HR's confirmation that no third-party data collection (reference
      checks) takes place during selection.
-2. Post-approval implementation pass (separate task, usual QA gates):
-   - Option B routes `/hu/palyazoi-adatkezeles` + `/en/recruitment-privacy`
-     with metadata and sitemap/hreflang/footer decisions;
-   - career-section microcopy link insertion (Section 2);
-   - consent-capture wording for the talent-pool retention in the
-     application flow (how applicants give the Section 8 consent in
-     practice — email wording, no new website form).
+2. Post-approval implementation pass — **implemented in source on main
+   (2026-06-12); production deploy gated on the written sign-off above**:
+   - Option B routes `/hu/palyazoi-adatkezeles` (HU-only 200) and
+     `/en/recruitment-privacy` (EN-only 200); every other locale/slug
+     combination 404s; canonical + HU/EN hreflang pair + sitemap entries;
+     content sourced from the v3 finals in
+     `lib/recruitment-privacy-content.ts` (same do-not-edit rule as
+     `lib/current-privacy-content.ts`);
+   - career-section microcopy link (Section 2): HU/EN link their own
+     notice, DE shows the approved German sentence linking the EN page,
+     ZH/KO omit the line;
+   - Nav: navy legal-page treatment + locale switcher maps the slug pair
+     and offers HU/EN only on these pages;
+   - llms.txt / llms-full.txt list the two URLs as public legal pages;
+   - the publication date in `lib/recruitment-privacy-content.ts` must be
+     confirmed/updated at sign-off before merge;
+   - still open for a later pass: consent-capture wording for the
+     talent-pool retention in the application flow (how applicants give
+     the Section 8 consent in practice — email wording, no new website
+     form); optional footer legal-link addition was intentionally left
+     out of scope.
 
 ## 6. Explicitly out of scope for this package
 

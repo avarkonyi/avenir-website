@@ -1,6 +1,8 @@
 import { asc, eq } from "drizzle-orm";
+import Link from "next/link";
 import type { Translation } from "@/lib/i18n";
 import { db, positions } from "@/lib/db";
+import { getCareerPrivacyNotice } from "@/lib/locale-ui-helpers";
 import { Icon } from "./Icon";
 
 // Per-locale column selection. Resolves audit P0-3: positions used to
@@ -45,6 +47,7 @@ export async function Career({
 }) {
   const cols = LOCALE_COLS[(locale in LOCALE_COLS ? locale : "hu") as Locale];
   const careerFallbacks = (t as TranslationWithCareerFallbacks).careerFallbacks;
+  const privacyNotice = getCareerPrivacyNotice(locale);
   const rows = await db
     .select({
       id: positions.id,
@@ -131,6 +134,34 @@ export async function Career({
             );
           })}
         </div>
+
+        {/* PL-091: recruitment privacy notice link near the apply buttons.
+            HU/EN link their own notice; DE links the EN page; ZH/KO omit
+            the line until reviewed translations exist (helper returns
+            null). */}
+        {privacyNotice && (
+          <p
+            style={{
+              marginTop: 24,
+              fontSize: 13,
+              lineHeight: 1.6,
+              color: "var(--avenir-text-soft)",
+            }}
+          >
+            {privacyNotice.before}
+            <Link
+              href={privacyNotice.href}
+              style={{
+                color: "#D1172E",
+                textDecoration: "underline",
+                fontWeight: 500,
+              }}
+            >
+              {privacyNotice.linkLabel}
+            </Link>
+            {privacyNotice.after}
+          </p>
+        )}
       </div>
     </section>
   );

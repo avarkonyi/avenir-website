@@ -9,7 +9,12 @@ type Props = {
   locale: string;
   pageTitle: string;
   pageDescription: string;
-  pageSlug: "adatvedelem" | "aszf" | "impresszum";
+  pageSlug:
+    | "adatvedelem"
+    | "aszf"
+    | "impresszum"
+    | "palyazoi-adatkezeles"
+    | "recruitment-privacy";
   children: React.ReactNode;
 };
 

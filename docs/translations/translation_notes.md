@@ -161,6 +161,13 @@ Watch especially for:
   `Private investigation` in any locale (2026-06-11); the i18n keys
   (`form.privateInvestigation`, `form.specialDataWarning*`) are retained for
   schema-shape stability and a future special-intake flow.
+- Recruitment privacy notice (PL-091, 2026-06-12, in source on main;
+  production deploy pending DPO sign-off): HU/EN pages only
+  (`/hu/palyazoi-adatkezeles`, `/en/recruitment-privacy`; HU
+  authoritative). Career microcopy: HU/EN link their own notice; DE shows
+  the approved German sentence but links the EN page (no reviewed DE
+  notice); ZH/KO omit the line until reviewed translations exist. DE/ZH/KO
+  notice translations are a future legal-review item (review package Q8).
 - Visible i18n consistency pass on 2026-06-06:
   - EN service-card detail links now use `Details`; HU remains `Részletek`;
   - ZH homepage value pillars now use the operative triad

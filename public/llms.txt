@@ -71,9 +71,11 @@ Hungarian and English legal pages are public.
 - https://www.afm.hu/hu/adatvedelem
 - https://www.afm.hu/hu/aszf
 - https://www.afm.hu/hu/impresszum
+- https://www.afm.hu/hu/palyazoi-adatkezeles
 - https://www.afm.hu/en/adatvedelem
 - https://www.afm.hu/en/aszf
 - https://www.afm.hu/en/impresszum
+- https://www.afm.hu/en/recruitment-privacy
 
 ## News
 

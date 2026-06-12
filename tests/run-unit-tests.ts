@@ -10,3 +10,4 @@ import "./certification-seed.test.ts";
 import "./news-localization.test.ts";
 import "./ux-safety-cleanup.test.tsx";
 import "./launch-news-en-service-labels.test.ts";
+import "./recruitment-privacy.test.ts";
