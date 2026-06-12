@@ -21,7 +21,7 @@ test("AutoWallis Pest is the only approved source reference and uses the supplie
   assert.equal(reference.displayName, "AutoWallis Pest");
   assert.equal(reference.legalEntity, "Wallis Motor Pest Kft.");
   assert.equal(reference.logoPath, "/references/autowallis-pest.png");
-  assert.equal(reference.websiteUrl, "https://autowallispest.hu/");
+  assert.equal(reference.websiteUrl, "https://www.bmw-autowallis.hu");
   assert.equal(reference.approved, true);
   assert.equal(reference.usageApproved, true);
   assert.deepEqual(reference.services, ["objektumorzes", "portaszolgalat"]);
@@ -97,7 +97,8 @@ test("References renders the AutoWallis card without testimonial or outcome clai
   assert.ok(html.includes("Budapesti prémium autókereskedelmi és szervizhálózat."));
   assert.ok(html.includes("Objektumőrzés"));
   assert.ok(html.includes("Recepciós és portaszolgálat"));
-  assert.ok(html.includes('href="https://autowallispest.hu/"'));
+  assert.ok(html.includes('href="https://www.bmw-autowallis.hu"'));
+  assert.equal(html.includes("https://autowallispest.hu/"), false);
   assert.ok(html.includes('target="_blank"'));
   assert.ok(html.includes('rel="noopener noreferrer"'));
   assert.ok(html.includes('aria-label="AutoWallis Pest hivatalos weboldal megnyitása"'));
@@ -127,6 +128,8 @@ test("References renders the AutoWallis card without testimonial or outcome clai
 
 test("References renders locale service chips and hides partial locales", async () => {
   const enHtml = renderToStaticMarkup(await References({ t: hu, locale: "en" }));
+  assert.ok(enHtml.includes('class="approved-reference-card"'));
+  assert.ok(enHtml.includes('href="https://www.bmw-autowallis.hu"'));
   assert.ok(enHtml.includes("Premium automotive retail and service network in Budapest."));
   assert.ok(enHtml.includes("On-site Security Guarding"));
   assert.ok(enHtml.includes("Reception and Gatehouse Services"));
@@ -136,6 +139,8 @@ test("References renders locale service chips and hides partial locales", async 
   assert.equal(enHtml.includes("↗"), false);
 
   const deHtml = renderToStaticMarkup(await References({ t: hu, locale: "de" }));
+  assert.ok(deHtml.includes('class="approved-reference-card"'));
+  assert.ok(deHtml.includes('href="https://www.bmw-autowallis.hu"'));
   assert.ok(deHtml.includes("Premium-Autohandels- und Servicenetz in Budapest."));
   assert.ok(deHtml.includes("Objektschutz vor Ort"));
   assert.ok(deHtml.includes("Empfangs- und Pförtnerdienst"));

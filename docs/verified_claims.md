@@ -142,7 +142,7 @@ Approved public reference:
 - Public display name: AutoWallis Pest
 - Internal legal/proof entity: Wallis Motor Pest Kft.
 - Logo asset path: `public/references/autowallis-pest.png`
-- Website URL used by the public card: `https://autowallispest.hu/`
+- Website URL used by the public card: `https://www.bmw-autowallis.hu`
 - Approval status: approved for public website reference-card use
 - Approved public use:
   - company logo
@@ -163,6 +163,7 @@ Approved public reference:
   - no "AutoWallis recommends Avenir" wording
   - no "official BMW partner" or manufacturer relationship claim beyond the supplied logo artwork
   - no service-outcome or incident-free claim
+- Note: URL is used as the supplied/approved reference website. It does not create a separate BMW official-partner or manufacturer relationship claim.
 - Note: logo is used as supplied/approved artwork. Do not publish the consent
   PDF or other approval documents publicly.
 

@@ -1037,22 +1037,22 @@ details > summary:focus-visible {
 
 .approved-reference-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1160px);
+  grid-template-columns: minmax(0, 960px);
   justify-content: center;
-  gap: 24px;
+  gap: 20px;
 }
 
 .approved-reference-card {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(280px, 47%) minmax(0, 1fr);
+  grid-template-columns: minmax(260px, 45%) minmax(0, 1fr);
   align-items: center;
   gap: 0;
   overflow: hidden;
-  min-height: 270px;
-  padding: 42px 56px;
+  min-height: 218px;
+  padding: 36px 42px;
   border: 1px solid #D8DEE8;
-  border-radius: 18px;
+  border-radius: 16px;
   background: #fff;
   box-shadow: 0 20px 48px rgba(11, 30, 62, 0.08);
   color: inherit;
@@ -1077,8 +1077,8 @@ details > summary:focus-visible {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 184px;
-  padding: 8px 64px 8px 16px;
+  min-height: 142px;
+  padding: 4px 44px 4px 8px;
 }
 
 .approved-reference-logo-frame::after {
@@ -1093,8 +1093,8 @@ details > summary:focus-visible {
 
 .approved-reference-logo-frame img {
   display: block;
-  max-width: min(100%, 430px);
-  max-height: 136px;
+  max-width: min(100%, 340px);
+  max-height: 104px;
   width: auto;
   height: auto;
   object-fit: contain;
@@ -1105,16 +1105,16 @@ details > summary:focus-visible {
 .approved-reference-meta {
   min-width: 0;
   display: grid;
-  gap: 24px;
+  gap: 18px;
   align-content: center;
-  padding-left: 64px;
+  padding-left: 44px;
 }
 
 .approved-reference-meta h3 {
-  margin: 0 0 14px;
+  margin: 0 0 10px;
   color: #0B1E3E;
   font-family: var(--font-head);
-  font-size: clamp(28px, 2.5vw, 36px);
+  font-size: clamp(25px, 2.2vw, 32px);
   font-weight: 800;
   line-height: 1.15;
 }
@@ -1122,29 +1122,32 @@ details > summary:focus-visible {
 .approved-reference-description {
   margin: 0;
   color: var(--avenir-text-muted);
-  font-size: 18px;
-  line-height: 1.6;
-  max-width: 520px;
+  font-size: 16px;
+  line-height: 1.55;
+  max-width: 430px;
 }
 
 .approved-reference-chips {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 10px;
+  max-width: 100%;
 }
 
 .approved-reference-chip {
   display: inline-flex;
   align-items: center;
-  min-height: 42px;
-  padding: 9px 16px;
+  max-width: 100%;
+  min-height: 38px;
+  padding: 8px 14px;
   border: 1px solid #E7EBF0;
   border-radius: 8px;
   background: #F2F4F7;
   color: #253044;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 500;
   line-height: 1.25;
+  white-space: normal;
 }
 
 @keyframes partner-logo-marquee {
@@ -1207,12 +1210,12 @@ details > summary:focus-visible {
   .approved-reference-card {
     grid-template-columns: 1fr;
     min-height: 0;
-    padding: 30px;
+    padding: 28px;
   }
 
   .approved-reference-logo-frame {
-    min-height: 132px;
-    padding: 0 0 26px;
+    min-height: 116px;
+    padding: 0 0 22px;
   }
 
   .approved-reference-logo-frame::after {
@@ -1220,12 +1223,12 @@ details > summary:focus-visible {
   }
 
   .approved-reference-logo-frame img {
-    max-width: min(100%, 360px);
-    max-height: 108px;
+    max-width: min(100%, 320px);
+    max-height: 96px;
   }
 
   .approved-reference-meta {
-    gap: 20px;
+    gap: 18px;
     padding-left: 0;
     text-align: left;
   }
@@ -1278,13 +1281,13 @@ details > summary:focus-visible {
     grid-template-columns: 1fr;
     gap: 16px;
     min-height: 0;
-    padding: 24px;
+    padding: 22px;
   }
   .approved-reference-logo-frame {
-    min-height: 108px;
+    min-height: 96px;
   }
   .approved-reference-logo-frame img {
-    max-height: 90px;
+    max-height: 82px;
   }
 
   .analytics-consent-banner {

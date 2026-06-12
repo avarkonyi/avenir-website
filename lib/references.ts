@@ -22,7 +22,7 @@ export const APPROVED_HOMEPAGE_REFERENCES: readonly ApprovedHomepageReference[] 
     displayName: "AutoWallis Pest",
     legalEntity: "Wallis Motor Pest Kft.",
     logoPath: "/references/autowallis-pest.png",
-    websiteUrl: "https://autowallispest.hu/",
+    websiteUrl: "https://www.bmw-autowallis.hu",
     alt: {
       hu: "AutoWallis Pest logó",
       en: "AutoWallis Pest logo",
