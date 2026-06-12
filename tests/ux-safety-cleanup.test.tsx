@@ -46,18 +46,22 @@ function renderHuContact(): string {
   );
 }
 
-test("security.txt exists with Contact and Expires lines and no invented security@ alias", () => {
+test("security.txt exposes the confirmed security contact and disclosure policy", () => {
   const text = readFileSync(
     path.join(process.cwd(), "public", ".well-known", "security.txt"),
     "utf8",
   );
 
+  assert.match(text, /^Contact: mailto:security@afm\.hu$/m);
   assert.match(text, /^Contact: mailto:dpo@afm\.hu$/m);
   assert.match(text, /^Contact: mailto:info@afm\.hu$/m);
+  assert.match(text, /^Preferred-Languages: hu, en$/m);
   assert.match(text, /^Expires: \d{4}-\d{2}-\d{2}T/m);
   assert.match(text, /^Canonical: https:\/\/www\.afm\.hu\/\.well-known\/security\.txt$/m);
-  assert.equal(text.includes("security@afm.hu"), false);
-  assert.equal(/^Policy:/m.test(text), false);
+  assert.match(text, /^Policy: https:\/\/www\.afm\.hu\/en\/responsible-disclosure$/m);
+  assert.equal(/^Hiring:/m.test(text), false);
+  assert.equal(/^Acknowledgments:/m.test(text), false);
+  assert.equal(/^Encryption:/m.test(text), false);
 });
 
 test("references nav section is visible only where approved references render", () => {

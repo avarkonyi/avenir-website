@@ -14,7 +14,9 @@ type Props = {
     | "aszf"
     | "impresszum"
     | "palyazoi-adatkezeles"
-    | "recruitment-privacy";
+    | "recruitment-privacy"
+    | "felelos-hibabejelentes"
+    | "responsible-disclosure";
   children: React.ReactNode;
 };
 

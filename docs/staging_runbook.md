@@ -434,6 +434,28 @@ The error may print only a credential-free DB target summary such as host and da
 
 This is intentional: a Preview or production build with an unavailable service-readiness source is not a reliable SEO artifact. Fix the DB target or retry the build, then verify the live Preview `/sitemap.xml`.
 
+## Security.txt / Responsible Disclosure QA
+
+Status: PL-090 source implementation prepared after owner confirmation that
+`security@afm.hu` is active and monitored.
+
+Before merging or deploying security/trust utility changes, verify:
+
+- `/.well-known/security.txt` returns 200;
+- `security.txt` contains `security@afm.hu`, `dpo@afm.hu`, `info@afm.hu`,
+  `Policy: https://www.afm.hu/en/responsible-disclosure`, and an `Expires:`
+  timestamp;
+- `/hu/felelos-hibabejelentes` returns 200;
+- `/en/responsible-disclosure` returns 200;
+- `/de/felelos-hibabejelentes`, `/de/responsible-disclosure`,
+  `/zh/responsible-disclosure`, and `/ko/responsible-disclosure` return 404;
+- no response-time SLA, guaranteed fix time, bug-bounty reward promise, PGP key,
+  acknowledgement/Hall-of-Fame promise, or expanded physical/social-engineering
+  scope is added without separate owner/legal/process approval.
+
+The pages are discoverable through `security.txt`; sitemap policy is not
+expanded for PL-090.
+
 ## Public News / Article QA Checklist
 
 Status: HU/EN public article layer plus DE noindex review layer.

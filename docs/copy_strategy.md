@@ -22,6 +22,25 @@ The next content/business layer should focus on proof-safe trust governance,
 post-launch legal/privacy alignment, Search Console/Bing monitoring, and 3-5 HU
 tudastar articles.
 
+## Security and trust utility copy
+
+The responsible-disclosure surfaces are trust/operations utility pages, not
+marketing content. Keep them short, factual and bounded:
+
+- security reports use `security@afm.hu`;
+- privacy matters use `dpo@afm.hu`;
+- general enquiries use `info@afm.hu`;
+- no bug bounty or reward promise;
+- no response-time SLA or guaranteed fix time;
+- no broad legal safe-harbor wording;
+- no permission for physical testing, social engineering, phishing, DoS/DDoS,
+  load testing, data exfiltration, internal systems, customer systems, partner
+  systems, or third-party systems.
+
+Current approved routes are `/hu/felelos-hibabejelentes` and
+`/en/responsible-disclosure`. Do not create DE/ZH/KO disclosure copy or routes
+without a separate localization and legal/process review.
+
 ## Positioning
 
 Avenir should communicate as a serious B2B operational partner, not as a generic security or facility service provider.

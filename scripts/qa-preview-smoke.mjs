@@ -99,6 +99,18 @@ const RECRUITMENT_PRIVACY_404_PATHS = [
   "/ko/recruitment-privacy",
 ];
 
+const RESPONSIBLE_DISCLOSURE_PATHS = [
+  "/hu/felelos-hibabejelentes",
+  "/en/responsible-disclosure",
+];
+
+const RESPONSIBLE_DISCLOSURE_404_PATHS = [
+  "/de/felelos-hibabejelentes",
+  "/de/responsible-disclosure",
+  "/zh/responsible-disclosure",
+  "/ko/responsible-disclosure",
+];
+
 const DE_REVIEW_LEGAL_PATHS = [
   "/de/adatvedelem",
   "/de/aszf",
@@ -126,6 +138,7 @@ const EXPECTED_200 = [
   ...READY_SERVICE_PATHS,
   ...PUBLISHABLE_LEGAL_PATHS,
   ...RECRUITMENT_PRIVACY_PATHS,
+  ...RESPONSIBLE_DISCLOSURE_PATHS,
   ...DE_REVIEW_LEGAL_PATHS,
   ...INDEXABLE_NEWS_PATHS,
   ...DE_REVIEW_NEWS_PATHS,
@@ -142,6 +155,7 @@ const EXPECTED_404 = [
   ...UNPUBLISHED_LEGAL_PATHS,
   ...UNPUBLISHED_NEWS_PATHS,
   ...RECRUITMENT_PRIVACY_404_PATHS,
+  ...RESPONSIBLE_DISCLOSURE_404_PATHS,
 ];
 
 const SITEMAP_FORBIDDEN = [
@@ -346,6 +360,8 @@ async function checkSitemap(baseUrl) {
         ...RECRUITMENT_PRIVACY_PATHS,
         ...INDEXABLE_NEWS_PATHS,
       ],
+      // Responsible-disclosure pages are intentionally discoverable through
+      // security.txt in this pass; the sitemap policy is not expanded here.
       forbidden: SITEMAP_FORBIDDEN,
     }),
   );
@@ -398,6 +414,21 @@ async function checkSecurityTxt(baseUrl) {
       label: `${path} Contact line`,
       detail: "expected at least one 'Contact: mailto:' line",
     });
+  }
+
+  for (const required of [
+    "Contact: mailto:security@afm.hu",
+    "Contact: mailto:dpo@afm.hu",
+    "Contact: mailto:info@afm.hu",
+    "Policy: https://www.afm.hu/en/responsible-disclosure",
+  ]) {
+    if (!result.text.includes(required)) {
+      failures.push({
+        ok: false,
+        label: `${path} contains ${required}`,
+        detail: `missing expected content: ${required}`,
+      });
+    }
   }
 
   if (!/^Expires:\s*\d{4}-\d{2}-\d{2}T/im.test(result.text)) {
@@ -575,7 +606,7 @@ async function main() {
   }
 
   const securityTxtFailures = await checkSecurityTxt(baseUrl);
-  totalChecks += 3;
+  totalChecks += 6;
   failures.push(...securityTxtFailures);
 
   const robotsFailures = await checkRobots(baseUrl, allowProduction);

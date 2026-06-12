@@ -222,8 +222,12 @@ UX/safety state of the public forms (2026-06-11):
   messages no longer promise a fixed response time;
 - the public dropdown no longer offers `Magánnyomozás`; the backend keeps
   accepting the legacy `magannyomozas` key (see backlog PL-015/PL-059);
-- `public/.well-known/security.txt` exists with `dpo@afm.hu` / `info@afm.hu`
-  contacts and `Expires: 2027-06-10` (see backlog PL-090);
+- `public/.well-known/security.txt` exists with `security@afm.hu`,
+  `dpo@afm.hu`, `info@afm.hu`, an EN responsible-disclosure Policy URL, and
+  `Expires: 2027-06-10` (see backlog PL-090);
+- responsible-disclosure pages are prepared for HU and EN only:
+  `/hu/felelos-hibabejelentes` and `/en/responsible-disclosure`; DE/ZH/KO
+  disclosure routes remain closed;
 - the homepage `#references` section now renders the source-approved
   AutoWallis Pest reference card for HU/EN/DE only; ZH/KO remain hidden for
   the references section. The card is a full-card external link, uses the
