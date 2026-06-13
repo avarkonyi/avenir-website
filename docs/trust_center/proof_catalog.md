@@ -219,25 +219,30 @@ credential structured data:
 - id: `private_investigation_licence_legal_only`
 - category: licences_regulated_activity
 - title: Private investigation licence legal-only fact
-- status: `not_public`
-- public_surface_allowed: `legal_pages`
+- status: `approved_public`
+- public_surface_allowed: `legal_pages`, `trust_center`, `procurement_pack`
 - public_document: false
 - public_url: `/hu/impresszum`, `/en/impresszum`
 - internal_proof_location: authority certificate in owner-controlled records
 - owner: legal
 - review_frequency: on_change
 - expiry_or_review_date: valid until revoked
-- allowed_wording_hu: "Magánnyomozói tevékenység: 01030-822/4925-3/2018,
-  visszavonásig érvényes, kizárólag jogi/proof kontextusban."
-- allowed_wording_en: "Private Investigation Activity: official certificate
-  01030-822/4925-3/2018, valid until revoked, legal/proof context only."
-- allowed_wording_de: "Privatdetektivtätigkeit: offizieller Nachweis
-  01030-822/4925-3/2018, bis Widerruf gültig, nur Rechts-/Nachweiskontext."
+- allowed_wording_hu: "Magánnyomozói tevékenység - engedély részletei az
+  Impresszumban."
+- allowed_wording_en: "Private investigation activity - licence details are
+  available in the Legal Notice."
+- allowed_wording_de: "Privatdetektivtätigkeit - Genehmigungsdetails im
+  Impressum."
 - restricted_wording: no service marketing proof, no surveillance framing, no
-  hidden monitoring framing, no employee-monitoring framing, no AI-search proof
-  claim.
-- notes: This fact must not drive public Special Services copy before separate
-  legal/process approval.
+  hidden monitoring framing, no employee-monitoring framing, no service CTA, no
+  public contact-dropdown option and no AI-search marketing claim.
+- notes: Legal source values appear in `SEO_LICENSES` as official certificate
+  `01030-822/4925-3/2018`, valid until revoked, issuer `III. Kerületi
+  Rendőrkapitányság, Igazgatásrendészeti Osztály` /
+  `3rd District Police Station, Administrative Police Department`. Exact
+  licence details remain on the Impresszum / Legal Notice and in legal/proof
+  governance. This fact must not drive public Special Services copy before
+  separate legal/process approval.
 
 ### liability_insurance
 

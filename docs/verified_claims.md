@@ -39,12 +39,15 @@ grounding files (`llms.txt`, `llms-full.txt`) as marketing/proof claims.
 - The guarding licence (01030-822/4926-7/2023) remains an approved AI-search
   claim — it is the primary regulated-activity authorization and is already
   listed in both llms files and the proof-safe set.
-- The biztonságtechnikai (security technology) and magánnyomozói (private
-  investigation) licences are business-approved claims for legal/proof surfaces,
-  but are NOT surfaced as AI-search proof-safe claims and are not highlighted in
-  the llms files (removed on 2026-06-06). Private investigation in particular
-  stays discovery-only per AGENTS.md and must not be framed as AI
-  marketing/proof.
+- The biztonságtechnikai (security technology) licence is a business-approved
+  claim for legal/proof surfaces, but is not surfaced as an AI-search
+  proof-safe claim.
+- The magánnyomozói (private investigation) licence is a business-approved
+  legal/proof fact. It may be mentioned in Trust Center / llms policy wording
+  only as legal/regulatory information, not as a promoted service, public
+  contact option, service route, sales claim or marketing claim. Private
+  investigation stays discovery-only per AGENTS.md and must not be framed as
+  AI marketing/proof.
 - Licences are not added to JSON-LD `hasCredential` in the current scope.
   Verified credential schema (ISO certificates already present; licences/D&B
   later) is handled by a future Trust Center / proof catalog, not as decorative

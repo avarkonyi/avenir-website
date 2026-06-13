@@ -93,6 +93,11 @@ certificate links, regulated-activity summary links, data-protection/security
 notices, the responsible-disclosure policy, security.txt, approved reference
 summary information and additional-proof request guidance.
 
+Private investigation activity is legal/regulatory information only in the
+Legal Notice and Trust Center regulated-activity summary. It is not a promoted
+public service, contact-dropdown option, service route, sales claim or
+marketing claim.
+
 Do not infer that Dun & Bradstreet certificate PDFs, raw insurance policies,
 signed reference consent documents, DPA/SCC/LIA materials, processor contracts,
 licence scans, or internal tender materials are publicly downloadable unless a

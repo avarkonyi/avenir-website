@@ -55,6 +55,11 @@ insurance policies, signed reference consent files, processor evidence, or
 other internal proof files are publicly downloadable unless the specific public
 page links them.
 
+Private investigation activity is legal/regulatory information only in the
+Legal Notice and Trust Center regulated-activity summary. It is not a promoted
+public service, contact-dropdown option, service route, sales claim or
+marketing claim.
+
 ## Current public service detail URLs
 
 Service detail pages are public in Hungarian and English. The English URL uses

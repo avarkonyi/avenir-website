@@ -270,6 +270,8 @@ Allowed direction:
 - ISO certificates with scope-safe wording;
 - D&B AA as Dun & Bradstreet creditworthiness wording, not OPTEN;
 - legal/licence summaries in legal/proof context;
+- private investigation activity only as regulated-activity legal/proof
+  information, with details linked to Impresszum / Legal Notice;
 - responsible-disclosure and security.txt links;
 - approved reference summaries with the recorded restrictions.
 
@@ -336,8 +338,10 @@ P1/P2 content and governance items:
   service/legal/news pages are noindex review-mode only (not in
   sitemap/hreflang); ZH/KO are homepage-only/partial and have no news routes.
   Do not state the service-detail layer is "Hungarian only" once EN is live,
-  and do not surface the private investigation licence as an AI-search proof
-  claim.
+  and do not surface the private investigation licence as an AI-search
+  marketing/proof claim. A legal/regulatory-only policy note is allowed when it
+  clearly says private investigation is not a promoted service, contact option
+  or service route.
 - Visible non-HU UI fallback cleanup on 2026-06-06: EN/ZH/KO service-card
   detail links use `Details` instead of `Részletek`; ZH pillars use the
   current operational triad; ZH/KO D&B labels are localized; KO career cards

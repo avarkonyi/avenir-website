@@ -97,13 +97,14 @@ Explain regulated activity coverage without turning licence numbers into
 decorative marketing proof.
 
 Displayable proof entries:
-`guarding_licence_summary`, `security_technology_licence_summary`, legal-page
-links.
+`guarding_licence_summary`, `security_technology_licence_summary`,
+`private_investigation_licence_legal_only`, legal-page links.
 
 Must not display:
-Private-investigation licence as marketing proof; police/public-authority role;
-licence `hasCredential` structured-data expansion; exact licence numbers inside
-service body/trust-card copy.
+Private-investigation licence as marketing proof, service route, contact
+option or CTA; police/public-authority role; licence `hasCredential`
+structured-data expansion; exact licence numbers inside service body/trust-card
+copy.
 
 Review gate:
 Legal/proof owner confirms which licence summaries may appear publicly and in

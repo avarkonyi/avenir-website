@@ -70,6 +70,10 @@ Allowed:
 - EN: "Licensed security operations"
 - HU: "A pontos engedélyadatok az Impresszumban találhatók."
 - EN: "Exact licence details are available in the Legal Notice."
+- HU: "Magánnyomozói tevékenység" only inside regulated-activity legal/proof
+  context.
+- EN: "Private investigation activity" only inside regulated-activity
+  legal/proof context.
 
 Restricted:
 
@@ -77,7 +81,8 @@ Restricted:
   cards;
 - do not imply police/public-authority role;
 - do not imply the licence guarantees service outcomes;
-- do not use the private investigation licence as a public marketing proof.
+- do not use the private investigation licence as a public marketing proof,
+  service CTA, service route or contact-dropdown option.
 
 ## Insurance Wording Rules
 
@@ -136,11 +141,13 @@ Restricted:
 ## Private Investigation Legal-Only Rule
 
 The private investigation licence may appear only in legal/proof contexts such
-as Impresszum / Legal Notice. It must not appear as:
+as Impresszum / Legal Notice and the Trust Center regulated-activity summary.
+It must not appear as:
 
 - a Trust Center MVP proof card;
 - a service marketing claim;
-- an AI-search proof claim;
+- an AI-search marketing/proof claim;
 - a homepage trust statistic;
+- a contact-dropdown option;
+- a service route;
 - a Special Services promise without separate legal/process approval.
-

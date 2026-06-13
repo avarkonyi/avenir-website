@@ -41,7 +41,7 @@ legal and proof review is complete.
 | Overview | Short explanation of available proof and request path. | selected approved entries | Ready for planning |
 | Company information | Company identity summary and Impresszum links. | `company_identity` | Public wording approved |
 | Certifications | ISO 9001 and ISO 27001 cards with public PDF links and validity. | `iso_9001`, `iso_27001` | Public documents approved |
-| Regulated activities | Short guarding and security-technology licence summaries, linked to legal pages. | `guarding_licence_summary`, `security_technology_licence_summary` | Public summary allowed |
+| Regulated activities | Short guarding, security-technology and private-investigation legal/regulatory summaries, linked to legal pages. | `guarding_licence_summary`, `security_technology_licence_summary`, `private_investigation_licence_legal_only` | Public summary allowed; private investigation legal-only |
 | Insurance | Professional liability insurance summary only if owner/legal confirms public wording. | `liability_insurance` | Pending review |
 | Data protection | Privacy, DPO and recruitment privacy links. | `dpo_contact`, `privacy_policy_hu_en_de_status`, `recruitment_privacy_notice` | HU/EN public; DE review status noted only internally |
 | Security reporting | Responsible disclosure and security.txt links. | `responsible_disclosure`, `security_txt` | Public HU/EN |
@@ -70,7 +70,8 @@ changes their status:
 - signed AutoWallis Pest consent or logo-approval documents;
 - raw professional liability insurance policy;
 - DPA, SCC, LIA, processor contract or transfer-safeguard evidence;
-- private investigation licence as marketing proof;
+- private investigation licence as marketing proof, service route, contact
+  option or CTA;
 - national security registry documents;
 - unapproved ESG, sustainability, EcoVadis or supplier-due-diligence documents;
 - tender-only internal packs;
@@ -117,4 +118,3 @@ Before a public Trust Center launch:
 7. JSON-LD/AI-search additions are limited to approved entries.
 8. QA verifies that no unapproved proof, OPTEN wording, SLA guarantee or client
    claim appears.
-

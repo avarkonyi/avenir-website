@@ -96,6 +96,44 @@ test("Trust Center content includes only approved MVP sections and omits pending
   }
 });
 
+test("Trust Center regulated activities include private investigation only as legal information", () => {
+  const huText = JSON.stringify(TRUST_CENTER_CONTENT.hu);
+  const enText = JSON.stringify(TRUST_CENTER_CONTENT.en);
+
+  assert.match(huText, /Magánnyomozói tevékenység/);
+  assert.match(huText, /Impresszumban/);
+  assert.match(enText, /Private investigation activity/);
+  assert.match(enText, /Legal Notice/);
+
+  for (const renderedText of [huText, enText]) {
+    assert.doesNotMatch(renderedText, /Magánnyomozás ajánlatkérés/i);
+    assert.doesNotMatch(renderedText, /Request private investigation/i);
+    assert.doesNotMatch(renderedText, /Private investigation services available/i);
+    assert.doesNotMatch(renderedText, /service CTA/i);
+  }
+});
+
+test("llms treats private investigation as legal/regulatory information only", () => {
+  const llms = source("public/llms.txt");
+  const llmsFull = source("public/llms-full.txt");
+
+  for (const text of [llms, llmsFull]) {
+    assert.match(text, /private investigation/i);
+    assert.match(text, /legal\/regulatory information only/i);
+    assert.doesNotMatch(text, /sales proof/i);
+    assert.doesNotMatch(text, /marketing proof/i);
+    assert.doesNotMatch(text, /Request private investigation/i);
+  }
+});
+
+test("public contact dropdown remains closed for private investigation", () => {
+  const contact = source("components/Contact.tsx");
+
+  assert.doesNotMatch(contact, /<option[^>]*>\s*Magánnyomozás\s*<\/option>/i);
+  assert.doesNotMatch(contact, /<option[^>]*>\s*Private investigation\s*<\/option>/i);
+  assert.doesNotMatch(contact, /value="magannyomozas"/);
+});
+
 test("Trust Center route files guard wrong locale and slug variants", () => {
   const huRoute = source("app/[locale]/megfelelosegi-kozpont/page.tsx");
   const enRoute = source("app/[locale]/trust-center/page.tsx");

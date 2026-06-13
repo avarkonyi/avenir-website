@@ -107,7 +107,7 @@ export const TRUST_CENTER_CONTENT: Record<
         id: "regulated-operations",
         heading: "Engedélyezett vagyonvédelmi működés",
         body:
-          "Az Avenir szabályozott vagyonvédelmi és kapcsolódó biztonságtechnikai tevékenységeinek részletes engedélyadatai az Impresszumban érhetők el. A Megfelelőségi központban csak összefoglaló jellegű tájékoztatás jelenik meg; az engedélyek nem jelentenek hatósági szerepet vagy szolgáltatási eredménygaranciát.",
+          "Az Avenir szabályozott vagyonvédelmi és kapcsolódó engedélyköteles tevékenységeinek részletes engedélyadatai az Impresszumban érhetők el. A Megfelelőségi központban csak összefoglaló jellegű tájékoztatás jelenik meg; az engedélyek nem jelentenek hatósági szerepet vagy szolgáltatási eredménygaranciát.",
         items: [
           {
             title: "Személy- és vagyonvédelem",
@@ -118,6 +118,11 @@ export const TRUST_CENTER_CONTENT: Record<
             title: "Biztonságtechnika",
             body:
               "Biztonságtechnikai tervező-szerelő jogosultság jogi és megfelelőségi kontextusban. A pontos engedélyadatok az Impresszumban találhatók.",
+          },
+          {
+            title: "Magánnyomozói tevékenység",
+            body:
+              "Magánnyomozói tevékenység jogi és megfelelőségi kontextusban. A pontos engedélyadatok az Impresszumban találhatók.",
           },
         ],
         links: [{ label: "Impresszum", href: "/hu/impresszum" }],
@@ -253,7 +258,7 @@ export const TRUST_CENTER_CONTENT: Record<
         id: "regulated-operations",
         heading: "Licensed security operations",
         body:
-          "Detailed licence information for Avenir's regulated security and related security-technology activities is available in the Legal Notice. The Trust Center provides summary information only; licences do not imply a public-authority role or a service-outcome guarantee.",
+          "Detailed licence information for Avenir's regulated security and related licensed activities is available in the Legal Notice. The Trust Center provides summary information only; licences do not imply a public-authority role or a service-outcome guarantee.",
         items: [
           {
             title: "Personal and property security",
@@ -264,6 +269,11 @@ export const TRUST_CENTER_CONTENT: Record<
             title: "Security technology",
             body:
               "Security systems designer-installer certificate in legal and compliance context. Exact certificate details are available in the Legal Notice.",
+          },
+          {
+            title: "Private investigation activity",
+            body:
+              "Private investigation activity in legal and compliance context. Exact licence details are available in the Legal Notice.",
           },
         ],
         links: [{ label: "Legal Notice", href: "/en/impresszum" }],

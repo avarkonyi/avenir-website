@@ -151,6 +151,12 @@ const CHECKS = [
     name: "private investigation licence surfaced as AI-search proof claim",
     pattern: /private investigation licence/i,
     appliesTo: isLlmsFile,
+    allowLine: isPrivateInvestigationLegalOnlyLine,
+  },
+  {
+    name: "private investigation marketing CTA or service promotion",
+    pattern: /Request private investigation|Magánnyomozás ajánlatkérés|Private investigation services available/i,
+    appliesTo: isPublicSource,
   },
 ];
 
@@ -178,6 +184,12 @@ function isProtectiveGuaranteeLine(line) {
 
 function isProtectiveOptenLine(line) {
   return /\b(not|no|without|unless|do not|unapproved|separate|separately|nem|ne|külön|nem azonos)\b/i.test(
+    line,
+  );
+}
+
+function isPrivateInvestigationLegalOnlyLine(line) {
+  return /legal\/regulatory information only|not (?:a )?(?:promoted public service|service route|contact-dropdown option|sales claim|marketing claim)|legal\/proof context only/i.test(
     line,
   );
 }

@@ -118,7 +118,9 @@ proof copy:
 - no raw insurance policy links;
 - no `guaranteed`, `risk-free`, `zero supplier risk`, GDPR guarantee or
   SLA-like wording;
-- no private-investigation licence in marketing/proof cards;
+- private-investigation licence may appear only as legal/regulatory
+  information in the regulated-activities section; no marketing/proof card,
+  service route, contact option or CTA;
 - no testimonial/case-study/performance wording for AutoWallis Pest.
 
 ## Deployment Checklist

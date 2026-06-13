@@ -161,7 +161,9 @@ Document link: ISO/IEC 27001 certificate
 ## 4. Regulated Activities and Licences
 
 Decision: include summary only, link to Impresszum / Legal Notice for exact
-details. Do not use private investigation licence as a Trust Center proof card.
+details. Private investigation may appear only as legal/regulatory information
+inside this regulated-activities section; do not use it as a Trust Center proof
+card, service route, contact option or marketing claim.
 
 ### HU draft
 
@@ -171,7 +173,7 @@ Engedélyezett vagyonvédelmi működés
 
 Body:
 
-Az Avenir szabályozott vagyonvédelmi és kapcsolódó biztonságtechnikai tevékenységeinek részletes engedélyadatai az Impresszumban érhetők el. A Megfelelőségi központban csak összefoglaló jellegű tájékoztatás jelenik meg; az engedélyek nem jelentenek hatósági szerepet vagy szolgáltatási eredménygaranciát.
+Az Avenir szabályozott vagyonvédelmi és kapcsolódó engedélyköteles tevékenységeinek részletes engedélyadatai az Impresszumban érhetők el. A Megfelelőségi központban csak összefoglaló jellegű tájékoztatás jelenik meg; az engedélyek nem jelentenek hatósági szerepet vagy szolgáltatási eredménygaranciát.
 
 Cards:
 
@@ -183,9 +185,13 @@ Engedélyezett vagyonvédelmi tevékenység jogi/proof kontextusban. A pontos en
 
 Biztonságtechnikai tervező-szerelő jogosultság jogi/proof kontextusban. A pontos engedélyadatok az Impresszumban találhatók.
 
+3. Magánnyomozói tevékenység
+
+Magánnyomozói tevékenység jogi/proof kontextusban. A pontos engedélyadatok az Impresszumban találhatók.
+
 Legal-only note:
 
-A magánnyomozói engedély jogi/proof kontextusban kezelendő, és nem jelenik meg szolgáltatásmarketing vagy általános Trust Center bizonyítékkártyaként.
+A magánnyomozói tevékenység kizárólag jogi/proof kontextusban jelenhet meg. Nem szolgáltatásmarketing, nem ajánlatkérési opció és nem általános Trust Center bizonyítékkártya.
 
 ### EN draft
 
@@ -195,7 +201,7 @@ Licensed security operations
 
 Body:
 
-Detailed licence information for Avenir's regulated security and related security-technology activities is available in the Legal Notice. The Trust Center provides summary information only; licences do not imply a public-authority role or a service-outcome guarantee.
+Detailed licence information for Avenir's regulated security and related licensed activities is available in the Legal Notice. The Trust Center provides summary information only; licences do not imply a public-authority role or a service-outcome guarantee.
 
 Cards:
 
@@ -207,9 +213,13 @@ Licensed security activity in legal/proof context. Exact licence details are ava
 
 Security systems designer-installer certificate in legal/proof context. Exact certificate details are available in the Legal Notice.
 
+3. Private investigation activity
+
+Private investigation activity in legal/proof context. Exact licence details are available in the Legal Notice.
+
 Legal-only note:
 
-The private investigation licence is handled only in legal/proof context and is not displayed as service marketing or a general Trust Center proof card.
+Private investigation activity is handled only in legal/proof context. It is not service marketing, not a quote-request option and not a general Trust Center proof card.
 
 ## 5. Insurance
 
@@ -433,4 +443,3 @@ Additional non-public documents may be shared as part of a separate agreement or
 Contact note:
 
 For procurement or vendor pre-qualification requests, please use the general contact channels and indicate which document is needed and for what purpose.
-
