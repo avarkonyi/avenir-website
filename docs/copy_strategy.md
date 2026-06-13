@@ -255,6 +255,10 @@ verified-claims files as source of truth:
 - `docs/trust_center/trust_center_ia.md`
 - `docs/trust_center/public_mvp_scope.md`
 - `docs/trust_center/proof_guard_recommendations.md`
+- `docs/trust_center/public_mvp_inclusion_matrix.md`
+- `docs/trust_center/public_mvp_content_spec.md`
+- `docs/trust_center/open_decisions.md`
+- `docs/trust_center/proof_language_rules.md`
 - `docs/verified_claims.md`
 
 Keep Trust Center copy procurement-supportive and factual. It should describe
@@ -321,10 +325,12 @@ P1/P2 content and governance items:
 - D&B AA versus OPTEN/A+ governance: public wording now uses D&B AA High
   Creditworthy 2026 as the Dun & Bradstreet proof item. Do not call it OPTEN
   A+ unless separate OPTEN proof is provided and reviewed.
-- Trust Center IA/proof-catalog foundation is prepared in docs only. Public
-  route implementation, document downloads, D&B certificate PDF publication,
-  liability-insurance summary publication and procurement-pack scope still need
-  owner/proof/legal decisions.
+- Trust Center IA/proof-catalog foundation and HU/EN public MVP content spec
+  are prepared in docs only. Public route implementation, document downloads,
+  D&B certificate PDF publication, liability-insurance summary publication,
+  AutoWallis Trust Center placement and procurement-pack scope still need
+  owner/proof/legal decisions recorded in
+  `docs/trust_center/open_decisions.md`.
 - AI-search grounding files (`llms.txt`, `llms-full.txt`) must reflect the
   current locale/route status (updated 2026-06-06): HU and EN are indexed
   production languages with live service, legal and news layers; DE

@@ -168,8 +168,8 @@ Ownership / decision needed:
 
 Purpose: create a dedicated public proof and procurement-support layer.
 
-Status: Next. Foundation docs prepared on 2026-06-13; implementation is still
-pending.
+Status: Next. Foundation docs and public MVP content specification prepared on
+2026-06-13; implementation is still pending.
 
 Foundation artifacts:
 
@@ -177,6 +177,11 @@ Foundation artifacts:
 - `docs/trust_center/trust_center_ia.md`
 - `docs/trust_center/public_mvp_scope.md`
 - `docs/trust_center/proof_guard_recommendations.md`
+- `docs/trust_center/public_mvp_inclusion_matrix.md`
+- `docs/trust_center/public_mvp_content_spec.md`
+- `docs/trust_center/open_decisions.md`
+- `docs/trust_center/runtime_implementation_plan.md`
+- `docs/trust_center/proof_language_rules.md`
 
 This phase must be explicit. It should not be buried under generic proof
 governance, because procurement teams need a predictable place to find approved
@@ -262,6 +267,8 @@ Partner/logo strip decision:
 Exit criteria:
 
 - Trust Center IA and document categories approved.
+- MVP inclusion matrix and HU/EN content spec approved.
+- P1 open decisions resolved or explicitly deferred.
 - Every public document has status, source, owner, expiry/review information
   and allowed surfaces.
 - Capability statement PDF content is proof-safe and matches the website.

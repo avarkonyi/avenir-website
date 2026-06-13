@@ -8,6 +8,10 @@ Detailed proof-asset metadata, public-document status, allowed surfaces and
 review/expiry tracking live in `docs/trust_center/proof_catalog.md`. This file
 continues to control approved public wording and claim restrictions.
 
+The planned Trust Center MVP uses `docs/trust_center/public_mvp_inclusion_matrix.md`
+and `docs/trust_center/public_mvp_content_spec.md` to decide what can appear
+publicly. Do not infer public Trust Center approval from this file alone.
+
 ## Approved Claims
 
 The following claims may be used in public website copy when the wording follows the usage rules below:
