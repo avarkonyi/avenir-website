@@ -1,6 +1,6 @@
 # Avenir Website Project Handover
 
-Last updated: 2026-06-06
+Last updated: 2026-06-13
 
 Production URL: https://www.afm.hu
 
@@ -23,6 +23,13 @@ The actionable post-launch backlog lives in:
 The proof and public-claim governance source of truth is:
 
 - `docs/verified_claims.md`
+- `docs/trust_center/proof_catalog.md`
+
+The Trust Center foundation documents are:
+
+- `docs/trust_center/trust_center_ia.md`
+- `docs/trust_center/public_mvp_scope.md`
+- `docs/trust_center/proof_guard_recommendations.md`
 
 ## Current Production Scope
 
@@ -233,6 +240,9 @@ UX/safety state of the public forms (2026-06-11):
   the references section. The card is a full-card external link, uses the
   supplied logo asset and only the approved service chips. Broader
   partner/logo-wall decisions remain in backlog PL-029.
+- the Trust Center / Megfelelőségi központ has a docs-only IA and proof-catalog
+  foundation. No public route, sitemap entry, hreflang cluster or runtime UI has
+  launched for it yet.
 
 ## Admin and Upload Security
 
@@ -306,6 +316,7 @@ The roadmap intentionally preserves these older ideas:
 - procurement / tender readiness page;
 - HU/EN capability statement PDF;
 - proof library / verified claims governance;
+- Trust Center IA, public MVP scope and proof guard recommendations;
 - partner/logo strip decision between logo wall, sector icons or sector text;
 - career expansion with `/karrier`, job detail pages and JobPosting schema;
 - future EN-native slug architecture with `/en/services/...` and redirects;

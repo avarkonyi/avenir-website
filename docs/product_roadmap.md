@@ -1,6 +1,6 @@
 # Avenir Website Product Roadmap
 
-Last updated: 2026-06-06
+Last updated: 2026-06-13
 
 Production URL: https://www.afm.hu
 
@@ -65,6 +65,8 @@ AOS internal product track outside the public website roadmap.
 - Contact rate limiter supports Upstash REST and Vercel KV REST env names.
 - Shared `requireAdmin()` allowlist enforcement is implemented.
 - Admin uploads include PDF/JPEG/PNG/WEBP magic-byte validation.
+- Trust Center IA and proof catalog foundation are prepared in docs only; no
+  public Trust Center route has launched.
 
 ---
 
@@ -166,7 +168,15 @@ Ownership / decision needed:
 
 Purpose: create a dedicated public proof and procurement-support layer.
 
-Status: Next.
+Status: Next. Foundation docs prepared on 2026-06-13; implementation is still
+pending.
+
+Foundation artifacts:
+
+- `docs/trust_center/proof_catalog.md`
+- `docs/trust_center/trust_center_ia.md`
+- `docs/trust_center/public_mvp_scope.md`
+- `docs/trust_center/proof_guard_recommendations.md`
 
 This phase must be explicit. It should not be buried under generic proof
 governance, because procurement teams need a predictable place to find approved

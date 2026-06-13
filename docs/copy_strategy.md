@@ -246,6 +246,39 @@ Public document copy should clearly separate:
 Never suggest publishing confidential, personal, client-specific,
 contract-specific, or internal audit evidence publicly.
 
+## Trust Center and proof-library wording
+
+Future Trust Center / Megfelelőségi központ copy must use the proof catalog and
+verified-claims files as source of truth:
+
+- `docs/trust_center/proof_catalog.md`
+- `docs/trust_center/trust_center_ia.md`
+- `docs/trust_center/public_mvp_scope.md`
+- `docs/trust_center/proof_guard_recommendations.md`
+- `docs/verified_claims.md`
+
+Keep Trust Center copy procurement-supportive and factual. It should describe
+approved evidence, status, issuer, scope and review dates; it should not turn
+legal facts into broad marketing claims.
+
+Allowed direction:
+
+- ISO certificates with scope-safe wording;
+- D&B AA as Dun & Bradstreet creditworthiness wording, not OPTEN;
+- legal/licence summaries in legal/proof context;
+- responsible-disclosure and security.txt links;
+- approved reference summaries with the recorded restrictions.
+
+Avoid:
+
+- raw signed consent PDFs;
+- raw insurance policy PDFs;
+- DPA, SCC, LIA or processor contract publication;
+- private-investigation licence as service-marketing proof;
+- unapproved ESG/EcoVadis claims;
+- testimonials, case studies or performance claims without a catalog entry;
+- `hasCredential`/structured-data proof expansion without proof-owner review.
+
 ## Current post-launch content/governance backlog
 
 P1/P2 content and governance items:
@@ -288,6 +321,10 @@ P1/P2 content and governance items:
 - D&B AA versus OPTEN/A+ governance: public wording now uses D&B AA High
   Creditworthy 2026 as the Dun & Bradstreet proof item. Do not call it OPTEN
   A+ unless separate OPTEN proof is provided and reviewed.
+- Trust Center IA/proof-catalog foundation is prepared in docs only. Public
+  route implementation, document downloads, D&B certificate PDF publication,
+  liability-insurance summary publication and procurement-pack scope still need
+  owner/proof/legal decisions.
 - AI-search grounding files (`llms.txt`, `llms-full.txt`) must reflect the
   current locale/route status (updated 2026-06-06): HU and EN are indexed
   production languages with live service, legal and news layers; DE

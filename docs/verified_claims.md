@@ -1,8 +1,12 @@
 # Verified Claims — Avenir
 
-Last updated: 2026-06-06
+Last updated: 2026-06-13
 
 This file tracks business-approved claims that may be used in public website copy for Avenir. It is a copywriting guardrail, not a substitute for the underlying legal, certificate, contract, or operational proof documents.
+
+Detailed proof-asset metadata, public-document status, allowed surfaces and
+review/expiry tracking live in `docs/trust_center/proof_catalog.md`. This file
+continues to control approved public wording and claim restrictions.
 
 ## Approved Claims
 
