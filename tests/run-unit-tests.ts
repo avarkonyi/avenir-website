@@ -6,6 +6,7 @@ import "./de-service-details.test.ts";
 import "./de-homepage-polish.test.ts";
 import "./de-homepage-framework-polish.test.ts";
 import "./de-legal-release.test.ts";
+import "./privacy-ga4-processor.test.ts";
 import "./certification-seed.test.ts";
 import "./iso-certification-proof.test.ts";
 import "./news-localization.test.ts";

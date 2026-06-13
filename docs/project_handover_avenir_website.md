@@ -112,6 +112,8 @@ Technology:
 - Resend for contact notification email
 - Upstash/Vercel KV-compatible Redis REST rate limiter
 - Direct consent-gated GA4, not Google Tag Manager
+- HU/EN/DE Privacy Policy source is at v1.3 for Google Analytics processor and
+  international-transfer clarification; this is not final DPO/legal approval.
 
 Main public routes:
 
@@ -191,6 +193,11 @@ Consent rules:
 - Rejecting analytics must keep GA4 blocked.
 - Missing `NEXT_PUBLIC_GA4_ID` must not break the site.
 - No PII may be sent to analytics.
+- Google Analytics 4 is named in privacy notices as a processor/provider entry
+  using cautious Google Ireland Limited / Google LLC wording.
+- Google Analytics DPA acceptance, transfer safeguards, data retention, Google
+  Signals, Ads personalization, Ads link and data-sharing settings still need
+  account-side evidence archived for legal review.
 
 Events:
 

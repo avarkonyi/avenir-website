@@ -311,6 +311,11 @@ Body:
 
 Avenir provides website-related privacy and security notices on dedicated public pages. Processor and transfer-safeguard evidence documents are not public Trust Center documents.
 
+Google Analytics 4 is described in the Privacy Policy as a consent-gated
+analytics processor. The Trust Center may summarize this only at a high level;
+Google DPA, SCC, transfer-safeguard or account-setting evidence remains
+internal unless separately approved.
+
 Links:
 
 - Privacy Policy

@@ -3,7 +3,7 @@
 Avenir Facility Management Kft. is a Hungary-based B2B security and facility
 management provider. The public website is https://www.afm.hu.
 
-Last updated: 2026-06-06
+Last updated: 2026-06-13
 
 ## Canonical public pages
 
@@ -55,6 +55,13 @@ approved public documents and notices. Do not infer that certificate PDFs,
 insurance policies, signed reference consent files, processor evidence, or
 other internal proof files are publicly downloadable unless the specific public
 page links them.
+
+Privacy and analytics state: the site uses direct Google Analytics 4 only after
+analytics consent. Google Analytics is described in the privacy notices as a
+processor/transfer scenario. The site does not use Google Tag Manager,
+LinkedIn Insight Tag, Google Ads remarketing or other marketing tracking
+pixels, and analytics events do not include personal contact details or
+free-text form content.
 
 Private investigation activity is legal/regulatory information only in the
 Legal Notice and Trust Center regulated-activity summary. It is not a promoted

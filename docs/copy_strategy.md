@@ -373,3 +373,7 @@ P1/P2 content and governance items:
 - Analytics consent copy should remain privacy-first: no dark patterns, no
   analytics before consent, reject keeps GA4 blocked, and no personal form
   content in analytics events.
+- Privacy/legal copy may describe Google Analytics 4 as a consent-gated
+  processor/provider and transfer scenario, but must not imply GTM, Google Ads,
+  remarketing, LinkedIn Insight Tag, DoubleClick, pagead, Floodlight or any
+  marketing pixel is implemented.

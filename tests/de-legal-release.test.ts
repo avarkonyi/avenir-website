@@ -27,14 +27,14 @@ test("DE legal routes are renderable but not sitemap/hreflang publishable", () =
   ]);
 });
 
-test("DE privacy source is v1.2, review-noindex copy ready, and analytics wording current", () => {
+test("DE privacy source is v1.3, review-noindex copy ready, and analytics wording current", () => {
   const privacy = getDePrivacyContent();
 
   assert.equal(privacy.title, "Datenschutzerklärung");
-  assert.equal(privacy.lastUpdated, "Gültig ab: 5. Juni 2026");
+  assert.equal(privacy.lastUpdated, "Gültig ab: 13. Juni 2026");
   assert.equal(
     privacy.version,
-    "Version 1.2 — Präzisierung des Geltungsbereichs sowie Ergänzung der Angaben zum Verantwortlichen und zur Datenschutzbeauftragten",
+    "Version 1.3 — Klarstellung zu Google Analytics als Auftragsverarbeiter",
   );
   assert.equal(privacy.sections.length, 15);
   assert.equal(privacy.intro.includes("[Datum der Veröffentlichung]"), false);
@@ -46,6 +46,7 @@ test("DE privacy source is v1.2, review-noindex copy ready, and analytics wordin
   assert.equal(cookies.title, "8. Cookies und ähnliche Technologien");
   assert.match(cookies.body, /Google Analytics 4 \(GA4\)/);
   assert.match(cookies.body, /nicht vor einer aktiven Einwilligung/);
+  assert.match(cookies.body, /keine Namen, E-Mail-Adressen, Telefonnummern/);
   assert.match(cookies.body, /Google Tag Manager/);
   assert.match(cookies.body, /LinkedIn Insight Tag/);
   assert.match(cookies.body, /Marketing-Tracking-Pixel/);
@@ -59,11 +60,13 @@ test("DE privacy source is v1.2, review-noindex copy ready, and analytics wordin
   assert.match(processors.body, /Standardvertragsklauseln/);
   assert.match(processors.body, /Vercel Inc\. ist.*EU-US Data Privacy Framework/);
   assert.match(processors.body, /Neon/);
+  assert.match(processors.body, /Google Analytics 4 \(GA4\)/);
+  assert.match(processors.body, /Google Ireland Limited \/ Google LLC/);
 
   const security = privacy.sections.find((section) => section.id === "security");
   assert.ok(security);
   assert.match(security.body, /ISO 9001 und ISO\/IEC 27001/);
-  assert.match(privacy.versionHistory, /Version 1\.2 — Gültig ab 5\. Juni 2026/);
+  assert.match(privacy.versionHistory, /Version 1\.3 — Gültig ab 13\. Juni 2026/);
 });
 
 test("DE legal notices source removes response-time promise and uses DE legal links", () => {

@@ -6,7 +6,7 @@ replace the public website, legal notices, contracts, tenders, or certificates.
 
 Canonical website: https://www.afm.hu
 
-Last updated: 2026-06-06
+Last updated: 2026-06-13
 
 ## Entity summary
 
@@ -102,6 +102,14 @@ Do not infer that Dun & Bradstreet certificate PDFs, raw insurance policies,
 signed reference consent documents, DPA/SCC/LIA materials, processor contracts,
 licence scans, or internal tender materials are publicly downloadable unless a
 specific public page links them.
+
+Privacy and analytics state: the site uses direct Google Analytics 4 (GA4)
+only after analytics consent. Google Analytics appears in the privacy notices
+as a processor and international-transfer scenario. The site does not use
+Google Tag Manager, LinkedIn Insight Tag, Google Ads remarketing, DoubleClick,
+pagead, Floodlight or other marketing tracking pixels. Analytics events do not
+include name, email address, phone number, company name, message text or
+free-text form content.
 
 ## Current public service detail pages (Hungarian and English)
 

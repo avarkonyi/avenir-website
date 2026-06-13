@@ -1,10 +1,10 @@
-<!-- STATUS: legal_review_required — Veröffentlichung erst nach anwaltlicher Freigabe. Platzhalter 5. Juni 2026 koordiniert mit der ungarischen v1.2 setzen. Ziel-Route: /de/adatvedelem -->
+<!-- STATUS: legal_review_required — Veröffentlichung erst nach anwaltlicher Freigabe. Version 1.3 ergänzt Google Analytics als Auftragsverarbeiter. Ziel-Route: /de/adatvedelem -->
 
 # Datenschutzerklärung
 
-Gültig ab: 5. Juni 2026
+Gültig ab: 13. Juni 2026
 
-Version 1.2 — Präzisierung des Geltungsbereichs sowie Ergänzung der Angaben zum Verantwortlichen und zur Datenschutzbeauftragten
+Version 1.3 — Klarstellung zu Google Analytics als Auftragsverarbeiter
 
 Diese Erklärung beschreibt, wie die Avenir Facility Management Kft. die über die Website www.afm.hu angegebenen personenbezogenen Daten verarbeitet, insbesondere im Rahmen des Kontakt- und Angebotsanfrageprozesses. Ziel dieser Erklärung ist es, den betroffenen Personen präzise, transparente, verständliche und leicht zugängliche Informationen über die Datenverarbeitung zu geben.
 
@@ -109,6 +109,14 @@ Sitz: 160 Spear Street, Suite 1300, San Francisco, CA 94105, USA
 Ort der Verarbeitung: EU AWS Frankfurt (eu-central-1)
 Garantie für Drittlandübermittlungen: die Standardvertragsklauseln gemäß dem Durchführungsbeschluss (EU) 2021/914 der Europäischen Kommission (Standard Contractual Clauses, SCC) nach Art. 46 Abs. 2 lit. d DSGVO, ergänzt durch zusätzliche technische und organisatorische Maßnahmen.
 
+6.4. Google Analytics 4 (GA4) — Google Ireland Limited / Google LLC
+Auftragsverarbeiter / Anbieter: Google Ireland Limited / Google LLC, soweit nach den für Google Analytics geltenden Vertrags- und Nutzungsbedingungen einschlägig.
+Dienst: Google Analytics 4 (GA4).
+Zweck: einwilligungsbasierte, aggregierte Analyse der Websitenutzung.
+Datenkategorien: Online-Kennungen, zum Beispiel Cookie-Kennungen, IP-Adressen, Gerätekennungen, Client-Kennungen sowie technische Nutzungsereignisse.
+Einschränkung: Avenir übermittelt keine Namen, E-Mail-Adressen, Telefonnummern, Unternehmensnamen, Nachrichtentexte oder frei eingegebenen Formularinhalte an Google Analytics.
+Rechtsgrundlage: Art. 6 Abs. 1 lit. a DSGVO — Einwilligung.
+
 ## 7. Datenübermittlungen in Drittländer
 
 Einige der für den Betrieb der Website eingesetzten Dienstleister sind außerhalb des Europäischen Wirtschaftsraums ansässig, insbesondere Anbieter mit US-Hintergrund. In solchen Fällen übermittelt der Verantwortliche personenbezogene Daten nur, wenn eine geeignete Garantie nach der DSGVO vorliegt.
@@ -118,6 +126,8 @@ Solche Garantien können insbesondere sein:
 - die von der Europäischen Kommission angenommenen Standardvertragsklauseln (Standard Contractual Clauses, SCC);
 - ergänzende technische und organisatorische Maßnahmen.
 
+Bei der Nutzung von Google Analytics können Daten an Google-Konzerngesellschaften oder Unterauftragsverarbeiter außerhalb des Europäischen Wirtschaftsraums übermittelt oder dort zugänglich gemacht werden. Nach den von Google veröffentlichten Informationen können das Data Privacy Framework und/oder Standardvertragsklauseln relevante Garantien darstellen. Die jeweils anwendbaren Garantien sind anhand der aktuellen Google-Bedingungen zur Auftragsverarbeitung und zu Datenübermittlungen zu prüfen.
+
 Ausführlichere Informationen zur Funktionsweise des EU-US Data Privacy Framework und zur Überprüfung der Zertifizierung von US-Anbietern bietet die Information des Europäischen Datenschutzausschusses:
 https://www.edpb.europa.eu/system/files/2024-12/edpb_dpf_faq-for-individuals_de.pdf
 
@@ -126,6 +136,8 @@ https://www.edpb.europa.eu/system/files/2024-12/edpb_dpf_faq-for-individuals_de.
 Die Website verwendet Google Analytics 4 (GA4) ausschließlich auf Grundlage einer vorherigen aktiven Einwilligung der Nutzerin oder des Nutzers. Google Analytics wird nicht vor einer aktiven Einwilligung geladen.
 
 Wenn keine Einwilligung erteilt oder die Einwilligung abgelehnt wird, werden keine Google-Analytics-Skripte geladen und keine Analytics-Messereignisse an Google Analytics gesendet.
+
+Analytics-Ereignisse enthalten keine Namen, E-Mail-Adressen, Telefonnummern, Unternehmensnamen, Nachrichtentexte oder frei eingegebenen Formularinhalte. Die Nutzerin oder der Nutzer kann die Entscheidung über die Cookie-Einstellungen ändern.
 
 Die Website verwendet derzeit keinen Google Tag Manager, keinen LinkedIn Insight Tag und keine sonstigen Marketing-Tracking-Pixel.
 
@@ -209,6 +221,7 @@ Der Verantwortliche verfügt über Zertifizierungen nach ISO 9001 und ISO/IEC 27
 Der Verantwortliche behält sich das Recht vor, diese Erklärung zu ändern. Die jeweils gültige Fassung ist auf der Website https://www.afm.hu abrufbar. Über wesentliche Änderungen informiert der Verantwortliche in geeigneter Form auf der Website.
 
 Versionshistorie:
+Version 1.3 — Gültig ab 13. Juni 2026. Klarstellung zu Google Analytics 4 als Auftragsverarbeiter und zu möglichen Datenübermittlungen; keine Änderung des Analytics-Runtime-Verhaltens, weiterhin kein Google Tag Manager, kein LinkedIn Insight Tag, kein Google-Ads-Remarketing und keine sonstigen Marketing-Tracking-Pixel.
 Version 1.2 — Gültig ab 5. Juni 2026. Präzisierung des Geltungsbereichs dieser Erklärung (für Verarbeitungen außerhalb der Website — Videoüberwachung, Privatermittlung, Mitarbeiter- und Kundenprojektdaten — gelten gesonderte Hinweise) sowie Ergänzung der Angaben zum Verantwortlichen (Registergericht, EU-USt-IdNr., Gründungsdatum) und zur Datenschutzbeauftragten (Rechtsgrundlage der Benennung, NAIH-Meldung, Postanschrift).
 Version 1.1 — Gültig ab 6. Mai 2026. Auf Grundlage der Hinweise der Datenschutzbeauftragten präzisierte Verarbeitungsprozesse, verständlichere DSGVO-Verweise, Garantien für Drittlandübermittlungen und ausführliche Darstellung der Betroffenenrechte.
 Version 1.0 — Gültig ab 28. April 2026. Erstveröffentlichung.

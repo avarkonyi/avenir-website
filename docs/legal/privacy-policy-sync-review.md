@@ -1,6 +1,6 @@
 # Privacy Policy HU/EN Sync Review
 
-Date: 2026-06-01
+Date: 2026-06-13
 
 This document records the controlled HU/EN Privacy Policy synchronization for
 the public `adatvedelem` routes. It is a legal-review support note, not a final
@@ -13,10 +13,10 @@ DPO or legal approval.
 
 ## Publication Date and Version
 
-- HU public version: `1.2 verzió - hatály pontosítása és analitikai tájékoztatás`
-- EN public version: `Version 1.2 - scope clarification and analytics notice`
-- HU effective date shown publicly: `2026. június 1.`
-- EN effective date shown publicly: `1 June 2026`
+- HU public version: `1.3 verzió - Google Analytics adatfeldolgozói pontosítás`
+- EN public version: `Version 1.3 - Google Analytics processor clarification`
+- HU effective date shown publicly: `2026. június 13.`
+- EN effective date shown publicly: `13 June 2026`
 
 The placeholder publication date from the drafts was replaced with the above
 date pair.
@@ -47,7 +47,7 @@ published at `/hu/adatvedelem` prevails in case of discrepancy.
 
 ## Analytics and Cookie Wording
 
-Section 8 was aligned with the current implementation:
+Section 8 remains aligned with the current implementation:
 
 - direct Google Analytics 4 is used only after analytics consent;
 - GA4 does not load before consent;
@@ -70,12 +70,17 @@ Processor wording was normalized around the current public stack:
 | Resend / Plus Five Five, Inc. | Transactional email delivery | Standard Contractual Clauses, GDPR Article 46(2)(d) |
 | Vercel Inc. | Hosting, edge/CDN and server-side logging | EU-U.S. Data Privacy Framework / adequacy decision, GDPR Article 45, based on the DPF-list wording in the draft |
 | Neon, LLC | PostgreSQL database service | Standard Contractual Clauses, GDPR Article 46(2)(d) |
+| Google Analytics 4 / Google Ireland Limited / Google LLC | Consent-based aggregated website analytics | Data Privacy Framework and/or Standard Contractual Clauses may be relevant under Google's current terms |
 
 Background evidence to retain for legal review:
 
 - Resend DPA / SCC terms
 - Vercel DPA and Data Privacy Framework status
 - Neon DPA / SCC terms
+- Google Analytics DPA / Data Processing Terms acceptance and transfer
+  framework evidence
+- GA4 data retention, Google Signals, Ads personalization, Ads link and data
+  sharing settings
 - legitimate-interest assessment for GDPR Article 6(1)(f) B2B contact handling
 
 ## EDPB Link Note

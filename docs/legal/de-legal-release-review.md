@@ -1,6 +1,6 @@
 # German Legal Pages Review Release
 
-Last updated: 2026-06-06
+Last updated: 2026-06-13
 
 This note documents the controlled German legal-page release state. It is a
 review-mode publication note, not a final SEO launch approval.
@@ -13,8 +13,9 @@ The German legal pages render from these versioned markdown sources:
 - `docs/translations/de/legal/rechtliche-hinweise-de-v1.1.md`
 - `docs/translations/de/legal/impressum-de.md`
 
-All `[Datum der Veröffentlichung]` placeholders were replaced with
-`5. Juni 2026`.
+The DE privacy source now carries version 1.3 effective `13. Juni 2026` for
+the Google Analytics processor clarification. The source filename is retained
+for the current loader path.
 
 ## Live Routes After Deploy
 
@@ -44,6 +45,8 @@ implementation:
 - no Google Tag Manager is used;
 - no LinkedIn Insight Tag is used;
 - no other marketing tracking pixels are used.
+- analytics events do not include name, email address, phone number, company
+  name, message text or free-text form content.
 
 The DE Legal Notices no longer include a two-working-day response promise in
 the website contact-form section. It now uses softer contact-response wording.
@@ -65,11 +68,13 @@ The DE Impressum parity/layout polish is complete in source:
 
 ## Processor / Transfer Wording
 
-The DE Privacy Policy keeps the existing processor and transfer wording:
+The DE Privacy Policy processor and transfer wording now includes:
 
 - Resend / Plus Five Five, Inc. with SCC safeguards;
 - Vercel Inc. with EU-US Data Privacy Framework / Article 45 framing;
 - Neon, LLC with SCC safeguards.
+- Google Analytics 4 (GA4), with cautious Google Ireland Limited / Google LLC
+  processor/provider wording and DPF/SCC transfer-safeguard review language.
 
 No FISA Section 702 or CLOUD Act wording was added in this pass.
 

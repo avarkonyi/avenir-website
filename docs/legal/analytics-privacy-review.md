@@ -1,6 +1,6 @@
 # Analytics Privacy Review TODO
 
-Date: 2026-05-28
+Date: 2026-06-13
 
 ## Current Implementation Summary
 
@@ -12,6 +12,10 @@ changed from the footer Cookie settings control.
 Provider: Google Analytics / Google
 
 Integration type: direct GA4 `gtag.js`, not Google Tag Manager
+
+Privacy notice status: HU/EN/DE source was updated to version 1.3 with Google
+Analytics 4 processor and transfer wording. This is a content/legal notice
+clarification only; analytics runtime behavior was not changed.
 
 ## Consent Model
 
@@ -59,12 +63,24 @@ Excluded from analytics:
 - free-text form fields
 - IP address as an explicit event parameter
 
+## Processor / Transfer Notice
+
+The public privacy notice source names Google Analytics 4 (GA4) as a
+processor/provider entry using cautious entity wording: Google Ireland Limited /
+Google LLC, as applicable under the contractual and service terms for Google
+Analytics.
+
+The notice also states that when Google Analytics is used, data may be
+transferred to or accessed by Google group entities or subprocessors outside
+the EEA, and that the Data Privacy Framework and/or Standard Contractual
+Clauses may be relevant safeguards under Google's current terms.
+
 ## Review Status
 
 DPO/legal review is required before treating the public privacy notice as final
-for this analytics implementation. The public HU/EN Privacy Policy text has been
-aligned to the current consent-gated GA4 implementation, but this repository
-change is not a legal approval.
+for this analytics implementation. The public HU/EN/DE Privacy Policy source
+has been aligned to the current consent-gated GA4 implementation, but this
+repository change is not a legal approval.
 
 GA4 Enhanced Measurement settings should be reviewed before relying on the
 privacy notice as final, especially form interactions, outbound clicks, file

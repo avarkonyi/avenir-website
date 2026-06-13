@@ -324,7 +324,45 @@ credential structured data:
   Freigabe im Review-/Noindex-Status."
 - restricted_wording: no statement that the website notice covers all client,
   CCTV, employee or private-investigation processing.
-- notes: Related DPA/SCC/LIA evidence stays internal unless separately approved.
+- notes: HU/EN/DE source was updated to privacy version 1.3 on 2026-06-13 for
+  Google Analytics processor and transfer wording. Related DPA/SCC/LIA evidence
+  stays internal unless separately approved.
+
+### google_analytics_processor_notice
+
+- id: `google_analytics_processor_notice`
+- category: data_protection_legal
+- title: Google Analytics 4 processor notice
+- status: `pending_review`
+- public_surface_allowed: `legal_pages`, `trust_center`
+- public_document: false
+- public_url: `/hu/adatvedelem`, `/en/adatvedelem`, `/de/adatvedelem` (DE
+  review/noindex)
+- internal_proof_location: `lib/current-privacy-content.ts`,
+  `docs/translations/de/legal/datenschutzerklaerung-de-v1.2.md`,
+  `docs/legal/google-analytics-processor-review.md`
+- owner: DPO
+- review_frequency: on_change
+- expiry_or_review_date: on GA4 account, provider-term or privacy-policy
+  change
+- allowed_wording_hu: "A Google Analytics 4 kizárólag hozzájárulás után tölt
+  be; az Avenir nem küld nevet, e-mail-címet, telefonszámot, cégnév-adatot,
+  üzenetszöveget vagy szabad szöveges űrlaptartalmat a Google Analyticsbe."
+- allowed_wording_en: "Google Analytics 4 loads only after analytics consent;
+  Avenir does not send names, email addresses, phone numbers, company names,
+  message text or free-text form content to Google Analytics."
+- allowed_wording_de: "Google Analytics 4 wird nur nach Einwilligung geladen;
+  Avenir übermittelt keine Namen, E-Mail-Adressen, Telefonnummern,
+  Unternehmensnamen, Nachrichtentexte oder frei eingegebenen Formularinhalte an
+  Google Analytics."
+- restricted_wording: do not state that DPF or SCC is the exclusive safeguard;
+  do not publish Google DPA/SCC documents; do not imply final DPO/legal
+  approval; do not imply Google Ads, remarketing, GTM, LinkedIn Insight Tag or
+  other marketing pixels are implemented.
+- notes: Internal evidence needed: Google Analytics DPA / Data Processing
+  Terms accepted in the Google account; transfer safeguards reviewed; GA4 data
+  retention documented; Google Signals, Ads personalization, Google Ads link
+  and data sharing settings reviewed.
 
 ### recruitment_privacy_notice
 
