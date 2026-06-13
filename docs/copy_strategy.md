@@ -325,11 +325,10 @@ P1/P2 content and governance items:
 - D&B AA versus OPTEN/A+ governance: public wording now uses D&B AA High
   Creditworthy 2026 as the Dun & Bradstreet proof item. Do not call it OPTEN
   A+ unless separate OPTEN proof is provided and reviewed.
-- Trust Center IA/proof-catalog foundation and HU/EN public MVP content spec
-  are prepared in docs only. Public route implementation, document downloads,
-  D&B certificate PDF publication, liability-insurance summary publication,
-  AutoWallis Trust Center placement and procurement-pack scope still need
-  owner/proof/legal decisions recorded in
+- Trust Center IA/proof-catalog foundation and HU/EN public MVP runtime are
+  implemented in source. D&B certificate PDF publication, liability-insurance
+  summary publication, DE Trust Center, 24/7 / 30+ / 200+ proof cards and
+  procurement-pack scope still need owner/proof/legal decisions recorded in
   `docs/trust_center/open_decisions.md`.
 - AI-search grounding files (`llms.txt`, `llms-full.txt`) must reflect the
   current locale/route status (updated 2026-06-06): HU and EN are indexed

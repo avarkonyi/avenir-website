@@ -65,8 +65,10 @@ AOS internal product track outside the public website roadmap.
 - Contact rate limiter supports Upstash REST and Vercel KV REST env names.
 - Shared `requireAdmin()` allowlist enforcement is implemented.
 - Admin uploads include PDF/JPEG/PNG/WEBP magic-byte validation.
-- Trust Center IA and proof catalog foundation are prepared in docs only; no
-  public Trust Center route has launched.
+- Trust Center MVP source routes are implemented for HU/EN only:
+  `/hu/megfelelosegi-kozpont` and `/en/trust-center`. D&B, liability
+  insurance, DE Trust Center and additional proof-stat expansions remain gated
+  by open proof decisions.
 
 ---
 
@@ -168,8 +170,8 @@ Ownership / decision needed:
 
 Purpose: create a dedicated public proof and procurement-support layer.
 
-Status: Next. Foundation docs and public MVP content specification prepared on
-2026-06-13; implementation is still pending.
+Status: MVP implemented in source on 2026-06-13; deployment and post-deploy
+smoke verification are separate approval steps.
 
 Foundation artifacts:
 
@@ -266,8 +268,8 @@ Partner/logo strip decision:
 
 Exit criteria:
 
-- Trust Center IA and document categories approved.
-- MVP inclusion matrix and HU/EN content spec approved.
+- Trust Center IA, document categories, MVP inclusion matrix and HU/EN content
+  spec implemented for HU/EN.
 - P1 open decisions resolved or explicitly deferred.
 - Every public document has status, source, owner, expiry/review information
   and allowed surfaces.

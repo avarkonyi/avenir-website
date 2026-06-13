@@ -99,6 +99,22 @@ const RECRUITMENT_PRIVACY_404_PATHS = [
   "/ko/recruitment-privacy",
 ];
 
+const TRUST_CENTER_PATHS = [
+  "/hu/megfelelosegi-kozpont",
+  "/en/trust-center",
+];
+
+const TRUST_CENTER_404_PATHS = [
+  "/hu/trust-center",
+  "/en/megfelelosegi-kozpont",
+  "/de/trust-center",
+  "/de/megfelelosegi-kozpont",
+  "/zh/trust-center",
+  "/zh/megfelelosegi-kozpont",
+  "/ko/trust-center",
+  "/ko/megfelelosegi-kozpont",
+];
+
 const RESPONSIBLE_DISCLOSURE_PATHS = [
   "/hu/felelos-hibabejelentes",
   "/en/responsible-disclosure",
@@ -138,6 +154,7 @@ const EXPECTED_200 = [
   ...READY_SERVICE_PATHS,
   ...PUBLISHABLE_LEGAL_PATHS,
   ...RECRUITMENT_PRIVACY_PATHS,
+  ...TRUST_CENTER_PATHS,
   ...RESPONSIBLE_DISCLOSURE_PATHS,
   ...DE_REVIEW_LEGAL_PATHS,
   ...INDEXABLE_NEWS_PATHS,
@@ -155,6 +172,7 @@ const EXPECTED_404 = [
   ...UNPUBLISHED_LEGAL_PATHS,
   ...UNPUBLISHED_NEWS_PATHS,
   ...RECRUITMENT_PRIVACY_404_PATHS,
+  ...TRUST_CENTER_404_PATHS,
   ...RESPONSIBLE_DISCLOSURE_404_PATHS,
 ];
 
@@ -166,6 +184,7 @@ const SITEMAP_FORBIDDEN = [
   "/ko/szolgaltatasok/",
   ...UNPUBLISHED_LEGAL_PATHS,
   ...DE_REVIEW_LEGAL_PATHS,
+  ...TRUST_CENTER_404_PATHS,
   "/de/hirek",
   "/zh/hirek",
   "/ko/hirek",
@@ -177,6 +196,7 @@ const LLMS_FORBIDDEN_URLS = [
   ...LEGACY_SERVICE_PATHS,
   ...UNPUBLISHED_LEGAL_PATHS,
   ...DE_REVIEW_LEGAL_PATHS,
+  ...TRUST_CENTER_404_PATHS,
   "/admin",
   "/api",
 ];
@@ -358,6 +378,7 @@ async function checkSitemap(baseUrl) {
         ...SITEMAP_SERVICE_PATHS,
         ...PUBLISHABLE_LEGAL_PATHS,
         ...RECRUITMENT_PRIVACY_PATHS,
+        ...TRUST_CENTER_PATHS,
         ...INDEXABLE_NEWS_PATHS,
       ],
       // Responsible-disclosure pages are intentionally discoverable through
@@ -386,7 +407,7 @@ async function checkLlmsFile(baseUrl, path) {
     ...checkContains({
       text: result.text,
       path,
-      required: HU_SERVICE_PATHS,
+      required: [...HU_SERVICE_PATHS, ...TRUST_CENTER_PATHS],
       forbidden: [...LLMS_FORBIDDEN_URLS, ...UNAPPROVED_PARTNER_NAME_EXAMPLES],
     }),
   );
@@ -592,6 +613,7 @@ async function main() {
     SITEMAP_SERVICE_PATHS.length +
     PUBLISHABLE_LEGAL_PATHS.length +
     RECRUITMENT_PRIVACY_PATHS.length +
+    TRUST_CENTER_PATHS.length +
     SITEMAP_FORBIDDEN.length;
   failures.push(...sitemapFailures);
 
@@ -600,6 +622,7 @@ async function main() {
     totalChecks +=
       1 +
       HU_SERVICE_PATHS.length +
+      TRUST_CENTER_PATHS.length +
       LLMS_FORBIDDEN_URLS.length +
       UNAPPROVED_PARTNER_NAME_EXAMPLES.length;
     failures.push(...llmsFailures);

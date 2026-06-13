@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import type { Translation } from "@/lib/i18n";
 import { getVisibleNavSectionKeys } from "@/lib/locale-ui-helpers";
 import { RECRUITMENT_PRIVACY_SLUGS } from "@/lib/recruitment-privacy-routes";
+import { TRUST_CENTER_SLUGS } from "@/lib/trust-center-routes";
 import { Icon } from "./Icon";
 
 const LOCALES = ["hu", "en", "de", "zh", "ko"] as const;
@@ -36,15 +37,24 @@ export function Nav({ t }: { t: Pick<Translation, "nav"> }) {
   const isOnHomepage =
     pathname === `/${currentLocale}` || pathname === `/${currentLocale}/`;
 
-  // True if currently on a legal page (impresszum/aszf/adatvedelem and the
-  // recruitment privacy notice pages).
+  // The Trust Center uses locale-specific slugs:
+  // /hu/megfelelosegi-kozpont <-> /en/trust-center.
+  // Like recruitment privacy, the switcher must map the slug pair and only
+  // expose HU/EN.
+  const isTrustCenterPage =
+    /^\/(?:hu|en|de|zh|ko)\/(?:megfelelosegi-kozpont|trust-center)\/?$/.test(
+      pathname,
+    );
+
+  // True if currently on a legal/trust utility page (impresszum/aszf/
+  // adatvedelem, recruitment privacy notice pages, and Trust Center).
   // These pages have a white background that would clash with the
   // homepage's transparent-at-top nav style — readability hotfix:
   // force the navy nav background regardless of scroll position.
   const isLegalPage =
     /\/(impresszum|aszf|adatvedelem|palyazoi-adatkezeles|recruitment-privacy)\/?$/.test(
       pathname,
-    );
+    ) || isTrustCenterPage;
   // The recruitment privacy notice uses locale-specific slugs (PL-091
   // Option B): /hu/palyazoi-adatkezeles <-> /en/recruitment-privacy.
   // The switcher must map the slug, not just swap the locale segment,
@@ -60,13 +70,15 @@ export function Nav({ t }: { t: Pick<Translation, "nav"> }) {
   const availableLocales =
     isNewsPage
       ? NEWS_CONTENT_LOCALES
-      : isRecruitmentPrivacyPage
+      : isTrustCenterPage
         ? FULL_CONTENT_LOCALES
-        : isServiceDetailPage
+        : isRecruitmentPrivacyPage
           ? FULL_CONTENT_LOCALES
-          : isLegalPage
-            ? LEGAL_CONTENT_LOCALES
-            : LOCALES;
+          : isServiceDetailPage
+            ? FULL_CONTENT_LOCALES
+            : isLegalPage
+              ? LEGAL_CONTENT_LOCALES
+              : LOCALES;
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 60);
@@ -176,6 +188,10 @@ export function Nav({ t }: { t: Pick<Translation, "nav"> }) {
       (newLocale === "hu" || newLocale === "en")
     ) {
       return `/${newLocale}/${RECRUITMENT_PRIVACY_SLUGS[newLocale]}${hash}`;
+    }
+
+    if (isTrustCenterPage && (newLocale === "hu" || newLocale === "en")) {
+      return `/${newLocale}/${TRUST_CENTER_SLUGS[newLocale]}${hash}`;
     }
 
     const segments = pathname.split("/");

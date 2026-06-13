@@ -21,6 +21,11 @@ import {
   recruitmentPrivacyAlternateLanguages,
   recruitmentPrivacyUrl,
 } from "@/lib/recruitment-privacy-routes";
+import {
+  TRUST_CENTER_LOCALES,
+  trustCenterAlternateLanguages,
+  trustCenterUrl,
+} from "@/lib/trust-center-routes";
 
 const SITE_LAST_MODIFIED = new Date("2026-05-07T00:00:00.000Z");
 const SITEMAP_HOME_LOCALES = ["hu", "en"] as const;
@@ -132,6 +137,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "yearly" as const,
       priority: 0.3,
       alternates: { languages: recruitmentPrivacyAlternateLanguages() },
+    })),
+    // Trust Center MVP: reviewed HU/EN public proof-summary routes only.
+    ...TRUST_CENTER_LOCALES.map((locale) => ({
+      url: trustCenterUrl(locale),
+      lastModified: SITE_LAST_MODIFIED,
+      changeFrequency: "yearly" as const,
+      priority: 0.35,
+      alternates: { languages: trustCenterAlternateLanguages() },
     })),
     ...sitemapServicePaths.map(({ locale, slug }) => ({
       url: `${SEO_DATA.url}/${locale}/${SERVICE_URL_SEGMENT}/${slug}`,

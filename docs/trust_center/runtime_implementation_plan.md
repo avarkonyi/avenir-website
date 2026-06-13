@@ -1,71 +1,59 @@
 # Trust Center Runtime Implementation Plan
 
-Status: future implementation plan, not executed.
+Status: MVP source implementation completed for HU/EN; deploy verification
+pending.
 Last updated: 2026-06-13
 
-This plan describes how to implement the public HU/EN Trust Center MVP later.
-It must not be treated as permission to launch the routes without the release
-gates below.
+This file now records the implemented HU/EN Trust Center MVP structure and the
+remaining release gates. Production deploy still requires separate approval.
 
-## Proposed Routes
+## Implemented Routes
 
 - HU: `app/[locale]/megfelelosegi-kozpont/page.tsx`
 - EN: `app/[locale]/trust-center/page.tsx`
 
-Alternative implementation:
-
-- single locale-aware route helper that maps the HU slug and EN slug to one
-  shared `TrustCenterPage` component.
-
 Do not add DE/ZH/KO Trust Center routes in the MVP.
 
-## Proposed Data Source
+## Implemented Data Source
 
-Use static typed source data for the MVP.
+The MVP uses static typed source data.
 
-Recommended file:
+Implemented file:
 
-- `lib/trust-center/content.ts`
+- `lib/trust-center-content.ts`
+- `lib/trust-center-routes.ts`
 
-Recommended approach:
+Implemented approach:
 
-- copy only approved MVP entries from the content spec;
-- include stable ids matching `docs/trust_center/proof_catalog.md`;
-- do not parse Markdown docs at runtime;
-- do not use the database for MVP;
-- keep public document links explicit and reviewed.
+- approved MVP entries are copied from the content spec;
+- Markdown docs are not parsed at runtime;
+- the database is not used for the MVP;
+- public document links are explicit and limited to approved public routes/PDFs.
 
 Future automation can generate typed content from a stricter catalog format, but
 the first MVP should avoid introducing a new generator unless there is a clear
 maintenance need.
 
-## Proposed Components
+## Implemented Component
 
-- `components/trust-center/TrustCenterPage.tsx`
+- `components/TrustCenterPage.tsx`
   - page composition, locale-specific copy, section order.
-- `components/trust-center/TrustSection.tsx`
-  - section wrapper with heading, intro and optional notes.
-- `components/trust-center/ProofCard.tsx`
-  - proof item card with title, status, validity, summary, optional link.
-- `components/trust-center/DocumentLinkList.tsx`
-  - list of approved public documents and notices.
-- `components/trust-center/DecisionNotice.tsx`
-  - optional internal/dev-only pattern if pending items are documented outside
-    the public page; do not show unresolved decisions to public users unless
-    product owner approves.
+
+The MVP intentionally uses one small page component instead of a component
+family. Pending proof decisions stay in docs, not in public UI.
 
 ## Metadata
 
-HU and EN should be indexable only after content/proof approval.
+HU and EN are implemented as indexable source routes.
 
-Proposed HU:
+Implemented HU:
 
-- title: `Megfelelőségi központ | Avenir`
+- title: `Megfelelőségi központ | Avenir Facility Management Kft.`
 - canonical: `https://www.afm.hu/hu/megfelelosegi-kozpont`
 
-Proposed EN:
+Implemented EN:
 
-- title: `Trust Center | Avenir`
+- title: `Trust Center | Avenir Facility Management Kft.`
 - canonical: `https://www.afm.hu/en/trust-center`
 
 DE:
@@ -75,17 +63,15 @@ DE:
 
 ## Sitemap and Hreflang
 
-Only after owner/proof/legal approval:
+Implemented:
 
-- add HU and EN Trust Center URLs to sitemap;
-- add reciprocal HU/EN hreflang and x-default according to the site pattern;
-- keep DE/ZH/KO out of sitemap/hreflang until reviewed.
-
-Do not add sitemap/hreflang entries in a docs-only or pre-approval pass.
+- HU and EN Trust Center URLs are added to sitemap.
+- HU/EN metadata alternates use x-default = HU.
+- DE/ZH/KO remain outside sitemap/hreflang.
 
 ## JSON-LD and AI-Search
 
-MVP can launch without new proof-derived JSON-LD.
+MVP launches without proof-derived credential JSON-LD.
 
 If structured data is added later:
 
@@ -94,7 +80,8 @@ If structured data is added later:
 - do not express AutoWallis Pest as `customer`, `review`, `memberOf`,
   `brand`, `sameAs`, `award` or endorsement.
 
-Update `llms.txt` and `llms-full.txt` only after Trust Center routes are public.
+`llms.txt` and `llms-full.txt` are updated in source for the HU/EN Trust Center
+routes and the approved-public-summary limitation.
 
 ## QA Requirements
 
@@ -146,4 +133,3 @@ proof copy:
 7. Preview is reviewed.
 8. Sitemap/hreflang changes are added only after route approval.
 9. Production deploy is approved separately.
-

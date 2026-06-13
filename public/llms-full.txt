@@ -27,6 +27,8 @@ Indexed production languages: Hungarian (hu) and English (en).
 
 - HU homepage: https://www.afm.hu/hu
 - EN homepage: https://www.afm.hu/en
+- HU Trust Center: https://www.afm.hu/hu/megfelelosegi-kozpont
+- EN Trust Center: https://www.afm.hu/en/trust-center
 - XML sitemap: https://www.afm.hu/sitemap.xml
 - Robots policy: https://www.afm.hu/robots.txt
 - Concise AI-search file: https://www.afm.hu/llms.txt
@@ -78,6 +80,23 @@ proof-safe AI-search claims.
 Do not turn these into guarantees. For example, do not claim universal response
 times, universal armed guarding, guaranteed legal compliance, or guaranteed
 service outcomes unless a specific public source and contract scope support it.
+
+## Trust Center
+
+The public Trust Center is available in Hungarian and English:
+
+- Hungarian Trust Center: https://www.afm.hu/hu/megfelelosegi-kozpont
+- English Trust Center: https://www.afm.hu/en/trust-center
+
+It is a public proof-summary layer for company information, public ISO
+certificate links, regulated-activity summary links, data-protection/security
+notices, the responsible-disclosure policy, security.txt, approved reference
+summary information and additional-proof request guidance.
+
+Do not infer that Dun & Bradstreet certificate PDFs, raw insurance policies,
+signed reference consent documents, DPA/SCC/LIA materials, processor contracts,
+licence scans, or internal tender materials are publicly downloadable unless a
+specific public page links them.
 
 ## Current public service detail pages (Hungarian and English)
 
@@ -199,6 +218,7 @@ logos are proof-controlled visual assets and are not schema relationship claims.
   translation-review-required.
 - German news URLs as final SEO/citation sources while they remain noindex
   review surfaces; Chinese and Korean news URLs are not available.
+- DE/ZH/KO Trust Center URLs.
 - Admin and API routes.
 - Draft, preview-only, internal roadmap, migration, seed, or database URLs.
 - Unapproved partner names, customer names, testimonials, case studies, scores,

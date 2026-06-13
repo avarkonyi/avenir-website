@@ -11,6 +11,8 @@ const TEXT_EXTENSIONS = new Set([".ts", ".tsx", ".mjs", ".js", ".txt"]);
 
 const SERVICE_MARKETING_FILE = /^scripts\/seed-pilot-[^/]+\.ts$/;
 const PUBLIC_SOURCE_FILE = /^(app|components|lib|public)\//;
+const TRUST_CENTER_PUBLIC_SOURCE =
+  /^(app\/\[locale\]\/(?:megfelelosegi-kozpont|trust-center)|components\/TrustCenterPage\.tsx|lib\/trust-center-content\.ts)/;
 
 const CHECKS = [
   {
@@ -86,6 +88,31 @@ const CHECKS = [
     appliesTo: isPublicSource,
   },
   {
+    name: "pending D&B proof surfaced in Trust Center",
+    pattern: /\b(D&B High Creditworthy 2026|D&B magas hitelképességi minősítés)\b/i,
+    appliesTo: isTrustCenterPublicSource,
+  },
+  {
+    name: "pending liability insurance proof surfaced in Trust Center",
+    pattern: /\b(Professional liability insurance|Szakmai felelősségbiztosítás)\b/i,
+    appliesTo: isTrustCenterPublicSource,
+  },
+  {
+    name: "internal transfer evidence surfaced in Trust Center",
+    pattern: /\b(DPA|SCC|LIA)\b/i,
+    appliesTo: isTrustCenterPublicSource,
+  },
+  {
+    name: "signed consent PDF surfaced in Trust Center",
+    pattern: /\b(signed consent|aláírt referencia-hozzájárulás|consent PDF)\b/i,
+    appliesTo: isTrustCenterPublicSource,
+  },
+  {
+    name: "Trust Center reference testimonial/case-study wording",
+    pattern: /\b(testimonial|case study|official BMW partner|incident-free)\b/i,
+    appliesTo: isTrustCenterPublicSource,
+  },
+  {
     name: "positive guaranteed arrival-time wording",
     pattern: /guaranteed arrival time/i,
     appliesTo: isServiceMarketingSource,
@@ -137,6 +164,10 @@ function isServiceMarketingSource(file) {
 
 function isLlmsFile(file) {
   return file.startsWith("public/llms");
+}
+
+function isTrustCenterPublicSource(file) {
+  return TRUST_CENTER_PUBLIC_SOURCE.test(file);
 }
 
 function isProtectiveGuaranteeLine(line) {

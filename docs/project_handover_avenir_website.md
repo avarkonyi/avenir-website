@@ -58,6 +58,9 @@ The production site is live for:
   - `/hu/hirek/megujult-az-avenir-weboldala-es-arculata`
   - `/en/hirek`
   - `/en/hirek/megujult-az-avenir-weboldala-es-arculata`
+- HU/EN Trust Center MVP routes:
+  - `/hu/megfelelosegi-kozpont`
+  - `/en/trust-center`
 - `sitemap.xml`, `robots.txt`, `llms.txt`, `llms-full.txt`
 
 DE now has controlled review-mode service, legal and launch-news routes. ZH
@@ -245,10 +248,11 @@ UX/safety state of the public forms (2026-06-11):
   the references section. The card is a full-card external link, uses the
   supplied logo asset and only the approved service chips. Broader
   partner/logo-wall decisions remain in backlog PL-029.
-- the Trust Center / Megfelelőségi központ has a docs-only IA, proof catalog,
-  MVP inclusion matrix, HU/EN content spec, open-decision register, runtime
-  implementation plan and proof-language rules. No public route, sitemap entry,
-  hreflang cluster or runtime UI has launched for it yet.
+- the Trust Center / Megfelelőségi központ has HU/EN source routes, typed
+  content, sitemap entries, HU/EN metadata alternates and llms references.
+  D&B AA, liability insurance, private-investigation proof cards, DPA/SCC/LIA,
+  signed consent PDFs and raw insurance documents remain excluded from the
+  runtime MVP.
 
 ## Admin and Upload Security
 
