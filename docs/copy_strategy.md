@@ -272,6 +272,9 @@ Allowed direction:
 - legal/licence summaries in legal/proof context;
 - private investigation activity only as regulated-activity legal/proof
   information, with details linked to Impresszum / Legal Notice;
+- ISO certificates with PDF-verified issuer and standard wording: ISO 9001 =
+  MSZ EN ISO 9001:2015 / MartonCert Rendszertanúsító Kft.; ISO/IEC 27001 =
+  MSZ ISO/IEC 27001:2023 / MCert Rendszertanúsító Kft.;
 - responsible-disclosure and security.txt links;
 - approved reference summaries with the recorded restrictions.
 
@@ -280,6 +283,8 @@ Avoid:
 - raw signed consent PDFs;
 - raw insurance policy PDFs;
 - DPA, SCC, LIA or processor contract publication;
+- old ISO drift wording such as `MARTON Szakértő Iroda Kft.` as a generic
+  issuer for both ISO certificates or `ISO/IEC 27001:2022`;
 - private-investigation licence as service-marketing proof;
 - unapproved ESG/EcoVadis claims;
 - testimonials, case studies or performance claims without a catalog entry;

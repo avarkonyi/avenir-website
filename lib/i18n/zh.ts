@@ -226,7 +226,7 @@ export const zh = {
         { "id": "dsar", "title": "10. 行使您的权利 (DSAR 程序)", "body": "电子邮件：info@afm.hu（主题：\"数据保护请求\"）\n邮寄：Avenir Facility Management Kft., Királyok útja 291, B栋, 15门, 1039 布达佩斯, 匈牙利\n\n根据 Art. 12(3) 在一个月内回复，最多可延长 2 个月。" },
         { "id": "remedies", "title": "11. 救济措施", "body": "向 NAIH 投诉（Falk Miksa utca 9-11, 1055 布达佩斯, +36 1 391-1400, ugyfelszolgalat@naih.hu）或寻求司法救济（Art. 79 GDPR）。" },
         { "id": "breach", "title": "12. 个人数据泄露", "body": "根据 Art. 33 GDPR，控制者将在不无故拖延的情况下，在可行的情况下不晚于知情后 72 小时内通知 NAIH。高风险情况下还将直接通知数据主体（Art. 34）。" },
-        { "id": "security", "title": "13. 信息安全", "body": "ISO/IEC 27001:2022 认证 ISMS（证书编号 988960032，颁发方 MARTON Szakértő Iroda Kft.，有效期 2026.04.27 – 2029.04.26）。措施符合 Art. 32 GDPR。" },
+        { "id": "security", "title": "13. 信息安全", "body": "MSZ ISO/IEC 27001:2023 认证 ISMS（证书编号 988960032，颁发方 MCert Rendszertanúsító Kft.，有效期 2026.04.27 – 2029.04.26）。措施符合 Art. 32 GDPR。" },
         { "id": "modification", "title": "14. 本政策的修改", "body": "控制者保留单方修改的权利。" }
       ],
       "versionHistory": "版本历史：1.0 版本 — 自 2026 年 4 月 28 日起生效。首次发布。"

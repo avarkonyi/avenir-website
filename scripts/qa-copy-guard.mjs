@@ -98,6 +98,16 @@ const CHECKS = [
     appliesTo: isTrustCenterPublicSource,
   },
   {
+    name: "stale ISO 27001 standard version in public proof source",
+    pattern: /ISO\/IEC 27001:2022|ISO 27001:2022/i,
+    appliesTo: isPublicProofSource,
+  },
+  {
+    name: "stale generic ISO certification issuer in public proof source",
+    pattern: /MARTON Szakértő Iroda/i,
+    appliesTo: isPublicProofSource,
+  },
+  {
     name: "internal transfer evidence surfaced in Trust Center",
     pattern: /\b(DPA|SCC|LIA)\b/i,
     appliesTo: isTrustCenterPublicSource,
@@ -162,6 +172,10 @@ const CHECKS = [
 
 function isPublicSource(file) {
   return PUBLIC_SOURCE_FILE.test(file) || SERVICE_MARKETING_FILE.test(file);
+}
+
+function isPublicProofSource(file) {
+  return isPublicSource(file) && file !== "scripts/qa-copy-guard.mjs";
 }
 
 function isServiceMarketingSource(file) {

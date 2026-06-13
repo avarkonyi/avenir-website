@@ -275,7 +275,7 @@ export const en = {
         {
           "id": "security",
           "title": "13. Information Security",
-          "body": "The Controller holds an ISO/IEC 27001:2022 Information Security Management System certification within the scope defined in the certificate.\n\nCertificate number: 988960032\nIssuer: MARTON Szakértő Iroda Kft.\nValidity: 27 April 2026 – 26 April 2029\n\nInformation about the scope of the certificate is available on request. Technical and organisational security measures are determined and regularly reviewed by the Controller in accordance with Art. 32 GDPR, using a risk-based approach, in particular: data minimisation, encryption in transit and at rest, access control and identity-and-access management, logging and incident detection, and regular security review and testing."
+          "body": "The Controller holds an MSZ ISO/IEC 27001:2023 Information Security Management System certification within the scope defined in the certificate.\n\nCertificate number: 988960032\nIssuer: MCert Rendszertanúsító Kft.\nValidity: 27 April 2026 – 26 April 2029\n\nInformation about the scope of the certificate is available on request. Technical and organisational security measures are determined and regularly reviewed by the Controller in accordance with Art. 32 GDPR, using a risk-based approach, in particular: data minimisation, encryption in transit and at rest, access control and identity-and-access management, logging and incident detection, and regular security review and testing."
         },
         {
           "id": "modification",
@@ -344,7 +344,7 @@ export const en = {
         {
           "id": "code-of-conduct",
           "title": "11. Code of Conduct",
-          "body": "The Provider has not subscribed to any voluntary code of conduct (information provided pursuant to Hungarian E-Commerce Act § 4(g)). The Provider conducts its activities in accordance with the relevant industry standards (ISO 9001:2015, ISO/IEC 27001:2022, MABISZ asset-protection principles)."
+          "body": "The Provider has not subscribed to any voluntary code of conduct (information provided pursuant to Hungarian E-Commerce Act § 4(g)). The Provider conducts its activities in accordance with the relevant industry standards (MSZ EN ISO 9001:2015, MSZ ISO/IEC 27001:2023, MABISZ asset-protection principles)."
         },
         {
           "id": "law",

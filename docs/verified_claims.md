@@ -19,8 +19,10 @@ The following claims may be used in public website copy when the wording follows
 - 24/7 diszpécseri háttér
 - Fegyver nélküli vagy fegyveres vagyonőri jelenlét szerződéses igény és kockázati profil alapján
 - Vagyonvédelmi engedély: 01030-822/4926-7/2023
-- ISO 9001
-- ISO 27001
+- MSZ EN ISO 9001:2015, certificate 843579099, certification body MartonCert
+  Rendszertanúsító Kft.
+- MSZ ISO/IEC 27001:2023, certificate 988960032, certification body MCert
+  Rendszertanúsító Kft.
 - 30+ aktív helyszín
 - 200+ munkatársi háttér
 - D&B AA High Creditworthy 2026
@@ -114,6 +116,12 @@ parameters from this approval.
 - Phrase armed guarding as dependent on contractual need, legal conditions, and site risk profile.
 - Do not overstate ISO scope.
 - Do not claim that ISO 9001 or ISO 27001 covers a specific operational process unless the certification scope explicitly supports it.
+- Use the PDF-verified issuer and standard wording: ISO 9001 = MSZ EN ISO
+  9001:2015 / MartonCert Rendszertanúsító Kft.; ISO/IEC 27001 = MSZ ISO/IEC
+  27001:2023 / MCert Rendszertanúsító Kft.
+- Do not use the old generic issuer `MARTON Szakértő Iroda Kft.` for both ISO
+  certificates.
+- Do not use `ISO/IEC 27001:2022` in public certification/proof contexts.
 - Prefer precise B2B wording over informal, generic, or marketing-heavy phrasing.
 
 ## Pending / Not Approved Claims

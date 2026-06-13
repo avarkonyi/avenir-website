@@ -62,6 +62,23 @@ Restricted:
 - do not imply zero supplier risk;
 - do not publish the certificate PDF until proof owner approves.
 
+## ISO Certificate Wording Rules
+
+Allowed:
+
+- HU/EN/DE: "MSZ EN ISO 9001:2015" with certification body
+  "MartonCert Rendszertanúsító Kft." and certificate number `843579099`.
+- HU/EN/DE: "MSZ ISO/IEC 27001:2023" with certification body
+  "MCert Rendszertanúsító Kft." and certificate number `988960032`.
+
+Restricted:
+
+- do not use "MARTON Szakértő Iroda Kft." as the generic issuer for both ISO
+  certificates;
+- do not use "ISO/IEC 27001:2022" in public certification/proof contexts;
+- do not turn either certificate into a GDPR, cybersecurity, service-outcome or
+  response-time guarantee.
+
 ## Licence Wording Rules
 
 Allowed:

@@ -78,8 +78,8 @@ test("Trust Center content includes only approved MVP sections and omits pending
       ]),
     ].join("\n");
 
-    assert.ok(renderedText.includes(locale === "hu" ? "ISO 9001:2015" : "ISO 9001:2015"));
-    assert.ok(renderedText.includes(locale === "hu" ? "ISO/IEC 27001:2022" : "ISO/IEC 27001:2022"));
+    assert.ok(renderedText.includes("MSZ EN ISO 9001:2015"));
+    assert.ok(renderedText.includes("MSZ ISO/IEC 27001:2023"));
     assert.ok(renderedText.includes("/certifications/iso-9001-marton-843579099.pdf"));
     assert.ok(renderedText.includes("/certifications/iso-27001-marton-988960032.pdf"));
     assert.ok(renderedText.includes(locale === "hu" ? "AutoWallis Pest" : "AutoWallis Pest"));

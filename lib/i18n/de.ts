@@ -225,7 +225,7 @@ export const de = {
         { "id": "dsar", "title": "10. Ausübung Ihrer Rechte (DSAR-Verfahren)", "body": "E-Mail: info@afm.hu (Betreff: „Datenschutzanfrage\")\nPost: Avenir Facility Management Kft., Királyok útja 291, Gebäude B, Tür 15, 1039 Budapest, Ungarn\n\nReaktion innerhalb 1 Monats (Art. 12(3)), max. +2 Monate Verlängerung." },
         { "id": "remedies", "title": "11. Rechtsbehelfe", "body": "Beschwerde bei NAIH (Falk Miksa utca 9-11, 1055 Budapest, +36 1 391-1400, ugyfelszolgalat@naih.hu) oder bei zuständigem Gericht (Art. 79 DSGVO)." },
         { "id": "breach", "title": "12. Datenschutzverletzung", "body": "Meldung an NAIH ohne unangemessene Verzögerung, möglichst innerhalb 72 Stunden (Art. 33 DSGVO). Bei hohem Risiko zusätzliche Information der Betroffenen (Art. 34)." },
-        { "id": "security", "title": "13. Informationssicherheit", "body": "ISO/IEC 27001:2022 zertifiziertes ISMS (Zertifikat Nr. 988960032, Aussteller MARTON Szakértő Iroda Kft., gültig 27.04.2026 – 26.04.2029). Maßnahmen gemäß Art. 32 DSGVO." },
+        { "id": "security", "title": "13. Informationssicherheit", "body": "MSZ ISO/IEC 27001:2023 zertifiziertes ISMS (Zertifikat Nr. 988960032, Aussteller MCert Rendszertanúsító Kft., gültig 27.04.2026 – 26.04.2029). Maßnahmen gemäß Art. 32 DSGVO." },
         { "id": "modification", "title": "14. Änderung dieser Erklärung", "body": "Der Verantwortliche behält sich Änderungen vor." }
       ],
       "versionHistory": "Versionsverlauf: Version 1.0 — Gültig ab 28.04.2026. Erstveröffentlichung."

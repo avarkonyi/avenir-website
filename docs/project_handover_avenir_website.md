@@ -253,6 +253,13 @@ UX/safety state of the public forms (2026-06-11):
   D&B AA, liability insurance, private-investigation proof cards, DPA/SCC/LIA,
   signed consent PDFs and raw insurance documents remain excluded from the
   runtime MVP.
+- ISO certificate proof data is PDF-verified in source: ISO 9001 uses
+  `MSZ EN ISO 9001:2015`, certificate `843579099`, certification body
+  `MartonCert Rendszertanúsító Kft.`; ISO/IEC 27001 uses
+  `MSZ ISO/IEC 27001:2023`, certificate `988960032`, certification body
+  `MCert Rendszertanúsító Kft.`. The homepage certification cards and
+  credential JSON-LD are DB-backed, so any live DB drift requires the guarded
+  certification updater dry-run/apply flow and separate DB-write approval.
 
 ## Admin and Upload Security
 

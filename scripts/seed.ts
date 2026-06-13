@@ -263,13 +263,12 @@ async function main() {
     console.log("seeded news (2 rows)");
   }
 
-  // ─── CERTIFICATIONS — 2 ISO rows (9001 verified, 27001 placeholder) ─────
+  // ─── CERTIFICATIONS — 2 ISO rows verified against the public PDFs ───────
   //
-  // ISO 9001 fields are verified from the actual PDF in
-  // public/certifications/iso-9001-avenir-2026.pdf. ISO 27001 fields are
-  // tentative placeholders pending the user's PDF upload — every uncertain
-  // field is marked `// TODO: confirm with PDF` so they're easy to update
-  // via admin CRUD or by editing this seed and re-running after a wipe.
+  // ISO 9001 source:
+  // public/certifications/iso-9001-marton-843579099.pdf
+  // ISO 27001 source:
+  // public/certifications/iso-27001-marton-988960032.pdf
   //
   // The `description_*` fields are not from the PDFs; they are AI/SEO
   // friendly explanations of what each standard means and how Avenir is
@@ -284,12 +283,11 @@ async function main() {
     console.log("would seed certifications (2 rows)");
   } else {
     await db.insert(certifications).values([
-      // ─── ISO 9001 — VERIFIED (cert 843579099, MARTON Szakértő Iroda, 2026-03-19 → 2029-03-18) ───
+      // ─── ISO 9001 — VERIFIED (cert 843579099, MartonCert, 2026-03-19 → 2029-03-18) ───
       {
         slug: "iso-9001",
         name: "ISO 9001",
-        // International format (matches IAF CertSearch); was MSZ EN adoption
-        standardCode: "ISO 9001:2015",
+        standardCode: "MSZ EN ISO 9001:2015",
         certificateNumber: "843579099",
 
         fullNameHu: "ISO 9001 Minőségirányítási Rendszer Tanúsítvány",
@@ -304,25 +302,25 @@ async function main() {
           "Az ISO 9001 a minőségirányítási rendszerek nemzetközi szabványa. " +
           "Az ISO 9001 tanúsítványon szereplő hatókör megnevezése: \"Teljes körű biztonsági szolgáltatás\". " +
           "A tanúsított irányítási rendszer a tanúsítványon meghatározott hatókör szerint " +
-          "került auditálásra a NAH-akkreditált MARTON Szakértő Iroda által. " +
+          "került auditálásra a MartonCert Rendszertanúsító Kft. által. " +
           "A tanúsítvány az IAF MLA megállapodás keretében nemzetközileg is elismert.",
         // TRANSLATION DRAFT: review by user
         descriptionEn:
           "ISO 9001 is the international standard for quality management systems. " +
           "The certificate scope is listed as \"Comprehensive security services\". The certified management system " +
-          "was audited within the certificate-defined scope by NAH-accredited MARTON Szakértő Iroda. " +
+          "was audited within the certificate-defined scope by MartonCert Rendszertanúsító Kft. " +
           "The certificate is internationally recognized under the IAF MLA agreement.",
         // TRANSLATION DRAFT: review by user
         descriptionDe:
           "ISO 9001 ist der internationale Standard für Qualitätsmanagementsysteme. " +
           "Der im Zertifikat angegebene Geltungsbereich lautet \"Comprehensive security services\". Das " +
           "zertifizierte Managementsystem wurde innerhalb des im Zertifikat definierten Geltungsbereichs " +
-          "durch die NAH-akkreditierte MARTON Szakértő Iroda auditiert. Das Zertifikat ist im Rahmen des IAF MLA-Abkommens international " +
+          "durch MartonCert Rendszertanúsító Kft. auditiert. Das Zertifikat ist im Rahmen des IAF MLA-Abkommens international " +
           "anerkannt.",
         // TRANSLATION DRAFT: review by user
         descriptionZh:
           "ISO 9001 是质量管理体系的国际标准。证书中列明的范围为 “Comprehensive security services”。" +
-          "该认证管理体系已由 NAH 认可的 MARTON Szakértő Iroda 按证书定义的范围进行审核。" +
+          "该认证管理体系已由 MartonCert Rendszertanúsító Kft. 按证书定义的范围进行审核。" +
           "该证书在 IAF MLA 协议下获得国际认可。",
 
         // verbatim from PDF
@@ -334,7 +332,7 @@ async function main() {
         // TRANSLATION DRAFT: review by user
         scopeZh: "全面安保服务",
 
-        issuer: "MARTON Szakértő Iroda Kft.",
+        issuer: "MartonCert Rendszertanúsító Kft.",
         issuerUrl: "https://www.rendszertanusitas.hu",
         accreditationBody: "NAH",
         accreditationNumber: "NAH-4-0047/2023",
@@ -354,12 +352,11 @@ async function main() {
         sortOrder: 1,
       },
 
-      // ─── ISO 27001 — VERIFIED (cert 988960032, MARTON Szakértő Iroda, 2026-04-27 → 2029-04-26) ───
+      // ─── ISO 27001 — VERIFIED (cert 988960032, MCert, 2026-04-27 → 2029-04-26) ───
       {
         slug: "iso-27001",
         name: "ISO 27001",
-        // International format (matches IAF CertSearch); MSZ adoption is :2023
-        standardCode: "ISO/IEC 27001:2022",
+        standardCode: "MSZ ISO/IEC 27001:2023",
         certificateNumber: "988960032",
 
         fullNameHu:
@@ -374,30 +371,30 @@ async function main() {
         fullNameZh: "ISO 27001 信息安全管理体系认证",
 
         descriptionHu:
-          "Az ISO/IEC 27001:2022 az információbiztonsági irányítási rendszerek " +
+          "Az MSZ ISO/IEC 27001:2023 az információbiztonsági irányítási rendszerek " +
           "(ISMS) nemzetközi szabványa. Az Avenir tanúsított információbiztonsági " +
           "irányítási rendszere a tanúsítványon meghatározott hatókör szerint " +
-          "került auditálásra a NAH-akkreditált MARTON Szakértő Iroda által. " +
+          "került auditálásra az MCert Rendszertanúsító Kft. által. " +
           "A tanúsítvány az IAF MLA megállapodás keretében nemzetközileg is elismert.",
         // TRANSLATION DRAFT: review by user
         descriptionEn:
-          "ISO/IEC 27001:2022 is the international standard for information " +
+          "MSZ ISO/IEC 27001:2023 is the standard named on the certificate for information " +
           "security management systems (ISMS). Avenir's certified information security " +
-          "management system was audited within the certificate-defined scope by NAH-accredited " +
-          "MARTON Szakértő Iroda. The " +
+          "management system was audited within the certificate-defined scope by " +
+          "MCert Rendszertanúsító Kft. The " +
           "certificate is internationally recognized under the IAF MLA agreement.",
         // TRANSLATION DRAFT: review by user
         descriptionDe:
-          "ISO/IEC 27001:2022 ist der internationale Standard für " +
+          "MSZ ISO/IEC 27001:2023 ist der im Zertifikat genannte Standard für " +
           "Informationssicherheits-Managementsysteme (ISMS). Avenirs zertifiziertes " +
           "Informationssicherheits-Managementsystem wurde innerhalb des im Zertifikat definierten " +
-          "Geltungsbereichs durch die NAH-akkreditierte MARTON Szakértő Iroda auditiert. " +
+          "Geltungsbereichs durch MCert Rendszertanúsító Kft. auditiert. " +
           "Das Zertifikat ist im Rahmen des IAF MLA-Abkommens " +
           "international anerkannt.",
         // TRANSLATION DRAFT: review by user
         descriptionZh:
-          "ISO/IEC 27001:2022 是信息安全管理体系（ISMS）的国际标准。Avenir 的认证" +
-          "信息安全管理体系已由 NAH 认可的 MARTON Szakértő Iroda 按证书定义的范围进行审核。" +
+          "MSZ ISO/IEC 27001:2023 是证书中列明的信息安全管理体系（ISMS）标准。Avenir 的认证" +
+          "信息安全管理体系已由 MCert Rendszertanúsító Kft. 按证书定义的范围进行审核。" +
           "该证书在 IAF MLA 协议下获得国际认可。",
 
         // verbatim from PDF
@@ -409,7 +406,7 @@ async function main() {
         // TRANSLATION DRAFT: review by user
         scopeZh: "全面安保服务",
 
-        issuer: "MARTON Szakértő Iroda Kft.",
+        issuer: "MCert Rendszertanúsító Kft.",
         issuerUrl: "https://www.rendszertanusitas.hu",
         accreditationBody: "NAH",
         accreditationNumber: "NAH-4-0047/2023",

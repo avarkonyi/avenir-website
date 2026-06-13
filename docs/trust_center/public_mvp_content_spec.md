@@ -105,10 +105,9 @@ Legal Notice
 
 Decision: include ISO 9001 and ISO/IEC 27001 in MVP.
 
-Issuer source currently records `MARTON Szakértő Iroda Kft.` for both
-certificates. Before public route launch, proof owner should visually verify the
-issuer and scope directly against the public PDFs to avoid MartonCert / MCert /
-issuer-name drift.
+Issuer and standard values are verified against the public PDFs. ISO 9001 uses
+MartonCert Rendszertanúsító Kft. and MSZ EN ISO 9001:2015. ISO/IEC 27001 uses
+MCert Rendszertanúsító Kft. and MSZ ISO/IEC 27001:2023.
 
 ### HU draft
 
@@ -122,15 +121,15 @@ Az Avenir nyilvánosan elérhető tanúsítványai az irányítási rendszerekhe
 
 Cards:
 
-1. ISO 9001:2015
+1. MSZ EN ISO 9001:2015
 
-Minőségirányítási rendszer. Tanúsítvány száma: 843579099. Kiállító: MARTON Szakértő Iroda Kft. Hatály: 2026-03-19 - 2029-03-18.
+Minőségirányítási rendszer. Tanúsítvány száma: 843579099. Kiállító: MartonCert Rendszertanúsító Kft. Hatály: 2026-03-19 - 2029-03-18.
 
 Dokumentumlink: ISO 9001 tanúsítvány
 
-2. ISO/IEC 27001:2022
+2. MSZ ISO/IEC 27001:2023
 
-Információbiztonsági irányítási rendszer. Tanúsítvány száma: 988960032. Kiállító: MARTON Szakértő Iroda Kft. Hatály: 2026-04-27 - 2029-04-26.
+Információbiztonsági irányítási rendszer. Tanúsítvány száma: 988960032. Kiállító: MCert Rendszertanúsító Kft. Hatály: 2026-04-27 - 2029-04-26.
 
 Dokumentumlink: ISO/IEC 27001 tanúsítvány
 
@@ -146,15 +145,15 @@ Avenir's publicly available certificates relate to management systems. The certi
 
 Cards:
 
-1. ISO 9001:2015
+1. MSZ EN ISO 9001:2015
 
-Quality management system. Certificate number: 843579099. Issuer: MARTON Szakértő Iroda Kft. Valid: 2026-03-19 to 2029-03-18.
+Quality management system. Certificate number: 843579099. Certification body: MartonCert Rendszertanúsító Kft. Valid: 2026-03-19 to 2029-03-18.
 
 Document link: ISO 9001 certificate
 
-2. ISO/IEC 27001:2022
+2. MSZ ISO/IEC 27001:2023
 
-Information security management system. Certificate number: 988960032. Issuer: MARTON Szakértő Iroda Kft. Valid: 2026-04-27 to 2029-04-26.
+Information security management system. Certificate number: 988960032. Certification body: MCert Rendszertanúsító Kft. Valid: 2026-04-27 to 2029-04-26.
 
 Document link: ISO/IEC 27001 certificate
 

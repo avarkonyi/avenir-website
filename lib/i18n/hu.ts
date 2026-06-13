@@ -276,7 +276,7 @@ export const hu = {
         {
           id: "security",
           title: "13. Adatbiztonság",
-          body: "Az Adatkezelő ISO/IEC 27001:2022 szabvány szerinti információbiztonsági irányítási rendszer tanúsítvánnyal rendelkezik a tanúsítványban meghatározott tárgyi hatály szerint.\n\nTanúsítvány száma: 988960032\nKibocsátó: MARTON Szakértő Iroda Kft.\nÉrvényesség: 2026.04.27 – 2029.04.26\n\nA tanúsítvány tárgyi hatályára vonatkozó információ kérésre rendelkezésre áll. A technikai és szervezési intézkedéseket az Adatkezelő a GDPR 32. cikkének megfelelően, kockázatalapú megközelítéssel határozza meg és rendszeresen felülvizsgálja, különösen az alábbiak körében: adattakarékosság (data minimization), titkosított átvitel és tárolás (encryption in transit and at rest), hozzáférés-korlátozás és jogosultságkezelés (access control), naplózás és incidens-detektálás (logging), valamint rendszeres biztonsági felülvizsgálat és teszt.",
+          body: "Az Adatkezelő MSZ ISO/IEC 27001:2023 szabvány szerinti információbiztonsági irányítási rendszer tanúsítvánnyal rendelkezik a tanúsítványban meghatározott tárgyi hatály szerint.\n\nTanúsítvány száma: 988960032\nKibocsátó: MCert Rendszertanúsító Kft.\nÉrvényesség: 2026.04.27 – 2029.04.26\n\nA tanúsítvány tárgyi hatályára vonatkozó információ kérésre rendelkezésre áll. A technikai és szervezési intézkedéseket az Adatkezelő a GDPR 32. cikkének megfelelően, kockázatalapú megközelítéssel határozza meg és rendszeresen felülvizsgálja, különösen az alábbiak körében: adattakarékosság (data minimization), titkosított átvitel és tárolás (encryption in transit and at rest), hozzáférés-korlátozás és jogosultságkezelés (access control), naplózás és incidens-detektálás (logging), valamint rendszeres biztonsági felülvizsgálat és teszt.",
         },
         {
           id: "modification",
@@ -347,7 +347,7 @@ export const hu = {
         {
           id: "code-of-conduct",
           title: "11. Magatartási kódex",
-          body: "A Szolgáltató nem csatlakozott önkéntes magatartási kódexhez (Ekertv. 4. § g) szerinti tájékoztatás alapján). A Szolgáltató tevékenységét a vonatkozó iparági standardok (ISO 9001:2015, ISO/IEC 27001:2022, MABISZ vagyonvédelmi alapelvek) szerint végzi.",
+          body: "A Szolgáltató nem csatlakozott önkéntes magatartási kódexhez (Ekertv. 4. § g) szerinti tájékoztatás alapján). A Szolgáltató tevékenységét a vonatkozó iparági standardok (MSZ EN ISO 9001:2015, MSZ ISO/IEC 27001:2023, MABISZ vagyonvédelmi alapelvek) szerint végzi.",
         },
         {
           id: "law",

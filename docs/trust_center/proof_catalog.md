@@ -99,24 +99,29 @@ credential structured data:
 - owner: proof_owner
 - review_frequency: on_expiry
 - expiry_or_review_date: 2029-03-18
-- allowed_wording_hu: "ISO 9001:2015 tanúsított irányítási rendszer,
-  tanúsítvány száma: 843579099, kiállító: MARTON Szakértő Iroda Kft., hatály:
-  2026-03-19 - 2029-03-18, scope: Teljes körű biztonsági szolgáltatás."
-- allowed_wording_en: "ISO 9001:2015 certified management system, certificate
-  number 843579099, issuer MARTON Szakértő Iroda Kft., valid 2026-03-19 to
-  2029-03-18, scope: Comprehensive security services."
-- allowed_wording_de: "ISO 9001:2015 zertifiziertes Managementsystem,
-  Zertifikat Nr. 843579099, Aussteller MARTON Szakértő Iroda Kft., gültig
-  19.03.2026 bis 18.03.2029."
+- allowed_wording_hu: "MSZ EN ISO 9001:2015 tanúsított irányítási rendszer,
+  tanúsítvány száma: 843579099, kiállító: MartonCert Rendszertanúsító Kft.,
+  hatály: 2026-03-19 - 2029-03-18, scope: Teljes körű biztonsági
+  szolgáltatás."
+- allowed_wording_en: "MSZ EN ISO 9001:2015 certified management system,
+  certificate number 843579099, certification body MartonCert
+  Rendszertanúsító Kft., valid 2026-03-19 to 2029-03-18, scope:
+  Comprehensive security services."
+- allowed_wording_de: "MSZ EN ISO 9001:2015 zertifiziertes Managementsystem,
+  Zertifikat Nr. 843579099, Aussteller MartonCert Rendszertanúsító Kft.,
+  gültig 19.03.2026 bis 18.03.2029."
 - restricted_wording: do not state that every specific service process is ISO
   guaranteed; use scope-conditional wording.
-- notes: Seed source records issuer, certificate number, public PDF and scope.
+- notes: Source of truth is the public PDF
+  `/certifications/iso-9001-marton-843579099.pdf`. The old generic issuer
+  wording `MARTON Szakértő Iroda Kft.` was corrected to the PDF name
+  `MartonCert Rendszertanúsító Kft.`.
 
 ### iso_27001
 
 - id: `iso_27001`
 - category: certifications
-- title: ISO/IEC 27001:2022 Information Security Management System Certification
+- title: MSZ ISO/IEC 27001:2023 Information Security Management System Certification
 - status: `approved_public`
 - public_surface_allowed: `homepage`, `trust_center`, `llms`,
   `structured_data`, `legal_pages`, `procurement_pack`
@@ -126,19 +131,23 @@ credential structured data:
 - owner: proof_owner
 - review_frequency: on_expiry
 - expiry_or_review_date: 2029-04-26
-- allowed_wording_hu: "ISO/IEC 27001:2022 tanúsított információbiztonsági
-  irányítási rendszer, tanúsítvány száma: 988960032, kiállító: MARTON
-  Szakértő Iroda Kft., hatály: 2026-04-27 - 2029-04-26."
-- allowed_wording_en: "ISO/IEC 27001:2022 certified information security
-  management system, certificate number 988960032, issuer MARTON Szakértő
-  Iroda Kft., valid 2026-04-27 to 2029-04-26."
-- allowed_wording_de: "ISO/IEC 27001:2022 zertifiziertes
+- allowed_wording_hu: "MSZ ISO/IEC 27001:2023 tanúsított
+  információbiztonsági irányítási rendszer, tanúsítvány száma: 988960032,
+  kiállító: MCert Rendszertanúsító Kft., hatály: 2026-04-27 - 2029-04-26."
+- allowed_wording_en: "MSZ ISO/IEC 27001:2023 certified information security
+  management system, certificate number 988960032, certification body MCert
+  Rendszertanúsító Kft., valid 2026-04-27 to 2029-04-26."
+- allowed_wording_de: "MSZ ISO/IEC 27001:2023 zertifiziertes
   Informationssicherheits-Managementsystem, Zertifikat Nr. 988960032,
-  Aussteller MARTON Szakértő Iroda Kft., gültig 27.04.2026 bis 26.04.2029."
+  Aussteller MCert Rendszertanúsító Kft., gültig 27.04.2026 bis 26.04.2029."
 - restricted_wording: no GDPR guarantee, no absolute cybersecurity guarantee,
   no universal process coverage claim.
-- notes: Legal/privacy pages may reference this as a data-security support
-  measure, not as a guarantee.
+- notes: Source of truth is the public PDF
+  `/certifications/iso-27001-marton-988960032.pdf`. The old standard wording
+  `ISO/IEC 27001:2022` and old generic issuer wording `MARTON Szakértő Iroda
+  Kft.` were corrected to `MSZ ISO/IEC 27001:2023` and `MCert
+  Rendszertanúsító Kft.`. Legal/privacy pages may reference this as a
+  data-security support measure, not as a guarantee.
 
 ### dnb_aa_creditworthiness
 

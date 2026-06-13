@@ -386,7 +386,7 @@ export function CertificationForm(props: Props) {
             maxLength={100}
             disabled={pending}
             style={inputStyle()}
-            placeholder="pl. ISO 9001:2015"
+            placeholder="pl. MSZ EN ISO 9001:2015"
           />
         </Field>
 
@@ -464,7 +464,7 @@ export function CertificationForm(props: Props) {
             required
             disabled={pending}
             style={inputStyle()}
-            placeholder="pl. MARTON Szakértő Iroda Kft."
+            placeholder="pl. MartonCert Rendszertanúsító Kft."
           />
         </Field>
 
