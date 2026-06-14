@@ -34,5 +34,5 @@ export const DE_REVIEW_SERVICE_QUOTE_COPY = {
   emailInvalid: "Bitte geben Sie eine gültige E-Mail-Adresse an.",
   requiredField: "* Pflichtfeld",
   nextStepHelper:
-    "Unser Team meldet sich über die angegebenen Kontaktdaten. Die Angebotserstellung hängt vom Umfang und der Komplexität der Anfrage ab.",
+    "Innerhalb der Geschäftszeiten antworten wir in der Regel noch am selben Tag, spätestens jedoch am nächsten Werktag melden wir uns bei Ihnen. Wie lange die Angebotserstellung dauert, hängt vom Umfang und der Komplexität der Anfrage ab.",
 } as const;

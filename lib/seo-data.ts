@@ -96,7 +96,7 @@ export const SEO_FAQS_HU = [
   },
   {
     q: "Hogyan lehet ajánlatot kérni az Avenirtől?",
-    a: "Ajánlat a +36 70 316 8218-as telefonszámon, az info@afm.hu e-mail címen, vagy a www.afm.hu weboldalon található űrlapon kérhető. Visszajelzés 2 munkanapon belül.",
+    a: "Ajánlat a +36 70 316 8218-as telefonszámon, az info@afm.hu e-mail címen, vagy a www.afm.hu weboldalon található űrlapon kérhető. Munkaidőben többnyire még aznap visszajelzünk, de legkésőbb a következő munkanapon felvesszük Önnel a kapcsolatot. Az ajánlat elkészítésének ideje az igény összetettségétől függ.",
   },
 ] as const;
 

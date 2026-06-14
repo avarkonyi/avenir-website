@@ -11,6 +11,7 @@ import "./certification-seed.test.ts";
 import "./iso-certification-proof.test.ts";
 import "./news-localization.test.ts";
 import "./ux-safety-cleanup.test.tsx";
+import "./response-time-governance.test.ts";
 import "./approved-references.test.tsx";
 import "./launch-news-en-service-labels.test.ts";
 import "./recruitment-privacy.test.ts";

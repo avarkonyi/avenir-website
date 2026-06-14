@@ -357,11 +357,15 @@ P1/P2 content and governance items:
   flow with sensitive-data safeguards is approved (backlog PL-015/PL-059).
   The backend keeps accepting the legacy `magannyomozas` key; Impresszum/ÁSZF
   legal-fact mentions are unchanged.
-- Form copy is non-SLA (2026-06-11): the contact and embedded quote forms use
-  a "what happens next" helper without response-time promises, and the
-  previous "2 munkanapon belül / within 2 business days" success wording was
-  removed. Do not reintroduce fixed response times, guaranteed quotes or
-  SLA-like commitments in form/CTA copy without owner/legal approval.
+- Response-time governance (updated 2026-06-14): the contact form, embedded
+  service quote form, Terms/ÁSZF/Rechtliche Hinweise contact-form section, and
+  the objektumőrzés/portaszolgálat first process step may use the approved
+  next-business-day contact follow-up wording. This is a contact follow-up
+  commitment only; it is not a quote-delivery deadline, service-start
+  commitment, fixed response-time SLA, guaranteed quote, or guaranteed
+  resolution. The 2-business-day legacy response wording is deprecated. Do not
+  reintroduce "2 munkanap / 2 business days / 2 Werktage",
+  "24 hours", or "quote by the next business day" wording.
 - The homepage "Referenciák" section may show only explicitly approved public
   references. Current approved source reference: AutoWallis Pest, with the
   supplied logo and service chips for Objektumőrzés / Recepciós és

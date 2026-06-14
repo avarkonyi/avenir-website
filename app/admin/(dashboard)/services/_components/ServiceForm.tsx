@@ -1027,7 +1027,7 @@ function LocaleFields({
           rows={6}
           placeholder={
             isHu
-              ? "Hogyan kérhetek ajánlatot? || Telefonon, e-mailben vagy az űrlapon. 2 munkanapon belül visszajelzünk.\nMilyen rendszerességgel kapok riportot? || Heti írásos riport és havi áttekintés."
+              ? "Hogyan kérhetek ajánlatot? || Telefonon, e-mailben vagy az űrlapon. Legkésőbb a következő munkanapon jelentkezünk a megadott elérhetőségen.\nMilyen rendszerességgel kapok riportot? || Heti írásos riport és havi áttekintés."
               : "Opcionális"
           }
           style={{ ...inputStyle(), resize: "vertical", lineHeight: 1.55 }}

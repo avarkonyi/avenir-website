@@ -26,9 +26,9 @@ The following claims may be used in public website copy when the wording follows
 - 30+ aktív helyszín
 - 200+ munkatársi háttér
 - D&B AA High Creditworthy 2026
-- 2 munkanapon belüli visszajelzés
-- 1–3 munkanapos első egyeztetési / előkészítési folyamat
-- 5 munkanapon belüli ajánlati előkészítés az igény összetettségétől függően
+- response_time_contact_follow_up: next-business-day contact follow-up for
+  incoming website/contact-form quote requests, with quote-preparation timing
+  dependent on the scope and complexity of the request
 - Biztonságtechnikai engedély
 - Magánnyomozói engedély
 
@@ -149,8 +149,8 @@ and until a separate OPTEN-specific proof document is approved.
 - Avoid: "fegyveres őrzést biztosítunk minden objektumban"
 - Use: "ISO 9001 és ISO 27001 tanúsított irányítási rendszerekhez illeszkedő dokumentált működés"
 - Avoid: "minden szolgálati folyamat ISO-garantált"
-- Use: "5 munkanapon belüli ajánlati előkészítés az igény összetettségétől függően"
-- Avoid: "minden ajánlat 5 munkanapon belül garantált"
+- Use: "legkésőbb a következő munkanapon kapcsolatba lépünk / jelentkezünk a megadott elérhetőségen"
+- Avoid: "2 munkanapon belüli visszajelzés", "24 órán belüli válasz", "minden ajánlat elkészül a következő munkanapon", or any response-time SLA, quote-delivery guarantee, service-start guarantee, or fixed quote-preparation deadline.
 
 ## Approved Partner Logo Usage Registry
 

@@ -56,7 +56,7 @@ export const SERVICE_QUOTE_COPY = {
     emailInvalid: "Kérjük, érvényes e-mail címet adjon meg.",
     requiredField: "* Kötelező mező",
     nextStepHelper:
-      "Munkatársunk a megadott elérhetőségen visszajelez. Az ajánlat előkészítése az igény összetettségétől függ.",
+      "Munkaidőben többnyire még aznap visszajelzünk, de legkésőbb a következő munkanapon felvesszük Önnel a kapcsolatot. Az ajánlat elkészítésének ideje az igény összetettségétől függ.",
   },
   en: {
     title: "Request a quote",
@@ -79,7 +79,7 @@ export const SERVICE_QUOTE_COPY = {
     emailInvalid: "Please enter a valid email address.",
     requiredField: "* Required field",
     nextStepHelper:
-      "Our team will respond using the contact details provided. Quote preparation depends on the scope and complexity of the request.",
+      "Within business hours we usually reply the same day, and in any case we'll be in touch by the next business day. The time needed to prepare a quote depends on the scope and complexity of your request.",
   },
   de: DE_REVIEW_SERVICE_QUOTE_COPY,
 } as const;

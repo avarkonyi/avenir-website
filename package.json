@@ -35,6 +35,8 @@
     "db:update-service-related-slugs:prod": "node scripts/verify-db-target.mjs --target production --allow-production --runtime-only && tsx scripts/update-service-related-slugs.ts --target production --allow-production",
     "db:update-service-display-copy": "node scripts/verify-db-target.mjs --target staging --runtime-only && tsx scripts/update-service-display-copy.ts",
     "db:update-service-display-copy:prod": "node scripts/verify-db-target.mjs --target production --allow-production --runtime-only && tsx scripts/update-service-display-copy.ts --target production --allow-production",
+    "db:update-response-time-contact-copy": "node scripts/verify-db-target.mjs --target staging --runtime-only && tsx scripts/update-response-time-contact-copy.ts",
+    "db:update-response-time-contact-copy:prod": "node scripts/verify-db-target.mjs --target production --allow-production --runtime-only && tsx scripts/update-response-time-contact-copy.ts --target production --allow-production",
     "db:sync-pilot-service-content": "node scripts/verify-db-target.mjs --target staging --runtime-only && tsx scripts/sync-pilot-service-content.ts",
     "db:sync-pilot-service-content:apply": "node scripts/verify-db-target.mjs --target staging --runtime-only && tsx scripts/sync-pilot-service-content.ts --apply",
     "db:sync-pilot-service-content:prod": "node scripts/verify-db-target.mjs --target production --allow-production --runtime-only && tsx scripts/sync-pilot-service-content.ts --target production --allow-production",

@@ -132,14 +132,14 @@ export const hu = {
     message: "Üzenet / Igény leírása",
     send: "Ajánlatkérés küldése",
     sending: "Küldés folyamatban…",
-    // No fixed response-time promise (SLA-like wording needs owner/legal
-    // approval) — the success and helper copy stays non-committal.
+    // Narrowed contact follow-up wording: next-business-day contact only,
+    // not quote delivery, service start, response-time SLA, or guarantee.
     success:
       "Üzenetét megkaptuk. Munkatársunk a megadott elérhetőségen visszajelez. Adatait az Adatvédelmi tájékoztatóban leírtak szerint kezeljük.",
     successPrivacyLink: "Adatvédelmi tájékoztatóban",
     requiredField: "* Kötelező mező",
     nextStepHelper:
-      "Munkatársunk a megadott elérhetőségen visszajelez. Az ajánlat előkészítése az igény összetettségétől függ.",
+      "Munkaidőben többnyire még aznap visszajelzünk, de legkésőbb a következő munkanapon felvesszük Önnel a kapcsolatot. Az ajánlat elkészítésének ideje az igény összetettségétől függ.",
     specialDataWarning:
       "Kérjük, az üzenetmezőben ne küldjön különleges adatot, büntetőjogi adatot, minősített adatot, üzleti titkot vagy harmadik személyre vonatkozó részletes magánéleti információt. Ilyen ügyekben külön szerződéses és adatvédelmi egyeztetés szükséges.",
     specialDataWarningLink: "Jogi nyilatkozatok 4. szakasz",
@@ -307,7 +307,7 @@ export const hu = {
         {
           id: "contact-form",
           title: "3. A kapcsolatfelvételi űrlap használata",
-          body: "A https://www.afm.hu/hu#contact oldalrészen elérhető űrlap kizárólag ajánlatkérésre és kapcsolatfelvételre szolgál. Az űrlap kitöltése és elküldése NEM hoz létre szerződéses jogviszonyt a felek között.\n\nA Szolgáltató vállalja, hogy a beérkezett ajánlatkérésre 2 munkanapon belül visszajelez.\n\nAdatvédelem: az űrlapon megadott személyes adatokat az Adatvédelmi tájékoztatóban (https://www.afm.hu/hu/adatvedelem) leírtak szerint kezeljük.",
+          body: "A https://www.afm.hu/hu#contact oldalrészen elérhető űrlap kizárólag ajánlatkérésre és kapcsolatfelvételre szolgál. Az űrlap kitöltése és elküldése NEM hoz létre szerződéses jogviszonyt a felek között.\n\nA Szolgáltató a beérkezett megkeresést áttekinti, és legkésőbb a következő munkanapon a megadott elérhetőségek valamelyikén kapcsolatba lép a megkeresővel. Az ajánlat elkészítésének időigénye az igény összetettségétől és a szükséges egyeztetésektől függ.\n\nAdatvédelem: az űrlapon megadott személyes adatokat az Adatvédelmi tájékoztatóban (https://www.afm.hu/hu/adatvedelem) leírtak szerint kezeljük.",
         },
         {
           id: "magannyomozas",

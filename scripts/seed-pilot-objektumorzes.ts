@@ -79,9 +79,10 @@ const PILOT_HU = {
   processSteps: [
     {
       title: "Első egyeztetés és igényfelmérés",
-      body: "A megkeresésre 2 munkanapon belül visszajelzünk, majd " +
-        "rögzítjük az őrzési célt, a helyszín típusát, az időszakot és " +
-        "az elsődleges kockázati pontokat.",
+      body:
+        "A megkeresést átnézzük, és legkésőbb a következő munkanapon " +
+        "jelentkezünk a megadott elérhetőségen. Az ajánlat előkészítésének " +
+        "ideje a helyszíntől és az igény összetettségétől függ.",
     },
     {
       title: "Helyszíni felmérés és kockázati pontok áttekintése",

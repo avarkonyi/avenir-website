@@ -139,12 +139,12 @@ export const de = {
     "message": "Nachricht / Anforderungen",
     "send": "Anfrage senden",
     "sending": "Wird gesendet…",
-    // No fixed response-time promise (SLA-like wording needs owner/legal
-    // approval) — the success and helper copy stays non-committal.
+    // Narrowed contact follow-up wording: next-business-day contact only,
+    // not quote delivery, service start, response-time SLA, or guarantee.
     "success": "Wir haben Ihre Nachricht erhalten. Unser Team meldet sich über die angegebenen Kontaktdaten. Ihre Daten werden gemäß unserer Datenschutzerklärung verarbeitet.",
     "successPrivacyLink": "Datenschutzerklärung",
     "requiredField": "* Pflichtfeld",
-    "nextStepHelper": "Unser Team meldet sich über die angegebenen Kontaktdaten. Die Angebotserstellung hängt vom Umfang und der Komplexität der Anfrage ab.",
+    "nextStepHelper": "Innerhalb der Geschäftszeiten antworten wir in der Regel noch am selben Tag, spätestens jedoch am nächsten Werktag melden wir uns bei Ihnen. Wie lange die Angebotserstellung dauert, hängt vom Umfang und der Komplexität der Anfrage ab.",
     "specialDataWarning": "Bitte übermitteln Sie über das Nachrichtenfeld keine besonderen Datenkategorien, strafrechtlichen Daten, klassifizierten Daten, Geschäftsgeheimnisse oder detaillierten Privatlebensinformationen über Dritte. Solche Angelegenheiten erfordern eine gesonderte Vertrags- und Datenschutzabstimmung.",
     "specialDataWarningLink": "Nutzungsbedingungen, Abschnitt 4",
     "privateInvestigation": "Privatermittlung",
@@ -238,7 +238,7 @@ export const de = {
       "sections": [
         { "id": "general", "title": "1. Allgemeine Bestimmungen", "body": "Anbieter (Marketing): Avenir Facility Management Kft.\nAnbieter (Rechtsname): Avenir Facility Management Szolgáltató Korlátolt Felelősségű Társaság.\nB2B-Klientel: Der Anbieter schließt über diese Website keine Verträge mit Verbrauchern. Verbindliche Sprache: Ungarisch." },
         { "id": "service", "title": "2. Beschreibung des Dienstes", "body": "Die Website ist informativ und KEINE Online-Vertragsplattform. Verträge entstehen separat in Schriftform." },
-        { "id": "contact-form", "title": "3. Nutzung des Kontaktformulars", "body": "Das Formular dient ausschließlich Angebotsanfragen und Kontakt. Antwort innerhalb 2 Werktagen." },
+        { "id": "contact-form", "title": "3. Nutzung des Kontaktformulars", "body": "Das Formular dient ausschließlich Angebotsanfragen und Kontakt. Der Dienstleister prüft jede eingegangene Anfrage und nimmt spätestens am nächsten Werktag über eine der angegebenen Kontaktmöglichkeiten Kontakt auf. Die Dauer der Angebotserstellung richtet sich nach dem Umfang und der Komplexität der Anfrage sowie nach dem erforderlichen Abstimmungsbedarf." },
         { "id": "private-investigation", "title": "4. Ausschluss besonderer Datenkategorien und Privatdetektiv-Angelegenheiten aus dem Formular", "body": "Bitte übermitteln Sie keine besonderen Datenkategorien, strafrechtlichen Daten, klassifizierten Daten oder detaillierten Privatlebensinformationen über Dritte. Privatdetektivtätigkeit erfolgt nur unter Lizenz 01030-822/4925-3/2018, gemäß SzVMt., auf Basis schriftlicher Beauftragung." },
         { "id": "licenses", "title": "5. Betriebslizenzen", "body": "a) Bewachung — 01030-822/4926-7/2023, gültig bis 31.01.2028\nb) Sicherheitstechnik-Planer-Installateur — 01030-822/4927-3/2018, bis Widerruf\nc) Privatdetektivtätigkeit — 01030-822/4925-3/2018, bis Widerruf\nd) Nationale Sicherheitsregister-Eintragung — AH/37595-14/2024-2, Überprüfung bis 30.06.2026, Vbt. § 120" },
         { "id": "ip", "title": "6. Geistiges Eigentum", "body": "Sämtliche Inhalte sind urheberrechtlich geschützt. Kommerzielle Verwendung ohne schriftliche Genehmigung untersagt." },

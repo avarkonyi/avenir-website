@@ -78,9 +78,9 @@ const PILOT_HU = {
     {
       title: "Első egyeztetés és működési igényfelmérés",
       body:
-        "A megkeresésre 2 munkanapon belül visszajelzünk, majd rögzítjük a " +
-        "helyszín típusát, a látogatói forgalmat, a portapontok számát és a " +
-        "kapcsolódó biztonsági vagy üzemeltetési elvárásokat.",
+        "A megkeresést átnézzük, és legkésőbb a következő munkanapon " +
+        "jelentkezünk a megadott elérhetőségen. Az ajánlat előkészítésének " +
+        "ideje a helyszíntől és az igény összetettségétől függ.",
     },
     {
       title: "Helyszíni bejárás és forgalmi pontok áttekintése",

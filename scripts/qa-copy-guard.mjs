@@ -2,6 +2,7 @@
 
 import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
+import { pathToFileURL } from "node:url";
 
 const ROOT = process.cwd();
 const EXACT_LICENSE_NUMBER = "01030-822/4926-7/2023";
@@ -141,6 +142,39 @@ const CHECKS = [
     allowLine: isProtectiveGuaranteeLine,
   },
   {
+    name: "legacy fixed response-time wording",
+    pattern:
+      /\b(2\s*munkanap(?:on(?: belül)?)?|két\s+munkanap|2\s*business\s+days|2\s*working\s+days|2-working-day|2\s*Werktag(?:e|en)?|2\s*Arbeitstag(?:e|en)?|2\s*个工作日|2\s*영업일)\b/i,
+    appliesTo: isPublicSource,
+    allowLine: isProtectiveResponseTimeLine,
+  },
+  {
+    name: "24-hour response-time wording",
+    pattern: /\b(within\s+24\s+hours|24\s+hours|24\s+órán(?:\s+belül)?)\b/i,
+    appliesTo: isPublicSource,
+    allowLine: isProtectiveResponseTimeLine,
+  },
+  {
+    name: "guaranteed quote/response wording",
+    pattern:
+      /\b(guaranteed\s+(?:quote|response)|garantált\s+(?:ajánlat|válasz)|garantierte\s+(?:Antwort|Angebot))\b/i,
+    appliesTo: isPublicSource,
+    allowLine: isProtectiveResponseTimeLine,
+  },
+  {
+    name: "next-business-day quote/service-start overclaim",
+    pattern:
+      /\b(quote\s+by\s+the\s+next\s+business\s+day|service\s+start\s+by\s+the\s+next\s+business\s+day)\b/i,
+    appliesTo: isPublicSource,
+    allowLine: isProtectiveResponseTimeLine,
+  },
+  {
+    name: "public response-time SLA wording",
+    pattern: /\bSLA\b/i,
+    appliesTo: isPublicSource,
+    allowLine: isProtectiveResponseTimeLine,
+  },
+  {
     name: "legal advice positioning",
     pattern: /legal advice/i,
     appliesTo: isServiceMarketingSource,
@@ -196,6 +230,15 @@ function isProtectiveGuaranteeLine(line) {
   );
 }
 
+function isProtectiveResponseTimeLine(line, file) {
+  return (
+    file === "scripts/qa-copy-guard.mjs" ||
+    /\b(no|not|without|unless|do not|avoid|removed|blocks?|forbidden|protective|guard|non-SLA|SLA-like|nem|ne|nincs|nem\s+ígér|tilos|eltávolítva)\b/i.test(
+      line,
+    )
+  );
+}
+
 function isProtectiveOptenLine(line) {
   return /\b(not|no|without|unless|do not|unapproved|separate|separately|nem|ne|külön|nem azonos)\b/i.test(
     line,
@@ -238,6 +281,10 @@ function lineNumberAt(text, index) {
 
 async function scanFile(file) {
   const text = await readFile(path.join(ROOT, file), "utf8");
+  return findCopyGuardFindings(file, text);
+}
+
+export function findCopyGuardFindings(file, text) {
   const findings = [];
 
   for (const check of CHECKS) {
@@ -282,7 +329,9 @@ async function main() {
   process.exitCode = 1;
 }
 
-main().catch((error) => {
-  console.error(error instanceof Error ? error.message : error);
-  process.exitCode = 1;
-});
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  main().catch((error) => {
+    console.error(error instanceof Error ? error.message : error);
+    process.exitCode = 1;
+  });
+}

@@ -149,14 +149,15 @@ Watch especially for:
   the service quote copy):
   - `form.requiredField` — HU `* Kötelező mező`, EN `* Required field`,
     DE `* Pflichtfeld`, ZH `* 必填项` (draft), KO `* 필수 입력 항목` (draft);
-  - `form.nextStepHelper` — non-SLA "what happens next" helper; HU/EN/DE use
-    the approved conservative wording, ZH/KO are short conservative drafts
-    marked `TRANSLATION DRAFT` (both locales are partial/noindex);
-  - `form.success` no longer promises a 2-working-day response in HU/EN/DE/ZH
+  - `form.nextStepHelper` — approved next-business-day contact follow-up
+    helper; HU/EN/DE use the owner-approved wording. This is contact follow-up
+    only, not quote delivery, service start, SLA, or guarantee wording. ZH/KO
+    remain draft/partial-localization surfaces.
+  - `form.success` no longer promises a fixed response time in HU/EN/DE/ZH
     (KO already had non-SLA wording);
-  - the ZH privacy-policy legal section still contains a 2-working-day reply
-    sentence; legal text was intentionally not edited in this pass and needs
-    legal review before any ZH legal publication.
+  - the ZH terms/contact-form draft row has been aligned away from the old
+    2-working-day promise, but ZH legal text still needs legal review before
+    any ZH legal publication.
 - The public contact dropdown no longer offers `Magánnyomozás` /
   `Private investigation` in any locale (2026-06-11); the i18n keys
   (`form.privateInvestigation`, `form.specialDataWarning*`) are retained for

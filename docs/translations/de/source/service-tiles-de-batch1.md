@@ -85,7 +85,7 @@ So startet die Zusammenarbeit
 Erstabstimmung und Bedarfsaufnahme
 
 **[processSteps.0.body]**
-Wir melden uns innerhalb von 2 Arbeitstagen auf Ihre Anfrage und erfassen anschließend das Schutzziel, den Standorttyp, den Zeitraum und die wichtigsten Risikopunkte.
+Wir sehen die Anfrage durch und melden uns spätestens am nächsten Werktag über die angegebenen Kontaktdaten. Wie lange die Angebotserstellung dauert, hängt vom Standort und der Komplexität der Anfrage ab.
 
 **[processSteps.1.title]**
 Begehung vor Ort und Überblick über die Risikopunkte
@@ -352,7 +352,7 @@ So startet die Zusammenarbeit
 Erstabstimmung und Aufnahme des Betriebsbedarfs
 
 **[processSteps.0.body]**
-Wir melden uns innerhalb von 2 Arbeitstagen auf Ihre Anfrage und erfassen anschließend den Standorttyp, das Besucheraufkommen, die Anzahl der Pfortenpunkte und die zugehörigen Sicherheits- oder Betriebsanforderungen.
+Wir sehen die Anfrage durch und melden uns spätestens am nächsten Werktag über die angegebenen Kontaktdaten. Wie lange die Angebotserstellung dauert, hängt vom Standort und der Komplexität der Anfrage ab.
 
 **[processSteps.1.title]**
 Begehung vor Ort und Überblick über die Verkehrspunkte

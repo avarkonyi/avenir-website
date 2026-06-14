@@ -139,12 +139,12 @@ export const en = {
     "message": "Message / Requirements",
     "send": "Send Request",
     "sending": "Sending…",
-    // No fixed response-time promise (SLA-like wording needs owner/legal
-    // approval) — the success and helper copy stays non-committal.
+    // Narrowed contact follow-up wording: next-business-day contact only,
+    // not quote delivery, service start, response-time SLA, or guarantee.
     "success": "We have received your message. Our team will respond using the contact details provided. Your data is processed in accordance with our Privacy Policy.",
     "successPrivacyLink": "Privacy Policy",
     "requiredField": "* Required field",
-    "nextStepHelper": "Our team will respond using the contact details provided. Quote preparation depends on the scope and complexity of the request.",
+    "nextStepHelper": "Within business hours we usually reply the same day, and in any case we'll be in touch by the next business day. The time needed to prepare a quote depends on the scope and complexity of your request.",
     "specialDataWarning": "Please do not submit special categories of data, criminal-conviction data, classified data, trade secrets, or detailed private-life information about third parties via this contact form. Such matters require a separate engagement and data-protection consultation.",
     "specialDataWarningLink": "Terms of Use, section 4",
     "privateInvestigation": "Private investigation",
@@ -304,7 +304,7 @@ export const en = {
         {
           "id": "contact-form",
           "title": "3. Use of the Contact Form",
-          "body": "The form available at https://www.afm.hu/en#contact is intended solely for quote requests and contact. Submission of the form does NOT create a contractual relationship between the parties.\n\nThe Provider undertakes to respond to incoming requests within 2 business days.\n\nData protection: personal data submitted via the form is processed in accordance with our Privacy Policy (https://www.afm.hu/en/adatvedelem)."
+          "body": "The form available at https://www.afm.hu/en#contact is intended solely for quote requests and contact. Submission of the form does NOT create a contractual relationship between the parties.\n\nThe Provider reviews each incoming request and makes contact by the next business day via one of the contact details provided. The time required to prepare a quote depends on the scope and complexity of the request and on any clarification needed.\n\nData protection: personal data submitted via the form is processed in accordance with our Privacy Policy (https://www.afm.hu/en/adatvedelem)."
         },
         {
           "id": "private-investigation",
