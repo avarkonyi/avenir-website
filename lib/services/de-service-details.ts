@@ -364,7 +364,7 @@ const DE_REVIEW_SERVICE_DETAILS = {
       },
       {
         "title": "Neutrale Beobachtung der Customer Journey",
-        "body": "Die Prüfung erfasst, wie sich die vereinbarten Serviceschritte, Markenanforderungen und Customer-Journey-Punkte in realen Kundensituationen darstellen — ohne aufsichtsrechtliche oder disziplinarische Rahmung."
+        "body": "Die Prüfung erfasst, wie sich die vereinbarten Serviceschritte, Markenanforderungen und Customer-Journey-Punkte in realen Kundensituationen darstellen — ohne Überwachungs- oder Disziplinarzweck."
       },
       {
         "title": "Strukturierter Bericht und Abstimmung mit dem Auftraggeber",

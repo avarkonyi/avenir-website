@@ -159,7 +159,7 @@ test("contact form marks only schema-required fields and shows the required lege
   assert.match(html, /id="contact-name"[^>]*aria-required="true"/);
   assert.match(html, /id="contact-email"[^>]*required/);
   assert.match(html, /placeholder="Teljes név \*"/);
-  assert.match(html, /placeholder="E-mail cím \*"/);
+  assert.match(html, /placeholder="E-mail-cím \*"/);
   // company is optional in lib/contact-schema.ts — must not be marked
   assert.equal(/id="contact-company"[^>]*aria-required/.test(html), false);
   assert.equal(html.includes('placeholder="Cégnév *"'), false);

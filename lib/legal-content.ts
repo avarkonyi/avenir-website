@@ -10,6 +10,8 @@ type TermsContent = Translation["legal"]["terms"];
 
 function replaceTermsLanguage(text: string): string {
   return text
+    .replace(/Felhasználási [Ff]eltételekre/g, "Jogi nyilatkozatokra")
+    .replace(/felhasználási feltételekre/g, "jogi nyilatkozatokra")
     .replace(/Felhasználási feltételek/g, "Jogi nyilatkozatok")
     .replace(/felhasználási feltételek/g, "jogi nyilatkozatok")
     .replace(/Felhasználási Feltételek/g, "Jogi nyilatkozatok");

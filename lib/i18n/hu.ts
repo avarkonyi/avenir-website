@@ -25,7 +25,7 @@ export const hu = {
     { n: "AA", l: "D&B magas hitelképességi minősítés" },
     { n: "24/7", l: "Diszpécseri készenlét" },
   ],
-  aboutTitle: "Az Avenir-ről",
+  aboutTitle: "Az Avenirről",
   aboutSub: "VAGYONVÉDELEM · MŰKÖDÉSI BIZTONSÁG",
   aboutText:
     "Az Avenir 2018-ban alakult, de vezetői csapata és szakemberei több évtizedes tapasztalattal rendelkeznek az épületüzemeltetés és a vagyonvédelem területén. Ma 200+ fős szakembergárdával, 30+ aktív helyszínen dolgozunk országszerte — vállalati, kereskedelmi, ipari és logisztikai környezetben.\n\nVagyonvédelmi működést szervezünk: őrzést, beléptetést, járőrözést, incidenskezelést és riportolást. Célunk, hogy ügyfeleink oldalán kevesebb egyeztetésre legyen szükség, csökkenjen a kockázat, és átláthatóbb legyen a napi működés.\n\nA vagyonvédelmi fókuszt szükség esetén biztonságtechnikával, mystery shoppinggal és kapcsolódó FM-támogatással egészítjük ki — így ügyfeleink egy felelős partnerrel dolgozhatnak, nem több különálló szolgáltatóval.",
@@ -40,7 +40,7 @@ export const hu = {
     },
     {
       t: "Reagálás és felelősség",
-      d: "Incidens esetén nem csak jelen vagyunk: dokumentálunk, visszajelzünk, és segítünk megelőzni az ismétlődő problémákat.",
+      d: "Incidens esetén nemcsak jelen vagyunk: dokumentálunk, visszajelzünk, és segítünk megelőzni az ismétlődő problémákat.",
     },
   ],
   servicesTitle: "Szolgáltatásaink",
@@ -126,7 +126,7 @@ export const hu = {
   form: {
     name: "Teljes név",
     company: "Cégnév",
-    email: "E-mail cím",
+    email: "E-mail-cím",
     phone: "Telefonszám",
     service: "Érdeklődési terület",
     message: "Üzenet / Igény leírása",
@@ -148,8 +148,8 @@ export const hu = {
     layeredNoticeLink: "Adatvédelmi tájékoztatót",
     errors: {
       nameRequired: "Adja meg a teljes nevét",
-      emailRequired: "Adja meg az e-mail címét",
-      emailInvalid: "Érvénytelen e-mail cím",
+      emailRequired: "Adja meg az e-mail-címét",
+      emailInvalid: "Érvénytelen e-mail-cím",
       // NOTE: phone number "+36 70 316 8218" duplicated across 4 locales for
       // instant trust signal in error states. If the number changes, update
       // all 4 files together (hu.ts, en.ts, de.ts, zh.ts).

@@ -11,7 +11,7 @@ export const fr = {
   hero: {
     tag: "SÉCURITÉ · TECHNOLOGIES DE SÉCURITÉ · AUDITS",
     h1a: "Moins de risques.", h1b: "Plus de maîtrise.",
-    sub: "Avenir coordonne vos opérations de sécurité : gardiennage, contrôle des accès, technologies de sécurité, contrôles sur site et rapports. Un contrat. Un interlocuteur responsable.",
+    sub: "Avenir coordonne vos opérations de sécurité : gardiennage, contrôle des accès, technologies de sécurité, contrôles sur site et rapports. Un contrat. Un interlocuteur responsable.",
     cta1: "Nos services", cta2: "Demander un devis",
     bgAlt: "Avenir Facility Management — exploitation des bâtiments et sécurité en Hongrie",
   },
@@ -21,7 +21,7 @@ export const fr = {
   ],
   aboutTitle: "À propos d’Avenir",
   aboutSub: "SÉCURITÉ · FIABILITÉ OPÉRATIONNELLE",
-  aboutText: "Fondée en 2018, Avenir s’appuie sur une équipe dirigeante et des spécialistes disposant de plusieurs décennies d’expérience dans la gestion des installations et les services de sécurité. Aujourd’hui, plus de 200 professionnels interviennent sur plus de 30 sites actifs en Hongrie, dans des environnements d’entreprise, commerciaux, industriels et logistiques.\n\nNous coordonnons le gardiennage, le contrôle des accès, les rondes, la gestion des incidents et les rapports. Notre objectif : alléger la coordination quotidienne pour nos clients, réduire les risques et rendre les opérations sur site plus transparentes.\n\nSelon les besoins, nous complétons la sécurité par des technologies de sécurité, des visites mystères et un accompagnement en facility management. Nos clients disposent ainsi d’un interlocuteur responsable pour coordonner ces prestations.",
+  aboutText: "Fondée en 2018, Avenir s’appuie sur une équipe dirigeante et des spécialistes disposant de plusieurs décennies d’expérience dans la gestion des installations et les services de sécurité. Aujourd’hui, plus de 200 professionnels interviennent sur plus de 30 sites actifs en Hongrie, dans des environnements d’entreprise, commerciaux, industriels et logistiques.\n\nNous coordonnons le gardiennage, le contrôle des accès, les rondes, la gestion des incidents et les rapports. Notre objectif : alléger la coordination quotidienne pour nos clients, réduire les risques et rendre les opérations sur site plus transparentes.\n\nSelon les besoins, nous complétons la sécurité par des technologies de sécurité, des visites mystères et un accompagnement en facility management. Nos clients disposent ainsi d’un interlocuteur responsable pour coordonner ces prestations.",
   values: [
     { t: "Un suivi transparent", d: "Des processus documentés, des rapports réguliers et des responsabilités clairement définies pour comprendre ce qui se passe sur site." },
     { t: "Une présence professionnelle", d: "Du personnel formé, des protocoles propres à chaque site et des prestations contrôlées dans les environnements industriels, logistiques, commerciaux et de bureaux." },
@@ -29,8 +29,8 @@ export const fr = {
   ],
   servicesTitle: "Nos services", servicesSub: "Des prestations coordonnées par un seul partenaire",
   services: [
-    { id: "security", icon: "shield", t: "Gardiennage sur site", d: "Gardiennage des sites professionnels : contrôle des accès, rondes, gestion des incidents, journal de service et remontée des alertes selon les procédures convenues." },
-    { id: "cleaning", icon: "sparkle", t: "Sécurité événementielle", d: "Sécurité des événements d’entreprise, sur invitation ou ouverts au public : gestion des accès et des flux, contrôle des zones, rapports d’incident et remontée des alertes selon les consignes de l’organisateur." },
+    { id: "security", icon: "shield", t: "Gardiennage sur site", d: "Gardiennage des sites professionnels : contrôle des accès, rondes, gestion des incidents, journal de service et remontée des alertes selon les procédures convenues." },
+    { id: "cleaning", icon: "sparkle", t: "Sécurité événementielle", d: "Sécurité des événements d’entreprise, sur invitation ou ouverts au public : gestion des accès et des flux, contrôle des zones, rapports d’incident et remontée des alertes selon les consignes de l’organisateur." },
     { id: "building", icon: "camera", t: "Technologies de sécurité", d: "Vidéosurveillance, contrôle des accès et systèmes d’alarme intégrés au dispositif de sécurité du site, avec une conception technique attentive à la protection des données." },
     { id: "reception", icon: "desk", t: "Accueil et services de poste de garde", d: "Accueil des visiteurs, fournisseurs et collaborateurs, gestion des clés et colis, tenue des registres et remontée des alertes selon les procédures convenues." },
     { id: "green", icon: "leaf", t: "Soft FM — services aux installations", d: "Nettoyage, entretien des espaces verts, hygiène, soutien à la gestion des déchets et coordination des prestataires, selon un périmètre convenu, avec contrôles qualité et rapports écrits." },
@@ -39,7 +39,7 @@ export const fr = {
     { id: "hardfm", icon: "gear", t: "Hard FM — gestion technique des bâtiments", d: "Maintenance préventive planifiée, traitement des pannes, coordination des sous-traitants spécialisés, registre des anomalies et rapports d’exploitation." },
   ],
   refTitle: "Partenaires", refSub: "Collaborations sélectionnées",
-  refText: "Chaque site est différent, mais l’attente reste la même : des opérations sûres, transparentes et prévisibles. Avenir intervient dans des environnements professionnels et institutionnels où la sécurité, l’ordre et la qualité de service sont essentiels.",
+  refText: "Chaque site est différent, mais l’attente reste la même : des opérations sûres, transparentes et prévisibles. Avenir intervient dans des environnements professionnels et institutionnels où la sécurité, l’ordre et la qualité de service sont essentiels.",
   refs: ["Immeubles de bureaux", "Centres commerciaux", "Sites industriels et logistiques", "Établissements publics"],
   newsTitle: "Actualités", newsSub: "Informations et annonces", newsText: "Actualités de l’entreprise, informations sectorielles et annonces d’Avenir.", newsReadMore: "En savoir plus", newsEmpty: "De nouvelles actualités seront publiées prochainement.",
   careerTitle: "Recrutement", careerSub: "Rejoignez notre équipe",
@@ -67,7 +67,7 @@ export const fr = {
     rights: "© 2026 Avenir Facility Management Kft. · Tous droits réservés.", legalTitle: "Informations légales",
     privacy: "Confidentialité (en anglais)", terms: "Conditions d’utilisation (en anglais)", impressum: "Mentions légales (en anglais)",
     companyNumberLabel: "Numéro d’immatriculation", taxNumberLabel: "Numéro fiscal", headquartersLabel: "Siège social",
-    machineTranslationDisclaimer: "Les traductions françaises de la page d’accueil et des services sont en cours de révision. Les liens juridiques mènent aux textes anglais ; les actualités ne sont pas encore disponibles en français.",
+    machineTranslationDisclaimer: "Les traductions françaises de la page d’accueil et des services sont en cours de révision. Les liens juridiques mènent aux textes anglais ; les actualités ne sont pas encore disponibles en français.",
   },
   certifications: {
     sub: "Certifications", title: "Qualité certifiée.\nProcessus audités.",

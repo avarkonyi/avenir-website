@@ -60,7 +60,7 @@ export const zh = {
       "id": "security",
       "icon": "shield",
       "t": "驻场安保服务",
-      "d": "由训练有素的安保人员提供人身及财产安全保护：驻场安保、巡逻服务、出入管理支持和事件处理，适用于工业、商业和办公环境。"
+      "d": "通过出入管理、巡逻、事件处理、执勤日志及约定的升级处理流程提供驻场安保。"
     },
     {
       "id": "cleaning",
@@ -72,7 +72,7 @@ export const zh = {
       "id": "building",
       "icon": "camera",
       "t": "安防技术",
-      "d": "视频监控、门禁和报警系统的设计、安装与维护，为驻场安保提供技术支持。"
+      "d": "通过考虑数据保护的技术设计，将视频监控、门禁及报警流程整合进适合现场的安保模式。"
     },
     {
       "id": "reception",
@@ -96,7 +96,7 @@ export const zh = {
       "id": "mystery",
       "icon": "eye",
       "t": "神秘顾客评估与现场审核",
-      "d": "在真实客户和运营场景中开展神秘顾客评估、服务质量检查和现场审核，并提供独立评估与结构化报告。"
+      "d": "在真实客户与运营情境中开展神秘顾客与服务审核，提供结构化观察、报告及改进建议。"
     },
     {
       "id": "hardfm",
@@ -149,7 +149,7 @@ export const zh = {
     "specialDataWarning": "请勿通过本表单提交特殊类别数据、刑事记录数据、机密数据、商业秘密或涉及第三方详细私人信息的内容。此类事项需另行签署合同并进行数据保护协商。",
     "specialDataWarningLink": "使用条款 第4节",
     "privateInvestigation": "私家侦探",
-    "layeredNotice": "提交即表示您同意我们的",
+    "layeredNotice": "提交即表示您已知悉我们的",
     "layeredNoticeLink": "隐私政策（英文）",
     // TRANSLATION DRAFT: review by user
     "errors": {
