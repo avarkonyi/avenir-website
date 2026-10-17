@@ -3,7 +3,8 @@ import {
   type NextFetchEvent,
   type NextRequest,
 } from "next/server";
-import { auth } from "@/auth";
+import { ALLOWED_ADMIN_EMAILS, auth } from "@/auth";
+import { hasAllowedAdminSession } from "@/lib/admin/session-policy";
 
 const LOCALES = ["hu", "en", "de", "zh", "ko"];
 const DEFAULT_LOCALE = "hu";
@@ -51,7 +52,7 @@ const adminProxy = auth(function adminProxy(
   void event;
   const { pathname } = req.nextUrl;
   const isLoginPage = pathname === "/admin/login";
-  const isLoggedIn = !!req.auth;
+  const isLoggedIn = hasAllowedAdminSession(req.auth, ALLOWED_ADMIN_EMAILS);
 
   if (!isLoginPage && !isLoggedIn) {
     const loginUrl = new URL("/admin/login", req.nextUrl.origin);
