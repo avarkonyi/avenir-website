@@ -67,6 +67,8 @@ A meglévő `llms.txt` fájlokat nem módosítottam; nem tekintem őket indexel�
 
 ## Változtatáscsomag
 
+Draft PR: [avarkonyi/avenir-website #2](https://github.com/avarkonyi/avenir-website/pull/2). Első implementációs commit: `bd77002836b478b459be1da8732c44fdd7273b1a`; a teljes, aktuális változtatást a PR feature ága tartalmazza. A GitHub CI és a Vercel automatikus Preview a PR létrehozásakor elindult; ez önmagában még nem sikeres felhős ellenőrzés.
+
 - SEO: `lib/public-sitemap.ts`, `app/sitemap.ts`, szolgáltatás/hír queryk, `lib/services/publication.ts`, admin cache-invalidation, locale layout/schema.
 - Lokalizáció: közös locale-lista, `lib/i18n/fr.ts`, homepage/certification overlays, accessibility/consent/404/navigation copy, kapcsolatvalidáció, reply template.
 - Szolgáltatások: `lib/services/*-service-details.ts`, közös review-regiszter, a részletező oldal, Nav, ServiceQuoteCta, főoldali/követő linkek.
