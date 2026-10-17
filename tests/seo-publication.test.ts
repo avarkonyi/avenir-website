@@ -34,12 +34,12 @@ test("preview robots remain closed", () => {
 });
 
 test("24/7 dispatch is not asserted as business opening hours", () => {
-  const source = readFileSync("app/[locale]/layout.tsx", "utf8");
+  const source = readFileSync("lib/homepage-schema.ts", "utf8");
   assert.equal(source.includes("openingHoursSpecification:"), false);
 });
 
 test("company schema uses a supported LocalBusiness type", () => {
-  const source = readFileSync("app/[locale]/layout.tsx", "utf8");
+  const source = readFileSync("lib/homepage-schema.ts", "utf8");
   assert.ok(source.includes('"@type": "LocalBusiness"'));
   assert.equal(source.includes('["ProfessionalService", "SecurityService"]'), false);
 });

@@ -59,7 +59,7 @@ sitemap/hreflang inclusion until native/business and legal review gates pass.
 | --- | --- | --- | --- |
 | ISO 9001 / ISO 27001 | ISO 9001 und ISO 27001 zertifizierte Managementsysteme | Draft | Use scope-conditional wording where processes fall within certified scope. |
 | Hungarian security activity licence | ungarische Genehmigung für Sicherheits-/Bewachungstätigkeiten | Draft | Do not expose exact licence numbers in generic service body/trust copy. |
-| 24/7 dispatcher background | 24/7 Dispatcher-Hintergrund / Leitstellenhintergrund | Draft | Do not imply guaranteed arrival or response time. |
+| 24/7 dispatcher background | 24/7-Dispositionsunterstützung | Draft | Do not imply guaranteed arrival or response time. |
 | 30+ active sites | 30+ aktive Standorte | Draft | Approved fact, but keep as company background. |
 | 200+ professionals/staff | 200+ geschulte Mitarbeiter / Fachkräfte | Draft | Approved fact, but avoid universal availability promises. |
 | D&B AA High Creditworthy 2026 | D&B High Creditworthy 2026 | Draft | Do not call it OPTEN A+. |
@@ -69,7 +69,7 @@ sitemap/hreflang inclusion until native/business and legal review gates pass.
 | Concept | Draft German | Status | Notes |
 | --- | --- | --- | --- |
 | Privacy Policy / Adatkezelési tájékoztató | Datenschutzerklärung | Draft | Needs legal review before German route publication. |
-| Terms of Use / ÁSZF | Nutzungsbedingungen | Draft | Needs legal review. |
+| Jogi nyilatkozatok / Legal Statements | Rechtliche Hinweise | Draft | Needs legal review. |
 | Impresszum | Impressum | Draft | Needs legal review. |
 | analytics consent | Einwilligung in Analytik / Analyse-Cookies | Draft | Consent wording must match actual GA4 behavior. |
 | personal data | personenbezogene Daten | Draft | Legal review required. |

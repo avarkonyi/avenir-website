@@ -1,5 +1,12 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { isValidElement, type ReactNode } from "react";
+
+function elements(node: ReactNode): Array<{ type: unknown; props: Record<string, unknown> }> {
+  if (Array.isArray(node)) return node.flatMap(elements);
+  if (!isValidElement<{ children?: ReactNode }>(node)) return [];
+  return [node, ...elements(node.props.children)];
+}
 
 async function legalPages() {
   // Page imports initialize the Footer's DB client; metadata itself makes no
@@ -44,4 +51,17 @@ test("English imprint metadata identifies the company registration in English", 
   assert.match(metadata.description ?? "", /Company registration number: 01-09-328046/);
   assert.doesNotMatch(metadata.description ?? "", /Cégjegyzékszám/);
   assert.equal(metadata.openGraph?.description, metadata.description);
+});
+
+test("DE legal page includes the structured DPO section and clickable contacts", async () => {
+  const [, terms] = await legalPages();
+  const tree = elements(await terms.default({ params: Promise.resolve({ locale: "de" }) }));
+  const block = tree.find((element) => element.type === "section" && element.props.id === "data-protection");
+  assert.ok(block, "The German page must render section 14, not only load its content");
+  const content = elements(block.props.children as ReactNode);
+  assert.ok(content.some((element) => element.type === "h2" && element.props.children === "14. Datenschutz"));
+  assert.ok(content.some((element) => element.props.children === "Fanni Csegény"));
+  for (const href of ["mailto:dpo@afm.hu", "tel:+36706226242", "/de/adatvedelem"]) {
+    assert.ok(content.some((element) => element.props.href === href), `Missing DPO/privacy link ${href}`);
+  }
 });

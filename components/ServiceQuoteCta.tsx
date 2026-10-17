@@ -52,8 +52,8 @@ export const SERVICE_QUOTE_COPY = {
     error:
       "Hiba történt a küldés során. Kérjük, próbálja újra később, vagy hívjon minket.",
     nameRequired: "Kérjük, adja meg a nevét.",
-    emailRequired: "Kérjük, adja meg az e-mail címét.",
-    emailInvalid: "Kérjük, érvényes e-mail címet adjon meg.",
+    emailRequired: "Kérjük, adja meg az e-mail-címét.",
+    emailInvalid: "Kérjük, érvényes e-mail-címet adjon meg.",
     requiredField: "* Kötelező mező",
     nextStepHelper:
       "Munkaidőben többnyire még aznap visszajelzünk, de legkésőbb a következő munkanapon felvesszük Önnel a kapcsolatot. Az ajánlat elkészítésének ideje az igény összetettségétől függ.",

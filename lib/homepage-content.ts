@@ -53,7 +53,7 @@ const KOREAN_SERVICE_DISPLAY: Record<
   portaszolgalat: {
     name: "리셉션 및 게이트하우스 서비스",
     shortDesc:
-      "방문객, 협력사, 임직원, 열쇠, 우편물·배송물, 출입 기록 및 합의된 에스컬레이션을 관리하는 리셉션 및 게이트하우스 서비스입니다.",
+      "방문객, 납품업체, 임직원, 열쇠, 우편물·배송물, 출입 기록 및 합의된 에스컬레이션을 관리하는 리셉션 및 게이트하우스 서비스입니다.",
   },
   biztonsagtechnika: {
     name: "보안 기술",
@@ -76,12 +76,12 @@ const KOREAN_SERVICE_DISPLAY: Record<
       "기업 행사, 초청 행사 및 공개 행사에서 출입 관리, 동선 지원, 구역 관리, 사건 기록 및 주최자 기준 에스컬레이션을 지원합니다.",
   },
   "hard-fm": {
-    name: "Hard FM",
+    name: "Hard FM – 기술 시설 관리",
     shortDesc:
-      "계획 예방정비, 장애 대응, 전문 협력사 조율, 장애 기록 및 운영 보고를 지원하는 Hard FM 서비스입니다.",
+      "계획 예방정비, 장애 대응, 전문 업체 조율, 장애 기록 및 운영 보고를 지원하는 Hard FM 서비스입니다.",
   },
   "soft-fm": {
-    name: "Soft FM",
+    name: "Soft FM – 일상 시설 운영 지원",
     shortDesc:
       "청소, 조경, 위생, 폐기물 처리 지원 및 서비스 제공자 관리를 합의된 범위와 품질 확인, 서면 보고에 따라 지원하는 Soft FM 서비스입니다.",
   },

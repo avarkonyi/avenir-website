@@ -31,8 +31,8 @@ export function AnalyticsConsentBanner({ locale }: { locale: string }) {
   }, []);
 
   function choose(choice: AnalyticsConsentChoice) {
-    writeAnalyticsConsent(choice);
-    setVisible(false);
+    const effectiveChoice = writeAnalyticsConsent(choice);
+    setVisible(choice === "accepted" && effectiveChoice !== "accepted");
   }
 
   if (!visible) return null;

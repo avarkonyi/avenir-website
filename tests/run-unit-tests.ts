@@ -25,3 +25,7 @@ import "./db-error-diagnostic.test.ts";
 import "./public-content-revalidation.test.ts";
 import "./legal-metadata.test.ts";
 import "./legal-content.test.ts";
+
+import "./locale-recovery.test.ts";
+import "./reply-email.test.ts";
+import "./schema-localization.test.ts";

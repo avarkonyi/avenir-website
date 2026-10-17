@@ -1,0 +1,603 @@
+{
+  "target": "staging",
+  "endpoint": "ep-twilight-sound-al2b7jsb",
+  "checkedAt": "2026-10-17T17:49:25.719Z",
+  "rows": [
+    {
+      "id": 1,
+      "slug": "objektumorzes",
+      "name_hu": "Élőerős objektumőrzés",
+      "name_en": "On-site Security Guarding",
+      "name_de": "Personeller Objektschutz",
+      "name_zh": "驻场安保服务",
+      "short_desc_hu": "Élőerős objektumőrzés beléptetéssel, járőrözéssel, incidenskezeléssel, szolgálati naplóval és egyeztetett eszkalációs renddel.",
+      "short_desc_en": "On-site guarding for access, patrol, incident handling, service logging and agreed escalation at business sites.",
+      "short_desc_de": "Personen- und Sachschutz mit geschulten Sicherheitskräften: Objektschutz, Streifendienste, Unterstützung bei der Zutrittskontrolle und Vorfallbearbeitung in Industrie-, Handels- und Büroumgebungen.",
+      "short_desc_zh": "由训练有素的安保人员提供人身及财产安全保护：驻场安保、巡逻服务、出入管理支持和事件处理，适用于工业、商业和办公环境。",
+      "trust_items_hu": [
+        {
+          "body": "Az objektumőrzési működés 24/7 diszpécseri háttérrel támogatható; az értesítési és eszkalációs rendet az együttműködés elején rögzítjük.",
+          "title": "24/7 diszpécseri háttér"
+        },
+        {
+          "body": "Szolgálati napló, eseményrögzítés, egyeztetett riportálás és eszkalációs rend segíti a helyszíni kontrollt.",
+          "title": "Szolgálati napló és eseménykezelés"
+        },
+        {
+          "body": "A napi működéshez kijelölt felelős kapcsolattartót adunk, így a megrendelő nem különálló szereplők között egyeztet.",
+          "title": "Egy felelős kapcsolattartó"
+        },
+        {
+          "body": "A szolgálati folyamatokat az Avenir ISO 9001 és ISO 27001 tanúsított irányítási rendszerei támogatják, amennyiben az adott folyamatok a tanúsított működési körbe tartoznak.",
+          "title": "ISO 9001 és ISO 27001"
+        },
+        {
+          "body": "A szolgálati utasítás a szolgálat indítása előtt rögzítésre kerül, és a felelős kapcsolattartóval egyeztetjük; tartalmazza a belépési pontokat, járőrútvonalakat, kulcskezelést, incidensrögzítést és eszkalációt.",
+          "title": "Dokumentált helyszíni bevezetés"
+        },
+        {
+          "body": "Az Avenir az alkalmazandó magyar személy- és vagyonvédelmi szabályozási keret szerint nyújtja a szolgáltatást; az engedélyezési dokumentáció a szerződéses előkészítés során egyeztethető.",
+          "title": "Vagyonvédelmi engedély"
+        }
+      ],
+      "trust_items_en": [
+        {
+          "body": "On-site security guarding operations can be supported by 24/7 dispatch support; the notification and escalation framework is set at the start of the engagement.",
+          "title": "24/7 dispatch support"
+        },
+        {
+          "body": "Service log, incident recording, agreed reporting and escalation form the documented backbone of daily on-site operations.",
+          "title": "Service log and incident handling"
+        },
+        {
+          "body": "We provide a designated responsible point of contact for daily operations, so the client does not have to coordinate between separate parties.",
+          "title": "One responsible point of contact"
+        },
+        {
+          "body": "Service processes are supported by Avenir's ISO 9001 and ISO 27001 certified management systems where the relevant processes fall within the certified operating scope.",
+          "title": "ISO 9001 and ISO 27001"
+        },
+        {
+          "body": "Service instructions are recorded before deployment and reviewed with the responsible contact point, covering access, patrol, key handling, incident recording and escalation.",
+          "title": "Documented site onboarding"
+        },
+        {
+          "body": "Avenir provides the service under the applicable Hungarian personal and property security licensing framework; licensing documentation can be reviewed during contractual onboarding.",
+          "title": "Security activity licence"
+        }
+      ],
+      "process_steps_hu": [
+        {
+          "body": "A megkeresést átnézzük, és legkésőbb a következő munkanapon jelentkezünk a megadott elérhetőségen. Az ajánlat előkészítésének ideje a helyszíntől és az igény összetettségétől függ.",
+          "title": "Első egyeztetés és igényfelmérés"
+        },
+        {
+          "body": "A helyszíni bejárás és az alapvető kockázati áttekintés jellemzően 1–3 munkanapon belül megszervezhető.",
+          "title": "Helyszíni felmérés és kockázati pontok áttekintése"
+        },
+        {
+          "body": "Meghatározzuk a belépési pontokat, a látogatói és beszállítói folyamatot, a járőrútvonalakat és az incidensek jelzési rendjét.",
+          "title": "Belépési, kilépési, járőrözési és eszkalációs rend kialakítása"
+        },
+        {
+          "body": "Írásban rögzítjük, mit kell dokumentálni, milyen rendszerességű riport készül, és kik kapnak értesítést eltérés vagy incidens esetén.",
+          "title": "Szolgálati utasítás és riportálási folyamat rögzítése"
+        },
+        {
+          "body": "A fegyver nélküli vagy fegyveres vagyonőri jelenlétet a szerződéses igény, a jogi feltételek és a helyszín kockázati profilja alapján szervezzük meg.",
+          "title": "Vagyonőri jelenlét megszervezése"
+        },
+        {
+          "body": "A működés közben a szolgálati tapasztalatokat, visszatérő eseményeket és riportokat a kijelölt kapcsolattartóval egyeztetjük.",
+          "title": "Rendszeres kapcsolattartás, riportálás és finomhangolás"
+        }
+      ],
+      "process_steps_en": [
+        {
+          "body": "We go over your enquiry and get in touch by the next business day using the details you provided. The time needed to prepare a quote depends on the site and the complexity of the request.",
+          "title": "Initial consultation and requirements review"
+        },
+        {
+          "body": "An on-site visit and basic risk overview can typically be organised within 1–3 working days.",
+          "title": "On-site assessment and risk-point review"
+        },
+        {
+          "body": "We define the entry points, the visitor and supplier flow, patrol routes and the incident-reporting framework.",
+          "title": "Service framework design"
+        },
+        {
+          "body": "We record in writing what must be documented, with what regularity reports are produced, and who is notified in the event of deviations or incidents.",
+          "title": "Recording of service instructions and reporting process"
+        },
+        {
+          "body": "We arrange unarmed or armed security guard presence based on the contractual requirement, legal conditions and the site's risk profile.",
+          "title": "Setting up security guard presence"
+        },
+        {
+          "body": "During operations, we discuss service experience, recurring events and reports with the designated point of contact.",
+          "title": "Regular contact, reporting and fine-tuning"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "slug": "portaszolgalat",
+      "name_hu": "Recepciós és portaszolgálat",
+      "name_en": "Reception and Gatehouse Services",
+      "name_de": "Empfangs- und Pförtnerdienst",
+      "name_zh": "前台与门岗服务",
+      "short_desc_hu": "Recepciós és portaszolgálat látogatók, beszállítók, munkatársak, kulcsok, csomagok, naplózás és egyeztetett eszkaláció kezelésére.",
+      "short_desc_en": "Reception and gatehouse service for visitors, suppliers, employees, keys, packages, logging and agreed escalation.",
+      "short_desc_de": "Repräsentativer Pförtnerdienst und Empfangspräsenz: Besucherempfang, Zutrittskontrolle, Schlüsselverwaltung, Paketannahme und Mieterkommunikation zur Unterstützung des täglichen Betriebs.",
+      "short_desc_zh": "专业规范的门岗和前台服务：访客接待、出入管理、钥匙管理、包裹接收以及租户沟通，支持日常运营。",
+      "trust_items_hu": [
+        {
+          "body": "Szolgálati napló, vendégkezelési rend, eseményrögzítés és egyeztetett riportálás segíti a portaszolgálati kontrollt.",
+          "title": "Napi szolgálati rend és naplózás"
+        },
+        {
+          "body": "A megrendelő egy felelős kapcsolattartóval egyeztethet a napi működésről, a riportokról és a szükséges protokoll-módosításokról.",
+          "title": "Kijelölt felelős kapcsolattartó"
+        },
+        {
+          "body": "A portaszolgálati működés 24/7 diszpécseri háttérrel támogatható; az értesítési és eszkalációs rendet az együttműködés elején rögzítjük.",
+          "title": "24/7 diszpécseri háttér"
+        },
+        {
+          "body": "A szolgálati folyamatokat az Avenir ISO 9001 és ISO 27001 tanúsított irányítási rendszerei támogatják, amennyiben az adott folyamatok a tanúsított működési körbe tartoznak.",
+          "title": "ISO 9001 és ISO 27001"
+        },
+        {
+          "body": "A látogatói és beléptetési adatok kezelésekor figyelembe kell venni a célhoz kötöttséget, a tájékoztatást és az időben korlátozott megőrzést.",
+          "title": "Látogatóadat-kezelési szempontok figyelembevétele"
+        },
+        {
+          "body": "A recepciós és portaszolgálati protokollok az udvarias látogatókezelést kontrollált beléptetéssel, eszkalációval és riportálással kapcsolják össze, így a front-of-house működés és a biztonsági rutinok ugyanazon helyszíni szabályok szerint működnek.",
+          "title": "Vendégfogadás és beléptetési kontroll egy folyamatban"
+        }
+      ],
+      "trust_items_en": [
+        {
+          "body": "Service log, visitor-handling framework, incident recording and agreed reporting form the documented backbone of daily gatehouse operations.",
+          "title": "Daily service framework and logging"
+        },
+        {
+          "body": "The client has one responsible point of contact for daily operations, reports and required protocol changes.",
+          "title": "Designated responsible point of contact"
+        },
+        {
+          "body": "Gatehouse operations can be supported by 24/7 dispatch support; the notification and escalation framework is set at the start of the engagement.",
+          "title": "24/7 dispatch support"
+        },
+        {
+          "body": "Service processes are supported by Avenir's ISO 9001 and ISO 27001 certified management systems where the relevant processes fall within the certified operating scope.",
+          "title": "ISO 9001 and ISO 27001"
+        },
+        {
+          "body": "Visitor and access data are handled with purpose limitation, time-limited retention and appropriate information provision.",
+          "title": "Visitor-data handling"
+        },
+        {
+          "body": "Reception and gatehouse protocols combine courteous visitor handling with controlled access, escalation and reporting, so front-of-house service and security routines work from the same site rules.",
+          "title": "Hospitality and access control in one workflow"
+        }
+      ],
+      "process_steps_hu": [
+        {
+          "body": "A megkeresést átnézzük, és legkésőbb a következő munkanapon jelentkezünk a megadott elérhetőségen. Az ajánlat előkészítésének ideje a helyszíntől és az igény összetettségétől függ.",
+          "title": "Első egyeztetés és működési igényfelmérés"
+        },
+        {
+          "body": "Áttekintjük a bejáratokat, recepciós vagy portapontokat, beléptetési helyzeteket, kulcskezelési igényeket és a rendszeres beszállítói vagy vendégforgalmat.",
+          "title": "Helyszíni bejárás és forgalmi pontok áttekintése"
+        },
+        {
+          "body": "Meghatározzuk a vendégfogadás, beléptetés, kulcskiadás, csomagátvétel, értesítés és eseményrögzítés napi rendjét.",
+          "title": "Portaszolgálati és recepciós protokoll kialakítása"
+        },
+        {
+          "body": "Írásban rögzítjük a dokumentálandó eseményeket, a riportformátumot, az eszkalációs pontokat és a kijelölt kapcsolattartókat.",
+          "title": "Szolgálati utasítás és riportálási rend rögzítése"
+        },
+        {
+          "body": "A szolgálatot a szerződéses igények, a helyszíni protokoll és a napi forgalom alapján szervezzük meg, betanítással és indulási egyeztetéssel.",
+          "title": "Személyzet megszervezése és betanítás"
+        },
+        {
+          "body": "A működési tapasztalatokat, visszatérő kérdéseket és riportokat a kijelölt felelős kapcsolattartóval egyeztetjük.",
+          "title": "Rendszeres egyeztetés és finomhangolás"
+        }
+      ],
+      "process_steps_en": [
+        {
+          "body": "We go over your enquiry and get in touch by the next business day using the details you provided. The time needed to prepare a quote depends on the site and the complexity of the request.",
+          "title": "Initial consultation and operational requirements review"
+        },
+        {
+          "body": "We review the entrances, reception or gatehouse points, access situations, key-management needs and regular supplier or visitor traffic.",
+          "title": "On-site walk-through and traffic-point review"
+        },
+        {
+          "body": "We define the daily framework for visitor reception, access, key issuance, parcel handling, notification and incident recording.",
+          "title": "Design of the gatehouse and reception protocol"
+        },
+        {
+          "body": "We record in writing the events to be documented, the report format, the escalation points and the designated points of contact.",
+          "title": "Recording of service instructions and reporting framework"
+        },
+        {
+          "body": "We organise the service based on contractual requirements, the on-site protocol and daily traffic, with training and deployment alignment.",
+          "title": "Organisation and training of personnel"
+        },
+        {
+          "body": "We discuss operational experience, recurring questions and reports with the designated responsible point of contact.",
+          "title": "Regular review and fine-tuning"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "slug": "mystery-shopping-helyszini-audit",
+      "name_hu": "Próbavásárlás és szolgáltatásaudit",
+      "name_en": "Mystery Shopping and Service Audit",
+      "name_de": "Mystery Shopping und Vor-Ort-Audits",
+      "name_zh": "神秘顾客评估与现场审核",
+      "short_desc_hu": "Próbavásárlás és szolgáltatásaudit valós ügyfél- és működési helyzetekben, strukturált megfigyeléssel, riportálással és fejlesztési javaslatokkal.",
+      "short_desc_en": "Mystery shopping, service-quality checks and service audits in real customer and operational situations, with structured observation, reporting and improvement recommendations.",
+      "short_desc_de": "Mystery Shopping, Servicequalitätskontrollen und Vor-Ort-Audits in realen Kunden- und Betriebssituationen, mit unabhängiger Bewertung und strukturiertem Reporting.",
+      "short_desc_zh": "在真实客户和运营场景中开展神秘顾客评估、服务质量检查和现场审核，并提供独立评估与结构化报告。",
+      "trust_items_hu": [
+        {
+          "body": "Az audit célját, forgatókönyvét, szempontjait és riportálási formáját a végrehajtás előtt egyeztetni kell, hogy a megfigyelések a meghatározott szolgáltatásminőségi scope keretein belül maradjanak.",
+          "title": "Végrehajtás előtt meghatározott scope"
+        },
+        {
+          "body": "A vizsgálat azt rögzíti, hogyan jelennek meg az egyeztetett szolgáltatási lépések, brand elvárások és ügyfélút-pontok valós ügyfélhelyzetben, felügyeleti vagy fegyelmi keretezés nélkül.",
+          "title": "Semleges ügyfélút-megfigyelés"
+        },
+        {
+          "body": "Az Avenir strukturált riportot készít megfigyelésekkel, visszatérő mintákkal, kockázati pontokkal és fejlesztési javaslatokkal, majd a megállapításokat a megrendelővel áttekinti a szolgáltatásminőségi döntések támogatására.",
+          "title": "Strukturált riport és ügyféloldali egyeztetés"
+        },
+        {
+          "body": "Ugyanaz a forgatókönyv több helyszínen vagy szolgáltatónál is megismételhető a szolgáltatási konzisztencia, folyamatbeli eltérések és visszatérő fejlesztési pontok összevetésére.",
+          "title": "Több helyszín összehasonlítható képe"
+        },
+        {
+          "body": "A riportálás az egyeztetett scope-ra és a kijelölt megrendelői áttekintési folyamatra korlátozódik. Az egyes munkatársakra vonatkozó adatok szerepeltetése nem alapértelmezett jelentési elem; ilyen tartalom csak előzetesen egyeztetett adatvédelmi keretek között jelenhet meg.",
+          "title": "Célhoz kötött és bizalmas riportálás"
+        }
+      ],
+      "trust_items_en": [
+        {
+          "body": "The audit objective, scenario, criteria and reporting format are agreed before execution, so observations stay within the defined service-quality scope.",
+          "title": "Defined scope before execution"
+        },
+        {
+          "body": "The assessment records how agreed service steps, brand expectations and customer-journey points appear in real customer situations, without surveillance or disciplinary framing.",
+          "title": "Neutral customer-journey observation"
+        },
+        {
+          "body": "Avenir delivers a structured report with observations, recurring patterns, risk points and improvement recommendations, then reviews the findings with the client for service-quality decisions.",
+          "title": "Structured report and client debrief"
+        },
+        {
+          "body": "The same scenario can be repeated across sites or providers to compare service consistency, process gaps and recurring improvement points.",
+          "title": "Multi-site consistency insight"
+        },
+        {
+          "body": "Reporting remains limited to the agreed scope and intended client-side review flow. Personal-data-related reporting is not used as a standard element and must remain within the agreed data-protection framework.",
+          "title": "Purpose-bound and confidential reporting"
+        }
+      ],
+      "process_steps_hu": [
+        {
+          "body": "Rögzítjük, milyen üzleti, szolgáltatásminőségi vagy megfelelési kérdésre kell választ adnia az auditnak, és pontosan milyen folyamatok tartoznak a vizsgálatba.",
+          "title": "Audit cél és scope egyeztetése"
+        },
+        {
+          "body": "Meghatározzuk a mérési pontokat, a brand standardokat, a kommunikációs és tájékoztatási elvárásokat, valamint a próbavásárlási, próbautazási vagy ügyfélút-forgatókönyvet.",
+          "title": "Értékelési szempontok és forgatókönyv kialakítása"
+        },
+        {
+          "body": "Az audit a jóváhagyott scope szerint, valós ügyfélhelyzetben történik, a szolgáltatási folyamat, az ügyfélélmény és az előre rögzített megfelelési pontok mérésére fókuszálva.",
+          "title": "Brand Audit, Situation Shopping, próbavásárlás vagy próbautazás elvégzése"
+        },
+        {
+          "body": "A tapasztalatokat strukturált módon rögzítjük: mi történt az ügyfélút során, mi felelt meg az elvárt működésnek, hol volt eltérés, és milyen kockázat vagy javítási pont jelent meg.",
+          "title": "Tapasztalatok, eltérések és megfelelési pontok dokumentálása"
+        },
+        {
+          "body": "Az eredményeket vezetői szinten is áttekinthető riportba rendezzük, amely tartalmazhat megfelelési megállapításokat, visszatérő mintákat és konkrét fejlesztési javaslatokat.",
+          "title": "Riport, vezetői összefoglaló és fejlesztési javaslatok elkészítése"
+        },
+        {
+          "body": "Az audit eredményeit közösen áttekintjük, hogy a megrendelő dönteni tudjon protokollmódosításról, képzésről, brand standard pontosításról vagy további mérésről.",
+          "title": "Eredmények egyeztetése és következő lépések meghatározása"
+        }
+      ],
+      "process_steps_en": [
+        {
+          "body": "We define which business, service-quality or compliance question the audit needs to answer, and exactly which processes are in scope.",
+          "title": "Agreement on audit purpose and scope"
+        },
+        {
+          "body": "We define the measurement points, brand standards, communication and disclosure expectations, and the mystery shopping, test journey or customer-journey scenario.",
+          "title": "Design of evaluation criteria and scenario"
+        },
+        {
+          "body": "The audit takes place within the approved scope, in a real customer situation, focusing on the service process, customer experience and the predefined service or compliance points.",
+          "title": "Execution of the Brand Audit, Situation Shopping, mystery shopping or test journey"
+        },
+        {
+          "body": "We record observations in a structured way: what happened along the customer journey, what matched the expected process, where there were deviations, and what risks or improvement points emerged.",
+          "title": "Documentation of observations, deviations and compliance points"
+        },
+        {
+          "body": "Results are organised into a report that can also be reviewed at executive level, including observations against agreed compliance points, recurring patterns and concrete improvement recommendations.",
+          "title": "Preparation of the report, executive summary and improvement recommendations"
+        },
+        {
+          "body": "We review the audit results together so that the client can decide on protocol changes, training, brand standard adjustments or further measurements.",
+          "title": "Discussion of results and definition of next steps"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "slug": "biztonsagtechnika",
+      "name_hu": "Biztonságtechnika",
+      "name_en": "Security Technology",
+      "name_de": "Sicherheitstechnik",
+      "name_zh": "安防技术",
+      "short_desc_hu": "Biztonságtechnika kamerarendszerhez, beléptetéshez és riasztási folyamatokhoz, helyszínre szabott biztonsági modellbe illesztve, adatvédelmi szempontokat beépítő technikai tervezéssel.",
+      "short_desc_en": "Security technology for CCTV, access control and alarm processes, integrated into a site-specific security model with data-protection-aware technical design.",
+      "short_desc_de": "Planung, Installation und Wartung von Videoüberwachungs-, Zutrittskontroll- und Alarmanlagen als technische Unterstützung für den personellen Objektschutz.",
+      "short_desc_zh": "视频监控、门禁和报警系统的设计、安装与维护，为驻场安保提供技术支持。",
+      "trust_items_hu": [
+        {
+          "body": "A technikai igényeket helyszíni felmérés és működési áttekintés alapján rögzítjük, nem önálló eszközlistaként.",
+          "title": "Helyszínre szabott biztonságtechnikai felmérés"
+        },
+        {
+          "body": "A szolgáltatás a biztonságtechnikai engedélyhez és a helyszíni szerződéses igényekhez igazodva alakítható ki.",
+          "title": "Biztonságtechnikai engedéllyel támogatott működés"
+        },
+        {
+          "body": "A kamera-, beléptetési és riasztási jelzések akkor adnak valódi működési értéket, ha kapcsolódnak az őri jelenléthez, a portaszolgálati folyamatokhoz, a meghatározott eszkalációs útvonalakhoz és az egyértelműen kijelölt reagálási felelősségekhez.",
+          "title": "Integráció a helyszíni működéssel és eszkalációs lánccal"
+        },
+        {
+          "body": "A technikai rendszer támogathatja a vendég-, beszállítói és munkatársi beléptetést, valamint a jogosultsági szabályok követését.",
+          "title": "Kapcsolódás portaszolgálati és beléptetési folyamatokhoz"
+        },
+        {
+          "body": "A kameraképek lefedettsége, a látómező, a hozzáférési jogosultságok, az érintetti tájékoztatás és a megőrzési logika a biztonságtechnikai felmérés és tervezés részeként kezelendő.",
+          "title": "Adatvédelmi szempontokat beépítő biztonságtechnikai tervezés"
+        },
+        {
+          "body": "A felmérés eredménye riportálható megállapításokban, prioritásokban, integrációs pontokban és megvalósítási javaslatban foglalható össze.",
+          "title": "Dokumentált megállapítások és megvalósítási javaslat"
+        },
+        {
+          "body": "A működés ISO 9001 és ISO 27001 tanúsított irányítási rendszerekhez illeszkedő szabályozott folyamatokra építhető, amennyiben az adott folyamatok a tanúsított működési körbe tartoznak.",
+          "title": "ISO 9001 és ISO 27001 által támogatott működési fegyelem"
+        }
+      ],
+      "trust_items_en": [
+        {
+          "body": "Technical requirements are defined through an on-site assessment and operational review, not as a standalone equipment list.",
+          "title": "Site-specific security technology review"
+        },
+        {
+          "body": "The service can be set up in line with the security technology licence and on-site contractual requirements.",
+          "title": "Operation supported by a security technology licence"
+        },
+        {
+          "body": "Camera, access-control and alarm signals create operational value when aligned with guard presence, gatehouse workflows, defined escalation routes and clearly assigned response responsibilities.",
+          "title": "Integration with on-site operations and escalation chain"
+        },
+        {
+          "body": "The technical system can support visitor, supplier and staff access control, and tracking of authorisation rules.",
+          "title": "Integration with gatehouse and access-control processes"
+        },
+        {
+          "body": "Camera coverage, field of view, access rights, information to data subjects and retention logic are treated as design inputs during the technical security assessment.",
+          "title": "Data-protection-aware security technology design"
+        },
+        {
+          "body": "The assessment can be summarised in structured findings, priorities, integration points and an implementation recommendation.",
+          "title": "Documented findings and implementation plan"
+        },
+        {
+          "body": "Operations can be built on controlled processes aligned with ISO 9001- and ISO 27001-certified management systems, where the relevant processes fall within the certified operating scope.",
+          "title": "ISO 9001 and ISO 27001 supported operating discipline"
+        }
+      ],
+      "process_steps_hu": [
+        {
+          "body": "Áttekintjük a helyszín belépési pontjait, kamerás lefedettségét, riasztási folyamatait és a kapcsolódó őrzési vagy portaszolgálati működést.",
+          "title": "Helyszíni biztonságtechnikai felmérés"
+        },
+        {
+          "body": "Azonosítjuk azokat a zónákat, ahol a mozgás, a jogosultság, a teherforgalom vagy a visszatérő események technikai támogatást igényelnek.",
+          "title": "Kritikus pontok, belépési zónák és kockázati területek azonosítása"
+        },
+        {
+          "body": "Megnézzük, hogy a meglévő vagy tervezett technikai rendszer hogyan támogatja az észlelést, a beléptetést, a riasztást és az eseménykezelést.",
+          "title": "Kamera-, beléptető-, riasztási és jelzéskezelési folyamatok áttekintése"
+        },
+        {
+          "body": "A technikai jelzéseket az őri, portaszolgálati, kapcsolattartói és távfelügyeleti folyamatokhoz igazítjuk.",
+          "title": "Technikai és élőerős vagyonvédelmi működés összehangolása"
+        },
+        {
+          "body": "Rögzítjük, milyen eseményre ki reagál, mit kell naplózni, milyen riport készül, és hogyan marad karbantartható a rendszer.",
+          "title": "Eszkalációs, riportálási és karbantartási szempontok rögzítése"
+        },
+        {
+          "body": "A felmérés alapján gyakorlati javaslatot adunk arra, hogyan tud a technika jobban kapcsolódni a napi biztonsági működéshez.",
+          "title": "Javaslat a biztonságtechnikai működés fejlesztésére vagy integrálására"
+        }
+      ],
+      "process_steps_en": [
+        {
+          "body": "We review the site's entry points, camera coverage, alarm processes and the related guarding or gatehouse operations.",
+          "title": "On-site security technology assessment"
+        },
+        {
+          "body": "We identify the zones where movement, authorisation, freight traffic or recurring events require technical support.",
+          "title": "Identification of critical points, entry zones and risk areas"
+        },
+        {
+          "body": "We examine how the existing or planned technical system supports detection, access control, alarm and incident handling.",
+          "title": "Review of camera, access control, alarm and signal-handling processes"
+        },
+        {
+          "body": "We align the technical signals with the guard, gatehouse, points-of-contact and remote-monitoring processes.",
+          "title": "Alignment of technical and on-site security operations"
+        },
+        {
+          "body": "We define who responds to which event, what must be logged, what report is produced, and how the system stays maintainable.",
+          "title": "Definition of escalation, reporting and maintenance considerations"
+        },
+        {
+          "body": "Based on the assessment, we give practical recommendations on how the technology can better connect to daily security operations.",
+          "title": "Recommendation for developing or integrating security technology operations"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "slug": "soft-fm",
+      "name_hu": "Soft FM",
+      "name_en": "Soft FM",
+      "name_de": "Soft FM",
+      "name_zh": "Soft FM（软性设施管理）",
+      "short_desc_hu": "Soft FM takarítási, kertészeti, higiéniai, hulladékkezelési támogatási és szolgáltatókezelési feladatokra, egyeztetett scope-pal, minőségellenőrzéssel és írásos riportálással.",
+      "short_desc_en": "Soft FM for cleaning, landscaping, hygiene, waste-handling support and provider management, delivered to an agreed scope with quality checks and written reporting.",
+      "short_desc_de": "Organisation von Reinigungs-, Grünpflege- und Hausmeisterleistungen als ergänzende Services, mit kontrollierter Qualität und einem verantwortlichen Ansprechpartner.",
+      "short_desc_zh": "作为补充服务，统筹清洁、绿化维护和现场管理事务，以受控质量和单一责任对接人支持客户运营。",
+      "trust_items_hu": [
+        {
+          "body": "Az Avenir a területeket, gyakoriságokat, minőségi szempontokat és riportálási ritmust a szerződés indulásakor rögzíti, így a megbízás kerete az operatív működés előtt egyértelmű.",
+          "title": "Írásos scope, nem nyitott „ahogy szükséges” működés"
+        },
+        {
+          "body": "Az Avenir a takarítási, higiéniai, kertészeti és operatív támogatási feladatokat egyeztetett ellenőrzési pontok alapján követi, nem általános elvárások szerint.",
+          "title": "Minőségellenőrzés meghatározott szempontok alapján"
+        },
+        {
+          "body": "Az ügyfél egy összehangolt működési képet kap az Avenir munkatársai, jóváhagyott alvállalkozók és meglévő ügyféloldali szolgáltatók között, a helyszíni modell szerint.",
+          "title": "Egy operatív felület több szolgáltató között"
+        },
+        {
+          "body": "Az Avenir dokumentálja a felelősségeket, kapcsolattartási pontokat és eszkalációs útvonalakat, hogy a napi szolgáltatókezelés kontrollált legyen, ne széttagolt.",
+          "title": "Szolgáltatói és alvállalkozói koordináció"
+        },
+        {
+          "body": "Az Avenir követi a helyszíni eltéréseket, visszatérő problémákat és korrekciós intézkedéseket, hogy azok áttekinthetők és utánkövethetők legyenek.",
+          "title": "Korrekciós intézkedések követése"
+        },
+        {
+          "body": "Az Avenir az egyeztetett riportálási ritmus szerint beszámol az elvégzett scope-ról, minőségi megfigyelésekről, visszatérő problémákról és egyeztetett intézkedésekről.",
+          "title": "Írásos riportálás"
+        },
+        {
+          "body": "Ha ezek a szolgáltatások ugyanazon a helyszínen működnek, az Avenir összehangolja a Soft FM riportálását és eltéréskezelését a portaszolgálati, őrzési és Hard FM folyamatokkal.",
+          "title": "Kapcsolódás Hard FM-hez, portaszolgálathoz és őrzéshez"
+        },
+        {
+          "body": "A létszám, szolgáltatói bevonás, gyakoriságok és riportálás a helyszíni modellhez és az egyeztetett szerződéses scope-hoz igazodik.",
+          "title": "Helyszínspecifikus működési modell"
+        }
+      ],
+      "trust_items_en": [
+        {
+          "body": "Avenir defines areas, frequencies, quality criteria and reporting cadence at contract start, so the remit is clear before operations begin.",
+          "title": "Written scope, not an open-ended as-required remit"
+        },
+        {
+          "body": "Avenir checks cleaning, hygiene, landscaping and operational-support tasks against agreed control points, not broad informal expectations.",
+          "title": "Quality checks against defined criteria"
+        },
+        {
+          "body": "The client receives one coordinated operational picture across Avenir staff, approved subcontractors and existing client-side providers, depending on the site model.",
+          "title": "One operational interface across providers"
+        },
+        {
+          "body": "Avenir documents responsibilities, contact points and escalation routes so daily provider management is controlled instead of fragmented.",
+          "title": "Provider and subcontractor management"
+        },
+        {
+          "body": "Avenir tracks issues, recurring deviations and corrective actions so they can be reviewed and followed up.",
+          "title": "Corrective-action tracking"
+        },
+        {
+          "body": "Avenir reports completed scope, quality observations, recurring issues and agreed actions at the agreed reporting cadence.",
+          "title": "Regular written reporting"
+        },
+        {
+          "body": "Where these services operate on the same site, Avenir aligns Soft FM reporting and issue handling with gatehouse, on-site security and Hard FM processes.",
+          "title": "Integration with gatehouse, security and Hard FM where relevant"
+        },
+        {
+          "body": "Staffing, provider involvement, frequencies and reporting are set by the site model and agreed contractual scope.",
+          "title": "Site-specific operating model"
+        }
+      ],
+      "process_steps_hu": [
+        {
+          "body": "Az Avenir a scope véglegesítése előtt áttekinti az érintett területeket, szolgáltatási pontokat, működési időablakokat és a meglévő szolgáltatói modellt.",
+          "title": "Helyszíni bejárás és scope-felmérés"
+        },
+        {
+          "body": "A szolgáltatási területeket, feladatgyakoriságokat, ellenőrzési pontokat, minőségi elvárásokat és riportálási ritmust az operatív indulás előtt rögzítjük.",
+          "title": "Írásos scope, gyakoriságok és minőségi szempontok"
+        },
+        {
+          "body": "A scope egyeztetésekor az Avenir az ügyféllel együtt rögzíti a teljesítési modellt: saját munkatársak, jóváhagyott alvállalkozók vagy meglévő ügyféloldali szolgáltatók Avenir-koordináció alatt, a helyszíni modell szerint.",
+          "title": "Szolgáltatási modell és csapatstruktúra rögzítése"
+        },
+        {
+          "body": "Az indulás előtt az Avenir előkészíti a működési keretet: felelősségek, kapcsolattartási pontok, eszkalációs útvonalak, helyszíni utasítások és a napi kontrollhoz szükséges nyilvántartások.",
+          "title": "Mobilizáció és működési beállítás"
+        },
+        {
+          "body": "Az első működési időszakban az Avenir követi a kezdeti eltéréseket, pontosítja a felelősségeket és stabilizálja a működési ritmust az egyeztetett scope-on belül.",
+          "title": "Indítás és stabilizációs időszak"
+        },
+        {
+          "body": "Az Avenir riportálja az elvégzett feladatokat, minőségi megfigyeléseket, visszatérő problémákat és egyeztetett intézkedéseket, majd rendszeresen áttekinti a szolgáltatást az ügyféllel.",
+          "title": "Rendszeres riportálás és ügyféloldali áttekintés"
+        }
+      ],
+      "process_steps_en": [
+        {
+          "body": "Avenir starts with an initial site walk, reviewing areas, service touchpoints, operating windows and the existing provider setup before scope finalisation.",
+          "title": "Site walk and scope mapping"
+        },
+        {
+          "body": "Avenir defines the service areas, task frequencies, control points, quality criteria and reporting cadence before operational start.",
+          "title": "Written scope, frequencies and quality criteria"
+        },
+        {
+          "body": "During scoping, Avenir agrees the delivery model with the client: Avenir staff, approved subcontractors or existing client-side service providers under Avenir coordination, depending on the site model.",
+          "title": "Delivery model and team/provider structure"
+        },
+        {
+          "body": "Before go-live, Avenir prepares the operating framework: responsibilities, contact points, escalation routes, site instructions and the records needed for day-to-day control.",
+          "title": "Mobilisation and site documentation"
+        },
+        {
+          "body": "During the first month, Avenir tracks early issues, clarifies responsibilities and stabilises the operating cadence within the agreed scope.",
+          "title": "Go-live and stabilisation period"
+        },
+        {
+          "body": "Avenir reports completed tasks, quality observations, recurring issues and agreed actions, then reviews the service periodically with the client.",
+          "title": "Regular reporting and periodic review"
+        }
+      ]
+    }
+  ]
+}

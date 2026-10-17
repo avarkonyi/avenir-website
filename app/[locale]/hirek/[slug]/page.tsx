@@ -1,3 +1,4 @@
+import { getLocaleAccessibility } from "@/lib/locale-accessibility";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -221,7 +222,7 @@ export default async function NewsDetailPage({
         >
           <div style={{ maxWidth: 1000, margin: "0 auto" }}>
             <nav
-              aria-label="Breadcrumb"
+              aria-label={getLocaleAccessibility(locale).breadcrumb}
               style={{
                 display: "flex",
                 gap: 8,

@@ -1,0 +1,669 @@
+{
+  "target": "staging",
+  "endpoint": "ep-twilight-sound-al2b7jsb",
+  "checkedAt": "2026-10-17T17:54:30.005Z",
+  "rows": [
+    {
+      "id": 1,
+      "slug": "objektumorzes",
+      "long_desc_hu": "Az élőerős objektumőrzés célja nem pusztán az őri jelenlét biztosítása, hanem a helyszínhez igazított vagyonvédelmi rend kialakítása. Avenir a helyszíni felmérés alapján szolgálati utasítást készít: meghatározza a belépési és kilépési pontokat, a látogatók és beszállítók kezelését, a járőrútvonalakat, a kulcskezelési szabályokat, az incidensek dokumentálását és az eszkalációs rendet.\n\nA szolgálat összekapcsolható a megrendelő meglévő kamerarendszerével, beléptető rendszerével vagy riasztási folyamatával. A cél, hogy a megrendelő ne csak jelenlétet kapjon, hanem visszakövethető működést: szolgálati naplóval, eseményjelentéssel, rendszeres egyeztetéssel és kijelölt felelős kapcsolattartóval.\n\nA vagyonőri jelenlét a helyszín kockázati profiljához és a szerződéses igényhez igazodik: fegyver nélküli, vagy a jogszabályi feltételek teljesülése esetén fegyveres vagyonőri szolgáltatás is kialakítható. Az Avenir a szolgáltatást az alkalmazandó magyar személy- és vagyonvédelmi szabályozási keret szerint nyújtja.",
+      "long_desc_en": "The aim of on-site security guarding is not merely to maintain guard presence at the site, but to provide a site-tailored security framework. Following an on-site assessment, Avenir prepares service instructions: it defines the entry and exit points, the handling of visitors and suppliers, patrol routes, key-management rules, incident documentation and the escalation framework.\n\nWhen the site requires it, the service can be aligned with an existing camera system, access-control system or alarm process. The goal is for the client to receive not just presence on site, but a clear service framework: with logging, incident reporting, regular review and a designated responsible point of contact.\n\nSecurity guard presence is adapted to the site's risk profile and contractual requirement: unarmed or, where the legal conditions are met, armed security guarding can also be arranged. Avenir operates under the applicable Hungarian personal and property security licensing framework.",
+      "faq_hu": [
+        {
+          "a": "Az objektumőrzés a helyszín igényei szerint magában foglalhatja a beléptetést és kiléptetést, a látogatók és beszállítók kezelését, a járőrözést, a kulcskezelési szabályokat, az incidensek rögzítését, a szolgálati naplót és az egyeztetett riportálást.",
+          "q": "Mit tartalmaz az objektumőrzés?"
+        },
+        {
+          "a": "Helyszíni biztonsági felmérés különösen akkor hasznos, ha új objektumot kell őrizni, változik a beléptetési rend, nő a teherforgalom, visszatérő incidensek vannak, vagy a meglévő őrzési és technikai folyamatokat szeretnék átláthatóbbá tenni.",
+          "q": "Mikor szükséges helyszíni biztonsági felmérés?"
+        },
+        {
+          "a": "A megfelelő modell a helyszín méretétől, kockázati profiljától, nyitvatartásától, belépési pontjaitól, járőrözési igényétől, incidenskezelési rendjétől és riportálási elvárásaitól függ. Ezeket az indulás előtt érdemes rögzíteni, hogy a szolgálat a helyszín valós működéséhez igazodjon.",
+          "q": "Milyen szerződéses formában érdemes indítani az objektumőrzést?"
+        },
+        {
+          "a": "A beléptetési rendet a helyszíni felmérés alapján alakítjuk ki. Meghatározható, ki, mikor, milyen jogosultsággal léphet be, hogyan történik a vendégregisztráció, a beszállítói beléptetés, a teherforgalom kezelése és a kiléptetés dokumentálása.",
+          "q": "Hogyan történik a látogatók és beszállítók beléptetése?"
+        },
+        {
+          "a": "Igen, ahol erre lehetőség van, az élőerős őrzés összehangolható meglévő kamerarendszerhez, beléptető rendszerhez, riasztási folyamathoz vagy távfelügyeleti működéshez. Így az őri jelenlét és a technikai vagyonvédelem egymást erősítheti.",
+          "q": "Összeköthető az őrzés kamerarendszerrel vagy beléptető rendszerrel?"
+        },
+        {
+          "a": "A helyszín kockázati profiljától, a szerződéses igénytől és a jogi feltételek teljesülésétől függően fegyver nélküli vagy fegyveres vagyonőri jelenlét is kialakítható.",
+          "q": "Fegyveres őrzés is kérhető?"
+        },
+        {
+          "a": "Igen. Az élőerős objektumőrzés az alkalmazandó magyar személy- és vagyonvédelmi szabályozási keret szerint történik. Az engedélyre és a vagyonőri állomány engedélyezési dokumentációjára vonatkozó információk a szerződéses előkészítés során egyeztethetők.",
+          "q": "Rendelkezik az Avenir a szükséges vagyonvédelmi engedéllyel?"
+        },
+        {
+          "a": "Igen, az objektumőrzési szolgáltatás 24/7 diszpécseri háttérrel támogatható, az eszkalációs és értesítési rendet pedig az együttműködés elején rögzítjük.",
+          "q": "Van-e 24/7 háttértámogatás?"
+        },
+        {
+          "a": "Az incidenskezelést egyeztetett eszkalációs rend alapján alakítjuk ki. Ez meghatározza, milyen eseményt kell rögzíteni, kit kell értesíteni, milyen sorrendben történik a jelzés, és hogyan kerül dokumentálásra az eset.",
+          "q": "Mi történik incidens esetén?"
+        },
+        {
+          "a": "Igen, a szolgáltatás része lehet szolgálati napló, eseményrögzítés és egyeztetett riportálás. A pontos riportformátumot az együttműködés elején rögzítjük, hogy a megrendelő naprakész információt kapjon a helyszíni működésről.",
+          "q": "Kapunk-e szolgálati naplót vagy incidensriportot?"
+        }
+      ],
+      "faq_en": [
+        {
+          "a": "Depending on the site's needs, on-site security guarding may include entry and exit control, handling of visitors and suppliers, patrols, key-management rules, incident recording, the service log and agreed reporting.",
+          "q": "What does on-site security guarding include?"
+        },
+        {
+          "a": "An on-site security assessment is particularly useful when a new site needs to be guarded, the access rules change, freight traffic grows, recurring incidents occur, or the client wants to make existing guarding and technical processes more transparent.",
+          "q": "When is an on-site security assessment needed?"
+        },
+        {
+          "a": "The right model depends on the site's size, risk profile, opening hours, entry points, patrol requirements, incident-handling framework and reporting expectations. These are best defined before launch, so the service aligns with the actual operation of the site.",
+          "q": "What contractual setup is best for starting on-site security guarding?"
+        },
+        {
+          "a": "Access rules are defined following an on-site assessment. We can define who may enter, when, with what authorisation, how visitor registration takes place, how supplier access is handled, how freight traffic is managed and how exits are documented.",
+          "q": "How are visitors and suppliers admitted?"
+        },
+        {
+          "a": "Yes, where the conditions allow, on-site security guarding can be aligned with an existing camera system, access-control system, alarm process or remote-monitoring operation. This way, guard presence and technical security can reinforce each other.",
+          "q": "Can guarding be linked to a camera or access-control system?"
+        },
+        {
+          "a": "Depending on the site's risk profile, the contractual requirement and the fulfilment of legal conditions, both unarmed and armed security guard presence can be arranged.",
+          "q": "Can armed guarding also be requested?"
+        },
+        {
+          "a": "Yes. On-site security guarding is provided under the applicable Hungarian personal and property security licensing framework. Licence details and guard documentation can be reviewed during contractual onboarding where required.",
+          "q": "Is Avenir licensed to provide on-site security services in Hungary?"
+        },
+        {
+          "a": "Yes, the on-site security guarding service can be supported by 24/7 dispatch support; the escalation and notification framework is set at the start of the engagement.",
+          "q": "Is 24/7 dispatch support available?"
+        },
+        {
+          "a": "Incident handling is set up based on an agreed escalation framework. This defines which events must be recorded, who must be notified, in what order signals are sent, and how the incident is documented.",
+          "q": "What happens in case of an incident?"
+        },
+        {
+          "a": "Yes, the service can include a service log, incident recording and agreed reporting. The exact report format is set at the start of the engagement, so the client receives up-to-date information about on-site operations.",
+          "q": "Do we receive a service log or incident report?"
+        }
+      ],
+      "trust_items_hu": [
+        {
+          "body": "Az objektumőrzési működés 24/7 diszpécseri háttérrel támogatható; az értesítési és eszkalációs rendet az együttműködés elején rögzítjük.",
+          "title": "24/7 diszpécseri háttér"
+        },
+        {
+          "body": "Szolgálati napló, eseményrögzítés, egyeztetett riportálás és eszkalációs rend segíti a helyszíni kontrollt.",
+          "title": "Szolgálati napló és eseménykezelés"
+        },
+        {
+          "body": "A napi működéshez kijelölt felelős kapcsolattartót adunk, így a megrendelő nem különálló szereplők között egyeztet.",
+          "title": "Egy felelős kapcsolattartó"
+        },
+        {
+          "body": "A szolgálati folyamatokat az Avenir ISO 9001 és ISO 27001 tanúsított irányítási rendszerei támogatják, amennyiben az adott folyamatok a tanúsított működési körbe tartoznak.",
+          "title": "ISO 9001 és ISO 27001"
+        },
+        {
+          "body": "A szolgálati utasítás a szolgálat indítása előtt rögzítésre kerül, és a felelős kapcsolattartóval egyeztetjük; tartalmazza a belépési pontokat, járőrútvonalakat, kulcskezelést, incidensrögzítést és eszkalációt.",
+          "title": "Dokumentált helyszíni bevezetés"
+        },
+        {
+          "body": "Az Avenir az alkalmazandó magyar személy- és vagyonvédelmi szabályozási keret szerint nyújtja a szolgáltatást; az engedélyezési dokumentáció a szerződéses előkészítés során egyeztethető.",
+          "title": "Vagyonvédelmi engedély"
+        }
+      ],
+      "trust_items_en": [
+        {
+          "body": "On-site security guarding operations can be supported by 24/7 dispatch support; the notification and escalation framework is set at the start of the engagement.",
+          "title": "24/7 dispatch support"
+        },
+        {
+          "body": "Service log, incident recording, agreed reporting and escalation form the documented backbone of daily on-site operations.",
+          "title": "Service log and incident handling"
+        },
+        {
+          "body": "We provide a designated responsible point of contact for daily operations, so the client does not have to coordinate between separate parties.",
+          "title": "One responsible point of contact"
+        },
+        {
+          "body": "Service processes are supported by Avenir's ISO 9001 and ISO 27001 certified management systems where the relevant processes fall within the certified operating scope.",
+          "title": "ISO 9001 and ISO 27001"
+        },
+        {
+          "body": "Service instructions are recorded before deployment and reviewed with the responsible contact point, covering access, patrol, key handling, incident recording and escalation.",
+          "title": "Documented site onboarding"
+        },
+        {
+          "body": "Avenir provides the service under the applicable Hungarian personal and property security licensing framework; licensing documentation can be reviewed during contractual onboarding.",
+          "title": "Security activity licence"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "slug": "portaszolgalat",
+      "long_desc_hu": "A portaszolgálat nem egyszerű jelenlét a bejáratnál: a napi működés egyik legfontosabb kontrollpontja. A szolgáltatás a helyszín igényei szerint támogathatja a látogatók fogadását, a vendégregisztrációt, a beszállítók és alvállalkozók beléptetését, a kulcskezelést, a csomagok átvételét, az információadást és a rendkívüli események jelzését.\n\nAvenir a helyszíni felmérés alapján rögzíti a portaszolgálati és recepciós protokollt: ki léphet be, milyen jogosultsággal, milyen dokumentáció mellett, mikor szükséges értesítés, és milyen eseményt kell naplózni vagy eszkalálni. Látogató- és beléptetési adatok kezelésekor a célhoz kötöttség, az időben korlátozott megőrzés és a megfelelő tájékoztatás szempontjai is részei a porta- és recepciós folyamatnak.\n\nA portaszolgálat kapcsolódhat élőerős objektumőrzéshez, beléptető rendszerhez, kamerarendszerhez vagy belső üzemeltetési folyamathoz. A megrendelő egyértelmű szolgálati keretet kap: szolgálati naplóval, egyeztetett riportálással és kijelölt felelős kapcsolattartóval.",
+      "long_desc_en": "The gatehouse service is not simply presence at the entrance: it is one of the most important control points in daily operations. Depending on the site's needs, the service can support visitor reception, visitor registration, supplier and subcontractor access, key management, parcel handling, information provision and the reporting of extraordinary events.\n\nAvenir defines the gatehouse and reception protocol following an on-site assessment: who may enter, with what authorisation, with what documentation, when notification is required, and what events must be logged or escalated. In handling visitor and access data, purpose limitation, time-limited retention and appropriate information are also part of the gatehouse and reception process.\n\nThe gatehouse service can be integrated with on-site security guarding, an access-control system, a camera system or an internal operations process. The client receives a clear service framework: service log, agreed reporting and a designated responsible point of contact.",
+      "faq_hu": [
+        {
+          "a": "A szolgáltatás a helyszín igényei szerint tartalmazhat vendégfogadást, vendégregisztrációt, beléptetési támogatást, beszállítók és futárok kezelését, kulcskezelést, csomagátvételt, szolgálati naplót és egyeztetett riportálást.",
+          "q": "Mit tartalmaz a recepciós és portaszolgálat?"
+        },
+        {
+          "a": "A felmérés akkor különösen hasznos, ha nő a látogatói vagy beszállítói forgalom, változik a beléptetési rend, több szereplő használja ugyanazt az objektumot, vagy rendezettebb naplózásra és felelősségi rendre van szükség.",
+          "q": "Mikor érdemes portaszolgálati felmérést kérni?"
+        },
+        {
+          "a": "A portaszolgálat elsősorban a bejárati, recepciós és napi forgalomkezelési pontokra koncentrál, míg az objektumőrzés szélesebb vagyonvédelmi jelenlétet, járőrözést és incidenskezelést is jelenthet. A két szolgáltatás szükség esetén összehangolható.",
+          "q": "Miben különbözik a portaszolgálat az objektumőrzéstől?"
+        },
+        {
+          "a": "Igen, a beszállítói, futár- és alvállalkozói beléptetés rendjét a helyszíni felmérés alapján alakítjuk ki. Meghatározható, milyen adatokat kell rögzíteni, kit kell értesíteni, és hogyan történjen a ki- és beléptetés naplózása.",
+          "q": "Kezelhető-e a beszállítói és futárforgalom?"
+        },
+        {
+          "a": "Igen, a szolgáltatás része lehet kulcskezelési rend követése, kulcskiadás és kulcsvisszavétel rögzítése. A pontos szabályokat az együttműködés elején, helyszínre szabottan rögzítjük.",
+          "q": "Van-e kulcskezelés?"
+        },
+        {
+          "a": "Igen, ahol erre lehetőség van, a portaszolgálat kapcsolódhat meglévő beléptető rendszerhez, kamerarendszerhez vagy belső üzemeltetési folyamathoz.",
+          "q": "Összeköthető-e beléptető rendszerrel?"
+        },
+        {
+          "a": "A látogatóadatok kezelésekor a célhoz kötöttség, az időben korlátozott megőrzés, a látogatói tájékoztatás, a beléptetési kontextus és a helyszín saját szabályai a meghatározók. A pontos adatköröket és megőrzési rendet a megrendelői elvárásokkal és a helyszíni adatkezelési szabályokkal összhangban kell kialakítani.",
+          "q": "Hogyan kezelhetők a látogatóadatok a porta- és recepciós folyamatban?"
+        },
+        {
+          "a": "Igen, a portaszolgálati működéshez szolgálati napló, eseményrögzítés és egyeztetett riportálás kapcsolódhat. A pontos riportformátumot a megrendelői igény és a helyszín működése alapján rögzítjük.",
+          "q": "Kapunk-e riportot a napi működésről?"
+        }
+      ],
+      "faq_en": [
+        {
+          "a": "Depending on the site's needs, the service covers agreed elements such as visitor reception, visitor registration, access support, handling of suppliers and couriers, key management, parcel handling, the service log and agreed reporting.",
+          "q": "What does the reception and gatehouse service include?"
+        },
+        {
+          "a": "The assessment is particularly useful when visitor or supplier traffic grows, the access framework changes, multiple parties use the same site, or more structured logging and accountability are needed.",
+          "q": "When is it worth requesting a gatehouse assessment?"
+        },
+        {
+          "a": "The gatehouse service focuses primarily on the entrance, reception and daily traffic-management points, while on-site security guarding can also include broader security presence, patrols and incident handling. The two services can be aligned where needed.",
+          "q": "How does the gatehouse service differ from on-site security guarding?"
+        },
+        {
+          "a": "Yes, the framework for supplier, courier and subcontractor access is set up based on an on-site assessment. Avenir defines what information must be recorded, who must be notified, and how entries and exits are logged.",
+          "q": "Can supplier and courier traffic be handled?"
+        },
+        {
+          "a": "Yes, the service can include following a key-management framework, with key issuance and return recorded. The exact rules are defined at the start of the engagement, tailored to the site.",
+          "q": "Is key management included?"
+        },
+        {
+          "a": "Yes, where the conditions allow, the gatehouse service can be linked to an existing access-control system, camera system or internal operations process.",
+          "q": "Can it be linked to an access-control system?"
+        },
+        {
+          "a": "When handling visitor data, the defining factors are purpose limitation, time-limited retention, visitor information, the access-control context and the site's own rules. The exact data categories and retention framework must be aligned with client expectations and the site's data-handling rules.",
+          "q": "How can visitor data be handled in the gatehouse and reception process?"
+        },
+        {
+          "a": "Yes. The service is structured around written service logs, incident notes and agreed reporting according to the site protocol.",
+          "q": "Do we receive reports on daily operations?"
+        }
+      ],
+      "trust_items_hu": [
+        {
+          "body": "Szolgálati napló, vendégkezelési rend, eseményrögzítés és egyeztetett riportálás segíti a portaszolgálati kontrollt.",
+          "title": "Napi szolgálati rend és naplózás"
+        },
+        {
+          "body": "A megrendelő egy felelős kapcsolattartóval egyeztethet a napi működésről, a riportokról és a szükséges protokoll-módosításokról.",
+          "title": "Kijelölt felelős kapcsolattartó"
+        },
+        {
+          "body": "A portaszolgálati működés 24/7 diszpécseri háttérrel támogatható; az értesítési és eszkalációs rendet az együttműködés elején rögzítjük.",
+          "title": "24/7 diszpécseri háttér"
+        },
+        {
+          "body": "A szolgálati folyamatokat az Avenir ISO 9001 és ISO 27001 tanúsított irányítási rendszerei támogatják, amennyiben az adott folyamatok a tanúsított működési körbe tartoznak.",
+          "title": "ISO 9001 és ISO 27001"
+        },
+        {
+          "body": "A látogatói és beléptetési adatok kezelésekor figyelembe kell venni a célhoz kötöttséget, a tájékoztatást és az időben korlátozott megőrzést.",
+          "title": "Látogatóadat-kezelési szempontok figyelembevétele"
+        },
+        {
+          "body": "A recepciós és portaszolgálati protokollok az udvarias látogatókezelést kontrollált beléptetéssel, eszkalációval és riportálással kapcsolják össze, így a front-of-house működés és a biztonsági rutinok ugyanazon helyszíni szabályok szerint működnek.",
+          "title": "Vendégfogadás és beléptetési kontroll egy folyamatban"
+        }
+      ],
+      "trust_items_en": [
+        {
+          "body": "Service log, visitor-handling framework, incident recording and agreed reporting form the documented backbone of daily gatehouse operations.",
+          "title": "Daily service framework and logging"
+        },
+        {
+          "body": "The client has one responsible point of contact for daily operations, reports and required protocol changes.",
+          "title": "Designated responsible point of contact"
+        },
+        {
+          "body": "Gatehouse operations can be supported by 24/7 dispatch support; the notification and escalation framework is set at the start of the engagement.",
+          "title": "24/7 dispatch support"
+        },
+        {
+          "body": "Service processes are supported by Avenir's ISO 9001 and ISO 27001 certified management systems where the relevant processes fall within the certified operating scope.",
+          "title": "ISO 9001 and ISO 27001"
+        },
+        {
+          "body": "Visitor and access data are handled with purpose limitation, time-limited retention and appropriate information provision.",
+          "title": "Visitor-data handling"
+        },
+        {
+          "body": "Reception and gatehouse protocols combine courteous visitor handling with controlled access, escalation and reporting, so front-of-house service and security routines work from the same site rules.",
+          "title": "Hospitality and access control in one workflow"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "slug": "mystery-shopping-helyszini-audit",
+      "long_desc_hu": "A Mystery Shopping nem egyszerű ellenőrzés, hanem megtervezett és dokumentált szolgáltatásminőség-mérés. Az Avenir az ügyféllel egyeztetve rögzíti az audit scope-ját, kialakítja a forgatókönyvet és az értékelési szempontokat, betanítja az értékelőt, majd valós ügyfélhelyzetben végzi el a vizsgálatot: vásárlást, ügyintézést, helyszíni látogatást, próbautazást vagy más ügyfélkapcsolati pontot.\n\nA vizsgálat scope-ja rögzíti, milyen szolgáltatási pontokat, folyamatlépéseket, brand standardokat, kommunikációs elvárásokat, tájékoztatási kötelezettségeket vagy megfelelési szempontokat kell vizsgálni. A cél nem az öncélú hibakeresés, hanem az, hogy a vezetés pontos, strukturált képet kapjon a tényleges ügyfélélményről.\n\nA szolgáltatás több formában is alkalmazható. A Brand Audit az arculati, vizuális, tisztasági, hangulati és szolgáltatási standardokat vizsgálja. A Situation Shopping konkrét ügyfélhelyzeteket, kérdéseket, konfliktusokat vagy folyamatlépéseket tesztel. A szolgáltatásaudit vagy próbautazás pedig egy teljes ügyfélutat vizsgálhat, például személyszállítási, ügyfélszolgálati vagy helyszíni kiszolgálási folyamatban.\n\nAz Avenir strukturált riportot készít a megfigyelésekről, visszatérő mintákról, kockázati pontokról és fejlesztési javaslatokról. Az eredményeket az ügyféllel közösen áttekintjük, hogy azok támogassák a szolgáltatásminőséggel, folyamatfejlesztéssel és egyeztetett kontrollpontokkal kapcsolatos döntéseket.",
+      "long_desc_en": "Mystery shopping is not a simple inspection, but a planned and documented service-quality measurement. Avenir defines the audit scope with the client, designs the scenario and evaluation criteria, briefs the evaluator, and carries out the assessment in a real customer or service situation: a purchase, service interaction, on-site visit, test journey or another customer touchpoint.\n\nThe scope of the assessment defines which service points, process steps, brand standards, communication expectations, disclosure obligations or agreed compliance points are reviewed. The goal is not fault-finding for its own sake, but to give management a clear, structured view of the actual customer experience.\n\nThe service can be applied in several forms. A Brand Audit examines visual identity, visual standards, cleanliness, atmosphere and service standards. Situation Shopping tests specific customer situations, questions, conflicts or process steps. A service audit or test journey can examine an entire customer journey, for example in passenger transport, customer service or front-line service delivery processes.\n\nAvenir delivers a structured report with observations, recurring patterns, risk points and improvement recommendations. The findings are reviewed with the client so they can support management decisions about service quality, process improvement and agreed control points.",
+      "faq_hu": [
+        {
+          "a": "A szolgáltatás az audit céljának, scope-jának és értékelési szempontjainak rögzítéséből, a próbavásárlási vagy ügyfélút-forgatókönyv kialakításából, a valós ügyfélhelyzetben történő megfigyelésből és a strukturált riport elkészítéséből áll.",
+          "q": "Mit tartalmaz a Mystery Shopping és szolgáltatásaudit?"
+        },
+        {
+          "a": "Az audit scope-ja a végrehajtás előtt kerül meghatározásra. Az Avenir előre rögzíti a célt, a forgatókönyvet, a vizsgálati szempontokat, a riportálási formát és a megengedett megfigyelési pontokat. A megállapítások az egyeztetett szolgáltatási kritériumokhoz és fejlesztési célokhoz kapcsolódnak, nem jogi következtetésként vagy fegyelmi bizonyítékként jelennek meg.",
+          "q": "Hogyan határozzuk meg az audit scope-ját, és hogyan tartjuk a vizsgálatot az egyeztetett keretek között?"
+        },
+        {
+          "a": "Az audit vizsgálhat brand audit szempontokat, Situation Shopping forgatókönyveket, ügyfélút-lépéseket, szolgáltatásminőségi kritériumokat, egyeztetett megfelelési pontokat és több helyszín közötti konzisztenciát. Példák lehetnek a kommunikáció, tájékoztatás, kiszolgálás, számlázási vagy nyugtaadási folyamatok, ha ezek az egyeztetett scope részét képezik.",
+          "q": "Mi vizsgálható a szolgáltatásaudit során?"
+        },
+        {
+          "a": "Igen. Avenir strukturált riportot készít a megfigyelt folyamatról, az eltérésekről, visszatérő mintákról, kockázati pontokról és fejlesztési javaslatokról az egyeztetett scope szerint.",
+          "q": "Készül riport az eredményekről?"
+        },
+        {
+          "a": "A jelentés alapértelmezés szerint folyamat- és szolgáltatásminőségi fókuszú. Név szerinti vagy személyes adatot érintő megjelenítés csak előzetesen egyeztetett keretek között, az alkalmazandó adatvédelmi követelményekkel összhangban történhet.",
+          "q": "Név szerint szerepelnek a munkatársak a jelentésben?"
+        },
+        {
+          "a": "Igen, egységes forgatókönyv és értékelési szempontok alapján több helyszín, szolgáltató, egység vagy időszak is összehasonlítható. Ez segít az eltérések, visszatérő minták és fejlesztési prioritások azonosításában.",
+          "q": "Megismételhető ugyanaz a forgatókönyv több helyszínen?"
+        },
+        {
+          "a": "Igen. Próbautazás vagy szolgáltatási ügyfélút keretében vizsgálható például a tájékoztatás, a kiszolgálás, a számlázási vagy nyugtaadási folyamat, a viselkedési protokoll és az előre meghatározott szolgáltatási vagy megfelelési szempontok teljesülése.",
+          "q": "Alkalmazható közlekedési vagy szolgáltatási ügyfélútra?"
+        },
+        {
+          "a": "A Mystery Shopping és szolgáltatásaudit szolgáltatásminőséget, folyamatkövetést, ügyfélutat és egyeztetett megfelelési pontokat mér egy meghatározott scope alapján. Nem magánnyomozás, nem korlátlan megfigyelés, nem bizonyítékgyűjtés és nem fegyelmi automatizmus.",
+          "q": "Mi a különbség a Mystery Shopping és a magánnyomozás között?"
+        }
+      ],
+      "faq_en": [
+        {
+          "a": "The service covers definition of the audit objective, scope and evaluation criteria, design of the mystery shopping or customer-journey scenario, structured observation in a real customer situation, and preparation of the report.",
+          "q": "What does Mystery Shopping and Service Audit include?"
+        },
+        {
+          "a": "The audit scope is defined before execution. Avenir records the objective, scenario, criteria, reporting format and permitted observations in advance. Findings are reported against agreed service criteria and improvement goals, not as legal conclusions or disciplinary evidence.",
+          "q": "How is the audit scope defined and kept within agreed boundaries?"
+        },
+        {
+          "a": "The audit can cover brand-audit criteria, Situation Shopping scenarios, customer-journey steps, service-quality criteria, agreed compliance points and multi-site consistency checks. Examples include communication, information disclosure, service delivery, invoicing or receipt processes where these are within the agreed scope.",
+          "q": "What can be audited?"
+        },
+        {
+          "a": "Yes. Avenir delivers a structured report covering the observed process, deviations, recurring patterns, risk points and improvement recommendations within the agreed scope.",
+          "q": "What does the final report contain?"
+        },
+        {
+          "a": "The report is process-focused by default. Individual names are not used as a standard reporting element; if any personal-data-related reporting is requested, it is agreed in advance with the client and aligned with the applicable data-protection requirements.",
+          "q": "Are individual employees named in the report?"
+        },
+        {
+          "a": "Yes. The same scenario and evaluation criteria can be repeated across multiple sites, providers, units or time periods. This helps identify deviations, recurring patterns and improvement priorities.",
+          "q": "Can the same scenario be repeated across multiple sites?"
+        },
+        {
+          "a": "Yes. A test journey or service journey can examine information provision, service delivery, invoicing or receipt processes, behavioural protocol, and fulfilment of predefined service or compliance criteria.",
+          "q": "Can it be used for transport or service journeys?"
+        },
+        {
+          "a": "Mystery Shopping and Service Audit measure service quality, process follow-through, customer journey and agreed compliance points within a defined scope. It is not private investigation, not open-ended surveillance, not evidence collection and not automatic disciplinary action.",
+          "q": "What is the difference from private investigation?"
+        }
+      ],
+      "trust_items_hu": [
+        {
+          "body": "Az audit célját, forgatókönyvét, szempontjait és riportálási formáját a végrehajtás előtt egyeztetni kell, hogy a megfigyelések a meghatározott szolgáltatásminőségi scope keretein belül maradjanak.",
+          "title": "Végrehajtás előtt meghatározott scope"
+        },
+        {
+          "body": "A vizsgálat azt rögzíti, hogyan jelennek meg az egyeztetett szolgáltatási lépések, brand elvárások és ügyfélút-pontok valós ügyfélhelyzetben, felügyeleti vagy fegyelmi keretezés nélkül.",
+          "title": "Semleges ügyfélút-megfigyelés"
+        },
+        {
+          "body": "Az Avenir strukturált riportot készít megfigyelésekkel, visszatérő mintákkal, kockázati pontokkal és fejlesztési javaslatokkal, majd a megállapításokat a megrendelővel áttekinti a szolgáltatásminőségi döntések támogatására.",
+          "title": "Strukturált riport és ügyféloldali egyeztetés"
+        },
+        {
+          "body": "Ugyanaz a forgatókönyv több helyszínen vagy szolgáltatónál is megismételhető a szolgáltatási konzisztencia, folyamatbeli eltérések és visszatérő fejlesztési pontok összevetésére.",
+          "title": "Több helyszín összehasonlítható képe"
+        },
+        {
+          "body": "A riportálás az egyeztetett scope-ra és a kijelölt megrendelői áttekintési folyamatra korlátozódik. Az egyes munkatársakra vonatkozó adatok szerepeltetése nem alapértelmezett jelentési elem; ilyen tartalom csak előzetesen egyeztetett adatvédelmi keretek között jelenhet meg.",
+          "title": "Célhoz kötött és bizalmas riportálás"
+        }
+      ],
+      "trust_items_en": [
+        {
+          "body": "The audit objective, scenario, criteria and reporting format are agreed before execution, so observations stay within the defined service-quality scope.",
+          "title": "Defined scope before execution"
+        },
+        {
+          "body": "The assessment records how agreed service steps, brand expectations and customer-journey points appear in real customer situations, without surveillance or disciplinary framing.",
+          "title": "Neutral customer-journey observation"
+        },
+        {
+          "body": "Avenir delivers a structured report with observations, recurring patterns, risk points and improvement recommendations, then reviews the findings with the client for service-quality decisions.",
+          "title": "Structured report and client debrief"
+        },
+        {
+          "body": "The same scenario can be repeated across sites or providers to compare service consistency, process gaps and recurring improvement points.",
+          "title": "Multi-site consistency insight"
+        },
+        {
+          "body": "Reporting remains limited to the agreed scope and intended client-side review flow. Personal-data-related reporting is not used as a standard element and must remain within the agreed data-protection framework.",
+          "title": "Purpose-bound and confidential reporting"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "slug": "tavfelugyelet-vonuloszolgalat",
+      "long_desc_hu": "Az Avenir az egyeztetett távfelügyeleti beállítás szerint fogadja a csatlakoztatott helyszínekről érkező riasztási, behatolásjelzési és kamerához kapcsolódó jelzéseket. A jelzések az előre rögzített verifikációs protokoll szerint kerülnek ellenőrzésre az eszkaláció előtt. A téves jelzések naplózhatók és elemezhetők; a valós események a helyszíni protokoll szerint a kijelölt kapcsolattartóhoz, vonulószolgálathoz vagy külső eszkalációs útvonalhoz kerülnek. Az intézkedések eseménynaplóban rögzülnek.\n\nHa a szolgáltatás távfelügyeleti jelzéskezelést tartalmaz, a verifikációs lépés a működési eljárás része, és eseményenként dokumentálásra kerül. A távfelügyelet és a vonulószolgálat jogi és szerződéses keretei az előkészítés során kerülnek egyeztetésre; a külső eszkaláció az egyeztetett helyszíni protokoll és az alkalmazandó szabályok szerint történik.\n\nA távfelügyelet akkor működik jól, ha kapcsolódik a helyszín többi biztonsági rétegéhez: a biztonságtechnikához, az élőerős őrzéshez, a portaszolgálathoz és az egyeztetett reagálási folyamathoz. Így a jelzéskezelés, az eszkaláció, az eseménynaplózás és a lezárás egy működési modellbe rendeződik.",
+      "long_desc_en": "Avenir receives intrusion, alarm and CCTV-related signals from connected sites through the agreed monitoring setup. Each signal is checked against the agreed verification protocol before escalation. False alarms are logged and analysed; genuine events are escalated to the named contact, response service or external escalation route according to the site protocol. Each action is recorded in the operations log.\n\nWhere the service involves monitored alarm handling, the verification step is built into the operating procedure and documented per incident. The legal and contractual framework for remote monitoring and response service is reviewed during onboarding; any external escalation is handled according to the agreed site protocol and applicable rules.\n\nRemote monitoring works best when it links to the site's other security layers: security technology, on-site guarding, gatehouse service and agreed response. The result is one operating model for signal handling, escalation, event logging and closure.",
+      "faq_hu": [
+        {
+          "a": "Az Avenir a csatlakoztatott helyszínekről érkező riasztási, behatolásjelzési, kamerához kapcsolódó vagy más biztonságtechnikai jelzéseket fogadja, ellenőrzi, naplózza és az egyeztetett protokoll szerint eszkalálja.",
+          "q": "Mit jelent a távfelügyelet az Avenir szolgáltatásában?"
+        },
+        {
+          "a": "A távfelügyelet a jelzések fogadására és kezelésére fókuszál, míg a vonulószolgálat szerződéses feltételek alapján helyszíni reagálási folyamatot biztosíthat. A két működés együtt ad teljesebb jelzéskezelési és reagálási rendszert.",
+          "q": "Mi a különbség a távfelügyelet és a vonulószolgálat között?"
+        },
+        {
+          "a": "A folyamat kapcsolódhat behatolásjelzőhöz, riasztási eseményhez, kamerarendszerhez, beléptetési eseményhez, peremvédelmi jelzéshez vagy más biztonságtechnikai jelzéshez. A pontos jelzéstípusokat a helyszíni adottságok és a szerződéses igények alapján kell rögzíteni.",
+          "q": "Milyen jelzések kezelhetők?"
+        },
+        {
+          "a": "A verifikációs lépés a helyszíni protokollban kerül meghatározásra. Az Avenir a rendelkezésre álló jelzésforrások és az egyeztetett ellenőrzési szabály alapján vizsgálja a riasztást az eszkaláció előtt. A téves jelzések naplózhatók és visszanézhetők; a valós események a dokumentált kapcsolattartási és reagálási protokoll szerint kerülnek eszkalálásra. Minden lépés eseménynaplóban rögzül.",
+          "q": "Hogyan történik a riasztás ellenőrzése az eszkaláció előtt?"
+        },
+        {
+          "a": "Igen. A távfelügyelet és a vonulószolgálat az alkalmazandó magyar személy- és vagyonvédelmi szabályozási keret szerint történik. Az engedélyre és a szolgáltatási dokumentációra vonatkozó információk a szerződéses előkészítés során egyeztethetők.",
+          "q": "Rendelkezik az Avenir a távfelügyelethez és vonulószolgálathoz szükséges engedélyekkel?"
+        },
+        {
+          "a": "A vonulószolgálati folyamatot a szerződéses feltételek, a helyszín, a technikai adottságok és a szolgáltatási terület alapján kell meghatározni. Emiatt a kiérkezési vagy reagálási szabályokat mindig az együttműködés elején érdemes pontosan rögzíteni.",
+          "q": "Van garantált kiérkezési idő?"
+        },
+        {
+          "a": "Az eszkaláció a helyszíni protokollban rögzített név szerinti kapcsolattartási lánc, értesítési sorrend és reagálási mátrix szerint történik. A protokoll határozza meg, mikor kell kijelölt kapcsolattartót, vonulószolgálatot vagy külső eszkalációs útvonalat bevonni.",
+          "q": "Hogyan történik az eszkaláció?"
+        },
+        {
+          "a": "Igen. Az ügyfél az egyeztetett gyakoriság szerint eseményriportot kap; a riport formátuma, gyakorisága és tartalma az együttműködés elején rögzíthető.",
+          "q": "Kapunk eseményriportot?"
+        },
+        {
+          "a": "A jelzések időbélyegzett eseménynaplóban rögzíthetők: mikor érkezett a jelzés, milyen ellenőrzési lépés történt, milyen értesítési lánc indult el, történt-e eszkaláció, milyen intézkedés következett, és mi lett a lezárási státusz. A részleteket a helyszíni és szerződéses szabályok alapján kell meghatározni.",
+          "q": "Hogyan dokumentálhatók a riasztási jelzések és események?"
+        },
+        {
+          "a": "Igen. A távfelügyelet akkor működik jól, ha a kamerarendszer, behatolásjelző, beléptetés, objektumőrzés és portaszolgálat folyamatai összehangoltan támogatják egymást.",
+          "q": "Összekapcsolható a távfelügyelet a biztonságtechnikával?"
+        },
+        {
+          "a": "A távfelügyeletben használt jelzések, kameraképek és beléptetési események kizárólag az egyeztetett távfelügyeleti cél szerint és az ügyfél adatvédelmi keretei alapján kezelhetők. A megőrzés, a hozzáférésnaplózás és az adatminimalizálás szabályai helyszínenként kerülnek meghatározásra. Az Avenir a folyamat technikai és működési oldalát támogatja; a jogalap és a végső adatvédelmi döntések az ügyfél és tanácsadói körében maradnak.",
+          "q": "Hogyan kezeljük az adatvédelmi szempontokat a távfelügyeleti működésben?"
+        },
+        {
+          "a": "Helyszíni biztonsági felmérés akkor hasznos, ha új riasztási vagy távfelügyeleti működést kell kialakítani, visszatérő jelzések vannak, változik a beléptetési rend, vagy a meglévő reagálási és eszkalációs folyamatokat szeretnék átláthatóbbá tenni.",
+          "q": "Mikor érdemes helyszíni biztonsági felmérést kérni?"
+        }
+      ],
+      "faq_en": [
+        {
+          "a": "Avenir receives alarm, intrusion-detection, CCTV-related or other security technology signals from connected sites, checks them, logs them and escalates them according to the agreed protocol.",
+          "q": "What does remote monitoring mean within Avenir's service?"
+        },
+        {
+          "a": "Remote monitoring focuses on receiving and handling signals, while the response service can provide an on-site response process under contractual conditions. Together they form a more complete signal-handling and response model.",
+          "q": "What is the difference between remote monitoring and response?"
+        },
+        {
+          "a": "The process can be linked to intrusion detection, alarm events, a camera system, access-control events, perimeter signals or other security technology signals. The exact signal types must be defined based on on-site conditions and contractual requirements.",
+          "q": "What kinds of signals can be handled?"
+        },
+        {
+          "a": "The verification step is defined in the site protocol. Avenir checks the alarm against available signal sources and the agreed verification rule before escalation. False alarms are logged and reviewed; genuine events are escalated according to the documented contact and response protocol. Each step is recorded in the operations log.",
+          "q": "How is an alarm verified before escalation?"
+        },
+        {
+          "a": "Yes. Remote monitoring and response service are provided under the applicable Hungarian personal and property security licensing framework. Licence details and service documentation can be reviewed during contractual onboarding where required.",
+          "q": "Is Avenir licensed to provide remote monitoring and response services in Hungary?"
+        },
+        {
+          "a": "The response-service process must be defined based on contractual conditions, the site, technical conditions and the service area. For this reason, arrival or response rules are best recorded precisely at the start of the engagement.",
+          "q": "Is a guaranteed arrival time provided?"
+        },
+        {
+          "a": "Escalation follows the named contact chain, notification order and response matrix recorded in the site protocol. The protocol defines when a named contact, response service or external escalation route is involved.",
+          "q": "How is escalation handled?"
+        },
+        {
+          "a": "Yes. Clients receive event reports according to the agreed cadence; report format, frequency and content can be defined at the start of the engagement.",
+          "q": "Do we receive event reports?"
+        },
+        {
+          "a": "Signals can be recorded in a timestamped operations log: when the signal arrived, what verification step was taken, what notification chain was triggered, whether escalation took place, what action followed and what closing status was reached. The details must be defined based on site and contractual rules.",
+          "q": "How can alarm signals and events be documented?"
+        },
+        {
+          "a": "Yes. Remote monitoring works well when the camera system, intrusion detection, access control, on-site security guarding and gatehouse processes support each other in alignment.",
+          "q": "Can remote monitoring be linked to security technology?"
+        },
+        {
+          "a": "Signals, CCTV streams and access-control events used in remote monitoring are handled only for the agreed monitoring purpose and according to the client's data-protection framework. Retention, access logging and minimisation rules are defined per site. Avenir supports the technical and operational side of this process; legal basis and final data-protection decisions remain with the client and its advisers.",
+          "q": "How is data protection handled in remote-monitoring operations?"
+        },
+        {
+          "a": "An on-site security assessment is useful when a new alarm or remote-monitoring operation needs to be set up, recurring signals occur, the access framework changes, or the existing response and escalation processes need to be made more transparent.",
+          "q": "When is it worth requesting an on-site security assessment?"
+        }
+      ],
+      "trust_items_hu": [
+        {
+          "body": "Az Avenir 24/7 jelzésfogadást biztosít a csatlakoztatott helyszínekhez, a riasztások pedig az egyeztetett verifikációs protokoll szerint kerülnek ellenőrzésre az eszkaláció előtt.",
+          "title": "24/7 jelzésfogadás verifikált eszkalációval"
+        },
+        {
+          "body": "Minden jelzés, ellenőrzési lépés és eszkalációs döntés eseménynaplóban rögzül, amely a szolgáltatási megállapodás szerint visszakereshető.",
+          "title": "Dokumentált riasztás-verifikációs napló"
+        },
+        {
+          "body": "Az értesítési sorrend, a kijelölt kapcsolattartók és a reagálási kiváltó pontok előre egyeztetve és helyszínenként dokumentálva vannak.",
+          "title": "Név szerinti kapcsolattartási lánc és eszkalációs mátrix"
+        },
+        {
+          "body": "A távfelügyelet a helyszín kamerarendszerével, beléptetésével, élőerős őrzésével és portaszolgálatával együtt működik, hogy a jelzéskezelés és a reagálás egy működési modell szerint történjen.",
+          "title": "Működési integráció biztonságtechnikával, őrzéssel és portaszolgálattal"
+        },
+        {
+          "body": "Az ügyfél az egyeztetett gyakoriság szerint eseményriportot kap; az eseménynapló támogatja a téves jelzések, visszatérő események és fejlesztési pontok áttekintését.",
+          "title": "Eseményrögzítés és időszakos incidensriport"
+        },
+        {
+          "body": "A távfelügyeleti működést az Avenir ISO 9001 és ISO 27001 tanúsított irányítási rendszerei támogatják, amennyiben ezek a folyamatok a tanúsított működési körbe tartoznak.",
+          "title": "ISO 9001 és ISO 27001 irányítási rendszerek"
+        }
+      ],
+      "trust_items_en": [
+        {
+          "body": "Avenir operates 24/7 signal reception for connected sites, with alarms checked against the agreed verification protocol before escalation.",
+          "title": "24/7 signal reception with verified escalation"
+        },
+        {
+          "body": "Each signal, verification step and escalation decision is recorded in an operations log that can be reviewed according to the service agreement.",
+          "title": "Documented alarm-verification log"
+        },
+        {
+          "body": "Notification order, named contacts and response triggers are agreed up front and documented for the site.",
+          "title": "Named contact chain and escalation matrix"
+        },
+        {
+          "body": "Remote monitoring runs alongside the site's CCTV, access control, on-site security and gatehouse service so signal handling and response follow one operating model.",
+          "title": "Operational integration with security technology, guarding and gatehouse"
+        },
+        {
+          "body": "Clients receive event reports according to the agreed cadence; the operations log supports review of false alarms, recurring events and improvement points.",
+          "title": "Event recording and periodic incident reporting"
+        },
+        {
+          "body": "Remote-monitoring operations are supported by Avenir's ISO 9001 and ISO 27001 certified management systems where these processes fall within the certified operating scope.",
+          "title": "ISO 9001 and ISO 27001 management systems"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "slug": "hard-fm",
+      "long_desc_hu": "Az Avenir Hard FM szolgáltatása a vállalati, ipari és logisztikai helyszínek műszaki rendszereinek tervezett megelőző karbantartását és reaktív hibakezelését fogja össze. A scope kiterjedhet az épületállagra, gépészeti és elektromos rendszerekre, vízvezeték- és HVAC-folyamatokra, kisebb műszaki munkákra, szakcéges koordinációra és dokumentált hibakövetésre.\n\nAz Avenir a mobilizáció során az ügyféllel együtt rögzíti a hibabejelentési útvonalat, az eszkalációs pontokat, a szolgáltatói felelősségeket, a beavatkozási naplózást és a riportálási ritmust. Ha HVAC-, elektromos, vízvezeték- vagy kötelező felülvizsgálati munkákhoz szakcég szükséges, azok kezelése az egyeztetett működési modell részeként történik, nem rejtett átadásként az ügyfél felé.\n\nA Hard FM működhet önálló műszaki üzemeltetési szolgáltatásként, vagy az Avenir portaszolgálatával, élőerős őrzésével vagy Soft FM szolgáltatásával együtt ugyanazon a helyszínen. Integrált működésben a riportálási ritmus, az eszkalációs lánc és az operatív kapcsolattartási pontok összehangoltak, így az ügyfél nem széttagolt szolgáltatói visszajelzéseket, hanem egységes műszaki képet kap.",
+      "long_desc_en": "Avenir's Hard FM service covers planned preventive maintenance and reactive fault handling for the technical systems of commercial, industrial and logistics sites. The scope may include building fabric, mechanical and electrical systems, plumbing, HVAC, minor technical works, specialist subcontractor coordination and documented fault tracking.\n\nAvenir sets the fault-reporting route, escalation points, provider responsibilities, intervention records and reporting rhythm with the client at mobilisation. Where specialist subcontractors are needed for HVAC, electrical, plumbing or statutory inspection work, they are coordinated through the agreed operating model rather than left as a hidden hand-off to the client.\n\nHard FM can run as a stand-alone technical operations service or alongside Avenir's Reception, On-site Security Guarding or Soft FM on the same site. In integrated setups, the reporting rhythm, escalation chain and operational contact points are aligned so the client receives one technical picture instead of fragmented provider updates.",
+      "faq_hu": [
+        {
+          "a": "A Hard FM a helyszínek műszaki üzemeltetésének, karbantartási folyamatainak, hibabejelentéseinek és szolgáltatói egyeztetéseinek koordinált kezelését jelenti. A cél, hogy a műszaki működés átlátható és riportálható legyen.",
+          "q": "Mit jelent a Hard FM?"
+        },
+        {
+          "a": "A Hard FM elsősorban műszaki, karbantartási és üzemeltetési folyamatokra fókuszál, míg a Soft FM inkább a napi működést támogató szolgáltatásokhoz, például takarításhoz, zöldterülethez vagy operatív támogatáshoz kapcsolódik. A két terület sok helyszínen együtt működik hatékonyan.",
+          "q": "Miben különbözik a Hard FM a Soft FM-től?"
+        },
+        {
+          "a": "Igen, a Hard FM része lehet a hibabejelentések fogadási, továbbítási, priorizálási és eszkalációs rendjének kialakítása. A pontos folyamatot a helyszíni igények és a szerződéses keretek alapján érdemes rögzíteni.",
+          "q": "Kezelhetők hibabejelentések is?"
+        },
+        {
+          "a": "A működés a feladat jellegétől és a szerződéses keretektől függ. A Hard FM szolgáltatás része lehet saját koordináció, kijelölt szolgáltatók bevonása, alvállalkozói egyeztetés vagy a megrendelő meglévő partnereinek koordinált kezelése.",
+          "q": "Avenir saját maga végez minden műszaki munkát?"
+        },
+        {
+          "a": "A javítási vagy reagálási idő a helyszíntől, a feladat típusától, a hozzáférési feltételektől és a szükséges szakcégektől függ. Az Avenir a mobilizáció során prioritási kategóriákat tud meghatározni, hogy a sürgős hibák, a rutin feladatok és a tervezett karbantartás eltérő kezelési úton fusson, de ez nem jelent általános garantált javítási időt.",
+          "q": "Van garantált javítási idő?"
+        },
+        {
+          "a": "Igen, a szolgáltatás része lehet egyeztetett riportálás. A riport tartalmazhatja a hibabejelentéseket, státuszokat, beavatkozásokat, lezárt feladatokat, visszatérő problémákat és fejlesztési javaslatokat.",
+          "q": "Kapunk riportot a műszaki feladatokról?"
+        },
+        {
+          "a": "Dedikált Hard FM folyamatot akkor érdemes kialakítani, ha a műszaki hibák, karbantartási feladatok, szakcégek és riportálás jelenleg eseti módon vagy több, egymástól leváló szolgáltatón keresztül működnek. A dedikált folyamat átláthatóbb hibautat, prioritási kategóriákat, státuszkövetést és riportálási ritmust ad az ügyfélnek.",
+          "q": "Mikor érdemes külön Hard FM folyamatot kialakítani?"
+        },
+        {
+          "a": "Igen. Sok helyszínen a porta, objektumőrzés vagy biztonságtechnikai működés észleli először a műszaki problémát. A Hard FM folyamat akkor működik jól, ha a jelzések, felelősök, szolgáltatók és eszkalációs pontok össze vannak hangolva.",
+          "q": "Kapcsolódhat a Hard FM biztonsági vagy portaszolgálati működéshez?"
+        }
+      ],
+      "faq_en": [
+        {
+          "a": "Hard FM means the coordinated handling of technical operations, maintenance processes, fault reports and supplier coordination across sites. The goal is for technical operations to be transparent and documented.",
+          "q": "What does Hard FM mean?"
+        },
+        {
+          "a": "Hard FM focuses primarily on technical, maintenance and operational processes, while Soft FM is more closely linked to services that support daily operations, such as cleaning, landscaping or operational support. The two areas often work effectively together at the same site.",
+          "q": "How does Hard FM differ from Soft FM?"
+        },
+        {
+          "a": "Yes. Hard FM can include the design of how fault reports are received, routed, prioritised and escalated. The exact process should be defined based on on-site needs and contractual scope.",
+          "q": "Can fault reports be handled as well?"
+        },
+        {
+          "a": "It depends on the nature of the task and the contractual framework. The Hard FM service may include in-house coordination, the involvement of designated providers, subcontractor management, or coordination of client-side service providers.",
+          "q": "Does Avenir carry out all technical work itself?"
+        },
+        {
+          "a": "Repair or response times depend on the site, task type, access conditions and the subcontractors required. Avenir can define priority categories at mobilisation so urgent faults, routine tasks and planned maintenance follow separate handling paths, but this does not create a universal guaranteed repair time.",
+          "q": "Is there a guaranteed repair time?"
+        },
+        {
+          "a": "Yes, agreed reporting can be part of the service. Reports may include fault reports, statuses, interventions, closed tasks, recurring issues and improvement recommendations.",
+          "q": "Do we receive reports on the technical work?"
+        },
+        {
+          "a": "It is worth setting up a dedicated Hard FM process when technical faults, maintenance tasks, subcontractors and reporting are currently handled ad hoc or by several disconnected providers. A dedicated process gives the client a clearer fault route, priority categories, status tracking and reporting rhythm.",
+          "q": "When is it worth setting up a dedicated Hard FM process?"
+        },
+        {
+          "a": "Yes. At many sites, the gatehouse, on-site security guarding or security technology operations are the first to detect a technical issue. Hard FM works well when the signals, responsible parties, providers and escalation points are aligned.",
+          "q": "Can Hard FM be linked to security or gatehouse operations?"
+        }
+      ],
+      "trust_items_hu": [
+        {
+          "body": "Az ügyfél név szerinti operatív kapcsolattartót kap a hibabejelentéshez, az eszkalációhoz, a szolgáltatói koordinációhoz és a riportáláshoz.",
+          "title": "Név szerinti operatív kapcsolattartó"
+        },
+        {
+          "body": "A reaktív feladatok a mobilizáció során egyeztetett prioritási kategóriák szerint kezelhetők, így a sürgős hibák, a rutin feladatok és a tervezett munkák eltérő kezelési úton futnak.",
+          "title": "Prioritásalapú reaktív hibakezelés"
+        },
+        {
+          "body": "A HVAC-, elektromos, vízvezeték- és felülvizsgálati feladatok szakcégek bevonásával is teljesíthetők, az egyeztetett működési modell szerint koordinálva.",
+          "title": "Szakcéges koordináció"
+        },
+        {
+          "body": "A hibabejelentések, beavatkozások, státuszváltozások és lezárások rögzítésre kerülnek, és havi működési riportban összegezhetők.",
+          "title": "Dokumentált hibanapló és havi riport"
+        },
+        {
+          "body": "Ha a Hard FM portaszolgálattal, élőerős őrzéssel vagy Soft FM-mel együtt működik, a riportálás, az eszkaláció és az operatív kapcsolattartási pontok az adott helyszínen összehangolhatók.",
+          "title": "Kapcsolódás portaszolgálathoz, őrzéshez és Soft FM-hez"
+        }
+      ],
+      "trust_items_en": [
+        {
+          "body": "The client receives a named operational contact for fault intake, escalation, provider coordination and reporting.",
+          "title": "Named operational contact"
+        },
+        {
+          "body": "Reactive jobs are classified by agreed priority categories at mobilisation, so urgent faults, routine tasks and planned work follow separate handling paths.",
+          "title": "Priority-based reactive fault handling"
+        },
+        {
+          "body": "HVAC, electrical, plumbing and inspection tasks can be delivered by specialist providers coordinated through the agreed operating model.",
+          "title": "Specialist subcontractor coordination"
+        },
+        {
+          "body": "Fault reports, interventions, status changes and closures are recorded and summarised in a monthly operations report.",
+          "title": "Documented fault log and monthly report"
+        },
+        {
+          "body": "Where Hard FM runs alongside reception, on-site security or Soft FM, reporting, escalation and operational contact points are aligned for the same site.",
+          "title": "Integrated with reception, security and Soft FM"
+        }
+      ]
+    }
+  ]
+}

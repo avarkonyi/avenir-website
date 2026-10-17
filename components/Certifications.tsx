@@ -1,3 +1,4 @@
+import { localizeCredentialCategory } from "@/lib/schema-locale-copy";
 import { and, asc, eq } from "drizzle-orm";
 import type { Translation } from "@/lib/i18n";
 import { db, certifications } from "@/lib/db";
@@ -314,7 +315,7 @@ export async function Certifications({
                 {cert.credentialCategory && (
                   <meta
                     itemProp="credentialCategory"
-                    content={cert.credentialCategory}
+                    content={localizeCredentialCategory(locale, cert.credentialCategory) ?? undefined}
                   />
                 )}
                 {cert.scope && (

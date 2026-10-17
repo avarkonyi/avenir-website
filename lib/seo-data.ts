@@ -98,7 +98,7 @@ export const SEO_FAQS_HU = [
   },
   {
     q: "Hogyan lehet ajánlatot kérni az Avenirtől?",
-    a: "Ajánlat a +36 70 316 8218-as telefonszámon, az info@afm.hu e-mail címen, vagy a www.afm.hu weboldalon található űrlapon kérhető. Munkaidőben többnyire még aznap visszajelzünk, de legkésőbb a következő munkanapon felvesszük Önnel a kapcsolatot. Az ajánlat elkészítésének ideje az igény összetettségétől függ.",
+    a: "Ajánlat a +36 70 316 8218-as telefonszámon, az info@afm.hu e-mail-címen, vagy a www.afm.hu weboldalon található űrlapon kérhető. Munkaidőben többnyire még aznap visszajelzünk, de legkésőbb a következő munkanapon felvesszük Önnel a kapcsolatot. Az ajánlat elkészítésének ideje az igény összetettségétől függ.",
   },
 ] as const;
 
@@ -135,25 +135,6 @@ export const META_DESCRIPTIONS: Record<SeoLocale, string> = {
   ko: "Avenir는 헝가리에서 보안 서비스, 보안 기술, 서비스 감사 및 FM 지원을 제공합니다. 하나의 계약, 하나의 책임 연락 창구.",
   fr: "Gardiennage, technologies de sécurité, audits de service et facility management en Hongrie. Un contrat, un interlocuteur responsable.",
 };
-
-// Security-first positioning: Avenir's primary expertise is property
-// protection (vagyonvédelem); integrated FM is complementary. Used as
-// description for both Organization and ProfessionalService schemas.
-export const SECURITY_FIRST_DESCRIPTION =
-  "Magyar vagyonvédelmi szakértő integrált épületüzemeltetéssel. 200+ szakember, 30+ aktív helyszín, ISO 9001 + ISO 27001 tanúsított.";
-
-// SecurityService.knowsAbout array — emphasizes property-protection
-// capabilities for AI-search and Knowledge Panel context.
-export const SCHEMA_KNOWS_ABOUT = [
-  "Élőerős őrzés-védelem",
-  "Technikai vagyonvédelem",
-  "Riasztó-rendszer felügyelet",
-  "Beléptetési rendszerek",
-  "Portaszolgálat",
-  "24/7 diszpécserszolgálat",
-  "Mystery Shopping audit",
-  "Integrált facility management",
-] as const;
 
 // Stable @id URL for an EducationalOccupationalCredential schema.
 // Used both inside the credential's own top-level JSON-LD object and for

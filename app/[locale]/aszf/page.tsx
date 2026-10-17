@@ -56,7 +56,6 @@ export default async function TermsPage({
   if (!isLegalPageLocale(locale)) notFound();
   const t = getTranslation(locale);
   const terms = getTermsContent(locale, t);
-  const showStructuredDataProtection = locale !== "de";
 
   return (
     <LegalPageChrome
@@ -76,13 +75,8 @@ export default async function TermsPage({
         <LegalSection key={s.id} id={s.id} title={s.title} body={s.body} />
       ))}
 
-      {/* Section 14 — Data Protection cross-reference. Resolves audit
-          P0-2: DPO disclosure was on privacy + impresszum but missing
-          from ASZF. Structured block with DPO contact + clickable link
-          to the full Privacy Policy. DE v1.1 legal-source markdown already
-          contains the privacy references, so the structured HU/EN supplement
-          is not duplicated there. */}
-      {showStructuredDataProtection && (
+      {/* Section 14 — shared DPO contact and Privacy Policy cross-reference
+          for every rendered legal locale, including the DE review page. */}
         <section id="data-protection" style={{ marginBottom: 32 }}>
           <h2
             style={{
@@ -156,7 +150,6 @@ export default async function TermsPage({
             </Link>
           </p>
         </section>
-      )}
 
       {/* Version history footer — small fine-print block at the very
           end of the document, separated from §14 by a top border.

@@ -1,3 +1,5 @@
+> Ez az első javítási kör történeti jelentése. Az aktuális, tételes státusz a [nyitott tételek listájában](nyitott-tetelek.md) és a [506 soros nyilvántartásban](text-audit-status.csv) található.
+
 # Szövegaudit – jelenlegi forrás és javítási státusz
 
 Dátum: 2026-10-17. Kiinduló kód: `239c539`. Az eredeti Claude-audit a `claude-review/szoveg-audit/` könyvtárban változatlanul megmarad.

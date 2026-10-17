@@ -61,7 +61,7 @@ export const fr = {
     specialDataWarning: "Ne transmettez pas de données sensibles, de données relatives aux condamnations pénales, d’informations classifiées, de secrets commerciaux ou de détails sur la vie privée de tiers via ce formulaire. Ces sujets nécessitent un engagement distinct et un examen de la protection des données.",
     specialDataWarningLink: "Conditions d’utilisation, section 4 (en anglais)", privateInvestigation: "Enquête privée",
     layeredNotice: "En envoyant ce formulaire, vous reconnaissez avoir pris connaissance de notre", layeredNoticeLink: "politique de confidentialité (en anglais)",
-    errors: { nameRequired: "Veuillez saisir votre nom et prénom.", emailRequired: "Veuillez saisir votre adresse e-mail.", emailInvalid: "Veuillez saisir une adresse e-mail valide.", server: "Une erreur est survenue lors de l’envoi. Réessayez plus tard ou appelez-nous au +36 70 316 8218.", throttled: "Trop de tentatives d’envoi en peu de temps. Veuillez patienter une minute." },
+    errors: { nameRequired: "Veuillez saisir vos nom et prénom.", emailRequired: "Veuillez saisir votre adresse e-mail.", emailInvalid: "Veuillez saisir une adresse e-mail valide.", server: "Une erreur est survenue lors de l’envoi. Réessayez plus tard ou appelez-nous au +36 70 316 8218.", throttled: "Trop de tentatives d’envoi en peu de temps. Veuillez patienter une minute." },
   },
   footer: {
     rights: "© 2026 Avenir Facility Management Kft. · Tous droits réservés.", legalTitle: "Informations légales",
