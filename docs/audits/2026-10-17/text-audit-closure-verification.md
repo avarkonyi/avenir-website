@@ -60,3 +60,14 @@ CF3A3071C0CA77043BC05B795D3DFD3F539DACE6B87643970586E3FD22CD6148
 A helyi eredmény nem production-, jogi vagy anyanyelvi jóváhagyás. A DPO-, üzleti, dokumentum-, CMS- és kiadási tételek a külön listában maradnak.
 
 Analytics spec review: PASS. Külön végső quality/React és integrációs review: PASS; a valódi Google-tag hálózati ellenőrzése külön kiadási feltétel. A ledger review két észrevétele javítva: DES-001 szótári kifejezés és az eredeti reviewer mező megőrzése.
+
+## Felhőbeli Preview és CI
+
+Ellenőrzött alkalmazáscommit: `f6465bbad90721ee0434d929846b6c5e6fbb8f89`.
+
+- GitHub „Static checks and unit tests”: success.
+- Vercel Preview: success, deployment `4pVDit5jduRqFRuQGAsmbWGkDRzf`.
+- Preview: https://avenir-website-9lubzhgcu-andrasvarkonyi-7800s-projects.vercel.app
+- **18/18 csak olvasó cloud GET-próba PASS**: hat főoldal locale/schema és review noindex; hat ismeretlen locale-útvonal HTTP404/noindex; HU/EN/DE jogi DPO-blokk és v1.1; HU/EN/DE adatvédelmi visszavonási szöveg.
+- Az első cloud próba magyar ellenőrző részszövege „előtti” alakot várt a forrás szerinti „előtt végzett” helyett; a tesztelvárás pontosítása után minden próba sikeres, alkalmazáskód-változtatás nélkül.
+- Draft PR #2 frissítve. Merge, production deploy, új CMS/DB-írás és form submit nem történt. Az eredeti Claude-audit mappa változatlanul megmaradt.

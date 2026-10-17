@@ -33,4 +33,4 @@
 - [x] Reconcile all original 506 IDs into a separate CSV, keeping original findings intact. Each row includes status, reason, next action, owner and evidence. Never infer closed from severity alone.
 - [x] Produce a concise Hungarian open-item Markdown list grouped by owner/business, legal/DPO, native review, CMS and release; link the complete CSV.
 - [x] Run all unit tests, lint, TypeScript, copy guard, staging-target preflight and read-only build. Fix regressions.
-- [ ] Push the tested commit to draft PR #2; verify CI/Preview and focused public GET smoke. No merge, production deployment, DB write or form submission.
+- [x] Push the tested commit to draft PR #2; verify CI/Preview and focused public GET smoke. No merge, production deployment, DB write or form submission.
