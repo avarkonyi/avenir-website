@@ -89,7 +89,7 @@ test("career privacy microcopy links the right notice per locale and is omitted 
   const de = getCareerPrivacyNotice("de");
   assert.ok(de);
   assert.equal(de.href, "/en/recruitment-privacy");
-  assert.equal(de.linkLabel, "Datenschutzhinweise für Bewerbungen");
+  assert.equal(de.linkLabel, "Datenschutzhinweise für Bewerbungen (auf Englisch)");
 
   assert.equal(getCareerPrivacyNotice("zh"), null);
   assert.equal(getCareerPrivacyNotice("ko"), null);

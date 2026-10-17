@@ -142,7 +142,7 @@ export const zh = {
     // No fixed response-time promise (SLA-like wording needs owner/legal
     // approval) — the success and helper copy stays non-committal.
     "success": "我们已收到您的留言。我们的同事将通过您提供的联系方式回复。您的数据将依据我们的隐私政策进行处理。",
-    "successPrivacyLink": "隐私政策",
+    "successPrivacyLink": "隐私政策（英文）",
     // TRANSLATION DRAFT: review by user (partial/noindex locale)
     "requiredField": "* 必填项",
     "nextStepHelper": "我们的同事将通过您提供的联系方式回复。报价的准备时间取决于需求的范围和复杂程度。",
@@ -150,7 +150,7 @@ export const zh = {
     "specialDataWarningLink": "使用条款 第4节",
     "privateInvestigation": "私家侦探",
     "layeredNotice": "提交即表示您同意我们的",
-    "layeredNoticeLink": "隐私政策",
+    "layeredNoticeLink": "隐私政策（英文）",
     // TRANSLATION DRAFT: review by user
     "errors": {
       "nameRequired": "请填写您的全名",
@@ -172,7 +172,7 @@ export const zh = {
     "companyNumberLabel": "公司注册号",
     "taxNumberLabel": "税号",
     "headquartersLabel": "总部地址",
-    "machineTranslationDisclaimer": "本页面由匈牙利语机器翻译而来。具有法律约束力的版本仅为匈牙利语版本。"
+    "machineTranslationDisclaimer": "中文首页和服务详情的译文仍在审核中。法律链接指向英文文件；新闻尚未提供中文版本。"
   },
   // TRANSLATION DRAFT: review by user
   "certifications": {

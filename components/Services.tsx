@@ -10,7 +10,7 @@ import { Icon, ICON_NAMES, type IconName } from "./Icon";
 
 // Public Services grid — DB-backed via shared
 // `getActiveTopLevelServices` helper (lib/db/queries/services.ts),
-// which owns the WHERE/ORDER + locale fallback to HU. Empty-field
+// which owns the WHERE/ORDER + source-backed localization. Empty-field
 // guard stays here because the listing surface needs both title and
 // description (Footer/Contact accept name-only rows).
 //

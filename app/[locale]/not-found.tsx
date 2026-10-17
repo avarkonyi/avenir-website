@@ -1,13 +1,19 @@
+"use client";
+
 import Link from "next/link";
+import { useParams } from "next/navigation";
 import { AvenirLogo } from "@/components/AvenirLogo";
+import { DEFAULT_LOCALE, LOCALES, type Locale } from "@/lib/locales";
+import { getNotFoundCopy } from "@/lib/not-found-copy";
+import { getContactPrivacyHref } from "@/lib/locale-ui-helpers";
 
 // Locale-aware 404, rendered inside the [locale] layout (which already
-// provides <html><body>). Cannot read the URL locale here (Next.js
-// limitation as of 16.2.x — not-found.tsx receives no params), so we
-// render bilingual primary text plus 3-CTA strip per Codex 2 review:
-// Primary (homepage) + Secondary (contact) + Tertiary (privacy).
-// All four locale roots are exposed below the bilingual block.
+// provides <html><body>). Read the active segment through the client router
+// because this boundary receives no params prop. Recovery links retain locale.
 export default function LocaleNotFound() {
+  const params = useParams<{ locale: string }>();
+  const locale = LOCALES.includes(params?.locale as Locale) ? params.locale : DEFAULT_LOCALE;
+  const copy = getNotFoundCopy(locale);
   return (
     <div
       style={{
@@ -46,16 +52,16 @@ export default function LocaleNotFound() {
             marginBottom: 12,
           }}
         >
-          Az oldal nem található / Page not found
+          {copy.title}
         </h1>
         <p style={{ color: "rgba(255,255,255,0.65)", fontSize: 15, lineHeight: 1.65, marginBottom: 28 }}>
-          A keresett tartalom nem érhető el. / The content you are looking for is not available.
+          {copy.body}
         </p>
 
         {/* 3-CTA layout: Primary (Home) + Secondary (Contact) + Tertiary (Privacy) */}
         <div style={{ display: "flex", flexDirection: "column", gap: 12, alignItems: "center", marginBottom: 24 }}>
           <Link
-            href="/hu"
+            href={`/${locale}`}
             style={{
               background: "#D1172E",
               color: "#fff",
@@ -70,10 +76,10 @@ export default function LocaleNotFound() {
               textAlign: "center",
             }}
           >
-            Vissza a főoldalra / Return to homepage
+            {copy.home}
           </Link>
           <Link
-            href="/hu#contact"
+            href={`/${locale}#contact`}
             style={{
               background: "transparent",
               color: "#fff",
@@ -89,10 +95,10 @@ export default function LocaleNotFound() {
               textAlign: "center",
             }}
           >
-            Kapcsolat / Contact us
+            {copy.contact}
           </Link>
           <Link
-            href="/hu/adatvedelem"
+            href={getContactPrivacyHref(locale)}
             style={{
               color: "rgba(255,255,255,0.65)",
               textDecoration: "underline",
@@ -100,7 +106,7 @@ export default function LocaleNotFound() {
               fontWeight: 400,
             }}
           >
-            Adatvédelem / Privacy Policy
+            {copy.privacy}
           </Link>
         </div>
 
@@ -115,7 +121,7 @@ export default function LocaleNotFound() {
             borderTop: "1px solid rgba(255,255,255,0.08)",
           }}
         >
-          {(["hu", "en", "de", "zh", "ko"] as const).map((l) => (
+          {LOCALES.map((l) => (
             <Link
               key={l}
               href={`/${l}`}

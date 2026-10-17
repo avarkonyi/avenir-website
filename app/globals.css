@@ -1310,6 +1310,13 @@ details > summary:focus-visible {
   }
 }
 
+/* Keep Korean words intact and leave room for the longer translated heading. */
+html[lang="ko"] .hero-section h1 {
+  word-break: keep-all;
+  font-size: clamp(36px, 5vw, 68px) !important;
+  line-height: 1.1 !important;
+}
+
 /* Phone-only: Hero stats-bar leaves absolute-bottom overlay to avoid
    overlap with longer HU/DE hero text on small viewports. The bar joins
    normal flow below the CTAs; backdrop-filter dropped (no longer over an

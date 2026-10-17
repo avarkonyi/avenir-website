@@ -16,12 +16,12 @@ import {
 } from "@/lib/db/queries/services";
 import { SEO_DATA, SEO_LOCALES, type SeoLocale } from "@/lib/seo-data";
 import { getSafeAbsolutePublicImageUrl } from "@/lib/safe-public-image";
+import { indexableServiceLocales, isIndexableServiceLocale } from "@/lib/services/publication";
 import {
-  DE_REVIEW_SERVICE_PATHS,
-  getDeReviewRelatedServicesForServiceSlug,
-  getDeReviewServiceDetailBySlug,
-  getDeReviewServiceDetailSharedCopy,
-} from "@/lib/services/de-service-details";
+  getRenderableServicePaths,
+  getReviewServiceDetail,
+  getReviewServiceSharedCopy,
+} from "@/lib/services/review-services";
 
 // Public service detail page (P5 Phase 1).
 //
@@ -47,14 +47,7 @@ export async function generateStaticParams() {
   const publishedPaths = await getAllPublishedServicePathsForBuild(
     "service detail generateStaticParams",
   );
-  return [
-    ...new Map(
-      [...publishedPaths, ...DE_REVIEW_SERVICE_PATHS].map((path) => [
-        `${path.locale}:${path.slug}`,
-        path,
-      ]),
-    ).values(),
-  ];
+  return getRenderableServicePaths(publishedPaths).map(({ locale, slug }) => ({ locale, slug }));
 }
 
 export async function generateMetadata({
@@ -66,9 +59,12 @@ export async function generateMetadata({
   if (!SEO_LOCALES.includes(locale as SeoLocale)) {
     return {};
   }
-  const isDeReviewPage = locale === "de";
-  const detail = isDeReviewPage
-    ? getDeReviewServiceDetailBySlug(slug)
+  const readyPaths = getRenderableServicePaths(await getAllPublishedServicePathsForBuild("service metadata publication"));
+  if (!readyPaths.some(p => p.locale === locale && p.slug === slug)) {
+    return { robots: { index: false, follow: false } };
+  }
+  const detail = !isIndexableServiceLocale(locale)
+    ? getReviewServiceDetail(locale, slug)
     : await getPublishedServiceDetailBySlugForPublic(
         slug,
         locale,
@@ -94,12 +90,12 @@ export async function generateMetadata({
   const path = `/${locale}/${URL_SEGMENT}/${slug}`;
   const canonical = `${SEO_DATA.url}${path}`;
   const image = getSafeAbsolutePublicImageUrl(detail.imageUrl, SEO_DATA.url);
-  const readyLocales = isDeReviewPage
+  const readyLocales = !isIndexableServiceLocale(locale)
     ? []
-    : await getPublishedServiceLocalesBySlugForPublic(
+    : indexableServiceLocales(await getPublishedServiceLocalesBySlugForPublic(
         slug,
         "service metadata locale alternates",
-      );
+      ));
   const languages: Record<string, string> = {};
   for (const l of readyLocales) {
     languages[l] = `${SEO_DATA.url}/${l}/${URL_SEGMENT}/${slug}`;
@@ -112,10 +108,10 @@ export async function generateMetadata({
     metadataBase: new URL(SEO_DATA.url),
     title,
     description,
-    robots: { index: !isDeReviewPage, follow: true },
+    robots: { index: isIndexableServiceLocale(locale), follow: true },
     alternates: {
       canonical,
-      ...(isDeReviewPage ? {} : { languages }),
+      ...(isIndexableServiceLocale(locale) ? { languages } : {}),
     },
     openGraph: {
       type: "article",
@@ -149,9 +145,11 @@ export default async function ServiceDetailPage({
   const { locale, slug } = await params;
   if (!LOCALES.includes(locale as Locale)) notFound();
 
-  const isDeReviewPage = locale === "de";
-  const detail = isDeReviewPage
-    ? getDeReviewServiceDetailBySlug(slug)
+  const readyServiceDetailPaths = getRenderableServicePaths(await getAllPublishedServicePathsForBuild("service page publication"));
+  if (!readyServiceDetailPaths.some(p => p.locale === locale && p.slug === slug)) notFound();
+  const isReviewPage = !isIndexableServiceLocale(locale);
+  const detail = isReviewPage
+    ? getReviewServiceDetail(locale, slug)
     : await getPublishedServiceDetailBySlugForPublic(
         slug,
         locale,
@@ -160,23 +158,20 @@ export default async function ServiceDetailPage({
   if (!detail) notFound();
 
   const t = getTranslation(locale);
-  const deSharedCopy = isDeReviewPage
-    ? getDeReviewServiceDetailSharedCopy()
-    : null;
-  const serviceDetailCopy = deSharedCopy?.serviceDetail ?? t.serviceDetail;
-  const related = isDeReviewPage
-    ? getDeReviewRelatedServicesForServiceSlug(slug)
+  const sharedCopy = getReviewServiceSharedCopy(locale);
+  const serviceDetailCopy = sharedCopy?.serviceDetail ?? t.serviceDetail;
+  const related = isReviewPage
+    ? detail.relatedSlugs
+        .filter(relatedSlug => readyServiceDetailPaths.some(p => p.locale === locale && p.slug === relatedSlug))
+        .flatMap(relatedSlug => {
+          const row = getReviewServiceDetail(locale, relatedSlug);
+          return row ? [row] : [];
+        })
     : await getPublishedServicesBySlugsForPublic(
         detail.relatedSlugs,
         locale,
         "service detail related services",
       );
-  const publishedServiceDetailPaths = await getAllPublishedServicePathsForBuild(
-    "service detail footer links",
-  );
-  const readyServiceDetailPaths = isDeReviewPage
-    ? [...publishedServiceDetailPaths, ...DE_REVIEW_SERVICE_PATHS]
-    : publishedServiceDetailPaths;
 
   const pageUrl = `${SEO_DATA.url}/${locale}/${URL_SEGMENT}/${slug}`;
   const homeUrl = `${SEO_DATA.url}/${locale}`;
@@ -191,7 +186,7 @@ export default async function ServiceDetailPage({
   const quoteCtaLabel =
     locale === "hu"
       ? "Ajánlatkérés"
-      : deSharedCopy?.serviceQuote.button ?? "Request a quote";
+      : sharedCopy?.serviceQuote.button ?? "Request a quote";
 
   // ── JSON-LD ─────────────────────────────────────────────────────────
   const breadcrumb = {
@@ -262,7 +257,7 @@ export default async function ServiceDetailPage({
   return (
     <>
       <JsonLd schemas={schemas} />
-      <Nav t={{ nav: t.nav }} />
+      <Nav t={{ nav: t.nav }} serviceLocales={readyServiceDetailPaths.filter(p => p.slug === slug).map(p => p.locale)} />
 
       <main id="main" style={{ background: "#fff", color: "#0B1E3E" }}>
         {/* Hero */}
@@ -556,6 +551,7 @@ export default async function ServiceDetailPage({
         )}
 
         <ServiceQuoteCta
+          copy={sharedCopy?.serviceQuote}
           locale={locale}
           serviceSlug={slug}
           serviceLabel={detail.name}
@@ -783,7 +779,7 @@ function Breadcrumbs({
   };
   return (
     <nav
-      aria-label="Breadcrumb"
+      aria-label={({ hu: "Navigációs útvonal", en: "Breadcrumb", de: "Brotkrümelnavigation", fr: "Fil d’Ariane", ko: "현재 위치", zh: "当前位置" } as Record<string, string>)[locale] ?? "Breadcrumb"}
       style={{
         display: "flex",
         gap: 8,

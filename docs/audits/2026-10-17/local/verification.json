@@ -1,0 +1,17 @@
+{
+  "checkedAt": "2026-10-17T10:32:22.855Z",
+  "observations": 80,
+  "checks": [
+    "hu: homepage and eight services render localized HTML",
+    "en: homepage and eight services render localized HTML",
+    "de: homepage and eight services render localized HTML",
+    "zh: homepage and eight services render localized HTML",
+    "ko: homepage and eight services render localized HTML",
+    "fr: homepage and eight services render localized HTML",
+    "all crawled internal destinations return 200 or an intentional redirect",
+    "all sitemap entries are canonical HU/EN pages returning 200",
+    "preview HTTP responses carry noindex",
+    "unknown pages remain 404"
+  ],
+  "failures": []
+}

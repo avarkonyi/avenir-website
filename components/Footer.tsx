@@ -1,7 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { type Translation } from "@/lib/i18n";
+import { getRenderableServicePaths } from "@/lib/services/review-services";
 import { SEO_DATA } from "@/lib/seo-data";
+import { getLocaleAccessibility } from "@/lib/locale-accessibility";
 import {
   getActiveTopLevelServices,
   getAllPublishedServicePathsForBuild,
@@ -30,7 +32,7 @@ export async function Footer({
   const rows = await getActiveTopLevelServices(locale);
   const effectiveReadyServiceDetailPaths =
     readyServiceDetailPaths ??
-    (await getAllPublishedServicePathsForBuild("footer service detail links"));
+    getRenderableServicePaths(await getAllPublishedServicePathsForBuild("footer service detail links"));
   const serviceLinks = rows
     .map((row) => ({
       slug: row.slug,
@@ -43,8 +45,7 @@ export async function Footer({
     }))
     .filter((link) => link.title.length > 0);
   const legalLinks = getFooterLegalLinks(locale, t.footer);
-  const linkedInLabel =
-    locale === "hu" ? "Avenir a LinkedInen" : "Avenir on LinkedIn";
+  const linkedInLabel = getLocaleAccessibility(locale).linkedIn;
 
   return (
     <footer style={{ background: "#070F1E", padding: "60px 5vw 28px", borderTop: "1px solid rgba(255,255,255,0.06)" }}>

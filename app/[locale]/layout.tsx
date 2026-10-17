@@ -10,6 +10,8 @@ import { AnalyticsConsentBanner } from "@/components/analytics/AnalyticsConsentB
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 import { db, certifications } from "@/lib/db";
 import { getActiveTopLevelServices } from "@/lib/db/queries/services";
+import { localizeCertificationText } from "@/lib/homepage-content";
+import { getLocaleAccessibility } from "@/lib/locale-accessibility";
 import {
   SEO_DATA,
   SEO_LOCALES,
@@ -67,7 +69,7 @@ export async function generateMetadata({
   const isIndexableLocale = (INDEXABLE_LOCALES as readonly string[]).includes(
     seoLocale,
   );
-  const alternateLocales = SEO_LOCALES.filter((l) => l !== seoLocale).map(
+  const alternateLocales = INDEXABLE_LOCALES.filter((l) => l !== seoLocale).map(
     (l) => OG_LOCALE_MAP[l],
   );
 
@@ -85,11 +87,11 @@ export async function generateMetadata({
     },
     alternates: {
       canonical: localeUrl,
-      languages: {
+      languages: isIndexableLocale ? {
         hu: `${SEO_DATA.url}/hu`,
         en: `${SEO_DATA.url}/en`,
         "x-default": `${SEO_DATA.url}/hu`,
-      },
+      } : undefined,
     },
     openGraph: {
       type: "website",
@@ -147,15 +149,11 @@ const CERT_SCHEMA_COLS = {
     fullName: certifications.fullNameEn,
     description: certifications.descriptionEn,
   },
+  fr: {
+    fullName: certifications.fullNameEn,
+    description: certifications.descriptionEn,
+  },
 } as const;
-
-function withHuFallback(
-  value: string | null,
-  fallback: string | null,
-): string | null {
-  if (value && value.trim().length > 0) return value;
-  return fallback && fallback.trim().length > 0 ? fallback : null;
-}
 
 function absoluteUrl(url: string): string {
   if (/^https?:\/\//.test(url)) return url;
@@ -211,13 +209,12 @@ function buildJsonLdSchemas(
     },
     {
       "@context": "https://schema.org",
-      "@type": ["ProfessionalService", "SecurityService"],
+      "@type": "LocalBusiness",
       "@id": localBusinessId,
       parentOrganization: { "@id": orgId },
       name: SEO_DATA.legalNameShort,
       alternateName: SEO_DATA.alternateName,
       description: SECURITY_FIRST_DESCRIPTION,
-      serviceType: "Property Protection and Security Services",
       knowsAbout: [...SCHEMA_KNOWS_ABOUT],
       image: SEO_DATA.ogImageUrl,
       url: SEO_DATA.url,
@@ -227,23 +224,6 @@ function buildJsonLdSchemas(
       areaServed: { "@type": "Country", name: "Magyarország" },
       hasCredential: credentialRefs,
       sameAs: [SEO_DATA.officialProfiles.linkedin],
-      openingHoursSpecification: [
-        {
-          "@type": "OpeningHoursSpecification",
-          dayOfWeek: [
-            "Monday",
-            "Tuesday",
-            "Wednesday",
-            "Thursday",
-            "Friday",
-            "Saturday",
-            "Sunday",
-          ],
-          opens: "00:00",
-          closes: "23:59",
-          description: "24/7 diszpécseri készenlét",
-        },
-      ],
     },
     {
       "@context": "https://schema.org",
@@ -267,7 +247,7 @@ function buildJsonLdSchemas(
       inLanguage: [...SEO_LOCALES],
     },
     // One top-level EducationalOccupationalCredential per certification.
-    // Organization and ProfessionalService reference these via @id above.
+    // Organization and LocalBusiness reference these via @id above.
     ...certs.map((c) => {
       const additionalProperty: Record<string, unknown>[] = [];
       if (c.standardCode) {
@@ -330,16 +310,15 @@ export default async function LocaleLayout({
   if (!SEO_LOCALES.includes(locale as SeoLocale)) notFound();
   const seoLocale = locale as SeoLocale;
   // JSON-LD: services and certifications are per-locale DB-backed.
-  // Certifications fall back to HU for nullable localized text.
+  // Missing translated certification prose is omitted rather than replaced
+  // with a different language. Stable credential names remain available.
   const certCols = CERT_SCHEMA_COLS[seoLocale] ?? CERT_SCHEMA_COLS.hu;
   const certRows = await db
     .select({
       slug: certifications.slug,
       name: certifications.name,
       fullName: certCols.fullName,
-      fullNameHu: certifications.fullNameHu,
       description: certCols.description,
-      descriptionHu: certifications.descriptionHu,
       credentialCategory: certifications.credentialCategory,
       issuer: certifications.issuer,
       issuerUrl: certifications.issuerUrl,
@@ -359,8 +338,8 @@ export default async function LocaleLayout({
     .orderBy(asc(certifications.sortOrder));
   const certs: CertSchemaInput[] = certRows.map((cert) => ({
     ...cert,
-    fullName: withHuFallback(cert.fullName, cert.fullNameHu) ?? cert.name,
-    description: withHuFallback(cert.description, cert.descriptionHu),
+    fullName: localizeCertificationText(locale, cert.fullName, cert.slug, "fullName") ?? cert.name,
+    description: localizeCertificationText(locale, cert.description, cert.slug, "description"),
   }));
 
   // Locale-aware service rows via shared helper
@@ -372,12 +351,7 @@ export default async function LocaleLayout({
     .filter((s) => s.name.length > 0 && s.description.length > 0);
 
   const schemas = buildJsonLdSchemas(seoLocale, serviceItems, certs);
-  const skipLinkText =
-    seoLocale === "hu"
-      ? "Ugrás a tartalomhoz"
-      : seoLocale === "ko"
-        ? "본문으로 건너뛰기"
-        : "Skip to content";
+  const skipLinkText = getLocaleAccessibility(seoLocale).skip;
 
   return (
     <html

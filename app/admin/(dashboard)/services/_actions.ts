@@ -7,6 +7,7 @@ import { requireAdmin } from "@/lib/admin/require-admin";
 import { safeActionError } from "@/lib/admin/safe-action-error";
 import { slugify } from "@/lib/utils/slugify";
 import { ICON_NAMES } from "@/components/Icon";
+import { LOCALES } from "@/lib/i18n";
 
 // Server actions for the Services CRUD module. Auth check happens
 // inside each function — middleware gates /admin/* but server actions
@@ -109,7 +110,7 @@ export type UpdateServiceResult =
   | { ok: false; error: string };
 
 const ICON_NAME_SET = new Set<string>(ICON_NAMES);
-const PUBLIC_LOCALES = ["hu", "en", "de", "zh"] as const;
+const PUBLIC_LOCALES = LOCALES;
 const SERVICE_DETAIL_SEGMENT = "szolgaltatasok";
 
 function revalidatePublicServiceSurfaces(

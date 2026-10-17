@@ -17,8 +17,8 @@
 
 const PLACEHOLDER = "—";
 
-type Locale = "hu" | "en" | "de" | "zh";
-const LOCALES: readonly Locale[] = ["hu", "en", "de", "zh"];
+type Locale = "hu" | "en" | "de" | "zh" | "ko" | "fr";
+const LOCALES: readonly Locale[] = ["hu", "en", "de", "zh", "ko", "fr"];
 
 function asLocale(value: string): Locale {
   return (LOCALES as readonly string[]).includes(value)
@@ -61,6 +61,8 @@ const GREETING: Record<Locale, (name: string) => string> = {
   en: (n) => `Dear ${n},`,
   de: (n) => `Sehr geehrte/r ${n},`,
   zh: (n) => `尊敬的 ${n}：`,
+  fr: (n) => `Bonjour ${n},`,
+  ko: (n) => `${n} 님, 안녕하세요.`,
 };
 
 const SIGNATURE: Record<Locale, string> = {
@@ -68,6 +70,8 @@ const SIGNATURE: Record<Locale, string> = {
   en: "Best regards,\nAndrás Várkonyi\nAvenir Facility Management Kft.",
   de: "Mit freundlichen Grüßen,\nAndrás Várkonyi\nAvenir Facility Management Kft.",
   zh: "此致敬礼,\nAndrás Várkonyi\nAvenir Facility Management Kft.",
+  fr: "Cordialement,\nAndrás Várkonyi\nAvenir Facility Management Kft.",
+  ko: "감사합니다.\nAndrás Várkonyi\nAvenir Facility Management Kft.",
 };
 
 const QUOTE_LABEL: Record<Locale, (ts: string) => string> = {
@@ -75,6 +79,8 @@ const QUOTE_LABEL: Record<Locale, (ts: string) => string> = {
   en: (ts) => `Original message — ${ts}:`,
   de: (ts) => `Ursprüngliche Nachricht — ${ts}:`,
   zh: (ts) => `原始留言 — ${ts}:`,
+  fr: (ts) => `Message d’origine — ${ts} :`,
+  ko: (ts) => `원본 메시지 — ${ts}:`,
 };
 
 const REPLY_TO_NOTE: Record<Locale, string> = {
@@ -82,6 +88,8 @@ const REPLY_TO_NOTE: Record<Locale, string> = {
   en: "To reply, simply respond to this email.",
   de: "Um zu antworten, antworten Sie einfach auf diese E-Mail.",
   zh: "如需回复，请直接回复此邮件。",
+  fr: "Pour nous répondre, répondez simplement à cet e-mail.",
+  ko: "답변하시려면 이 이메일에 회신해 주세요.",
 };
 
 export interface ReplyEmailProps {

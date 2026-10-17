@@ -148,7 +148,8 @@ test("footer map link title is localized per locale", () => {
   assert.equal(getFooterMapLinkTitle("zh"), "在 Google 地图中打开");
   assert.equal(getFooterMapLinkTitle("ko"), "Google 지도에서 열기");
   // unknown locale falls back to the site default (HU)
-  assert.equal(getFooterMapLinkTitle("fr"), "Megnyitás Google Maps-en");
+  assert.equal(getFooterMapLinkTitle("fr"), "Ouvrir dans Google Maps");
+  assert.equal(getFooterMapLinkTitle("unknown"), "Megnyitás Google Maps-en");
 });
 
 test("contact form marks only schema-required fields and shows the required legend", () => {

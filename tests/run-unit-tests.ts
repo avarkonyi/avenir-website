@@ -17,3 +17,7 @@ import "./launch-news-en-service-labels.test.ts";
 import "./recruitment-privacy.test.ts";
 import "./responsible-disclosure.test.ts";
 import "./trust-center.test.ts";
+import "./homepage-localization.test.ts";
+import "./fr-service-details.test.ts";
+import "./seo-publication.test.ts";
+import "./review-service-routing.test.ts";

@@ -282,6 +282,15 @@ export async function getAllIndexablePublishedNewsPathsForBuild(
   )) as PublishedNewsIndexablePath[];
 }
 
+// Unlike build-time static-param discovery, the sitemap must not silently
+// lose all article URLs during a transient database failure. Throwing keeps
+// the previous successful ISR response instead of caching an incomplete list.
+export async function getAllIndexablePublishedNewsPathsForSitemap(): Promise<PublishedNewsIndexablePath[]> {
+  return runSanitizedNewsQuery("sitemap.xml", () =>
+    getAllPublishedNewsPaths(NEWS_INDEXABLE_LOCALES),
+  ) as Promise<PublishedNewsIndexablePath[]>;
+}
+
 export function getPublishedNewsIndexHu(): Promise<PublishedNewsIndexItemHu[]> {
   return getPublishedNewsIndex("hu");
 }

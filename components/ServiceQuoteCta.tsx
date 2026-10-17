@@ -84,7 +84,7 @@ export const SERVICE_QUOTE_COPY = {
   de: DE_REVIEW_SERVICE_QUOTE_COPY,
 } as const;
 
-type ServiceQuoteCopy = (typeof SERVICE_QUOTE_COPY)[keyof typeof SERVICE_QUOTE_COPY];
+type ServiceQuoteCopy = { [K in keyof typeof SERVICE_QUOTE_COPY.en]: string };
 
 export function buildServiceQuotePayload({
   form,
@@ -115,17 +115,19 @@ export function ServiceQuoteCta({
   locale,
   serviceSlug,
   serviceLabel,
+  copy: localizedCopy,
 }: {
   locale: string;
   serviceSlug: string;
   serviceLabel: string;
+  copy?: ServiceQuoteCopy;
 }) {
-  const copy =
+  const copy = localizedCopy ?? (
     locale === "hu"
       ? SERVICE_QUOTE_COPY.hu
       : locale === "de"
         ? SERVICE_QUOTE_COPY.de
-        : SERVICE_QUOTE_COPY.en;
+        : SERVICE_QUOTE_COPY.en);
   const safeServiceSlug = CANONICAL_SERVICE_SLUGS.has(serviceSlug)
     ? serviceSlug
     : "";

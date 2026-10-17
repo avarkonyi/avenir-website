@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<url>
+<loc>https://www.afm.hu/hu</loc>
+<xhtml:link rel="alternate" hreflang="hu" href="https://www.afm.hu/hu" />
+<xhtml:link rel="alternate" hreflang="en" href="https://www.afm.hu/en" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://www.afm.hu/hu" />
+<changefreq>monthly</changefreq>
+<priority>0.9</priority>
+</url>
+<url>
+<loc>https://www.afm.hu/en</loc>
+<xhtml:link rel="alternate" hreflang="hu" href="https://www.afm.hu/hu" />
+<xhtml:link rel="alternate" hreflang="en" href="https://www.afm.hu/en" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://www.afm.hu/hu" />
+<changefreq>monthly</changefreq>
+<priority>0.9</priority>
+</url>
+<url>
+<loc>https://www.afm.hu/hu/adatvedelem</loc>
+<xhtml:link rel="alternate" hreflang="hu" href="https://www.afm.hu/hu/adatvedelem" />
+<xhtml:link rel="alternate" hreflang="en" href="https://www.afm.hu/en/adatvedelem" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://www.afm.hu/hu/adatvedelem" />
+<changefreq>yearly</changefreq>
+<priority>0.3</priority>
+</url>
+<url>
+<loc>https://www.afm.hu/hu/aszf</loc>
+<xhtml:link rel="alternate" hreflang="hu" href="https://www.afm.hu/hu/aszf" />
+<xhtml:link rel="alternate" hreflang="en" href="https://www.afm.hu/en/aszf" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://www.afm.hu/hu/aszf" />
+<changefreq>yearly</changefreq>
+<priority>0.3</priority>
+</url>
+<url>
+<loc>https://www.afm.hu/hu/impresszum</loc>
+<xhtml:link rel="alternate" hreflang="hu" href="https://www.afm.hu/hu/impresszum" />
+<xhtml:link rel="alternate" hreflang="en" href="https://www.afm.hu/en/impresszum" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://www.afm.hu/hu/impresszum" />
+<changefreq>yearly</changefreq>
+<priority>0.3</priority>
+</url>
+<url>
+<loc>https://www.afm.hu/en/adatvedelem</loc>
+<xhtml:link rel="alternate" hreflang="hu" href="https://www.afm.hu/hu/adatvedelem" />
+<xhtml:link rel="alternate" hreflang="en" href="https://www.afm.hu/en/adatvedelem" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://www.afm.hu/hu/adatvedelem" />
+<changefreq>yearly</changefreq>
+<priority>0.3</priority>
+</url>
+<url>
+<loc>https://www.afm.hu/en/aszf</loc>
+<xhtml:link rel="alternate" hreflang="hu" href="https://www.afm.hu/hu/aszf" />
+<xhtml:link rel="alternate" hreflang="en" href="https://www.afm.hu/en/aszf" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://www.afm.hu/hu/aszf" />
+<changefreq>yearly</changefreq>
+<priority>0.3</priority>
+</url>
+<url>
+<loc>https://www.afm.hu/en/impresszum</loc>
+<xhtml:link rel="alternate" hreflang="hu" href="https://www.afm.hu/hu/impresszum" />
+<xhtml:link rel="alternate" hreflang="en" href="https://www.afm.hu/en/impresszum" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://www.afm.hu/hu/impresszum" />
+<changefreq>yearly</changefreq>
+<priority>0.3</priority>
+</url>
+<url>
+<loc>https://www.afm.hu/hu/palyazoi-adatkezeles</loc>
+<xhtml:link rel="alternate" hreflang="hu" href="https://www.afm.hu/hu/palyazoi-adatkezeles" />
+<xhtml:link rel="alternate" hreflang="en" href="https://www.afm.hu/en/recruitment-privacy" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://www.afm.hu/hu/palyazoi-adatkezeles" />
+<changefreq>yearly</changefreq>
+<priority>0.3</priority>
+</url>
+<url>
+<loc>https://www.afm.hu/en/recruitment-privacy</loc>
+<xhtml:link rel="alternate" hreflang="hu" href="https://www.afm.hu/hu/palyazoi-adatkezeles" />
+<xhtml:link rel="alternate" hreflang="en" href="https://www.afm.hu/en/recruitment-privacy" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://www.afm.hu/hu/palyazoi-adatkezeles" />
+<changefreq>yearly</changefreq>
+<priority>0.3</priority>
+</url>
+<url>
+<loc>https://www.afm.hu/hu/megfelelosegi-kozpont</loc>
+<xhtml:link rel="alternate" hreflang="hu" href="https://www.afm.hu/hu/megfelelosegi-kozpont" />
+<xhtml:link rel="alternate" hreflang="en" href="https://www.afm.hu/en/trust-center" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://www.afm.hu/hu/megfelelosegi-kozpont" />
+<changefreq>yearly</changefreq>
+<priority>0.35</priority>
+</url>
+<url>
+<loc>https://www.afm.hu/en/trust-center</loc>
+<xhtml:link rel="alternate" hreflang="hu" href="https://www.afm.hu/hu/megfelelosegi-kozpont" />
+<xhtml:link rel="alternate" hreflang="en" href="https://www.afm.hu/en/trust-center" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://www.afm.hu/hu/megfelelosegi-kozpont" />
+<changefreq>yearly</changefreq>
+<priority>0.35</priority>
+</url>
+<url>
+<loc>https://www.afm.hu/hu/szolgaltatasok/objektumorzes</loc>
+<xhtml:link rel="alternate" hreflang="hu" href="https://www.afm.hu/hu/szolgaltatasok/objektumorzes" />
+<xhtml:link rel="alternate" hreflang="en" href="https://www.afm.hu/en/szolgaltatasok/objektumorzes" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://www.afm.hu/hu/szolgaltatasok/objektumorzes" />
+<lastmod>2026-05-23T08:46:36.631Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://www.afm.hu/hu/szolgaltatasok/portaszolgalat</loc>
+<xhtml:link rel="alternate" hreflang="hu" href="https://www.afm.hu/hu/szolgaltatasok/portaszolgalat" />
+<xhtml:link rel="alternate" hreflang="en" href="https://www.afm.hu/en/szolgaltatasok/portaszolgalat" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://www.afm.hu/hu/szolgaltatasok/portaszolgalat" />
+<lastmod>2026-05-23T08:46:37.949Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://www.afm.hu/hu/szolgaltatasok/mystery-shopping-helyszini-audit</loc>
+<xhtml:link rel="alternate" hreflang="hu" href="https://www.afm.hu/hu/szolgaltatasok/mystery-shopping-helyszini-audit" />
+<xhtml:link rel="alternate" hreflang="en" href="https://www.afm.hu/en/szolgaltatasok/mystery-shopping-helyszini-audit" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://www.afm.hu/hu/szolgaltatasok/mystery-shopping-helyszini-audit" />
+<lastmod>2026-05-23T08:46:41.421Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://www.afm.hu/hu/szolgaltatasok/rendezvenybiztositas</loc>
+<xhtml:link rel="alternate" hreflang="hu" href="https://www.afm.hu/hu/szolgaltatasok/rendezvenybiztositas" />
+<xhtml:link rel="alternate" hreflang="en" href="https://www.afm.hu/en/szolgaltatasok/rendezvenybiztositas" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://www.afm.hu/hu/szolgaltatasok/rendezvenybiztositas" />
+<lastmod>2026-05-23T13:17:40.093Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://www.afm.hu/hu/szolgaltatasok/biztonsagtechnika</loc>
+<xhtml:link rel="alternate" hreflang="hu" href="https://www.afm.hu/hu/szolgaltatasok/biztonsagtechnika" />
+<xhtml:link rel="alternate" hreflang="en" href="https://www.afm.hu/en/szolgaltatasok/biztonsagtechnika" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://www.afm.hu/hu/szolgaltatasok/biztonsagtechnika" />
+<lastmod>2026-05-23T08:46:39.166Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://www.afm.hu/hu/szolgaltatasok/tavfelugyelet-vonuloszolgalat</loc>
+<xhtml:link rel="alternate" hreflang="hu" href="https://www.afm.hu/hu/szolgaltatasok/tavfelugyelet-vonuloszolgalat" />
+<xhtml:link rel="alternate" hreflang="en" href="https://www.afm.hu/en/szolgaltatasok/tavfelugyelet-vonuloszolgalat" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://www.afm.hu/hu/szolgaltatasok/tavfelugyelet-vonuloszolgalat" />
+<lastmod>2026-05-23T08:46:40.276Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://www.afm.hu/hu/szolgaltatasok/soft-fm</loc>
+<xhtml:link rel="alternate" hreflang="hu" href="https://www.afm.hu/hu/szolgaltatasok/soft-fm" />
+<xhtml:link rel="alternate" hreflang="en" href="https://www.afm.hu/en/szolgaltatasok/soft-fm" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://www.afm.hu/hu/szolgaltatasok/soft-fm" />
+<lastmod>2026-05-23T08:46:44.621Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://www.afm.hu/hu/szolgaltatasok/hard-fm</loc>
+<xhtml:link rel="alternate" hreflang="hu" href="https://www.afm.hu/hu/szolgaltatasok/hard-fm" />
+<xhtml:link rel="alternate" hreflang="en" href="https://www.afm.hu/en/szolgaltatasok/hard-fm" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://www.afm.hu/hu/szolgaltatasok/hard-fm" />
+<lastmod>2026-05-23T08:46:43.545Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://www.afm.hu/en/szolgaltatasok/objektumorzes</loc>
+<xhtml:link rel="alternate" hreflang="hu" href="https://www.afm.hu/hu/szolgaltatasok/objektumorzes" />
+<xhtml:link rel="alternate" hreflang="en" href="https://www.afm.hu/en/szolgaltatasok/objektumorzes" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://www.afm.hu/hu/szolgaltatasok/objektumorzes" />
+<lastmod>2026-05-23T08:46:36.631Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://www.afm.hu/en/szolgaltatasok/portaszolgalat</loc>
+<xhtml:link rel="alternate" hreflang="hu" href="https://www.afm.hu/hu/szolgaltatasok/portaszolgalat" />
+<xhtml:link rel="alternate" hreflang="en" href="https://www.afm.hu/en/szolgaltatasok/portaszolgalat" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://www.afm.hu/hu/szolgaltatasok/portaszolgalat" />
+<lastmod>2026-05-23T08:46:37.949Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://www.afm.hu/en/szolgaltatasok/mystery-shopping-helyszini-audit</loc>
+<xhtml:link rel="alternate" hreflang="hu" href="https://www.afm.hu/hu/szolgaltatasok/mystery-shopping-helyszini-audit" />
+<xhtml:link rel="alternate" hreflang="en" href="https://www.afm.hu/en/szolgaltatasok/mystery-shopping-helyszini-audit" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://www.afm.hu/hu/szolgaltatasok/mystery-shopping-helyszini-audit" />
+<lastmod>2026-05-23T08:46:41.421Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://www.afm.hu/en/szolgaltatasok/rendezvenybiztositas</loc>
+<xhtml:link rel="alternate" hreflang="hu" href="https://www.afm.hu/hu/szolgaltatasok/rendezvenybiztositas" />
+<xhtml:link rel="alternate" hreflang="en" href="https://www.afm.hu/en/szolgaltatasok/rendezvenybiztositas" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://www.afm.hu/hu/szolgaltatasok/rendezvenybiztositas" />
+<lastmod>2026-05-23T13:17:40.093Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://www.afm.hu/en/szolgaltatasok/biztonsagtechnika</loc>
+<xhtml:link rel="alternate" hreflang="hu" href="https://www.afm.hu/hu/szolgaltatasok/biztonsagtechnika" />
+<xhtml:link rel="alternate" hreflang="en" href="https://www.afm.hu/en/szolgaltatasok/biztonsagtechnika" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://www.afm.hu/hu/szolgaltatasok/biztonsagtechnika" />
+<lastmod>2026-05-23T08:46:39.166Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://www.afm.hu/en/szolgaltatasok/tavfelugyelet-vonuloszolgalat</loc>
+<xhtml:link rel="alternate" hreflang="hu" href="https://www.afm.hu/hu/szolgaltatasok/tavfelugyelet-vonuloszolgalat" />
+<xhtml:link rel="alternate" hreflang="en" href="https://www.afm.hu/en/szolgaltatasok/tavfelugyelet-vonuloszolgalat" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://www.afm.hu/hu/szolgaltatasok/tavfelugyelet-vonuloszolgalat" />
+<lastmod>2026-05-23T08:46:40.276Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://www.afm.hu/en/szolgaltatasok/soft-fm</loc>
+<xhtml:link rel="alternate" hreflang="hu" href="https://www.afm.hu/hu/szolgaltatasok/soft-fm" />
+<xhtml:link rel="alternate" hreflang="en" href="https://www.afm.hu/en/szolgaltatasok/soft-fm" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://www.afm.hu/hu/szolgaltatasok/soft-fm" />
+<lastmod>2026-05-23T08:46:44.621Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://www.afm.hu/en/szolgaltatasok/hard-fm</loc>
+<xhtml:link rel="alternate" hreflang="hu" href="https://www.afm.hu/hu/szolgaltatasok/hard-fm" />
+<xhtml:link rel="alternate" hreflang="en" href="https://www.afm.hu/en/szolgaltatasok/hard-fm" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://www.afm.hu/hu/szolgaltatasok/hard-fm" />
+<lastmod>2026-05-23T08:46:43.545Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
+<loc>https://www.afm.hu/hu/hirek</loc>
+<xhtml:link rel="alternate" hreflang="hu" href="https://www.afm.hu/hu/hirek" />
+<xhtml:link rel="alternate" hreflang="en" href="https://www.afm.hu/en/hirek" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://www.afm.hu/hu/hirek" />
+<lastmod>2026-05-08T20:19:20.408Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.55</priority>
+</url>
+<url>
+<loc>https://www.afm.hu/en/hirek</loc>
+<xhtml:link rel="alternate" hreflang="hu" href="https://www.afm.hu/hu/hirek" />
+<xhtml:link rel="alternate" hreflang="en" href="https://www.afm.hu/en/hirek" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://www.afm.hu/hu/hirek" />
+<lastmod>2026-05-08T20:19:20.408Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.55</priority>
+</url>
+<url>
+<loc>https://www.afm.hu/hu/hirek/megujult-az-avenir-weboldala-es-arculata</loc>
+<xhtml:link rel="alternate" hreflang="hu" href="https://www.afm.hu/hu/hirek/megujult-az-avenir-weboldala-es-arculata" />
+<xhtml:link rel="alternate" hreflang="en" href="https://www.afm.hu/en/hirek/megujult-az-avenir-weboldala-es-arculata" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://www.afm.hu/hu/hirek/megujult-az-avenir-weboldala-es-arculata" />
+<lastmod>2026-05-08T20:19:20.408Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+<url>
+<loc>https://www.afm.hu/en/hirek/megujult-az-avenir-weboldala-es-arculata</loc>
+<xhtml:link rel="alternate" hreflang="hu" href="https://www.afm.hu/hu/hirek/megujult-az-avenir-weboldala-es-arculata" />
+<xhtml:link rel="alternate" hreflang="en" href="https://www.afm.hu/en/hirek/megujult-az-avenir-weboldala-es-arculata" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://www.afm.hu/hu/hirek/megujult-az-avenir-weboldala-es-arculata" />
+<lastmod>2026-05-08T20:19:20.408Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+</urlset>
