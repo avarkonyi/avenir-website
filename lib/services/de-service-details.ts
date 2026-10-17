@@ -91,8 +91,8 @@ const DE_REVIEW_SERVICE_DETAILS = {
     ],
     "trustItems": [
       {
-        "title": "24/7-Leitstelle im Hintergrund",
-        "body": "Der Objektschutzbetrieb kann durch eine 24/7-Leitstelle unterstützt werden; die Benachrichtigungs- und Eskalationsordnung legen wir zu Beginn der Zusammenarbeit fest."
+        "title": "24/7-Unterstützung durch die Disposition",
+        "body": "Der Objektschutzbetrieb kann durch eine rund um die Uhr verfügbare Disposition unterstützt werden; die Benachrichtigungs- und Eskalationsordnung legen wir zu Beginn der Zusammenarbeit fest."
       },
       {
         "title": "Dienstbuch und Ereignisbearbeitung",
@@ -146,7 +146,7 @@ const DE_REVIEW_SERVICE_DETAILS = {
       },
       {
         "q": "Gibt es eine 24/7-Unterstützung im Hintergrund?",
-        "a": "Ja, der Objektschutz kann durch eine 24/7-Leitstelle unterstützt werden; die Eskalations- und Benachrichtigungsordnung legen wir zu Beginn der Zusammenarbeit fest."
+        "a": "Ja, der Objektschutz kann durch eine rund um die Uhr verfügbare Disposition unterstützt werden; die Eskalations- und Benachrichtigungsordnung legen wir zu Beginn der Zusammenarbeit fest."
       },
       {
         "q": "Was geschieht bei einem Vorfall?",
@@ -237,8 +237,8 @@ const DE_REVIEW_SERVICE_DETAILS = {
         "body": "Der Auftraggeber stimmt sich mit einem verantwortlichen Ansprechpartner über den laufenden Betrieb, die Berichte und notwendige Protokollanpassungen ab."
       },
       {
-        "title": "24/7-Leitstelle im Hintergrund",
-        "body": "Der Pförtnerbetrieb kann durch eine 24/7-Leitstelle unterstützt werden; die Benachrichtigungs- und Eskalationsordnung legen wir zu Beginn der Zusammenarbeit fest."
+        "title": "24/7-Unterstützung durch die Disposition",
+        "body": "Der Pförtnerbetrieb kann durch eine rund um die Uhr verfügbare Disposition unterstützt werden; die Benachrichtigungs- und Eskalationsordnung legen wir zu Beginn der Zusammenarbeit fest."
       },
       {
         "title": "ISO 9001 und ISO 27001",

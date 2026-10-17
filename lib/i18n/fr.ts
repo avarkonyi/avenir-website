@@ -17,7 +17,7 @@ export const fr = {
   },
   stats: [
     { n: "30+", l: "Sites actifs" }, { n: "200+", l: "Collaborateurs qualifiés" },
-    { n: "AA", l: "Solvabilité élevée selon D&B, 2026" }, { n: "24/7", l: "Disponibilité du centre de supervision" },
+    { n: "AA", l: "Solvabilité élevée selon D&B, 2026" }, { n: "24/7", l: "Permanence de dispatching" },
   ],
   aboutTitle: "À propos d’Avenir",
   aboutSub: "SÉCURITÉ · FIABILITÉ OPÉRATIONNELLE",

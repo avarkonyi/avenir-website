@@ -40,7 +40,7 @@ export async function generateMetadata({
     robots: { index: !isDeReviewPage, follow: true },
     alternates: {
       canonical: url,
-      languages: legalPageAlternateLanguages("adatvedelem"),
+      ...(!isDeReviewPage && { languages: legalPageAlternateLanguages("adatvedelem") }),
     },
     openGraph: { type: "article", title, description, url },
   };

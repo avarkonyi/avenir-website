@@ -86,4 +86,3 @@ const KOREAN_SERVICE_DISPLAY: Record<
       "청소, 조경, 위생, 폐기물 처리 지원 및 서비스 제공자 관리를 합의된 범위와 품질 확인, 서면 보고에 따라 지원하는 Soft FM 서비스입니다.",
   },
 };
-

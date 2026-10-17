@@ -2,12 +2,12 @@
 
 import { and, eq, inArray, isNull, sql } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
+import { revalidatePublicContent } from "@/lib/public-content-revalidation";
 import { db, neonSql, services } from "@/lib/db";
 import { requireAdmin } from "@/lib/admin/require-admin";
 import { safeActionError } from "@/lib/admin/safe-action-error";
 import { slugify } from "@/lib/utils/slugify";
 import { ICON_NAMES } from "@/components/Icon";
-import { LOCALES } from "@/lib/i18n";
 
 // Server actions for the Services CRUD module. Auth check happens
 // inside each function — middleware gates /admin/* but server actions
@@ -110,31 +110,6 @@ export type UpdateServiceResult =
   | { ok: false; error: string };
 
 const ICON_NAME_SET = new Set<string>(ICON_NAMES);
-const PUBLIC_LOCALES = LOCALES;
-const SERVICE_DETAIL_SEGMENT = "szolgaltatasok";
-
-function revalidatePublicServiceSurfaces(
-  affectedSlugs: readonly (string | null | undefined)[] = [],
-): void {
-  revalidatePath("/sitemap.xml");
-
-  for (const locale of PUBLIC_LOCALES) {
-    revalidatePath(`/${locale}`);
-  }
-
-  const uniqueSlugs = new Set(
-    affectedSlugs
-      .map((slug) => slug?.trim())
-      .filter((slug): slug is string => Boolean(slug)),
-  );
-
-  for (const slug of uniqueSlugs) {
-    for (const locale of PUBLIC_LOCALES) {
-      revalidatePath(`/${locale}/${SERVICE_DETAIL_SEGMENT}/${slug}`);
-    }
-  }
-}
-
 function normLocale(value: string | null | undefined): string | null {
   if (value === null || value === undefined) return null;
   const trimmed = value.trim();
@@ -439,7 +414,7 @@ export async function toggleServiceActive(
       .set({ isActive: nextActive, updatedAt: new Date() })
       .where(eq(services.id, id));
     revalidatePath("/admin/services");
-    revalidatePublicServiceSurfaces([service.slug]);
+    revalidatePublicContent(revalidatePath, { sitemap: true });
     return { ok: true };
   } catch (err) {
     return {
@@ -524,7 +499,7 @@ export async function createService(
       .returning({ id: services.id });
 
     revalidatePath("/admin/services");
-    revalidatePublicServiceSurfaces([slug]);
+    revalidatePublicContent(revalidatePath, { sitemap: true });
 
     return {
       ok: true,
@@ -654,7 +629,7 @@ export async function updateService(
 
     revalidatePath("/admin/services");
     revalidatePath(`/admin/services/${id}/edit`);
-    revalidatePublicServiceSurfaces([existing.slug, slug]);
+    revalidatePublicContent(revalidatePath, { sitemap: true });
 
     return {
       ok: true,
@@ -737,7 +712,7 @@ export async function togglePublishStatus(
       .set({ isPublished: nextPublished, updatedAt: new Date() })
       .where(eq(services.id, id));
     revalidatePath("/admin/services");
-    revalidatePublicServiceSurfaces([service.slug]);
+    revalidatePublicContent(revalidatePath, { sitemap: true });
     return { ok: true };
   } catch (err) {
     return {
@@ -820,7 +795,7 @@ export async function reorderTopLevelServices(
         .where(eq(services.id, orderedIds[i]));
     }
     revalidatePath("/admin/services");
-    revalidatePublicServiceSurfaces();
+    revalidatePublicContent(revalidatePath, { sitemap: true });
     return { ok: true };
   } catch (err) {
     return {
@@ -925,7 +900,7 @@ export async function deleteService(
 
   revalidatePath("/admin/services");
   revalidatePath("/admin", "layout");
-  revalidatePublicServiceSurfaces([svc.slug, ...children.map((c) => c.slug)]);
+  revalidatePublicContent(revalidatePath, { sitemap: true });
 
   return { ok: true };
 }

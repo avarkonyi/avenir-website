@@ -21,3 +21,6 @@ import "./homepage-localization.test.ts";
 import "./fr-service-details.test.ts";
 import "./seo-publication.test.ts";
 import "./review-service-routing.test.ts";
+import "./db-error-diagnostic.test.ts";
+import "./public-content-revalidation.test.ts";
+import "./legal-metadata.test.ts";

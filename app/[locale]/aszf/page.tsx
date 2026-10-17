@@ -41,7 +41,7 @@ export async function generateMetadata({
     robots: { index: !isDeReviewPage, follow: true },
     alternates: {
       canonical: url,
-      languages: legalPageAlternateLanguages("aszf"),
+      ...(!isDeReviewPage && { languages: legalPageAlternateLanguages("aszf") }),
     },
     openGraph: { type: "article", title, description, url },
   };

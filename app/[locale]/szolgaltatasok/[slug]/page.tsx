@@ -303,6 +303,8 @@ export default async function ServiceDetailPage({
                   fontFamily: "var(--font-head)",
                   fontWeight: 800,
                   fontSize: "clamp(32px, 4.4vw, 56px)",
+                  overflowWrap: "anywhere",
+                  hyphens: "auto",
                   lineHeight: 1.05,
                   margin: 0,
                 }}

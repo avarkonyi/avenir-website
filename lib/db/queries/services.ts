@@ -1,3 +1,4 @@
+import { databaseErrorDiagnostic } from "@/lib/db/error-diagnostic";
 import { cache } from "react";
 import { and, asc, eq, inArray, isNull, sql } from "drizzle-orm";
 import { db, services } from "@/lib/db";
@@ -489,6 +490,7 @@ export async function getAllPublishedServicePathsForBuild(
         "Failing generation instead of emitting an incomplete service layer.",
         `DB target: ${redactedDbIdentity()}.`,
         `Cause: ${sanitizeDbErrorMessage(error)}.`,
+        `Diagnostic: ${databaseErrorDiagnostic(error)}.`,
         "Full DATABASE_URL was not printed.",
       ].join(" "),
     );
@@ -511,6 +513,7 @@ async function runSanitizedServiceQuery<T>(
         `[service-detail] ${surface}: failed to read DB-backed service detail data.`,
         `DB target: ${redactedDbIdentity()}.`,
         `Cause: ${sanitizeDbErrorMessage(error)}.`,
+        `Diagnostic: ${databaseErrorDiagnostic(error)}.`,
         "Full DATABASE_URL was not printed.",
       ].join(" "),
     );

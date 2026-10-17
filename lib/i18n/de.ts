@@ -33,7 +33,7 @@ export const de = {
     },
     {
       "n": "24/7",
-      "l": "Leitstellenbereitschaft"
+      "l": "Dispositionsbereitschaft"
     }
   ],
   "aboutTitle": "Über Avenir",

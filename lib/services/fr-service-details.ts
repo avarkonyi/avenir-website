@@ -40,7 +40,7 @@ const DETAILS: Record<FrReviewServiceSlug, TranslatedFields> = {
       { title: "Suivi régulier, rapports et ajustements", body: "Nous examinons les retours du service, les événements récurrents et les rapports avec l’interlocuteur désigné." },
     ],
     trustItems: [
-      { title: "Appui d’un centre de supervision 24 h/24 et 7 j/7", body: "Le gardiennage peut bénéficier de l’appui d’un centre de supervision disponible 24 h/24 et 7 j/7 ; les procédures de notification et de remontée des alertes sont définies au début de la collaboration." },
+      { title: "Appui du dispatching 24 h/24 et 7 j/7", body: "Le gardiennage peut bénéficier de l’appui du dispatching disponible 24 h/24 et 7 j/7 ; les procédures de notification et de remontée des alertes sont définies au début de la collaboration." },
       { title: "Journal de service et suivi des événements", body: "Le journal de service, l’enregistrement des événements, les rapports convenus et la procédure de remontée des alertes facilitent le contrôle sur site." },
       { title: "Un interlocuteur responsable", body: "Un interlocuteur responsable est désigné pour les opérations courantes afin d’éviter au client de coordonner plusieurs intervenants séparément." },
       { title: "ISO 9001 et ISO 27001", body: ISO_SYSTEMS },
@@ -55,7 +55,7 @@ const DETAILS: Record<FrReviewServiceSlug, TranslatedFields> = {
       { q: "Le gardiennage peut-il être associé aux caméras ou au contrôle des accès ?", a: "Oui, lorsque cela est possible, il peut être coordonné avec les caméras, le contrôle des accès, les alarmes ou la télésurveillance existants. La présence humaine et les dispositifs techniques peuvent ainsi se compléter." },
       { q: "Un service armé est-il possible ?", a: "Selon le profil de risque du site, les besoins contractuels et le respect des conditions légales, une présence non armée ou armée peut être organisée." },
       { q: "Avenir dispose-t-elle des autorisations nécessaires ?", a: "Oui. Le gardiennage sur site est assuré conformément au cadre réglementaire hongrois applicable à la protection des personnes et des biens. Les informations sur les autorisations de l’entreprise et des agents peuvent être examinées lors de la préparation du contrat." },
-      { q: "Existe-t-il un appui disponible 24 h/24 et 7 j/7 ?", a: "Oui, le gardiennage peut bénéficier de l’appui d’un centre de supervision disponible 24 h/24 et 7 j/7. Les procédures de notification et de remontée des alertes sont définies au début de la collaboration." },
+      { q: "Existe-t-il un appui disponible 24 h/24 et 7 j/7 ?", a: "Oui, le gardiennage peut bénéficier de l’appui du dispatching disponible 24 h/24 et 7 j/7. Les procédures de notification et de remontée des alertes sont définies au début de la collaboration." },
       { q: "Que se passe-t-il en cas d’incident ?", a: "La gestion des incidents suit une procédure convenue qui précise les événements à enregistrer, les personnes à prévenir, l’ordre des notifications et la documentation du cas." },
       { q: "Recevons-nous un journal de service ou des rapports d’incident ?", a: "Oui, le service peut comprendre un journal de service, l’enregistrement des événements et les rapports convenus. Leur format est défini au début de la collaboration pour fournir au client des informations actualisées sur les opérations." },
     ],
@@ -81,7 +81,7 @@ const DETAILS: Record<FrReviewServiceSlug, TranslatedFields> = {
     trustItems: [
       { title: "Organisation quotidienne et traçabilité", body: "Journal de service, gestion des visiteurs, enregistrement des événements et rapports convenus facilitent le contrôle du poste de garde." },
       { title: "Un interlocuteur responsable désigné", body: "Le client échange avec un interlocuteur responsable sur l’exploitation, les rapports et les ajustements nécessaires des protocoles." },
-      { title: "Appui d’un centre de supervision 24 h/24 et 7 j/7", body: "Le poste de garde peut bénéficier de cet appui ; les procédures de notification et de remontée des alertes sont définies au début de la collaboration." },
+      { title: "Appui du dispatching 24 h/24 et 7 j/7", body: "Le poste de garde peut bénéficier de cet appui ; les procédures de notification et de remontée des alertes sont définies au début de la collaboration." },
       { title: "ISO 9001 et ISO 27001", body: ISO_SYSTEMS },
       { title: "Prise en compte des données des visiteurs", body: "La finalité du traitement, l’information des personnes et la limitation de la conservation doivent être prises en compte pour les données des visiteurs et des accès." },
       { title: "Accueil et contrôle dans un même processus", body: "Les protocoles associent un accueil courtois au contrôle des accès, aux notifications et aux rapports afin que l’accueil et les routines de sécurité suivent les mêmes règles du site." },
