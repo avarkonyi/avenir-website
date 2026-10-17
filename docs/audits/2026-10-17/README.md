@@ -14,7 +14,7 @@ A javítások a bizonyított hibákra irányulnak: hibás nyelvváltó linkek, r
 - `live/robots.txt`, `live/sitemap.xml`, `live/transport.json`: élő válaszok és fejlécek.
 - `live/url-variants.json`: HTTP/HTTPS, www/nem-www, záróperjel, nagybetűs nyelvkód, paraméter, régi megszüntetett útvonalak, legacy szolgáltatásslug.
 - `staging-content-coverage.json`: kizárólag olvasó tranzakcióban vizsgált CMS-szolgáltatásmezők; `transaction_read_only=on` ellenőrizve.
-- `local/` és `screenshots/`: helyi production build és böngészős ellenőrzés bizonyítékai; végső állapotukat lásd lent.
+- `local/`, `preview/` és `screenshots/`: helyi production build, felhős Vercel Preview és böngészős ellenőrzés bizonyítékai.
 
 A crawl egymást követő normál HTTP GET-kéréseket küldött, kérésenként legalább 250 ms szünettel, legfeljebb 120 URL-ig. A mért idő tartalmazza ezt a szünetet, nem Core Web Vitals-adat. A kérések nem igazolt Google/Bing/OpenAI robotforgalom. Nem történt terheléses teszt, adminbelépés, űrlapküldés, CMS-írás, migráció vagy élesítés.
 
@@ -67,7 +67,7 @@ A meglévő `llms.txt` fájlokat nem módosítottam; nem tekintem őket indexel�
 
 ## Változtatáscsomag
 
-Draft PR: [avarkonyi/avenir-website #2](https://github.com/avarkonyi/avenir-website/pull/2). Első implementációs commit: `bd77002836b478b459be1da8732c44fdd7273b1a`; a teljes, aktuális változtatást a PR feature ága tartalmazza. A GitHub CI és a Vercel automatikus Preview a PR létrehozásakor elindult; ez önmagában még nem sikeres felhős ellenőrzés.
+Draft PR: [avarkonyi/avenir-website #2](https://github.com/avarkonyi/avenir-website/pull/2). Ellenőrzött alkalmazáskód: `69feaace9f305c262a21bd20e54e284eb459b120` (első implementációs commit: `bd77002836b478b459be1da8732c44fdd7273b1a`). GitHub CI és Vercel build sikeres ezen a kódverzión. A következő dokumentációs commit csak a felhős ellenőrzés bizonyítékait rögzíti.
 
 - SEO: `lib/public-sitemap.ts`, `app/sitemap.ts`, szolgáltatás/hír queryk, `lib/services/publication.ts`, admin cache-invalidation, locale layout/schema.
 - Lokalizáció: közös locale-lista, `lib/i18n/fr.ts`, homepage/certification overlays, accessibility/consent/404/navigation copy, kapcsolatvalidáció, reply template.
@@ -88,6 +88,8 @@ Draft PR: [avarkonyi/avenir-website #2](https://github.com/avarkonyi/avenir-webs
 | `node scripts/verify-public-seo-audit.mjs` | 10/10 ellenőrzés sikeres, `local/verification.json`. |
 | Böngésző | 390×844 és 1440×1000: 6 főoldal és 6 reprezentatív szolgáltatásoldal DOM/viewport ellenőrzése. Nincs vízszintes túlcsordulás, a lekért böngészőnaplóban nincs error/warn. Francia mobilmenü, kapcsolatanker és nyíló ajánlatkérő panel működik; nem történt küldés. |
 | Független review | Technikai SEO és runtime review sikeres, feltárt lábléc-eltérés javítva. FR/KO/ZH források fejezet/GYIK és feltételmegőrzési ellenőrzése sikeres; nem anyanyelvi/jogi jóváhagyás. |
+| GitHub CI | Sikeres: [39025482475 futás](https://github.com/avarkonyi/avenir-website/actions/runs/39025482475). |
+| Vercel Preview | Build sikeres; 80 URL, 48 szolgáltatásoldal és mind a 10 auditellenőrzés sikeres. Francia oldal böngészőben is megtekintve, mobil/asztali képernyők mentve; űrlapküldés nélkül. `preview/verification.json`. |
 
 Konkrét előtte–utána:
 
@@ -102,16 +104,19 @@ Konkrét előtte–utána:
 
 **Kódban és helyi production buildben ellenőrzött.** A Preview-környezetben minden publikus HTML HTTP-fejléce noindex; az alkalmazás HU/EN metaadatai és a production canonical URL-ek ettől helyesen megmaradnak. A böngészőben megnyitott helyi előnézet: `http://127.0.0.1:3100/fr`.
 
-**Felhős Vercel Preview és éles kiadás nincs igazolva.** Az élő leltár a javítás előtti állapot, nem a helyi változtatások éles ellenőrzése. Main merge, deploy, adatbázis-migráció és CMS-írás nem történt.
+**Felhős Vercel Preview ellenőrzött:** [francia előnézet](https://avenir-website-git-codex-s-6be06a-andrasvarkonyi-7800s-projects.vercel.app/fr). A GitHub-integráció automatikusan létrehozta; a normál publikus GET-hozzáférés működik a Vercel connector projektlekérésének 403-as hibája mellett is.
+
+**Éles kiadás nem történt.** Az élő leltár a javítás előtti állapot. Main merge, éles deploy, adatbázis-migráció és CMS-írás nem történt. A nyelvi/jogi és írást igénylő admin/űrlap QA továbbra is külön kapu.
 
 A FR/KO/ZH részletek a meglévő DE-mintát követő, verziózott forrásfordítások. A CMS-ben történő alapszolgáltatás-kikapcsolást követik, de új üzleti szöveg esetén a forrásfordításokat is külön frissíteni/ellenőrizni kell. Nem jött létre új CMS-adatbázisséma vagy fordításkezelő admin.
 
 ## Hozzáférésre és döntésre váró tételek
 
-1. Vercel: a projekt listázása sikerült, a projektadat lekérése 403-mal elutasult. A megfelelő team/project hozzáférés helyreállítása szükséges a felhős Preview, domain redirect és WAF megtekintéséhez. Éles konfiguráció nem változott.
+1. Vercel: a projekt listázása sikerült, a projektadat lekérése 403-mal elutasult. A megfelelő team/project hozzáférés helyreállítása szükséges a domain redirect és WAF beállításainak megtekintéséhez/módosításához. A publikus Preview eközben elkészült és ellenőrzött. Éles konfiguráció nem változott.
 2. Anyanyelvi és szükség esetén jogi ellenőrzés DE/FR/KO/ZH tartalomra, különösen a szolgáltatásforrásokban már jelölt jogi mondatokra. A review kaput ezután lehet külön kiadási döntéssel feloldani.
 3. Search Console, Bing Webmaster Tools, analitika és szervernaplók nem voltak hozzáférhetők. Tényleges indexelés, valódi botforgalom, konverzió és valós felhasználói Core Web Vitals nem állítható.
 4. Űrlapküldés és admin CMS-publikálás végponttól végpontig csak külön izolált, írásra engedélyezett tesztkörnyezetben ellenőrizhető. Jelen tesztek tiszta helper- és komponensvizsgálatot végeznek, nem valódi üzenetküldést.
 5. A lockfile telepítése függőségi sérülékenységeket jelzett; automatikus, ellenőrizetlen verziófrissítés nem történt. Ez külön függőségi karbantartási feladat.
+6. A staging/Preview ISO-kártyáinak CMS-kiállítómezője `MARTON Szakértő Iroda Kft.`, miközben a forrásban lévő PDF-ellenőrzött seed/updater újabb MartonCert/MCert megnevezéseket tartalmaz. Adatírási engedély nélkül ezt nem módosítottam. Az új FR/KO próza nem duplikál kiállítónevet; a megjelenített CMS-adatokat külön egyeztetni kell a tényleges tanúsítványokkal.
 
-Kiadási sorrend: a kész csomag felhős Preview-ja → publikus/admin QA → jóváhagyás → main merge/deploy → éles smoke és Search Console/Bing ellenőrzés. A helyi Preview nem helyettesíti az éles környezet ellenőrzését.
+Hátralévő kiadási sorrend: nyelvi/jogi és írásra engedélyezett admin/űrlap QA → jóváhagyás → main merge/deploy → éles smoke és Search Console/Bing ellenőrzés. A helyi és felhős Preview nem helyettesíti az éles környezet ellenőrzését.

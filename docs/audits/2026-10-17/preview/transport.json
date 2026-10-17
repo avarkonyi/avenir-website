@@ -1,0 +1,62 @@
+{
+  "checkedAt": "2026-10-17T10:36:45.634Z",
+  "origin": "https://avenir-website-git-codex-s-6be06a-andrasvarkonyi-7800s-projects.vercel.app",
+  "robots": {
+    "status": 200,
+    "headers": {
+      "accept-ranges": "bytes",
+      "access-control-allow-origin": "*",
+      "age": "0",
+      "cache-control": "public, max-age=0, must-revalidate",
+      "content-disposition": "inline; filename=\"robots.txt\"",
+      "content-length": "27",
+      "content-security-policy": "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://*.googletagmanager.com https://vercel.live; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://*.public.blob.vercel-storage.com https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com https://*.googletagmanager.com; font-src 'self'; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://www.googletagmanager.com https://*.googletagmanager.com https://vercel.live; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests",
+      "content-type": "text/plain; charset=utf-8",
+      "cross-origin-opener-policy": "same-origin",
+      "cross-origin-resource-policy": "same-origin",
+      "date": "Sat, 17 Oct 2026 10:36:44 GMT",
+      "etag": "\"664a72a9385dcf8618ac4768e7abb496\"",
+      "last-modified": "Sat, 17 Oct 2026 10:36:44 GMT",
+      "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
+      "referrer-policy": "strict-origin-when-cross-origin",
+      "server": "Vercel",
+      "strict-transport-security": "max-age=63072000; includeSubDomains",
+      "x-content-type-options": "nosniff",
+      "x-frame-options": "DENY",
+      "x-matched-path": "/robots.txt",
+      "x-robots-tag": "noindex",
+      "x-vercel-cache": "MISS",
+      "x-vercel-id": "fra1::2fbw9-1792233403752-901bd6b1c08e"
+    },
+    "elapsedMs": 898
+  },
+  "sitemap": {
+    "status": 200,
+    "headers": {
+      "access-control-allow-origin": "*",
+      "age": "0",
+      "cache-control": "public, max-age=0, must-revalidate",
+      "content-disposition": "inline; filename=\"sitemap.xml\"",
+      "content-encoding": "br",
+      "content-security-policy": "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://*.googletagmanager.com https://vercel.live; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://*.public.blob.vercel-storage.com https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com https://*.googletagmanager.com; font-src 'self'; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://analytics.google.com https://*.analytics.google.com https://www.googletagmanager.com https://*.googletagmanager.com https://vercel.live; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests",
+      "content-type": "application/xml",
+      "cross-origin-opener-policy": "same-origin",
+      "cross-origin-resource-policy": "same-origin",
+      "date": "Sat, 17 Oct 2026 10:36:44 GMT",
+      "etag": "W/\"fc40666f385224659ec5ae2f561560d7\"",
+      "last-modified": "Sat, 17 Oct 2026 10:36:44 GMT",
+      "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
+      "referrer-policy": "strict-origin-when-cross-origin",
+      "server": "Vercel",
+      "strict-transport-security": "max-age=63072000; includeSubDomains",
+      "transfer-encoding": "chunked",
+      "x-content-type-options": "nosniff",
+      "x-frame-options": "DENY",
+      "x-matched-path": "/sitemap.xml",
+      "x-robots-tag": "noindex",
+      "x-vercel-cache": "MISS",
+      "x-vercel-id": "fra1::zlrcc-1792233404482-3cb6f9ead828"
+    },
+    "elapsedMs": 483
+  }
+}
