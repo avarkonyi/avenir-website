@@ -340,7 +340,10 @@ export function Nav({ t, serviceLocales }: { t: Pick<Translation, "nav">; servic
             border: "none",
             cursor: "pointer",
             color: "#fff",
-            padding: 0,
+            padding: 9,
+            width: 44,
+            height: 44,
+            flexShrink: 0,
           }}
           aria-label={accessibility.menu}
           aria-expanded={menuOpen}

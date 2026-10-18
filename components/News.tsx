@@ -103,6 +103,7 @@ export function News({
     <section id="news" style={{ padding: "100px 5vw", background: "#fff" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
         <div
+          className="news-heading"
           style={{
             display: "flex",
             alignItems: "flex-end",
@@ -159,6 +160,7 @@ export function News({
           </div>
         ) : (
           <div
+            className={`news-grid${articles.length === 1 ? " news-grid--single" : ""}`}
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 300px), 380px))",
@@ -339,6 +341,7 @@ function NewsCardContent({
   return (
     <>
       <div
+        className="news-card-media"
         style={{
           position: "relative",
           aspectRatio: "16/9",
@@ -352,7 +355,7 @@ function NewsCardContent({
               src={imageUrl}
               alt=""
               fill
-              sizes="(max-width: 768px) 100vw, 380px"
+              sizes="(max-width: 768px) 100vw, 540px"
               quality={85}
               style={{ objectFit: "cover" }}
             />
@@ -398,6 +401,7 @@ function NewsCardContent({
         </div>
       </div>
       <div
+        className="news-card-content"
         style={{
           padding: "24px 24px 28px",
           flex: 1,

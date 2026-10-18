@@ -29,7 +29,6 @@ export function TrackedServiceCardLink({
           selected_service_label: serviceLabel,
         })
       }
-      style={{ display: "block", cursor: "pointer" }}
     >
       {children}
     </Link>

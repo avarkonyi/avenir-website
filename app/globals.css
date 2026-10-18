@@ -178,7 +178,7 @@ a {
   min-height: 52px;
   padding: 14px 32px;
   border: 2px solid transparent;
-  border-radius: 2px;
+  border-radius: 4px;
   color: #fff;
   font-family: var(--font-head);
   font-size: 14px;
@@ -217,14 +217,14 @@ a {
 .hero-cta--primary {
   background: #D1172E;
   border-color: #D1172E;
-  box-shadow: 0 4px 20px rgba(209, 23, 46, 0.4);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
 .hero-cta--primary:hover,
 .hero-cta--primary:focus-visible {
   background: #a80f24;
   border-color: #a80f24;
-  box-shadow: 0 8px 24px rgba(209, 23, 46, 0.36);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
 }
 
 @media (max-width: 600px) {
@@ -262,39 +262,44 @@ a {
 
 /* Services grid — hover via CSS (no client state) */
 .service-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
   background: #fff;
-  padding: 36px 32px;
-  border-radius: 3px;
+  padding: 28px;
+  border: 1px solid #E2E8F0;
+  border-radius: 8px;
   cursor: default;
-  border-bottom: 3px solid transparent;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  transition: border-color 180ms ease, box-shadow 180ms ease;
+  box-shadow: 0 2px 6px rgba(11, 30, 62, 0.025);
   color: #0B1E3E;
 }
 .service-card:hover {
-  background: #0B1E3E;
-  border-bottom-color: #D1172E;
-  box-shadow: 0 16px 40px rgba(11, 30, 62, 0.15);
+  border-color: rgba(209, 23, 46, 0.4);
+  box-shadow: 0 8px 24px rgba(11, 30, 62, 0.08);
   color: #D1172E;
+}
+a.service-card {
+  cursor: pointer;
 }
 a.service-card:focus-visible {
   outline: 3px solid #D1172E;
   outline-offset: 4px;
-  background: #0B1E3E;
-  border-bottom-color: #D1172E;
-  box-shadow: 0 16px 40px rgba(11, 30, 62, 0.15);
+  border-color: #D1172E;
+  box-shadow: 0 8px 24px rgba(11, 30, 62, 0.08);
   color: #D1172E;
 }
 .service-icon-wrap {
-  width: 56px;
-  height: 56px;
-  border-radius: 3px;
-  background: rgba(11, 30, 62, 0.07);
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: #F1F4F8;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 24px;
-  transition: all 0.3s;
+  margin-bottom: 20px;
+  transition: background-color 180ms ease;
 }
 .service-card:hover .service-icon-wrap {
   background: rgba(209, 23, 46, 0.15);
@@ -307,27 +312,56 @@ a.service-card:focus-visible .service-icon-wrap {
   font-size: 22px;
   color: #0B1E3E;
   margin-bottom: 12px;
+  line-height: 1.2;
   letter-spacing: 0.3px;
   transition: color 0.3s;
 }
 .service-card:hover .service-title {
-  color: #fff;
+  color: #0B1E3E;
 }
 a.service-card:focus-visible .service-title {
-  color: #fff;
+  color: #0B1E3E;
 }
 .service-desc {
-  color: #667788;
+  color: #556070;
   font-size: 14px;
   line-height: 1.65;
   font-weight: 300;
   transition: color 0.3s;
 }
 .service-card:hover .service-desc {
-  color: rgba(255, 255, 255, 0.65);
+  color: #556070;
 }
 a.service-card:focus-visible .service-desc {
-  color: rgba(255, 255, 255, 0.65);
+  color: #556070;
+}
+
+.service-details {
+  margin-top: auto;
+  padding-top: 22px;
+}
+
+#services .services-heading {
+  margin-bottom: 40px !important;
+}
+
+#services .services-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)) !important;
+  gap: 20px !important;
+}
+
+#references,
+#certifications,
+#news,
+#career {
+  padding-top: 72px !important;
+  padding-bottom: 72px !important;
+}
+
+.news-heading,
+.career-grid,
+.certifications-header-grid {
+  margin-bottom: 36px !important;
 }
 
 #contact input:not([type="hidden"]):focus-visible,
@@ -787,7 +821,7 @@ details > summary:focus-visible {
 .news-card {
   background: #fff;
   border: 1px solid #E2E8F0;
-  border-radius: 3px;
+  border-radius: 8px;
   overflow: hidden;
   cursor: pointer;
   transition: all 0.25s;
@@ -805,6 +839,27 @@ details > summary:focus-visible {
   outline-offset: 4px;
   border-color: #D1172E;
   box-shadow: 0 12px 30px rgba(11, 30, 62, 0.1);
+}
+
+.news-grid--single {
+  grid-template-columns: minmax(0, 1fr) !important;
+}
+
+@media (min-width: 769px) {
+  .news-grid--single .news-card {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    align-items: stretch;
+  }
+
+  .news-grid--single .news-card-media {
+    aspect-ratio: auto !important;
+    min-height: 260px;
+  }
+
+  .news-grid--single .news-card-content {
+    padding: 32px !important;
+  }
 }
 
 .news-modal-close:focus-visible {
@@ -847,28 +902,29 @@ details > summary:focus-visible {
 
 /* Certifications — minimal logo-only square cards */
 .certifications-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0, 180px));
+  gap: 20px;
 }
 .certifications-header-grid {
   /* matches the 1fr 1fr inline style; mobile collapses to single column */
 }
 .certification-card {
-  width: 200px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-radius: 4px;
+  border-radius: 8px;
   text-decoration: none;
   transition: transform 0.25s ease, border-color 0.25s ease,
     box-shadow 0.25s ease;
 }
 .certification-logo-frame {
-  width: 200px;
-  height: 200px;
-  border-radius: 4px;
-  border: 2px solid transparent;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  border-radius: 8px;
+  border: 1px solid rgba(11, 30, 62, 0.1);
   overflow: hidden;
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
@@ -876,11 +932,15 @@ details > summary:focus-visible {
   cursor: pointer;
 }
 .certification-card-link:hover {
-  transform: scale(1.05);
+  transform: translateY(-2px);
 }
 .certification-card-link:hover .certification-logo-frame {
   border-color: #D1172E;
-  box-shadow: 0 12px 30px rgba(11, 30, 62, 0.2);
+  box-shadow: 0 8px 24px rgba(11, 30, 62, 0.1);
+}
+.certification-card-link:focus-visible {
+  outline: 3px solid #D1172E;
+  outline-offset: 4px;
 }
 .certification-card-static {
   cursor: default;
@@ -914,7 +974,7 @@ details > summary:focus-visible {
 /* Career cards — hover via CSS */
 .career-card {
   border: 1px solid #E2E8F0;
-  border-radius: 3px;
+  border-radius: 8px;
   padding: 28px;
   display: flex;
   flex-wrap: wrap;
@@ -925,8 +985,8 @@ details > summary:focus-visible {
   background: #fff;
 }
 .career-card:hover {
-  border-color: #D1172E;
-  box-shadow: 0 4px 20px rgba(209, 23, 46, 0.1);
+  border-color: rgba(209, 23, 46, 0.4);
+  box-shadow: 0 8px 24px rgba(11, 30, 62, 0.06);
 }
 .career-apply-btn {
   flex-shrink: 0;
@@ -938,11 +998,14 @@ details > summary:focus-visible {
   letter-spacing: 1px;
   text-transform: uppercase;
   padding: 10px 18px;
-  border-radius: 2px;
+  border-radius: 4px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   transition: background 0.2s;
   white-space: nowrap;
   text-decoration: none;
-  display: inline-block;
 }
 .career-apply-btn:hover {
   background: #D1172E;
@@ -1158,16 +1221,16 @@ details > summary:focus-visible {
 .approved-reference-card {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(260px, 45%) minmax(0, 1fr);
+  grid-template-columns: minmax(220px, 34%) minmax(0, 1fr);
   align-items: center;
   gap: 0;
   overflow: hidden;
-  min-height: 218px;
-  padding: 36px 42px;
+  min-height: 180px;
+  padding: 28px 32px;
   border: 1px solid #D8DEE8;
-  border-radius: 16px;
+  border-radius: 8px;
   background: #fff;
-  box-shadow: 0 20px 48px rgba(11, 30, 62, 0.08);
+  box-shadow: 0 4px 16px rgba(11, 30, 62, 0.04);
   color: inherit;
   text-decoration: none;
   transition:
@@ -1177,7 +1240,7 @@ details > summary:focus-visible {
 
 .approved-reference-card:hover {
   border-color: rgba(209, 23, 46, 0.3);
-  box-shadow: 0 24px 56px rgba(11, 30, 62, 0.11);
+  box-shadow: 0 8px 24px rgba(11, 30, 62, 0.08);
 }
 
 .approved-reference-card:focus-visible {
@@ -1190,8 +1253,8 @@ details > summary:focus-visible {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 142px;
-  padding: 4px 44px 4px 8px;
+  min-height: 120px;
+  padding: 4px 32px 4px 0;
 }
 
 .approved-reference-logo-frame::after {
@@ -1220,7 +1283,7 @@ details > summary:focus-visible {
   display: grid;
   gap: 18px;
   align-content: center;
-  padding-left: 44px;
+  padding-left: 32px;
 }
 
 .approved-reference-meta h3 {
@@ -1254,7 +1317,7 @@ details > summary:focus-visible {
   min-height: 38px;
   padding: 8px 14px;
   border: 1px solid #E7EBF0;
-  border-radius: 8px;
+  border-radius: 4px;
   background: #F2F4F7;
   color: #253044;
   font-size: 14px;
@@ -1349,6 +1412,29 @@ details > summary:focus-visible {
 
 /* Responsive: layout grids collapse on tablet portrait + phone */
 @media (max-width: 768px) {
+  #services,
+  #references,
+  #certifications,
+  #news,
+  #career {
+    padding-top: 52px !important;
+    padding-bottom: 52px !important;
+  }
+
+  #services .services-heading,
+  .news-heading,
+  .career-grid,
+  .certifications-header-grid {
+    margin-bottom: 28px !important;
+  }
+
+  .service-card {
+    padding: 24px;
+  }
+
+  .service-icon-wrap {
+    margin-bottom: 16px;
+  }
   .contact-grid {
     grid-template-columns: 1fr !important;
     gap: 40px !important;
@@ -1443,12 +1529,9 @@ html[lang="ko"] .hero-section h1 {
     text-align: center;
   }
 
-  .certification-card {
-    width: 150px;
-  }
-  .certification-logo-frame {
-    width: 150px;
-    height: 150px;
+  .certifications-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
   }
   .cert-logo-svg .cert-iso {
     font-size: 31px;
