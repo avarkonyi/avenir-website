@@ -21,3 +21,15 @@ DEB-029: a magyar változat elsődlegessége eldöntött; a német lábléc megf
 A fordítás nem bővítheti vagy gyengítheti a magyar jogi vállalást. A technikai működésnek és a megjelenített adatoknak egyezniük kell a forrással; egy technikai konfigurációs eltérés továbbra is javítandó. A 2029-ig érvényes új nemzetbiztonsági határozat pontos azonosítója külön adatpótlás marad.
 
 Ebben a körben kizárólag dokumentáció és auditstátusz változott; alkalmazáskód, adatbázis és éles kiadás nem.
+
+## Későbbi egyedi döntés: HUA-001 süti-sáv
+
+A tulajdonos a HUA-001 auditjavaslatát kifejezetten elfogadta, és a korábban ügyvéd által ellenőrzött szöveg célzott javítását kérte. Az elfogadott mondat:
+
+> Nevet, e-mail-címet, telefonszámot, üzenetet vagy más űrlaptartalmat nem küldünk az analitikába.
+
+A `lib/analytics/consent-copy.ts` magyar mondata szó szerint erre változott; az EN/DE/FR/KO/ZH változatokat ugyanerre a tartalomra igazítottuk, az egyéb űrlaptartalom kizárásával együtt. A szövegezési döntés lezárt, új jogi jóváhagyás nem szükséges. A tényleges GA4-konfiguráció és működés kiadáskori ellenőrzése külön technikai feladat marad. Élesítés és adatbázis-módosítás nem történt.
+
+A további magyar auditpontokat a tulajdonos kérésére egyenként, közösen vesszük végig; ez az egyedi döntés nem jelent más magyar mondatok automatikus átírását.
+
+Ellenőrzés: az elfogadott HU mondat szó szerinti forrásegyezése; az audit továbbra is 506 sor; ESLint, TypeScript, copy guard (219 fájl / 33 ellenőrzés) és staging célponttal futó build (100/100 oldal) sikeres. A nyitott/részleges tételek száma 376 maradt, mert HUA-001 már korábban is `JAVITVA_FORRAS` státuszú volt.

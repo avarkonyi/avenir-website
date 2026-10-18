@@ -34,6 +34,7 @@ A [2026-10-18-i tulajdonosi döntés](owner-confirmations-2026-10-18.md) szerint
 - A fordítási, nyelvi, megjelenítési és belső szövegegyezési eltérések továbbra is javítandók. Nem kerülhet új jogi vállalás a fordításba.
 - A DE Biztonságtechnika két külön GYIK-je és GDPR-betoldása nincs a HU forrásban: eltávolításuk fordítási paritási feladat (DES-003/004), nem új jogi döntéskérés.
 - A süti-visszavonás technikai hibája és a HU/EN/DE jövő idejű leírása javítva. A tényleges Google-tag hálózati viselkedése, a GA4 megőrzési/adattovábbítási konfigurációja és a Microsoft 365 tényleges használata technikai egyeztetési kérdés marad; a működésnek kell megfelelnie az elfogadott tájékoztatónak.
+- HUA-001: a tulajdonos külön elfogadta a „Nevet, e-mail-címet, telefonszámot, üzenetet vagy más űrlaptartalmat nem küldünk az analitikába.” mondatot. A hatnyelvű süti-sáv ehhez igazítva; a szövegezési döntés lezárt. A többi magyar tételt egyenként, közösen vizsgáljuk tovább.
 - Az ISO-tanúsítottság ténye elfogadott. A fennmaradó ISO-sorokban a kiállító, szabvány, akkreditációs mező, CMS-adat és fordítás pontos megjelenítése vizsgálandó.
 
 ## Előkészített CMS-javítás – még nincs alkalmazva
