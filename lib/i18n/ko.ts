@@ -125,7 +125,7 @@ export const ko = {
     rights: "© 2026 Avenir Facility Management Kft. · 모든 권리 보유.",
     legalTitle: "법률 정보",
     privacy: "개인정보 처리방침 (영문)",
-    terms: "이용약관 (영문)",
+    terms: "법적 고지사항(영문)",
     impressum: "회사 정보 (영문)",
     companyNumberLabel: "회사 등록번호",
     taxNumberLabel: "세금번호",

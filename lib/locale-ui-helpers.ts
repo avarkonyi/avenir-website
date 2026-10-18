@@ -199,7 +199,7 @@ function getFooterLegalLabels(
   if (locale === "ko") {
     return {
       privacy: "개인정보 처리방침 (영문)",
-      terms: "이용약관 (영문)",
+      terms: "법적 고지사항(영문)",
       impressum: "회사 정보 (영문)",
     };
   }
@@ -207,8 +207,8 @@ function getFooterLegalLabels(
   if (locale === "zh") {
     return {
       privacy: "隐私政策（英文）",
-      terms: "使用条款（英文）",
-      impressum: "法律声明（英文）",
+      terms: "法律声明（英文）",
+      impressum: "公司信息（英文）",
     };
   }
 
