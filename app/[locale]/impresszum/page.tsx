@@ -11,6 +11,7 @@ import {
   SEO_LICENSES,
   SEO_REGULATORY_BODIES,
 } from "@/lib/seo-data";
+import { toMetaDescription } from "@/lib/meta-description";
 import {
   isLegalPageLocale,
   legalPageAlternateLanguages,
@@ -39,9 +40,9 @@ export async function generateMetadata({
   const pageTitle = deImpressum?.title ?? t.legal.impressum.title;
   const title = `${pageTitle} — ${SEO_DATA.legalNameShort}`;
   const description =
-    deImpressum?.sections[0]?.body.slice(0, 160) ??
+    (deImpressum?.sections[0] ? toMetaDescription(deImpressum.sections[0].body) : undefined) ??
     (locale === "en"
-      ? `${SEO_DATA.legalNameShort}. Registered office: Királyok útja 291, Building B, Door 15, 1039 Budapest. Company registration number: ${SEO_DATA.registrationId}.`
+      ? `${SEO_DATA.legalNameShort} Registered office: Királyok útja 291, Building B, Door 15, 1039 Budapest. Company registration number: ${SEO_DATA.registrationId}.`
       : `${SEO_DATA.legalName}. ${SEO_DATA.address.streetAddress}, ${SEO_DATA.address.postalCode} ${SEO_DATA.address.addressLocality}. Cégjegyzékszám: ${SEO_DATA.registrationId}.`);
   const url = legalPageUrl(locale, "impresszum");
   const isDeReviewPage = locale === "de";
@@ -265,7 +266,7 @@ export default async function ImpresszumPage({
         t={t}
         locale={locale}
         pageTitle={impressum.title}
-        pageDescription={impressum.sections[0]?.body.slice(0, 160) ?? impressum.title}
+        pageDescription={impressum.sections[0] ? toMetaDescription(impressum.sections[0].body) : impressum.title}
         pageSlug="impresszum"
       >
         <LegalHeader

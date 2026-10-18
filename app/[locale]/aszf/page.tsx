@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { getTranslation } from "@/lib/i18n";
 import { getTermsContent } from "@/lib/legal-content";
 import { SEO_DATA } from "@/lib/seo-data";
+import { toMetaDescription } from "@/lib/meta-description";
 import {
   isLegalPageLocale,
   legalPageAlternateLanguages,
@@ -30,7 +31,7 @@ export async function generateMetadata({
   const t = getTranslation(locale);
   const terms = getTermsContent(locale, t);
   const title = `${terms.title} — ${SEO_DATA.legalNameShort}`;
-  const description = terms.intro.slice(0, 160);
+  const description = toMetaDescription(terms.intro);
   const url = legalPageUrl(locale, "aszf");
   const isDeReviewPage = locale === "de";
 
@@ -62,7 +63,7 @@ export default async function TermsPage({
       t={t}
       locale={locale}
       pageTitle={terms.title}
-      pageDescription={terms.intro.slice(0, 160)}
+      pageDescription={toMetaDescription(terms.intro)}
       pageSlug="aszf"
     >
       <LegalHeader

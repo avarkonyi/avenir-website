@@ -25,6 +25,11 @@ import {
   trustCenterAlternateLanguages,
   trustCenterUrl,
 } from "@/lib/trust-center-routes";
+import {
+  RESPONSIBLE_DISCLOSURE_LOCALES,
+  responsibleDisclosureAlternateLanguages,
+  responsibleDisclosureUrl,
+} from "@/lib/responsible-disclosure-content";
 
 const SITEMAP_HOME_LOCALES = ["hu", "en"] as const;
 const SERVICE_URL_SEGMENT = "szolgaltatasok";
@@ -130,6 +135,14 @@ export function buildPublicSitemap(
       changeFrequency: "yearly" as const,
       priority: 0.35,
       alternates: { languages: trustCenterAlternateLanguages() },
+    })),
+    // Responsible-disclosure policy: indexable HU/EN pair, also referenced
+    // from security.txt; kept in the sitemap so indexable == discoverable.
+    ...RESPONSIBLE_DISCLOSURE_LOCALES.map((locale) => ({
+      url: responsibleDisclosureUrl(locale),
+      changeFrequency: "yearly" as const,
+      priority: 0.3,
+      alternates: { languages: responsibleDisclosureAlternateLanguages() },
     })),
     ...sitemapServicePaths.map(({ locale, slug, updatedAt }) => ({
       url: `${SEO_DATA.url}/${locale}/${SERVICE_URL_SEGMENT}/${slug}`,

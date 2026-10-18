@@ -28,15 +28,14 @@ test("Korean and Chinese drafts preserve source sections, paragraphs and review 
       const source = getDeReviewServiceDetailBySlug(slug)!;
       const translated = getReviewServiceDetail(locale, slug)!;
       for (const field of ["useCases", "includedItems", "processSteps", "trustItems", "faq", "highlights"] as const) {
-        // The two DE-only security-technology FAQs have no approved HU source.
-        const expectedLength = slug === "biztonsagtechnika" && field === "faq" ? 9 : source[field].length;
+        const expectedLength = source[field].length;
         assert.equal(translated[field].length, expectedLength, `${locale}/${slug}.${field}`);
       }
       assert.equal(translated.longDesc.split("\n\n").length, source.longDesc.split("\n\n").length);
       assert.match(translated.longDesc, locale === "ko" ? /[가-힣]/ : /[\u4e00-\u9fff]/);
       assert.deepEqual(translated.relatedSlugs, source.relatedSlugs);
       assert.equal(translated.legalReviewRequired, source.legalReviewRequired);
-      const expectedReviewKeyCount = slug === "biztonsagtechnika" ? 5 : source.legalReviewRequiredKeys.length;
+      const expectedReviewKeyCount = source.legalReviewRequiredKeys.length;
       assert.equal(translated.legalReviewRequiredKeys.length, expectedReviewKeyCount);
     }
   }

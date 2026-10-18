@@ -15,7 +15,9 @@ import {
   getPublishedServicesBySlugsForPublic,
 } from "@/lib/db/queries/services";
 import { SEO_DATA, SEO_LOCALES, type SeoLocale } from "@/lib/seo-data";
+import { getContactPrivacyHref } from "@/lib/locale-ui-helpers";
 import { getSafeAbsolutePublicImageUrl } from "@/lib/safe-public-image";
+import { getSchemaLocaleCopy } from "@/lib/schema-locale-copy";
 import { indexableServiceLocales, isIndexableServiceLocale } from "@/lib/services/publication";
 import {
   getRenderableServicePaths,
@@ -226,7 +228,10 @@ export default async function ServiceDetailPage({
         ? detail.seoDescription
         : detail.shortDesc || detail.valueProposition || detail.name,
     url: pageUrl,
-    areaServed: { "@type": "Country", name: "Magyarország" },
+    areaServed: {
+      "@type": "Country",
+      name: getSchemaLocaleCopy(locale as SeoLocale).country,
+    },
     provider: { "@id": `${SEO_DATA.url}/#organization` },
   };
   const serviceImage = getSafeAbsolutePublicImageUrl(
@@ -557,6 +562,11 @@ export default async function ServiceDetailPage({
           locale={locale}
           serviceSlug={slug}
           serviceLabel={detail.name}
+          privacyNotice={{
+            text: t.form.layeredNotice,
+            linkText: t.form.layeredNoticeLink,
+            href: getContactPrivacyHref(locale),
+          }}
         />
 
         {/* Related services */}
