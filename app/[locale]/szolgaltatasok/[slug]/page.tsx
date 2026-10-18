@@ -7,6 +7,7 @@ import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/components/JsonLd";
 import { Icon, ICON_NAMES, type IconName } from "@/components/Icon";
 import { ServiceQuoteCta } from "@/components/ServiceQuoteCta";
+import { ServiceQuotePreparation } from "@/components/ServiceQuotePreparation";
 import { TrustCenterCallout } from "@/components/TrustCenterCallout";
 import { TrackedServiceCtaLink } from "@/components/analytics/TrackedServiceCtaLink";
 import { getTranslation, LOCALES, type Locale } from "@/lib/i18n";
@@ -543,6 +544,8 @@ export default async function ServiceDetailPage({
             </div>
           </Section>
         )}
+
+        <ServiceQuotePreparation locale={locale} serviceSlug={slug} />
 
         <ServiceQuoteCta
           copy={sharedCopy?.serviceQuote}
