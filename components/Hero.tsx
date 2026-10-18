@@ -23,8 +23,7 @@ export function Hero({ t }: { t: Pick<Translation, "hero" | "stats"> }) {
           - `priority` skips lazy-loading (LCP candidate, above-the-fold)
           - `fetchPriority="high"` HTTP/2 stream priority hint (P1-G phase 2)
           - `sizes="100vw"` tells Next which srcset variant to serve
-          - `quality={75}` explicit default — balance fidelity vs file size
-          mobile gets ~10 KB, desktop ~33 KB (WebP is already tiny). */}
+          - `quality={95}` preserves fine detail in the face and jacket logo. */}
       <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
         <Image
           src="/uploads/avenir-security-20261018.png"
@@ -33,7 +32,7 @@ export function Hero({ t }: { t: Pick<Translation, "hero" | "stats"> }) {
           priority
           fetchPriority="high"
           sizes="100vw"
-          quality={75}
+          quality={95}
           style={{ objectFit: "cover", objectPosition: "center" }}
         />
         <div
@@ -41,14 +40,14 @@ export function Hero({ t }: { t: Pick<Translation, "hero" | "stats"> }) {
             position: "absolute",
             inset: 0,
             background:
-              "linear-gradient(90deg, rgba(11,30,62,0.92) 0%, rgba(11,30,62,0.75) 40%, rgba(11,30,62,0.15) 70%, transparent 100%)",
+              "linear-gradient(90deg, rgba(11,30,62,0.72) 0%, rgba(11,30,62,0.5) 38%, rgba(11,30,62,0.12) 57%, transparent 70%)",
           }}
         />
         <div
           style={{
             position: "absolute",
             inset: 0,
-            background: "linear-gradient(to bottom, rgba(11,30,62,0.25) 0%, rgba(11,30,62,0.5) 100%)",
+            background: "linear-gradient(to bottom, transparent 70%, rgba(11,30,62,0.18) 100%)",
           }}
         />
       </div>
