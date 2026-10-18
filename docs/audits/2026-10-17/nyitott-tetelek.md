@@ -1,15 +1,15 @@
 # AFM szövegaudit – nyitott tételek
 
-Állapot: 2026-10-17, a második javító kör helyi ellenőrzése után. A forrásjavítás nem jelent élesítést, anyanyelvi vagy jogi jóváhagyást.
+Állapot: 2026-10-18, a tulajdonosi megerősítések átvezetése után. A cég ISO-tanúsítottsága elfogadott. A magyar jogi szöveg ügyvéd által ellenőrzött, a többi nyelvre irányadó forrás. A fordítási ellenőrzés és az éles kiadás ettől külön feladat.
 
-Az **506 eredeti auditazonosítóból 108 forrásban javított**, 4 korábban stagingben javított, 2 eltávolított tartalomhoz tartozik, 3 pedig nem igazolt hiba. **389 sor nyitott vagy részben javított.** Ez összesített állapot, nem mind új javítás ebben a körben. Az eredeti 51 P1-ből 32 forráshiba javított, 19 nyitott/részleges; a kiadási feltételek továbbra is érvényesek.
+Az **506 eredeti auditazonosítóból 108 forrásban javított**, 4 korábban stagingben javított, 2 eltávolított tartalomhoz tartozik, 3 pedig nem igazolt hiba. **13 további sor a magyar jogi forrás elfogadásával lezárt; 376 sor nyitott vagy részben javított.** Ez összesített állapot, nem mind új javítás ebben a körben. Az eredeti 51 P1-ből 32 forráshiba javított, 19 nyitott/részleges; a kiadási feltételek továbbra is érvényesek.
 
 | Nyitott státusz | Darab | Következő lépés |
 | --- | ---: | --- |
-| További forrás- és nyelvi ellenőrzés | 307 | Az eredeti javaslat és a jelenlegi kimenet összevetése; nem mind bizonyított hiba |
-| Részben javított, összevont sor | 22 | A sor megmaradt részének külön ellenőrzése |
-| Dokumentum / tény igazolása | 15 | Tulajdonosi vagy szolgáltatói bizonyíték |
-| Jogi döntés | 13 | Jóváhagyott jogi szöveg |
+| További forrás- és nyelvi ellenőrzés | 306 | Az eredeti javaslat és a jelenlegi kimenet összevetése; nem mind bizonyított hiba |
+| Részben javított, összevont sor | 24 | A sor megmaradt részének külön ellenőrzése |
+| Dokumentum / tény igazolása | 12 | Tulajdonosi vagy szolgáltatói bizonyíték |
+| Fordítási paritás | 2 | A HU-ban nem szereplő DE jogi betoldások eltávolítása |
 | Konkrét CMS-javítás | 13 | Előtte–utána csomag staging-jóváhagyása és alkalmazása |
 | Üzleti döntés | 8 | Szolgáltatási vállalás pontosítása |
 | Kiadás / production-visszaellenőrzés | 7 | Jóváhagyott élesítés utáni ellenőrzés |
@@ -24,15 +24,17 @@ A [teljes ellenőrzési jelentés](text-audit-closure-verification.md) rögzíti
 | Távfelügyelet 24/7 | Pontos szolgáltatási terjedelem: diszpécseri háttér, folyamatos jelzésfogadás vagy felügyeleti központ? | DES-002, KOS-004, ENS-001, EDU-002; FRS-001/FKZ-001/FKZ-002 fennmaradó része |
 | Hard FM / Soft FM teljesítés | Kizárólag saját állomány, vagy jóváhagyott alvállalkozó / ügyféloldali szolgáltató koordinálása is? | HUA-018, EDU-015, FKZ-005, KOS-052 |
 | Új nemzetbiztonsági határozat | A közlés szerint 2029-ig érvényes. Pontos határozatszám, dátum és érvényességi adat kell; nem lejárt jogosultságként kezeljük. | HUA-002, HUB-002, ENB-008, DEB-018 |
-| További vállalások, bizonyítékok | Az 1–3 munkanapos helyszíni felmérés, a munkatársi képesítések, engedélyterjedelem és MABISZ-állítás dokumentált alátámasztása. | HUA-004/016/020, HUB-022, ENB-013; részletek a CSV-ben |
+| További vállalások, bizonyítékok | Az 1–3 munkanapos helyszíni felmérés, a munkatársi képesítések, engedélyterjedelem dokumentált alátámasztása. | HUA-004/016/020; részletek a CSV-ben |
 
-## Jogi / adatvédelmi felülvizsgálat
+## Elfogadott jogi forrás és fordítási követelmények
 
-- A süti-sáv, a hozzájárulás visszavonása és a GA4 leírása közös DPO-ellenőrzést igényel. A technikai teszt nem jogi jóváhagyás.
-- A visszavonás technikai hibája és a HU/EN/DE jövő idejű leírása javítva. A böngészős teszt Google-stubot használ; a tényleges Google-tag visszavonás utáni hálózati viselkedése és a production-konfiguráció külön kiadási ellenőrzés.
-- A GA4 tényleges megőrzési és adattovábbítási beállításai, a Microsoft 365 szerepe, a panaszhatáridő, felelősségi és bírósági kikötések, szerzői jogi állítások és pályázói adatmegőrzés szakmai döntést igényelnek. Ezeket nem lehet puszta fordítással igazolni.
-- Az EN/DE jogi dokumentumok magyar forráshoz igazítása után is kell jogi és nyelvi jóváhagyás. A magyar alapvállalások érvényessége külön kérdés.
-- A DE Biztonságtechnika két külön GYIK-je és GDPR-betoldása a DE review-csomag része maradt. A jogi lektor döntse el, megmaradhat-e vagy el kell hagyni (DES-003/004).
+A [2026-10-18-i tulajdonosi döntés](owner-confirmations-2026-10-18.md) szerint a magyar jogi szöveg ügyvéd által ellenőrzött és irányadó. Ennek általános jóváhagyását nem kérjük újra. A magyar jogi vállalások megtartandók, a többi nyelv feladata ezek hű fordítása.
+
+- A panaszhatáridő, felelősségi és bírósági kikötések, jogszabályi hivatkozások és pályázói megőrzési szöveg újabb jogi jóváhagyását kérő tételek az elfogadott forrás alapján lezártak; az eredeti észrevételek a teljes CSV-ben megmaradnak.
+- A fordítási, nyelvi, megjelenítési és belső szövegegyezési eltérések továbbra is javítandók. Nem kerülhet új jogi vállalás a fordításba.
+- A DE Biztonságtechnika két külön GYIK-je és GDPR-betoldása nincs a HU forrásban: eltávolításuk fordítási paritási feladat (DES-003/004), nem új jogi döntéskérés.
+- A süti-visszavonás technikai hibája és a HU/EN/DE jövő idejű leírása javítva. A tényleges Google-tag hálózati viselkedése, a GA4 megőrzési/adattovábbítási konfigurációja és a Microsoft 365 tényleges használata technikai egyeztetési kérdés marad; a működésnek kell megfelelnie az elfogadott tájékoztatónak.
+- Az ISO-tanúsítottság ténye elfogadott. A fennmaradó ISO-sorokban a kiállító, szabvány, akkreditációs mező, CMS-adat és fordítás pontos megjelenítése vizsgálandó.
 
 ## Előkészített CMS-javítás – még nincs alkalmazva
 
@@ -69,3 +71,5 @@ A külön draft PR #3-ban előkészített függőségjavítás és az éles admi
 - [Státuszok bizonyítékai és csoportosítása](text-audit-dispositions.json)
 
 A `JAVITVA_FORRAS` a konkrét forráshiba javítását jelenti, nem production-lezárást. A `NYITOTT_ELLENORZES` sor nem automatikusan bizonyított hiba: az eredeti audit javaslata, amelynek teljes jelentés- és aktuális forrásellenőrzése még nincs lezárva. A prioritások az eredeti auditból származnak.
+
+A `LEZART_JOVAHAGYOTT_FORRAS` a 2026-10-18-i tulajdonosi döntésen alapuló lezárás; nem új kódjavítás. A korábbi jelentések jogi jóváhagyásra váró megjegyzéseit ez a döntés felülírja a magyar jogi forrás tekintetében.

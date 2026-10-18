@@ -71,9 +71,9 @@
         "HUB-039"
       ],
       "status": "JAVITVA_FORRAS",
-      "owner": "Jogi lektor / kiadás",
+      "owner": "Fordításellenőrzés / kiadás",
       "evidence": "Második javítási kör: EN v1.1 normalizálás; DE 13+14 szakasz és HU-paritás; 20 célzott teszt",
-      "next": "A konkrét forrás- és fordítási eltérés javítva. Jogi/anyanyelvi jóváhagyás és éles kiadás külön szükséges."
+      "next": "A magyar jogi forrás tulajdonosi megerősítéssel ügyvéd által ellenőrzött és irányadó (2026-10-18). A fordítás forráshűsége és a kiadás ellenőrizendő; új általános HU jogi jóváhagyás nem szükséges."
     },
     {
       "ids": [
@@ -143,9 +143,9 @@
         "FKZ-029"
       ],
       "status": "JAVITVA_FORRAS",
-      "owner": "DPO / kiadás",
+      "owner": "Fordítás / technikai kiadás",
       "evidence": "0441caa: hatnyelvű consent-copy konkrét űrlapmezőkre szűkítve",
-      "next": "A szövegellentmondás javítva; a süti/adatvédelmi csomag DPO-jóváhagyása még szükséges."
+      "next": "A magyar jogi szöveg elfogadott alap. A fordítások és a tényleges GA4-konfiguráció/működés egyezését ellenőrizni; az általános HU jogi jóváhagyást nem kell újrakérni."
     },
     {
       "ids": [
@@ -199,10 +199,10 @@
         "DES-003",
         "DES-004"
       ],
-      "status": "NYITOTT_JOGI_DONTES",
-      "owner": "Jogi lektor / tulajdonos",
-      "evidence": "DE-only GDPR/GYIK review-csomag szándékosan külön maradt; FR/KO/ZH másolatok törölve",
-      "next": "A DE-specifikus bővítés jóváhagyása vagy elhagyása; HU-paritásként nem zárható le."
+      "status": "NYITOTT_FORDITASI_PARITAS",
+      "owner": "Fordítás / fejlesztés",
+      "evidence": "2026-10-18: a tulajdonos a magyar jogi szöveget irányadónak nyilvánította; a csak DE-ben létező bővítés nem része annak.",
+      "next": "A magyar forráshoz igazítani: a DE-only GDPR-betoldás és két extra GYIK eltávolítása; a látható tartalom és JSON-LD egyezését ellenőrizni."
     },
     {
       "ids": [
@@ -272,9 +272,7 @@
       "ids": [
         "HUA-004",
         "HUA-016",
-        "HUA-020",
-        "HUB-022",
-        "ENB-013"
+        "HUA-020"
       ],
       "status": "NYITOTT_IGAZOLAS",
       "owner": "Tulajdonos / szolgáltatásfelelős",
@@ -391,7 +389,6 @@
         "ENB-011",
         "HUB-006",
         "HUB-007",
-        "ENB-028",
         "ENB-046"
       ],
       "status": "NYITOTT_IGAZOLAS",
@@ -401,43 +398,24 @@
     },
     {
       "ids": [
-        "ENB-012",
-        "HUB-019",
-        "HUB-020",
-        "HUB-021",
-        "ENB-029",
-        "HUB-028",
-        "HUB-029",
-        "HUB-044",
-        "HUB-045",
-        "ENB-047",
-        "DEB-029"
-      ],
-      "status": "NYITOTT_JOGI_DONTES",
-      "owner": "Jogi lektor / DPO",
-      "evidence": "Jogi hivatkozás, határidő, felelősségkizárás, szerzői jog, joghatóság vagy kötelező nyelvváltozat érdemi döntése; nem puszta nyelvi javítás.",
-      "next": "A CSV konkrét javaslatának jogi ellenőrzése és jóváhagyott szöveg megadása; a jelenlegi vállalás önkényesen nem módosítható."
-    },
-    {
-      "ids": [
         "HUB-003",
         "ENB-007",
         "DEB-020",
         "DEB-021"
       ],
       "status": "JAVITVA_FORRAS",
-      "owner": "DPO / kiadás",
+      "owner": "Fordítás / technikai kiadás",
       "evidence": "GA4 visszavonás jelen idejű HU/EN/DE szövege a konkrét láblécgombbal; szinkron opt-out, saját sütik törlése, storage/late-load/reaccept és URL-tisztítás célzott regressziós próbákkal.",
-      "next": "A technikai és szövegbeli ellentmondás javítva; teljes DPO-jóváhagyás és production-kiadás külön marad."
+      "next": "A magyar jogi szöveg elfogadott alap. A fordítások és a tényleges GA4-konfiguráció/működés egyezését ellenőrizni; az általános HU jogi jóváhagyást nem kell újrakérni."
     },
     {
       "ids": [
         "DEB-040"
       ],
       "status": "JAVITVA_FORRAS",
-      "owner": "Jogi / nyelvi lektor",
+      "owner": "Fordítás / kiadás",
       "evidence": "A dokumentum 12. szakaszcíme és törzse Rechtliche Hinweise megnevezéssel egységes; a german_glossary.md régi Nutzungsbedingungen sora igazítva.",
-      "next": "A megnevezési eltérés javítva; általános jogi/nyelvi jóváhagyás külön."
+      "next": "Megnevezési eltérés javítva; a magyar jogi alap elfogadott, a fordítás és a kiadás ellenőrzése marad."
     },
     {
       "ids": [
@@ -456,6 +434,46 @@
       "owner": "Kiadás / tulajdonos",
       "evidence": "A HU 404 lokalizálva, kész buildben HTTP404/noindex/egyHUH1 igazolt. A review-nyelvek meglévő elérési linkjei nem változtak.",
       "next": "Az új nyelvek nyilvános elérhetőségének kiadási döntése külön marad; a noindex nem hozzáférésvédelem."
+    },
+    {
+      "ids": [
+        "ENB-012",
+        "HUB-019",
+        "HUB-020",
+        "HUB-021",
+        "ENB-029",
+        "HUB-028",
+        "HUB-029",
+        "HUB-044",
+        "HUB-045",
+        "ENB-047",
+        "ENB-028",
+        "HUB-027",
+        "HUB-022"
+      ],
+      "status": "LEZART_JOVAHAGYOTT_FORRAS",
+      "owner": "Elfogadott HU jogi forrás",
+      "evidence": "Tulajdonosi utasítás 2026-10-18: a magyar jogi szöveg ügyvéddel ellenőrzött, elfogadandó és minden fordításra irányadó. Döntési napló: owner-confirmations-2026-10-18.md; forrásállapot 981d1a7.",
+      "next": "A jóváhagyott magyar jogi tartalmat megtartani és hűen fordítani. Lezárás jóváhagyott forrás alapján, nem kódjavítás vagy független jogi felülvizsgálat; az eredeti auditészrevétel megőrizve."
+    },
+    {
+      "ids": [
+        "DEB-029"
+      ],
+      "status": "RESZBEN_JAVITVA",
+      "owner": "Fordítás / szerkesztés",
+      "evidence": "A magyar jogi változat elsődlegességét a tulajdonos 2026-10-18-án kifejezetten megerősítette; a sor fennmaradó része a német fordítási lábléc megfogalmazása.",
+      "next": "A gépi fordításról szóló láblécet a tényleges fordítási állapothoz igazítani, a magyar változat elsődlegességét megtartani."
+    },
+    {
+      "ids": [
+        "ENB-013"
+      ],
+      "status": "RESZBEN_JAVITVA",
+      "owner": "Fordítás",
+      "evidence": "A magyar jogi forrás meglévő mondata a 2026-10-18-i utasítás szerint elfogadott. Ez nem külön MABISZ-tanúsítás jóváhagyása. Az angol asset-protection/property-security terminológiai eltérés marad.",
+      "next": "A fordítási terminológiát a jóváhagyott magyar jelentés megtartásával egységesíteni; új tanúsítási állítást nem hozzáadni."
     }
-  ]
+  ],
+  "ownerDecision": "2026-10-18: ISO certification accepted; lawyer-reviewed Hungarian legal copy is authoritative. See owner-confirmations-2026-10-18.md."
 }

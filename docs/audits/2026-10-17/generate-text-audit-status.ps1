@@ -23,7 +23,7 @@ foreach ($group in $dispositions.groups) {
 }
 $result = foreach ($row in $originalRows) {
   $disposition = $byId[$row.id]
-  $defaultOwner = if ($row.id -like 'ENS-*') { 'CMS / angol nyelvi lektor' } elseif ($row.id -match '^(HUB|ENB|DEB)-') { 'Jogi / nyelvi lektor' } else { 'Nyelvi lektor / szerkesztés' }
+  $defaultOwner = if ($row.id -like 'ENS-*') { 'CMS / angol nyelvi lektor' } elseif ($row.id -match '^(HUB|ENB|DEB)-') { 'Fordítás / szerkesztés (elfogadott HU jogi forrás)' } else { 'Nyelvi lektor / szerkesztés' }
   [PSCustomObject]@{
     id = $row.id
     audit_biralo = $row.reviewer

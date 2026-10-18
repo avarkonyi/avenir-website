@@ -1,6 +1,25 @@
 # Verified Claims — Avenir
 
-Last updated: 2026-06-13
+Last updated: 2026-10-18
+
+## Owner confirmation — 18 October 2026
+
+The owner explicitly confirms that the company holds ISO certification and
+instructs us to accept it. The existing approved ISO 9001 and ISO/IEC 27001
+certificate records below remain the source for exact standards, issuers and
+identifiers. ISO certification itself is not an unresolved approval question.
+The owner states it is verifiable in a public database; this update records
+that confirmation and does not claim a new registry lookup.
+
+The owner also confirms that the Hungarian legal copy has been reviewed by
+a lawyer and is the authoritative source for all other languages. Preserve
+its approved legal substance. Translation work must faithfully reproduce it;
+do not reopen blanket Hungarian legal approval or introduce legal additions
+through translation. Check remaining discrepancies as translation, display or
+actual technical-configuration issues as appropriate.
+
+Decision and audit dispositions:
+`docs/audits/2026-10-17/owner-confirmations-2026-10-18.md`.
 
 This file tracks business-approved claims that may be used in public website copy for Avenir. It is a copywriting guardrail, not a substitute for the underlying legal, certificate, contract, or operational proof documents.
 
