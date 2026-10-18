@@ -12,7 +12,7 @@
 
 Files: create `lib/trust-center-navigation.ts`, `components/TrustCenterCallout.tsx`; modify `app/globals.css` for the contextual link only.
 
-- [ ] Implement this helper using the existing route module:
+- [x] Implement this helper using the existing route module:
 
 ```ts
 import { isTrustCenterLocale, trustCenterPath } from "./trust-center-routes";
@@ -34,7 +34,7 @@ export function getTrustCenterNavigation(locale: string) {
 }
 ```
 
-- [ ] Render the callout with Next Link and a null result for unsupported locales:
+- [x] Render the callout with Next Link and a null result for unsupported locales:
 
 ```tsx
 import Link from "next/link";
@@ -53,13 +53,13 @@ export function TrustCenterCallout({ locale }: { locale: string }) {
 }
 ```
 
-- [ ] Add only scoped styles: callout margin 24px 0 0, font 15px, line-height 1.6, body colour #556070; link navy #0B1E3E, weight 600, underline offset 3px, inline-block with margin-top 6px. Give the contextual link a 2px #0B1E3E focus-visible outline with offset 4px. No global anchor reset.
+- [x] Add only scoped styles: callout margin 24px 0 0, font 15px, line-height 1.6, body colour #556070; link navy #0B1E3E, weight 600, underline offset 3px, inline-block with margin-top 6px. Give the contextual link a 2px #0B1E3E focus-visible outline with offset 4px. No global anchor reset.
 
 ## Task 2 — Approved placements
 
 Files: `components/Footer.tsx`, `components/Certifications.tsx`, `app/[locale]/szolgaltatasok/[slug]/page.tsx`.
 
-- [ ] Footer: calculate `const trustCenterLink = getTrustCenterNavigation(locale);`, then render this item after the existing legal links and before cookie settings:
+- [x] Footer: calculate `const trustCenterLink = getTrustCenterNavigation(locale);`, then render this item after the existing legal links and before cookie settings:
 
 ```tsx
 {trustCenterLink && (
@@ -71,8 +71,8 @@ Files: `components/Footer.tsx`, `components/Certifications.tsx`, `app/[locale]/s
 )}
 ```
 
-- [ ] Certifications: import the contextual component and insert `<TrustCenterCallout locale={locale} />` immediately after the certifications grid, inside the existing section/container.
-- [ ] Services: import the contextual component and insert it after the trust-card grid, inside the existing trust Section:
+- [x] Certifications: import the contextual component and insert `<TrustCenterCallout locale={locale} />` immediately after the certifications grid, inside the existing section/container.
+- [x] Services: import the contextual component and insert it after the trust-card grid, inside the existing trust Section:
 
 ```tsx
 {(slug === "objektumorzes" || slug === "portaszolgalat") && (
@@ -84,10 +84,10 @@ The component itself guards locales. Do not alter service copy, routes, schema, 
 
 ## Task 3 — Verification and review
 
-- [ ] Run existing `npm run test`, `npm run lint`, `tsc --noEmit`, `npm run qa:copy` and `npm run build` with the verified staging connection for build reads. Keep secrets out of output.
-- [ ] Inspect rendered HTML for HU/EN home, two primary services, one other service, the two Trust Centers, and a review-locale home/service. Confirm placement and language, existing canonical/noindex behavior, and working targets.
-- [ ] Inspect desktop and mobile layouts and keyboard focus. This is a low-impact navigation edit: do not add implementation-mirroring unit tests; use existing coverage plus the rendered-page acceptance checks.
-- [ ] Independent spec review, then code-quality review; resolve material findings.
+- [x] Run existing `npm run test`, `npm run lint`, `tsc --noEmit`, `npm run qa:copy` and `npm run build` with the verified staging connection for build reads. Keep secrets out of output.
+- [x] Inspect rendered HTML for HU/EN home, two primary services, one other service, the two Trust Centers, and a review-locale home/service. Confirm placement and language, existing canonical/noindex behavior, and working targets.
+- [x] Inspect desktop and mobile layouts and keyboard focus. This is a low-impact navigation edit: do not add implementation-mirroring unit tests; use existing coverage plus the rendered-page acceptance checks.
+- [x] Independent spec review, then code-quality review; resolve material findings.
 
 ## Task 4 — Preview handover
 

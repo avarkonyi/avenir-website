@@ -9,6 +9,7 @@ import {
   getAllPublishedServicePathsForBuild,
 } from "@/lib/db/queries/services";
 import { getReadyServiceDetailHref } from "@/lib/service-detail-links";
+import { getTrustCenterNavigation } from "@/lib/trust-center-navigation";
 import {
   getFooterLegalLinks,
   getFooterMapLinkTitle,
@@ -45,6 +46,7 @@ export async function Footer({
     }))
     .filter((link) => link.title.length > 0);
   const legalLinks = getFooterLegalLinks(locale, t.footer);
+  const trustCenterNavigation = getTrustCenterNavigation(locale);
   const linkedInLabel = getLocaleAccessibility(locale).linkedIn;
 
   return (
@@ -212,6 +214,13 @@ export async function Footer({
                   </Link>
                 </li>
               ))}
+              {trustCenterNavigation && (
+                <li>
+                  <Link href={trustCenterNavigation.href} className="footer-link" style={{ color: "var(--avenir-on-dark-muted)", fontSize: 13, textDecoration: "none" }}>
+                    {trustCenterNavigation.label}
+                  </Link>
+                </li>
+              )}
               <li>
                 <CookieSettingsButton locale={locale} />
               </li>
