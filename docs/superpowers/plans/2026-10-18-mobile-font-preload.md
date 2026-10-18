@@ -13,8 +13,8 @@
 - [x] Review repository instructions and current production SHA 9f8103b.
 - [x] Measure /hu, /hu/szolgaltatasok/objektumorzes and /hu/szolgaltatasok/portaszolgalat three times each in production.
 - [x] Confirm Geist Latin Extended is fetched after CSS discovery; identify service LCP as real body text.
-- [ ] Measure the unchanged production build on localhost three times per route.
-- [ ] Assert from rendered HTML and CSS that the used Geist Latin Extended file has no preload before the patch.
+- [x] Measure the unchanged production build on localhost three times per route.
+- [x] Assert from rendered HTML and CSS that the used Geist Latin Extended file has no preload before the patch.
 
 ## 2. Apply the minimal experiment
 
@@ -27,16 +27,17 @@ const geistSans = Geist({
 });
 ```
 
-- [ ] Apply this change; leave Barlow, images, consent UI, copy and indexing unchanged.
-- [ ] Build again with verified staging read-only DB access and assert the extended font is preloaded.
-- [ ] Repeat the same localhost measurements. Keep the change only if evidence supports earlier font discovery without a material regression; don't equate local lab scores with real-user field performance.
+- [x] Apply this change; leave Barlow, images, consent UI, copy and indexing unchanged.
+- [x] Build again with verified staging read-only DB access and assert the extended font is preloaded.
+- [x] Repeat the same localhost measurements. Earlier discovery and ~152 ms simulated FCP improvement are supported; a consistent LCP improvement is not. Keep the findings bounded to lab measurements.
 
 ## 3. Validate and prepare review
 
-- [ ] Run lint, TypeScript, unit tests, copy guards and build.
-- [ ] Obtain independent patch review; inspect the exact diff.
-- [ ] Push feature branch and create PR; verify GitHub CI and Vercel Preview source commit.
-- [ ] Run Preview smoke, font-preload assertions and mobile measurements; visually check HU/EN and the two service pages.
-- [ ] Save a concise measurement report with caveats and Preview URL; ask for production approval only after the result is reviewable.
+- [x] Run lint, TypeScript, unit tests, copy guards and build.
+- [x] Obtain independent patch review; inspect the exact diff.
+- [x] Push feature branch and create PR; verify GitHub CI and Vercel Preview source commit.
+- [x] Run Preview smoke, font-preload assertions and mobile measurements; visually check HU/EN and the two service pages.
+- [x] Save a concise measurement report with caveats and Preview URL.
+- [ ] Owner production approval; the reviewable PR and Preview are ready.
 
 Evidence is saved outside source under ../audit-artifacts/mobile-performance-2026-10-18/. No contact submission, CMS mutation or database write is part of this task.

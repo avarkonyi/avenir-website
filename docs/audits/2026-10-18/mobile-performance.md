@@ -71,7 +71,50 @@ which may not need it. Preview HU/EN verification must assess this tradeoff.
 Raw reports, scripts and logs are retained outside Git under
 `audit-artifacts/mobile-performance-2026-10-18/` in the parent workspace.
 
-## Remaining checks
+## Preview verification
 
-Preview deployment, HU/EN measurements and visual verification, route smoke,
-final independent review and owner release approval.
+Source commit `ec11beeefac559702b291fa234fd94a8815f71c5`, PR #9:
+https://github.com/avarkonyi/avenir-website/pull/9
+
+Vercel `dpl_9BR9ZVsLmkzaieWfope4NpGPErJu` was verified Ready / Preview with
+that exact source commit. URL:
+https://avenir-website-pw93yku77-andrasvarkonyi-7800s-projects.vercel.app
+
+GitHub CI run 39144281017 passed. All three HU pages preload the target font
+exactly once; the network report confirms a single request, marked as a
+preload, for the same 16,540-byte resource. Mobile before/after screenshots
+show the same final text wrapping and layout.
+
+Preview three-run medians (diagnostic results, not a matched causal comparison
+against the production host):
+
+| Route | Performance | FCP | LCP | TBT | CLS |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Home | 94 | 1.155 s | 2.812 s | 174 ms | 0 |
+| Guarding | 97 | 0.962 s | 2.512 s | 57 ms | 0 |
+| Reception | 97 | 1.014 s | 2.515 s | 46 ms | 0 |
+
+An independent reviewer found no source correctness defect and confirmed the
+earlier font discovery. Reviewer cautions: Lighthouse CPU benchmark values
+varied, the scores are simulated, and neither a general LCP improvement nor
+a Barlow CLS fix has been established.
+
+The EN homepage diagnostic medians were 95 (production) and 96 (Preview),
+with LCP 2.647 / 2.604 s, TBT 54 / 46 ms and CLS 0 in both. The subset was
+not requested on the production EN homepage but was requested once on
+Preview. Total transferred bytes increased approximately 17.5 KB (374,188 →
+391,683); 16,540 resource bytes are the newly preloaded font. These are
+different deployments, not a controlled speed comparison. The small transfer
+tradeoff is retained for earlier Hungarian text rendering, the owner's
+primary market; a broad claim that every locale became faster is unwarranted.
+
+HU/EN desktop inspection and language switching passed. Final mobile
+screenshots show no new wrapping or layout defect. Full Preview smoke:
+569/569 PASS. Preview remains noindexed. The only outstanding release gate is
+owner production approval.
+
+## Follow-up
+
+Investigate the intermittent Barlow font-swap layout shift separately, with
+repeatable before/after evidence. The present patch does not close all mobile
+performance work and does not guarantee a good real-user LCP/INP percentile.
