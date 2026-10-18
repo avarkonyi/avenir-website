@@ -143,40 +143,46 @@ export function ServiceQuotePreparation({
   return (
     <section
       aria-labelledby="quote-preparation-title"
-      style={{ padding: "64px 5vw", background: "#fff" }}
+      style={{ padding: "24px 5vw", background: "#fff" }}
     >
       <div style={{ maxWidth: 1000, margin: "0 auto" }}>
-        <p style={{ color: "#D1172E", fontWeight: 700, fontSize: 13, margin: "0 0 10px" }}>
-          {copy.eyebrow}
-        </p>
-        <h2
-          id="quote-preparation-title"
-          style={{ fontFamily: "var(--font-head)", fontSize: "clamp(26px, 3vw, 36px)", lineHeight: 1.2, margin: 0 }}
-        >
-          {copy.title}
-        </h2>
-        <p style={{ lineHeight: 1.6, margin: "16px 0 28px" }}>{copy.intro}</p>
-        <dl
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))",
-            gap: 24,
-            margin: 0,
-          }}
-        >
-          {items.map((item) => (
-            <div key={item.title} style={{ borderTop: "1px solid #E2E8F0", paddingTop: 16, minWidth: 0 }}>
-              <dt style={{ fontFamily: "var(--font-head)", fontWeight: 700, fontSize: 17 }}>{item.title}</dt>
-              <dd style={{ margin: "8px 0 0", color: "rgba(11,30,62,0.78)", fontSize: 15, lineHeight: 1.6 }}>{item.body}</dd>
+        <details style={{ border: "1px solid #E2E8F0", borderRadius: 4 }}>
+          <summary style={{ cursor: "pointer", padding: "16px 18px", color: "#0B1E3E" }}>
+            <h2
+              id="quote-preparation-title"
+              style={{ display: "inline", fontFamily: "var(--font-head)", fontSize: 18, lineHeight: 1.4, margin: 0 }}
+            >
+              {copy.title}
+            </h2>
+          </summary>
+          <div style={{ padding: "8px 18px 24px" }}>
+            <p style={{ color: "#D1172E", fontWeight: 700, fontSize: 13, margin: "0 0 10px" }}>
+              {copy.eyebrow}
+            </p>
+            <p style={{ lineHeight: 1.6, margin: "16px 0 28px" }}>{copy.intro}</p>
+            <dl
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))",
+                gap: 24,
+                margin: 0,
+              }}
+            >
+              {items.map((item) => (
+                <div key={item.title} style={{ borderTop: "1px solid #E2E8F0", paddingTop: 16, minWidth: 0 }}>
+                  <dt style={{ fontFamily: "var(--font-head)", fontWeight: 700, fontSize: 17 }}>{item.title}</dt>
+                  <dd style={{ margin: "8px 0 0", color: "rgba(11,30,62,0.78)", fontSize: 15, lineHeight: 1.6 }}>{item.body}</dd>
+                </div>
+              ))}
+            </dl>
+            <div style={{ marginTop: 32, padding: 24, background: "#F8FAFC", borderRadius: 4 }}>
+              <h3 style={{ fontFamily: "var(--font-head)", fontSize: 18, margin: "0 0 8px" }}>{copy.costTitle}</h3>
+              <p style={{ margin: 0, fontSize: 15, lineHeight: 1.6 }}>{service.cost}</p>
+              <h3 style={{ fontFamily: "var(--font-head)", fontSize: 18, margin: "24px 0 8px" }}>{copy.scopeTitle}</h3>
+              <p style={{ margin: 0, fontSize: 15, lineHeight: 1.6 }}>{service.scope}</p>
             </div>
-          ))}
-        </dl>
-        <div style={{ marginTop: 32, padding: 24, background: "#F8FAFC", borderRadius: 4 }}>
-          <h3 style={{ fontFamily: "var(--font-head)", fontSize: 18, margin: "0 0 8px" }}>{copy.costTitle}</h3>
-          <p style={{ margin: 0, fontSize: 15, lineHeight: 1.6 }}>{service.cost}</p>
-          <h3 style={{ fontFamily: "var(--font-head)", fontSize: 18, margin: "24px 0 8px" }}>{copy.scopeTitle}</h3>
-          <p style={{ margin: 0, fontSize: 15, lineHeight: 1.6 }}>{service.scope}</p>
-        </div>
+          </div>
+        </details>
       </div>
     </section>
   );
