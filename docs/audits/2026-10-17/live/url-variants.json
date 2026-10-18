@@ -1,0 +1,207 @@
+{
+  "checkedAt": "2026-10-17T10:17:31.395Z",
+  "observations": [
+    {
+      "original": "http://afm.hu/",
+      "chain": [
+        {
+          "url": "http://afm.hu/",
+          "status": 308,
+          "location": "https://afm.hu/",
+          "canonical": null,
+          "xRobotsTag": null
+        },
+        {
+          "url": "https://afm.hu/",
+          "status": 307,
+          "location": "https://www.afm.hu/",
+          "canonical": null,
+          "xRobotsTag": null
+        },
+        {
+          "url": "https://www.afm.hu/",
+          "status": 308,
+          "location": "/hu",
+          "canonical": null,
+          "xRobotsTag": null
+        },
+        {
+          "url": "https://www.afm.hu/hu",
+          "status": 200,
+          "location": null,
+          "canonical": "https://www.afm.hu/hu",
+          "xRobotsTag": null
+        }
+      ]
+    },
+    {
+      "original": "https://afm.hu/",
+      "chain": [
+        {
+          "url": "https://afm.hu/",
+          "status": 307,
+          "location": "https://www.afm.hu/",
+          "canonical": null,
+          "xRobotsTag": null
+        },
+        {
+          "url": "https://www.afm.hu/",
+          "status": 308,
+          "location": "/hu",
+          "canonical": null,
+          "xRobotsTag": null
+        },
+        {
+          "url": "https://www.afm.hu/hu",
+          "status": 200,
+          "location": null,
+          "canonical": "https://www.afm.hu/hu",
+          "xRobotsTag": null
+        }
+      ]
+    },
+    {
+      "original": "http://www.afm.hu/",
+      "chain": [
+        {
+          "url": "http://www.afm.hu/",
+          "status": 308,
+          "location": "https://www.afm.hu/",
+          "canonical": null,
+          "xRobotsTag": null
+        },
+        {
+          "url": "https://www.afm.hu/",
+          "status": 308,
+          "location": "/hu",
+          "canonical": null,
+          "xRobotsTag": null
+        },
+        {
+          "url": "https://www.afm.hu/hu",
+          "status": 200,
+          "location": null,
+          "canonical": "https://www.afm.hu/hu",
+          "xRobotsTag": null
+        }
+      ]
+    },
+    {
+      "original": "https://www.afm.hu/",
+      "chain": [
+        {
+          "url": "https://www.afm.hu/",
+          "status": 308,
+          "location": "/hu",
+          "canonical": null,
+          "xRobotsTag": null
+        },
+        {
+          "url": "https://www.afm.hu/hu",
+          "status": 200,
+          "location": null,
+          "canonical": "https://www.afm.hu/hu",
+          "xRobotsTag": null
+        }
+      ]
+    },
+    {
+      "original": "https://www.afm.hu/hu/",
+      "chain": [
+        {
+          "url": "https://www.afm.hu/hu/",
+          "status": 308,
+          "location": "/hu",
+          "canonical": null,
+          "xRobotsTag": null
+        },
+        {
+          "url": "https://www.afm.hu/hu",
+          "status": 200,
+          "location": null,
+          "canonical": "https://www.afm.hu/hu",
+          "xRobotsTag": null
+        }
+      ]
+    },
+    {
+      "original": "https://www.afm.hu/HU",
+      "chain": [
+        {
+          "url": "https://www.afm.hu/HU",
+          "status": 308,
+          "location": "/hu",
+          "canonical": null,
+          "xRobotsTag": null
+        },
+        {
+          "url": "https://www.afm.hu/hu",
+          "status": 200,
+          "location": null,
+          "canonical": "https://www.afm.hu/hu",
+          "xRobotsTag": null
+        }
+      ]
+    },
+    {
+      "original": "https://www.afm.hu/hu?utm_source=seo-audit",
+      "chain": [
+        {
+          "url": "https://www.afm.hu/hu?utm_source=seo-audit",
+          "status": 200,
+          "location": null,
+          "canonical": "https://www.afm.hu/hu",
+          "xRobotsTag": null
+        }
+      ]
+    },
+    {
+      "original": "https://www.afm.hu/cgi-sys/defaultwebpage.cgi",
+      "chain": [
+        {
+          "url": "https://www.afm.hu/cgi-sys/defaultwebpage.cgi",
+          "status": 410,
+          "location": null,
+          "canonical": null,
+          "xRobotsTag": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "original": "https://www.afm.hu/mall",
+      "chain": [
+        {
+          "url": "https://www.afm.hu/mall",
+          "status": 410,
+          "location": null,
+          "canonical": null,
+          "xRobotsTag": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "original": "https://www.afm.hu/tw",
+      "chain": [
+        {
+          "url": "https://www.afm.hu/tw",
+          "status": 410,
+          "location": null,
+          "canonical": null,
+          "xRobotsTag": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "original": "https://www.afm.hu/hu/szolgaltatasok/security",
+      "chain": [
+        {
+          "url": "https://www.afm.hu/hu/szolgaltatasok/security",
+          "status": 404,
+          "location": null,
+          "canonical": "https://www.afm.hu/hu",
+          "xRobotsTag": null
+        }
+      ]
+    }
+  ]
+}

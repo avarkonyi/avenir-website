@@ -6,11 +6,11 @@ import { useParams, usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import type { Translation } from "@/lib/i18n";
 import { getVisibleNavSectionKeys } from "@/lib/locale-ui-helpers";
-import { RECRUITMENT_PRIVACY_SLUGS } from "@/lib/recruitment-privacy-routes";
-import { TRUST_CENTER_SLUGS } from "@/lib/trust-center-routes";
+import { getLocaleAccessibility, LANGUAGE_NAMES } from "@/lib/locale-accessibility";
+import { getUtilityLocaleHref } from "@/lib/locale-navigation";
+import { LOCALES } from "@/lib/locales";
 import { Icon } from "./Icon";
 
-const LOCALES = ["hu", "en", "de", "zh", "ko"] as const;
 const FULL_CONTENT_LOCALES = ["hu", "en"] as const;
 const LEGAL_CONTENT_LOCALES = ["hu", "en", "de"] as const;
 const NEWS_CONTENT_LOCALES = ["hu", "en", "de"] as const;
@@ -22,12 +22,13 @@ function normalizeHash(rawHash: string): string {
   return lastPart ? `#${lastPart}` : "";
 }
 
-export function Nav({ t }: { t: Pick<Translation, "nav"> }) {
+export function Nav({ t, serviceLocales }: { t: Pick<Translation, "nav">; serviceLocales?: readonly (typeof LOCALES)[number][] }) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const params = useParams<{ locale: string }>();
   const pathname = usePathname();
   const currentLocale = params?.locale ?? "hu";
+  const accessibility = getLocaleAccessibility(currentLocale);
   const visibleSectionKeys = getVisibleNavSectionKeys(currentLocale);
 
   // True if currently on the locale homepage (where the section anchors
@@ -42,7 +43,7 @@ export function Nav({ t }: { t: Pick<Translation, "nav"> }) {
   // Like recruitment privacy, the switcher must map the slug pair and only
   // expose HU/EN.
   const isTrustCenterPage =
-    /^\/(?:hu|en|de|zh|ko)\/(?:megfelelosegi-kozpont|trust-center)\/?$/.test(
+    /^\/(?:hu|en|de|zh|ko|fr)\/(?:megfelelosegi-kozpont|trust-center)\/?$/.test(
       pathname,
     );
 
@@ -51,31 +52,32 @@ export function Nav({ t }: { t: Pick<Translation, "nav"> }) {
   // These pages have a white background that would clash with the
   // homepage's transparent-at-top nav style — readability hotfix:
   // force the navy nav background regardless of scroll position.
+  const isDisclosurePage = /\/(felelos-hibabejelentes|responsible-disclosure)\/?$/.test(pathname);
   const isLegalPage =
     /\/(impresszum|aszf|adatvedelem|palyazoi-adatkezeles|recruitment-privacy)\/?$/.test(
       pathname,
-    ) || isTrustCenterPage;
+    ) || isTrustCenterPage || isDisclosurePage;
   // The recruitment privacy notice uses locale-specific slugs (PL-091
   // Option B): /hu/palyazoi-adatkezeles <-> /en/recruitment-privacy.
   // The switcher must map the slug, not just swap the locale segment,
   // and only HU/EN exist.
   const isRecruitmentPrivacyPage =
-    /^\/(?:hu|en|de|zh|ko)\/(?:palyazoi-adatkezeles|recruitment-privacy)\/?$/.test(
+    /^\/(?:hu|en|de|zh|ko|fr)\/(?:palyazoi-adatkezeles|recruitment-privacy)\/?$/.test(
       pathname,
     );
-  const isServiceDetailPage = /^\/(?:hu|en|de|zh|ko)\/szolgaltatasok\/[^/]+\/?$/.test(
+  const isServiceDetailPage = /^\/(?:hu|en|de|zh|ko|fr)\/szolgaltatasok\/[^/]+\/?$/.test(
     pathname,
   );
-  const isNewsPage = /^\/(?:hu|en|de|zh|ko)\/hirek(?:\/[^/]+)?\/?$/.test(pathname);
+  const isNewsPage = /^\/(?:hu|en|de|zh|ko|fr)\/hirek(?:\/[^/]+)?\/?$/.test(pathname);
   const availableLocales =
     isNewsPage
       ? NEWS_CONTENT_LOCALES
-      : isTrustCenterPage
+      : isTrustCenterPage || isDisclosurePage
         ? FULL_CONTENT_LOCALES
         : isRecruitmentPrivacyPage
           ? FULL_CONTENT_LOCALES
           : isServiceDetailPage
-            ? FULL_CONTENT_LOCALES
+            ? (serviceLocales ?? FULL_CONTENT_LOCALES)
             : isLegalPage
               ? LEGAL_CONTENT_LOCALES
               : LOCALES;
@@ -183,16 +185,8 @@ export function Nav({ t }: { t: Pick<Translation, "nav"> }) {
     // Recruitment privacy pages: locale-specific slug pair, so a plain
     // locale-segment swap would 404. Map to the target locale's slug
     // (switcher offers HU/EN only on these pages).
-    if (
-      isRecruitmentPrivacyPage &&
-      (newLocale === "hu" || newLocale === "en")
-    ) {
-      return `/${newLocale}/${RECRUITMENT_PRIVACY_SLUGS[newLocale]}${hash}`;
-    }
-
-    if (isTrustCenterPage && (newLocale === "hu" || newLocale === "en")) {
-      return `/${newLocale}/${TRUST_CENTER_SLUGS[newLocale]}${hash}`;
-    }
+    const utilityHref = getUtilityLocaleHref(pathname, newLocale, hash);
+    if (utilityHref) return utilityHref;
 
     const segments = pathname.split("/");
     let basePath: string;
@@ -234,7 +228,7 @@ export function Nav({ t }: { t: Pick<Translation, "nav"> }) {
           href={`/${currentLocale}`}
           onClick={handleLogoClick}
           style={{ background: "none", border: "none", cursor: "pointer", padding: 0, display: "inline-flex" }}
-          aria-label="Avenir home"
+          aria-label={accessibility.home}
         >
           <Image
             src="/avenir-logo-horizontal-dark.svg"
@@ -290,7 +284,7 @@ export function Nav({ t }: { t: Pick<Translation, "nav"> }) {
                 href={buildLocaleHref(l)}
                 scroll={false}
                 prefetch
-                aria-label={`Switch to ${l.toUpperCase()}`}
+                aria-label={`${accessibility.language}: ${LANGUAGE_NAMES[l]}`}
                 style={{
                   background: currentLocale === l ? "#D1172E" : "rgba(255,255,255,0.12)",
                   cursor: "pointer",
@@ -348,7 +342,7 @@ export function Nav({ t }: { t: Pick<Translation, "nav"> }) {
             color: "#fff",
             padding: 0,
           }}
-          aria-label="Toggle menu"
+          aria-label={accessibility.menu}
           aria-expanded={menuOpen}
           aria-controls="mobile-nav-menu"
         >
@@ -402,7 +396,7 @@ export function Nav({ t }: { t: Pick<Translation, "nav"> }) {
                 href={buildLocaleHref(l)}
                 scroll={false}
                 prefetch
-                aria-label={`Switch to ${l.toUpperCase()}`}
+                aria-label={`${accessibility.language}: ${LANGUAGE_NAMES[l]}`}
                 onClick={() => setMenuOpen(false)}
                 style={{
                   background: currentLocale === l ? "#D1172E" : "rgba(255,255,255,0.12)",

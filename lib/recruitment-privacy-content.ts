@@ -100,7 +100,7 @@ export const RECRUITMENT_PRIVACY_CONTENT: Record<
         body: "A jelentkező adatkezeléssel kapcsolatos kérdéssel vagy panasszal elsőként az Adatkezelőhöz vagy az adatvédelmi tisztviselőhöz fordulhat.\n\nFelügyeleti hatóság:\nNemzeti Adatvédelmi és Információszabadság Hatóság (NAIH)\nCím: 1055 Budapest, Falk Miksa utca 9-11.\nPostacím: 1363 Budapest, Pf.: 9\nTelefon: +36 1 391 1400\nE-mail: ugyfelszolgalat@naih.hu\nWeb: https://www.naih.hu\n\nAz érintett bírósághoz is fordulhat. A pert az érintett választása szerint a lakóhelye vagy tartózkodási helye szerinti törvényszék előtt is megindíthatja.",
       },
     ],
-    versionHistory: `Verziótörténet: 1.0 verzió - Hatály: ${PUBLICATION_DATE_HU}-tól. Első közzététel.`,
+    versionHistory: `Verziótörténet: 1.0 verzió - Hatály: ${PUBLICATION_DATE_HU.replace(/\.$/, "")}-től. Első közzététel.`,
   },
   en: {
     title: "Recruitment Privacy Notice",

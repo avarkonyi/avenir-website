@@ -160,7 +160,7 @@ export const TRUST_CENTER_CONTENT: Record<
           {
             title: "AutoWallis Pest",
             meta: [
-              "Belső jogi/proof entitás: Wallis Motor Pest Kft.",
+              "Jogi személy: Wallis Motor Pest Kft.",
               "Kapcsolódó szolgáltatások: Objektumőrzés; Recepciós és portaszolgálat",
             ],
             links: [
@@ -311,7 +311,7 @@ export const TRUST_CENTER_CONTENT: Record<
           {
             title: "AutoWallis Pest",
             meta: [
-              "Internal legal/proof entity: Wallis Motor Pest Kft.",
+              "Legal entity: Wallis Motor Pest Kft.",
               "Related services: On-site Security Guarding; Reception and Gatehouse Services",
             ],
             links: [

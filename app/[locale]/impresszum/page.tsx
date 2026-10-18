@@ -40,7 +40,9 @@ export async function generateMetadata({
   const title = `${pageTitle} — ${SEO_DATA.legalNameShort}`;
   const description =
     deImpressum?.sections[0]?.body.slice(0, 160) ??
-    `${SEO_DATA.legalName}. ${SEO_DATA.address.streetAddress}, ${SEO_DATA.address.postalCode} ${SEO_DATA.address.addressLocality}. Cégjegyzékszám: ${SEO_DATA.registrationId}.`;
+    (locale === "en"
+      ? `${SEO_DATA.legalNameShort}. Registered office: Királyok útja 291, Building B, Door 15, 1039 Budapest. Company registration number: ${SEO_DATA.registrationId}.`
+      : `${SEO_DATA.legalName}. ${SEO_DATA.address.streetAddress}, ${SEO_DATA.address.postalCode} ${SEO_DATA.address.addressLocality}. Cégjegyzékszám: ${SEO_DATA.registrationId}.`);
   const url = legalPageUrl(locale, "impresszum");
   const isDeReviewPage = locale === "de";
   const alternates = isDeReviewPage

@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { AvenirLogo } from "@/components/AvenirLogo";
+import { LOCALES } from "@/lib/locales";
 
 // Global 404 — caught when no app/[locale]/* route matches AND the
 // proxy did not rewrite. No parent layout exists, so this file
 // provides its own <html><body>. Bilingual labels (no locale context),
-// 4 locale-root escape hatches.
+// All supported locale-root escape hatches.
 export default function GlobalNotFound() {
   return (
     <html lang="hu">
@@ -59,7 +60,7 @@ export default function GlobalNotFound() {
               justifyContent: "center",
             }}
           >
-            {(["hu", "en", "de", "zh", "ko"] as const).map((l) => (
+            {LOCALES.map((l) => (
               <Link
                 key={l}
                 href={`/${l}`}

@@ -8,7 +8,7 @@ Version 1.3 — Klarstellung zu Google Analytics als Auftragsverarbeiter
 
 Diese Erklärung beschreibt, wie die Avenir Facility Management Kft. die über die Website www.afm.hu angegebenen personenbezogenen Daten verarbeitet, insbesondere im Rahmen des Kontakt- und Angebotsanfrageprozesses. Ziel dieser Erklärung ist es, den betroffenen Personen präzise, transparente, verständliche und leicht zugängliche Informationen über die Datenverarbeitung zu geben.
 
-Für die übrigen Verarbeitungstätigkeiten des Verantwortlichen — insbesondere die Videoüberwachung an den Standorten unserer Kunden, die Privatermittlungstätigkeit, die Verarbeitung von Mitarbeiterdaten sowie Verarbeitungen im Rahmen von Kundenprojekten — gelten gesonderte Datenschutzhinweise. Diese können unter info@afm.hu angefordert werden; Hinweise vor Ort sind an den jeweiligen Servicestandorten verfügbar.
+Diese Erklärung gilt für den Kontakt- und Angebotsanfrageprozess der Website www.afm.hu sowie für die vertragsbezogene Verwaltung nach einer erfolgreichen Angebotsanfrage. Für die übrigen Verarbeitungstätigkeiten des Verantwortlichen — insbesondere die Videoüberwachung an den Standorten unserer Kunden, die Privatermittlungstätigkeit, die Verarbeitung von Mitarbeiterdaten sowie Verarbeitungen im Rahmen von Kundenprojekten — gelten gesonderte Datenschutzhinweise. Diese können unter info@afm.hu angefordert werden; Hinweise vor Ort sind an den jeweiligen Servicestandorten verfügbar.
 
 Maßgebliche Sprache: Die maßgebliche Fassung dieser Erklärung ist der ungarische Text unter https://www.afm.hu/hu/adatvedelem. Alle nicht ungarischen Sprachfassungen dienen ausschließlich der Information; bei Abweichungen zwischen den Sprachfassungen ist der ungarische Text maßgeblich.
 
@@ -133,11 +133,11 @@ https://www.edpb.europa.eu/system/files/2024-12/edpb_dpf_faq-for-individuals_de.
 
 ## 8. Cookies und ähnliche Technologien
 
-Die Website verwendet Google Analytics 4 (GA4) ausschließlich auf Grundlage einer vorherigen aktiven Einwilligung der Nutzerin oder des Nutzers. Google Analytics wird nicht vor einer aktiven Einwilligung geladen.
+Analyse-Cookies oder ähnliche Technologien setzt die Website ausschließlich auf Grundlage einer Einwilligung der betroffenen Person ein; derzeit erfolgt die Analyse mit Google Analytics 4 (GA4). Google Analytics wird nicht vor einer aktiven Einwilligung geladen.
 
-Wenn keine Einwilligung erteilt oder die Einwilligung abgelehnt wird, werden keine Google-Analytics-Skripte geladen und keine Analytics-Messereignisse an Google Analytics gesendet.
+Solange keine Einwilligung erteilt wurde, werden keine Google-Analytics-Skripte geladen und keine Analytics-Messereignisse an Google Analytics gesendet.
 
-Analytics-Ereignisse enthalten keine Namen, E-Mail-Adressen, Telefonnummern, Unternehmensnamen, Nachrichtentexte oder frei eingegebenen Formularinhalte. Die Nutzerin oder der Nutzer kann die Entscheidung über die Cookie-Einstellungen ändern.
+Analytics-Ereignisse enthalten keine Namen, E-Mail-Adressen, Telefonnummern, Unternehmensnamen, Nachrichtentexte oder frei eingegebenen Formularinhalte. Die Nutzerin oder der Nutzer kann die Entscheidung jederzeit über die Schaltfläche „Cookie-Einstellungen“ in der Fußzeile der Website ändern. Mit der Auswahl „Ablehnen“ wird die Einwilligung widerrufen; die Website deaktiviert daraufhin die weitere GA4-Messung und löscht die von ihr verwendeten, zugänglichen GA4-Cookies.
 
 Die Website verwendet derzeit keinen Google Tag Manager, keinen LinkedIn Insight Tag und keine sonstigen Marketing-Tracking-Pixel.
 
@@ -176,7 +176,7 @@ Beruht die Verarbeitung auf der Erfüllung eines Vertrags oder auf der Durchfüh
 
 Widerruf einer Einwilligung
 
-Im Kontaktprozess verarbeitet der Verantwortliche personenbezogene Daten in erster Linie nicht auf Grundlage einer Einwilligung. Sollte eine künftige Verarbeitung auf einer Einwilligung beruhen, wäre die betroffene Person berechtigt, diese jederzeit zu widerrufen.
+Im Kontaktprozess verarbeitet der Verantwortliche personenbezogene Daten in erster Linie nicht auf Grundlage einer Einwilligung. Die Nutzung von Google Analytics 4 (GA4) beruht auf einer Einwilligung. Die betroffene Person kann diese jederzeit widerrufen, indem sie in der Fußzeile der Website auf „Cookie-Einstellungen“ klickt und „Ablehnen“ auswählt. Der Widerruf berührt nicht die Rechtmäßigkeit der aufgrund der Einwilligung bis zum Widerruf erfolgten Verarbeitung.
 
 ## 10. Automatisierte Entscheidungsfindung und Profiling
 
@@ -222,7 +222,7 @@ Der Verantwortliche behält sich das Recht vor, diese Erklärung zu ändern. Die
 
 Versionshistorie:
 Version 1.3 — Gültig ab 13. Juni 2026. Klarstellung zu Google Analytics 4 als Auftragsverarbeiter und zu möglichen Datenübermittlungen; keine Änderung des Analytics-Runtime-Verhaltens, weiterhin kein Google Tag Manager, kein LinkedIn Insight Tag, kein Google-Ads-Remarketing und keine sonstigen Marketing-Tracking-Pixel.
-Version 1.2 — Gültig ab 5. Juni 2026. Präzisierung des Geltungsbereichs dieser Erklärung (für Verarbeitungen außerhalb der Website — Videoüberwachung, Privatermittlung, Mitarbeiter- und Kundenprojektdaten — gelten gesonderte Hinweise) sowie Ergänzung der Angaben zum Verantwortlichen (Registergericht, EU-USt-IdNr., Gründungsdatum) und zur Datenschutzbeauftragten (Rechtsgrundlage der Benennung, NAIH-Meldung, Postanschrift).
-Version 1.1 — Gültig ab 6. Mai 2026. Auf Grundlage der Hinweise der Datenschutzbeauftragten präzisierte Verarbeitungsprozesse, verständlichere DSGVO-Verweise, Garantien für Drittlandübermittlungen und ausführliche Darstellung der Betroffenenrechte.
+Version 1.2 — Gültig ab 1. Juni 2026. Präzisierung des Geltungsbereichs, Ergänzung der Angaben zum Verantwortlichen und zur Datenschutzbeauftragten sowie Anpassung des Abschnitts zu Cookies und Analyse an die einwilligungsbasierte Nutzung von Google Analytics.
+Version 1.1 — Gültig ab 6. Mai 2026. Auf Grundlage der Hinweise der Datenschutzbeauftragten präzisierte Verarbeitungsprozesse, verständlichere DSGVO-Verweise, Garantien für Drittlandübermittlungen und Darstellung der Betroffenenrechte.
 Version 1.0 — Gültig ab 28. April 2026. Erstveröffentlichung.
 

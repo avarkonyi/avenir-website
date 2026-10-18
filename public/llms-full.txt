@@ -6,7 +6,7 @@ replace the public website, legal notices, contracts, tenders, or certificates.
 
 Canonical website: https://www.afm.hu
 
-Last updated: 2026-06-13
+Last updated: 2026-10-17
 
 ## Entity summary
 
@@ -33,15 +33,18 @@ Indexed production languages: Hungarian (hu) and English (en).
 - Robots policy: https://www.afm.hu/robots.txt
 - Concise AI-search file: https://www.afm.hu/llms.txt
 
-Partial, non-indexed localization surfaces (do not treat these as full
-production languages): a German (de) homepage, a Chinese (zh) homepage, and a
-Korean (ko) homepage draft. German additionally serves service, legal and news
-pages in a noindex review mode; those pages are not in the sitemap or hreflang
-and are not a final SEO launch.
+The current source supports German (de), French (fr), Korean (ko), and
+Chinese (zh) homepages plus eight service detail pages per locale in noindex
+review mode. These review surfaces are excluded from sitemap and hreflang;
+translation review and release approval remain required. This source summary
+does not confirm that these changes have been deployed to production.
+Only German additionally has legal and news review routes. French, Korean and
+Chinese legal and news routes remain closed; do not infer those URLs.
 
-- DE homepage (partial, noindex): https://www.afm.hu/de
-- ZH homepage (partial, noindex): https://www.afm.hu/zh
-- KO homepage draft (noindex, translation-review-required): https://www.afm.hu/ko
+- DE homepage (review, noindex): https://www.afm.hu/de
+- FR homepage (review, noindex): https://www.afm.hu/fr
+- KO homepage (review, noindex): https://www.afm.hu/ko
+- ZH homepage (review, noindex): https://www.afm.hu/zh
 
 ## Verified company facts
 
@@ -115,9 +118,10 @@ free-text form content.
 
 Service detail pages are public-ready in Hungarian and English. Each Hungarian
 URL below has an English equivalent at the same slug under
-https://www.afm.hu/en/szolgaltatasok/. German service detail pages exist only in
-a noindex review mode and are not citable public sources. Do not use legacy
-service slugs or DE/ZH/KO service detail URLs as public service-detail sources.
+https://www.afm.hu/en/szolgaltatasok/. The source also supports eight service
+pages per locale for DE/FR/KO/ZH in noindex review mode. They are not citable
+public sources, and source support does not confirm production deployment.
+Do not use legacy slugs or DE/FR/KO/ZH service detail URLs as public sources.
 
 ### Élőerős objektumőrzés
 
@@ -186,7 +190,7 @@ quality checks, and reporting.
 
 Hungarian and English legal pages are public and sitemap-listed. German legal
 pages exist only in a noindex review mode (not in the sitemap or hreflang).
-Chinese and Korean legal pages are not published.
+French, Chinese and Korean legal routes remain closed.
 
 - HU privacy notice: https://www.afm.hu/hu/adatvedelem
 - HU legal notices: https://www.afm.hu/hu/aszf
@@ -209,7 +213,7 @@ only in noindex review mode and are not final SEO/citation sources.
 - German news index, review/noindex: https://www.afm.hu/de/hirek
 - German launch article, review/noindex: https://www.afm.hu/de/hirek/megujult-az-avenir-weboldala-es-arculata
 
-Do not infer Chinese or Korean news URLs.
+Do not infer French, Chinese or Korean news URLs.
 
 ## Structured data notes
 
@@ -225,13 +229,12 @@ logos are proof-controlled visual assets and are not schema relationship claims.
 
 - Legacy service detail slugs such as `security`, `reception`, `building`,
   `technical`, `mystery`, `cleaning`, `hardfm`, and `green`.
-- DE/ZH/KO service detail URLs as citable public sources. Service detail pages
-  are public-ready in Hungarian and English; German service detail pages are
-  noindex review-mode only; Chinese and Korean are homepage-only and
-  translation-review-required.
+- DE/FR/KO/ZH service detail URLs as citable public sources. The source supports
+  eight service pages per review locale, all noindex and excluded from sitemap
+  and hreflang; translation review and release approval remain required.
 - German news URLs as final SEO/citation sources while they remain noindex
-  review surfaces; Chinese and Korean news URLs are not available.
-- DE/ZH/KO Trust Center URLs.
+  review surfaces; French, Chinese and Korean news routes remain closed.
+- DE/FR/KO/ZH Trust Center URLs.
 - Admin and API routes.
 - Draft, preview-only, internal roadmap, migration, seed, or database URLs.
 - Unapproved partner names, customer names, testimonials, case studies, scores,

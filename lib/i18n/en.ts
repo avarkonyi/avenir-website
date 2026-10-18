@@ -146,7 +146,7 @@ export const en = {
     "requiredField": "* Required field",
     "nextStepHelper": "Within business hours we usually reply the same day, and in any case we'll be in touch by the next business day. The time needed to prepare a quote depends on the scope and complexity of your request.",
     "specialDataWarning": "Please do not submit special categories of data, criminal-conviction data, classified data, trade secrets, or detailed private-life information about third parties via this contact form. Such matters require a separate engagement and data-protection consultation.",
-    "specialDataWarningLink": "Terms of Use, section 4",
+    "specialDataWarningLink": "Legal Statements, section 4",
     "privateInvestigation": "Private investigation",
     "layeredNotice": "By submitting, you acknowledge our",
     "layeredNoticeLink": "Privacy Policy",
@@ -166,7 +166,7 @@ export const en = {
     "rights": "© 2026 Avenir Facility Management Kft. · All rights reserved.",
     "legalTitle": "Legal",
     "privacy": "Privacy Policy",
-    "terms": "Terms of Use",
+    "terms": "Legal Statements",
     "impressum": "Legal Notice",
     "companyNumberLabel": "Company registration number",
     "taxNumberLabel": "Tax number",
@@ -210,12 +210,12 @@ export const en = {
       "title": "Privacy Policy",
       "lastUpdated": "Effective: 28 April 2026",
       "version": "Version 1.0 — first publication",
-      "intro": "Avenir Facility Management Szolgáltató Korlátolt Felelősségű Társaság (the \"Controller\") is committed to protecting the personal data of data subjects. This Privacy Policy has been prepared in accordance with Regulation (EU) 2016/679 of the European Parliament and of the Council (the \"GDPR\") and Hungarian Act CXII of 2011 on the Right of Informational Self-determination and Freedom of Information (the \"Infotv.\"), which is the Hungarian implementation framework alongside the GDPR.\n\nThe scope of this Policy is limited to the contact and quote-request flow on the https://www.afm.hu website, and to subsequent contractual administration following a successful quote request. The Controller's other processing activities — in particular CCTV monitoring at our clients' premises, private investigation activity, employee data processing, and data processing carried out in the framework of client projects — are governed by separate notices. These are available on request at info@afm.hu, and on-site notices are posted at the relevant service locations.\n\nAuthoritative language: the authoritative version of this Policy is the Hungarian text published at https://www.afm.hu/hu/adatvedelem. The English, German and Chinese versions are provided for the convenience of non-Hungarian-speaking readers; in the event of any discrepancy between language versions, the Hungarian text prevails.",
+      "intro": "Avenir Facility Management Szolgáltató Korlátolt Felelősségű Társaság (the \"Controller\") is committed to protecting the personal data of data subjects. This Privacy Policy has been prepared in accordance with Regulation (EU) 2016/679 of the European Parliament and of the Council (the \"GDPR\") and Hungarian Act CXII of 2011 on the Right of Informational Self-determination and Freedom of Information (the \"Infotv.\"), which is the Hungarian implementation framework alongside the GDPR.\n\nThe scope of this Policy is limited to the contact and quote-request flow on the https://www.afm.hu website, and to subsequent contractual administration following a successful quote request. The Controller's other processing activities — in particular CCTV monitoring at our clients' premises, private investigation activity, employee data processing, and data processing carried out in the framework of client projects — are governed by separate notices. These are available on request at info@afm.hu, and on-site notices are posted at the relevant service locations.\n\nAuthoritative language: the authoritative version of this Policy is the Hungarian text published at https://www.afm.hu/hu/adatvedelem. The English and German versions are provided for the convenience of non-Hungarian-speaking readers; in the event of any discrepancy between language versions, the Hungarian text prevails.",
       "sections": [
         {
           "id": "controller",
           "title": "1. Identification of the Controller",
-          "body": "Legal name: Avenir Facility Management Szolgáltató Korlátolt Felelősségű Társaság\nCourt-registered short form: Avenir Facility Kft.\nMarketing name: Avenir Facility Management Kft.\nCompany registration number: 01-09-328046 — Court of Registration of the Budapest-Capital Regional Court\nTax ID: 26395124-2-41\nEU VAT ID: HU26395124\nDate of incorporation: 31 July 2018\nRegistered office: Királyok útja 291, building B, door 15, 1039 Budapest, Hungary\nGeneral contact: info@afm.hu · +36 70 316 8218\nWeb: https://www.afm.hu"
+          "body": "Legal name: Avenir Facility Management Szolgáltató Korlátolt Felelősségű Társaság\nShort company name: Avenir Facility Kft.\nMarketing name: Avenir Facility Management Kft.\nCompany registration number: 01-09-328046 — Court of Registration of the Budapest-Capital Regional Court\nTax ID: 26395124-2-41\nEU VAT ID: HU26395124\nDate of incorporation: 31 July 2018\nRegistered office: Királyok útja 291, building B, door 15, 1039 Budapest, Hungary\nGeneral contact: info@afm.hu · +36 70 316 8218\nWeb: https://www.afm.hu"
         },
         {
           "id": "representative",
@@ -294,7 +294,7 @@ export const en = {
         {
           "id": "general",
           "title": "1. General Provisions",
-          "body": "Provider (marketing name): Avenir Facility Management Kft.\nProvider (legal name): Avenir Facility Management Szolgáltató Korlátolt Felelősségű Társaság (the \"Provider\"). Full provider details: see Legal Notice.\nScope of these Terms of Use: the use of the https://www.afm.hu website, including the contact and quote-request flow.\nB2B-only client base: the Provider's clientele consists exclusively of B2B (business) clients. The Provider does not enter into contracts with consumers (within the meaning of § 8:1(1)(3) of the Hungarian Civil Code) via this website and does not establish consumer relationships through it. The contact flow on the website accepts only B2B-purpose enquiries.\nEffective from: 28 April 2026.\nAuthoritative language: Hungarian. The English, German and Chinese versions are for guidance only; in case of discrepancy, the Hungarian text prevails."
+          "body": "Provider (marketing name): Avenir Facility Management Kft.\nProvider (legal name): Avenir Facility Management Szolgáltató Korlátolt Felelősségű Társaság (the \"Provider\"). Full provider details: see Legal Notice.\nScope of these Terms of Use: the use of the https://www.afm.hu website, including the contact and quote-request flow.\nB2B-only client base: the Provider's clientele consists exclusively of B2B (business) clients. The Provider does not enter into contracts with consumers (within the meaning of § 8:1(1)(3) of the Hungarian Civil Code) via this website and does not establish consumer relationships through it. The contact flow on the website accepts only B2B-purpose enquiries.\nEffective from: 28 April 2026.\nAuthoritative language: Hungarian. The English and German versions are for guidance only; in case of discrepancy, the Hungarian text prevails."
         },
         {
           "id": "service",
@@ -396,7 +396,7 @@ export const en = {
       },
       "labels": {
         "legalName": "Legal name",
-        "shortName": "Court-registered short form",
+        "shortName": "Short company name",
         "marketingName": "Marketing name",
         "registrationNumber": "Company registration number",
         "court": "Registry court",

@@ -52,7 +52,7 @@ test("DE hero eyebrow reflects security + FM, not the gated audit layer", () => 
 test("DE stat/trust labels are German and proof-safe", () => {
   assert.equal(de.stats[1]?.l, "Geschulte Mitarbeitende");
   assert.equal(de.stats[2]?.l, "Hohe Bonitätsbewertung (D&B)");
-  assert.equal(de.stats[3]?.l, "Leitstellenbereitschaft");
+  assert.equal(de.stats[3]?.l, "Dispositionsbereitschaft");
   const labels: string[] = de.stats.map((s) => s.l);
   assert.ok(!labels.includes("D&B High Creditworthy 2026"));
   assert.ok(!labels.includes("Dispatcher-Bereitschaft"));

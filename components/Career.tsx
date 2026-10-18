@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { Translation } from "@/lib/i18n";
 import { db, positions } from "@/lib/db";
 import { getCareerPrivacyNotice } from "@/lib/locale-ui-helpers";
+import { localizeCareerField } from "@/lib/homepage-content";
 import { Icon } from "./Icon";
 
 // Per-locale column selection. Resolves audit P0-3: positions used to
@@ -15,6 +16,7 @@ const LOCALE_COLS = {
   de: { title: positions.titleDe, location: positions.locationDe, type: positions.typeDe },
   zh: { title: positions.titleZh, location: positions.locationZh, type: positions.typeZh },
   ko: { title: positions.titleEn, location: positions.locationEn, type: positions.typeEn },
+  fr: { title: positions.titleEn, location: positions.locationEn, type: positions.typeEn },
 } as const;
 
 type Locale = keyof typeof LOCALE_COLS;
@@ -28,15 +30,6 @@ type CareerFallbacks = {
 type TranslationWithCareerFallbacks = Translation & {
   readonly careerFallbacks?: CareerFallbacks;
 };
-
-function localizeCareerField(
-  locale: string,
-  value: string | null,
-  fallbackMap: Readonly<Record<string, string>> | undefined,
-): string | null {
-  if (locale !== "ko" || !value) return value;
-  return fallbackMap?.[value] ?? value;
-}
 
 export async function Career({
   t,
@@ -106,6 +99,7 @@ export async function Career({
             const location =
               localizeCareerField(locale, p.location, careerFallbacks?.locations) ?? "";
             const type = localizeCareerField(locale, p.type, careerFallbacks?.types) ?? "";
+            if (!title) return null;
 
             return (
             <div key={p.id} className="career-card">

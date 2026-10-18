@@ -36,7 +36,7 @@ export function getContactPrivacyHref(locale: string): string {
 }
 
 export function getServiceCardDetailLabel(locale: string): string {
-  return locale === "hu" ? "Részletek" : "Details";
+  return ({ hu: "Részletek", en: "Details", de: "Details", zh: "详情", ko: "자세히 보기", fr: "En savoir plus" } as Record<string, string>)[locale] ?? "Details";
 }
 
 // Contact-form copy actually needed by the client component. The parked
@@ -103,10 +103,13 @@ export function getCareerPrivacyNotice(
   if (locale === "de") {
     return {
       before: "Bitte lesen Sie vor Ihrer Bewerbung die ",
-      linkLabel: "Datenschutzhinweise für Bewerbungen",
+      linkLabel: "Datenschutzhinweise für Bewerbungen (auf Englisch)",
       after: ".",
       href: enHref,
     };
+  }
+  if (locale === "fr") {
+    return { before: "Avant de postuler, veuillez lire notre ", linkLabel: "notice de confidentialité pour les candidats (en anglais)", after: ".", href: enHref };
   }
   return null;
 }
@@ -119,6 +122,7 @@ const FOOTER_MAP_LINK_TITLES: Record<string, string> = {
   de: "In Google Maps öffnen",
   zh: "在 Google 地图中打开",
   ko: "Google 지도에서 열기",
+  fr: "Ouvrir dans Google Maps",
 };
 
 export function getFooterMapLinkTitle(locale: string): string {
@@ -202,9 +206,9 @@ function getFooterLegalLabels(
 
   if (locale === "zh") {
     return {
-      privacy: "Privacy Policy (English)",
-      terms: "Terms of Use (English)",
-      impressum: "Legal Notice (English)",
+      privacy: "隐私政策（英文）",
+      terms: "使用条款（英文）",
+      impressum: "法律声明（英文）",
     };
   }
 

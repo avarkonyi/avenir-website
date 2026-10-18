@@ -1,0 +1,552 @@
+{
+  "status": "PROPOSAL_ONLY_NOT_APPLIED",
+  "target": "staging",
+  "endpoint": "ep-twilight-sound-al2b7jsb",
+  "observedAt": "2026-10-17T17:49:25.719Z",
+  "requires": "Specific staging-write approval, fresh value comparison and backup before applying",
+  "changes": [
+    {
+      "id": 1,
+      "slug": "objektumorzes",
+      "field": "short_desc_de",
+      "before": "Personen- und Sachschutz mit geschulten Sicherheitskräften: Objektschutz, Streifendienste, Unterstützung bei der Zutrittskontrolle und Vorfallbearbeitung in Industrie-, Handels- und Büroumgebungen.",
+      "after": "Objektschutz vor Ort mit Zutrittskontrolle, Kontrollgängen, Vorfallbearbeitung, Dienstbuch und abgestimmter Eskalationsordnung.",
+      "reason": "T10: approved Hungarian card scope parity"
+    },
+    {
+      "id": 1,
+      "slug": "objektumorzes",
+      "field": "short_desc_zh",
+      "before": "由训练有素的安保人员提供人身及财产安全保护：驻场安保、巡逻服务、出入管理支持和事件处理，适用于工业、商业和办公环境。",
+      "after": "通过出入管理、巡逻、事件处理、执勤日志及约定的升级处理流程提供驻场安保。",
+      "reason": "T10: approved Hungarian card scope parity"
+    },
+    {
+      "id": 2,
+      "slug": "portaszolgalat",
+      "field": "trust_items_en",
+      "before": [
+        {
+          "body": "Service log, visitor-handling framework, incident recording and agreed reporting form the documented backbone of daily gatehouse operations.",
+          "title": "Daily service framework and logging"
+        },
+        {
+          "body": "The client has one responsible point of contact for daily operations, reports and required protocol changes.",
+          "title": "Designated responsible point of contact"
+        },
+        {
+          "body": "Gatehouse operations can be supported by 24/7 dispatch support; the notification and escalation framework is set at the start of the engagement.",
+          "title": "24/7 dispatch support"
+        },
+        {
+          "body": "Service processes are supported by Avenir's ISO 9001 and ISO 27001 certified management systems where the relevant processes fall within the certified operating scope.",
+          "title": "ISO 9001 and ISO 27001"
+        },
+        {
+          "body": "Visitor and access data are handled with purpose limitation, time-limited retention and appropriate information provision.",
+          "title": "Visitor-data handling"
+        },
+        {
+          "body": "Reception and gatehouse protocols combine courteous visitor handling with controlled access, escalation and reporting, so front-of-house service and security routines work from the same site rules.",
+          "title": "Hospitality and access control in one workflow"
+        }
+      ],
+      "after": [
+        {
+          "body": "Service log, visitor-handling framework, incident recording and agreed reporting form the documented backbone of daily gatehouse operations.",
+          "title": "Daily service framework and logging"
+        },
+        {
+          "body": "The client has one responsible point of contact for daily operations, reports and required protocol changes.",
+          "title": "Designated responsible point of contact"
+        },
+        {
+          "body": "Gatehouse operations can be supported by 24/7 dispatch support; the notification and escalation framework is set at the start of the engagement.",
+          "title": "24/7 dispatch support"
+        },
+        {
+          "body": "Service processes are supported by Avenir's ISO 9001 and ISO 27001 certified management systems where the relevant processes fall within the certified operating scope.",
+          "title": "ISO 9001 and ISO 27001"
+        },
+        {
+          "title": "Consideration of visitor-data handling requirements",
+          "body": "Purpose limitation, information provision and time-limited retention must be considered when handling visitor and access data."
+        },
+        {
+          "body": "Reception and gatehouse protocols combine courteous visitor handling with controlled access, escalation and reporting, so front-of-house service and security routines work from the same site rules.",
+          "title": "Hospitality and access control in one workflow"
+        }
+      ],
+      "reason": "ENS-002: preserve HU requirement rather than claim guaranteed implementation"
+    },
+    {
+      "id": 3,
+      "slug": "mystery-shopping-helyszini-audit",
+      "field": "short_desc_de",
+      "before": "Mystery Shopping, Servicequalitätskontrollen und Vor-Ort-Audits in realen Kunden- und Betriebssituationen, mit unabhängiger Bewertung und strukturiertem Reporting.",
+      "after": "Mystery Shopping und Serviceaudit in realen Kunden- und Betriebssituationen, mit strukturierter Beobachtung, Berichtswesen und Verbesserungsempfehlungen.",
+      "reason": "T10: approved Hungarian card scope parity"
+    },
+    {
+      "id": 3,
+      "slug": "mystery-shopping-helyszini-audit",
+      "field": "short_desc_zh",
+      "before": "在真实客户和运营场景中开展神秘顾客评估、服务质量检查和现场审核，并提供独立评估与结构化报告。",
+      "after": "在真实客户与运营情境中开展神秘顾客与服务审核，提供结构化观察、报告及改进建议。",
+      "reason": "T10: approved Hungarian card scope parity"
+    },
+    {
+      "id": 5,
+      "slug": "biztonsagtechnika",
+      "field": "short_desc_de",
+      "before": "Planung, Installation und Wartung von Videoüberwachungs-, Zutrittskontroll- und Alarmanlagen als technische Unterstützung für den personellen Objektschutz.",
+      "after": "Sicherheitstechnik für Kamerasysteme, Zutrittskontrolle und Alarmprozesse, eingebettet in ein standortgerechtes Sicherheitsmodell, mit technischer Planung, die Datenschutzaspekte einbezieht.",
+      "reason": "T10: approved Hungarian card scope parity"
+    },
+    {
+      "id": 5,
+      "slug": "biztonsagtechnika",
+      "field": "short_desc_zh",
+      "before": "视频监控、门禁和报警系统的设计、安装与维护，为驻场安保提供技术支持。",
+      "after": "通过考虑数据保护的技术设计，将视频监控、门禁及报警流程整合进适合现场的安保模式。",
+      "reason": "T10: approved Hungarian card scope parity"
+    },
+    {
+      "id": 7,
+      "slug": "soft-fm",
+      "field": "process_steps_en",
+      "before": [
+        {
+          "body": "Avenir starts with an initial site walk, reviewing areas, service touchpoints, operating windows and the existing provider setup before scope finalisation.",
+          "title": "Site walk and scope mapping"
+        },
+        {
+          "body": "Avenir defines the service areas, task frequencies, control points, quality criteria and reporting cadence before operational start.",
+          "title": "Written scope, frequencies and quality criteria"
+        },
+        {
+          "body": "During scoping, Avenir agrees the delivery model with the client: Avenir staff, approved subcontractors or existing client-side service providers under Avenir coordination, depending on the site model.",
+          "title": "Delivery model and team/provider structure"
+        },
+        {
+          "body": "Before go-live, Avenir prepares the operating framework: responsibilities, contact points, escalation routes, site instructions and the records needed for day-to-day control.",
+          "title": "Mobilisation and site documentation"
+        },
+        {
+          "body": "During the first month, Avenir tracks early issues, clarifies responsibilities and stabilises the operating cadence within the agreed scope.",
+          "title": "Go-live and stabilisation period"
+        },
+        {
+          "body": "Avenir reports completed tasks, quality observations, recurring issues and agreed actions, then reviews the service periodically with the client.",
+          "title": "Regular reporting and periodic review"
+        }
+      ],
+      "after": [
+        {
+          "body": "Avenir starts with an initial site walk, reviewing areas, service touchpoints, operating windows and the existing provider setup before scope finalisation.",
+          "title": "Site walk and scope mapping"
+        },
+        {
+          "body": "Avenir defines the service areas, task frequencies, control points, quality criteria and reporting cadence before operational start.",
+          "title": "Written scope, frequencies and quality criteria"
+        },
+        {
+          "body": "During scoping, Avenir agrees the delivery model with the client: Avenir staff, approved subcontractors or existing client-side service providers under Avenir coordination, depending on the site model.",
+          "title": "Delivery model and team/provider structure"
+        },
+        {
+          "body": "Before go-live, Avenir prepares the operating framework: responsibilities, contact points, escalation routes, site instructions and the records needed for day-to-day control.",
+          "title": "Mobilisation and site documentation"
+        },
+        {
+          "body": "During the initial operating period, Avenir tracks early issues, clarifies responsibilities and stabilises the operating cadence within the agreed scope.",
+          "title": "Go-live and stabilisation period"
+        },
+        {
+          "body": "Avenir reports completed tasks, quality observations, recurring issues and agreed actions, then reviews the service periodically with the client.",
+          "title": "Regular reporting and periodic review"
+        }
+      ],
+      "reason": "ENS-003: HU does not promise a one-month period"
+    },
+    {
+      "id": 1,
+      "slug": "objektumorzes",
+      "field": "faq_en",
+      "before": [
+        {
+          "a": "Depending on the site's needs, on-site security guarding may include entry and exit control, handling of visitors and suppliers, patrols, key-management rules, incident recording, the service log and agreed reporting.",
+          "q": "What does on-site security guarding include?"
+        },
+        {
+          "a": "An on-site security assessment is particularly useful when a new site needs to be guarded, the access rules change, freight traffic grows, recurring incidents occur, or the client wants to make existing guarding and technical processes more transparent.",
+          "q": "When is an on-site security assessment needed?"
+        },
+        {
+          "a": "The right model depends on the site's size, risk profile, opening hours, entry points, patrol requirements, incident-handling framework and reporting expectations. These are best defined before launch, so the service aligns with the actual operation of the site.",
+          "q": "What contractual setup is best for starting on-site security guarding?"
+        },
+        {
+          "a": "Access rules are defined following an on-site assessment. We can define who may enter, when, with what authorisation, how visitor registration takes place, how supplier access is handled, how freight traffic is managed and how exits are documented.",
+          "q": "How are visitors and suppliers admitted?"
+        },
+        {
+          "a": "Yes, where the conditions allow, on-site security guarding can be aligned with an existing camera system, access-control system, alarm process or remote-monitoring operation. This way, guard presence and technical security can reinforce each other.",
+          "q": "Can guarding be linked to a camera or access-control system?"
+        },
+        {
+          "a": "Depending on the site's risk profile, the contractual requirement and the fulfilment of legal conditions, both unarmed and armed security guard presence can be arranged.",
+          "q": "Can armed guarding also be requested?"
+        },
+        {
+          "a": "Yes. On-site security guarding is provided under the applicable Hungarian personal and property security licensing framework. Licence details and guard documentation can be reviewed during contractual onboarding where required.",
+          "q": "Is Avenir licensed to provide on-site security services in Hungary?"
+        },
+        {
+          "a": "Yes, the on-site security guarding service can be supported by 24/7 dispatch support; the escalation and notification framework is set at the start of the engagement.",
+          "q": "Is 24/7 dispatch support available?"
+        },
+        {
+          "a": "Incident handling is set up based on an agreed escalation framework. This defines which events must be recorded, who must be notified, in what order signals are sent, and how the incident is documented.",
+          "q": "What happens in case of an incident?"
+        },
+        {
+          "a": "Yes, the service can include a service log, incident recording and agreed reporting. The exact report format is set at the start of the engagement, so the client receives up-to-date information about on-site operations.",
+          "q": "Do we receive a service log or incident report?"
+        }
+      ],
+      "after": [
+        {
+          "a": "Depending on the site's needs, on-site security guarding may include entry and exit control, handling of visitors and suppliers, patrols, key-management rules, incident recording, the service log and agreed reporting.",
+          "q": "What does on-site security guarding include?"
+        },
+        {
+          "a": "An on-site security assessment is particularly useful when a new site needs to be guarded, the access rules change, freight traffic grows, recurring incidents occur, or the client wants to make existing guarding and technical processes more transparent.",
+          "q": "When is an on-site security assessment needed?"
+        },
+        {
+          "a": "The right model depends on the site's size, risk profile, opening hours, entry points, patrol requirements, incident-handling framework and reporting expectations. These are best defined before launch, so the service aligns with the actual operation of the site.",
+          "q": "What contractual setup is best for starting on-site security guarding?"
+        },
+        {
+          "a": "Access rules are defined following an on-site assessment. We can define who may enter, when, with what authorisation, how visitor registration takes place, how supplier access is handled, how freight traffic is managed and how exits are documented.",
+          "q": "How are visitors and suppliers admitted?"
+        },
+        {
+          "a": "Yes, where the conditions allow, on-site security guarding can be aligned with an existing camera system, access-control system, alarm process or remote-monitoring operation. This way, guard presence and technical security can reinforce each other.",
+          "q": "Can guarding be linked to a camera or access-control system?"
+        },
+        {
+          "a": "Depending on the site's risk profile, the contractual requirement and the fulfilment of legal conditions, both unarmed and armed security guard presence can be arranged.",
+          "q": "Can armed guarding also be requested?"
+        },
+        {
+          "a": "Yes. On-site security guarding is provided under the applicable Hungarian personal and property security licensing framework. Information on the licence and on the licensing documentation of the security staff can be reviewed during contract preparation.",
+          "q": "Is Avenir licensed to provide on-site security services in Hungary?"
+        },
+        {
+          "a": "Yes, the on-site security guarding service can be supported by 24/7 dispatch support; the escalation and notification framework is set at the start of the engagement.",
+          "q": "Is 24/7 dispatch support available?"
+        },
+        {
+          "a": "Incident handling is set up based on an agreed escalation framework. This defines which events must be recorded, who must be notified, in what order signals are sent, and how the incident is documented.",
+          "q": "What happens in case of an incident?"
+        },
+        {
+          "a": "Yes, the service can include a service log, incident recording and agreed reporting. The exact report format is set at the start of the engagement, so the client receives up-to-date information about on-site operations.",
+          "q": "Do we receive a service log or incident report?"
+        }
+      ],
+      "reason": "ENS-030: no added where-required condition"
+    },
+    {
+      "id": 2,
+      "slug": "portaszolgalat",
+      "field": "faq_en",
+      "before": [
+        {
+          "a": "Depending on the site's needs, the service covers agreed elements such as visitor reception, visitor registration, access support, handling of suppliers and couriers, key management, parcel handling, the service log and agreed reporting.",
+          "q": "What does the reception and gatehouse service include?"
+        },
+        {
+          "a": "The assessment is particularly useful when visitor or supplier traffic grows, the access framework changes, multiple parties use the same site, or more structured logging and accountability are needed.",
+          "q": "When is it worth requesting a gatehouse assessment?"
+        },
+        {
+          "a": "The gatehouse service focuses primarily on the entrance, reception and daily traffic-management points, while on-site security guarding can also include broader security presence, patrols and incident handling. The two services can be aligned where needed.",
+          "q": "How does the gatehouse service differ from on-site security guarding?"
+        },
+        {
+          "a": "Yes, the framework for supplier, courier and subcontractor access is set up based on an on-site assessment. Avenir defines what information must be recorded, who must be notified, and how entries and exits are logged.",
+          "q": "Can supplier and courier traffic be handled?"
+        },
+        {
+          "a": "Yes, the service can include following a key-management framework, with key issuance and return recorded. The exact rules are defined at the start of the engagement, tailored to the site.",
+          "q": "Is key management included?"
+        },
+        {
+          "a": "Yes, where the conditions allow, the gatehouse service can be linked to an existing access-control system, camera system or internal operations process.",
+          "q": "Can it be linked to an access-control system?"
+        },
+        {
+          "a": "When handling visitor data, the defining factors are purpose limitation, time-limited retention, visitor information, the access-control context and the site's own rules. The exact data categories and retention framework must be aligned with client expectations and the site's data-handling rules.",
+          "q": "How can visitor data be handled in the gatehouse and reception process?"
+        },
+        {
+          "a": "Yes. The service is structured around written service logs, incident notes and agreed reporting according to the site protocol.",
+          "q": "Do we receive reports on daily operations?"
+        }
+      ],
+      "after": [
+        {
+          "a": "Depending on the site's needs, the service covers agreed elements such as visitor reception, visitor registration, access support, handling of suppliers and couriers, key management, parcel handling, the service log and agreed reporting.",
+          "q": "What does the reception and gatehouse service include?"
+        },
+        {
+          "a": "The assessment is particularly useful when visitor or supplier traffic grows, the access framework changes, multiple parties use the same site, or more structured logging and accountability are needed.",
+          "q": "When is it worth requesting a gatehouse assessment?"
+        },
+        {
+          "a": "The gatehouse service focuses primarily on the entrance, reception and daily traffic-management points, while on-site security guarding can also include broader security presence, patrols and incident handling. The two services can be aligned where needed.",
+          "q": "How does the gatehouse service differ from on-site security guarding?"
+        },
+        {
+          "a": "Yes, the framework for supplier, courier and subcontractor access is set up based on an on-site assessment. Avenir defines what information must be recorded, who must be notified, and how entries and exits are logged.",
+          "q": "Can supplier and courier traffic be handled?"
+        },
+        {
+          "a": "Yes, the service can include following a key-management framework, with key issuance and return recorded. The exact rules are defined at the start of the engagement, tailored to the site.",
+          "q": "Is key management included?"
+        },
+        {
+          "a": "Yes, where the conditions allow, the gatehouse service can be linked to an existing access-control system, camera system or internal operations process.",
+          "q": "Can it be linked to an access-control system?"
+        },
+        {
+          "a": "When handling visitor data, the defining factors are purpose limitation, time-limited retention, visitor information, the access-control context and the site's own rules. The exact data categories and retention framework must be aligned with client expectations and the site's data-handling rules.",
+          "q": "How can visitor data be handled in the gatehouse and reception process?"
+        },
+        {
+          "a": "Yes. Gatehouse operations can include a service log, incident recording and agreed reporting. The exact report format is set based on the client’s requirements and how the site operates.",
+          "q": "Do we receive reports on daily operations?"
+        }
+      ],
+      "reason": "ENS-008: restore possibility and report-format sentence"
+    },
+    {
+      "id": 3,
+      "slug": "mystery-shopping-helyszini-audit",
+      "field": "trust_items_en",
+      "before": [
+        {
+          "body": "The audit objective, scenario, criteria and reporting format are agreed before execution, so observations stay within the defined service-quality scope.",
+          "title": "Defined scope before execution"
+        },
+        {
+          "body": "The assessment records how agreed service steps, brand expectations and customer-journey points appear in real customer situations, without surveillance or disciplinary framing.",
+          "title": "Neutral customer-journey observation"
+        },
+        {
+          "body": "Avenir delivers a structured report with observations, recurring patterns, risk points and improvement recommendations, then reviews the findings with the client for service-quality decisions.",
+          "title": "Structured report and client debrief"
+        },
+        {
+          "body": "The same scenario can be repeated across sites or providers to compare service consistency, process gaps and recurring improvement points.",
+          "title": "Multi-site consistency insight"
+        },
+        {
+          "body": "Reporting remains limited to the agreed scope and intended client-side review flow. Personal-data-related reporting is not used as a standard element and must remain within the agreed data-protection framework.",
+          "title": "Purpose-bound and confidential reporting"
+        }
+      ],
+      "after": [
+        {
+          "body": "The audit objective, scenario, criteria and reporting format are agreed before execution, so observations stay within the defined service-quality scope.",
+          "title": "Defined scope before execution"
+        },
+        {
+          "body": "The assessment records how agreed service steps, brand expectations and customer-journey points appear in real customer situations, without surveillance or disciplinary framing.",
+          "title": "Neutral customer-journey observation"
+        },
+        {
+          "body": "Avenir delivers a structured report with observations, recurring patterns, risk points and improvement recommendations, then reviews the findings with the client for service-quality decisions.",
+          "title": "Structured report and client debrief"
+        },
+        {
+          "body": "The same scenario can be repeated across sites or providers to compare service consistency, process gaps and recurring improvement points.",
+          "title": "Multi-site consistency insight"
+        },
+        {
+          "body": "Reporting remains limited to the agreed scope and intended client-side review flow. Data on individual employees is not a default reporting element; it may appear only within a data-protection framework agreed in advance.",
+          "title": "Purpose-bound and confidential reporting"
+        }
+      ],
+      "reason": "ENS-052: employee-data boundary and advance agreement"
+    },
+    {
+      "id": 6,
+      "slug": "tavfelugyelet-vonuloszolgalat",
+      "field": "long_desc_en",
+      "before": "Avenir receives intrusion, alarm and CCTV-related signals from connected sites through the agreed monitoring setup. Each signal is checked against the agreed verification protocol before escalation. False alarms are logged and analysed; genuine events are escalated to the named contact, response service or external escalation route according to the site protocol. Each action is recorded in the operations log.\n\nWhere the service involves monitored alarm handling, the verification step is built into the operating procedure and documented per incident. The legal and contractual framework for remote monitoring and response service is reviewed during onboarding; any external escalation is handled according to the agreed site protocol and applicable rules.\n\nRemote monitoring works best when it links to the site's other security layers: security technology, on-site guarding, gatehouse service and agreed response. The result is one operating model for signal handling, escalation, event logging and closure.",
+      "after": "Avenir receives intrusion, alarm and CCTV-related signals from connected sites through the agreed monitoring setup. Each signal is checked against the agreed verification protocol before escalation. False alarms can be logged and analysed; genuine events are escalated to the named contact, response service or external escalation route according to the site protocol. Each action is recorded in the operations log.\n\nWhere the service involves monitored alarm handling, the verification step is built into the operating procedure and documented per incident. The legal and contractual framework for remote monitoring and response service is reviewed during onboarding; any external escalation is handled according to the agreed site protocol and applicable rules.\n\nRemote monitoring works best when it links to the site's other security layers: security technology, on-site guarding, gatehouse service and agreed response. The result is one operating model for signal handling, escalation, event logging and closure.",
+      "reason": "ENS-006: HU possibility; 24/7 assertion unchanged and unresolved"
+    },
+    {
+      "id": 6,
+      "slug": "tavfelugyelet-vonuloszolgalat",
+      "field": "faq_en",
+      "before": [
+        {
+          "a": "Avenir receives alarm, intrusion-detection, CCTV-related or other security technology signals from connected sites, checks them, logs them and escalates them according to the agreed protocol.",
+          "q": "What does remote monitoring mean within Avenir's service?"
+        },
+        {
+          "a": "Remote monitoring focuses on receiving and handling signals, while the response service can provide an on-site response process under contractual conditions. Together they form a more complete signal-handling and response model.",
+          "q": "What is the difference between remote monitoring and response?"
+        },
+        {
+          "a": "The process can be linked to intrusion detection, alarm events, a camera system, access-control events, perimeter signals or other security technology signals. The exact signal types must be defined based on on-site conditions and contractual requirements.",
+          "q": "What kinds of signals can be handled?"
+        },
+        {
+          "a": "The verification step is defined in the site protocol. Avenir checks the alarm against available signal sources and the agreed verification rule before escalation. False alarms are logged and reviewed; genuine events are escalated according to the documented contact and response protocol. Each step is recorded in the operations log.",
+          "q": "How is an alarm verified before escalation?"
+        },
+        {
+          "a": "Yes. Remote monitoring and response service are provided under the applicable Hungarian personal and property security licensing framework. Licence details and service documentation can be reviewed during contractual onboarding where required.",
+          "q": "Is Avenir licensed to provide remote monitoring and response services in Hungary?"
+        },
+        {
+          "a": "The response-service process must be defined based on contractual conditions, the site, technical conditions and the service area. For this reason, arrival or response rules are best recorded precisely at the start of the engagement.",
+          "q": "Is a guaranteed arrival time provided?"
+        },
+        {
+          "a": "Escalation follows the named contact chain, notification order and response matrix recorded in the site protocol. The protocol defines when a named contact, response service or external escalation route is involved.",
+          "q": "How is escalation handled?"
+        },
+        {
+          "a": "Yes. Clients receive event reports according to the agreed cadence; report format, frequency and content can be defined at the start of the engagement.",
+          "q": "Do we receive event reports?"
+        },
+        {
+          "a": "Signals can be recorded in a timestamped operations log: when the signal arrived, what verification step was taken, what notification chain was triggered, whether escalation took place, what action followed and what closing status was reached. The details must be defined based on site and contractual rules.",
+          "q": "How can alarm signals and events be documented?"
+        },
+        {
+          "a": "Yes. Remote monitoring works well when the camera system, intrusion detection, access control, on-site security guarding and gatehouse processes support each other in alignment.",
+          "q": "Can remote monitoring be linked to security technology?"
+        },
+        {
+          "a": "Signals, CCTV streams and access-control events used in remote monitoring are handled only for the agreed monitoring purpose and according to the client's data-protection framework. Retention, access logging and minimisation rules are defined per site. Avenir supports the technical and operational side of this process; legal basis and final data-protection decisions remain with the client and its advisers.",
+          "q": "How is data protection handled in remote-monitoring operations?"
+        },
+        {
+          "a": "An on-site security assessment is useful when a new alarm or remote-monitoring operation needs to be set up, recurring signals occur, the access framework changes, or the existing response and escalation processes need to be made more transparent.",
+          "q": "When is it worth requesting an on-site security assessment?"
+        }
+      ],
+      "after": [
+        {
+          "a": "Avenir receives alarm, intrusion-detection, CCTV-related or other security technology signals from connected sites, checks them, logs them and escalates them according to the agreed protocol.",
+          "q": "What does remote monitoring mean within Avenir's service?"
+        },
+        {
+          "a": "Remote monitoring focuses on receiving and handling signals, while the response service can provide an on-site response process under contractual conditions. Together they form a more complete signal-handling and response model.",
+          "q": "What is the difference between remote monitoring and response?"
+        },
+        {
+          "a": "The process can be linked to intrusion detection, alarm events, a camera system, access-control events, perimeter signals or other security technology signals. The exact signal types must be defined based on on-site conditions and contractual requirements.",
+          "q": "What kinds of signals can be handled?"
+        },
+        {
+          "a": "The verification step is defined in the site protocol. Avenir checks the alarm against available signal sources and the agreed verification rule before escalation. False alarms can be logged and reviewed; genuine events are escalated according to the documented contact and response protocol. Each step is recorded in the operations log.",
+          "q": "How is an alarm verified before escalation?"
+        },
+        {
+          "a": "Yes. Remote monitoring and response service are provided under the applicable Hungarian personal and property security licensing framework. Licence details and service documentation can be reviewed during contract preparation.",
+          "q": "Is Avenir licensed to provide remote monitoring and response services in Hungary?"
+        },
+        {
+          "a": "The response-service process must be defined based on contractual conditions, the site, technical conditions and the service area. For this reason, arrival or response rules are best recorded precisely at the start of the engagement.",
+          "q": "Is a guaranteed arrival time provided?"
+        },
+        {
+          "a": "Escalation follows the named contact chain, notification order and response matrix recorded in the site protocol. The protocol defines when a named contact, response service or external escalation route is involved.",
+          "q": "How is escalation handled?"
+        },
+        {
+          "a": "Yes. Clients receive event reports according to the agreed cadence; report format, frequency and content can be defined at the start of the engagement.",
+          "q": "Do we receive event reports?"
+        },
+        {
+          "a": "Signals can be recorded in a timestamped operations log: when the signal arrived, what verification step was taken, what notification chain was triggered, whether escalation took place, what action followed and what closing status was reached. The details must be defined based on site and contractual rules.",
+          "q": "How can alarm signals and events be documented?"
+        },
+        {
+          "a": "Yes. Remote monitoring works well when the camera system, intrusion detection, access control, on-site security guarding and gatehouse processes support each other in alignment.",
+          "q": "Can remote monitoring be linked to security technology?"
+        },
+        {
+          "a": "Signals, CCTV streams and access-control events used in remote monitoring may be processed only for the agreed monitoring purpose and within the client's data-protection framework. Retention, access logging and minimisation rules are defined per site. Avenir supports the technical and operational side of this process; legal basis and final data-protection decisions remain with the client and its advisers.",
+          "q": "How is data protection handled in remote-monitoring operations?"
+        },
+        {
+          "a": "An on-site security assessment is useful when a new alarm or remote-monitoring operation needs to be set up, recurring signals occur, the access framework changes, or the existing response and escalation processes need to be made more transparent.",
+          "q": "When is it worth requesting an on-site security assessment?"
+        }
+      ],
+      "reason": "ENS-006/007/030: HU modal strength and condition parity"
+    },
+    {
+      "id": 8,
+      "slug": "hard-fm",
+      "field": "trust_items_en",
+      "before": [
+        {
+          "body": "The client receives a named operational contact for fault intake, escalation, provider coordination and reporting.",
+          "title": "Named operational contact"
+        },
+        {
+          "body": "Reactive jobs are classified by agreed priority categories at mobilisation, so urgent faults, routine tasks and planned work follow separate handling paths.",
+          "title": "Priority-based reactive fault handling"
+        },
+        {
+          "body": "HVAC, electrical, plumbing and inspection tasks can be delivered by specialist providers coordinated through the agreed operating model.",
+          "title": "Specialist subcontractor coordination"
+        },
+        {
+          "body": "Fault reports, interventions, status changes and closures are recorded and summarised in a monthly operations report.",
+          "title": "Documented fault log and monthly report"
+        },
+        {
+          "body": "Where Hard FM runs alongside reception, on-site security or Soft FM, reporting, escalation and operational contact points are aligned for the same site.",
+          "title": "Integrated with reception, security and Soft FM"
+        }
+      ],
+      "after": [
+        {
+          "body": "The client receives a named operational contact for fault intake, escalation, provider coordination and reporting.",
+          "title": "Named operational contact"
+        },
+        {
+          "body": "Reactive jobs are classified by agreed priority categories at mobilisation, so urgent faults, routine tasks and planned work follow separate handling paths.",
+          "title": "Priority-based reactive fault handling"
+        },
+        {
+          "body": "HVAC, electrical, plumbing and inspection tasks can be delivered by specialist providers coordinated through the agreed operating model.",
+          "title": "Specialist subcontractor coordination"
+        },
+        {
+          "body": "Fault reports, interventions, status changes and closures are recorded and can be summarised in a monthly operations report.",
+          "title": "Documented fault log and monthly report"
+        },
+        {
+          "body": "Where Hard FM runs alongside reception, on-site security or Soft FM, reporting, escalation and operational contact points can be aligned for the same site.",
+          "title": "Integrated with reception, security and Soft FM"
+        }
+      ],
+      "reason": "ENS-060: restore HU possibility, no stronger undertaking"
+    }
+  ],
+  "additionalObservedAt": "2026-10-17T17:54:30.005Z"
+}

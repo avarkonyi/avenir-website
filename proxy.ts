@@ -4,8 +4,9 @@ import {
   type NextRequest,
 } from "next/server";
 import { auth } from "@/auth";
+import { LOCALES as SUPPORTED_LOCALES } from "@/lib/locales";
 
-const LOCALES = ["hu", "en", "de", "zh", "ko"];
+const LOCALES: readonly string[] = SUPPORTED_LOCALES;
 const DEFAULT_LOCALE = "hu";
 const NOINDEX_HEADER = "noindex, nofollow";
 const LEGACY_GONE_PATHS = ["/cgi-sys", "/mall", "/tw"] as const;

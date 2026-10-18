@@ -1,5 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { hu } from "../lib/i18n/hu";
+import { getTermsContent } from "../lib/legal-content";
 import {
   getDeImpressumContent,
   getDePrivacyContent,
@@ -67,29 +69,49 @@ test("DE privacy source is v1.3, review-noindex copy ready, and analytics wordin
   assert.ok(security);
   assert.match(security.body, /ISO 9001 und ISO\/IEC 27001/);
   assert.match(privacy.versionHistory, /Version 1\.3 — Gültig ab 13\. Juni 2026/);
+  assert.match(privacy.versionHistory, /Version 1\.2 — Gültig ab 1\. Juni 2026/);
+  assert.match(privacy.intro, /vertragsbezogene Verwaltung nach einer erfolgreichen Angebotsanfrage/);
+  assert.match(cookies.body, /Analyse-Cookies oder ähnliche Technologien/);
 });
 
-test("DE legal notices source removes response-time promise and uses DE legal links", () => {
+test("DE legal notices preserve the current HU section sequence, dates and commitments", () => {
   const terms = getDeTermsContent();
 
   assert.equal(terms.title, "Rechtliche Hinweise");
-  assert.equal(terms.lastUpdated, "Gültig ab: 5. Juni 2026");
-  assert.equal(terms.version, "Version 1.1");
-  assert.equal(terms.sections.length, 12);
+  assert.equal(terms.lastUpdated, "Gültig ab: 6. Mai 2026");
+  assert.equal(terms.version, "Version 1.1 — Präzisierung des Titels");
+  assert.deepEqual(terms.sections.map((section) => section.id), getTermsContent("hu", hu).sections.map((section) => section.id));
+  assert.equal(terms.sections.length, 13);
   assert.equal(terms.intro.includes("[Datum der Veröffentlichung]"), false);
 
   const general = terms.sections.find((section) => section.id === "general");
   assert.ok(general);
-  assert.match(general.body, /in der Regel über die angegebenen Kontaktdaten/);
   assert.doesNotMatch(general.body, /2 Arbeitstagen/);
-  assert.match(general.body, /https:\/\/www\.afm\.hu\/de\/adatvedelem/);
-  assert.match(general.body, /Alle nicht ungarischen Sprachfassungen/);
-  assert.doesNotMatch(general.body, /englische, deutsche und chinesische Fassung/);
+  assert.match(general.body, /Inkrafttreten: 28\.04\.2026/);
+  assert.match(general.body, /maßgeblich ist die ungarische Fassung/);
+  assert.doesNotMatch(general.body, /Mit dem Aufruf|erkennen Sie/);
+  const section = (id: string) => terms.sections.find((entry) => entry.id === id)!;
+  assert.match(section("contact-form").body, /spätestens am nächsten Werktag/);
+  assert.match(section("contact-form").body, /Zeitbedarf.*Komplexität.*Abstimmungen/);
+  assert.match(section("contact-form").body, /https:\/\/www\.afm\.hu\/de\/adatvedelem/);
+  assert.match(section("magannyomozas").body, /gesonderten Vertrags.*Datenschutzinformation.*Rechtsgrundlage/);
+  assert.match(section("magannyomozas").body, /info@afm\.hu angefordert/);
+  assert.match(section("magannyomozas").body, /gelöscht, anonymisiert/);
+  assert.match(section("ip").body, /strukturierte Daten \(JSON-LD\).*Quellcode/);
+  assert.match(section("liability").body, /mittelbare Schäden oder Folgeschäden/);
+  assert.doesNotMatch(section("liability").body, /Nichtverfügbarkeit|technischen Störungen/);
+  assert.match(section("complaints").body, /innerhalb von 8 Arbeitstagen/);
+  assert.match(section("complaints").body, /Abschnitt 12/);
+  assert.match(section("law").body, /ausschließliche Zuständigkeit.*Fővárosi Törvényszék/);
+  assert.match(section("modification").body, /Veröffentlichung[\s\S]*archiviert[\s\S]*Anfrage/);
 
   const licenses = terms.sections.find((section) => section.id === "licenses");
   assert.ok(licenses);
   assert.match(licenses.body, /https:\/\/www\.afm\.hu\/de\/impresszum/);
-  assert.match(terms.versionHistory, /Version 1\.1 — Gültig ab 5\. Juni 2026/);
+  assert.match(terms.versionHistory, /Version 1\.1 — Gültig ab 6\. Mai 2026/);
+  assert.equal(terms.dataProtection.title, "14. Datenschutz");
+  assert.match(terms.dataProtection.body, /ersetzen die Datenschutzerklärung nicht/);
+  assert.equal(terms.dataProtection.dpoEmail, "dpo@afm.hu");
   assert.equal(terms.dataProtection.privacyLinkHref, "/de/adatvedelem");
   assert.equal(terms.dataProtection.privacyLinkText, "Die vollständige Datenschutzerklärung ist hier verfügbar");
 });
@@ -140,6 +162,12 @@ test("DE impressum source follows HU/EN factual structure without fallback label
   assert.match(fullText, /01030-822\/4927-3\/2018/);
   assert.match(fullText, /01030-822\/4925-3\/2018/);
   assert.match(fullText, /AH\/37595-14\/2024-2/);
+  assert.match(fullText, /Personen- und Vermögensschutz sowie Privatermittlung/);
+  assert.match(fullText, /Behördliche Bescheinigung Nr\.: 01030-822\/4927-3\/2018/);
+  assert.match(fullText, /Aktenzeichen: AH\/37595-14\/2024-2/);
+  assert.match(fullText, /Überprüfung verpflichtend bis: 30\.06\.2026/);
+  assert.match(fullText, /Polizeihauptmannschaft des III\. Bezirks Budapest, Abteilung Verwaltungspolizei/);
+  assert.match(fullText, /Amt für Verfassungsschutz, Hauptabteilung Industriesicherheit/);
   assert.match(fullText, /Allianz Hungária Biztosító Zártkörűen Működő Részvénytársaság/);
   assert.match(fullText, /Versicherungsschein-Nr\.: 341633910/);
   assert.match(fullText, /Vercel Inc\./);

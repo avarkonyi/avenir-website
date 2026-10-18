@@ -21,7 +21,7 @@ export function TrackedServiceCardLink({
     <Link
       href={href}
       className="service-card"
-      aria-label={`${serviceLabel} részletei`}
+      aria-label={serviceLabel}
       onClick={() =>
         trackAnalyticsEvent("service_cta_click", {
           locale,

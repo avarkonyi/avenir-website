@@ -25,6 +25,19 @@ test("analytics events are ignored before consent", () => {
   assert.deepEqual(calls, []);
 });
 
+test("explicit analytics event paths omit query and fragment values", () => {
+  const calls = installFakeWindow("accepted");
+  trackAnalyticsEvent("service_cta_click", { path: "/hu?email=private@example.test#secret" });
+  assert.equal(calls[0][2].path, "/hu");
+});
+
+test("unavailable consent storage fails closed without throwing", () => {
+  const calls = installFakeWindow("accepted");
+  window.localStorage.getItem = () => { throw new Error("Storage unavailable"); };
+  assert.doesNotThrow(() => trackAnalyticsEvent("service_cta_click"));
+  assert.deepEqual(calls, []);
+});
+
 test("analytics event helper forwards only approved non-PII parameters", () => {
   const calls = installFakeWindow("accepted");
 

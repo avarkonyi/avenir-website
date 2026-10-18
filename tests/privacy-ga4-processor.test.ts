@@ -2,6 +2,25 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { CURRENT_PRIVACY_CONTENT } from "../lib/current-privacy-content";
 import { getDePrivacyContent } from "../lib/de-legal-content";
+import { ANALYTICS_COPY } from "../lib/analytics/consent-copy";
+
+test("HU EN DE privacy explains current GA4 withdrawal using exact footer controls", () => {
+  for (const [locale, privacy] of [["hu", CURRENT_PRIVACY_CONTENT.hu], ["en", CURRENT_PRIVACY_CONTENT.en], ["de", getDePrivacyContent()]] as const) {
+    assert.ok(privacy);
+    const rights = privacy.sections.find((section) => ["data-subject-rights", "rights"].includes(section.id));
+    const cookies = privacy.sections.find((section) => section.id === "cookies");
+    assert.ok(rights);
+    assert.ok(cookies);
+    assert.ok(rights.body.includes("Google Analytics 4 (GA4)"));
+    for (const body of [rights.body, cookies.body]) {
+      assert.ok(body.includes(ANALYTICS_COPY[locale].settings));
+      assert.ok(body.includes(ANALYTICS_COPY[locale].reject));
+      assert.match(body, /lábléc|footer|Fußzeile/);
+    }
+    assert.match(rights.body, /nem érinti.*jogszerűségét|does not affect.*lawfulness|berührt nicht die Rechtmäßigkeit/);
+    assert.doesNotMatch(rights.body, /jövőbeli|future processing|künftige Verarbeitung/);
+  }
+});
 
 type PrivacyContent = NonNullable<
   (typeof CURRENT_PRIVACY_CONTENT)[keyof typeof CURRENT_PRIVACY_CONTENT]
@@ -36,7 +55,7 @@ test("HU privacy v1.3 names Google Analytics 4 as a processor and transfer scena
   assertSectionContains(privacy, "third-country-transfers", [
     /Google Analytics használata során/,
     /Data Privacy Framework/,
-    /általános szerződési feltételek \(SCC\)/,
+    /általános adatvédelmi kikötések \(Standard Contractual Clauses, SCC\)/,
   ]);
   assertCookiesRemainPrivacyFirst(privacy);
 });

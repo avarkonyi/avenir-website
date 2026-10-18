@@ -1,0 +1,485 @@
+{
+  "baseline": "0441caab22d9902e7060e0b990fbe028d4c2d3aa",
+  "scope": "Source/Preview repair status; no production release or legal/native approval implied.",
+  "groups": [
+    {
+      "ids": ["HUA-004"],
+      "status": "JAVITVA_FORRAS",
+      "owner": "Technikai kiadás",
+      "evidence": "2026-10-18: tulajdonos elfogadta az első egyeztetésen közösen rögzített időpontot. HU/EN ismert régi CMS-mondat célzott megjelenítési javítása; HU seed és DE/FR/KO/ZH fordítás igazítva.",
+      "next": "Éles megjelenés ellenőrzése. Adatbázis-írás nem történt; a célzott javítás a későbbi egyedi CMS-szöveget nem írja felül."
+    },
+    {
+      "ids": [
+        "FRS-014",
+        "FKZ-017"
+      ],
+      "status": "RESZBEN_JAVITVA",
+      "owner": "Francia nyelvi lektor",
+      "evidence": "0441caa: FR látható forráspróza nem törő szóközei javítva; a teljes összetett sor nem minden előfordulása függetlenül igazolt",
+      "next": "Ellenőrizni az összes felsorolt UI/meta/e-mail előfordulást és a végső tipográfiát; a teljes sor nem jelölhető automatikusan lezártnak."
+    },
+    {
+      "ids": [
+        "HUA-011"
+      ],
+      "status": "RESZBEN_JAVITVA",
+      "owner": "CMS / szerkesztés",
+      "evidence": "UI values mondat nemcsak alakja javítva; a Biztonságtechnika CMS hosszú leírása külön mező",
+      "next": "CMS-mező aktuális értékének ellenőrzése és szükség esetén jóváhagyott célzott szövegjavítás."
+    },
+    {
+      "ids": [
+        "DEB-024"
+      ],
+      "status": "NYITOTT_IGAZOLAS",
+      "owner": "Tulajdonos / dokumentumfelelős",
+      "evidence": "Impresszum frissítési dátuma nem következtethető ki hitelesen a fordítás módosításából",
+      "next": "A dokumentum tényleges jóváhagyott frissítési dátumának megerősítése; nem kitalált dátum."
+    },
+    {
+      "ids": [
+        "ENB-001",
+        "ENB-002",
+        "ENB-003",
+        "ENB-004",
+        "ENB-005",
+        "ENB-009",
+        "ENB-014",
+        "ENB-018",
+        "DEB-001",
+        "DEB-002",
+        "DEB-003",
+        "DEB-004",
+        "DEB-005",
+        "DEB-006",
+        "DEB-007",
+        "DEB-008",
+        "DEB-009",
+        "DEB-010",
+        "DEB-011",
+        "DEB-012",
+        "DEB-013",
+        "DEB-014",
+        "DEB-015",
+        "DEB-016",
+        "DEB-017",
+        "DEB-019",
+        "DEB-023",
+        "DEB-027",
+        "DEB-028",
+        "HUB-010",
+        "HUB-011",
+        "HUB-012",
+        "HUB-015",
+        "HUB-016",
+        "HUB-023",
+        "HUB-024",
+        "HUB-039"
+      ],
+      "status": "JAVITVA_FORRAS",
+      "owner": "Fordításellenőrzés / kiadás",
+      "evidence": "Második javítási kör: EN v1.1 normalizálás; DE 13+14 szakasz és HU-paritás; 20 célzott teszt",
+      "next": "A magyar jogi forrás tulajdonosi megerősítéssel ügyvéd által ellenőrzött és irányadó (2026-10-18). A fordítás forráshűsége és a kiadás ellenőrizendő; új általános HU jogi jóváhagyás nem szükséges."
+    },
+    {
+      "ids": [
+        "HUB-004"
+      ],
+      "status": "RESZBEN_JAVITVA",
+      "owner": "DPO",
+      "evidence": "SCC: általános adatvédelmi kikötések javítva; a tényleges GA4 adattovábbítási mechanizmus nem igazolt",
+      "next": "A használt szolgáltatói szerződés és tényleges adattovábbítási garanciák ellenőrzése."
+    },
+    {
+      "ids": [
+        "ENS-006",
+        "ENS-007",
+        "ENS-008",
+        "ENS-030",
+        "ENS-052",
+        "ENS-060"
+      ],
+      "status": "NYITOTT_CMS",
+      "owner": "CMS / staging-jóváhagyás",
+      "evidence": "Friss staging HU/EN mezőpár-ellenőrzés; staging-text-corrections-proposal.json",
+      "next": "A konkrét előtte/utána javaslat jóváhagyása, friss összehasonlítás és mentés után staging-módosítás; jelenleg nem alkalmazott."
+    },
+    {
+      "ids": [
+        "DES-001",
+        "KOS-001",
+        "KOS-002",
+        "KOS-003",
+        "EDU-001",
+        "FRS-002",
+        "FRS-003",
+        "FRS-004",
+        "KOS-005",
+        "KOS-007",
+        "KOS-011",
+        "ZHS-001",
+        "DES-008",
+        "EDU-005",
+        "FKZ-003",
+        "HUA-009",
+        "HUB-009",
+        "ENB-024",
+        "ENB-022"
+      ],
+      "status": "JAVITVA_FORRAS",
+      "owner": "Fejlesztés / kiadás",
+      "evidence": "0441caa és korábbi javítások; text-audit-reconciliation.md",
+      "next": "A forráshiba lezárt; a közös kiadási feltételek és production-ellenőrzés külön maradnak."
+    },
+    {
+      "ids": [
+        "ZHS-003",
+        "ZHS-029"
+      ],
+      "status": "LEZART_ELTAVOLITVA",
+      "owner": "Fejlesztés",
+      "evidence": "0441caa: a két HU-ban nem szereplő extra GYIK eltávolítva (ZHS-001)",
+      "next": "Nincs külön szövegjavítás: az érintett tartalom már nem szerepel."
+    },
+    {
+      "ids": [
+        "HUA-001",
+        "EDU-006",
+        "EDU-011",
+        "FKZ-029"
+      ],
+      "status": "JAVITVA_FORRAS",
+      "owner": "Fordítás / technikai kiadás",
+      "evidence": "2026-10-18: HUA-001 pontos javítómondatát a tulajdonos kifejezetten elfogadta; consent-copy mind a hat nyelven igazítva, a más űrlaptartalmat kitétellel együtt.",
+      "next": "A süti-sáv szövegezési döntése lezárt. Kiadáskor a tényleges GA4-konfiguráció és működés egyezését ellenőrizni; ehhez a mondathoz új jogi jóváhagyás nem szükséges."
+    },
+    {
+      "ids": [
+        "HUA-002",
+        "HUB-002",
+        "ENB-008",
+        "DEB-018"
+      ],
+      "status": "NYITOTT_IGAZOLAS",
+      "owner": "Tulajdonos",
+      "evidence": "Tulajdonosi közlés 2026-10-17: új határozat 2029-ig érvényes, pontos szám és nap nélkül",
+      "next": "Új határozat pontos száma, dátuma és érvényességi adata; nem megszűnt jogosultságként kezelendő."
+    },
+    {
+      "ids": [
+        "DES-002",
+        "KOS-004",
+        "ENS-001",
+        "EDU-002"
+      ],
+      "status": "NYITOTT_UZLETI_DONTES",
+      "owner": "Tulajdonos / szolgáltatásfelelős",
+      "evidence": "Távfelügyelet 24/7 jelzésfogadás/felügyeleti központ terjedelme nincs tisztázva",
+      "next": "Diszpécseri háttér vagy folyamatos jelzésfogadás/felügyelet? Pontos jóváhagyott állítás mind a hat nyelvhez."
+    },
+    {
+      "ids": [
+        "FRS-001",
+        "FKZ-001",
+        "FKZ-002"
+      ],
+      "status": "RESZBEN_JAVITVA",
+      "owner": "Tulajdonos / szolgáltatásfelelős",
+      "evidence": "Általános diszpécseri szöveg javítva; a sor távoli monitoringra vonatkozó része még nyitott",
+      "next": "T1 24/7 szolgáltatási terjedelem tisztázása."
+    },
+    {
+      "ids": [
+        "HUA-018",
+        "EDU-015",
+        "FKZ-005",
+        "KOS-052"
+      ],
+      "status": "NYITOTT_UZLETI_DONTES",
+      "owner": "Tulajdonos / FM felelős",
+      "evidence": "HU forrás is saját állományt, jóváhagyott alvállalkozókat és ügyféloldali szolgáltatókat említ",
+      "next": "Pontosítsa a teljesítési modellt; utána egységes HU/EN/DE/FR/KO/ZH szöveg készülhet."
+    },
+    {
+      "ids": [
+        "DES-003",
+        "DES-004"
+      ],
+      "status": "NYITOTT_FORDITASI_PARITAS",
+      "owner": "Fordítás / fejlesztés",
+      "evidence": "2026-10-18: a tulajdonos a magyar jogi szöveget irányadónak nyilvánította; a csak DE-ben létező bővítés nem része annak.",
+      "next": "A magyar forráshoz igazítani: a DE-only GDPR-betoldás és két extra GYIK eltávolítása; a látható tartalom és JSON-LD egyezését ellenőrizni."
+    },
+    {
+      "ids": [
+        "EDU-003",
+        "EDU-004",
+        "EDU-007",
+        "FKZ-004",
+        "FKZ-011",
+        "ENS-002",
+        "ENS-003"
+      ],
+      "status": "NYITOTT_CMS",
+      "owner": "CMS / staging-jóváhagyás",
+      "evidence": "2026-10-17 staging SELECT; staging-text-corrections-proposal.json: összesen 7 sor, 14 mező",
+      "next": "Konkrét javaslat jóváhagyása staging-írásra, friss összehasonlítás és mentés, alkalmazás, Preview-ellenőrzés. Nem lett alkalmazva."
+    },
+    {
+      "ids": [
+        "HUB-001",
+        "ENB-006",
+        "HUA-041",
+        "HUB-051",
+        "ENB-045",
+        "EDU-014"
+      ],
+      "status": "NYITOTT_KIADAS",
+      "owner": "Kiadás / tulajdonos",
+      "evidence": "Éles régi változatra vonatkozó megfigyelés; a forrásjavítás nem production-frissítés",
+      "next": "Kiadási jóváhagyás után éles deploy és célzott production-ellenőrzés; nem újabb forrásátírás."
+    },
+    {
+      "ids": [
+        "HUA-045",
+        "HUA-046",
+        "EDU-022",
+        "FKZ-031"
+      ],
+      "status": "JAVITVA_STAGING",
+      "owner": "Kiadás / CMS",
+      "evidence": "Korábbi külön jóváhagyott staging-szinkron és zero-diff ellenőrzés: repair-verification.md",
+      "next": "Production-szinkron külön célazonosítást/jóváhagyást igényel. Nem jelenlegi production-igazolás."
+    },
+    {
+      "ids": [
+        "HUA-042",
+        "HUB-037",
+        "ENS-014"
+      ],
+      "status": "NEM_IGAZOLT_HIBA",
+      "owner": "Szerkesztés",
+      "evidence": "EN security-policy link és /aszf útvonal érvényes; összevont EN szolgáltatásnév egyes/többes száma nem egyértelmű nyelvtani hiba",
+      "next": "Nincs szükséges javítás; opcionális szerkesztési változtatásként kezelhető."
+    },
+    {
+      "ids": [
+        "HUA-012",
+        "EDU-018",
+        "HUA-033",
+        "DES-015"
+      ],
+      "status": "NYITOTT_SZERKESZTESI_DONTES",
+      "owner": "Tulajdonos / nyelvi lektor",
+      "evidence": "Hangnem-, név- vagy glossary-preferencia; a jóváhagyási/proof jelentés megőrzendő",
+      "next": "Válasszon következetes hangnemet/terminológiát; ne gyengüljön a forrás bizonyítékhoz kötött állítása."
+    },
+    {
+      "ids": [
+        "HUA-016",
+        "HUA-020"
+      ],
+      "status": "NYITOTT_IGAZOLAS",
+      "owner": "Tulajdonos / szolgáltatásfelelős",
+      "evidence": "Vállalási idő, engedélyterjedelem, képesítés vagy MABISZ bizonyítéka szükséges",
+      "next": "Az audit adott sorában szereplő állítást dokumentummal vagy üzleti jóváhagyással alátámasztani; számot/ígéretet nem kitalálni."
+    },
+    {
+      "ids": [
+        "DES-009",
+        "DES-010",
+        "DES-011",
+        "DES-019",
+        "DES-030",
+        "DES-031",
+        "DES-035",
+        "KOS-018",
+        "KOS-019",
+        "KOS-027",
+        "KOS-028",
+        "KOS-041",
+        "KOS-042",
+        "ZHS-002",
+        "ZHS-004",
+        "ZHS-005",
+        "ZHS-008",
+        "ZHS-010",
+        "ZHS-013",
+        "ZHS-014",
+        "ZHS-017",
+        "ZHS-020",
+        "FRS-012",
+        "FRS-033",
+        "EDU-013",
+        "EDU-039",
+        "FKZ-014",
+        "FKZ-030",
+        "FKZ-032",
+        "HUA-003",
+        "HUA-010",
+        "HUA-014",
+        "HUA-015",
+        "HUA-038",
+        "HUB-008",
+        "HUB-014",
+        "ENB-023",
+        "DEB-043",
+        "ZHS-038"
+      ],
+      "status": "JAVITVA_FORRAS",
+      "owner": "Fejlesztés / nyelvi lektor / kiadás",
+      "evidence": "Második kör: lokalizált runtime hiba, breadcrumb, LLM review-lefedettség, schema, e-mail időzóna és igazolt szövegeltérések; célzott renderelési és kimeneti tesztek",
+      "next": "Forrásellenőrzés lezárva; a teljes nyelvi csomag anyanyelvi jóváhagyása és production kiadása külön marad."
+    },
+    {
+      "ids": [
+        "FKZ-012",
+        "KOS-020",
+        "ZHS-012",
+        "DEB-044",
+        "EDU-036",
+        "ENB-019",
+        "EDU-041",
+        "HUA-026",
+        "HUB-030",
+        "HUA-006",
+        "HUA-027"
+      ],
+      "status": "RESZBEN_JAVITVA",
+      "owner": "Nyelvi lektor / CMS / dokumentumfelelős",
+      "evidence": "A sor egyértelmű forrásrésze javítva; a többi összevont terminológiai, CMS- vagy akkreditációs állítás külön maradt. Részletek: text-audit-closure-verification.md.",
+      "next": "A megmaradt előfordulásokat és üzleti/jogi jelentést külön ellenőrizni; a teljes összevont sor nem lezárt."
+    },
+    {
+      "ids": [
+        "HUB-025"
+      ],
+      "status": "RESZBEN_JAVITVA",
+      "owner": "Tulajdonos / referenciajóváhagyás",
+      "evidence": "Belső szerkesztési címke helyett Jogi személy / Legal entity jelenik meg. A konkrét cégnév publikálási engedélyét ez nem igazolja.",
+      "next": "A referencia megjelenési engedélyének ellenőrzése a jogi cégnévre is; szükség esetén engedélyezett nyilvános névre szűkítés."
+    },
+    {
+      "ids": [
+        "ENB-025",
+        "ENB-026",
+        "HUB-052"
+      ],
+      "status": "JAVITVA_FORRAS",
+      "owner": "Fejlesztés / kiadás",
+      "evidence": "Duplikált megfigyelés: strukturált helyesírás, felelős hibabejelentés Hatókör cím és szöveg, régi kevert nyelvű schema cseréje a locale-függő builderre.",
+      "next": "A forráshiba javítva; éles kiadás és annak ellenőrzése külön."
+    },
+    {
+      "ids": [
+        "ENB-027"
+      ],
+      "status": "NYITOTT_KIADAS",
+      "owner": "Kiadás",
+      "evidence": "Az aktuális builder nem tartalmaz openingHoursSpecification állítást; célzott teszt igazolja. Az audit éles régi változatra hivatkozik.",
+      "next": "Jóváhagyott production kiadás után ellenőrizni az éles jogi/trust oldalak JSON-LD kimenetét."
+    },
+    {
+      "ids": [
+        "DEB-045",
+        "ENB-041"
+      ],
+      "status": "RESZBEN_JAVITVA",
+      "owner": "Jogi / nyelvi lektor",
+      "evidence": "A nyilatkozatokra/strukturált/adatkezelési és dátumrag helyesírási részek javítva; összetett dátum-, tipográfiai és fordítási előfordulások nem mind lezártak.",
+      "next": "Az összevont sor fennmaradó dátumviszonyait, címkéit és előfordulásait a jelenlegi kimeneten ellenőrizni."
+    },
+    {
+      "ids": [
+        "ENB-011",
+        "HUB-006",
+        "HUB-007",
+        "ENB-046"
+      ],
+      "status": "NYITOTT_IGAZOLAS",
+      "owner": "DPO / szolgáltatás- és dokumentumfelelős",
+      "evidence": "A javaslat tényleges szolgáltatói használatot, GA4 megőrzési beállítást, bejelentést vagy székhelyadatot igényel; a fordítás nem bizonyítja.",
+      "next": "A konkrét konfiguráció vagy dokumentum alapján dönteni, majd mindhárom jogi nyelvben egységesen átvezetni."
+    },
+    {
+      "ids": [
+        "HUB-003",
+        "ENB-007",
+        "DEB-020",
+        "DEB-021"
+      ],
+      "status": "JAVITVA_FORRAS",
+      "owner": "Fordítás / technikai kiadás",
+      "evidence": "GA4 visszavonás jelen idejű HU/EN/DE szövege a konkrét láblécgombbal; szinkron opt-out, saját sütik törlése, storage/late-load/reaccept és URL-tisztítás célzott regressziós próbákkal.",
+      "next": "A magyar jogi szöveg elfogadott alap. A fordítások és a tényleges GA4-konfiguráció/működés egyezését ellenőrizni; az általános HU jogi jóváhagyást nem kell újrakérni."
+    },
+    {
+      "ids": [
+        "DEB-040"
+      ],
+      "status": "JAVITVA_FORRAS",
+      "owner": "Fordítás / kiadás",
+      "evidence": "A dokumentum 12. szakaszcíme és törzse Rechtliche Hinweise megnevezéssel egységes; a german_glossary.md régi Nutzungsbedingungen sora igazítva.",
+      "next": "Megnevezési eltérés javítva; a magyar jogi alap elfogadott, a fordítás és a kiadás ellenőrzése marad."
+    },
+    {
+      "ids": [
+        "EDU-012"
+      ],
+      "status": "JAVITVA_FORRAS",
+      "owner": "Fejlesztés / kiadás",
+      "evidence": "A kész build böngészős próbája mind a hat locale alatt valódi 404/noindex választ, helyes html lang és egy lokalizált H1 elemet igazolt.",
+      "next": "Forrás és helyi build javítva; production kiadás és annak ellenőrzése külön."
+    },
+    {
+      "ids": [
+        "HUA-040"
+      ],
+      "status": "RESZBEN_JAVITVA",
+      "owner": "Kiadás / tulajdonos",
+      "evidence": "A HU 404 lokalizálva, kész buildben HTTP404/noindex/egyHUH1 igazolt. A review-nyelvek meglévő elérési linkjei nem változtak.",
+      "next": "Az új nyelvek nyilvános elérhetőségének kiadási döntése külön marad; a noindex nem hozzáférésvédelem."
+    },
+    {
+      "ids": [
+        "ENB-012",
+        "HUB-019",
+        "HUB-020",
+        "HUB-021",
+        "ENB-029",
+        "HUB-028",
+        "HUB-029",
+        "HUB-044",
+        "HUB-045",
+        "ENB-047",
+        "ENB-028",
+        "HUB-027",
+        "HUB-022"
+      ],
+      "status": "LEZART_JOVAHAGYOTT_FORRAS",
+      "owner": "Elfogadott HU jogi forrás",
+      "evidence": "Tulajdonosi utasítás 2026-10-18: a magyar jogi szöveg ügyvéddel ellenőrzött, elfogadandó és minden fordításra irányadó. Döntési napló: owner-confirmations-2026-10-18.md; forrásállapot 981d1a7.",
+      "next": "A jóváhagyott magyar jogi tartalmat megtartani és hűen fordítani. Lezárás jóváhagyott forrás alapján, nem kódjavítás vagy független jogi felülvizsgálat; az eredeti auditészrevétel megőrizve."
+    },
+    {
+      "ids": [
+        "DEB-029"
+      ],
+      "status": "RESZBEN_JAVITVA",
+      "owner": "Fordítás / szerkesztés",
+      "evidence": "A magyar jogi változat elsődlegességét a tulajdonos 2026-10-18-án kifejezetten megerősítette; a sor fennmaradó része a német fordítási lábléc megfogalmazása.",
+      "next": "A gépi fordításról szóló láblécet a tényleges fordítási állapothoz igazítani, a magyar változat elsődlegességét megtartani."
+    },
+    {
+      "ids": [
+        "ENB-013"
+      ],
+      "status": "RESZBEN_JAVITVA",
+      "owner": "Fordítás",
+      "evidence": "A magyar jogi forrás meglévő mondata a 2026-10-18-i utasítás szerint elfogadott. Ez nem külön MABISZ-tanúsítás jóváhagyása. Az angol asset-protection/property-security terminológiai eltérés marad.",
+      "next": "A fordítási terminológiát a jóváhagyott magyar jelentés megtartásával egységesíteni; új tanúsítási állítást nem hozzáadni."
+    }
+  ],
+  "ownerDecision": "2026-10-18: ISO certification accepted; lawyer-reviewed Hungarian legal copy is authoritative. See owner-confirmations-2026-10-18.md."
+}

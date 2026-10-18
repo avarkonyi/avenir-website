@@ -1,3 +1,4 @@
+import { databaseErrorDiagnostic } from "@/lib/db/error-diagnostic";
 import { and, desc, eq, isNull, sql } from "drizzle-orm";
 import { db, news } from "@/lib/db";
 import { redactedDbIdentity, sanitizeDbErrorMessage } from "@/lib/db/redact";
@@ -216,6 +217,7 @@ async function runSanitizedNewsQuery<T>(
         `[news-public] ${surface}: failed to read DB-backed article data.`,
         `DB target: ${redactedDbIdentity()}.`,
         `Cause: ${sanitizeDbErrorMessage(error)}.`,
+        `Diagnostic: ${databaseErrorDiagnostic(error)}.`,
         "Full DATABASE_URL was not printed.",
       ].join(" "),
     );
@@ -265,6 +267,7 @@ export async function getAllPublishedNewsPathsForBuild(
         "Continuing with no pre-rendered news article paths; eligible articles can still render dynamically at request time.",
         `DB target: ${redactedDbIdentity()}.`,
         `Cause: ${sanitizeDbErrorMessage(error)}.`,
+        `Diagnostic: ${databaseErrorDiagnostic(error)}.`,
         "Full DATABASE_URL was not printed.",
       ].join(" "),
     );
@@ -280,6 +283,15 @@ export async function getAllIndexablePublishedNewsPathsForBuild(
     surface,
     NEWS_INDEXABLE_LOCALES,
   )) as PublishedNewsIndexablePath[];
+}
+
+// Unlike build-time static-param discovery, the sitemap must not silently
+// lose all article URLs during a transient database failure. Throwing keeps
+// the previous successful ISR response instead of caching an incomplete list.
+export async function getAllIndexablePublishedNewsPathsForSitemap(): Promise<PublishedNewsIndexablePath[]> {
+  return runSanitizedNewsQuery("sitemap.xml", () =>
+    getAllPublishedNewsPaths(NEWS_INDEXABLE_LOCALES),
+  ) as Promise<PublishedNewsIndexablePath[]>;
 }
 
 export function getPublishedNewsIndexHu(): Promise<PublishedNewsIndexItemHu[]> {

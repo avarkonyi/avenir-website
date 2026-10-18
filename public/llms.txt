@@ -3,7 +3,7 @@
 Avenir Facility Management Kft. is a Hungary-based B2B security and facility
 management provider. The public website is https://www.afm.hu.
 
-Last updated: 2026-06-13
+Last updated: 2026-10-17
 
 ## Canonical public pages
 
@@ -16,15 +16,18 @@ Indexed production languages: Hungarian (hu) and English (en).
 - XML sitemap: https://www.afm.hu/sitemap.xml
 - Full AI-search summary: https://www.afm.hu/llms-full.txt
 
-Partial, non-indexed localization surfaces (do not treat these as full
-production languages): a German (de) homepage, a Chinese (zh) homepage, and a
-Korean (ko) homepage draft. German additionally serves service, legal and news
-pages in a noindex review mode; those pages are not in the sitemap or hreflang
-and are not a final SEO launch.
+The current source supports German (de), French (fr), Korean (ko), and
+Chinese (zh) homepages plus eight service detail pages per locale in noindex
+review mode. These review surfaces are excluded from sitemap and hreflang;
+translation review and release approval remain required. This source summary
+does not confirm that these changes have been deployed to production.
+Only German additionally has legal and news review routes. French, Korean and
+Chinese legal and news routes remain closed; do not infer those URLs.
 
-- DE homepage (partial, noindex): https://www.afm.hu/de
-- ZH homepage (partial, noindex): https://www.afm.hu/zh
-- KO homepage draft (noindex, translation-review-required): https://www.afm.hu/ko
+- DE homepage (review, noindex): https://www.afm.hu/de
+- FR homepage (review, noindex): https://www.afm.hu/fr
+- KO homepage (review, noindex): https://www.afm.hu/ko
+- ZH homepage (review, noindex): https://www.afm.hu/zh
 
 ## Company facts
 
@@ -82,8 +85,8 @@ the same slug under https://www.afm.hu/en/szolgaltatasok/.
 - https://www.afm.hu/hu/szolgaltatasok/hard-fm
 - https://www.afm.hu/hu/szolgaltatasok/soft-fm
 
-German service detail pages exist only in a noindex review mode and are not
-citable public sources.
+German, French, Korean and Chinese service detail pages are supported in the
+source only as noindex review surfaces and are not citable public sources.
 
 ## Legal public pages
 
@@ -111,15 +114,15 @@ SEO/citation sources:
 - German news index, review/noindex: https://www.afm.hu/de/hirek
 - German launch article, review/noindex: https://www.afm.hu/de/hirek/megujult-az-avenir-weboldala-es-arculata
 
-Do not infer Chinese or Korean news URLs.
+Do not infer French, Chinese or Korean news URLs.
 
 ## Exclusions
 
 Do not use admin, API, draft, legacy service, or non-ready service detail URLs as
 public sources. Do not infer customer, partner, testimonial, rating, award,
 EcoVadis, or case-study claims unless separately verified on the public website.
-German service, legal and news pages are noindex review-mode surfaces (not in
-the sitemap or hreflang) and are not a final SEO launch. The Chinese and Korean
-localizations are homepage-only and translation-review-required; do not infer
-Chinese or Korean service detail, legal, or news pages from those homepage
-drafts. Do not infer German, Chinese or Korean Trust Center routes.
+German, French, Korean and Chinese homepages and eight service pages per
+locale are source-supported noindex review surfaces, not final SEO sources.
+Only German has additional legal and news review routes. French, Korean and
+Chinese legal/news routes remain closed. Do not infer German, French, Chinese
+or Korean Trust Center routes. Review support does not confirm deployment.

@@ -2,6 +2,7 @@
 
 import { eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
+import { revalidatePublicContent } from "@/lib/public-content-revalidation";
 import { db, neonSql, certifications } from "@/lib/db";
 import { requireAdmin } from "@/lib/admin/require-admin";
 import { safeActionError } from "@/lib/admin/safe-action-error";
@@ -275,6 +276,7 @@ export async function createCertification(
       })
       .returning({ id: certifications.id });
     revalidatePath("/admin/certifications");
+    revalidatePublicContent(revalidatePath);
     return { ok: true, id: created.id };
   } catch (err) {
     return {
@@ -371,6 +373,7 @@ export async function updateCertification(
       return { ok: false, error: "Tanúsítvány nem található." };
     }
     revalidatePath("/admin/certifications");
+    revalidatePublicContent(revalidatePath);
     revalidatePath(`/admin/certifications/${id}/edit`);
     return { ok: true };
   } catch (err) {
@@ -403,6 +406,7 @@ export async function toggleCertificationActive(
       return { ok: false, error: "Tanúsítvány nem található." };
     }
     revalidatePath("/admin/certifications");
+    revalidatePublicContent(revalidatePath);
     return { ok: true };
   } catch (err) {
     return {
@@ -459,6 +463,7 @@ export async function toggleCertificationPublished(
       return { ok: false, error: "Tanúsítvány nem található." };
     }
     revalidatePath("/admin/certifications");
+    revalidatePublicContent(revalidatePath);
     return { ok: true };
   } catch (err) {
     return {
@@ -498,6 +503,7 @@ export async function deleteCertification(
       return { ok: false, error: "Tanúsítvány nem található." };
     }
     revalidatePath("/admin/certifications");
+    revalidatePublicContent(revalidatePath);
     return { ok: true };
   } catch (err) {
     return {
@@ -558,6 +564,7 @@ export async function reorderCertifications(
       ),
     );
     revalidatePath("/admin/certifications");
+    revalidatePublicContent(revalidatePath);
     return { ok: true };
   } catch (err) {
     return {

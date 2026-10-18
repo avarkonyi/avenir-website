@@ -1,14 +1,10 @@
 "use client";
 
 import { openAnalyticsConsentSettings } from "@/lib/analytics/consent";
+import { getAnalyticsConsentCopy } from "@/lib/analytics/consent-copy";
 
 export function CookieSettingsButton({ locale }: { locale: string }) {
-  const label =
-    locale === "hu"
-      ? "Süti beállítások"
-      : locale === "de"
-        ? "Cookie-Einstellungen"
-        : "Cookie settings";
+  const label = getAnalyticsConsentCopy(locale).settings;
 
   return (
     <button

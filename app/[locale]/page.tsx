@@ -10,11 +10,12 @@ import { Career } from "@/components/Career";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 import { getTranslation } from "@/lib/i18n";
+import { LOCALES, type Locale } from "@/lib/locales";
 import {
   getActiveTopLevelServices,
   getAllPublishedServicePathsForBuild,
 } from "@/lib/db/queries/services";
-import { DE_REVIEW_SERVICE_PATHS } from "@/lib/services/de-service-details";
+import { getRenderableServicePaths } from "@/lib/services/review-services";
 import {
   getPublishedNewsIndexForPublic,
 } from "@/lib/db/queries/news";
@@ -27,8 +28,6 @@ import {
   newsDetailHref,
 } from "@/lib/news-routing";
 
-const LOCALES = ["hu", "en", "de", "zh", "ko"] as const;
-type Locale = (typeof LOCALES)[number];
 
 export const revalidate = 3600;
 
@@ -74,10 +73,7 @@ export default async function HomePage({
   const publishedServiceDetailPaths = await getAllPublishedServicePathsForBuild(
     "homepage service detail links",
   );
-  const readyServiceDetailPaths =
-    locale === "de"
-      ? [...publishedServiceDetailPaths, ...DE_REVIEW_SERVICE_PATHS]
-      : publishedServiceDetailPaths;
+  const readyServiceDetailPaths = getRenderableServicePaths(publishedServiceDetailPaths);
 
   return (
     <>

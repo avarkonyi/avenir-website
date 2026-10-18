@@ -136,6 +136,7 @@ export function Hero({ t }: { t: Pick<Translation, "hero" | "stats"> }) {
       <div
         className="hero-stats-bar"
         style={{
+          zIndex: 2,
           position: "absolute",
           bottom: 0,
           left: 0,

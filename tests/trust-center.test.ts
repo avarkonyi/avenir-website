@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
+import { getUtilityLocaleHref } from "../lib/locale-navigation";
 import {
   TRUST_CENTER_CONTENT,
   TRUST_CENTER_LOCALES,
@@ -163,15 +164,17 @@ test("Trust Center metadata is indexable and canonical for HU/EN only", () => {
 test("Nav maps Trust Center language switcher to the approved HU/EN slug pair", () => {
   const nav = source("components/Nav.tsx");
 
-  assert.match(nav, /TRUST_CENTER_SLUGS/);
+  assert.match(nav, /getUtilityLocaleHref\(pathname, newLocale, hash\)/);
   assert.match(nav, /isTrustCenterPage/);
-  assert.match(nav, /TRUST_CENTER_SLUGS\[newLocale\]/);
+  assert.equal(getUtilityLocaleHref("/hu/megfelelosegi-kozpont", "en"), "/en/trust-center");
+  assert.equal(getUtilityLocaleHref("/en/trust-center", "hu"), "/hu/megfelelosegi-kozpont");
   assert.match(nav, /isTrustCenterPage[\s\S]*\? FULL_CONTENT_LOCALES/);
 });
 
 test("Nav imports only Trust Center route helpers, not the full page copy", () => {
   const nav = source("components/Nav.tsx");
 
-  assert.match(nav, /@\/lib\/trust-center-routes/);
+  assert.match(nav, /@\/lib\/locale-navigation/);
+  assert.match(source("lib/locale-navigation.ts"), /\.\/trust-center-routes/);
   assert.doesNotMatch(nav, /@\/lib\/trust-center-content/);
 });

@@ -17,3 +17,16 @@ import "./launch-news-en-service-labels.test.ts";
 import "./recruitment-privacy.test.ts";
 import "./responsible-disclosure.test.ts";
 import "./trust-center.test.ts";
+import "./homepage-localization.test.ts";
+import "./fr-service-details.test.ts";
+import "./seo-publication.test.ts";
+import "./review-service-routing.test.ts";
+import "./db-error-diagnostic.test.ts";
+import "./public-content-revalidation.test.ts";
+import "./legal-metadata.test.ts";
+import "./legal-content.test.ts";
+
+import "./locale-recovery.test.ts";
+import "./reply-email.test.ts";
+import "./schema-localization.test.ts";
+import "./approved-process-copy.test.ts";

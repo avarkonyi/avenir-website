@@ -59,7 +59,7 @@ export function buildNotificationEmail(
     "",
     "---",
     "Az adatok eltárolásra kerültek az adminisztrátori felületen.",
-    "Válaszhoz egyszerűen feleljen erre az emailre — a Reply-To mezőben",
+    "Válaszához egyszerűen válaszoljon erre az e-mailre — a Reply-To mezőben",
     "a beküldő címe szerepel.",
   ].join("\n");
 
@@ -103,7 +103,7 @@ export function buildNotificationEmail(
           ${messageBlock}
         </td></tr>
         <tr><td style="padding:20px 32px;background:#F8FAFC;border-top:1px solid #E2E8F0;font-size:12px;color:#8A9BB0;line-height:1.5;">
-          Válaszhoz egyszerűen feleljen erre az emailre — a Reply-To mezőben a beküldő címe szerepel.<br/>
+          Válaszához egyszerűen válaszoljon erre az e-mailre — a Reply-To mezőben a beküldő címe szerepel.<br/>
           Az ajánlatkérés mentésre került az adminisztrátori felületen is.
         </td></tr>
       </table>

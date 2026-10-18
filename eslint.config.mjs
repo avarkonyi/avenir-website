@@ -17,6 +17,8 @@ const eslintConfig = defineConfig([
     "references/**",
     // Drafts folder — markdown working documents, not deploy-build assets
     "drafts/**",
+    // Imported audit evidence and extraction scripts are not application sources.
+    "docs/audits/**",
   ]),
 ]);
 

@@ -9,7 +9,7 @@ Dieses Impressum enthält die Anbieterkennzeichnung und die für die Website ver
 ## 1. Angaben zum Unternehmen
 
 Offizieller Firmenname: Avenir Facility Management Szolgáltató Korlátolt Felelősségű Társaság
-Registergerichtliche Kurzbezeichnung: Avenir Facility Kft.
+Kurzbezeichnung laut Handelsregister: Avenir Facility Kft.
 Marketingbezeichnung: Avenir Facility Management Kft.
 Handelsregisternummer: 01-09-328046
 Registergericht: Handelsregistergericht des Hauptstädtischen Gerichtshofs (Fővárosi Törvényszék Cégbírósága), 1051 Budapest, Nádor u. 28, Ungarn
@@ -46,38 +46,38 @@ Website: https://www.afm.hu
 
 ## 5. Reglementierter Beruf
 
-Die Personen- und Vermögensschutztätigkeit ist in Ungarn ein reglementierter Beruf. Maßgeblich sind insbesondere das Gesetz Nr. CXXXIII von 2005 über die Personen- und Vermögensschutz- sowie die Privatermittlungstätigkeit (SzVMt.) und die Verordnung des Innenministeriums Nr. 22/2006 (IV. 25.) BM über Sicherheitskraft- und Privatermittlerausweise sowie die Einzelheiten der Berufsausübung. Die Angaben erfolgen gemäß § 4 des ungarischen Gesetzes Nr. CVIII von 2001 über den elektronischen Geschäftsverkehr (Ekertv.). Die einschlägigen behördlichen Genehmigungen sind in Abschnitt 6 aufgeführt.
+Die Tätigkeiten Personen- und Vermögensschutz sowie Privatermittlung sind in Ungarn reglementierte Berufe. Maßgeblich sind insbesondere das Gesetz Nr. CXXXIII von 2005 über die Personen- und Vermögensschutz- sowie die Privatermittlungstätigkeit (SzVMt.) und die Verordnung des Innenministeriums Nr. 22/2006 (IV. 25.) BM über Sicherheitskraft- und Privatermittlerausweise sowie die Einzelheiten der Berufsausübung. Die Angaben erfolgen gemäß § 4 des ungarischen Gesetzes Nr. CVIII von 2001 über den elektronischen Geschäftsverkehr (Ekertv.). Die einschlägigen behördlichen Genehmigungen sind in Abschnitt 6 aufgeführt.
 
 ## 6. Behördliche Genehmigungen
 
 a) Personen- und Vermögensschutztätigkeit (Bewachung)
 Genehmigungsnummer: 01030-822/4926-7/2023
 Gültig bis: 31.01.2028
-Ausstellende Behörde: III. Kerületi Rendőrkapitányság, Igazgatásrendészeti Osztály
+Ausstellende Behörde: Polizeihauptmannschaft des III. Bezirks Budapest, Abteilung Verwaltungspolizei (III. Kerületi Rendőrkapitányság, Igazgatásrendészeti Osztály)
 Rechtsgrundlage: SzVMt. (ungarisches Gesetz Nr. CXXXIII von 2005)
 
 b) Planung und Errichtung von Sicherheitsanlagen
-Genehmigungsnummer: 01030-822/4927-3/2018
+Behördliche Bescheinigung Nr.: 01030-822/4927-3/2018
 Gültigkeit: bis auf Widerruf
-Ausstellende Behörde: III. Kerületi Rendőrkapitányság, Igazgatásrendészeti Osztály
+Ausstellende Behörde: Polizeihauptmannschaft des III. Bezirks Budapest, Abteilung Verwaltungspolizei (III. Kerületi Rendőrkapitányság, Igazgatásrendészeti Osztály)
 Rechtsgrundlage: SzVMt. (ungarisches Gesetz Nr. CXXXIII von 2005)
 
 c) Privatermittlungstätigkeit
-Genehmigungsnummer: 01030-822/4925-3/2018
+Behördliche Bescheinigung Nr.: 01030-822/4925-3/2018
 Gültigkeit: bis auf Widerruf
-Ausstellende Behörde: III. Kerületi Rendőrkapitányság, Igazgatásrendészeti Osztály
+Ausstellende Behörde: Polizeihauptmannschaft des III. Bezirks Budapest, Abteilung Verwaltungspolizei (III. Kerületi Rendőrkapitányság, Igazgatásrendészeti Osztály)
 Rechtsgrundlage: SzVMt. (ungarisches Gesetz Nr. CXXXIII von 2005)
 
 d) Eintragung in das nationale Sicherheitsverzeichnis gemäß § 120 des ungarischen Gesetzes Nr. XXX von 2016 (Vbt.)
-Registrierungsnummer: AH/37595-14/2024-2
-Überprüfung bis: 30.06.2026
-Ausstellende Behörde: Alkotmányvédelmi Hivatal Iparbiztonsági Főosztály
+Aktenzeichen: AH/37595-14/2024-2
+Überprüfung verpflichtend bis: 30.06.2026
+Ausstellende Behörde: Amt für Verfassungsschutz, Hauptabteilung Industriesicherheit (Alkotmányvédelmi Hivatal Iparbiztonsági Főosztály)
 Rechtsgrundlage: § 120 des ungarischen Gesetzes Nr. XXX von 2016 (Vbt.)
 
 ## 7. Aufsichtsbehörden
 
 a) Aufsicht über Sicherheitstätigkeiten
-Behörde: III. Kerületi Rendőrkapitányság, Igazgatásrendészeti Osztály
+Behörde: Polizeihauptmannschaft des III. Bezirks Budapest, Abteilung Verwaltungspolizei (III. Kerületi Rendőrkapitányság, Igazgatásrendészeti Osztály)
 Anschrift: 1036 Budapest, Tímár utca 9/a, Ungarn
 Telefon: +36 (1) 430-4700
 Fax: +36 (1) 430-4722
@@ -85,7 +85,7 @@ E-Mail: 03rk@budapest.police.hu
 Rechtsgrundlage: SzVMt. und Regierungsverordnung Nr. 329/2007. (XII.13.) § 12 Abs. 3 lit. c
 
 b) Nationale Sicherheitsaufsicht
-Behörde: Alkotmányvédelmi Hivatal Iparbiztonsági Főosztály
+Behörde: Amt für Verfassungsschutz, Hauptabteilung Industriesicherheit (Alkotmányvédelmi Hivatal Iparbiztonsági Főosztály)
 Anschrift: 1117 Budapest, Fehérvári út 70, Ungarn
 Postanschrift: 1391 Budapest, 62. Pf. 217, Ungarn
 Telefon: +36 (1) 485-2300
