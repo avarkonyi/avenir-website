@@ -227,7 +227,7 @@ export function Nav({ t, serviceLocales }: { t: Pick<Translation, "nav">; servic
         <Link
           href={`/${currentLocale}`}
           onClick={handleLogoClick}
-          style={{ background: "none", border: "none", cursor: "pointer", padding: 0, display: "inline-flex" }}
+          style={{ background: "none", border: "none", cursor: "pointer", padding: 0, display: "inline-flex", flexShrink: 0 }}
           aria-label={accessibility.home}
         >
           <Image
@@ -360,6 +360,9 @@ export function Nav({ t, serviceLocales }: { t: Pick<Translation, "nav">; servic
             display: "flex",
             flexDirection: "column",
             gap: 16,
+            maxHeight: "calc(100dvh - 72px)",
+            overflowY: "auto",
+            overscrollBehavior: "contain",
           }}
         >
           {visibleSectionKeys.map((k) => (

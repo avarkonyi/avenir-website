@@ -131,7 +131,7 @@ a {
 @media (max-width: 900px) {
   .hero-section {
     min-height: auto !important;
-    padding: 120px 0 0 !important;
+    padding: 104px 0 0 !important;
   }
 
   .hero-content {
@@ -145,7 +145,7 @@ a {
     order: 2;
     width: 100%;
     height: clamp(320px, 62vw, 500px);
-    margin-top: 32px;
+    margin-top: 24px;
   }
 
   .hero-photo-image {
@@ -225,6 +225,33 @@ a {
   background: #a80f24;
   border-color: #a80f24;
   box-shadow: 0 8px 24px rgba(209, 23, 46, 0.36);
+}
+
+@media (max-width: 600px) {
+  .hero-section {
+    padding-top: 96px !important;
+  }
+
+  .hero-eyebrow {
+    margin-bottom: 20px !important;
+  }
+
+  .hero-description {
+    margin: 20px 0 24px !important;
+  }
+
+  .hero-cta-row {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .hero-cta {
+    width: 100%;
+  }
+
+  .hero-photo {
+    margin-top: 20px;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -890,6 +917,8 @@ details > summary:focus-visible {
   border-radius: 3px;
   padding: 28px;
   display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
   justify-content: space-between;
   align-items: flex-start;
   transition: all 0.2s;
@@ -900,6 +929,7 @@ details > summary:focus-visible {
   box-shadow: 0 4px 20px rgba(209, 23, 46, 0.1);
 }
 .career-apply-btn {
+  flex-shrink: 0;
   background: #0B1E3E;
   color: #fff;
   font-family: var(--font-head);
@@ -1268,17 +1298,17 @@ details > summary:focus-visible {
   }
 }
 
-/* Responsive: nav switches to mobile menu earlier (1024px) so iPad
-   portrait + small laptops don't suffer from clipped/wrapped nav links
-   in HU/DE/ZH. The .nav-cta lives inside .desktop-nav so it's hidden
-   automatically. Layout-grid collapse stays at 768px (below). */
-@media (max-width: 1024px) {
+/* Keep room for the logo, section links and all six language choices. */
+@media (max-width: 1280px) {
   .desktop-nav {
     display: none !important;
   }
   .mobile-menu-btn {
     display: block !important;
   }
+}
+
+@media (max-width: 1024px) {
   /* Hero eyebrow: drop the bordered pink-fill box on tablet/mobile —
      too dominant on narrow viewports. Keep the bullet + uppercase
      label inline, nothing else. */
@@ -1401,6 +1431,18 @@ html[lang="ko"] .hero-section h1 {
 }
 
 @media (max-width: 480px) {
+  .career-card {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+    padding: 24px;
+  }
+
+  .career-apply-btn {
+    min-height: 44px;
+    text-align: center;
+  }
+
   .certification-card {
     width: 150px;
   }

@@ -94,6 +94,7 @@ export function Hero({ t }: { t: Pick<Translation, "hero" | "stats"> }) {
             <span style={{ color: "#D1172E" }}>{t.hero.h1b}</span>
           </h1>
           <p
+            className="hero-description"
             style={{
               color: "rgba(255,255,255,0.85)",
               fontSize: "clamp(15px, 1.6vw, 18px)",
