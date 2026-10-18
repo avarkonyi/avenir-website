@@ -1,0 +1,238 @@
+{
+  "checkedAt": "2026-10-17T10:31:51.073Z",
+  "checks": [
+    {
+      "clientWidth": 1425,
+      "h1": [
+        "Kevesebb kockázat.Több kontroll."
+      ],
+      "kind": "desktop-home",
+      "lang": "hu",
+      "scrollWidth": 1425,
+      "url": "http://127.0.0.1:3100/hu",
+      "width": 1440
+    },
+    {
+      "clientWidth": 1425,
+      "h1": [
+        "Less risk.More control."
+      ],
+      "kind": "desktop-home",
+      "lang": "en",
+      "scrollWidth": 1425,
+      "url": "http://127.0.0.1:3100/en",
+      "width": 1440
+    },
+    {
+      "clientWidth": 1425,
+      "h1": [
+        "Weniger Risiko.Mehr Kontrolle."
+      ],
+      "kind": "desktop-home",
+      "lang": "de",
+      "scrollWidth": 1425,
+      "url": "http://127.0.0.1:3100/de",
+      "width": 1440
+    },
+    {
+      "clientWidth": 1425,
+      "h1": [
+        "降低风险。加强管控。"
+      ],
+      "kind": "desktop-home",
+      "lang": "zh",
+      "scrollWidth": 1425,
+      "url": "http://127.0.0.1:3100/zh",
+      "width": 1440
+    },
+    {
+      "clientWidth": 1425,
+      "h1": [
+        "리스크는 줄이고,운영 통제는 강화합니다."
+      ],
+      "kind": "desktop-home",
+      "lang": "ko",
+      "scrollWidth": 1425,
+      "url": "http://127.0.0.1:3100/ko",
+      "width": 1440
+    },
+    {
+      "clientWidth": 1425,
+      "h1": [
+        "Moins de risques.Plus de maîtrise."
+      ],
+      "kind": "desktop-home",
+      "lang": "fr",
+      "scrollWidth": 1425,
+      "url": "http://127.0.0.1:3100/fr",
+      "width": 1440
+    },
+    {
+      "clientWidth": 375,
+      "kind": "mobile-home",
+      "lang": "hu",
+      "scrollWidth": 375,
+      "url": "http://127.0.0.1:3100/hu",
+      "width": 390
+    },
+    {
+      "clientWidth": 375,
+      "kind": "mobile-home",
+      "lang": "en",
+      "scrollWidth": 375,
+      "url": "http://127.0.0.1:3100/en",
+      "width": 390
+    },
+    {
+      "clientWidth": 375,
+      "kind": "mobile-home",
+      "lang": "de",
+      "scrollWidth": 375,
+      "url": "http://127.0.0.1:3100/de",
+      "width": 390
+    },
+    {
+      "clientWidth": 375,
+      "kind": "mobile-home",
+      "lang": "zh",
+      "scrollWidth": 375,
+      "url": "http://127.0.0.1:3100/zh",
+      "width": 390
+    },
+    {
+      "clientWidth": 375,
+      "kind": "mobile-home",
+      "lang": "ko",
+      "scrollWidth": 375,
+      "url": "http://127.0.0.1:3100/ko",
+      "width": 390
+    },
+    {
+      "clientWidth": 375,
+      "kind": "mobile-home",
+      "lang": "fr",
+      "scrollWidth": 375,
+      "url": "http://127.0.0.1:3100/fr",
+      "width": 390
+    },
+    {
+      "clientWidth": 375,
+      "formLabel": "service-quote-title",
+      "h1": "Élőerős objektumőrzés",
+      "kind": "mobile-service",
+      "lang": "hu",
+      "scrollWidth": 375,
+      "url": "http://127.0.0.1:3100/hu/szolgaltatasok/objektumorzes",
+      "width": 390
+    },
+    {
+      "clientWidth": 375,
+      "formLabel": "service-quote-title",
+      "h1": "On-site Security Guarding",
+      "kind": "mobile-service",
+      "lang": "en",
+      "scrollWidth": 375,
+      "url": "http://127.0.0.1:3100/en/szolgaltatasok/objektumorzes",
+      "width": 390
+    },
+    {
+      "clientWidth": 375,
+      "formLabel": "service-quote-title",
+      "h1": "Objektschutz vor Ort",
+      "kind": "mobile-service",
+      "lang": "de",
+      "scrollWidth": 375,
+      "url": "http://127.0.0.1:3100/de/szolgaltatasok/objektumorzes",
+      "width": 390
+    },
+    {
+      "clientWidth": 375,
+      "formLabel": "service-quote-title",
+      "h1": "驻场安保",
+      "kind": "mobile-service",
+      "lang": "zh",
+      "scrollWidth": 375,
+      "url": "http://127.0.0.1:3100/zh/szolgaltatasok/objektumorzes",
+      "width": 390
+    },
+    {
+      "clientWidth": 375,
+      "formLabel": "service-quote-title",
+      "h1": "현장 보안 인력 서비스",
+      "kind": "mobile-service",
+      "lang": "ko",
+      "scrollWidth": 375,
+      "url": "http://127.0.0.1:3100/ko/szolgaltatasok/objektumorzes",
+      "width": 390
+    },
+    {
+      "clientWidth": 375,
+      "formLabel": "service-quote-title",
+      "h1": "Gardiennage sur site",
+      "kind": "mobile-service",
+      "lang": "fr",
+      "scrollWidth": 375,
+      "url": "http://127.0.0.1:3100/fr/szolgaltatasok/objektumorzes",
+      "width": 390
+    },
+    {
+      "clientWidth": 1425,
+      "h1": "Élőerős objektumőrzés",
+      "kind": "desktop-service",
+      "lang": "hu",
+      "scrollWidth": 1425,
+      "url": "http://127.0.0.1:3100/hu/szolgaltatasok/objektumorzes",
+      "width": 1440
+    },
+    {
+      "clientWidth": 1425,
+      "h1": "On-site Security Guarding",
+      "kind": "desktop-service",
+      "lang": "en",
+      "scrollWidth": 1425,
+      "url": "http://127.0.0.1:3100/en/szolgaltatasok/objektumorzes",
+      "width": 1440
+    },
+    {
+      "clientWidth": 1425,
+      "h1": "Objektschutz vor Ort",
+      "kind": "desktop-service",
+      "lang": "de",
+      "scrollWidth": 1425,
+      "url": "http://127.0.0.1:3100/de/szolgaltatasok/objektumorzes",
+      "width": 1440
+    },
+    {
+      "clientWidth": 1425,
+      "h1": "驻场安保",
+      "kind": "desktop-service",
+      "lang": "zh",
+      "scrollWidth": 1425,
+      "url": "http://127.0.0.1:3100/zh/szolgaltatasok/objektumorzes",
+      "width": 1440
+    },
+    {
+      "clientWidth": 1425,
+      "h1": "현장 보안 인력 서비스",
+      "kind": "desktop-service",
+      "lang": "ko",
+      "scrollWidth": 1425,
+      "url": "http://127.0.0.1:3100/ko/szolgaltatasok/objektumorzes",
+      "width": 1440
+    },
+    {
+      "clientWidth": 1425,
+      "h1": "Gardiennage sur site",
+      "kind": "desktop-service",
+      "lang": "fr",
+      "scrollWidth": 1425,
+      "url": "http://127.0.0.1:3100/fr/szolgaltatasok/objektumorzes",
+      "width": 1440
+    }
+  ],
+  "notes": [
+    "No form was submitted.",
+    "French mobile menu/contact anchor and expanded service quote panel verified.",
+    "Mobile stats stacking and Korean word wrapping corrected after visual review."
+  ]
+}

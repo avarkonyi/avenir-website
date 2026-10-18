@@ -19,8 +19,11 @@ export function sanitizeDbErrorMessage(error: unknown): string {
         ? error
         : "Unknown database error";
 
+  // drizzle-orm's DrizzleQueryError message ends with "\nparams: <bound
+  // values>". Bound values are user data (contact form fields, reply bodies),
+  // so everything from the params line onward is dropped before logging.
   const databaseUrl = process.env.DATABASE_URL;
-  let message = rawMessage;
+  let message = rawMessage.replace(/\r?\nparams:[\s\S]*$/, "\nparams: [redacted]");
   if (databaseUrl) {
     message = message.split(databaseUrl).join("[redacted DATABASE_URL]");
   }

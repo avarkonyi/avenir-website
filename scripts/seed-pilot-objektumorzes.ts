@@ -87,7 +87,7 @@ const PILOT_HU = {
     {
       title: "Helyszíni felmérés és kockázati pontok áttekintése",
       body: "A helyszíni bejárás és az alapvető kockázati áttekintés " +
-        "jellemzően 1–3 munkanapon belül megszervezhető.",
+        "időpontját az első egyeztetésen közösen rögzítjük.",
     },
     {
       title: "Belépési, kilépési, járőrözési és eszkalációs rend kialakítása",

@@ -69,7 +69,7 @@ test("recruitment privacy metadata is canonical, indexable and cross-linked", ()
       en: "https://www.afm.hu/en/recruitment-privacy",
       "x-default": "https://www.afm.hu/hu/palyazoi-adatkezeles",
     });
-    assert.deepEqual(metadata.robots, { index: true, follow: true });
+    assert.deepEqual(metadata.robots, { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 });
   }
 });
 
@@ -89,7 +89,7 @@ test("career privacy microcopy links the right notice per locale and is omitted 
   const de = getCareerPrivacyNotice("de");
   assert.ok(de);
   assert.equal(de.href, "/en/recruitment-privacy");
-  assert.equal(de.linkLabel, "Datenschutzhinweise für Bewerbungen");
+  assert.equal(de.linkLabel, "Datenschutzhinweise für Bewerbungen (auf Englisch)");
 
   assert.equal(getCareerPrivacyNotice("zh"), null);
   assert.equal(getCareerPrivacyNotice("ko"), null);

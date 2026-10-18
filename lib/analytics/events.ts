@@ -1,6 +1,7 @@
 "use client";
 
 import { hasAnalyticsConsent } from "./consent";
+import { analyticsPath } from "./runtime";
 
 export type AnalyticsEventName =
   | "contact_submit_success"
@@ -45,7 +46,7 @@ export function trackAnalyticsEvent(
 }
 
 function sanitizeParams(params: AnalyticsEventParams): AnalyticsEventParams {
-  const path = params.path ?? window.location.pathname;
+  const path = analyticsPath(params.path ?? window.location.pathname);
 
   return {
     ...(params.locale ? { locale: params.locale } : {}),

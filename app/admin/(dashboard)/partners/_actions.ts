@@ -2,6 +2,7 @@
 
 import { eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
+import { revalidatePublicContent } from "@/lib/public-content-revalidation";
 import { db, neonSql, partners } from "@/lib/db";
 import { requireAdmin } from "@/lib/admin/require-admin";
 import { safeActionError } from "@/lib/admin/safe-action-error";
@@ -61,16 +62,12 @@ export type UpdatePartnerResult =
   | { ok: true }
   | { ok: false; error: string };
 
-const PUBLIC_HOME_PATHS = ["/hu", "/en", "/de", "/zh"] as const;
-
 function revalidatePartnerSurfaces(id?: number) {
   revalidatePath("/admin/partners");
   if (typeof id === "number") {
     revalidatePath(`/admin/partners/${id}/edit`);
   }
-  for (const path of PUBLIC_HOME_PATHS) {
-    revalidatePath(path);
-  }
+  revalidatePublicContent(revalidatePath);
 }
 
 // Auto-derive a unique slug from `name`, suffixing with `-2`,

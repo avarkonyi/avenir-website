@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/page-metadata";
 import { notFound } from "next/navigation";
 import { getTranslation } from "@/lib/i18n";
 import { getDeImpressumContent } from "@/lib/de-legal-content";
@@ -11,6 +12,7 @@ import {
   SEO_LICENSES,
   SEO_REGULATORY_BODIES,
 } from "@/lib/seo-data";
+import { toMetaDescription } from "@/lib/meta-description";
 import {
   isLegalPageLocale,
   legalPageAlternateLanguages,
@@ -39,25 +41,22 @@ export async function generateMetadata({
   const pageTitle = deImpressum?.title ?? t.legal.impressum.title;
   const title = `${pageTitle} — ${SEO_DATA.legalNameShort}`;
   const description =
-    deImpressum?.sections[0]?.body.slice(0, 160) ??
-    `${SEO_DATA.legalName}. ${SEO_DATA.address.streetAddress}, ${SEO_DATA.address.postalCode} ${SEO_DATA.address.addressLocality}. Cégjegyzékszám: ${SEO_DATA.registrationId}.`;
+    (deImpressum?.sections[0] ? toMetaDescription(deImpressum.sections[0].body) : undefined) ??
+    (locale === "en"
+      ? `${SEO_DATA.legalNameShort} Registered office: Királyok útja 291, Building B, Door 15, 1039 Budapest. Company registration number: ${SEO_DATA.registrationId}.`
+      : `${SEO_DATA.legalName}. ${SEO_DATA.address.streetAddress}, ${SEO_DATA.address.postalCode} ${SEO_DATA.address.addressLocality}. Cégjegyzékszám: ${SEO_DATA.registrationId}.`);
   const url = legalPageUrl(locale, "impresszum");
   const isDeReviewPage = locale === "de";
-  const alternates = isDeReviewPage
-    ? { canonical: url }
-    : {
-        canonical: url,
-        languages: legalPageAlternateLanguages("impresszum"),
-      };
 
-  return {
-    metadataBase: new URL(SEO_DATA.url),
+  return buildPageMetadata({
+    locale,
     title,
     description,
-    robots: { index: !isDeReviewPage, follow: true },
-    alternates,
-    openGraph: { type: "article", title, description, url },
-  };
+    url,
+    index: !isDeReviewPage,
+    languages: legalPageAlternateLanguages("impresszum"),
+    type: "article",
+  });
 }
 
 const sectionStyle: React.CSSProperties = { marginBottom: 36 };
@@ -263,7 +262,7 @@ export default async function ImpresszumPage({
         t={t}
         locale={locale}
         pageTitle={impressum.title}
-        pageDescription={impressum.sections[0]?.body.slice(0, 160) ?? impressum.title}
+        pageDescription={impressum.sections[0] ? toMetaDescription(impressum.sections[0].body) : impressum.title}
         pageSlug="impresszum"
       >
         <LegalHeader

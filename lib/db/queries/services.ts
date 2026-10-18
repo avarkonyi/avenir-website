@@ -1,58 +1,15 @@
+import { databaseErrorDiagnostic } from "@/lib/db/error-diagnostic";
 import { cache } from "react";
 import { and, asc, eq, inArray, isNull, sql } from "drizzle-orm";
 import { db, services } from "@/lib/db";
 import { redactedDbIdentity, sanitizeDbErrorMessage } from "@/lib/db/redact";
 import { LOCALES, type Locale } from "@/lib/i18n";
+import { localizeHomepageService } from "@/lib/homepage-content";
+import { applyApprovedProcessCopy } from "@/lib/services/approved-process-copy";
 
-type DbLocale = Exclude<Locale, "ko">;
+type DbLocale = Exclude<Locale, "ko" | "fr">;
 
 const DB_LOCALES = ["hu", "en", "de", "zh"] as const satisfies readonly DbLocale[];
-
-const KOREAN_SERVICE_DISPLAY: Record<
-  string,
-  { readonly name: string; readonly shortDesc: string }
-> = {
-  objektumorzes: {
-    name: "현장 보안 인력 서비스",
-    shortDesc:
-      "사업장 출입 관리, 순찰, 사건 처리, 업무 기록 및 합의된 보고·에스컬레이션을 지원하는 현장 보안 인력 서비스입니다.",
-  },
-  portaszolgalat: {
-    name: "리셉션 및 게이트하우스 서비스",
-    shortDesc:
-      "방문객, 협력사, 임직원, 열쇠, 우편물·배송물, 출입 기록 및 합의된 에스컬레이션을 관리하는 리셉션 및 게이트하우스 서비스입니다.",
-  },
-  biztonsagtechnika: {
-    name: "보안 기술",
-    shortDesc:
-      "CCTV, 출입 통제 및 경보 프로세스를 현장별 보안 모델에 맞춰 설계·운영하도록 지원하는 보안 기술 서비스입니다.",
-  },
-  "tavfelugyelet-vonuloszolgalat": {
-    name: "원격 모니터링 및 출동 대응 서비스",
-    shortDesc:
-      "신호 접수, 경보 확인, 에스컬레이션, 이벤트 기록 및 합의된 조건의 대응 프로세스를 지원하는 원격 모니터링 서비스입니다.",
-  },
-  "mystery-shopping-helyszini-audit": {
-    name: "미스터리 쇼핑 및 서비스 감사",
-    shortDesc:
-      "실제 고객 접점과 운영 상황에서 서비스 품질을 확인하고, 구조화된 관찰·보고·개선 제안을 제공하는 서비스 감사입니다.",
-  },
-  rendezvenybiztositas: {
-    name: "행사 보안",
-    shortDesc:
-      "기업 행사, 초청 행사 및 공개 행사에서 출입 관리, 동선 지원, 구역 관리, 사건 기록 및 주최자 기준 에스컬레이션을 지원합니다.",
-  },
-  "hard-fm": {
-    name: "Hard FM",
-    shortDesc:
-      "계획 예방정비, 장애 대응, 전문 협력사 조율, 장애 기록 및 운영 보고를 지원하는 Hard FM 서비스입니다.",
-  },
-  "soft-fm": {
-    name: "Soft FM",
-    shortDesc:
-      "청소, 조경, 위생, 폐기물 처리 지원 및 서비스 제공자 관리를 합의된 범위와 품질 확인, 서면 보고에 따라 지원하는 Soft FM 서비스입니다.",
-  },
-};
 
 function safeDbLocaleOf(locale: string): DbLocale {
   return (DB_LOCALES as readonly string[]).includes(locale)
@@ -60,15 +17,8 @@ function safeDbLocaleOf(locale: string): DbLocale {
     : "hu";
 }
 
-function nonEmptyTrimmed(value: string | null): string | null {
-  const trimmed = value?.trim() ?? "";
-  return trimmed.length > 0 ? trimmed : null;
-}
-
-// Normalized row shape returned to public renderers. Locale fallback
-// to HU is already applied to `name` and `shortDesc`; `shortDesc` may
-// be empty string when neither the requested locale nor HU has a
-// value (services.shortDesc* columns are all nullable).
+// Normalized homepage rows use localized DB text or known source translations.
+// Missing translated fields remain empty; they never fall back to Hungarian.
 export type LocalizedServiceRow = {
   readonly slug: string;
   readonly icon: string | null;
@@ -77,8 +27,7 @@ export type LocalizedServiceRow = {
 };
 
 // Active + published + top-level services, ordered by sortOrder ASC,
-// with HU fallback applied to nullable EN/DE/ZH locale columns and
-// values trimmed.
+// with source overlays for known records and translated values trimmed.
 //
 // Caller responsibilities:
 //  - call `await connection()` before invoking (this helper does not
@@ -128,17 +77,10 @@ async function loadActiveTopLevelServices(
       de: row.shortDescDe,
       zh: row.shortDescZh,
     };
-    const koDisplay = locale === "ko" ? KOREAN_SERVICE_DISPLAY[row.slug] : null;
-    const name =
-      koDisplay?.name ??
-      nonEmptyTrimmed(namesByLocale[safeLocale]) ??
-      nonEmptyTrimmed(row.nameHu) ??
-      "";
-    const shortDesc =
-      koDisplay?.shortDesc ??
-      nonEmptyTrimmed(descsByLocale[safeLocale]) ??
-      nonEmptyTrimmed(row.shortDescHu) ??
-      "";
+    const { name, shortDesc } = localizeHomepageService(locale, row.slug, {
+      name: namesByLocale[safeLocale],
+      shortDesc: descsByLocale[safeLocale],
+    });
     return {
       slug: row.slug,
       icon: row.icon,
@@ -276,7 +218,7 @@ async function loadPublishedServiceDetailBySlug(
   slug: string,
   locale: string,
 ): Promise<LocalizedServiceDetail | null> {
-  if (locale === "ko") return null;
+  if (locale === "ko" || locale === "fr") return null;
   const safeLocale = safeDbLocaleOf(locale);
   const [row] = await db
     .select()
@@ -418,7 +360,7 @@ async function loadPublishedServiceDetailBySlug(
     highlights,
     useCases,
     includedItems,
-    processSteps,
+    processSteps: applyApprovedProcessCopy(row.slug, safeLocale, processSteps),
     trustItems,
     faq,
     relatedSlugs: row.relatedServiceSlugs ?? [],
@@ -435,6 +377,7 @@ export const getPublishedServiceDetailBySlug = cache(
 export type PublishedServicePath = {
   readonly locale: Locale;
   readonly slug: string;
+  readonly updatedAt?: Date;
 };
 
 type ServiceReadinessRow = {
@@ -459,6 +402,7 @@ type ServiceReadinessRow = {
 
 const SERVICE_READINESS_SELECT = {
   slug: services.slug,
+  updatedAt: services.updatedAt,
   seoTitleHu: services.seoTitleHu,
   seoDescriptionHu: services.seoDescriptionHu,
   longDescHu: services.longDescHu,
@@ -481,7 +425,7 @@ function hasRequiredDetailFields(
   row: ServiceReadinessRow,
   locale: Locale,
 ): boolean {
-  if (locale === "ko") return false;
+  if (locale === "ko" || locale === "fr") return false;
 
   const values =
     locale === "hu"
@@ -527,7 +471,7 @@ async function loadAllPublishedServicePaths(): Promise<
   return LOCALES.flatMap((locale) =>
     rows
       .filter((row) => hasRequiredDetailFields(row, locale))
-      .map((row) => ({ locale, slug: row.slug })),
+      .map((row) => ({ locale, slug: row.slug, updatedAt: row.updatedAt })),
   );
 }
 
@@ -547,6 +491,7 @@ export async function getAllPublishedServicePathsForBuild(
         "Failing generation instead of emitting an incomplete service layer.",
         `DB target: ${redactedDbIdentity()}.`,
         `Cause: ${sanitizeDbErrorMessage(error)}.`,
+        `Diagnostic: ${databaseErrorDiagnostic(error)}.`,
         "Full DATABASE_URL was not printed.",
       ].join(" "),
     );
@@ -569,6 +514,7 @@ async function runSanitizedServiceQuery<T>(
         `[service-detail] ${surface}: failed to read DB-backed service detail data.`,
         `DB target: ${redactedDbIdentity()}.`,
         `Cause: ${sanitizeDbErrorMessage(error)}.`,
+        `Diagnostic: ${databaseErrorDiagnostic(error)}.`,
         "Full DATABASE_URL was not printed.",
       ].join(" "),
     );
@@ -641,7 +587,7 @@ async function loadPublishedServicesBySlugs(
   locale: string,
 ): Promise<LocalizedServiceRow[]> {
   if (slugs.length === 0) return [];
-  if (locale === "ko") return [];
+  if (locale === "ko" || locale === "fr") return [];
   const safeLocale = safeDbLocaleOf(locale);
   const rows = await db
     .select({

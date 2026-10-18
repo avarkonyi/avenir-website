@@ -1,98 +1,108 @@
-<!-- STATUS: legal_review_required — Veröffentlichung erst nach anwaltlicher Freigabe. Platzhalter 5. Juni 2026 koordiniert mit der ungarischen Fassung setzen (EIN einheitliches Datum — der HU-Datumswiderspruch Kopfzeile/§1 wird nicht übernommen). Ziel-Route: /de/aszf -->
+<!-- STATUS: legal_review_required — Veröffentlichung erst nach anwaltlicher Freigabe. Quellengetreue Übersetzung der aktuell gerenderten ungarischen Fassung; keine rechtliche Freigabe. Ziel-Route: /de/aszf; review-mode: noindex, follow. -->
 
 # Rechtliche Hinweise
 
-Gültig ab: 5. Juni 2026
+Gültig ab: 6. Mai 2026
 
-Version 1.1
+Version 1.1 — Präzisierung des Titels
 
 Dieses Dokument enthält Informationen zur Nutzung der Website www.afm.hu, zum Kontakt- und Angebotsanfrageprozess sowie zu den auf der Website veröffentlichten rechtlichen Hinweisen. Es handelt sich nicht um Allgemeine Geschäftsbedingungen für die gesamte Geschäftstätigkeit des Dienstleisters.
 
 ## 1. Allgemeine Bestimmungen und Geltungsbereich
 
 Dienstleister (Marketingbezeichnung): Avenir Facility Management Kft.
-Dienstleister (offizieller Firmenname): Avenir Facility Management Szolgáltató Korlátolt Felelősségű Társaság (nachfolgend: „Dienstleister"). Weitere Unternehmensangaben: siehe Impressum.
-
+Dienstleister (offizieller Firmenname): Avenir Facility Management Szolgáltató Korlátolt Felelősségű Társaság (nachfolgend: „Dienstleister“). Weitere Unternehmensangaben: siehe Impressum.
 Die vorliegenden Rechtlichen Hinweise wurden unter Berücksichtigung der §§ 6:2–6:8 des ungarischen Bürgerlichen Gesetzbuchs (Gesetz Nr. V von 2013, Ptk.) sowie der Bestimmungen des ungarischen Gesetzes Nr. CVIII von 2001 über den elektronischen Geschäftsverkehr (Ekertv.) erstellt.
-
-Geltungsbereich: die Nutzung der Website https://www.afm.hu sowie der Kontakt- und Angebotsanfrageprozess.
-
+Geltungsbereich dieser Rechtlichen Hinweise: die Nutzung der Website https://www.afm.hu sowie der Kontakt- und Angebotsanfrageprozess.
 Der Kundenkreis des Dienstleisters besteht ausschließlich aus Geschäftskunden (B2B): Der Dienstleister schließt über die Website keine Verträge mit Verbrauchern im Sinne von § 8:1 Abs. 1 Nr. 3 des ungarischen Bürgerlichen Gesetzbuchs und begründet keine Verbraucherrechtsverhältnisse. Der Kontaktprozess der Website nimmt ausschließlich B2B-Anfragen entgegen.
+Inkrafttreten: 28.04.2026.
+Sprache dieser Rechtlichen Hinweise ist Ungarisch; maßgeblich ist die ungarische Fassung. Die englische und die deutsche Fassung dienen der Information; bei Abweichungen ist der ungarische Text maßgeblich.
 
-Das Kontaktformular der Website dient ausschließlich der Angebotsanfrage und der Kontaktaufnahme; das Ausfüllen und Absenden des Formulars begründet kein Vertragsverhältnis zwischen den Parteien. Der Dienstleister beantwortet eingegangene Angebotsanfragen in der Regel über die angegebenen Kontaktdaten. Das Formular bietet vor dem Absenden die Möglichkeit, die eingegebenen Daten zu überprüfen und zu korrigieren. Bitte übermitteln Sie über das Formular keine besonderen Kategorien personenbezogener Daten, keine strafrechtlichen Daten, keine Verschlusssachen und keine detaillierten Angaben zum Privatleben Dritter; die über das Formular angegebenen personenbezogenen Daten werden gemäß der Datenschutzerklärung (https://www.afm.hu/de/adatvedelem) verarbeitet.
+## 2. Beschreibung der Dienstleistung
 
-Gültig ab: 5. Juni 2026.
+Die Website https://www.afm.hu dient der Information über die Gebäudebetriebs-, Sicherheits- und damit verbundenen B2B-Dienstleistungen des Dienstleisters.
 
-Sprache dieser Rechtlichen Hinweise ist Ungarisch; maßgeblich ist die ungarische Fassung. Alle nicht ungarischen Sprachfassungen dienen ausschließlich der Information; bei Abweichungen zwischen den Sprachfassungen ist der ungarische Text maßgeblich.
+Die Website ist KEINE Plattform für den Online-Vertragsschluss. Ein Dienstleistungsvertrag zwischen dem Dienstleister und dem Kunden kommt auf Grundlage der Verhandlungen zwischen den Parteien gesondert in schriftlicher Form zustande.
 
-Die vorliegenden Rechtlichen Hinweise gelten für die Nutzung der Website. Mit dem Aufruf und der Nutzung der Website erkennen Sie die hierin enthaltenen Bedingungen an.
+Die auf der Website veröffentlichten Informationen dienen der Orientierung; der tatsächliche Leistungsumfang, die Vergütung und die Bedingungen werden stets im schriftlichen Vertrag festgelegt.
 
-## 2. Zweck und Charakter der Website
+## 3. Nutzung des Kontaktformulars
 
-Die Website dient der allgemeinen Vorstellung der Dienstleistungen des Dienstleisters und richtet sich an Geschäftskunden (B2B). Über die Website findet kein elektronischer Handel statt; es können keine Produkte oder Dienstleistungen direkt bestellt oder bezahlt werden.
+Das unter https://www.afm.hu/de#contact verfügbare Formular dient ausschließlich der Angebotsanfrage und der Kontaktaufnahme. Das Ausfüllen und Absenden des Formulars begründet KEIN Vertragsverhältnis zwischen den Parteien.
 
-Die auf der Website dargestellten Inhalte dienen der Information und stellen kein Vertragsangebot dar. Konkrete Leistungsinhalte, Preise und Bedingungen werden im Rahmen individueller Angebote und schriftlicher Verträge festgelegt.
+Der Dienstleister prüft eingegangene Anfragen und nimmt spätestens am nächsten Werktag über eine der angegebenen Kontaktmöglichkeiten Kontakt mit der anfragenden Person auf. Der Zeitbedarf für die Angebotserstellung hängt von der Komplexität der Anfrage und den erforderlichen Abstimmungen ab.
 
-## 3. Privatermittlungstätigkeit
+Datenschutz: Die über das Formular angegebenen personenbezogenen Daten werden gemäß der Datenschutzerklärung (https://www.afm.hu/de/adatvedelem) verarbeitet.
 
-Der Dienstleister übt Privatermittlungstätigkeit ausschließlich im Besitz der einschlägigen behördlichen Genehmigung (Nr. 01030-822/4925-3/2018), im Rahmen des ungarischen Gesetzes Nr. CXXXIII von 2005 über die Personen- und Vermögensschutztätigkeit (SzVMt.) und auf Grundlage eines schriftlichen Auftragsvertrags aus. Für diese Tätigkeit gilt ein gesonderter Datenschutzhinweis, der im Rahmen der Vertragsanbahnung zur Verfügung gestellt wird.
+## 4. Privatermittlungstätigkeit und Ausschluss der Verarbeitung besonderer Daten über das Formular
 
-## 4. Behördliche Genehmigungen
+Bitte übermitteln Sie über das Angebotsanfrageformular keine besonderen Kategorien personenbezogener Daten, Gesundheitsdaten, strafrechtlichen oder Straftaten betreffenden Daten, Verschlusssachen oder detaillierten Angaben zum Privatleben Dritter. Die Verarbeitung solcher Daten erfolgt ausschließlich auf Grundlage eines gesonderten Vertrags, vorheriger Datenschutzinformation und einer geeigneten Rechtsgrundlage.
 
-Der Dienstleister verfügt über die folgenden behördlichen Genehmigungen:
+Der Dienstleister übt Privatermittlungstätigkeit ausschließlich im Besitz der einschlägigen behördlichen Genehmigung (01030-822/4925-3/2018), im Rahmen des ungarischen Gesetzes Nr. CXXXIII von 2005 (SzVMt.) und auf Grundlage eines schriftlichen Auftragsvertrags aus. Für die Datenverarbeitung im Zusammenhang mit der Privatermittlungstätigkeit gilt eine gesonderte Datenschutzerklärung, die unter info@afm.hu angefordert werden kann.
 
-a) Personen- und Vermögensschutztätigkeit: Genehmigungsnummer 01030-822/4926-7/2023, gültig bis 31.01.2028, ausgestellt durch die Polizeihauptdienststelle des III. Bezirks Budapest (III. Kerületi Rendőrkapitányság).
+Der Dienstleister schließt seine Haftung für Daten aus, die die betroffene Person entgegen dem in diesem Abschnitt enthaltenen Verbot über das Webformular übermittelt. Der Dienstleister prüft solche Daten ausschließlich in dem für die Bearbeitung der Anfrage unbedingt erforderlichen Umfang; erforderlichenfalls werden sie ohne unangemessene Verzögerung gelöscht, anonymisiert oder in einen gesonderten Verarbeitungsprozess überführt.
 
-b) Planung und Errichtung von Sicherheitsanlagen (vagyonvédelmi rendszert tervező-szerelő tevékenység): Genehmigungsnummer 01030-822/4927-3/2018, gültig bis auf Widerruf.
+## 5. Behördliche Genehmigungen
 
-c) Privatermittlungstätigkeit: Genehmigungsnummer 01030-822/4925-3/2018, gültig bis auf Widerruf.
+Der Dienstleister übt seine Tätigkeiten auf Grundlage der folgenden behördlichen Genehmigungen und Eintragungen aus:
 
-d) Eintragung in das nationale Sicherheitsverzeichnis (nemzetbiztonsági névjegyzék) gemäß § 120 des ungarischen Gesetzes Nr. XXX von 2016 (Vbt.): Registrierungsnummer AH/37595-14/2024-2, Überprüfung bis 30.06.2026, geführt durch das Amt für Verfassungsschutz (Alkotmányvédelmi Hivatal).
+a) Personen- und Vermögensschutz (Bewachung) — Genehmigungsnummer: 01030-822/4926-7/2023, gültig bis 31.01.2028, ausgestellt durch: Polizeihauptmannschaft des III. Bezirks Budapest, Abteilung Verwaltungspolizei (III. Kerületi Rendőrkapitányság, Igazgatásrendészeti Osztály).
+b) Planung und Errichtung von Sicherheitsanlagen — behördliche Bescheinigung: 01030-822/4927-3/2018, gültig bis auf Widerruf.
+c) Privatermittlungstätigkeit — behördliche Bescheinigung: 01030-822/4925-3/2018, gültig bis auf Widerruf.
+d) Eintragung in das nationale Sicherheitsverzeichnis — der Dienstleister ist im nationalen Sicherheitsverzeichnis gemäß § 120 des ungarischen Gesetzes Nr. XXX von 2016 (Vbt.) eingetragen: Aktenzeichen AH/37595-14/2024-2; Überprüfung verpflichtend bis 30.06.2026; ausgestellt durch: Amt für Verfassungsschutz, Hauptabteilung Industriesicherheit (Alkotmányvédelmi Hivatal Iparbiztonsági Főosztály).
 
 Ausführliche behördliche Angaben und Aufsichtsbehörden: siehe Impressum (https://www.afm.hu/de/impresszum).
 
-## 5. Haftungsausschluss
+## 6. Geistiges Eigentum
 
-Der Dienstleister ist bestrebt, die auf der Website veröffentlichten Informationen richtig und aktuell zu halten, übernimmt hierfür jedoch keine Haftung. Die Inhalte der Website können sich ohne vorherige Ankündigung ändern.
+Sämtliche Inhalte der Website — einschließlich Texte, Bilder, Logos, grafische Elemente, strukturierte Daten (JSON-LD) und Quellcode — sind geistiges Eigentum des Dienstleisters und urheberrechtlich geschützt (ungarisches Gesetz Nr. LXXVI von 1999).
 
-Der Dienstleister haftet nicht für Schäden, die aus der Nutzung der Website, aus deren vorübergehender Nichtverfügbarkeit oder aus technischen Störungen entstehen, soweit dies gesetzlich zulässig ist.
+Die Vervielfältigung, Verbreitung, Änderung oder Veröffentlichung der Inhalte zu geschäftlichen Zwecken ist ohne vorherige schriftliche Genehmigung untersagt. Die nicht geschäftliche, private Nutzung (Lesen, Surfen und Ausdrucken zum eigenen Gebrauch) ist gestattet.
 
-## 6. Berufshaftpflichtversicherung
+## 7. Haftungsausschluss und obligatorische Haftpflichtversicherung
 
-Der Dienstleister verfügt über die nach dem SzVMt. vorgeschriebene Haftpflichtversicherung.
+Der Dienstleister ist bestrebt, die auf der Website veröffentlichten Informationen richtig und aktuell zu halten, übernimmt hierfür jedoch keine Haftung. Der Dienstleister haftet nicht für mittelbare Schäden oder Folgeschäden, die aus der Nutzung der Website entstehen.
 
-Versicherer: Allianz Hungária Zrt. (Sitz: Könyves Kálmán krt. 48-52, 1087 Budapest, Ungarn; Handelsregisternummer: Cg. 01-10-041356)
+Für seine berufliche Tätigkeit unterhält der Dienstleister die nach § 5/A Abs. 1 lit. b SzVMt. vorgeschriebene Haftpflichtversicherung:
+
+Versicherer: Allianz Hungária Biztosító Zártkörűen Működő Részvénytársaság
+Sitz: 1087 Budapest, Könyves Kálmán krt. 48-52, Ungarn
+Handelsregisternummer: Cg. 01-10-041356
 Versicherungsschein-Nr.: 341633910
 
-## 7. Dienste Dritter
+## 8. Dienste Dritter
 
-Für den Betrieb der Website nimmt der Dienstleister Dienste Dritter in Anspruch (insbesondere Hosting: Vercel Inc.; E-Mail-Versand: Resend / Plus Five Five, Inc.; Datenbankdienst: Neon, LLC). Einzelheiten zur damit verbundenen Datenverarbeitung enthält die Datenschutzerklärung unter https://www.afm.hu/de/adatvedelem.
+Für den Betrieb der Website nimmt der Dienstleister folgende technische Dienste Dritter in Anspruch:
 
-## 8. Urheberrecht und geistiges Eigentum
+• Hosting: Vercel Inc. (440 N Barranca Avenue #4133, Covina, CA 91723, USA)
+• E-Mail-Versand: Plus Five Five, Inc. („Resend“) (2261 Market Street #5039, San Francisco, CA 94114, USA)
+• Datenbank: Neon, LLC als verbundenes Unternehmen von Databricks, Inc. (160 Spear Street, Suite 1300, San Francisco, CA 94105, USA)
 
-Sämtliche Inhalte der Website — einschließlich Texte, Grafiken, Logos, Bilder und deren Anordnung — sind urheberrechtlich geschützt. Rechteinhaber ist, soweit nicht anders angegeben, der Dienstleister.
+Ausführliche Informationen zur Datenverarbeitung durch diese Anbieter sind in der Datenschutzerklärung verfügbar.
 
-Die Inhalte dürfen ohne vorherige schriftliche Zustimmung des Dienstleisters über den persönlichen, nicht kommerziellen Gebrauch hinaus nicht vervielfältigt, verbreitet, gespeichert oder weiterverwendet werden. Grundlage ist das ungarische Gesetz Nr. LXXVI von 1999 über das Urheberrecht.
+## 9. Berichtigung von Eingabefehlern
 
-## 9. Beschwerdebearbeitung (B2B)
+Das Kontaktformular bietet vor dem Absenden die Möglichkeit, die eingegebenen Daten zu überprüfen und zu korrigieren (clientseitige Validierung und serverseitige Prüfung). Die Nutzerin oder der Nutzer kann die Formularfelder vor dem Absenden frei bearbeiten.
 
-Die Dienstleistungen des Dienstleisters richten sich an Geschäftskunden. Verbraucher im Sinne von § 8:1 des ungarischen Bürgerlichen Gesetzbuchs nehmen die Dienstleistungen nicht in Anspruch; die verbraucherschutzrechtlichen Vorschriften finden daher auf die Geschäftsbeziehungen des Dienstleisters keine Anwendung.
+## 10. Beschwerdebearbeitung (B2B)
 
-Geschäftspartner können Beanstandungen über die folgenden Kontaktdaten mitteilen: E-Mail: info@afm.hu, Telefon: +36 70 316 8218. Der Dienstleister bearbeitet Beanstandungen im Rahmen der vertraglichen Vereinbarungen.
+Der Dienstleister erbringt seine Leistungen ausschließlich für Geschäftskunden (B2B; siehe Abschnitt 1). Die Vorschriften des ungarischen Verbraucherschutzgesetzes (Gesetz Nr. CLV von 1997) über Verbraucherstreitbeilegung, Schlichtungsstellen und Beschwerden bei der Verbraucherschutzbehörde finden auf dieses B2B-Verhältnis keine Anwendung.
 
-## 10. Verhaltenskodex
+B2B-bezogene Anmerkungen und Beschwerden über den Dienstleister können unmittelbar an info@afm.hu oder telefonisch unter +36 70 316 8218 gerichtet werden; der Dienstleister gibt darauf innerhalb von 8 Arbeitstagen eine inhaltliche Antwort. Die Parteien regeln Beschwerden nach dem in Abschnitt 12 bestimmten anwendbaren Recht und Gerichtsstand.
 
-Der Dienstleister hat sich keinem freiwilligen Verhaltenskodex im Sinne von § 4 lit. g des ungarischen Gesetzes Nr. CVIII von 2001 über den elektronischen Geschäftsverkehr (Ekertv.) unterworfen. Der Dienstleister arbeitet nach den Anforderungen der Normen ISO 9001 und ISO/IEC 27001 sowie unter Beachtung der branchenüblichen Grundsätze des ungarischen Versicherungsverbands (MABISZ) für Sicherheitsdienstleistungen.
+## 11. Verhaltenskodex
 
-## 11. Anwendbares Recht und Gerichtsstand
+Der Dienstleister hat sich keinem freiwilligen Verhaltenskodex angeschlossen (Angabe gemäß § 4 lit. g Ekertv.). Der Dienstleister übt seine Tätigkeiten nach den einschlägigen Branchenstandards (MSZ EN ISO 9001:2015, MSZ ISO/IEC 27001:2023, MABISZ-Grundsätze für den Vermögensschutz) aus.
 
-Für die Nutzung der Website und diese Rechtlichen Hinweise gilt ungarisches Recht. Für Streitigkeiten sind — soweit gesetzlich zulässig — die ungarischen Gerichte zuständig.
+## 12. Anwendbares Recht und Streitbeilegung
 
-## 12. Änderung dieser Hinweise
+Für diese Rechtlichen Hinweise und die Nutzung der Website https://www.afm.hu gilt ungarisches Recht.
 
-Der Dienstleister behält sich das Recht vor, diese Hinweise zu ändern. Die jeweils gültige Fassung ist auf der Website abrufbar.
+Die Parteien versuchen, Streitigkeiten zunächst gütlich im Verhandlungsweg beizulegen. Scheitert dies, vereinbaren die Parteien für die Beilegung der Streitigkeit die ausschließliche Zuständigkeit des Hauptstädtischen Gerichtshofs (Fővárosi Törvényszék).
+
+## 13. Änderung der Rechtlichen Hinweise
+
+Der Dienstleister behält sich das Recht vor, diese Rechtlichen Hinweise zu ändern. Änderungen treten mit der Veröffentlichung unter https://www.afm.hu/hu/aszf in Kraft. Frühere Fassungen archiviert der Dienstleister und stellt sie auf Anfrage zur Verfügung.
 
 Versionshistorie:
-Version 1.1 — Gültig ab 5. Juni 2026. Titel des Dokuments auf Hinweis der Datenschutzbeauftragten in „Rechtliche Hinweise" geändert; einheitliche Angabe des Gültigkeitsdatums.
-Version 1.0 — Gültig ab 28. April 2026. Erstveröffentlichung.
-
+Version 1.1 — Gültig ab 6. Mai 2026. Der Titel des Dokuments wurde auf Hinweis der Datenschutzbeauftragten in „Rechtliche Hinweise“ geändert.

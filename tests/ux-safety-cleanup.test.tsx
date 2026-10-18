@@ -21,6 +21,12 @@ import {
   getVisibleNavSectionKeys,
 } from "../lib/locale-ui-helpers";
 
+const PRIVACY_NOTICE_HU = {
+  text: "A küldéssel tudomásul veszi az",
+  linkText: "Adatkezelési tájékoztatót",
+  href: "/hu/adatvedelem",
+};
+
 const LOCALES = { hu, en, de, zh, ko } as const;
 
 const RESPONSE_TIME_PROMISE =
@@ -148,7 +154,8 @@ test("footer map link title is localized per locale", () => {
   assert.equal(getFooterMapLinkTitle("zh"), "在 Google 地图中打开");
   assert.equal(getFooterMapLinkTitle("ko"), "Google 지도에서 열기");
   // unknown locale falls back to the site default (HU)
-  assert.equal(getFooterMapLinkTitle("fr"), "Megnyitás Google Maps-en");
+  assert.equal(getFooterMapLinkTitle("fr"), "Ouvrir dans Google Maps");
+  assert.equal(getFooterMapLinkTitle("unknown"), "Megnyitás Google Maps-en");
 });
 
 test("contact form marks only schema-required fields and shows the required legend", () => {
@@ -158,7 +165,7 @@ test("contact form marks only schema-required fields and shows the required lege
   assert.match(html, /id="contact-name"[^>]*aria-required="true"/);
   assert.match(html, /id="contact-email"[^>]*required/);
   assert.match(html, /placeholder="Teljes név \*"/);
-  assert.match(html, /placeholder="E-mail cím \*"/);
+  assert.match(html, /placeholder="E-mail-cím \*"/);
   // company is optional in lib/contact-schema.ts — must not be marked
   assert.equal(/id="contact-company"[^>]*aria-required/.test(html), false);
   assert.equal(html.includes('placeholder="Cégnév *"'), false);
@@ -203,6 +210,7 @@ test("service quote form marks required fields and shows the helpers", () => {
   const html = renderToStaticMarkup(
     <ServiceQuoteCtaPanel
       copy={SERVICE_QUOTE_COPY.hu}
+      privacyNotice={PRIVACY_NOTICE_HU}
       form={{
         name: "",
         email: "",
@@ -230,6 +238,11 @@ test("service quote form marks required fields and shows the helpers", () => {
   assert.equal(/id="service-quote-company"[^>]*required/.test(html), false);
   assert.ok(html.includes("* Kötelező mező"));
   assert.ok(html.includes(SERVICE_QUOTE_COPY.hu.nextStepHelper));
+  // Layered privacy notice before submit, same as the homepage contact form.
+  assert.match(
+    html,
+    /A küldéssel tudomásul veszi az <a[^>]*href="\/hu\/adatvedelem"[^>]*>Adatkezelési tájékoztatót<\/a>\./,
+  );
 });
 
 test("news article related-services block links locale service pages and contact CTA", () => {

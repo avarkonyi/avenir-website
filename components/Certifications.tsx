@@ -1,6 +1,9 @@
+import { localizeCredentialCategory } from "@/lib/schema-locale-copy";
 import { and, asc, eq } from "drizzle-orm";
 import type { Translation } from "@/lib/i18n";
 import { db, certifications } from "@/lib/db";
+import { localizeCertificationText } from "@/lib/homepage-content";
+import { TrustCenterCallout } from "@/components/TrustCenterCallout";
 
 // Locale-conditional column map for the wide-column-per-locale schema.
 // Mirrors the NEWS_COLS pattern in app/[locale]/page.tsx.
@@ -26,6 +29,11 @@ const CERTS_COLS = {
     scope: certifications.scopeZh,
   },
   ko: {
+    fullName: certifications.fullNameEn,
+    description: certifications.descriptionEn,
+    scope: certifications.scopeEn,
+  },
+  fr: {
     fullName: certifications.fullNameEn,
     description: certifications.descriptionEn,
     scope: certifications.scopeEn,
@@ -65,14 +73,6 @@ type CertRow = {
   logoUrl: string | null;
   pdfUrl: string | null;
 };
-
-function withHuFallback(
-  value: string | null,
-  fallback: string | null,
-): string | null {
-  if (value && value.trim().length > 0) return value;
-  return fallback && fallback.trim().length > 0 ? fallback : null;
-}
 
 function certificationCategoryLabel(
   cert: CertRow,
@@ -163,11 +163,8 @@ export async function Certifications({
       standardCode: certifications.standardCode,
       certificateNumber: certifications.certificateNumber,
       fullName: cols.fullName,
-      fullNameHu: certifications.fullNameHu,
       description: cols.description,
-      descriptionHu: certifications.descriptionHu,
       scope: cols.scope,
-      scopeHu: certifications.scopeHu,
       issuer: certifications.issuer,
       issuerUrl: certifications.issuerUrl,
       accreditationBody: certifications.accreditationBody,
@@ -187,9 +184,9 @@ export async function Certifications({
     .orderBy(asc(certifications.sortOrder));
   const certRows: CertRow[] = rows.map((row) => ({
     ...row,
-    fullName: withHuFallback(row.fullName, row.fullNameHu) ?? row.name,
-    description: withHuFallback(row.description, row.descriptionHu),
-    scope: withHuFallback(row.scope, row.scopeHu),
+    fullName: localizeCertificationText(locale, row.fullName, row.slug, "fullName") ?? row.name,
+    description: localizeCertificationText(locale, row.description, row.slug, "description"),
+    scope: localizeCertificationText(locale, row.scope, row.slug, "scope"),
   }));
 
   if (certRows.length === 0) return null;
@@ -319,7 +316,7 @@ export async function Certifications({
                 {cert.credentialCategory && (
                   <meta
                     itemProp="credentialCategory"
-                    content={cert.credentialCategory}
+                    content={localizeCredentialCategory(locale, cert.credentialCategory) ?? undefined}
                   />
                 )}
                 {cert.scope && (
@@ -356,6 +353,7 @@ export async function Certifications({
             );
           })}
         </div>
+        <TrustCenterCallout locale={locale} />
       </div>
     </section>
   );

@@ -2,7 +2,9 @@
 
 import { useEffect } from "react";
 import Link from "next/link";
+import { useParams } from "next/navigation";
 import { AvenirLogo } from "@/components/AvenirLogo";
+import { getRecoveryLocale, getRuntimeErrorCopy } from "@/lib/runtime-error-copy";
 
 // Locale-aware runtime error boundary. Must be a Client Component
 // because it receives reset() from React error boundaries. Logs to
@@ -16,6 +18,9 @@ export default function LocaleError({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
+  const params = useParams<{ locale: string }>();
+  const locale = getRecoveryLocale(params?.locale);
+  const copy = getRuntimeErrorCopy(locale);
   useEffect(() => {
     console.error("[locale-error]", error);
   }, [error]);
@@ -45,10 +50,10 @@ export default function LocaleError({
             marginBottom: 12,
           }}
         >
-          Hiba történt / Something went wrong
+          {copy.title}
         </h1>
         <p style={{ color: "rgba(255,255,255,0.65)", fontSize: 15, lineHeight: 1.65, marginBottom: 28 }}>
-          Sajnáljuk, váratlan hiba lépett fel. / We apologise — an unexpected error occurred.
+          {copy.body}
           {error.digest && (
             <>
               <br />
@@ -76,10 +81,10 @@ export default function LocaleError({
               fontFamily: "inherit",
             }}
           >
-            Újratöltés / Reload
+            {copy.retry}
           </button>
           <Link
-            href="/hu"
+            href={`/${locale}`}
             style={{
               background: "transparent",
               color: "#fff",
@@ -93,7 +98,7 @@ export default function LocaleError({
               textTransform: "uppercase",
             }}
           >
-            Vissza / Home
+            {copy.home}
           </Link>
         </div>
       </div>

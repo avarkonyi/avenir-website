@@ -14,7 +14,7 @@ test("DE homepage polish uses German interim labels without touching other local
   assert.equal(de.contactSub, "Angebot anfordern");
   assert.equal(de.stats[2]?.n, "AA");
   assert.equal(de.stats[2]?.l, "Hohe Bonitätsbewertung (D&B)");
-  assert.equal(de.stats[3]?.l, "Leitstellenbereitschaft");
+  assert.equal(de.stats[3]?.l, "Dispositionsbereitschaft");
 
   assert.deepEqual(
     Object.fromEntries(de.services.map((service) => [service.id, service.t])),

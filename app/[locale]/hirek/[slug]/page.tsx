@@ -1,4 +1,6 @@
+import { getLocaleAccessibility } from "@/lib/locale-accessibility";
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/page-metadata";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -87,35 +89,21 @@ export async function generateMetadata({
   const image = articleMetadataImageUrl(article.imageUrl);
   const indexable = isIndexableNewsLocale(locale);
 
-  return {
-    metadataBase: new URL(SEO_DATA.url),
+  return buildPageMetadata({
+    locale,
     title,
     description: article.lead,
+    url,
+    index: indexable,
+    languages: newsAlternateLanguages(article.slug, availableLocales),
+    type: "article",
+    image,
     authors: [{ name: SEO_DATA.legalNameShort }],
-    robots: { index: indexable, follow: true },
-    alternates: {
-      canonical: url,
-      ...(indexable
-        ? { languages: newsAlternateLanguages(article.slug, availableLocales) }
-        : {}),
-    },
-    openGraph: {
-      type: "article",
-      title,
-      description: article.lead,
-      url,
-      siteName: SEO_DATA.name,
+    article: {
       publishedTime: article.date.toISOString(),
       modifiedTime: article.updatedAt.toISOString(),
-      images: [{ url: image }],
     },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description: article.lead,
-      images: [image],
-    },
-  };
+  });
 }
 
 function RichText({ text }: { text: string }) {
@@ -221,7 +209,7 @@ export default async function NewsDetailPage({
         >
           <div style={{ maxWidth: 1000, margin: "0 auto" }}>
             <nav
-              aria-label="Breadcrumb"
+              aria-label={getLocaleAccessibility(locale).breadcrumb}
               style={{
                 display: "flex",
                 gap: 8,

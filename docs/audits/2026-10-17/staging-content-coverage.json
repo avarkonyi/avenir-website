@@ -1,0 +1,263 @@
+{
+  "checkedAt": "2026-10-17T10:07:21.925Z",
+  "environment": "staging",
+  "readOnly": "on",
+  "services": [
+    {
+      "slug": "objektumorzes",
+      "updatedAt": "2026-05-23T08:46:36.631Z",
+      "locales": {
+        "hu": {
+          "missing": [],
+          "name": "Élőerős objektumőrzés"
+        },
+        "en": {
+          "missing": [],
+          "name": "On-site Security Guarding"
+        },
+        "de": {
+          "missing": [
+            "seo_title",
+            "seo_description",
+            "long_desc",
+            "value_proposition"
+          ],
+          "name": "Personeller Objektschutz"
+        },
+        "zh": {
+          "missing": [
+            "seo_title",
+            "seo_description",
+            "long_desc",
+            "value_proposition"
+          ],
+          "name": "驻场安保服务"
+        }
+      }
+    },
+    {
+      "slug": "portaszolgalat",
+      "updatedAt": "2026-05-23T08:46:37.949Z",
+      "locales": {
+        "hu": {
+          "missing": [],
+          "name": "Recepciós és portaszolgálat"
+        },
+        "en": {
+          "missing": [],
+          "name": "Reception and Gatehouse Services"
+        },
+        "de": {
+          "missing": [
+            "seo_title",
+            "seo_description",
+            "long_desc",
+            "value_proposition"
+          ],
+          "name": "Empfangs- und Pförtnerdienst"
+        },
+        "zh": {
+          "missing": [
+            "seo_title",
+            "seo_description",
+            "long_desc",
+            "value_proposition"
+          ],
+          "name": "前台与门岗服务"
+        }
+      }
+    },
+    {
+      "slug": "mystery-shopping-helyszini-audit",
+      "updatedAt": "2026-05-23T08:46:41.421Z",
+      "locales": {
+        "hu": {
+          "missing": [],
+          "name": "Próbavásárlás és szolgáltatásaudit"
+        },
+        "en": {
+          "missing": [],
+          "name": "Mystery Shopping and Service Audit"
+        },
+        "de": {
+          "missing": [
+            "seo_title",
+            "seo_description",
+            "long_desc",
+            "value_proposition"
+          ],
+          "name": "Mystery Shopping und Vor-Ort-Audits"
+        },
+        "zh": {
+          "missing": [
+            "seo_title",
+            "seo_description",
+            "long_desc",
+            "value_proposition"
+          ],
+          "name": "神秘顾客评估与现场审核"
+        }
+      }
+    },
+    {
+      "slug": "rendezvenybiztositas",
+      "updatedAt": "2026-05-23T13:17:40.093Z",
+      "locales": {
+        "hu": {
+          "missing": [],
+          "name": "Rendezvénybiztosítás"
+        },
+        "en": {
+          "missing": [],
+          "name": "Event Security"
+        },
+        "de": {
+          "missing": [
+            "seo_title",
+            "seo_description",
+            "long_desc",
+            "value_proposition"
+          ],
+          "name": "Veranstaltungsschutz"
+        },
+        "zh": {
+          "missing": [
+            "seo_title",
+            "seo_description",
+            "long_desc",
+            "value_proposition"
+          ],
+          "name": "活动安保"
+        }
+      }
+    },
+    {
+      "slug": "biztonsagtechnika",
+      "updatedAt": "2026-05-23T08:46:39.166Z",
+      "locales": {
+        "hu": {
+          "missing": [],
+          "name": "Biztonságtechnika"
+        },
+        "en": {
+          "missing": [],
+          "name": "Security Technology"
+        },
+        "de": {
+          "missing": [
+            "seo_title",
+            "seo_description",
+            "long_desc",
+            "value_proposition"
+          ],
+          "name": "Sicherheitstechnik"
+        },
+        "zh": {
+          "missing": [
+            "seo_title",
+            "seo_description",
+            "long_desc",
+            "value_proposition"
+          ],
+          "name": "安防技术"
+        }
+      }
+    },
+    {
+      "slug": "tavfelugyelet-vonuloszolgalat",
+      "updatedAt": "2026-05-23T08:46:40.276Z",
+      "locales": {
+        "hu": {
+          "missing": [],
+          "name": "Távfelügyelet és vonulószolgálat"
+        },
+        "en": {
+          "missing": [],
+          "name": "Remote Monitoring and Response Service"
+        },
+        "de": {
+          "missing": [
+            "seo_title",
+            "seo_description",
+            "long_desc",
+            "value_proposition"
+          ],
+          "name": "Fernüberwachung und Interventionsdienst"
+        },
+        "zh": {
+          "missing": [
+            "seo_title",
+            "seo_description",
+            "long_desc",
+            "value_proposition"
+          ],
+          "name": "远程监控与现场响应服务"
+        }
+      }
+    },
+    {
+      "slug": "soft-fm",
+      "updatedAt": "2026-05-23T08:46:44.621Z",
+      "locales": {
+        "hu": {
+          "missing": [],
+          "name": "Soft FM"
+        },
+        "en": {
+          "missing": [],
+          "name": "Soft FM"
+        },
+        "de": {
+          "missing": [
+            "seo_title",
+            "seo_description",
+            "long_desc",
+            "value_proposition"
+          ],
+          "name": "Soft FM"
+        },
+        "zh": {
+          "missing": [
+            "seo_title",
+            "seo_description",
+            "long_desc",
+            "value_proposition"
+          ],
+          "name": "Soft FM（软性设施管理）"
+        }
+      }
+    },
+    {
+      "slug": "hard-fm",
+      "updatedAt": "2026-05-23T08:46:43.545Z",
+      "locales": {
+        "hu": {
+          "missing": [],
+          "name": "Hard FM"
+        },
+        "en": {
+          "missing": [],
+          "name": "Hard FM"
+        },
+        "de": {
+          "missing": [
+            "seo_title",
+            "seo_description",
+            "long_desc",
+            "value_proposition"
+          ],
+          "name": "Hard FM"
+        },
+        "zh": {
+          "missing": [
+            "seo_title",
+            "seo_description",
+            "long_desc",
+            "value_proposition"
+          ],
+          "name": "Hard FM（硬性设施管理）"
+        }
+      }
+    }
+  ]
+}

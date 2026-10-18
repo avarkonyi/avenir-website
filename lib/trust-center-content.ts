@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/page-metadata";
 import { SEO_DATA } from "@/lib/seo-data";
 export {
   TRUST_CENTER_LOCALES,
@@ -160,7 +161,7 @@ export const TRUST_CENTER_CONTENT: Record<
           {
             title: "AutoWallis Pest",
             meta: [
-              "Belső jogi/proof entitás: Wallis Motor Pest Kft.",
+              "Jogi személy: Wallis Motor Pest Kft.",
               "Kapcsolódó szolgáltatások: Objektumőrzés; Recepciós és portaszolgálat",
             ],
             links: [
@@ -311,7 +312,7 @@ export const TRUST_CENTER_CONTENT: Record<
           {
             title: "AutoWallis Pest",
             meta: [
-              "Internal legal/proof entity: Wallis Motor Pest Kft.",
+              "Legal entity: Wallis Motor Pest Kft.",
               "Related services: On-site Security Guarding; Reception and Gatehouse Services",
             ],
             links: [
@@ -366,20 +367,13 @@ export function buildTrustCenterMetadata(locale: TrustCenterLocale): Metadata {
   const title = `${content.title} | ${SEO_DATA.legalNameShort}`;
   const url = trustCenterUrl(locale);
 
-  return {
-    metadataBase: new URL(SEO_DATA.url),
+  return buildPageMetadata({
+    locale,
     title,
     description: content.description,
-    robots: { index: true, follow: true },
-    alternates: {
-      canonical: url,
-      languages: trustCenterAlternateLanguages(),
-    },
-    openGraph: {
-      type: "article",
-      title,
-      description: content.description,
-      url,
-    },
-  };
+    url,
+    index: true,
+    languages: trustCenterAlternateLanguages(),
+    type: "article",
+  });
 }

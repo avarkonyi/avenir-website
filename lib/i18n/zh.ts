@@ -59,8 +59,8 @@ export const zh = {
     {
       "id": "security",
       "icon": "shield",
-      "t": "驻场安保服务",
-      "d": "由训练有素的安保人员提供人身及财产安全保护：驻场安保、巡逻服务、出入管理支持和事件处理，适用于工业、商业和办公环境。"
+      "t": "驻场安保",
+      "d": "通过出入管理、巡逻、事件处理、执勤日志及约定的升级处理流程提供驻场安保。"
     },
     {
       "id": "cleaning",
@@ -72,7 +72,7 @@ export const zh = {
       "id": "building",
       "icon": "camera",
       "t": "安防技术",
-      "d": "视频监控、门禁和报警系统的设计、安装与维护，为驻场安保提供技术支持。"
+      "d": "通过考虑数据保护的技术设计，将视频监控、门禁及报警流程整合进适合现场的安保模式。"
     },
     {
       "id": "reception",
@@ -83,25 +83,25 @@ export const zh = {
     {
       "id": "green",
       "icon": "leaf",
-      "t": "Soft FM（软性设施管理）",
+      "t": "Soft FM — 日常设施支持",
       "d": "作为补充服务，统筹清洁、绿化维护和现场管理事务，以受控质量和单一责任对接人支持客户运营。"
     },
     {
       "id": "technical",
       "icon": "radar",
-      "t": "远程监控与现场响应服务",
+      "t": "远程监控与现场响应",
       "d": "依托调度后台处理报警和视频监控信号，并在需要时按照约定流程进行现场响应。"
     },
     {
       "id": "mystery",
       "icon": "eye",
-      "t": "神秘顾客评估与现场审核",
-      "d": "在真实客户和运营场景中开展神秘顾客评估、服务质量检查和现场审核，并提供独立评估与结构化报告。"
+      "t": "神秘顾客与服务审核",
+      "d": "在真实客户与运营情境中开展神秘顾客与服务审核，提供结构化观察、报告及改进建议。"
     },
     {
       "id": "hardfm",
       "icon": "gear",
-      "t": "Hard FM（硬性设施管理）",
+      "t": "Hard FM — 技术设施管理",
       "d": "作为补充服务，支持技术设施运营、维护协调和小型维修工作，适用于复杂客户环境。"
     }
   ],
@@ -142,15 +142,15 @@ export const zh = {
     // No fixed response-time promise (SLA-like wording needs owner/legal
     // approval) — the success and helper copy stays non-committal.
     "success": "我们已收到您的留言。我们的同事将通过您提供的联系方式回复。您的数据将依据我们的隐私政策进行处理。",
-    "successPrivacyLink": "隐私政策",
+    "successPrivacyLink": "隐私政策（英文）",
     // TRANSLATION DRAFT: review by user (partial/noindex locale)
     "requiredField": "* 必填项",
     "nextStepHelper": "我们的同事将通过您提供的联系方式回复。报价的准备时间取决于需求的范围和复杂程度。",
     "specialDataWarning": "请勿通过本表单提交特殊类别数据、刑事记录数据、机密数据、商业秘密或涉及第三方详细私人信息的内容。此类事项需另行签署合同并进行数据保护协商。",
     "specialDataWarningLink": "使用条款 第4节",
     "privateInvestigation": "私家侦探",
-    "layeredNotice": "提交即表示您同意我们的",
-    "layeredNoticeLink": "隐私政策",
+    "layeredNotice": "提交即表示您已知悉我们的",
+    "layeredNoticeLink": "隐私政策（英文）",
     // TRANSLATION DRAFT: review by user
     "errors": {
       "nameRequired": "请填写您的全名",
@@ -172,7 +172,7 @@ export const zh = {
     "companyNumberLabel": "公司注册号",
     "taxNumberLabel": "税号",
     "headquartersLabel": "总部地址",
-    "machineTranslationDisclaimer": "本页面由匈牙利语机器翻译而来。具有法律约束力的版本仅为匈牙利语版本。"
+    "machineTranslationDisclaimer": "中文首页和服务详情的译文仍在审核中。法律链接指向英文文件；新闻尚未提供中文版本。"
   },
   // TRANSLATION DRAFT: review by user
   "certifications": {

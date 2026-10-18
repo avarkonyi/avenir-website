@@ -25,7 +25,7 @@ export const hu = {
     { n: "AA", l: "D&B magas hitelképességi minősítés" },
     { n: "24/7", l: "Diszpécseri készenlét" },
   ],
-  aboutTitle: "Az Avenir-ről",
+  aboutTitle: "Az Avenirről",
   aboutSub: "VAGYONVÉDELEM · MŰKÖDÉSI BIZTONSÁG",
   aboutText:
     "Az Avenir 2018-ban alakult, de vezetői csapata és szakemberei több évtizedes tapasztalattal rendelkeznek az épületüzemeltetés és a vagyonvédelem területén. Ma 200+ fős szakembergárdával, 30+ aktív helyszínen dolgozunk országszerte — vállalati, kereskedelmi, ipari és logisztikai környezetben.\n\nVagyonvédelmi működést szervezünk: őrzést, beléptetést, járőrözést, incidenskezelést és riportolást. Célunk, hogy ügyfeleink oldalán kevesebb egyeztetésre legyen szükség, csökkenjen a kockázat, és átláthatóbb legyen a napi működés.\n\nA vagyonvédelmi fókuszt szükség esetén biztonságtechnikával, mystery shoppinggal és kapcsolódó FM-támogatással egészítjük ki — így ügyfeleink egy felelős partnerrel dolgozhatnak, nem több különálló szolgáltatóval.",
@@ -40,7 +40,7 @@ export const hu = {
     },
     {
       t: "Reagálás és felelősség",
-      d: "Incidens esetén nem csak jelen vagyunk: dokumentálunk, visszajelzünk, és segítünk megelőzni az ismétlődő problémákat.",
+      d: "Incidens esetén nemcsak jelen vagyunk: dokumentálunk, visszajelzünk, és segítünk megelőzni az ismétlődő problémákat.",
     },
   ],
   servicesTitle: "Szolgáltatásaink",
@@ -126,7 +126,7 @@ export const hu = {
   form: {
     name: "Teljes név",
     company: "Cégnév",
-    email: "E-mail cím",
+    email: "E-mail-cím",
     phone: "Telefonszám",
     service: "Érdeklődési terület",
     message: "Üzenet / Igény leírása",
@@ -135,8 +135,8 @@ export const hu = {
     // Narrowed contact follow-up wording: next-business-day contact only,
     // not quote delivery, service start, response-time SLA, or guarantee.
     success:
-      "Üzenetét megkaptuk. Munkatársunk a megadott elérhetőségen visszajelez. Adatait az Adatvédelmi tájékoztatóban leírtak szerint kezeljük.",
-    successPrivacyLink: "Adatvédelmi tájékoztatóban",
+      "Üzenetét megkaptuk. Munkatársunk a megadott elérhetőségen visszajelez. Adatait az Adatkezelési tájékoztatóban leírtak szerint kezeljük.",
+    successPrivacyLink: "Adatkezelési tájékoztatóban",
     requiredField: "* Kötelező mező",
     nextStepHelper:
       "Munkaidőben többnyire még aznap visszajelzünk, de legkésőbb a következő munkanapon felvesszük Önnel a kapcsolatot. Az ajánlat elkészítésének ideje az igény összetettségétől függ.",
@@ -145,11 +145,11 @@ export const hu = {
     specialDataWarningLink: "Jogi nyilatkozatok 4. szakasz",
     privateInvestigation: "Magánnyomozás",
     layeredNotice: "A küldéssel tudomásul veszi az",
-    layeredNoticeLink: "Adatvédelmi tájékoztatót",
+    layeredNoticeLink: "Adatkezelési tájékoztatót",
     errors: {
       nameRequired: "Adja meg a teljes nevét",
-      emailRequired: "Adja meg az e-mail címét",
-      emailInvalid: "Érvénytelen e-mail cím",
+      emailRequired: "Adja meg az e-mail-címét",
+      emailInvalid: "Érvénytelen e-mail-cím",
       // NOTE: phone number "+36 70 316 8218" duplicated across 4 locales for
       // instant trust signal in error states. If the number changes, update
       // all 4 files together (hu.ts, en.ts, de.ts, zh.ts).
@@ -162,7 +162,7 @@ export const hu = {
   footer: {
     rights: "© 2026 Avenir Facility Management Kft. · Minden jog fenntartva.",
     legalTitle: "Jogi",
-    privacy: "Adatvédelem",
+    privacy: "Adatkezelési tájékoztató",
     terms: "Jogi nyilatkozatok",
     impressum: "Impresszum",
     // Labels for the bottom impresszum line. Values (cégjegyzékszám,
@@ -207,16 +207,16 @@ export const hu = {
   },
   legal: {
     privacy: {
-      title: "Adatvédelmi tájékoztató",
+      title: "Adatkezelési tájékoztató",
       lastUpdated: "Hatályos: 2026. április 28.",
       version: "1.0 verzió — első kiadás",
       intro:
-        "Az Avenir Facility Management Szolgáltató Korlátolt Felelősségű Társaság (a továbbiakban: Adatkezelő) elkötelezett az érintettek személyes adatainak védelme mellett. Jelen Adatvédelmi tájékoztató az Európai Parlament és a Tanács (EU) 2016/679 számú rendelete (a továbbiakban: GDPR), valamint az információs önrendelkezési jogról és az információszabadságról szóló 2011. évi CXII. törvény (a továbbiakban: Infotv.) alapján készült.\n\nA jelen Tájékoztató hatálya kizárólag a https://www.afm.hu weboldal kapcsolatfelvételi és ajánlatkérési folyamataira, valamint a sikeres ajánlatkérést követő szerződéses adminisztrációra terjed ki. Az Adatkezelő egyéb adatkezelési tevékenységeiről — különösen az ügyfeleink helyszínén végzett kamerás megfigyelésről, a magánnyomozói tevékenységről, a munkavállalói adatkezelésről és az ügyfél-projektek keretében végzett adatkezelésről — külön Tájékoztatók rendelkeznek. Ezeket az info@afm.hu címen kérheti, illetve a vonatkozó szolgáltatási helyszíneken kifüggesztve találja.",
+        "Az Avenir Facility Management Szolgáltató Korlátolt Felelősségű Társaság (a továbbiakban: Adatkezelő) elkötelezett az érintettek személyes adatainak védelme mellett. Jelen Adatkezelési tájékoztató az Európai Parlament és a Tanács (EU) 2016/679 számú rendelete (a továbbiakban: GDPR), valamint az információs önrendelkezési jogról és az információszabadságról szóló 2011. évi CXII. törvény (a továbbiakban: Infotv.) alapján készült.\n\nA jelen Tájékoztató hatálya kizárólag a https://www.afm.hu weboldal kapcsolatfelvételi és ajánlatkérési folyamataira, valamint a sikeres ajánlatkérést követő szerződéses adminisztrációra terjed ki. Az Adatkezelő egyéb adatkezelési tevékenységeiről — különösen az ügyfeleink helyszínén végzett kamerás megfigyelésről, a magánnyomozói tevékenységről, a munkavállalói adatkezelésről és az ügyfél-projektek keretében végzett adatkezelésről — külön Tájékoztatók rendelkeznek. Ezeket az info@afm.hu címen kérheti, illetve a vonatkozó szolgáltatási helyszíneken kifüggesztve találja.",
       sections: [
         {
           id: "controller",
           title: "1. Az adatkezelő azonosítása",
-          body: "Cégnév (hivatalos): Avenir Facility Management Szolgáltató Korlátolt Felelősségű Társaság\nCégbíróság-rövidített: Avenir Facility Kft.\nMarketing-megnevezés: Avenir Facility Management Kft.\nCégjegyzékszám: 01-09-328046 — Fővárosi Törvényszék Cégbírósága\nAdószám: 26395124-2-41\nEU VAT azonosító: HU26395124\nAlapítás: 2018. július 31.\nSzékhely: 1039 Budapest, Királyok útja 291. B. ép. 15. ajtó\nÁltalános elérhetőség: info@afm.hu · +36 70 316 8218\nWeb: https://www.afm.hu",
+          body: "Cégnév (hivatalos): Avenir Facility Management Szolgáltató Korlátolt Felelősségű Társaság\nRövidített cégnév (cégjegyzék szerint): Avenir Facility Kft.\nMarketing-megnevezés: Avenir Facility Management Kft.\nCégjegyzékszám: 01-09-328046 — Fővárosi Törvényszék Cégbírósága\nAdószám: 26395124-2-41\nEU VAT azonosító: HU26395124\nAlapítás: 2018. július 31.\nSzékhely: 1039 Budapest, Királyok útja 291. B. ép. 15. ajtó\nÁltalános elérhetőség: info@afm.hu · +36 70 316 8218\nWeb: https://www.afm.hu",
         },
         {
           id: "representative",
@@ -231,17 +231,17 @@ export const hu = {
         {
           id: "processed-data",
           title: "4. Az adatkezelés céljai, jogalapjai és kezelt adatok (GDPR Art. 13)",
-          body: "A www.afm.hu weboldal kapcsolatfelvételi folyamatában a következő célokra kezelünk személyes adatokat:\n\n4.1. CÉL — Kapcsolatfelvétel / ajánlatkérés feldolgozása\nKezelt adatok: teljes név, cégnév, email cím, telefonszám, érdeklődési terület, üzenet szövege.\nA kezelés célja: a kapcsolatfelvételi űrlapon küldött ajánlatkérés feldolgozása, kapcsolatfelvétel az érintettel, ajánlat előkészítése.\nJogalap (B2B-dual-path): GDPR 6. cikk (1) bek. b) pont, amennyiben az ajánlatkérés az érintettel mint leendő szerződő féllel történő szerződéskötést megelőző lépések megtételéhez szükséges (természetes személy / egyéni vállalkozó). GDPR 6. cikk (1) bek. f) pont, amennyiben az érintett valamely jogi személy vagy szervezet kapcsolattartójaként jár el. Az Adatkezelő jogos érdeke ez utóbbi esetben: üzleti kapcsolatfelvétel kezelése, ajánlat előkészítése, B2B ügyfélkommunikáció fenntartása.\nMegőrzési idő:\n• Szerződéskötéssel nem záruló ajánlatkérés esetén: az utolsó érdemi kapcsolatfelvételtől számított 12 hónap.\n• Szerződéskötés esetén: az ajánlatkérésből és üzleti levelezésből a szerződés előkészítéséhez, teljesítéséhez vagy igényérvényesítéshez szükséges adatok a szerződéses iratanyag részeként a szerződés megszűnésétől, illetve az adott követelés esedékességétől számított általános elévülési időig (Ptk. 6:22. § főszabály: 5 év) kezelhetők.\n• Számviteli bizonylatok esetén: Sztv. 169. § (2): 8 év.\n• A célhoz nem szükséges, túlzott, különleges vagy büntetőjogi adatot tartalmazó megkereséseket az Adatkezelő indokolatlan késedelem nélkül törli vagy anonimizálja.\n\n4.2. CÉL — Visszaélés-megelőzés és weboldal-biztonság\nKezelt adatok: IP-cím, kérés-időbélyeg, user-agent, honeypot-mező értéke, rate-limit-számláló.\nA kezelés célja: spam- és botbeküldések szűrése, DoS-jellegű túlterhelés elhárítása, az űrlap visszaélésszerű használatának megakadályozása.\nJogalap: GDPR 6. cikk (1) bek. f) pont — az Adatkezelő jogos érdeke a weboldal biztonságos és visszaélésmentes üzemeltetéséhez.\nMegőrzési idő: technikai napló 30 nap (rolling); rate-limit-számláló 1 óra (csak memóriában).\n\n4.3. CÉL — Sikeres ajánlatkérést követő szerződéses adminisztráció és üzleti kapcsolattartás\nKezelt adatok: a kapcsolattartó adatai (név, email, telefon, beosztás), üzleti levelezés tartalma, szerződéses dokumentumok.\nJogalap: GDPR 6. cikk (1) bek. b) pont (szerződés teljesítése) és c) pont (jogi kötelezettség — Sztv., Áfa tv.).\nMegőrzési idő: 5 év (Ptk. 6:22. § elévülés) + 8 év (Sztv. 169. § (2)).\n\n4.4. CÉL-KIZÁRÁS — Különleges, büntetőjogi és harmadik személyre vonatkozó adatok kezelésének kizárása a webes űrlapból\nAz Adatkezelő a weboldali kapcsolatfelvételi űrlapon keresztül nem kér és nem kíván kezelni GDPR 9. cikk szerinti különleges adatot, GDPR 10. cikk szerinti büntetőjogi adatot, minősített adatot, üzleti titkot, valamint harmadik személyre vonatkozó részletes magánéleti, egészségügyi, családi, munkaügyi, pénzügyi vagy büntetőjogi információt.\nKérjük, hogy az űrlapon ne küldjön ilyen adatot. Magánnyomozói, kamerás megfigyelési, beléptetési, vagyonvédelmi incidenssel kapcsolatos vagy más magasabb kockázatú adatkezelést igénylő ügyben az Adatkezelő külön szerződéses és adatvédelmi tájékoztatás alapján jár el.\nAmennyiben az érintett vagy harmadik személy a webes űrlapon keresztül ilyen adatot küld, az Adatkezelő azt kizárólag a megkeresés kezeléséhez feltétlenül szükséges mértékben vizsgálja meg, és szükség esetén indokolatlan késedelem nélkül törli, anonimizálja vagy külön adatkezelési folyamatba irányítja.",
+          body: "A www.afm.hu weboldal kapcsolatfelvételi folyamatában a következő célokra kezelünk személyes adatokat:\n\n4.1. CÉL — Kapcsolatfelvétel / ajánlatkérés feldolgozása\nKezelt adatok: teljes név, cégnév, e-mail-cím, telefonszám, érdeklődési terület, üzenet szövege.\nA kezelés célja: a kapcsolatfelvételi űrlapon küldött ajánlatkérés feldolgozása, kapcsolatfelvétel az érintettel, ajánlat előkészítése.\nJogalap (B2B-dual-path): GDPR 6. cikk (1) bek. b) pont, amennyiben az ajánlatkérés az érintettel mint leendő szerződő féllel történő szerződéskötést megelőző lépések megtételéhez szükséges (természetes személy / egyéni vállalkozó). GDPR 6. cikk (1) bek. f) pont, amennyiben az érintett valamely jogi személy vagy szervezet kapcsolattartójaként jár el. Az Adatkezelő jogos érdeke ez utóbbi esetben: üzleti kapcsolatfelvétel kezelése, ajánlat előkészítése, B2B ügyfélkommunikáció fenntartása.\nMegőrzési idő:\n• Szerződéskötéssel nem záruló ajánlatkérés esetén: az utolsó érdemi kapcsolatfelvételtől számított 12 hónap.\n• Szerződéskötés esetén: az ajánlatkérésből és üzleti levelezésből a szerződés előkészítéséhez, teljesítéséhez vagy igényérvényesítéshez szükséges adatok a szerződéses iratanyag részeként a szerződés megszűnésétől, illetve az adott követelés esedékességétől számított általános elévülési időig (Ptk. 6:22. § főszabály: 5 év) kezelhetők.\n• Számviteli bizonylatok esetén: Sztv. 169. § (2): 8 év.\n• A célhoz nem szükséges, túlzott, különleges vagy büntetőjogi adatot tartalmazó megkereséseket az Adatkezelő indokolatlan késedelem nélkül törli vagy anonimizálja.\n\n4.2. CÉL — Visszaélés-megelőzés és weboldal-biztonság\nKezelt adatok: IP-cím, kérés-időbélyeg, user-agent, honeypot-mező értéke, rate-limit-számláló.\nA kezelés célja: spam- és botbeküldések szűrése, DoS-jellegű túlterhelés elhárítása, az űrlap visszaélésszerű használatának megakadályozása.\nJogalap: GDPR 6. cikk (1) bek. f) pont — az Adatkezelő jogos érdeke a weboldal biztonságos és visszaélésmentes üzemeltetéséhez.\nMegőrzési idő: technikai napló 30 nap (rolling); rate-limit-számláló 1 óra (csak memóriában).\n\n4.3. CÉL — Sikeres ajánlatkérést követő szerződéses adminisztráció és üzleti kapcsolattartás\nKezelt adatok: a kapcsolattartó adatai (név, email, telefon, beosztás), üzleti levelezés tartalma, szerződéses dokumentumok.\nJogalap: GDPR 6. cikk (1) bek. b) pont (szerződés teljesítése) és c) pont (jogi kötelezettség — Sztv., Áfa tv.).\nMegőrzési idő: 5 év (Ptk. 6:22. § elévülés) + 8 év (Sztv. 169. § (2)).\n\n4.4. CÉL-KIZÁRÁS — Különleges, büntetőjogi és harmadik személyre vonatkozó adatok kezelésének kizárása a webes űrlapból\nAz Adatkezelő a weboldali kapcsolatfelvételi űrlapon keresztül nem kér és nem kíván kezelni GDPR 9. cikk szerinti különleges adatot, GDPR 10. cikk szerinti büntetőjogi adatot, minősített adatot, üzleti titkot, valamint harmadik személyre vonatkozó részletes magánéleti, egészségügyi, családi, munkaügyi, pénzügyi vagy büntetőjogi információt.\nKérjük, hogy az űrlapon ne küldjön ilyen adatot. Magánnyomozói, kamerás megfigyelési, beléptetési, vagyonvédelmi incidenssel kapcsolatos vagy más magasabb kockázatú adatkezelést igénylő ügyben az Adatkezelő külön szerződéses és adatvédelmi tájékoztatás alapján jár el.\nAmennyiben az érintett vagy harmadik személy a webes űrlapon keresztül ilyen adatot küld, az Adatkezelő azt kizárólag a megkeresés kezeléséhez feltétlenül szükséges mértékben vizsgálja meg, és szükség esetén indokolatlan késedelem nélkül törli, anonimizálja vagy külön adatkezelési folyamatba irányítja.",
         },
         {
           id: "processors",
           title: "5. Adatfeldolgozóink (GDPR Art. 28)",
-          body: "A https://www.afm.hu weboldal és a kapcsolódó rendszerek üzemeltetéséhez az Adatkezelő az alábbi adatfeldolgozókat veszi igénybe. Mindhárom adatfeldolgozóval írásos adatfeldolgozói szerződés (Data Processing Agreement, DPA) van érvényben.\n\n5.1. Plus Five Five, Inc. („Resend\") — tranzakcionális email-továbbítás\nBejegyzett cím: 2261 Market Street #5039, San Francisco, CA 94114, Amerikai Egyesült Államok\nTevékenység: a kapcsolatfelvételi űrlapon küldött üzenetek email-továbbítása.\nAdatkezelési helyzet: a szolgáltató publikus tájékoztatása szerint ügyféladatok USA-ban tárolása is megvalósulhat; az email-küldési régió technikai konfigurációja nem jelent teljes EU-only adattárolást.\nAdatfeldolgozói szerződés (Art. 28): írásos DPA van érvényben.\nHarmadik országba történő adattovábbítási garancia: aktív DPF-tanúsítás esetén GDPR 45. cikk szerinti megfelelőségi határozat; másodlagosan az Európai Bizottság 2021/914 sz. határozata szerinti SCC-k a GDPR 46. cikk alapján, valamint kiegészítő technikai-szervezési intézkedések.\n\n5.2. Vercel Inc. — hosting, edge/CDN szolgáltatás és szerveroldali naplózás\nBejegyzett székhely: 440 N Barranca Avenue #4133, Covina, CA 91723, Amerikai Egyesült Államok\nTevékenység: a https://www.afm.hu weboldal kiszolgálása, edge/CDN infrastruktúra, szerveroldali request-naplózás.\nAdatkezelési helyzet: a statikus tartalom és edge-szolgáltatások globális infrastruktúrán keresztül működhetnek; a szerveroldali funkciók régióját az Adatkezelő konfigurálja (vercel.json: fra1). Az Adatkezelő törekszik EU-régió használatára, de harmadik országbeli adattovábbítás vagy hozzáférés nem zárható ki.\nAdatfeldolgozói szerződés (Art. 28): írásos DPA van érvényben.\nHarmadik országba történő adattovábbítási garancia: aktív DPF-tanúsítás esetén GDPR 45. cikk; másodlagosan SCC-k a GDPR 46. cikk alapján és kiegészítő intézkedések (titkosított átvitel, hozzáférés-korlátozás, régiókonfiguráció).\n\n5.3. Neon, LLC (a Databricks, Inc. affiliate-je) — PostgreSQL adatbázis-szolgáltatás\nSzerződéses szolgáltató: Neon, LLC (a Databricks, Inc. affiliate-je 2025 májusi akvizíció óta).\nBejegyzett cím: 160 Spear Street, Suite 1300, San Francisco, CA 94105, Amerikai Egyesült Államok.\nTevékenység: PostgreSQL adatbázis-szolgáltatás (hírek, tanúsítványok, kapcsolatfelvételi naplók).\nAdatbázis-régió: AWS Frankfurt / eu-central-1.\nAdatfeldolgozói szerződés (Art. 28): írásos DPA van érvényben.\nHarmadik országba történő adattovábbítási garancia: a Databricks, Inc. aktív DPF-tanúsítása lefedi a Neon, LLC-t mint affiliate-et (GDPR 45. cikk); másodlagosan SCC-k a GDPR 46. cikk alapján és kiegészítő intézkedések.",
+          body: "A https://www.afm.hu weboldal és a kapcsolódó rendszerek üzemeltetéséhez az Adatkezelő az alábbi adatfeldolgozókat veszi igénybe. Mindhárom adatfeldolgozóval írásos adatfeldolgozói szerződés (Data Processing Agreement, DPA) van érvényben.\n\n5.1. Plus Five Five, Inc. („Resend\") — tranzakcionális e-mail-továbbítás\nBejegyzett cím: 2261 Market Street #5039, San Francisco, CA 94114, Amerikai Egyesült Államok\nTevékenység: a kapcsolatfelvételi űrlapon küldött üzenetek e-mail-továbbítása.\nAdatkezelési helyzet: a szolgáltató publikus tájékoztatása szerint ügyféladatok USA-ban tárolása is megvalósulhat; az email-küldési régió technikai konfigurációja nem jelent teljes EU-only adattárolást.\nAdatfeldolgozói szerződés (Art. 28): írásos DPA van érvényben.\nHarmadik országba történő adattovábbítási garancia: aktív DPF-tanúsítás esetén GDPR 45. cikk szerinti megfelelőségi határozat; másodlagosan az Európai Bizottság 2021/914 sz. határozata szerinti SCC-k a GDPR 46. cikk alapján, valamint kiegészítő technikai-szervezési intézkedések.\n\n5.2. Vercel Inc. — hosting, edge/CDN szolgáltatás és szerveroldali naplózás\nBejegyzett székhely: 440 N Barranca Avenue #4133, Covina, CA 91723, Amerikai Egyesült Államok\nTevékenység: a https://www.afm.hu weboldal kiszolgálása, edge/CDN infrastruktúra, szerveroldali request-naplózás.\nAdatkezelési helyzet: a statikus tartalom és edge-szolgáltatások globális infrastruktúrán keresztül működhetnek; a szerveroldali funkciók régióját az Adatkezelő konfigurálja (vercel.json: fra1). Az Adatkezelő törekszik EU-régió használatára, de harmadik országbeli adattovábbítás vagy hozzáférés nem zárható ki.\nAdatfeldolgozói szerződés (Art. 28): írásos DPA van érvényben.\nHarmadik országba történő adattovábbítási garancia: aktív DPF-tanúsítás esetén GDPR 45. cikk; másodlagosan SCC-k a GDPR 46. cikk alapján és kiegészítő intézkedések (titkosított átvitel, hozzáférés-korlátozás, régiókonfiguráció).\n\n5.3. Neon, LLC (a Databricks, Inc. affiliate-je) — PostgreSQL adatbázis-szolgáltatás\nSzerződéses szolgáltató: Neon, LLC (a Databricks, Inc. affiliate-je 2025 májusi akvizíció óta).\nBejegyzett cím: 160 Spear Street, Suite 1300, San Francisco, CA 94105, Amerikai Egyesült Államok.\nTevékenység: PostgreSQL adatbázis-szolgáltatás (hírek, tanúsítványok, kapcsolatfelvételi naplók).\nAdatbázis-régió: AWS Frankfurt / eu-central-1.\nAdatfeldolgozói szerződés (Art. 28): írásos DPA van érvényben.\nHarmadik országba történő adattovábbítási garancia: a Databricks, Inc. aktív DPF-tanúsítása lefedi a Neon, LLC-t mint affiliate-et (GDPR 45. cikk); másodlagosan SCC-k a GDPR 46. cikk alapján és kiegészítő intézkedések.",
         },
         {
           id: "third-country",
           title: "6. Harmadik országba történő adattovábbítás",
-          body: "Az Adatkezelő a weboldal és a kapcsolatfelvételi rendszer működtetése során olyan adatfeldolgozókat is igénybe vesz, amelyek az Egyesült Államokban bejegyzett társaságok, amerikai vállalatcsoporthoz tartoznak, vagy amerikai alfeldolgozókat vesznek igénybe.\n\nAz Adatkezelő törekszik arra, hogy ahol technikailag és szerződésesen lehetséges, az adattárolás és az adatbázis-kezelés Európai Unión belüli régióban történjen. Ugyanakkor az Adatkezelő nem állítja, hogy minden adatkezelési művelet kizárólag az Európai Gazdasági Térség területén történik. Harmadik országba irányuló adattovábbítás, illetve harmadik országból történő szolgáltatói hozzáférés különösen az email-továbbítás, hosting, technikai üzemeltetés, támogatás, hibakeresés, naplózás, alfeldolgozói működés vagy jogszabályon alapuló szolgáltatói kötelezettség esetén merülhet fel.\n\nAz Egyesült Államokban bejegyzett vagy amerikai vállalatcsoporthoz tartozó szolgáltatók esetén bizonyos körülmények között az Egyesült Államok joga alapján hatósági hozzáférési vagy adatszolgáltatási kötelezettség merülhet fel. Ilyen jogszabály lehet különösen a Foreign Intelligence Surveillance Act 702. szakasza, illetve a Clarifying Lawful Overseas Use of Data Act („CLOUD Act\").\n\nA harmadik országbeli adattovábbítások jogi garanciái az adott szolgáltatótól, jogi entitástól és adatáramlástól függően a következők lehetnek:\n\na) GDPR 45. cikk szerinti megfelelőségi határozat: amennyiben az adott amerikai címzett aktív EU-U.S. Data Privacy Framework (DPF) tanúsítással rendelkezik, az adattovábbítás a DPF-re és az Európai Bizottság megfelelőségi határozatára alapítható.\n\nb) GDPR 46. cikk szerinti általános szerződési feltételek: ahol a DPF nem alkalmazható, illetve kiegészítő vagy fallback garanciaként az Európai Bizottság 2021/914/EU határozata szerinti Standard Contractual Clauses alkalmazhatók.\n\nc) Kiegészítő technikai és szervezési intézkedések: különösen adattakarékosság, titkosított adatátvitel, hozzáférés-korlátozás, jogosultságkezelés, naplózás, alfeldolgozói kontroll, régiókonfiguráció és a szolgáltatói DPA-k rendszeres felülvizsgálata.\n\nAz Adatkezelő az alkalmazott adatfeldolgozók adatkezelési garanciáit, DPF-státuszát, DPA-ját és alfeldolgozói listáját legalább évente, valamint jelentős szolgáltatóváltás esetén felülvizsgálja. Az érintett további tájékoztatást kérhet az alkalmazott adattovábbítási garanciákról az info@afm.hu címen.",
+          body: "Az Adatkezelő a weboldal és a kapcsolatfelvételi rendszer működtetése során olyan adatfeldolgozókat is igénybe vesz, amelyek az Egyesült Államokban bejegyzett társaságok, amerikai vállalatcsoporthoz tartoznak, vagy amerikai alfeldolgozókat vesznek igénybe.\n\nAz Adatkezelő törekszik arra, hogy ahol technikailag és szerződésesen lehetséges, az adattárolás és az adatbázis-kezelés Európai Unión belüli régióban történjen. Ugyanakkor az Adatkezelő nem állítja, hogy minden adatkezelési művelet kizárólag az Európai Gazdasági Térség területén történik. Harmadik országba irányuló adattovábbítás, illetve harmadik országból történő szolgáltatói hozzáférés különösen az e-mail-továbbítás, hosting, technikai üzemeltetés, támogatás, hibakeresés, naplózás, alfeldolgozói működés vagy jogszabályon alapuló szolgáltatói kötelezettség esetén merülhet fel.\n\nAz Egyesült Államokban bejegyzett vagy amerikai vállalatcsoporthoz tartozó szolgáltatók esetén bizonyos körülmények között az Egyesült Államok joga alapján hatósági hozzáférési vagy adatszolgáltatási kötelezettség merülhet fel. Ilyen jogszabály lehet különösen a Foreign Intelligence Surveillance Act 702. szakasza, illetve a Clarifying Lawful Overseas Use of Data Act („CLOUD Act\").\n\nA harmadik országbeli adattovábbítások jogi garanciái az adott szolgáltatótól, jogi entitástól és adatáramlástól függően a következők lehetnek:\n\na) GDPR 45. cikk szerinti megfelelőségi határozat: amennyiben az adott amerikai címzett aktív EU-U.S. Data Privacy Framework (DPF) tanúsítással rendelkezik, az adattovábbítás a DPF-re és az Európai Bizottság megfelelőségi határozatára alapítható.\n\nb) GDPR 46. cikk szerinti általános szerződési feltételek: ahol a DPF nem alkalmazható, illetve kiegészítő vagy fallback garanciaként az Európai Bizottság 2021/914/EU határozata szerinti Standard Contractual Clauses alkalmazhatók.\n\nc) Kiegészítő technikai és szervezési intézkedések: különösen adattakarékosság, titkosított adatátvitel, hozzáférés-korlátozás, jogosultságkezelés, naplózás, alfeldolgozói kontroll, régiókonfiguráció és a szolgáltatói DPA-k rendszeres felülvizsgálata.\n\nAz Adatkezelő az alkalmazott adatfeldolgozók adatkezelési garanciáit, DPF-státuszát, DPA-ját és alfeldolgozói listáját legalább évente, valamint jelentős szolgáltatóváltás esetén felülvizsgálja. Az érintett további tájékoztatást kérhet az alkalmazott adattovábbítási garanciákról az info@afm.hu címen.",
         },
         {
           id: "cookies",
@@ -297,7 +297,7 @@ export const hu = {
         {
           id: "general",
           title: "1. Általános rendelkezések",
-          body: "Szolgáltató (marketing-megnevezés): Avenir Facility Management Kft.\nSzolgáltató (hivatalos cégnév): Avenir Facility Management Szolgáltató Korlátolt Felelősségű Társaság (a továbbiakban: Szolgáltató). További cégadatok: lásd Impresszum oldal.\nA jelen Felhasználási feltételek a Polgári Törvénykönyvről szóló 2013. évi V. törvény (Ptk.) 6:2–6:8. §-aira, valamint az elektronikus kereskedelmi szolgáltatásokról szóló 2001. évi CVIII. törvény (Ekertv.) rendelkezéseire figyelemmel kerültek megalkotásra.\nA Felhasználási feltételek hatálya: a https://www.afm.hu weboldal használatára, a kapcsolatfelvételi és ajánlatkérési flow-ra.\nA Szolgáltató ügyfélköre kizárólag B2B (üzleti) ügyfél: a Szolgáltató fogyasztóknak (Ptk. 8:1. § (1) bek. 3. pont) a weboldalon keresztül szerződést nem köt, és fogyasztói jogviszonyt nem hoz létre. A weboldal kapcsolatfelvételi flow-ja kizárólag B2B-célú megkereséseket fogad.\nHatályba lépés: 2026.04.28.\nA jelen Felhasználási feltételek nyelve: magyar; a magyar nyelvű változat az autentikus. Az angol, német, kínai változatok tájékoztató jellegűek; eltérés esetén a magyar szöveg az irányadó.",
+          body: "Szolgáltató (marketing-megnevezés): Avenir Facility Management Kft.\nSzolgáltató (hivatalos cégnév): Avenir Facility Management Szolgáltató Korlátolt Felelősségű Társaság (a továbbiakban: Szolgáltató). További cégadatok: lásd Impresszum oldal.\nA jelen Felhasználási feltételek a Polgári Törvénykönyvről szóló 2013. évi V. törvény (Ptk.) 6:2–6:8. §-aira, valamint az elektronikus kereskedelmi szolgáltatásokról szóló 2001. évi CVIII. törvény (Ekertv.) rendelkezéseinek figyelembevételével készültek.\nA Felhasználási feltételek hatálya: a https://www.afm.hu weboldal használatára, a kapcsolatfelvételi és ajánlatkérési flow-ra.\nA Szolgáltató ügyfélköre kizárólag B2B (üzleti) ügyfelekből áll: a Szolgáltató fogyasztóknak (Ptk. 8:1. § (1) bek. 3. pont) a weboldalon keresztül szerződést nem köt, és fogyasztói jogviszonyt nem hoz létre. A weboldal kapcsolatfelvételi flow-ja kizárólag B2B-célú megkereséseket fogad.\nHatályba lépés: 2026.04.28.\nA jelen Felhasználási feltételek nyelve: magyar; a magyar nyelvű változat az autentikus. Az angol és a német változat tájékoztató jellegű; eltérés esetén a magyar szöveg az irányadó.",
         },
         {
           id: "service",
@@ -307,12 +307,12 @@ export const hu = {
         {
           id: "contact-form",
           title: "3. A kapcsolatfelvételi űrlap használata",
-          body: "A https://www.afm.hu/hu#contact oldalrészen elérhető űrlap kizárólag ajánlatkérésre és kapcsolatfelvételre szolgál. Az űrlap kitöltése és elküldése NEM hoz létre szerződéses jogviszonyt a felek között.\n\nA Szolgáltató a beérkezett megkeresést áttekinti, és legkésőbb a következő munkanapon a megadott elérhetőségek valamelyikén kapcsolatba lép a megkeresővel. Az ajánlat elkészítésének időigénye az igény összetettségétől és a szükséges egyeztetésektől függ.\n\nAdatvédelem: az űrlapon megadott személyes adatokat az Adatvédelmi tájékoztatóban (https://www.afm.hu/hu/adatvedelem) leírtak szerint kezeljük.",
+          body: "A https://www.afm.hu/hu#contact oldalrészen elérhető űrlap kizárólag ajánlatkérésre és kapcsolatfelvételre szolgál. Az űrlap kitöltése és elküldése NEM hoz létre szerződéses jogviszonyt a felek között.\n\nA Szolgáltató a beérkezett megkeresést áttekinti, és legkésőbb a következő munkanapon a megadott elérhetőségek valamelyikén kapcsolatba lép a megkeresővel. Az ajánlat elkészítésének időigénye az igény összetettségétől és a szükséges egyeztetésektől függ.\n\nAdatvédelem: az űrlapon megadott személyes adatokat az Adatkezelési tájékoztatóban (https://www.afm.hu/hu/adatvedelem) leírtak szerint kezeljük.",
         },
         {
           id: "magannyomozas",
           title: "4. Magánnyomozói tevékenység és különleges adatok kezelésének kizárása az űrlapon",
-          body: "Kérjük, az ajánlatkérő űrlapon ne küldjön különleges adatot, egészségügyi adatot, büntetőjogi vagy bűnügyi adatot, minősített adatot, vagy harmadik személyre vonatkozó részletes magánéleti információt. Az ilyen adatok kezelésére kizárólag külön szerződés, előzetes adatvédelmi tájékoztatás és megfelelő jogalap mellett kerülhet sor.\n\nA Szolgáltató magánnyomozói tevékenységet kizárólag a vonatkozó hatósági engedély (01030-822/4925-3/2018) birtokában, a 2005. évi CXXXIII. törvény (SzVMt.) keretei között, írásos megbízási szerződés alapján végez. A magánnyomozói tevékenységet érintő adatkezelésre külön Adatvédelmi tájékoztató vonatkozik, amely az info@afm.hu címen kérhető.\n\nA Szolgáltató kizárja a felelősségét az olyan adatokért, amelyeket az érintett a webes űrlapon keresztül a jelen szakaszban foglalt tilalom ellenére küld be. Az ilyen adatokat a Szolgáltató kizárólag a megkeresés kezeléséhez feltétlenül szükséges mértékben vizsgálja meg, és szükség esetén indokolatlan késedelem nélkül törli, anonimizálja vagy külön adatkezelési folyamatba irányítja.",
+          body: "Kérjük, az ajánlatkérő űrlapon ne küldjön különleges adatot, egészségügyi adatot, büntetőjogi vagy bűnügyi adatot, minősített adatot, vagy harmadik személyre vonatkozó részletes magánéleti információt. Az ilyen adatok kezelésére kizárólag külön szerződés, előzetes adatvédelmi tájékoztatás és megfelelő jogalap mellett kerülhet sor.\n\nA Szolgáltató magánnyomozói tevékenységet kizárólag a vonatkozó hatósági engedély (01030-822/4925-3/2018) birtokában, a 2005. évi CXXXIII. törvény (SzVMt.) keretei között, írásos megbízási szerződés alapján végez. A magánnyomozói tevékenységet érintő adatkezelésre külön Adatkezelési tájékoztató vonatkozik, amely az info@afm.hu címen kérhető.\n\nA Szolgáltató kizárja a felelősségét az olyan adatokért, amelyeket az érintett a webes űrlapon keresztül a jelen szakaszban foglalt tilalom ellenére küld be. Az ilyen adatokat a Szolgáltató kizárólag a megkeresés kezeléséhez feltétlenül szükséges mértékben vizsgálja meg, és szükség esetén indokolatlan késedelem nélkül törli, anonimizálja vagy külön adatkezelési folyamatba irányítja.",
         },
         {
           id: "licenses",
@@ -322,7 +322,7 @@ export const hu = {
         {
           id: "ip",
           title: "6. Szellemi tulajdon",
-          body: "A weboldal teljes tartalma — beleértve a szövegeket, képeket, logókat, grafikai elemeket, struktúrált adatokat (JSON-LD), forráskódot — a Szolgáltató szellemi tulajdonát képezi és szerzői jogi védelem alatt áll (1999. évi LXXVI. törvény).\n\nA tartalom üzleti célú másolása, terjesztése, módosítása vagy nyilvánosságra hozatala előzetes írásbeli engedély nélkül tilos. A nem üzleti, magáncélú felhasználás (olvasás, böngészés, nyomtatás saját használatra) megengedett.",
+          body: "A weboldal teljes tartalma — beleértve a szövegeket, képeket, logókat, grafikai elemeket, strukturált adatokat (JSON-LD), forráskódot — a Szolgáltató szellemi tulajdonát képezi és szerzői jogi védelem alatt áll (1999. évi LXXVI. törvény).\n\nA tartalom üzleti célú másolása, terjesztése, módosítása vagy nyilvánosságra hozatala előzetes írásbeli engedély nélkül tilos. A nem üzleti, magáncélú felhasználás (olvasás, böngészés, nyomtatás saját használatra) megengedett.",
         },
         {
           id: "liability",
@@ -332,17 +332,17 @@ export const hu = {
         {
           id: "third-party",
           title: "8. Harmadik feles szolgáltatások",
-          body: "A weboldal üzemeltetéséhez a Szolgáltató az alábbi harmadik feles technikai szolgáltatásokat veszi igénybe:\n\n• Hosting: Vercel Inc. (440 N Barranca Avenue #4133, Covina, CA 91723, USA)\n• Email-továbbítás: Plus Five Five, Inc. („Resend\") (2261 Market Street #5039, San Francisco, CA 94114, USA)\n• Adatbázis: Neon, LLC mint Databricks, Inc. affiliate (160 Spear Street, Suite 1300, San Francisco, CA 94105, USA)\n\nE szolgáltatók adatkezelésére vonatkozó részletes tájékoztatás az Adatvédelmi tájékoztatóban érhető el.",
+          body: "A weboldal üzemeltetéséhez a Szolgáltató az alábbi harmadik feles technikai szolgáltatásokat veszi igénybe:\n\n• Hosting: Vercel Inc. (440 N Barranca Avenue #4133, Covina, CA 91723, USA)\n• E-mail-továbbítás: Plus Five Five, Inc. („Resend\") (2261 Market Street #5039, San Francisco, CA 94114, USA)\n• Adatbázis: Neon, LLC mint Databricks, Inc. affiliate (160 Spear Street, Suite 1300, San Francisco, CA 94105, USA)\n\nE szolgáltatók adatkezelésére vonatkozó részletes tájékoztatás az Adatkezelési tájékoztatóban érhető el.",
         },
         {
           id: "errors",
           title: "9. Bemeneti hibák javítása",
-          body: "A kapcsolatfelvételi űrlap a benyújtás előtt lehetőséget biztosít a beírt adatok ellenőrzésére és javítására (kliens-oldali validáció + szerver-oldali ellenőrzés). A Felhasználó az űrlap mezőit a beküldés előtt szabadon szerkesztheti.",
+          body: "A kapcsolatfelvételi űrlap a benyújtás előtt lehetőséget biztosít a beírt adatok ellenőrzésére és javítására (kliensoldali és szerveroldali ellenőrzés). A felhasználó az űrlap mezőit a beküldés előtt szabadon szerkesztheti.",
         },
         {
           id: "complaints",
           title: "10. A panaszkezelés rendje (B2B)",
-          body: "A Szolgáltató kizárólag B2B (üzleti) ügyfeleknek nyújt szolgáltatást (lásd 1. szakasz). A fogyasztóvédelemről szóló 1997. évi CLV. törvény szerinti, fogyasztói jogvitarendezésre, békéltető testületre és fogyasztóvédelmi hatósághoz történő panaszra vonatkozó rendelkezések ezen a B2B viszonyon nem alkalmazandók.\n\nA Szolgáltatóval kapcsolatos B2B-jellegű észrevételek, panaszok közvetlenül a info@afm.hu címen vagy a +36 70 316 8218 telefonszámon közölhetők, melyekre a Szolgáltató 8 munkanapon belül érdemi választ ad. A felek a panaszt a 12. szakasz szerinti irányadó jog és illetékes bíróság alapján rendezik.",
+          body: "A Szolgáltató kizárólag B2B (üzleti) ügyfeleknek nyújt szolgáltatást (lásd 1. szakasz). A fogyasztóvédelemről szóló 1997. évi CLV. törvény szerinti, fogyasztói jogvitarendezésre, békéltető testületre és fogyasztóvédelmi hatósághoz történő panaszra vonatkozó rendelkezések ezen a B2B viszonyon nem alkalmazandók.\n\nA Szolgáltatóval kapcsolatos B2B-jellegű észrevételek, panaszok közvetlenül az info@afm.hu címen vagy a +36 70 316 8218 telefonszámon közölhetők, melyekre a Szolgáltató 8 munkanapon belül érdemi választ ad. A felek a panaszt a 12. szakasz szerinti irányadó jog és illetékes bíróság alapján rendezik.",
         },
         {
           id: "code-of-conduct",
@@ -369,12 +369,12 @@ export const hu = {
       // pages — was on privacy + impresszum but not on terms).
       dataProtection: {
         title: "14. Adatkezelés",
-        body: "Az Avenir Facility Management Kft. mint Adatkezelő a Felhasználói által megadott személyes adatokat a GDPR és az Infotv. rendelkezéseinek megfelelően kezeli. A részletes adatkezelési tájékoztató külön Adatvédelmi tájékoztatóban érhető el.",
+        body: "Az Avenir Facility Management Kft. mint Adatkezelő a Felhasználói által megadott személyes adatokat a GDPR és az Infotv. rendelkezéseinek megfelelően kezeli. A részletes adatkezelési tájékoztató külön Adatkezelési tájékoztatóban érhető el.",
         dpoLabel: "Adatvédelmi tisztviselő",
         dpoName: "Csegény Fanni",
         dpoEmail: "dpo@afm.hu",
         dpoPhone: "+36 70 622 6242",
-        privacyLinkText: "A teljes Adatvédelmi tájékoztató itt érhető el",
+        privacyLinkText: "A teljes Adatkezelési tájékoztató itt érhető el",
         privacyLinkHref: "/hu/adatvedelem",
       },
     },
@@ -407,7 +407,7 @@ export const hu = {
       },
       labels: {
         legalName: "Hivatalos cégnév",
-        shortName: "Cégbíróság-rövidített",
+        shortName: "Rövidített cégnév (cégjegyzék szerint)",
         marketingName: "Marketing-megnevezés",
         registrationNumber: "Cégjegyzékszám",
         court: "Cégbíróság",
@@ -418,12 +418,12 @@ export const hu = {
         executiveTitle: "Beosztás",
         guardCard: "Vagyonőri igazolvány",
         pidetective: "Magánnyomozói igazolvány",
-        email: "Email",
+        email: "E-mail",
         phone: "Telefon",
-        generalEmail: "Általános email",
+        generalEmail: "Általános e-mail-cím",
         generalPhone: "Általános telefon",
         dpoName: "Név",
-        dpoEmail: "Email",
+        dpoEmail: "E-mail",
         dpoPhone: "Telefon",
         dpoPostal: "Postai elérhetőség",
         licenseNumber: "Engedélyszám",

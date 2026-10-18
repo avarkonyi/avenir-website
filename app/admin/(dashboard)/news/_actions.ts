@@ -6,9 +6,7 @@ import { db, news } from "@/lib/db";
 import { requireAdmin } from "@/lib/admin/require-admin";
 import { sanitizeDbErrorMessage } from "@/lib/db/redact";
 import { FALLBACK_SLUG, SLUG_MAX_LENGTH, slugify } from "@/lib/utils/slugify";
-
-const PUBLIC_NEWS_PATHS = ["/hu", "/en", "/de", "/zh"] as const;
-const PUBLIC_NEWS_INDEX_PATH_HU = "/hu/hirek";
+import { publicNewsRevalidationPaths } from "@/lib/public-content-revalidation";
 
 // Server actions for the News CRUD module.
 //
@@ -129,16 +127,8 @@ function revalidateNewsViews(
     revalidatePath(`/admin/news/${newsId}/edit`);
   }
   revalidatePath("/admin");
-  for (const path of PUBLIC_NEWS_PATHS) {
+  for (const path of publicNewsRevalidationPaths(slugs)) {
     revalidatePath(path);
-  }
-  revalidatePath(PUBLIC_NEWS_INDEX_PATH_HU);
-  revalidatePath("/sitemap.xml");
-  const uniqueSlugs = new Set(
-    slugs.map((slug) => slug?.trim()).filter((slug): slug is string => !!slug),
-  );
-  for (const slug of uniqueSlugs) {
-    revalidatePath(`/hu/hirek/${slug}`);
   }
 }
 

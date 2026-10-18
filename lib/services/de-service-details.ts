@@ -70,7 +70,7 @@ const DE_REVIEW_SERVICE_DETAILS = {
       },
       {
         "title": "Begehung vor Ort und Überblick über die Risikopunkte",
-        "body": "Die Begehung vor Ort und die grundlegende Risikoübersicht lassen sich in der Regel innerhalb von 1–3 Arbeitstagen organisieren."
+        "body": "Den Termin für die Begehung vor Ort und die grundlegende Risikoübersicht legen wir beim ersten Gespräch gemeinsam fest."
       },
       {
         "title": "Festlegung der Zutritts-, Austritts-, Kontrollgang- und Eskalationsordnung",
@@ -91,8 +91,8 @@ const DE_REVIEW_SERVICE_DETAILS = {
     ],
     "trustItems": [
       {
-        "title": "24/7-Leitstelle im Hintergrund",
-        "body": "Der Objektschutzbetrieb kann durch eine 24/7-Leitstelle unterstützt werden; die Benachrichtigungs- und Eskalationsordnung legen wir zu Beginn der Zusammenarbeit fest."
+        "title": "24/7-Unterstützung durch die Disposition",
+        "body": "Der Objektschutzbetrieb kann durch eine rund um die Uhr verfügbare Disposition unterstützt werden; die Benachrichtigungs- und Eskalationsordnung legen wir zu Beginn der Zusammenarbeit fest."
       },
       {
         "title": "Dienstbuch und Ereignisbearbeitung",
@@ -130,7 +130,7 @@ const DE_REVIEW_SERVICE_DETAILS = {
       },
       {
         "q": "Wie erfolgt die Zutrittskontrolle für Besucher und Lieferanten?",
-        "a": "Die Zutrittsordnung gestalten wir auf Grundlage der Begehung vor Ort. Festgelegt werden kann, wer wann mit welcher Berechtigung Zutritt erhält, wie die Besucherregistrierung, die Zufahrt von Lieferanten, die Abwicklung des Lieferverkehrs und die Dokumentation des Austritts erfolgen."
+        "a": "Die Zutrittsordnung gestalten wir auf Grundlage der Begehung vor Ort. Festgelegt werden kann, wer wann mit welcher Berechtigung Zutritt erhält, wie die Besucherregistrierung, der Zutritt von Lieferanten, die Abwicklung des Lieferverkehrs und die Dokumentation des Austritts erfolgen."
       },
       {
         "q": "Lässt sich der Objektschutz mit Kamera- oder Zutrittskontrollsystemen verbinden?",
@@ -146,7 +146,7 @@ const DE_REVIEW_SERVICE_DETAILS = {
       },
       {
         "q": "Gibt es eine 24/7-Unterstützung im Hintergrund?",
-        "a": "Ja, der Objektschutz kann durch eine 24/7-Leitstelle unterstützt werden; die Eskalations- und Benachrichtigungsordnung legen wir zu Beginn der Zusammenarbeit fest."
+        "a": "Ja, der Objektschutz kann durch eine rund um die Uhr verfügbare Disposition unterstützt werden; die Eskalations- und Benachrichtigungsordnung legen wir zu Beginn der Zusammenarbeit fest."
       },
       {
         "q": "Was geschieht bei einem Vorfall?",
@@ -207,7 +207,7 @@ const DE_REVIEW_SERVICE_DETAILS = {
         "body": "Wir sehen die Anfrage durch und melden uns spätestens am nächsten Werktag über die angegebenen Kontaktdaten. Wie lange die Angebotserstellung dauert, hängt vom Standort und der Komplexität der Anfrage ab."
       },
       {
-        "title": "Begehung vor Ort und Überblick über die Verkehrspunkte",
+        "title": "Begehung vor Ort und Überblick über Eingänge und Besucher- bzw. Lieferantenströme",
         "body": "Wir prüfen die Eingänge, Empfangs- und Pfortenpunkte, Zutrittssituationen, den Bedarf an Schlüsselverwaltung sowie den regelmäßigen Lieferanten- und Besucherverkehr."
       },
       {
@@ -237,8 +237,8 @@ const DE_REVIEW_SERVICE_DETAILS = {
         "body": "Der Auftraggeber stimmt sich mit einem verantwortlichen Ansprechpartner über den laufenden Betrieb, die Berichte und notwendige Protokollanpassungen ab."
       },
       {
-        "title": "24/7-Leitstelle im Hintergrund",
-        "body": "Der Pförtnerbetrieb kann durch eine 24/7-Leitstelle unterstützt werden; die Benachrichtigungs- und Eskalationsordnung legen wir zu Beginn der Zusammenarbeit fest."
+        "title": "24/7-Unterstützung durch die Disposition",
+        "body": "Der Pförtnerbetrieb kann durch eine rund um die Uhr verfügbare Disposition unterstützt werden; die Benachrichtigungs- und Eskalationsordnung legen wir zu Beginn der Zusammenarbeit fest."
       },
       {
         "title": "ISO 9001 und ISO 27001",
@@ -259,12 +259,12 @@ const DE_REVIEW_SERVICE_DETAILS = {
         "a": "Die Leistung kann je nach Bedarf des Standorts den Gästeempfang, die Besucherregistrierung, die Unterstützung der Zutrittskontrolle, die Betreuung von Lieferanten und Kurieren, die Schlüsselverwaltung, die Paketannahme, das Dienstbuch und ein abgestimmtes Berichtswesen umfassen."
       },
       {
-        "q": "Wann ist eine Aufnahme des Pförtnerdienstes vor Ort sinnvoll?",
-        "a": "Die Aufnahme ist besonders dann sinnvoll, wenn das Besucher- oder Lieferantenaufkommen zunimmt, sich die Zutrittsordnung ändert, mehrere Parteien dasselbe Objekt nutzen oder eine geordnetere Protokollierung und Verantwortungsstruktur benötigt wird."
+        "q": "Wann ist eine Bestandsaufnahme für den Pförtnerdienst sinnvoll?",
+        "a": "Die Bestandsaufnahme ist besonders dann sinnvoll, wenn das Besucher- oder Lieferantenaufkommen zunimmt, sich die Zutrittsordnung ändert, mehrere Parteien dasselbe Objekt nutzen oder eine geordnetere Protokollierung und Verantwortungsstruktur benötigt wird."
       },
       {
         "q": "Worin unterscheidet sich der Pförtnerdienst vom Objektschutz?",
-        "a": "Der Pförtnerdienst konzentriert sich vor allem auf die Eingangs-, Empfangs- und täglichen Verkehrspunkte, während der Objektschutz eine breitere Sicherheitspräsenz mit Kontrollgängen und Vorfallbearbeitung bedeuten kann. Beide Leistungen lassen sich bei Bedarf aufeinander abstimmen."
+        "a": "Der Pförtnerdienst konzentriert sich vor allem auf die Eingangs-, Empfangs- und Durchgangsbereiche, während der Objektschutz eine breitere Sicherheitspräsenz mit Kontrollgängen und Vorfallbearbeitung bedeuten kann. Beide Leistungen lassen sich bei Bedarf aufeinander abstimmen."
       },
       {
         "q": "Kann der Lieferanten- und Kurierverkehr abgewickelt werden?",
@@ -364,7 +364,7 @@ const DE_REVIEW_SERVICE_DETAILS = {
       },
       {
         "title": "Neutrale Beobachtung der Customer Journey",
-        "body": "Die Prüfung erfasst, wie sich die vereinbarten Serviceschritte, Markenanforderungen und Customer-Journey-Punkte in realen Kundensituationen darstellen — ohne aufsichtsrechtliche oder disziplinarische Rahmung."
+        "body": "Die Prüfung erfasst, wie sich die vereinbarten Serviceschritte, Markenanforderungen und Customer-Journey-Punkte in realen Kundensituationen darstellen — ohne Überwachungs- oder Disziplinarzweck."
       },
       {
         "title": "Strukturierter Bericht und Abstimmung mit dem Auftraggeber",
@@ -381,7 +381,7 @@ const DE_REVIEW_SERVICE_DETAILS = {
     ],
     "faq": [
       {
-        "q": "Was umfasst Mystery Shopping und Serviceaudit?",
+        "q": "Was umfassen Mystery Shopping und Serviceaudit?",
         "a": "Die Leistung besteht aus der Festlegung von Auditziel, Prüfumfang und Bewertungskriterien, der Entwicklung des Testkauf- oder Customer-Journey-Szenarios, der Beobachtung in realer Kundensituation und der Erstellung eines strukturierten Berichts."
       },
       {
@@ -406,7 +406,7 @@ const DE_REVIEW_SERVICE_DETAILS = {
       },
       {
         "q": "Ist die Methode auf Verkehrs- oder Service-Customer-Journeys anwendbar?",
-        "a": "Ja. Im Rahmen einer Testfahrt oder einer Service-Customer-Journey können beispielsweise Information, Bedienung, Rechnungs- oder Belegausgabeprozesse, Verhaltensprotokolle und die Erfüllung vorab festgelegter Service- oder Compliance-Kriterien geprüft werden."
+        "a": "Ja. Im Rahmen einer Testfahrt oder einer Service-Customer-Journey können beispielsweise Information, Bedienung, Rechnungs- oder Belegausgabeprozesse, die Einhaltung von Verhaltensstandards und die Erfüllung vorab festgelegter Service- oder Compliance-Kriterien geprüft werden."
       },
       {
         "q": "Worin unterscheidet sich Mystery Shopping von einer Privatermittlung?",
@@ -469,7 +469,7 @@ const DE_REVIEW_SERVICE_DETAILS = {
         "body": "Wir prüfen die Zutrittspunkte, geschlossene oder besonders geschützte Bereiche, die Richtungen der Gäste- oder Besucherströme, die Randbereiche und die Kontaktordnung der Veranstaltungsleitung."
       },
       {
-        "title": "Gestaltung der Personal- und Eskalationsordnung",
+        "title": "Festlegung der Sicherheitspersonal- und Eskalationsordnung",
         "body": "Die erforderliche Sicherheitspräsenz, die Berechtigungspunkte, die Kontaktkette und die Vorfallmeldeordnung legen wir auf Grundlage des Veranstaltungsumfangs und der vertraglichen Rahmenbedingungen fest."
       },
       {
@@ -561,7 +561,7 @@ const DE_REVIEW_SERVICE_DETAILS = {
     "imageUrl": null,
     "name": "Sicherheitstechnik",
     "shortDesc": "Kamerasystem, Zutrittskontrolle, Einbruchmeldung und Alarmprozesse — abgestimmt mit Objektschutz und Pförtnerdienst.",
-    "longDesc": "Ziel der Sicherheitstechnik ist, dass sich die Sicherheit vor Ort nicht allein auf personelle Präsenz stützt, sondern auch gut handhabbare technische Unterstützung erhält. Dazu können das Kamerasystem, die Zutrittskontrollanlage, die Einbruchmeldung, der Alarmprozess, die Weiterleitung von Meldungen und die Dokumentation der Ereignisse gehören.\n\nAvenir behandelt den sicherheitstechnischen Betrieb nicht als isolierte Gerätebeschaffung. Auf Grundlage der Begehung vor Ort prüfen wir, wo sich Zutrittspunkte, schwach kontrollierte Zonen, wiederkehrende Ereignisse, kritische Bereiche und Prozesse befinden, in denen die Technik den Objektschutz, den Pförtnerdienst oder die Fernüberwachung unterstützen kann.\n\nAvenir bezieht bei der sicherheitstechnischen Bestandsaufnahme und Planung auch die Datenschutzaspekte ein: Der dokumentierte Zweck, der verhältnismäßige Erfassungsbereich, die Zugriffsberechtigungen, die Information der Betroffenen und die Speicherlogik werden auf den Betrieb des Standorts und den Datenschutzrahmen des Kunden abgestimmt — im Einklang mit den Grundsätzen der DSGVO und dem in Ungarn anwendbaren Rechtsrahmen. Dies unterstützt die datenschutzrechtliche Prüfung des Kunden; die Rechtsgrundlage und die abschließenden Datenschutzentscheidungen verbleiben beim Kunden und seinen Beratern.\n\nZiel ist eine transparente, wartbare und im Tagesbetrieb nutzbare sicherheitstechnische Ebene: eine Lösung, die nicht nur aufzeichnet, sondern Erkennung, Eskalation, Zutrittskontrolle, Berichtswesen und Entscheidungsfindung unterstützt.",
+    "longDesc": "Ziel der Sicherheitstechnik ist, dass sich die Sicherheit vor Ort nicht allein auf personelle Präsenz stützt, sondern auch gut handhabbare technische Unterstützung erhält. Dazu können das Kamerasystem, die Zutrittskontrollanlage, die Einbruchmeldung, der Alarmprozess, die Weiterleitung von Meldungen und die Dokumentation der Ereignisse gehören.\n\nAvenir behandelt den sicherheitstechnischen Betrieb nicht als isolierte Gerätebeschaffung. Auf Grundlage der Begehung vor Ort prüfen wir, wo sich Zutrittspunkte, schwach kontrollierte Zonen, wiederkehrende Ereignisse, kritische Bereiche und Prozesse befinden, in denen die Technik den Objektschutz, den Pförtnerdienst oder die Fernüberwachung unterstützen kann.\n\nAvenir bezieht bei der sicherheitstechnischen Bestandsaufnahme und Planung auch die Datenschutzaspekte ein: Der dokumentierte Zweck, der verhältnismäßige Erfassungsbereich, die Zugriffsberechtigungen, die Information der Betroffenen und die Speicherlogik werden auf den Betrieb des Standorts und den Datenschutzrahmen des Kunden abgestimmt. Dies unterstützt die datenschutzrechtliche Prüfung des Kunden; die Rechtsgrundlage und die abschließenden Datenschutzentscheidungen verbleiben beim Kunden und seinen Beratern.\n\nZiel ist eine transparente, wartbare und im Tagesbetrieb nutzbare sicherheitstechnische Ebene: eine Lösung, die nicht nur aufzeichnet, sondern Erkennung, Eskalation, Zutrittskontrolle, Berichtswesen und Entscheidungsfindung unterstützt.",
     "seoTitle": "Sicherheitstechnik für Unternehmensstandorte | Avenir",
     "seoDescription": "Kamerasystem, Zutrittskontrolle, Einbruchmeldung und Alarmprozesse — abgestimmt mit Objektschutz und Pförtnerdienst.",
     "valueProposition": "Die Sicherheitstechnik verbindet Kamerasystem, Zutrittskontrolle und Alarmprozesse zu einem standortgerechten Sicherheitssystem — mit dokumentiertem Zweck, verhältnismäßiger Abdeckung, Eskalation und betrieblicher Integration.",
@@ -674,14 +674,6 @@ const DE_REVIEW_SERVICE_DETAILS = {
       {
         "q": "Welche Faktoren beeinflussen die Speicherdauer von Kameraaufnahmen?",
         "a": "Die Speicherdauer wird vom Zweck der Aufzeichnung, vom Risikoprofil des Standorts, vom Bedarf der Vorfallbearbeitung, von internen Richtlinien und vom Datenschutzumfeld beeinflusst. Eine für alle Standorte gleiche, allgemeine Antwort gibt es nicht; die Speicherordnung ist fachlich begründet festzulegen."
-      },
-      {
-        "q": "Wer führt die Interessenabwägung für eine Videoüberwachung durch?",
-        "a": "Die Interessenabwägung — etwa zur Stützung eines berechtigten Interesses nach der DSGVO — ist Teil des Datenschutzrahmens des Kunden als Verantwortlichem. Avenir liefert dafür die technische und betriebliche Grundlage: den dokumentierten Zweck, die Erfassungsbereiche sowie die Zugriffs- und Speicherlogik. Die Bewertung selbst und die Entscheidung über die Rechtsgrundlage verbleiben beim Kunden und seinen Beratern. Dies ist keine Rechtsberatung."
-      },
-      {
-        "q": "Wie lange dürfen Kameraaufnahmen gespeichert werden?",
-        "a": "Eine einheitliche, für alle Standorte gültige Speicherdauer gibt es nicht. Maßgeblich sind der dokumentierte Zweck der Aufzeichnung, das Risikoprofil des Standorts, der Bedarf der Vorfallbearbeitung, interne Richtlinien und der anwendbare Datenschutzrahmen — einschließlich des Grundsatzes der Speicherbegrenzung. Die Speicherordnung ist fachlich begründet festzulegen; die abschließende Entscheidung liegt beim Kunden als Verantwortlichem."
       }
     ],
     "relatedSlugs": [
@@ -696,11 +688,7 @@ const DE_REVIEW_SERVICE_DETAILS = {
       "biztonsagtechnika:PILOT_HU.trustItems.1.body",
       "biztonsagtechnika:PILOT_HU.trustItems.4.body",
       "biztonsagtechnika:PILOT_HU.faq.7.a",
-      "biztonsagtechnika:PILOT_HU.faq.8.a",
-      "biztonsagtechnika:DE_ONLY.faq.9.q",
-      "biztonsagtechnika:DE_ONLY.faq.9.a",
-      "biztonsagtechnika:DE_ONLY.faq.10.q",
-      "biztonsagtechnika:DE_ONLY.faq.10.a"
+      "biztonsagtechnika:PILOT_HU.faq.8.a"
     ]
   },
   "tavfelugyelet-vonuloszolgalat": {
@@ -804,8 +792,8 @@ const DE_REVIEW_SERVICE_DETAILS = {
         "a": "Ja. Fernüberwachung und Interventionsdienst erfolgen nach dem anwendbaren ungarischen Regulierungsrahmen für Personen- und Vermögensschutz. Informationen zur Genehmigung und zur Leistungsdokumentation können im Rahmen der Vertragsvorbereitung abgestimmt werden."
       },
       {
-        "q": "Gibt es eine garantierte Anfahrtszeit?",
-        "a": "Der Interventionsprozess ist auf Grundlage der Vertragsbedingungen, des Standorts, der technischen Gegebenheiten und des Einsatzgebiets festzulegen. Deshalb sollten die Anfahrts- bzw. Reaktionsregeln immer zu Beginn der Zusammenarbeit genau festgehalten werden."
+        "q": "Gibt es eine garantierte Eintreffzeit?",
+        "a": "Der Interventionsprozess ist auf Grundlage der Vertragsbedingungen, des Standorts, der technischen Gegebenheiten und des Einsatzgebiets festzulegen. Deshalb sollten die Eintreff- bzw. Reaktionsregeln immer zu Beginn der Zusammenarbeit genau festgehalten werden."
       },
       {
         "q": "Wie erfolgt die Eskalation?",
@@ -1426,30 +1414,6 @@ export const DE_REVIEW_LEGAL_REVIEW_REQUIRED_ROWS = [
     "key": "biztonsagtechnika:PILOT_HU.faq.8.a",
     "section": "faq.8.a",
     "preview": "Die Speicherdauer wird vom Zweck der Aufzeichnung, vom Risikoprofil des Standorts, vom Bedarf der Vorfallbearbeitung, von internen Richtlinien und vom Datenschu..."
-  },
-  {
-    "service": "biztonsagtechnika",
-    "key": "biztonsagtechnika:DE_ONLY.faq.9.q",
-    "section": "faq.9.q",
-    "preview": "Wer führt die Interessenabwägung für eine Videoüberwachung durch?"
-  },
-  {
-    "service": "biztonsagtechnika",
-    "key": "biztonsagtechnika:DE_ONLY.faq.9.a",
-    "section": "faq.9.a",
-    "preview": "Die Interessenabwägung — etwa zur Stützung eines berechtigten Interesses nach der DSGVO — ist Teil des Datenschutzrahmens des Kunden als Verantwortlichem. Aveni..."
-  },
-  {
-    "service": "biztonsagtechnika",
-    "key": "biztonsagtechnika:DE_ONLY.faq.10.q",
-    "section": "faq.10.q",
-    "preview": "Wie lange dürfen Kameraaufnahmen gespeichert werden?"
-  },
-  {
-    "service": "biztonsagtechnika",
-    "key": "biztonsagtechnika:DE_ONLY.faq.10.a",
-    "section": "faq.10.a",
-    "preview": "Eine einheitliche, für alle Standorte gültige Speicherdauer gibt es nicht. Maßgeblich sind der dokumentierte Zweck der Aufzeichnung, das Risikoprofil des Stando..."
   },
   {
     "service": "tavfelugyelet-vonuloszolgalat",

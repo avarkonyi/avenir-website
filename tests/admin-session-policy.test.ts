@@ -6,7 +6,9 @@ const allowed = ["admin@example.test"];
 
 test("admin admission rejects absent, error-shaped and malformed sessions", () => {
   for (const session of [null, undefined, false, {}, { error: "Configuration" },
+    { message: "There was a problem with the server configuration." },
     { user: null }, { user: {} }, { user: { email: "" } },
+    { user: { email: "   " } },
     { user: { email: 1 } }, { user: { email: ["admin@example.test"] } }]) {
     assert.equal(hasAllowedAdminSession(session, allowed), false);
   }
@@ -14,6 +16,7 @@ test("admin admission rejects absent, error-shaped and malformed sessions", () =
 
 test("admin admission rejects a real session outside the allowlist", () => {
   assert.equal(hasAllowedAdminSession({ user: { email: "other@example.test" } }, allowed), false);
+  assert.equal(hasAllowedAdminSession({ user: { email: "admin@example.test.attacker.test" } }, allowed), false);
 });
 
 test("admin admission preserves case-insensitive allowed sessions", () => {

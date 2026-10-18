@@ -57,9 +57,9 @@ const RESPONSIBLE_DISCLOSURE_CONTENT: Record<
       },
       {
         id: "scope",
-        title: "Scope",
+        title: "Hatókör",
         body:
-          "A felelős hibabejelentési scope az Avenir nyilvános weboldalára és a weboldalhoz közvetlenül kapcsolódó publikus felületekre korlátozódik.\n\nNem tartoznak ide ügyfélrendszerek, partnerrendszerek, harmadik fél rendszerei, fizikai telephelyek, belső rendszerek, e-mailes vagy social engineering jellegű tesztek.",
+          "A felelős hibabejelentés hatóköre az Avenir nyilvános weboldalára és a weboldalhoz közvetlenül kapcsolódó publikus felületekre korlátozódik.\n\nNem tartoznak ide ügyfélrendszerek, partnerrendszerek, harmadik fél rendszerei, fizikai telephelyek, belső rendszerek, e-mailes vagy social engineering jellegű tesztek.",
       },
       {
         id: "nem-engedelyezett-tesztek",

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Nav } from "@/components/Nav";
 import { Hero } from "@/components/Hero";
@@ -10,11 +11,17 @@ import { Career } from "@/components/Career";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 import { getTranslation } from "@/lib/i18n";
+import { LOCALES, type Locale } from "@/lib/locales";
+import { buildPageMetadata } from "@/lib/page-metadata";
+import { buildServiceItemListSchema } from "@/lib/homepage-schema";
+import { JsonLd } from "@/components/JsonLd";
+import { META_DESCRIPTIONS, META_TAGLINES, SEO_DATA, type SeoLocale } from "@/lib/seo-data";
+import { isIndexableServiceLocale } from "@/lib/services/publication";
 import {
   getActiveTopLevelServices,
   getAllPublishedServicePathsForBuild,
 } from "@/lib/db/queries/services";
-import { DE_REVIEW_SERVICE_PATHS } from "@/lib/services/de-service-details";
+import { getRenderableServicePaths } from "@/lib/services/review-services";
 import {
   getPublishedNewsIndexForPublic,
 } from "@/lib/db/queries/news";
@@ -27,13 +34,35 @@ import {
   newsDetailHref,
 } from "@/lib/news-routing";
 
-const LOCALES = ["hu", "en", "de", "zh", "ko"] as const;
-type Locale = (typeof LOCALES)[number];
 
 export const revalidate = 3600;
 
 export function generateStaticParams() {
   return LOCALES.map((locale) => ({ locale }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  if (!LOCALES.includes(locale as Locale)) notFound();
+  const seoLocale = locale as SeoLocale;
+  return buildPageMetadata({
+    locale,
+    title: `${SEO_DATA.legalNameShort} — ${META_TAGLINES[seoLocale]}`,
+    description: META_DESCRIPTIONS[seoLocale],
+    url: `${SEO_DATA.url}/${locale}`,
+    // Only hu/en are production languages; de/zh/ko/fr homepages are
+    // noindex review surfaces without hreflang.
+    index: isIndexableServiceLocale(locale),
+    languages: {
+      hu: `${SEO_DATA.url}/hu`,
+      en: `${SEO_DATA.url}/en`,
+      "x-default": `${SEO_DATA.url}/hu`,
+    },
+  });
 }
 
 export default async function HomePage({
@@ -74,13 +103,30 @@ export default async function HomePage({
   const publishedServiceDetailPaths = await getAllPublishedServicePathsForBuild(
     "homepage service detail links",
   );
-  const readyServiceDetailPaths =
-    locale === "de"
-      ? [...publishedServiceDetailPaths, ...DE_REVIEW_SERVICE_PATHS]
-      : publishedServiceDetailPaths;
+  const readyServiceDetailPaths = getRenderableServicePaths(publishedServiceDetailPaths);
+  // JSON-LD ItemList requires both name and description. Items link to the
+  // canonical service page only where that page is public and indexable.
+  const serviceListSchema = buildServiceItemListSchema(
+    locale as SeoLocale,
+    serviceRows
+      .filter((row) => row.name.length > 0 && row.shortDesc.length > 0)
+      .map((row) => {
+        const isPublicPage =
+          isIndexableServiceLocale(locale) &&
+          readyServiceDetailPaths.some((p) => p.locale === locale && p.slug === row.slug);
+        return {
+          name: row.name,
+          description: row.shortDesc,
+          ...(isPublicPage
+            ? { url: `${SEO_DATA.url}/${locale}/szolgaltatasok/${row.slug}` }
+            : {}),
+        };
+      }),
+  );
 
   return (
     <>
+      <JsonLd schemas={[serviceListSchema]} />
       <Nav t={{ nav: t.nav }} />
       <main id="main">
         <Hero t={{ hero: t.hero, stats: t.stats }} />

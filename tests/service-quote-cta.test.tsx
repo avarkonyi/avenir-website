@@ -8,12 +8,25 @@ import {
   ServiceQuoteCta,
 } from "../components/ServiceQuoteCta";
 
+const PRIVACY_NOTICE_HU = {
+  text: "A küldéssel tudomásul veszi az",
+  linkText: "Adatkezelési tájékoztatót",
+  href: "/hu/adatvedelem",
+};
+
+const PRIVACY_NOTICE_EN = {
+  text: "By submitting, you acknowledge our",
+  linkText: "Privacy Policy",
+  href: "/en/adatvedelem",
+};
+
 test("service quote CTA collapsed state keeps intro copy visually hidden and renders only the button", () => {
   const html = renderToStaticMarkup(
     <ServiceQuoteCta
       locale="hu"
       serviceSlug="objektumorzes"
       serviceLabel="Élőerős objektumőrzés"
+      privacyNotice={PRIVACY_NOTICE_HU}
     />,
   );
 
@@ -49,6 +62,7 @@ test("service quote CTA expanded state shows a visible heading above the form", 
   const html = renderToStaticMarkup(
     <ServiceQuoteCtaPanel
       copy={SERVICE_QUOTE_COPY.en}
+      privacyNotice={PRIVACY_NOTICE_EN}
       form={{
         name: "",
         email: "",
@@ -81,6 +95,7 @@ test("service quote CTA expanded state keeps the cancel action available", () =>
   const html = renderToStaticMarkup(
     <ServiceQuoteCtaPanel
       copy={SERVICE_QUOTE_COPY.hu}
+      privacyNotice={PRIVACY_NOTICE_HU}
       form={{
         name: "",
         email: "",

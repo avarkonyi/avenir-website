@@ -33,7 +33,7 @@ export const de = {
     },
     {
       "n": "24/7",
-      "l": "Leitstellenbereitschaft"
+      "l": "Dispositionsbereitschaft"
     }
   ],
   "aboutTitle": "Über Avenir",
@@ -60,7 +60,7 @@ export const de = {
       "id": "security",
       "icon": "shield",
       "t": "Objektschutz vor Ort",
-      "d": "Personen- und Sachschutz mit geschulten Sicherheitskräften: Objektschutz, Streifendienste, Unterstützung bei der Zutrittskontrolle und Vorfallbearbeitung in Industrie-, Handels- und Büroumgebungen."
+      "d": "Objektschutz vor Ort mit Zutrittskontrolle, Kontrollgängen, Vorfallbearbeitung, Dienstbuch und abgestimmter Eskalationsordnung."
     },
     {
       "id": "cleaning",
@@ -72,7 +72,7 @@ export const de = {
       "id": "building",
       "icon": "camera",
       "t": "Sicherheitstechnik",
-      "d": "Planung, Installation und Wartung von Videoüberwachungs-, Zutrittskontroll- und Alarmanlagen als technische Unterstützung für den personellen Objektschutz."
+      "d": "Sicherheitstechnik für Kamerasysteme, Zutrittskontrolle und Alarmprozesse, eingebettet in ein standortgerechtes Sicherheitsmodell, mit technischer Planung, die Datenschutzaspekte einbezieht."
     },
     {
       "id": "reception",
@@ -96,7 +96,7 @@ export const de = {
       "id": "mystery",
       "icon": "eye",
       "t": "Mystery Shopping und Serviceaudit",
-      "d": "Mystery Shopping, Servicequalitätskontrollen und Vor-Ort-Audits in realen Kunden- und Betriebssituationen, mit unabhängiger Bewertung und strukturiertem Reporting."
+      "d": "Mystery Shopping und Serviceaudit in realen Kunden- und Betriebssituationen, mit strukturierter Beobachtung, Berichtswesen und Verbesserungsempfehlungen."
     },
     {
       "id": "hardfm",
@@ -148,7 +148,7 @@ export const de = {
     "specialDataWarning": "Bitte übermitteln Sie über das Nachrichtenfeld keine besonderen Datenkategorien, strafrechtlichen Daten, klassifizierten Daten, Geschäftsgeheimnisse oder detaillierten Privatlebensinformationen über Dritte. Solche Angelegenheiten erfordern eine gesonderte Vertrags- und Datenschutzabstimmung.",
     "specialDataWarningLink": "Nutzungsbedingungen, Abschnitt 4",
     "privateInvestigation": "Privatermittlung",
-    "layeredNotice": "Mit dem Absenden akzeptieren Sie unsere",
+    "layeredNotice": "Mit dem Absenden bestätigen Sie die Kenntnisnahme unserer",
     "layeredNoticeLink": "Datenschutzerklärung",
     // TRANSLATION DRAFT: review by user
     "errors": {

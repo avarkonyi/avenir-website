@@ -1,12 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import { type Translation } from "@/lib/i18n";
+import { getRenderableServicePaths } from "@/lib/services/review-services";
 import { SEO_DATA } from "@/lib/seo-data";
+import { getLocaleAccessibility } from "@/lib/locale-accessibility";
 import {
   getActiveTopLevelServices,
   getAllPublishedServicePathsForBuild,
 } from "@/lib/db/queries/services";
 import { getReadyServiceDetailHref } from "@/lib/service-detail-links";
+import { getTrustCenterNavigation } from "@/lib/trust-center-navigation";
 import {
   getFooterLegalLinks,
   getFooterMapLinkTitle,
@@ -30,7 +33,7 @@ export async function Footer({
   const rows = await getActiveTopLevelServices(locale);
   const effectiveReadyServiceDetailPaths =
     readyServiceDetailPaths ??
-    (await getAllPublishedServicePathsForBuild("footer service detail links"));
+    getRenderableServicePaths(await getAllPublishedServicePathsForBuild("footer service detail links"));
   const serviceLinks = rows
     .map((row) => ({
       slug: row.slug,
@@ -43,8 +46,8 @@ export async function Footer({
     }))
     .filter((link) => link.title.length > 0);
   const legalLinks = getFooterLegalLinks(locale, t.footer);
-  const linkedInLabel =
-    locale === "hu" ? "Avenir a LinkedInen" : "Avenir on LinkedIn";
+  const trustCenterNavigation = getTrustCenterNavigation(locale);
+  const linkedInLabel = getLocaleAccessibility(locale).linkedIn;
 
   return (
     <footer style={{ background: "#070F1E", padding: "60px 5vw 28px", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
@@ -211,6 +214,13 @@ export async function Footer({
                   </Link>
                 </li>
               ))}
+              {trustCenterNavigation && (
+                <li>
+                  <Link href={trustCenterNavigation.href} className="footer-link" style={{ color: "var(--avenir-on-dark-muted)", fontSize: 13, textDecoration: "none" }}>
+                    {trustCenterNavigation.label}
+                  </Link>
+                </li>
+              )}
               <li>
                 <CookieSettingsButton locale={locale} />
               </li>

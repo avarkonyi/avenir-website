@@ -29,7 +29,7 @@ export const ko = {
     { n: "30+", l: "운영 현장" },
     { n: "200+", l: "전문 인력" },
     { n: "AA", l: "D&B 높은 신용도 평가" },
-    { n: "24/7", l: "관제·디스패처 지원" },
+    { n: "24/7", l: "디스패처 지원" },
   ],
   aboutTitle: "Avenir 소개",
   aboutSub: "보안 · 운영 신뢰성",
@@ -70,12 +70,15 @@ export const ko = {
     titles: {
       "Security Guard": "보안요원",
       "Cleaning Team Leader": "청소팀 리더",
+      "Facility Management Engineer": "시설 관리 엔지니어",
+      "Reception Manager": "리셉션 관리자",
     },
     types: {
       "Full-time": "풀타임",
     },
     locations: {
       "Budapest, regional": "부다페스트 및 지역 현장",
+      Budapest: "부다페스트",
     },
   },
   contactTitle: "문의",
@@ -97,7 +100,7 @@ export const ko = {
     sending: "전송 중…",
     success:
       "문의가 접수되었습니다. 제공하신 연락처로 담당자가 회신합니다. 개인정보는 개인정보 처리방침에 따라 처리됩니다.",
-    successPrivacyLink: "개인정보 처리방침",
+    successPrivacyLink: "개인정보 처리방침 (영문)",
     // TRANSLATION DRAFT: review by user (partial/noindex locale)
     requiredField: "* 필수 입력 항목",
     nextStepHelper:
@@ -107,7 +110,7 @@ export const ko = {
     specialDataWarningLink: "이용약관 4항",
     privateInvestigation: "민간조사",
     layeredNotice: "제출하면 다음 문서를 확인한 것으로 간주됩니다:",
-    layeredNoticeLink: "개인정보 처리방침",
+    layeredNoticeLink: "개인정보 처리방침 (영문)",
     errors: {
       nameRequired: "성명을 입력해 주세요",
       emailRequired: "이메일 주소를 입력해 주세요",
@@ -119,7 +122,7 @@ export const ko = {
   },
   footer: {
     ...en.footer,
-    rights: "© 2026 Avenir Facility Management Kft. · All rights reserved.",
+    rights: "© 2026 Avenir Facility Management Kft. · 모든 권리 보유.",
     legalTitle: "법률 정보",
     privacy: "개인정보 처리방침 (영문)",
     terms: "이용약관 (영문)",
@@ -128,7 +131,7 @@ export const ko = {
     taxNumberLabel: "세금번호",
     headquartersLabel: "등록 소재지",
     machineTranslationDisclaimer:
-      "이 한국어 홈페이지는 초안이며 번역 검토가 필요합니다. 서비스 상세, 법률 및 뉴스 페이지는 아직 한국어로 제공되지 않습니다.",
+      "한국어 홈페이지와 서비스 상세 페이지는 번역 검토 중인 초안입니다. 법률 링크는 영문 문서로 연결되며, 뉴스는 아직 한국어로 제공되지 않습니다.",
   },
   certifications: {
     ...en.certifications,

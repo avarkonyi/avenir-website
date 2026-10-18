@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/page-metadata";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getTranslation } from "@/lib/i18n";
 import { getTermsContent } from "@/lib/legal-content";
 import { SEO_DATA } from "@/lib/seo-data";
+import { toMetaDescription } from "@/lib/meta-description";
 import {
   isLegalPageLocale,
   legalPageAlternateLanguages,
@@ -30,21 +32,19 @@ export async function generateMetadata({
   const t = getTranslation(locale);
   const terms = getTermsContent(locale, t);
   const title = `${terms.title} — ${SEO_DATA.legalNameShort}`;
-  const description = terms.intro.slice(0, 160);
+  const description = toMetaDescription(terms.intro);
   const url = legalPageUrl(locale, "aszf");
   const isDeReviewPage = locale === "de";
 
-  return {
-    metadataBase: new URL(SEO_DATA.url),
+  return buildPageMetadata({
+    locale,
     title,
     description,
-    robots: { index: !isDeReviewPage, follow: true },
-    alternates: {
-      canonical: url,
-      languages: legalPageAlternateLanguages("aszf"),
-    },
-    openGraph: { type: "article", title, description, url },
-  };
+    url,
+    index: !isDeReviewPage,
+    languages: legalPageAlternateLanguages("aszf"),
+    type: "article",
+  });
 }
 
 export default async function TermsPage({
@@ -56,14 +56,13 @@ export default async function TermsPage({
   if (!isLegalPageLocale(locale)) notFound();
   const t = getTranslation(locale);
   const terms = getTermsContent(locale, t);
-  const showStructuredDataProtection = locale !== "de";
 
   return (
     <LegalPageChrome
       t={t}
       locale={locale}
       pageTitle={terms.title}
-      pageDescription={terms.intro.slice(0, 160)}
+      pageDescription={toMetaDescription(terms.intro)}
       pageSlug="aszf"
     >
       <LegalHeader
@@ -76,13 +75,8 @@ export default async function TermsPage({
         <LegalSection key={s.id} id={s.id} title={s.title} body={s.body} />
       ))}
 
-      {/* Section 14 — Data Protection cross-reference. Resolves audit
-          P0-2: DPO disclosure was on privacy + impresszum but missing
-          from ASZF. Structured block with DPO contact + clickable link
-          to the full Privacy Policy. DE v1.1 legal-source markdown already
-          contains the privacy references, so the structured HU/EN supplement
-          is not duplicated there. */}
-      {showStructuredDataProtection && (
+      {/* Section 14 — shared DPO contact and Privacy Policy cross-reference
+          for every rendered legal locale, including the DE review page. */}
         <section id="data-protection" style={{ marginBottom: 32 }}>
           <h2
             style={{
@@ -156,7 +150,6 @@ export default async function TermsPage({
             </Link>
           </p>
         </section>
-      )}
 
       {/* Version history footer — small fine-print block at the very
           end of the document, separated from §14 by a top border.

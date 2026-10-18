@@ -1,0 +1,26 @@
+
+> avenir-website@0.1.0 qa:analytics
+> node scripts/qa-analytics.mjs https://www.afm.hu --allow-production
+
+
+Running 16 tests using 1 worker
+
+  ok  1 [chromium] › tests\analytics-consent.spec.ts:60:9 › consent-gated GA4 › does not load GA4 before consent on /hu (3.1s)
+  ok  2 [chromium] › tests\analytics-consent.spec.ts:60:9 › consent-gated GA4 › does not load GA4 before consent on /en (2.1s)
+  ok  3 [chromium] › tests\analytics-consent.spec.ts:60:9 › consent-gated GA4 › does not load GA4 before consent on /hu/szolgaltatasok/objektumorzes (2.0s)
+  ok  4 [chromium] › tests\analytics-consent.spec.ts:60:9 › consent-gated GA4 › does not load GA4 before consent on /en/szolgaltatasok/objektumorzes (2.1s)
+  ok  5 [chromium] › tests\analytics-consent.spec.ts:73:7 › consent-gated GA4 › rejecting analytics persists and keeps GA4 blocked after reload (2.6s)
+  ok  6 [chromium] › tests\analytics-consent.spec.ts:92:7 › consent-gated GA4 › accepting analytics loads direct GA4 and sends collect requests (1.9s)
+  ok  7 [chromium] › tests\analytics-consent.spec.ts:157:7 › consent-gated GA4 › real gtag.js sends collect requests after consent and route changes (4.5s)
+  ok  8 [chromium] › tests\analytics-consent.spec.ts:186:7 › consent-gated GA4 › cookie settings can reopen consent and change the decision (3.7s)
+  ok  9 [chromium] › tests\analytics-consent.spec.ts:209:7 › consent-gated GA4 › contact success analytics event is emitted without PII or a real API write (3.6s)
+  ok 10 [chromium] › tests\analytics-consent.spec.ts:231:7 › consent-gated GA4 › contact error analytics event is emitted without PII or a real API write (3.6s)
+  ok 11 [chromium] › tests\analytics-consent.spec.ts:253:7 › consent-gated GA4 › service quote success funnel emits precise events without PII or a real API write (2.0s)
+  ok 12 [chromium] › tests\analytics-consent.spec.ts:304:7 › consent-gated GA4 › service quote error funnel emits precise error event without PII or a real API write (1.9s)
+  ok 13 [chromium] › tests\analytics-consent.spec.ts:335:7 › consent-gated GA4 › service quote form_start fires once per open form session (1.9s)
+  ok 14 [chromium] › tests\analytics-consent.spec.ts:374:7 › consent-gated GA4 › public contact dropdown does not offer the private investigation option (1.5s)
+  ok 15 [chromium] › tests\analytics-consent.spec.ts:405:7 › consent-gated GA4 › phone and email clicks emit safe events without exposing contact values (1.8s)
+  ok 16 [chromium] › tests\analytics-consent.spec.ts:437:7 › consent-gated GA4 › CSP allows direct GA4 endpoints without Ads or DoubleClick endpoints (604ms)
+
+  16 passed (40.5s)
+EXIT 0

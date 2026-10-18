@@ -1,4 +1,6 @@
+import { getLocaleAccessibility } from "@/lib/locale-accessibility";
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/page-metadata";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -64,30 +66,14 @@ export async function generateMetadata({
   const indexable = isIndexableNewsLocale(locale);
   const url = newsIndexUrl(locale);
 
-  return {
-    metadataBase: new URL(SEO_DATA.url),
+  return buildPageMetadata({
+    locale,
     title: copy.title,
     description: copy.description,
-    robots: { index: indexable, follow: true },
-    alternates: {
-      canonical: url,
-      ...(indexable
-        ? { languages: newsAlternateLanguages(null, NEWS_PUBLIC_LOCALES) }
-        : {}),
-    },
-    openGraph: {
-      type: "website",
-      title: copy.title,
-      description: copy.description,
-      url,
-      siteName: SEO_DATA.name,
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: copy.title,
-      description: copy.description,
-    },
-  };
+    url,
+    index: indexable,
+    languages: newsAlternateLanguages(null, NEWS_PUBLIC_LOCALES),
+  });
 }
 
 function dateLocale(locale: NewsPublicLocale): string {
@@ -134,7 +120,7 @@ export default async function NewsIndexPage({
         >
           <div style={{ maxWidth: 1100, margin: "0 auto" }}>
             <nav
-              aria-label="Breadcrumb"
+              aria-label={getLocaleAccessibility(locale).breadcrumb}
               style={{
                 display: "flex",
                 gap: 8,

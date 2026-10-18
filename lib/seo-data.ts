@@ -5,6 +5,8 @@
 // here AND keep Footer.tsx in sync — Footer hardcodes the same facts
 // for now (refactor TBD).
 
+import { LOCALES } from "./locales";
+
 export const SEO_DATA = {
   // Branding
   name: "Avenir Facility Management",
@@ -35,7 +37,6 @@ export const SEO_DATA = {
   taxID: "26395124-2-41",
   vatID: "HU26395124",
   registrationId: "01-09-328046",
-  iso6523: "0190:01-09-328046",
 
   // Address — two presentations of the same legal address:
   //
@@ -75,32 +76,7 @@ export const SEO_DATA = {
   backgroundColor: "#ffffff",
 } as const;
 
-// FAQs used in FAQPage JSON-LD (HU-only by design — see decision log:
-// per-locale schema translation deferred to a later content pass).
-export const SEO_FAQS_HU = [
-  {
-    q: "Milyen szolgáltatásokat nyújt az Avenir Facility Management?",
-    a: "Az Avenir Facility Management Kft. nyolc fő szolgáltatási területet fog össze egy felelős kapcsolattartóval: élőerős objektumőrzés, recepciós és portaszolgálat, próbavásárlás és szolgáltatásaudit, rendezvénybiztosítás, biztonságtechnika, távfelügyelet és vonulószolgálat, Soft FM és Hard FM.",
-  },
-  {
-    q: "Hol érhető el az Avenir Facility Management?",
-    a: "Az Avenir Facility Management Magyarország teljes területén nyújt szolgáltatásokat, központja Budapesten található (1039 Budapest, Királyok útja 291. B. ép. 15. ajtó). 30+ aktív helyszínen dolgozunk országszerte.",
-  },
-  {
-    q: "Hány embert foglalkoztat az Avenir?",
-    a: "Az Avenir Facility Management 200+ szakképzett munkatársat foglalkoztat — biztonsági őröket, takarítókat, épületüzemeltetési mérnököket és recepciósokat. A cég 2018-ban alakult, vezetői és kulcsmunkatársai több évtizedes szakmai tapasztalattal rendelkeznek.",
-  },
-  {
-    q: "Milyen ügyfeleknek dolgozik az Avenir?",
-    a: "Az Avenir ügyfélkörébe irodaházak, bevásárlóközpontok, ipari és logisztikai parkok, valamint közintézmények tartoznak. A vállalat Dun & Bradstreet AA High Creditworthy 2026 minősítéssel rendelkezik.",
-  },
-  {
-    q: "Hogyan lehet ajánlatot kérni az Avenirtől?",
-    a: "Ajánlat a +36 70 316 8218-as telefonszámon, az info@afm.hu e-mail címen, vagy a www.afm.hu weboldalon található űrlapon kérhető. Munkaidőben többnyire még aznap visszajelzünk, de legkésőbb a következő munkanapon felvesszük Önnel a kapcsolatot. Az ajánlat elkészítésének ideje az igény összetettségétől függ.",
-  },
-] as const;
-
-export const SEO_LOCALES = ["hu", "en", "de", "zh", "ko"] as const;
+export const SEO_LOCALES = LOCALES;
 export type SeoLocale = (typeof SEO_LOCALES)[number];
 
 // Mapping for og:locale and og:locale:alternate.
@@ -110,6 +86,7 @@ export const OG_LOCALE_MAP: Record<SeoLocale, string> = {
   de: "de_DE",
   zh: "zh_CN",
   ko: "ko_KR",
+  fr: "fr_FR",
 };
 
 // Per-locale taglines used in <title>: "{legalNameShort} — {tagline}".
@@ -119,6 +96,7 @@ export const META_TAGLINES: Record<SeoLocale, string> = {
   de: "Objektschutz und FM",
   zh: "安保与设施管理",
   ko: "보안 및 FM",
+  fr: "Sécurité et gestion des installations",
 };
 
 // Per-locale meta descriptions. Keep these concise for search snippets;
@@ -129,26 +107,8 @@ export const META_DESCRIPTIONS: Record<SeoLocale, string> = {
   de: "Objektschutz, Sicherheitstechnik, Vor-Ort-Audits und FM-Unterstützung in Ungarn. Ein Vertrag, ein verantwortlicher Ansprechpartner.",
   zh: "Avenir 在匈牙利提供安保服务、安防技术、现场审核和设施管理支持，一份合同，一个责任明确的对接人。",
   ko: "Avenir는 헝가리에서 보안 서비스, 보안 기술, 서비스 감사 및 FM 지원을 제공합니다. 하나의 계약, 하나의 책임 연락 창구.",
+  fr: "Gardiennage, technologies de sécurité, audits de service et facility management en Hongrie. Un contrat, un interlocuteur responsable.",
 };
-
-// Security-first positioning: Avenir's primary expertise is property
-// protection (vagyonvédelem); integrated FM is complementary. Used as
-// description for both Organization and ProfessionalService schemas.
-export const SECURITY_FIRST_DESCRIPTION =
-  "Magyar vagyonvédelmi szakértő integrált épületüzemeltetéssel. 200+ szakember, 30+ aktív helyszín, ISO 9001 + ISO 27001 tanúsított.";
-
-// SecurityService.knowsAbout array — emphasizes property-protection
-// capabilities for AI-search and Knowledge Panel context.
-export const SCHEMA_KNOWS_ABOUT = [
-  "Élőerős őrzés-védelem",
-  "Technikai vagyonvédelem",
-  "Riasztó-rendszer felügyelet",
-  "Beléptetési rendszerek",
-  "Portaszolgálat",
-  "24/7 diszpécserszolgálat",
-  "Mystery Shopping audit",
-  "Integrált facility management",
-] as const;
 
 // Stable @id URL for an EducationalOccupationalCredential schema.
 // Used both inside the credential's own top-level JSON-LD object and for

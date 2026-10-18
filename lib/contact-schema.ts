@@ -4,6 +4,7 @@
 // the client to t.form.errors.* localized strings.
 
 import { z } from "zod";
+import { LOCALES } from "./locales";
 
 const CONTACT_SERVICE_ALIASES: Record<string, string> = {
   security: "objektumorzes",
@@ -62,7 +63,7 @@ export const ContactPayloadSchema = z.object({
     z.string().max(50).optional(),
   ),
   message: z.string().trim().max(4000).optional(),
-  locale: z.enum(["hu", "en", "de", "zh", "ko"]),
+  locale: z.enum(LOCALES),
   form_variant: z.enum(FORM_VARIANTS).optional(),
   source_path: z.string().trim().max(240).optional(),
   // Honeypot: hidden field that humans don't see. Bots fill every input.

@@ -4,12 +4,14 @@ import { useEffect, useRef, useState } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 import {
   ANALYTICS_CONSENT_EVENT,
+  ANALYTICS_CONSENT_KEY,
+  hasAnalyticsConsent,
   readAnalyticsConsent,
   type AnalyticsConsentChoice,
 } from "@/lib/analytics/consent";
+import { applyAnalyticsConsent, analyticsPageFields, GA4_MEASUREMENT_ID as MEASUREMENT_ID } from "@/lib/analytics/runtime";
 
 const SCRIPT_ID = "avenir-ga4-script";
-const MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA4_ID?.trim() ?? "";
 
 declare global {
   interface Window {
@@ -29,13 +31,16 @@ export function GoogleAnalytics() {
   const [scriptLoaded, setScriptLoaded] = useState(false);
 
   useEffect(() => {
+    applyAnalyticsConsent(hasAnalyticsConsent());
     const frame = window.requestAnimationFrame(() => {
       setConsent(readAnalyticsConsent());
     });
 
     function handleConsentChange(event: Event) {
-      const detail = (event as CustomEvent<{ choice?: AnalyticsConsentChoice }>).detail;
-      setConsent(detail?.choice ?? readAnalyticsConsent());
+      if (event instanceof StorageEvent && event.key !== null && event.key !== ANALYTICS_CONSENT_KEY) return;
+      const choice = readAnalyticsConsent();
+      applyAnalyticsConsent(choice === "accepted");
+      setConsent(choice);
     }
 
     window.addEventListener(ANALYTICS_CONSENT_EVENT, handleConsentChange);
@@ -48,7 +53,7 @@ export function GoogleAnalytics() {
   }, []);
 
   useEffect(() => {
-    if (!MEASUREMENT_ID || consent !== "accepted") return;
+    if (!MEASUREMENT_ID || consent !== "accepted" || !hasAnalyticsConsent()) return;
 
     window.dataLayer = window.dataLayer || [];
     window.gtag =
@@ -60,6 +65,8 @@ export function GoogleAnalytics() {
         window.dataLayer?.push(arguments);
       };
 
+    window.gtag("consent", "update", { analytics_storage: "granted" });
+
     if (window.__avenirGa4ScriptLoaded) {
       const timeout = window.setTimeout(() => {
         setScriptLoaded(true);
@@ -69,36 +76,35 @@ export function GoogleAnalytics() {
       };
     }
 
-    const existingScript = document.getElementById(SCRIPT_ID);
-
-    function handleScriptLoad() {
-      window.__avenirGa4ScriptLoaded = true;
-      setScriptLoaded(true);
+    // The loader belongs to the document, not to one consent effect. Its load
+    // marker must survive withdrawal and Strict Mode cleanup while in flight.
+    if (!window.__avenirGa4LoadPromise) {
+      window.__avenirGa4LoadPromise = new Promise<void>((resolve, reject) => {
+        const script = document.createElement("script");
+        script.id = SCRIPT_ID;
+        script.async = true;
+        script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(MEASUREMENT_ID)}`;
+        script.addEventListener("load", () => {
+          window.__avenirGa4ScriptLoaded = true;
+          resolve();
+        }, { once: true });
+        script.addEventListener("error", () => {
+          script.remove();
+          window.__avenirGa4LoadPromise = undefined;
+          reject(new Error("Analytics script unavailable"));
+        }, { once: true });
+        document.head.appendChild(script);
+      });
     }
-
-    if (existingScript) {
-      existingScript.addEventListener("load", handleScriptLoad, { once: true });
-      return () => {
-        existingScript.removeEventListener("load", handleScriptLoad);
-      };
-    }
-
-    const script = document.createElement("script");
-    script.id = SCRIPT_ID;
-    script.async = true;
-    script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(
-      MEASUREMENT_ID,
-    )}`;
-    script.addEventListener("load", handleScriptLoad, { once: true });
-    document.head.appendChild(script);
-
-    return () => {
-      script.removeEventListener("load", handleScriptLoad);
-    };
+    let active = true;
+    window.__avenirGa4LoadPromise.then(() => {
+      if (active && hasAnalyticsConsent()) setScriptLoaded(true);
+    }).catch(() => { /* A later acceptance can retry a failed load. */ });
+    return () => { active = false; };
   }, [consent]);
 
   useEffect(() => {
-    if (consent !== "accepted") {
+    if (consent !== "accepted" || !hasAnalyticsConsent()) {
       lastPageViewKey.current = null;
       return;
     }
@@ -107,27 +113,30 @@ export function GoogleAnalytics() {
       return;
     }
 
+    const fields = analyticsPageFields();
+    window.gtag("set", fields);
     if (!window.__avenirGa4Initialized) {
       window.gtag("js", new Date());
       window.gtag("config", MEASUREMENT_ID, {
         send_page_view: false,
         anonymize_ip: true,
+        ...fields,
       });
       window.__avenirGa4Initialized = true;
     }
 
     const timeout = window.setTimeout(() => {
-      if (typeof window.gtag !== "function") return;
+      if (!hasAnalyticsConsent() || typeof window.gtag !== "function") return;
 
-      const pagePath = `${window.location.pathname}${window.location.search}`;
+      const fields = analyticsPageFields();
+      const pagePath = fields.page_path;
       const pageViewKey = `${MEASUREMENT_ID}:${pagePath}`;
       if (lastPageViewKey.current === pageViewKey) return;
       lastPageViewKey.current = pageViewKey;
 
       window.gtag("event", "page_view", {
         send_to: MEASUREMENT_ID,
-        page_path: pagePath,
-        page_location: window.location.href,
+        ...fields,
         page_title: document.title,
       });
     }, 0);

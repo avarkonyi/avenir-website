@@ -8,38 +8,11 @@ import {
   type AnalyticsConsentChoice,
 } from "@/lib/analytics/consent";
 
-type Copy = {
-  text: string;
-  accept: string;
-  reject: string;
-  title: string;
-};
-
-const COPY: Record<"hu" | "en" | "de", Copy> = {
-  hu: {
-    title: "Analitikai beállítások",
-    text: "Analitikai sütiket csak hozzájárulás esetén használunk. Ezek segítenek megérteni, mely oldalaink és szolgáltatásaink érdeklik a látogatókat. Személyes adatot, üzenetmezőt vagy űrlaptartalmat nem küldünk analitikába.",
-    accept: "Elfogadom az analitikát",
-    reject: "Elutasítom",
-  },
-  en: {
-    title: "Analytics settings",
-    text: "We use analytics cookies only with your consent. They help us understand which pages and services visitors use. We do not send personal details, message fields or form content to analytics.",
-    accept: "Accept analytics",
-    reject: "Reject",
-  },
-  de: {
-    title: "Analyse-Einstellungen",
-    text: "Analyse-Cookies verwenden wir nur mit Ihrer Einwilligung. Sie helfen uns zu verstehen, welche Seiten und Dienstleistungen für Besucher interessant sind. Personenbezogene Daten, Nachrichtenfelder oder Formularinhalte werden nicht an die Analyse übermittelt.",
-    accept: "Analyse akzeptieren",
-    reject: "Ablehnen",
-  },
-};
+import { getAnalyticsConsentCopy } from "@/lib/analytics/consent-copy";
 
 export function AnalyticsConsentBanner({ locale }: { locale: string }) {
   const [visible, setVisible] = useState(false);
-  const copy =
-    locale === "hu" ? COPY.hu : locale === "de" ? COPY.de : COPY.en;
+  const copy = getAnalyticsConsentCopy(locale);
 
   useEffect(() => {
     const frame = window.requestAnimationFrame(() => {
@@ -58,8 +31,8 @@ export function AnalyticsConsentBanner({ locale }: { locale: string }) {
   }, []);
 
   function choose(choice: AnalyticsConsentChoice) {
-    writeAnalyticsConsent(choice);
-    setVisible(false);
+    const effectiveChoice = writeAnalyticsConsent(choice);
+    setVisible(choice === "accepted" && effectiveChoice !== "accepted");
   }
 
   if (!visible) return null;

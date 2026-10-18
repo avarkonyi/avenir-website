@@ -1,0 +1,46 @@
+User-Agent: *
+Allow: /
+Disallow: /admin
+Disallow: /api
+
+User-Agent: OAI-SearchBot
+Allow: /
+Disallow: /admin
+Disallow: /api
+
+User-Agent: ChatGPT-User
+Allow: /
+Disallow: /admin
+Disallow: /api
+
+User-Agent: GPTBot
+Allow: /
+Disallow: /admin
+Disallow: /api
+
+User-Agent: Claude-SearchBot
+Allow: /
+Disallow: /admin
+Disallow: /api
+
+User-Agent: Claude-User
+Allow: /
+Disallow: /admin
+Disallow: /api
+
+User-Agent: ClaudeBot
+Allow: /
+Disallow: /admin
+Disallow: /api
+
+User-Agent: PerplexityBot
+Allow: /
+Disallow: /admin
+Disallow: /api
+
+User-Agent: Perplexity-User
+Allow: /
+Disallow: /admin
+Disallow: /api
+
+Sitemap: https://www.afm.hu/sitemap.xml

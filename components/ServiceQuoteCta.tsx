@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { trackAnalyticsEvent } from "@/lib/analytics/events";
 import { DE_REVIEW_SERVICE_QUOTE_COPY } from "@/lib/services/de-service-shared-copy";
@@ -52,8 +53,8 @@ export const SERVICE_QUOTE_COPY = {
     error:
       "Hiba történt a küldés során. Kérjük, próbálja újra később, vagy hívjon minket.",
     nameRequired: "Kérjük, adja meg a nevét.",
-    emailRequired: "Kérjük, adja meg az e-mail címét.",
-    emailInvalid: "Kérjük, érvényes e-mail címet adjon meg.",
+    emailRequired: "Kérjük, adja meg az e-mail-címét.",
+    emailInvalid: "Kérjük, érvényes e-mail-címet adjon meg.",
     requiredField: "* Kötelező mező",
     nextStepHelper:
       "Munkaidőben többnyire még aznap visszajelzünk, de legkésőbb a következő munkanapon felvesszük Önnel a kapcsolatot. Az ajánlat elkészítésének ideje az igény összetettségétől függ.",
@@ -84,7 +85,15 @@ export const SERVICE_QUOTE_COPY = {
   de: DE_REVIEW_SERVICE_QUOTE_COPY,
 } as const;
 
-type ServiceQuoteCopy = (typeof SERVICE_QUOTE_COPY)[keyof typeof SERVICE_QUOTE_COPY];
+type ServiceQuoteCopy = { [K in keyof typeof SERVICE_QUOTE_COPY.en]: string };
+
+// Layered privacy notice shown before submit, mirroring the homepage contact
+// form (same dictionary strings and the same locale-aware privacy URL).
+export type ServiceQuotePrivacyNotice = {
+  text: string;
+  linkText: string;
+  href: string;
+};
 
 export function buildServiceQuotePayload({
   form,
@@ -115,17 +124,21 @@ export function ServiceQuoteCta({
   locale,
   serviceSlug,
   serviceLabel,
+  copy: localizedCopy,
+  privacyNotice,
 }: {
   locale: string;
   serviceSlug: string;
   serviceLabel: string;
+  copy?: ServiceQuoteCopy;
+  privacyNotice: ServiceQuotePrivacyNotice;
 }) {
-  const copy =
+  const copy = localizedCopy ?? (
     locale === "hu"
       ? SERVICE_QUOTE_COPY.hu
       : locale === "de"
         ? SERVICE_QUOTE_COPY.de
-        : SERVICE_QUOTE_COPY.en;
+        : SERVICE_QUOTE_COPY.en);
   const safeServiceSlug = CANONICAL_SERVICE_SLUGS.has(serviceSlug)
     ? serviceSlug
     : "";
@@ -250,6 +263,7 @@ export function ServiceQuoteCta({
   return (
     <ServiceQuoteCtaPanel
       copy={copy}
+      privacyNotice={privacyNotice}
       form={form}
       errors={errors}
       isOpen={isOpen}
@@ -266,6 +280,7 @@ export function ServiceQuoteCta({
 
 export function ServiceQuoteCtaPanel({
   copy,
+  privacyNotice,
   form,
   errors,
   isOpen,
@@ -278,6 +293,7 @@ export function ServiceQuoteCtaPanel({
   onFieldChange,
 }: {
   copy: ServiceQuoteCopy;
+  privacyNotice: ServiceQuotePrivacyNotice;
   form: FormState;
   errors: Errors;
   isOpen: boolean;
@@ -456,6 +472,16 @@ export function ServiceQuoteCtaPanel({
                   No response-time promise — see docs/copy_strategy.md. */}
               <p className="service-quote-form__hint">{copy.requiredField}</p>
               <p className="service-quote-form__hint">{copy.nextStepHelper}</p>
+              <p className="service-quote-form__hint service-quote-form__privacy">
+                {privacyNotice.text}{" "}
+                <Link
+                  href={privacyNotice.href}
+                  style={{ color: "#D1172E", textDecoration: "underline", fontWeight: 500 }}
+                >
+                  {privacyNotice.linkText}
+                </Link>
+                .
+              </p>
 
               <div className="service-quote-form__actions">
                 <button

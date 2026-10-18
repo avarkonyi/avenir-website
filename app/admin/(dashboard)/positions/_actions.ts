@@ -2,6 +2,7 @@
 
 import { eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
+import { revalidatePublicContent } from "@/lib/public-content-revalidation";
 import { db, neonSql, positions } from "@/lib/db";
 import { requireAdmin } from "@/lib/admin/require-admin";
 import { safeActionError } from "@/lib/admin/safe-action-error";
@@ -107,6 +108,7 @@ export async function createPosition(
       .values(normalize(payload))
       .returning({ id: positions.id });
     revalidatePath("/admin/positions");
+    revalidatePublicContent(revalidatePath);
     return { ok: true, id: created.id };
   } catch (err) {
     return {
@@ -144,6 +146,7 @@ export async function updatePosition(
       return { ok: false, error: "Pozíció nem található." };
     }
     revalidatePath("/admin/positions");
+    revalidatePublicContent(revalidatePath);
     revalidatePath(`/admin/positions/${id}/edit`);
     return { ok: true };
   } catch (err) {
@@ -184,6 +187,7 @@ export async function togglePositionActive(
       return { ok: false, error: "Pozíció nem található." };
     }
     revalidatePath("/admin/positions");
+    revalidatePublicContent(revalidatePath);
     return { ok: true };
   } catch (err) {
     return {
@@ -215,6 +219,7 @@ export async function deletePosition(
       return { ok: false, error: "Pozíció nem található." };
     }
     revalidatePath("/admin/positions");
+    revalidatePublicContent(revalidatePath);
     return { ok: true };
   } catch (err) {
     return {
@@ -288,6 +293,7 @@ export async function reorderPositions(
       ),
     );
     revalidatePath("/admin/positions");
+    revalidatePublicContent(revalidatePath);
     return { ok: true };
   } catch (err) {
     return {

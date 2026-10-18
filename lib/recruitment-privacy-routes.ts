@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/page-metadata";
 import { SEO_DATA } from "@/lib/seo-data";
+import { toMetaDescription } from "@/lib/meta-description";
 import { RECRUITMENT_PRIVACY_CONTENT } from "@/lib/recruitment-privacy-content";
 
 // PL-091 Option B: the recruitment privacy notice lives on locale-specific
@@ -54,18 +56,16 @@ export function buildRecruitmentPrivacyMetadata(
 ): Metadata {
   const content = RECRUITMENT_PRIVACY_CONTENT[locale];
   const title = `${content.title} — ${SEO_DATA.legalNameShort}`;
-  const description = content.intro.slice(0, 160);
+  const description = toMetaDescription(content.intro);
   const url = recruitmentPrivacyUrl(locale);
 
-  return {
-    metadataBase: new URL(SEO_DATA.url),
+  return buildPageMetadata({
+    locale,
     title,
     description,
-    robots: { index: true, follow: true },
-    alternates: {
-      canonical: url,
-      languages: recruitmentPrivacyAlternateLanguages(),
-    },
-    openGraph: { type: "article", title, description, url },
-  };
+    url,
+    index: true,
+    languages: recruitmentPrivacyAlternateLanguages(),
+    type: "article",
+  });
 }
