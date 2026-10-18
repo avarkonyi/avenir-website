@@ -1,0 +1,9 @@
+
+> avenir-website@0.1.0 qa:copy
+> node scripts/qa-copy-guard.mjs
+
+Avenir public copy guard
+Files scanned: 220
+Checks run: 33
+Result: PASS
+EXIT 0
