@@ -67,6 +67,13 @@ test("sitemap preserves real service edit dates and omits unverified static date
   assert.equal(removed.some(e => e.url.includes("/szolgaltatasok/")), false);
 });
 
+test("sitemap lists the indexable responsible-disclosure pair", async () => {
+  const { buildPublicSitemap } = await import("../lib/public-sitemap");
+  const urls = buildPublicSitemap([], []).map(e => new URL(e.url).pathname);
+  assert.ok(urls.includes("/hu/felelos-hibabejelentes"));
+  assert.ok(urls.includes("/en/responsible-disclosure"));
+});
+
 test("news invalidation covers translated indexes and old/new detail slugs", async () => {
   const { publicNewsRevalidationPaths } = await import("../lib/public-content-revalidation");
   const paths = publicNewsRevalidationPaths(["old-slug", "new-slug", "old-slug", null]);

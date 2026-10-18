@@ -1,4 +1,5 @@
-import { SEO_DATA, SEO_LOCALES, META_DESCRIPTIONS, credentialId, type SeoLocale } from "./seo-data";
+import { SEO_DATA, META_DESCRIPTIONS, credentialId, type SeoLocale } from "./seo-data";
+import { INDEXABLE_SERVICE_LOCALES } from "./services/publication";
 import { getSchemaLocaleCopy, localizeCredentialCategory } from "./schema-locale-copy";
 
 export type CertSchemaInput = {
@@ -57,7 +58,13 @@ export function buildJsonLdSchemas(
       foundingDate: SEO_DATA.foundingDate,
       taxID: SEO_DATA.taxID,
       vatID: SEO_DATA.vatID,
-      iso6523Code: SEO_DATA.iso6523,
+      // Hungarian company registration number. No ISO 6523 ICD prefix is
+      // asserted: 0190 is the Dutch OIN scheme, not the HU company registry.
+      identifier: {
+        "@type": "PropertyValue",
+        propertyID: "HU cégjegyzékszám",
+        value: SEO_DATA.registrationId,
+      },
       address: postalAddress,
       contactPoint: [
         {
@@ -109,7 +116,9 @@ export function buildJsonLdSchemas(
       url: SEO_DATA.url,
       name: SEO_DATA.name,
       publisher: { "@id": orgId },
-      inLanguage: [...SEO_LOCALES],
+      // Only the production (indexable) languages; de/zh/ko/fr are noindex
+      // review surfaces and must not be advertised as site languages.
+      inLanguage: [...INDEXABLE_SERVICE_LOCALES],
     },
     // One top-level EducationalOccupationalCredential per certification.
     // Organization and LocalBusiness reference these via @id above.

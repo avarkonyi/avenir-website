@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { getTranslation } from "@/lib/i18n";
 import { getPrivacyContent } from "@/lib/legal-content";
 import { SEO_DATA } from "@/lib/seo-data";
+import { toMetaDescription } from "@/lib/meta-description";
 import {
   isLegalPageLocale,
   legalPageAlternateLanguages,
@@ -29,7 +30,7 @@ export async function generateMetadata({
   const t = getTranslation(locale);
   const privacy = getPrivacyContent(locale, t);
   const title = `${privacy.title} — ${SEO_DATA.legalNameShort}`;
-  const description = privacy.intro.slice(0, 160);
+  const description = toMetaDescription(privacy.intro);
   const url = legalPageUrl(locale, "adatvedelem");
   const isDeReviewPage = locale === "de";
 
@@ -61,7 +62,7 @@ export default async function PrivacyPage({
       t={t}
       locale={locale}
       pageTitle={privacy.title}
-      pageDescription={privacy.intro.slice(0, 160)}
+      pageDescription={toMetaDescription(privacy.intro)}
       pageSlug="adatvedelem"
     >
       <LegalHeader

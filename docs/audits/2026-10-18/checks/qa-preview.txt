@@ -1,0 +1,25 @@
+
+> avenir-website@0.1.0 qa:preview
+> node scripts/qa-preview-smoke.mjs https://www.afm.hu --allow-production
+
+Avenir Preview smoke test
+Base URL: https://www.afm.hu/
+Checks run: 422
+Result: FAIL (16 issues)
+- /zh/szolgaltatasok/objektumorzes status: expected 404, got 200 (https://www.afm.hu/zh/szolgaltatasok/objektumorzes)
+- /zh/szolgaltatasok/portaszolgalat status: expected 404, got 200 (https://www.afm.hu/zh/szolgaltatasok/portaszolgalat)
+- /zh/szolgaltatasok/biztonsagtechnika status: expected 404, got 200 (https://www.afm.hu/zh/szolgaltatasok/biztonsagtechnika)
+- /zh/szolgaltatasok/tavfelugyelet-vonuloszolgalat status: expected 404, got 200 (https://www.afm.hu/zh/szolgaltatasok/tavfelugyelet-vonuloszolgalat)
+- /zh/szolgaltatasok/mystery-shopping-helyszini-audit status: expected 404, got 200 (https://www.afm.hu/zh/szolgaltatasok/mystery-shopping-helyszini-audit)
+- /zh/szolgaltatasok/rendezvenybiztositas status: expected 404, got 200 (https://www.afm.hu/zh/szolgaltatasok/rendezvenybiztositas)
+- /zh/szolgaltatasok/hard-fm status: expected 404, got 200 (https://www.afm.hu/zh/szolgaltatasok/hard-fm)
+- /zh/szolgaltatasok/soft-fm status: expected 404, got 200 (https://www.afm.hu/zh/szolgaltatasok/soft-fm)
+- /ko/szolgaltatasok/objektumorzes status: expected 404, got 200 (https://www.afm.hu/ko/szolgaltatasok/objektumorzes)
+- /ko/szolgaltatasok/portaszolgalat status: expected 404, got 200 (https://www.afm.hu/ko/szolgaltatasok/portaszolgalat)
+- /ko/szolgaltatasok/biztonsagtechnika status: expected 404, got 200 (https://www.afm.hu/ko/szolgaltatasok/biztonsagtechnika)
+- /ko/szolgaltatasok/tavfelugyelet-vonuloszolgalat status: expected 404, got 200 (https://www.afm.hu/ko/szolgaltatasok/tavfelugyelet-vonuloszolgalat)
+- /ko/szolgaltatasok/mystery-shopping-helyszini-audit status: expected 404, got 200 (https://www.afm.hu/ko/szolgaltatasok/mystery-shopping-helyszini-audit)
+- /ko/szolgaltatasok/rendezvenybiztositas status: expected 404, got 200 (https://www.afm.hu/ko/szolgaltatasok/rendezvenybiztositas)
+- /ko/szolgaltatasok/hard-fm status: expected 404, got 200 (https://www.afm.hu/ko/szolgaltatasok/hard-fm)
+- /ko/szolgaltatasok/soft-fm status: expected 404, got 200 (https://www.afm.hu/ko/szolgaltatasok/soft-fm)
+EXIT 1

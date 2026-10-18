@@ -16,8 +16,7 @@ test("French review source covers all eight existing service records with comple
       assert.notEqual(translated[field], source[field]);
     }
     for (const field of ["useCases", "includedItems", "processSteps", "trustItems", "faq", "highlights"] as const) {
-      // The two DE-only security-technology FAQs have no approved HU source.
-      const expectedLength = slug === "biztonsagtechnika" && field === "faq" ? 9 : source[field].length;
+      const expectedLength = source[field].length;
       assert.equal(translated[field].length, expectedLength, `${slug}.${field} preserves source coverage`);
       for (let i = 0; i < translated[field].length; i++) {
         const value = translated[field][i];

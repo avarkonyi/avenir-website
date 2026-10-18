@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { trackAnalyticsEvent } from "@/lib/analytics/events";
 import { DE_REVIEW_SERVICE_QUOTE_COPY } from "@/lib/services/de-service-shared-copy";
@@ -86,6 +87,14 @@ export const SERVICE_QUOTE_COPY = {
 
 type ServiceQuoteCopy = { [K in keyof typeof SERVICE_QUOTE_COPY.en]: string };
 
+// Layered privacy notice shown before submit, mirroring the homepage contact
+// form (same dictionary strings and the same locale-aware privacy URL).
+export type ServiceQuotePrivacyNotice = {
+  text: string;
+  linkText: string;
+  href: string;
+};
+
 export function buildServiceQuotePayload({
   form,
   locale,
@@ -116,11 +125,13 @@ export function ServiceQuoteCta({
   serviceSlug,
   serviceLabel,
   copy: localizedCopy,
+  privacyNotice,
 }: {
   locale: string;
   serviceSlug: string;
   serviceLabel: string;
   copy?: ServiceQuoteCopy;
+  privacyNotice: ServiceQuotePrivacyNotice;
 }) {
   const copy = localizedCopy ?? (
     locale === "hu"
@@ -252,6 +263,7 @@ export function ServiceQuoteCta({
   return (
     <ServiceQuoteCtaPanel
       copy={copy}
+      privacyNotice={privacyNotice}
       form={form}
       errors={errors}
       isOpen={isOpen}
@@ -268,6 +280,7 @@ export function ServiceQuoteCta({
 
 export function ServiceQuoteCtaPanel({
   copy,
+  privacyNotice,
   form,
   errors,
   isOpen,
@@ -280,6 +293,7 @@ export function ServiceQuoteCtaPanel({
   onFieldChange,
 }: {
   copy: ServiceQuoteCopy;
+  privacyNotice: ServiceQuotePrivacyNotice;
   form: FormState;
   errors: Errors;
   isOpen: boolean;
@@ -458,6 +472,16 @@ export function ServiceQuoteCtaPanel({
                   No response-time promise — see docs/copy_strategy.md. */}
               <p className="service-quote-form__hint">{copy.requiredField}</p>
               <p className="service-quote-form__hint">{copy.nextStepHelper}</p>
+              <p className="service-quote-form__hint service-quote-form__privacy">
+                {privacyNotice.text}{" "}
+                <Link
+                  href={privacyNotice.href}
+                  style={{ color: "#D1172E", textDecoration: "underline", fontWeight: 500 }}
+                >
+                  {privacyNotice.linkText}
+                </Link>
+                .
+              </p>
 
               <div className="service-quote-form__actions">
                 <button

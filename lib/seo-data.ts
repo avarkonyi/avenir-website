@@ -37,7 +37,6 @@ export const SEO_DATA = {
   taxID: "26395124-2-41",
   vatID: "HU26395124",
   registrationId: "01-09-328046",
-  iso6523: "0190:01-09-328046",
 
   // Address — two presentations of the same legal address:
   //

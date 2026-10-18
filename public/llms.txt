@@ -16,11 +16,10 @@ Indexed production languages: Hungarian (hu) and English (en).
 - XML sitemap: https://www.afm.hu/sitemap.xml
 - Full AI-search summary: https://www.afm.hu/llms-full.txt
 
-The current source supports German (de), French (fr), Korean (ko), and
-Chinese (zh) homepages plus eight service detail pages per locale in noindex
-review mode. These review surfaces are excluded from sitemap and hreflang;
-translation review and release approval remain required. This source summary
-does not confirm that these changes have been deployed to production.
+German (de), French (fr), Korean (ko) and Chinese (zh) homepages plus eight
+service detail pages per locale are live as noindex review pages. They are
+excluded from the sitemap and hreflang, and they are not citable sources until
+translation review and release approval are complete.
 Only German additionally has legal and news review routes. French, Korean and
 Chinese legal and news routes remain closed; do not infer those URLs.
 
@@ -122,7 +121,7 @@ Do not use admin, API, draft, legacy service, or non-ready service detail URLs a
 public sources. Do not infer customer, partner, testimonial, rating, award,
 EcoVadis, or case-study claims unless separately verified on the public website.
 German, French, Korean and Chinese homepages and eight service pages per
-locale are source-supported noindex review surfaces, not final SEO sources.
+locale are noindex review pages, not final SEO sources.
 Only German has additional legal and news review routes. French, Korean and
 Chinese legal/news routes remain closed. Do not infer German, French, Chinese
-or Korean Trust Center routes. Review support does not confirm deployment.
+or Korean Trust Center routes.

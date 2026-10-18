@@ -561,7 +561,7 @@ const DE_REVIEW_SERVICE_DETAILS = {
     "imageUrl": null,
     "name": "Sicherheitstechnik",
     "shortDesc": "Kamerasystem, Zutrittskontrolle, Einbruchmeldung und Alarmprozesse — abgestimmt mit Objektschutz und Pförtnerdienst.",
-    "longDesc": "Ziel der Sicherheitstechnik ist, dass sich die Sicherheit vor Ort nicht allein auf personelle Präsenz stützt, sondern auch gut handhabbare technische Unterstützung erhält. Dazu können das Kamerasystem, die Zutrittskontrollanlage, die Einbruchmeldung, der Alarmprozess, die Weiterleitung von Meldungen und die Dokumentation der Ereignisse gehören.\n\nAvenir behandelt den sicherheitstechnischen Betrieb nicht als isolierte Gerätebeschaffung. Auf Grundlage der Begehung vor Ort prüfen wir, wo sich Zutrittspunkte, schwach kontrollierte Zonen, wiederkehrende Ereignisse, kritische Bereiche und Prozesse befinden, in denen die Technik den Objektschutz, den Pförtnerdienst oder die Fernüberwachung unterstützen kann.\n\nAvenir bezieht bei der sicherheitstechnischen Bestandsaufnahme und Planung auch die Datenschutzaspekte ein: Der dokumentierte Zweck, der verhältnismäßige Erfassungsbereich, die Zugriffsberechtigungen, die Information der Betroffenen und die Speicherlogik werden auf den Betrieb des Standorts und den Datenschutzrahmen des Kunden abgestimmt — im Einklang mit den Grundsätzen der DSGVO und dem in Ungarn anwendbaren Rechtsrahmen. Dies unterstützt die datenschutzrechtliche Prüfung des Kunden; die Rechtsgrundlage und die abschließenden Datenschutzentscheidungen verbleiben beim Kunden und seinen Beratern.\n\nZiel ist eine transparente, wartbare und im Tagesbetrieb nutzbare sicherheitstechnische Ebene: eine Lösung, die nicht nur aufzeichnet, sondern Erkennung, Eskalation, Zutrittskontrolle, Berichtswesen und Entscheidungsfindung unterstützt.",
+    "longDesc": "Ziel der Sicherheitstechnik ist, dass sich die Sicherheit vor Ort nicht allein auf personelle Präsenz stützt, sondern auch gut handhabbare technische Unterstützung erhält. Dazu können das Kamerasystem, die Zutrittskontrollanlage, die Einbruchmeldung, der Alarmprozess, die Weiterleitung von Meldungen und die Dokumentation der Ereignisse gehören.\n\nAvenir behandelt den sicherheitstechnischen Betrieb nicht als isolierte Gerätebeschaffung. Auf Grundlage der Begehung vor Ort prüfen wir, wo sich Zutrittspunkte, schwach kontrollierte Zonen, wiederkehrende Ereignisse, kritische Bereiche und Prozesse befinden, in denen die Technik den Objektschutz, den Pförtnerdienst oder die Fernüberwachung unterstützen kann.\n\nAvenir bezieht bei der sicherheitstechnischen Bestandsaufnahme und Planung auch die Datenschutzaspekte ein: Der dokumentierte Zweck, der verhältnismäßige Erfassungsbereich, die Zugriffsberechtigungen, die Information der Betroffenen und die Speicherlogik werden auf den Betrieb des Standorts und den Datenschutzrahmen des Kunden abgestimmt. Dies unterstützt die datenschutzrechtliche Prüfung des Kunden; die Rechtsgrundlage und die abschließenden Datenschutzentscheidungen verbleiben beim Kunden und seinen Beratern.\n\nZiel ist eine transparente, wartbare und im Tagesbetrieb nutzbare sicherheitstechnische Ebene: eine Lösung, die nicht nur aufzeichnet, sondern Erkennung, Eskalation, Zutrittskontrolle, Berichtswesen und Entscheidungsfindung unterstützt.",
     "seoTitle": "Sicherheitstechnik für Unternehmensstandorte | Avenir",
     "seoDescription": "Kamerasystem, Zutrittskontrolle, Einbruchmeldung und Alarmprozesse — abgestimmt mit Objektschutz und Pförtnerdienst.",
     "valueProposition": "Die Sicherheitstechnik verbindet Kamerasystem, Zutrittskontrolle und Alarmprozesse zu einem standortgerechten Sicherheitssystem — mit dokumentiertem Zweck, verhältnismäßiger Abdeckung, Eskalation und betrieblicher Integration.",
@@ -674,14 +674,6 @@ const DE_REVIEW_SERVICE_DETAILS = {
       {
         "q": "Welche Faktoren beeinflussen die Speicherdauer von Kameraaufnahmen?",
         "a": "Die Speicherdauer wird vom Zweck der Aufzeichnung, vom Risikoprofil des Standorts, vom Bedarf der Vorfallbearbeitung, von internen Richtlinien und vom Datenschutzumfeld beeinflusst. Eine für alle Standorte gleiche, allgemeine Antwort gibt es nicht; die Speicherordnung ist fachlich begründet festzulegen."
-      },
-      {
-        "q": "Wer führt die Interessenabwägung für eine Videoüberwachung durch?",
-        "a": "Die Interessenabwägung — etwa zur Stützung eines berechtigten Interesses nach der DSGVO — ist Teil des Datenschutzrahmens des Kunden als Verantwortlichem. Avenir liefert dafür die technische und betriebliche Grundlage: den dokumentierten Zweck, die Erfassungsbereiche sowie die Zugriffs- und Speicherlogik. Die Bewertung selbst und die Entscheidung über die Rechtsgrundlage verbleiben beim Kunden und seinen Beratern. Dies ist keine Rechtsberatung."
-      },
-      {
-        "q": "Wie lange dürfen Kameraaufnahmen gespeichert werden?",
-        "a": "Eine einheitliche, für alle Standorte gültige Speicherdauer gibt es nicht. Maßgeblich sind der dokumentierte Zweck der Aufzeichnung, das Risikoprofil des Standorts, der Bedarf der Vorfallbearbeitung, interne Richtlinien und der anwendbare Datenschutzrahmen — einschließlich des Grundsatzes der Speicherbegrenzung. Die Speicherordnung ist fachlich begründet festzulegen; die abschließende Entscheidung liegt beim Kunden als Verantwortlichem."
       }
     ],
     "relatedSlugs": [
@@ -696,11 +688,7 @@ const DE_REVIEW_SERVICE_DETAILS = {
       "biztonsagtechnika:PILOT_HU.trustItems.1.body",
       "biztonsagtechnika:PILOT_HU.trustItems.4.body",
       "biztonsagtechnika:PILOT_HU.faq.7.a",
-      "biztonsagtechnika:PILOT_HU.faq.8.a",
-      "biztonsagtechnika:DE_ONLY.faq.9.q",
-      "biztonsagtechnika:DE_ONLY.faq.9.a",
-      "biztonsagtechnika:DE_ONLY.faq.10.q",
-      "biztonsagtechnika:DE_ONLY.faq.10.a"
+      "biztonsagtechnika:PILOT_HU.faq.8.a"
     ]
   },
   "tavfelugyelet-vonuloszolgalat": {
@@ -1426,30 +1414,6 @@ export const DE_REVIEW_LEGAL_REVIEW_REQUIRED_ROWS = [
     "key": "biztonsagtechnika:PILOT_HU.faq.8.a",
     "section": "faq.8.a",
     "preview": "Die Speicherdauer wird vom Zweck der Aufzeichnung, vom Risikoprofil des Standorts, vom Bedarf der Vorfallbearbeitung, von internen Richtlinien und vom Datenschu..."
-  },
-  {
-    "service": "biztonsagtechnika",
-    "key": "biztonsagtechnika:DE_ONLY.faq.9.q",
-    "section": "faq.9.q",
-    "preview": "Wer führt die Interessenabwägung für eine Videoüberwachung durch?"
-  },
-  {
-    "service": "biztonsagtechnika",
-    "key": "biztonsagtechnika:DE_ONLY.faq.9.a",
-    "section": "faq.9.a",
-    "preview": "Die Interessenabwägung — etwa zur Stützung eines berechtigten Interesses nach der DSGVO — ist Teil des Datenschutzrahmens des Kunden als Verantwortlichem. Aveni..."
-  },
-  {
-    "service": "biztonsagtechnika",
-    "key": "biztonsagtechnika:DE_ONLY.faq.10.q",
-    "section": "faq.10.q",
-    "preview": "Wie lange dürfen Kameraaufnahmen gespeichert werden?"
-  },
-  {
-    "service": "biztonsagtechnika",
-    "key": "biztonsagtechnika:DE_ONLY.faq.10.a",
-    "section": "faq.10.a",
-    "preview": "Eine einheitliche, für alle Standorte gültige Speicherdauer gibt es nicht. Maßgeblich sind der dokumentierte Zweck der Aufzeichnung, das Risikoprofil des Stando..."
   },
   {
     "service": "tavfelugyelet-vonuloszolgalat",

@@ -21,6 +21,12 @@ import {
   getVisibleNavSectionKeys,
 } from "../lib/locale-ui-helpers";
 
+const PRIVACY_NOTICE_HU = {
+  text: "A küldéssel tudomásul veszi az",
+  linkText: "Adatkezelési tájékoztatót",
+  href: "/hu/adatvedelem",
+};
+
 const LOCALES = { hu, en, de, zh, ko } as const;
 
 const RESPONSE_TIME_PROMISE =
@@ -204,6 +210,7 @@ test("service quote form marks required fields and shows the helpers", () => {
   const html = renderToStaticMarkup(
     <ServiceQuoteCtaPanel
       copy={SERVICE_QUOTE_COPY.hu}
+      privacyNotice={PRIVACY_NOTICE_HU}
       form={{
         name: "",
         email: "",
@@ -231,6 +238,11 @@ test("service quote form marks required fields and shows the helpers", () => {
   assert.equal(/id="service-quote-company"[^>]*required/.test(html), false);
   assert.ok(html.includes("* Kötelező mező"));
   assert.ok(html.includes(SERVICE_QUOTE_COPY.hu.nextStepHelper));
+  // Layered privacy notice before submit, same as the homepage contact form.
+  assert.match(
+    html,
+    /A küldéssel tudomásul veszi az <a[^>]*href="\/hu\/adatvedelem"[^>]*>Adatkezelési tájékoztatót<\/a>\./,
+  );
 });
 
 test("news article related-services block links locale service pages and contact CTA", () => {

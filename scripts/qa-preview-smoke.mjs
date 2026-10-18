@@ -11,8 +11,10 @@ const CANONICAL_SERVICE_SLUGS = [
   "soft-fm",
 ];
 
-const READY_SERVICE_LOCALES = ["hu", "en", "de"];
-const UNREADY_SERVICE_LOCALES = ["zh", "ko"];
+// hu/en are indexable production languages. de/fr/ko/zh render homepage and
+// service pages as 200 + noindex review surfaces, outside sitemap/hreflang.
+const REVIEW_LOCALES = ["de", "fr", "ko", "zh"];
+const READY_SERVICE_LOCALES = ["hu", "en", ...REVIEW_LOCALES];
 const SITEMAP_SERVICE_LOCALES = ["hu", "en"];
 const SERVICE_SEGMENT = "szolgaltatasok";
 
@@ -24,8 +26,10 @@ const SITEMAP_SERVICE_PATHS = SITEMAP_SERVICE_LOCALES.flatMap((locale) =>
   CANONICAL_SERVICE_SLUGS.map((slug) => `/${locale}/${SERVICE_SEGMENT}/${slug}`),
 );
 
-const DE_REVIEW_SERVICE_PATHS = CANONICAL_SERVICE_SLUGS.map(
-  (slug) => `/de/${SERVICE_SEGMENT}/${slug}`,
+const REVIEW_HOME_PATHS = REVIEW_LOCALES.map((locale) => `/${locale}`);
+
+const REVIEW_SERVICE_PATHS = REVIEW_LOCALES.flatMap((locale) =>
+  CANONICAL_SERVICE_SLUGS.map((slug) => `/${locale}/${SERVICE_SEGMENT}/${slug}`),
 );
 
 const NEWS_SLUG = "megujult-az-avenir-weboldala-es-arculata";
@@ -44,16 +48,14 @@ const UNPUBLISHED_NEWS_PATHS = [
   `/zh/hirek/${NEWS_SLUG}`,
   "/ko/hirek",
   `/ko/hirek/${NEWS_SLUG}`,
+  "/fr/hirek",
+  `/fr/hirek/${NEWS_SLUG}`,
   "/en/hirek/nem-letezo-hir",
   "/de/hirek/nem-letezo-hir",
 ];
 
 const HU_SERVICE_PATHS = CANONICAL_SERVICE_SLUGS.map(
   (slug) => `/hu/${SERVICE_SEGMENT}/${slug}`,
-);
-
-const UNREADY_SERVICE_PATHS = UNREADY_SERVICE_LOCALES.flatMap((locale) =>
-  CANONICAL_SERVICE_SLUGS.map((slug) => `/${locale}/${SERVICE_SEGMENT}/${slug}`),
 );
 
 const LEGACY_SERVICE_SLUGS = [
@@ -67,7 +69,7 @@ const LEGACY_SERVICE_SLUGS = [
   "green",
 ];
 
-const LEGACY_SERVICE_PATHS = ["hu", "en", "de", "zh", "ko"].flatMap((locale) =>
+const LEGACY_SERVICE_PATHS = ["hu", "en", ...REVIEW_LOCALES].flatMap((locale) =>
   LEGACY_SERVICE_SLUGS.map((slug) => `/${locale}/${SERVICE_SEGMENT}/${slug}`),
 );
 
@@ -93,10 +95,12 @@ const RECRUITMENT_PRIVACY_404_PATHS = [
   "/de/palyazoi-adatkezeles",
   "/zh/palyazoi-adatkezeles",
   "/ko/palyazoi-adatkezeles",
+  "/fr/palyazoi-adatkezeles",
   "/hu/recruitment-privacy",
   "/de/recruitment-privacy",
   "/zh/recruitment-privacy",
   "/ko/recruitment-privacy",
+  "/fr/recruitment-privacy",
 ];
 
 const TRUST_CENTER_PATHS = [
@@ -113,6 +117,8 @@ const TRUST_CENTER_404_PATHS = [
   "/zh/megfelelosegi-kozpont",
   "/ko/trust-center",
   "/ko/megfelelosegi-kozpont",
+  "/fr/trust-center",
+  "/fr/megfelelosegi-kozpont",
 ];
 
 const RESPONSIBLE_DISCLOSURE_PATHS = [
@@ -125,6 +131,8 @@ const RESPONSIBLE_DISCLOSURE_404_PATHS = [
   "/de/responsible-disclosure",
   "/zh/responsible-disclosure",
   "/ko/responsible-disclosure",
+  "/fr/responsible-disclosure",
+  "/fr/felelos-hibabejelentes",
 ];
 
 const DE_REVIEW_LEGAL_PATHS = [
@@ -145,12 +153,15 @@ const UNPUBLISHED_LEGAL_PATHS = [
   "/ko/adatvedelem",
   "/ko/aszf",
   "/ko/impresszum",
+  "/fr/adatvedelem",
+  "/fr/aszf",
+  "/fr/impresszum",
 ];
 
 const EXPECTED_200 = [
   "/hu",
   "/en",
-  "/ko",
+  ...REVIEW_HOME_PATHS,
   ...READY_SERVICE_PATHS,
   ...PUBLISHABLE_LEGAL_PATHS,
   ...RECRUITMENT_PRIVACY_PATHS,
@@ -168,7 +179,6 @@ const EXPECTED_200 = [
 
 const EXPECTED_404 = [
   ...LEGACY_SERVICE_PATHS,
-  ...UNREADY_SERVICE_PATHS,
   ...UNPUBLISHED_LEGAL_PATHS,
   ...UNPUBLISHED_NEWS_PATHS,
   ...RECRUITMENT_PRIVACY_404_PATHS,
@@ -178,16 +188,15 @@ const EXPECTED_404 = [
 
 const SITEMAP_FORBIDDEN = [
   ...LEGACY_SERVICE_PATHS,
-  "/de/szolgaltatasok/",
-  "/zh/szolgaltatasok/",
-  "/ko",
-  "/ko/szolgaltatasok/",
+  ...REVIEW_HOME_PATHS,
+  ...REVIEW_LOCALES.map((locale) => `/${locale}/${SERVICE_SEGMENT}/`),
   ...UNPUBLISHED_LEGAL_PATHS,
   ...DE_REVIEW_LEGAL_PATHS,
   ...TRUST_CENTER_404_PATHS,
   "/de/hirek",
   "/zh/hirek",
   "/ko/hirek",
+  "/fr/hirek",
   "/admin",
   "/api",
 ];
@@ -379,10 +388,9 @@ async function checkSitemap(baseUrl) {
         ...PUBLISHABLE_LEGAL_PATHS,
         ...RECRUITMENT_PRIVACY_PATHS,
         ...TRUST_CENTER_PATHS,
+        ...RESPONSIBLE_DISCLOSURE_PATHS,
         ...INDEXABLE_NEWS_PATHS,
       ],
-      // Responsible-disclosure pages are intentionally discoverable through
-      // security.txt in this pass; the sitemap policy is not expanded here.
       forbidden: SITEMAP_FORBIDDEN,
     }),
   );
@@ -506,41 +514,7 @@ async function checkPreviewNoindexHeader(baseUrl, allowProduction) {
   ];
 }
 
-async function checkDeReviewServiceNoindex(baseUrl) {
-  const failures = [];
-
-  for (const path of DE_REVIEW_SERVICE_PATHS) {
-    const result = await fetchText(baseUrl, path);
-    if (result.status !== 200) {
-      failures.push({
-        ok: false,
-        label: `${path} review noindex`,
-        detail: `expected 200 before checking noindex, got ${result.status}`,
-      });
-      continue;
-    }
-
-    const header = result.headers.get("x-robots-tag") ?? "";
-    const metaMatch = result.text.match(
-      /<meta\s+name=["']robots["'][^>]*content=["']([^"']+)["'][^>]*>/i,
-    );
-    const robots = `${header} ${metaMatch?.[1] ?? ""}`;
-    const hasNoindex = /\bnoindex\b/i.test(robots);
-    const hasFollow = /\bfollow\b/i.test(robots);
-
-    if (!hasNoindex || !hasFollow) {
-      failures.push({
-        ok: false,
-        label: `${path} review noindex`,
-        detail: `expected robots noindex, follow; got ${JSON.stringify(robots.trim())}`,
-      });
-    }
-  }
-
-  return failures;
-}
-
-async function checkNoindexFollow(baseUrl, paths, labelPrefix) {
+async function checkNoindexFollow(baseUrl, paths, labelPrefix, { forbidHreflang = false } = {}) {
   const failures = [];
 
   for (const path of paths) {
@@ -567,6 +541,14 @@ async function checkNoindexFollow(baseUrl, paths, labelPrefix) {
         ok: false,
         label: `${path} ${labelPrefix}`,
         detail: `expected robots noindex, follow; got ${JSON.stringify(robots.trim())}`,
+      });
+    }
+
+    if (forbidHreflang && /<link[^>]+hreflang=/i.test(result.text)) {
+      failures.push({
+        ok: false,
+        label: `${path} ${labelPrefix} hreflang`,
+        detail: "review pages must not publish hreflang alternates",
       });
     }
   }
@@ -614,6 +596,8 @@ async function main() {
     PUBLISHABLE_LEGAL_PATHS.length +
     RECRUITMENT_PRIVACY_PATHS.length +
     TRUST_CENTER_PATHS.length +
+    RESPONSIBLE_DISCLOSURE_PATHS.length +
+    INDEXABLE_NEWS_PATHS.length +
     SITEMAP_FORBIDDEN.length;
   failures.push(...sitemapFailures);
 
@@ -643,9 +627,15 @@ async function main() {
   totalChecks += allowProduction ? 0 : 1;
   failures.push(...noindexFailures);
 
-  const deReviewNoindexFailures = await checkDeReviewServiceNoindex(baseUrl);
-  totalChecks += DE_REVIEW_SERVICE_PATHS.length;
-  failures.push(...deReviewNoindexFailures);
+  const reviewPagePaths = [...REVIEW_HOME_PATHS, ...REVIEW_SERVICE_PATHS];
+  const reviewNoindexFailures = await checkNoindexFollow(
+    baseUrl,
+    reviewPagePaths,
+    "review noindex",
+    { forbidHreflang: true },
+  );
+  totalChecks += reviewPagePaths.length * 2;
+  failures.push(...reviewNoindexFailures);
 
   const deReviewLegalNoindexFailures = await checkNoindexFollow(
     baseUrl,
