@@ -70,7 +70,7 @@ const DE_REVIEW_SERVICE_DETAILS = {
       },
       {
         "title": "Begehung vor Ort und Überblick über die Risikopunkte",
-        "body": "Die Begehung vor Ort und die grundlegende Risikoübersicht lassen sich in der Regel innerhalb von 1–3 Arbeitstagen organisieren."
+        "body": "Den Termin für die Begehung vor Ort und die grundlegende Risikoübersicht legen wir beim ersten Gespräch gemeinsam fest."
       },
       {
         "title": "Festlegung der Zutritts-, Austritts-, Kontrollgang- und Eskalationsordnung",

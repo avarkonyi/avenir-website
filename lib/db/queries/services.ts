@@ -5,6 +5,7 @@ import { db, services } from "@/lib/db";
 import { redactedDbIdentity, sanitizeDbErrorMessage } from "@/lib/db/redact";
 import { LOCALES, type Locale } from "@/lib/i18n";
 import { localizeHomepageService } from "@/lib/homepage-content";
+import { applyApprovedProcessCopy } from "@/lib/services/approved-process-copy";
 
 type DbLocale = Exclude<Locale, "ko" | "fr">;
 
@@ -359,7 +360,7 @@ async function loadPublishedServiceDetailBySlug(
     highlights,
     useCases,
     includedItems,
-    processSteps,
+    processSteps: applyApprovedProcessCopy(row.slug, safeLocale, processSteps),
     trustItems,
     faq,
     relatedSlugs: row.relatedServiceSlugs ?? [],

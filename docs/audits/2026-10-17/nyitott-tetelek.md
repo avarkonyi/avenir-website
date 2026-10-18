@@ -2,13 +2,13 @@
 
 Állapot: 2026-10-18, a tulajdonosi megerősítések átvezetése után. A cég ISO-tanúsítottsága elfogadott. A magyar jogi szöveg ügyvéd által ellenőrzött, a többi nyelvre irányadó forrás. A fordítási ellenőrzés és az éles kiadás ettől külön feladat.
 
-Az **506 eredeti auditazonosítóból 108 forrásban javított**, 4 korábban stagingben javított, 2 eltávolított tartalomhoz tartozik, 3 pedig nem igazolt hiba. **13 további sor a magyar jogi forrás elfogadásával lezárt; 376 sor nyitott vagy részben javított.** Ez összesített állapot, nem mind új javítás ebben a körben. Az eredeti 51 P1-ből 32 forráshiba javított, 19 nyitott/részleges; a kiadási feltételek továbbra is érvényesek.
+Az **506 eredeti auditazonosítóból 109 forrásban javított**, 4 korábban stagingben javított, 2 eltávolított tartalomhoz tartozik, 3 pedig nem igazolt hiba. **13 további sor a magyar jogi forrás elfogadásával lezárt; 375 sor nyitott vagy részben javított.** Ez összesített állapot, nem mind új javítás ebben a körben. Az eredeti 51 P1-ből 32 forráshiba javított, 19 nyitott/részleges; a kiadási feltételek továbbra is érvényesek.
 
 | Nyitott státusz | Darab | Következő lépés |
 | --- | ---: | --- |
 | További forrás- és nyelvi ellenőrzés | 306 | Az eredeti javaslat és a jelenlegi kimenet összevetése; nem mind bizonyított hiba |
 | Részben javított, összevont sor | 24 | A sor megmaradt részének külön ellenőrzése |
-| Dokumentum / tény igazolása | 12 | Tulajdonosi vagy szolgáltatói bizonyíték |
+| Dokumentum / tény igazolása | 11 | Tulajdonosi vagy szolgáltatói bizonyíték |
 | Fordítási paritás | 2 | A HU-ban nem szereplő DE jogi betoldások eltávolítása |
 | Konkrét CMS-javítás | 13 | Előtte–utána csomag staging-jóváhagyása és alkalmazása |
 | Üzleti döntés | 8 | Szolgáltatási vállalás pontosítása |
@@ -24,7 +24,7 @@ A [teljes ellenőrzési jelentés](text-audit-closure-verification.md) rögzíti
 | Távfelügyelet 24/7 | Pontos szolgáltatási terjedelem: diszpécseri háttér, folyamatos jelzésfogadás vagy felügyeleti központ? | DES-002, KOS-004, ENS-001, EDU-002; FRS-001/FKZ-001/FKZ-002 fennmaradó része |
 | Hard FM / Soft FM teljesítés | Kizárólag saját állomány, vagy jóváhagyott alvállalkozó / ügyféloldali szolgáltató koordinálása is? | HUA-018, EDU-015, FKZ-005, KOS-052 |
 | Új nemzetbiztonsági határozat | A közlés szerint 2029-ig érvényes. Pontos határozatszám, dátum és érvényességi adat kell; nem lejárt jogosultságként kezeljük. | HUA-002, HUB-002, ENB-008, DEB-018 |
-| További vállalások, bizonyítékok | Az 1–3 munkanapos helyszíni felmérés, a munkatársi képesítések, engedélyterjedelem dokumentált alátámasztása. | HUA-004/016/020; részletek a CSV-ben |
+| További vállalások, bizonyítékok | A munkatársi képesítések és az engedélyterjedelem dokumentált alátámasztása. | HUA-016/020; részletek a CSV-ben |
 
 ## Elfogadott jogi forrás és fordítási követelmények
 

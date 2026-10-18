@@ -3,6 +3,13 @@
   "scope": "Source/Preview repair status; no production release or legal/native approval implied.",
   "groups": [
     {
+      "ids": ["HUA-004"],
+      "status": "JAVITVA_FORRAS",
+      "owner": "Technikai kiadás",
+      "evidence": "2026-10-18: tulajdonos elfogadta az első egyeztetésen közösen rögzített időpontot. HU/EN ismert régi CMS-mondat célzott megjelenítési javítása; HU seed és DE/FR/KO/ZH fordítás igazítva.",
+      "next": "Éles megjelenés ellenőrzése. Adatbázis-írás nem történt; a célzott javítás a későbbi egyedi CMS-szöveget nem írja felül."
+    },
+    {
       "ids": [
         "FRS-014",
         "FKZ-017"
@@ -270,7 +277,6 @@
     },
     {
       "ids": [
-        "HUA-004",
         "HUA-016",
         "HUA-020"
       ],

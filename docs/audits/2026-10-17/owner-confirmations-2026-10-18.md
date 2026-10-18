@@ -33,3 +33,9 @@ A `lib/analytics/consent-copy.ts` magyar mondata szó szerint erre változott; a
 A további magyar auditpontokat a tulajdonos kérésére egyenként, közösen vesszük végig; ez az egyedi döntés nem jelent más magyar mondatok automatikus átírását.
 
 Ellenőrzés: az elfogadott HU mondat szó szerinti forrásegyezése; az audit továbbra is 506 sor; ESLint, TypeScript, copy guard (219 fájl / 33 ellenőrzés) és staging célponttal futó build (100/100 oldal) sikeres. A nyitott/részleges tételek száma 376 maradt, mert HUA-001 már korábban is `JAVITVA_FORRAS` státuszú volt.
+
+## HUA-004 és élesítési kérés
+
+A tulajdonos elfogadta: „A helyszíni bejárás és az alapvető kockázati áttekintés időpontját az első egyeztetésen közösen rögzítjük.” A HU seed, a DE/FR/KO/ZH fordítás és az ismert régi HU/EN CMS-mondat célzott megjelenítési javítása átvezetve. Későbbi eltérő CMS-szöveget nem ír felül; adatbázis-írás nincs. HUA-004 forrásban javított, 375 tétel marad nyitott/részleges.
+
+Ugyanebben az üzenetben a tulajdonos kérte a javított verzió élesítését az afm.hu oldalon. Ez a weboldal javító ágának kiadási engedélye, nem az összes fennmaradó auditpont lezárása és nem tömeges adatbázis-szinkronizálás.

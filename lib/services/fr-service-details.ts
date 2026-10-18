@@ -33,7 +33,7 @@ const DETAILS: Record<FrReviewServiceSlug, TranslatedFields> = {
     includedItems: ["Application des règles d’entrée et de sortie", "Gestion des visiteurs, fournisseurs et clés", "Rondes, points de contrôle et inspections du site", "Enregistrement des incidents et remontée des alertes", "Journal de service et rapports convenus", "Visite de sécurité sur site et proposition de protocole", "Coordination avec les caméras, le contrôle des accès ou les alarmes existants, selon les besoins du site"],
     processSteps: [
       { title: "Premier échange et analyse du besoin", body: FIRST_CONTACT },
-      { title: "Visite sur site et examen des points de risque", body: "La visite sur site et l’examen initial des risques peuvent généralement être organisés sous 1 à 3 jours ouvrés." },
+      { title: "Visite sur site et examen des points de risque", body: "Nous convenons ensemble de la date de la visite sur site et de l’examen initial des risques lors du premier échange." },
       { title: "Définition des accès, des rondes et des alertes", body: "Nous définissons les points d’accès, le parcours des visiteurs et fournisseurs, les itinéraires des rondes et la procédure de signalement des incidents." },
       { title: "Consignes de service et processus de rapport", body: "Nous précisons par écrit les éléments à documenter, la fréquence des rapports et les personnes à prévenir en cas d’écart ou d’incident." },
       { title: "Organisation de la présence des agents", body: "La présence non armée ou armée est organisée selon les besoins contractuels, les conditions légales et le profil de risque du site." },
