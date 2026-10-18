@@ -3,6 +3,7 @@ import { and, asc, eq } from "drizzle-orm";
 import type { Translation } from "@/lib/i18n";
 import { db, certifications } from "@/lib/db";
 import { localizeCertificationText } from "@/lib/homepage-content";
+import { TrustCenterCallout } from "@/components/TrustCenterCallout";
 
 // Locale-conditional column map for the wide-column-per-locale schema.
 // Mirrors the NEWS_COLS pattern in app/[locale]/page.tsx.
@@ -352,6 +353,7 @@ export async function Certifications({
             );
           })}
         </div>
+        <TrustCenterCallout locale={locale} />
       </div>
     </section>
   );

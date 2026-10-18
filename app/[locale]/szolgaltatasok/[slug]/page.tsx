@@ -7,6 +7,7 @@ import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/components/JsonLd";
 import { Icon, ICON_NAMES, type IconName } from "@/components/Icon";
 import { ServiceQuoteCta } from "@/components/ServiceQuoteCta";
+import { TrustCenterCallout } from "@/components/TrustCenterCallout";
 import { TrackedServiceCtaLink } from "@/components/analytics/TrackedServiceCtaLink";
 import { getTranslation, LOCALES, type Locale } from "@/lib/i18n";
 import {
@@ -490,6 +491,9 @@ export default async function ServiceDetailPage({
                 </div>
               ))}
             </div>
+            {(slug === "objektumorzes" || slug === "portaszolgalat") && (
+              <TrustCenterCallout locale={locale} />
+            )}
           </Section>
         )}
 
