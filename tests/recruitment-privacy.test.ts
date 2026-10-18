@@ -69,7 +69,7 @@ test("recruitment privacy metadata is canonical, indexable and cross-linked", ()
       en: "https://www.afm.hu/en/recruitment-privacy",
       "x-default": "https://www.afm.hu/hu/palyazoi-adatkezeles",
     });
-    assert.deepEqual(metadata.robots, { index: true, follow: true });
+    assert.deepEqual(metadata.robots, { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 });
   }
 });
 

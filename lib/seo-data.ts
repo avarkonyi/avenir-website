@@ -76,31 +76,6 @@ export const SEO_DATA = {
   backgroundColor: "#ffffff",
 } as const;
 
-// FAQs used in FAQPage JSON-LD (HU-only by design — see decision log:
-// per-locale schema translation deferred to a later content pass).
-export const SEO_FAQS_HU = [
-  {
-    q: "Milyen szolgáltatásokat nyújt az Avenir Facility Management?",
-    a: "Az Avenir Facility Management Kft. nyolc fő szolgáltatási területet fog össze egy felelős kapcsolattartóval: élőerős objektumőrzés, recepciós és portaszolgálat, próbavásárlás és szolgáltatásaudit, rendezvénybiztosítás, biztonságtechnika, távfelügyelet és vonulószolgálat, Soft FM és Hard FM.",
-  },
-  {
-    q: "Hol érhető el az Avenir Facility Management?",
-    a: "Az Avenir Facility Management Magyarország teljes területén nyújt szolgáltatásokat, központja Budapesten található (1039 Budapest, Királyok útja 291. B. ép. 15. ajtó). 30+ aktív helyszínen dolgozunk országszerte.",
-  },
-  {
-    q: "Hány embert foglalkoztat az Avenir?",
-    a: "Az Avenir Facility Management 200+ szakképzett munkatársat foglalkoztat — biztonsági őröket, takarítókat, épületüzemeltetési mérnököket és recepciósokat. A cég 2018-ban alakult, vezetői és kulcsmunkatársai több évtizedes szakmai tapasztalattal rendelkeznek.",
-  },
-  {
-    q: "Milyen ügyfeleknek dolgozik az Avenir?",
-    a: "Az Avenir ügyfélkörébe irodaházak, bevásárlóközpontok, ipari és logisztikai parkok, valamint közintézmények tartoznak. A vállalat Dun & Bradstreet AA High Creditworthy 2026 minősítéssel rendelkezik.",
-  },
-  {
-    q: "Hogyan lehet ajánlatot kérni az Avenirtől?",
-    a: "Ajánlat a +36 70 316 8218-as telefonszámon, az info@afm.hu e-mail-címen, vagy a www.afm.hu weboldalon található űrlapon kérhető. Munkaidőben többnyire még aznap visszajelzünk, de legkésőbb a következő munkanapon felvesszük Önnel a kapcsolatot. Az ajánlat elkészítésének ideje az igény összetettségétől függ.",
-  },
-] as const;
-
 export const SEO_LOCALES = LOCALES;
 export type SeoLocale = (typeof SEO_LOCALES)[number];
 

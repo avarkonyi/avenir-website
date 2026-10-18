@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/page-metadata";
 import { notFound } from "next/navigation";
 import { getTranslation } from "@/lib/i18n";
 import { getDeImpressumContent } from "@/lib/de-legal-content";
@@ -46,21 +47,16 @@ export async function generateMetadata({
       : `${SEO_DATA.legalName}. ${SEO_DATA.address.streetAddress}, ${SEO_DATA.address.postalCode} ${SEO_DATA.address.addressLocality}. Cégjegyzékszám: ${SEO_DATA.registrationId}.`);
   const url = legalPageUrl(locale, "impresszum");
   const isDeReviewPage = locale === "de";
-  const alternates = isDeReviewPage
-    ? { canonical: url }
-    : {
-        canonical: url,
-        languages: legalPageAlternateLanguages("impresszum"),
-      };
 
-  return {
-    metadataBase: new URL(SEO_DATA.url),
+  return buildPageMetadata({
+    locale,
     title,
     description,
-    robots: { index: !isDeReviewPage, follow: true },
-    alternates,
-    openGraph: { type: "article", title, description, url },
-  };
+    url,
+    index: !isDeReviewPage,
+    languages: legalPageAlternateLanguages("impresszum"),
+    type: "article",
+  });
 }
 
 const sectionStyle: React.CSSProperties = { marginBottom: 36 };

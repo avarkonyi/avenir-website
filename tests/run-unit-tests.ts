@@ -24,6 +24,8 @@ import "./review-service-routing.test.ts";
 import "./db-error-diagnostic.test.ts";
 import "./db-redact.test.ts";
 import "./meta-description.test.ts";
+import "./url-case.test.ts";
+import "./page-metadata.test.ts";
 import "./public-content-revalidation.test.ts";
 import "./legal-metadata.test.ts";
 import "./legal-content.test.ts";

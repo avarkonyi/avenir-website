@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/page-metadata";
 import { notFound } from "next/navigation";
 import { getTranslation } from "@/lib/i18n";
 import { getPrivacyContent } from "@/lib/legal-content";
@@ -34,17 +35,15 @@ export async function generateMetadata({
   const url = legalPageUrl(locale, "adatvedelem");
   const isDeReviewPage = locale === "de";
 
-  return {
-    metadataBase: new URL(SEO_DATA.url),
+  return buildPageMetadata({
+    locale,
     title,
     description,
-    robots: { index: !isDeReviewPage, follow: true },
-    alternates: {
-      canonical: url,
-      ...(!isDeReviewPage && { languages: legalPageAlternateLanguages("adatvedelem") }),
-    },
-    openGraph: { type: "article", title, description, url },
-  };
+    url,
+    index: !isDeReviewPage,
+    languages: legalPageAlternateLanguages("adatvedelem"),
+    type: "article",
+  });
 }
 
 export default async function PrivacyPage({

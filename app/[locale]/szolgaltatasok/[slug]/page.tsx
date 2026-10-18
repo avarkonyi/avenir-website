@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/page-metadata";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Nav } from "@/components/Nav";
@@ -106,30 +107,16 @@ export async function generateMetadata({
     languages["x-default"] = `${SEO_DATA.url}/hu/${URL_SEGMENT}/${slug}`;
   }
 
-  return {
-    metadataBase: new URL(SEO_DATA.url),
+  return buildPageMetadata({
+    locale,
     title,
     description,
-    robots: { index: isIndexableServiceLocale(locale), follow: true },
-    alternates: {
-      canonical,
-      ...(isIndexableServiceLocale(locale) ? { languages } : {}),
-    },
-    openGraph: {
-      type: "article",
-      title,
-      description,
-      url: canonical,
-      siteName: SEO_DATA.name,
-      ...(image ? { images: [{ url: image }] } : {}),
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      ...(image ? { images: [image] } : {}),
-    },
-  };
+    url: canonical,
+    index: isIndexableServiceLocale(locale),
+    languages,
+    type: "article",
+    image,
+  });
 }
 
 function safeIconName(dbIcon: string | null): IconName {
@@ -177,7 +164,6 @@ export default async function ServiceDetailPage({
 
   const pageUrl = `${SEO_DATA.url}/${locale}/${URL_SEGMENT}/${slug}`;
   const homeUrl = `${SEO_DATA.url}/${locale}`;
-  const servicesAnchorUrl = `${homeUrl}#services`;
 
   const faqEntries = detail.faq.filter(
     (entry) => entry.q.trim().length > 0 && entry.a.trim().length > 0,
@@ -191,6 +177,9 @@ export default async function ServiceDetailPage({
       : sharedCopy?.serviceQuote.button ?? "Request a quote";
 
   // ── JSON-LD ─────────────────────────────────────────────────────────
+  // Two schema levels only: the visible "Services" crumb is a homepage
+  // #services anchor, which search engines would resolve to the homepage
+  // and duplicate level 1. Add a level when a real services index exists.
   const breadcrumb = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -205,12 +194,6 @@ export default async function ServiceDetailPage({
       {
         "@type": "ListItem",
         position: 2,
-        name: t.nav.services,
-        item: servicesAnchorUrl,
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
         name: detail.name,
         item: pageUrl,
       },

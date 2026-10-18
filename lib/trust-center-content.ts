@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/page-metadata";
 import { SEO_DATA } from "@/lib/seo-data";
 export {
   TRUST_CENTER_LOCALES,
@@ -366,20 +367,13 @@ export function buildTrustCenterMetadata(locale: TrustCenterLocale): Metadata {
   const title = `${content.title} | ${SEO_DATA.legalNameShort}`;
   const url = trustCenterUrl(locale);
 
-  return {
-    metadataBase: new URL(SEO_DATA.url),
+  return buildPageMetadata({
+    locale,
     title,
     description: content.description,
-    robots: { index: true, follow: true },
-    alternates: {
-      canonical: url,
-      languages: trustCenterAlternateLanguages(),
-    },
-    openGraph: {
-      type: "article",
-      title,
-      description: content.description,
-      url,
-    },
-  };
+    url,
+    index: true,
+    languages: trustCenterAlternateLanguages(),
+    type: "article",
+  });
 }

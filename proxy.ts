@@ -5,6 +5,7 @@ import {
 } from "next/server";
 import { auth } from "@/auth";
 import { LOCALES as SUPPORTED_LOCALES } from "@/lib/locales";
+import { lowercaseAsciiPath } from "@/lib/url-case";
 
 const LOCALES: readonly string[] = SUPPORTED_LOCALES;
 const DEFAULT_LOCALE = "hu";
@@ -91,15 +92,19 @@ export default function proxy(req: NextRequest, event: NextFetchEvent) {
     return withNoindexHeader(req, NextResponse.redirect(redirectUrl, 308));
   }
 
+  // Public locale paths and CMS slugs are lowercase ASCII, so any uppercase
+  // letter in a locale-prefixed path is a duplicate URL: 308 to the lowercase
+  // path (query kept). Percent-escapes are left untouched.
   const localeSegment = pathname.split("/")[1];
   const normalizedLocale = localeSegment?.toLowerCase();
+  const lowercasePath = lowercaseAsciiPath(pathname);
   if (
     localeSegment &&
-    localeSegment !== normalizedLocale &&
+    lowercasePath !== pathname &&
     LOCALES.includes(normalizedLocale)
   ) {
     const redirectUrl = req.nextUrl.clone();
-    redirectUrl.pathname = `/${normalizedLocale}${pathname.slice(localeSegment.length + 1)}`;
+    redirectUrl.pathname = lowercasePath;
     return withNoindexHeader(req, NextResponse.redirect(redirectUrl, 308));
   }
 
@@ -109,10 +114,10 @@ export default function proxy(req: NextRequest, event: NextFetchEvent) {
   if (hasLocale) return withNoindexHeader(req, NextResponse.next());
 
   if (pathname === "/") {
-    return withNoindexHeader(
-      req,
-      NextResponse.redirect(new URL(`/${DEFAULT_LOCALE}`, req.url), 308),
-    );
+    // Keep the query string (UTM parameters, ?service= contact prefill).
+    const redirectUrl = req.nextUrl.clone();
+    redirectUrl.pathname = `/${DEFAULT_LOCALE}`;
+    return withNoindexHeader(req, NextResponse.redirect(redirectUrl, 308));
   }
 
   return withNoindexHeader(req, NextResponse.next());

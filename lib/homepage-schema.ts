@@ -27,12 +27,10 @@ function absoluteUrl(url: string): string {
 
 export function buildJsonLdSchemas(
   localeIso: SeoLocale,
-  services: readonly { readonly name: string; readonly description: string }[],
   certs: readonly CertSchemaInput[],
 ): Record<string, unknown>[] {
   const copy = getSchemaLocaleCopy(localeIso);
   const orgId = `${SEO_DATA.url}/#organization`;
-  const localBusinessId = `${SEO_DATA.url}/#localbusiness`;
   const websiteId = `${SEO_DATA.url}/#website`;
   const postalAddress = {
     "@type": "PostalAddress",
@@ -46,7 +44,9 @@ export function buildJsonLdSchemas(
   return [
     {
       "@context": "https://schema.org",
-      "@type": "Organization",
+      // One entity for the company: the registered seat is not a separate
+      // customer-facing branch, so Organization and LocalBusiness share @id.
+      "@type": ["Organization", "LocalBusiness"],
       "@id": orgId,
       name: SEO_DATA.legalNameShort,
       legalName: SEO_DATA.legalName,
@@ -66,6 +66,10 @@ export function buildJsonLdSchemas(
         value: SEO_DATA.registrationId,
       },
       address: postalAddress,
+      telephone: SEO_DATA.contact.phone,
+      email: SEO_DATA.contact.email,
+      knowsAbout: [...copy.knowsAbout],
+      areaServed: { "@type": "Country", name: copy.country },
       contactPoint: [
         {
           "@type": "ContactPoint",
@@ -81,36 +85,6 @@ export function buildJsonLdSchemas(
     },
     {
       "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "@id": localBusinessId,
-      parentOrganization: { "@id": orgId },
-      name: SEO_DATA.legalNameShort,
-      alternateName: SEO_DATA.alternateName,
-      description: META_DESCRIPTIONS[localeIso],
-      knowsAbout: [...copy.knowsAbout],
-      image: SEO_DATA.ogImageUrl,
-      url: SEO_DATA.url,
-      telephone: SEO_DATA.contact.phone,
-      email: SEO_DATA.contact.email,
-      address: postalAddress,
-      areaServed: { "@type": "Country", name: copy.country },
-      hasCredential: credentialRefs,
-      sameAs: [SEO_DATA.officialProfiles.linkedin],
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "ItemList",
-      name: copy.catalog,
-      itemListElement: services.map((svc, i) => ({
-        "@type": "Service",
-        position: i + 1,
-        name: svc.name,
-        description: svc.description,
-        provider: { "@id": orgId },
-      })),
-    },
-    {
-      "@context": "https://schema.org",
       "@type": "WebSite",
       "@id": websiteId,
       url: SEO_DATA.url,
@@ -121,7 +95,7 @@ export function buildJsonLdSchemas(
       inLanguage: [...INDEXABLE_SERVICE_LOCALES],
     },
     // One top-level EducationalOccupationalCredential per certification.
-    // Organization and LocalBusiness reference these via @id above.
+    // The Organization node references these via @id above.
     ...certs.map((c) => {
       const additionalProperty: Record<string, unknown>[] = [];
       if (c.standardCode) {
@@ -171,4 +145,36 @@ export function buildJsonLdSchemas(
       return schema;
     }),
   ];
+}
+
+export type ServiceListItem = {
+  readonly name: string;
+  readonly description: string;
+  /** Canonical service page URL; only for published, indexable pages. */
+  readonly url?: string;
+};
+
+// Service catalogue as an ItemList, emitted on the homepage only. Items link
+// to the canonical service page (and its #service node) when one is public.
+export function buildServiceItemListSchema(
+  localeIso: SeoLocale,
+  services: readonly ServiceListItem[],
+): Record<string, unknown> {
+  const copy = getSchemaLocaleCopy(localeIso);
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: copy.catalog,
+    itemListElement: services.map((svc, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      item: {
+        "@type": "Service",
+        ...(svc.url ? { "@id": `${svc.url}#service`, url: svc.url } : {}),
+        name: svc.name,
+        description: svc.description,
+        provider: { "@id": `${SEO_DATA.url}/#organization` },
+      },
+    })),
+  };
 }
