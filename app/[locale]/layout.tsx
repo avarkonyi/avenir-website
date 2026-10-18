@@ -23,7 +23,8 @@ import {
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
-  subsets: ["latin"],
+  // Hungarian body text needs ő/ű; preload its subset alongside Latin.
+  subsets: ["latin", "latin-ext"],
 });
 
 // NOTE: Geist_Mono dropped 2026-04-30 — `var(--font-geist-mono)` had 0
