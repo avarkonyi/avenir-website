@@ -152,13 +152,13 @@ test("Trust Center metadata is indexable and canonical for HU/EN only", () => {
   assert.equal(hu.title, "Megfelelőségi központ | Avenir Facility Management Kft.");
   assert.equal(hu.alternates?.canonical, trustCenterUrl("hu"));
   assert.deepEqual(hu.alternates?.languages, trustCenterAlternateLanguages());
-  assert.deepEqual(hu.robots, { index: true, follow: true });
+  assert.deepEqual(hu.robots, { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 });
 
   const en = buildTrustCenterMetadata("en");
   assert.equal(en.title, "Trust Center | Avenir Facility Management Kft.");
   assert.equal(en.alternates?.canonical, trustCenterUrl("en"));
   assert.deepEqual(en.alternates?.languages, trustCenterAlternateLanguages());
-  assert.deepEqual(en.robots, { index: true, follow: true });
+  assert.deepEqual(en.robots, { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 });
 });
 
 test("Nav maps Trust Center language switcher to the approved HU/EN slug pair", () => {

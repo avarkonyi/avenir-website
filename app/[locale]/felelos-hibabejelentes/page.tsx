@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { buildPageMetadata } from "@/lib/page-metadata";
 import { notFound } from "next/navigation";
 import { getTranslation } from "@/lib/i18n";
 import {
@@ -28,21 +29,15 @@ export async function generateMetadata({
   const title = `${content.title} — ${SEO_DATA.legalNameShort}`;
   const url = responsibleDisclosureUrl("hu");
 
-  return {
-    metadataBase: new URL(SEO_DATA.url),
+  return buildPageMetadata({
+    locale: "hu",
     title,
     description: content.description,
-    alternates: {
-      canonical: url,
-      languages: responsibleDisclosureAlternateLanguages(),
-    },
-    openGraph: {
-      type: "article",
-      title,
-      description: content.description,
-      url,
-    },
-  };
+    url,
+    index: true,
+    languages: responsibleDisclosureAlternateLanguages(),
+    type: "article",
+  });
 }
 
 export default async function HuResponsibleDisclosurePage({

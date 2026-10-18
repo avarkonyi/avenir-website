@@ -1,20 +1,21 @@
 # Avenir Facility Management Kft.
 
-Avenir Facility Management Kft. is a Hungary-based B2B security and facility
-management provider. The public website is https://www.afm.hu.
+> Avenir Facility Management Kft. is a Hungary-based B2B security and facility
+> management provider headquartered in Budapest. The public website is
+> https://www.afm.hu.
 
-Last updated: 2026-10-17
+Last updated: 2026-10-18
 
 ## Canonical public pages
 
 Indexed production languages: Hungarian (hu) and English (en).
 
-- HU homepage: https://www.afm.hu/hu
-- EN homepage: https://www.afm.hu/en
-- HU Trust Center: https://www.afm.hu/hu/megfelelosegi-kozpont
-- EN Trust Center: https://www.afm.hu/en/trust-center
-- XML sitemap: https://www.afm.hu/sitemap.xml
-- Full AI-search summary: https://www.afm.hu/llms-full.txt
+- [HU homepage](https://www.afm.hu/hu)
+- [EN homepage](https://www.afm.hu/en)
+- [HU Trust Center](https://www.afm.hu/hu/megfelelosegi-kozpont)
+- [EN Trust Center](https://www.afm.hu/en/trust-center)
+- [XML sitemap](https://www.afm.hu/sitemap.xml)
+- [Full AI-search summary](https://www.afm.hu/llms-full.txt)
 
 German (de), French (fr), Korean (ko) and Chinese (zh) homepages plus eight
 service detail pages per locale are live as noindex review pages. They are
@@ -23,10 +24,10 @@ translation review and release approval are complete.
 Only German additionally has legal and news review routes. French, Korean and
 Chinese legal and news routes remain closed; do not infer those URLs.
 
-- DE homepage (review, noindex): https://www.afm.hu/de
-- FR homepage (review, noindex): https://www.afm.hu/fr
-- KO homepage (review, noindex): https://www.afm.hu/ko
-- ZH homepage (review, noindex): https://www.afm.hu/zh
+- [DE homepage (review, noindex)](https://www.afm.hu/de)
+- [FR homepage (review, noindex)](https://www.afm.hu/fr)
+- [KO homepage (review, noindex)](https://www.afm.hu/ko)
+- [ZH homepage (review, noindex)](https://www.afm.hu/zh)
 
 ## Company facts
 
@@ -41,16 +42,24 @@ Chinese legal and news routes remain closed; do not infer those URLs.
 - Main service area: Hungary
 - Contact email: info@afm.hu
 - Contact phone: +36 70 316 8218
-- Official LinkedIn company profile: https://www.linkedin.com/company/avenir-facility-management
+- [Official LinkedIn company profile](https://www.linkedin.com/company/avenir-facility-management)
 
-## Proof-safe public claims
+## Privacy and security contacts
 
+- Data protection officer contact: dpo@afm.hu
+- Security vulnerability reports: security@afm.hu ([security.txt](https://www.afm.hu/.well-known/security.txt))
+- [HU responsible disclosure policy](https://www.afm.hu/hu/felelos-hibabejelentes)
+- [EN responsible disclosure policy](https://www.afm.hu/en/responsible-disclosure)
+
+## Verified public facts
+
+- Avenir works across 30+ active sites with a 200+ staff background.
 - 24/7 dispatcher background may support agreed service processes.
 - Guarding licence: 01030-822/4926-7/2023.
 - ISO 9001: MSZ EN ISO 9001:2015, certificate 843579099, certification body MartonCert Rendszertanúsító Kft.
 - ISO/IEC 27001: MSZ ISO/IEC 27001:2023, certificate 988960032, certification body MCert Rendszertanúsító Kft.
-- 30+ active sites and 200+ staff background are approved claims when used carefully.
-- Dun & Bradstreet AA High Creditworthy 2026 is approved as a creditworthiness claim.
+- Creditworthiness: Dun & Bradstreet AA High Creditworthy 2026.
+- Contact and quote requests: Avenir gets in touch by the next business day; quote preparation time depends on scope and complexity.
 
 The Trust Center pages provide public proof summaries and links only to
 approved public documents and notices. Do not infer that certificate PDFs,
@@ -65,53 +74,53 @@ LinkedIn Insight Tag, Google Ads remarketing or other marketing tracking
 pixels, and analytics events do not include personal contact details or
 free-text form content.
 
-Private investigation activity is legal/regulatory information only in the
-Legal Notice and Trust Center regulated-activity summary. It is not a promoted
-public service, contact-dropdown option, service route, sales claim or
-marketing claim.
+Private investigation activity is legal/regulatory information only: it
+appears in the Legal Notice, the Legal Statements and the Trust Center
+regulated-activity summary, and in one Mystery Shopping FAQ that states the
+service is not private investigation. It is not a promoted public service,
+contact-dropdown option, service route, sales claim or marketing claim.
 
 ## Current public service detail URLs
 
-Service detail pages are public in Hungarian and English. The English URL uses
-the same slug under https://www.afm.hu/en/szolgaltatasok/.
+Service detail pages are public in Hungarian and English and use the same slug.
 
-- https://www.afm.hu/hu/szolgaltatasok/objektumorzes
-- https://www.afm.hu/hu/szolgaltatasok/portaszolgalat
-- https://www.afm.hu/hu/szolgaltatasok/biztonsagtechnika
-- https://www.afm.hu/hu/szolgaltatasok/tavfelugyelet-vonuloszolgalat
-- https://www.afm.hu/hu/szolgaltatasok/mystery-shopping-helyszini-audit
-- https://www.afm.hu/hu/szolgaltatasok/rendezvenybiztositas
-- https://www.afm.hu/hu/szolgaltatasok/hard-fm
-- https://www.afm.hu/hu/szolgaltatasok/soft-fm
+- [Élőerős objektumőrzés](https://www.afm.hu/hu/szolgaltatasok/objektumorzes) — EN: [On-site Security Guarding](https://www.afm.hu/en/szolgaltatasok/objektumorzes)
+- [Recepciós és portaszolgálat](https://www.afm.hu/hu/szolgaltatasok/portaszolgalat) — EN: [Reception and Gatehouse Services](https://www.afm.hu/en/szolgaltatasok/portaszolgalat)
+- [Biztonságtechnika](https://www.afm.hu/hu/szolgaltatasok/biztonsagtechnika) — EN: [Security Technology](https://www.afm.hu/en/szolgaltatasok/biztonsagtechnika)
+- [Távfelügyelet és vonulószolgálat](https://www.afm.hu/hu/szolgaltatasok/tavfelugyelet-vonuloszolgalat) — EN: [Remote Monitoring and Response Service](https://www.afm.hu/en/szolgaltatasok/tavfelugyelet-vonuloszolgalat)
+- [Próbavásárlás és szolgáltatásaudit](https://www.afm.hu/hu/szolgaltatasok/mystery-shopping-helyszini-audit) — EN: [Mystery Shopping and Service Audit](https://www.afm.hu/en/szolgaltatasok/mystery-shopping-helyszini-audit)
+- [Rendezvénybiztosítás](https://www.afm.hu/hu/szolgaltatasok/rendezvenybiztositas) — EN: [Event Security](https://www.afm.hu/en/szolgaltatasok/rendezvenybiztositas)
+- [Hard FM](https://www.afm.hu/hu/szolgaltatasok/hard-fm) — EN: [Hard FM](https://www.afm.hu/en/szolgaltatasok/hard-fm)
+- [Soft FM](https://www.afm.hu/hu/szolgaltatasok/soft-fm) — EN: [Soft FM](https://www.afm.hu/en/szolgaltatasok/soft-fm)
 
-German, French, Korean and Chinese service detail pages are supported in the
-source only as noindex review surfaces and are not citable public sources.
+German, French, Korean and Chinese service detail pages are live only as
+noindex review pages and are not citable public sources.
 
 ## Legal public pages
 
 Hungarian and English legal pages are public.
 
-- https://www.afm.hu/hu/adatvedelem
-- https://www.afm.hu/hu/aszf
-- https://www.afm.hu/hu/impresszum
-- https://www.afm.hu/hu/palyazoi-adatkezeles
-- https://www.afm.hu/en/adatvedelem
-- https://www.afm.hu/en/aszf
-- https://www.afm.hu/en/impresszum
-- https://www.afm.hu/en/recruitment-privacy
+- [HU privacy notice](https://www.afm.hu/hu/adatvedelem)
+- [HU legal statements](https://www.afm.hu/hu/aszf)
+- [HU legal notice (impresszum)](https://www.afm.hu/hu/impresszum)
+- [HU recruitment privacy notice](https://www.afm.hu/hu/palyazoi-adatkezeles)
+- [EN privacy notice](https://www.afm.hu/en/adatvedelem)
+- [EN legal statements](https://www.afm.hu/en/aszf)
+- [EN legal notice](https://www.afm.hu/en/impresszum)
+- [EN recruitment privacy notice](https://www.afm.hu/en/recruitment-privacy)
 
 ## News
 
-- Hungarian news index: https://www.afm.hu/hu/hirek
-- Hungarian launch article: https://www.afm.hu/hu/hirek/megujult-az-avenir-weboldala-es-arculata
-- English news index: https://www.afm.hu/en/hirek
-- English launch article: https://www.afm.hu/en/hirek/megujult-az-avenir-weboldala-es-arculata
+- [Hungarian news index](https://www.afm.hu/hu/hirek)
+- [Hungarian launch article](https://www.afm.hu/hu/hirek/megujult-az-avenir-weboldala-es-arculata)
+- [English news index](https://www.afm.hu/en/hirek)
+- [English launch article](https://www.afm.hu/en/hirek/megujult-az-avenir-weboldala-es-arculata)
 
 German news routes are available only in noindex review mode and are not final
 SEO/citation sources:
 
-- German news index, review/noindex: https://www.afm.hu/de/hirek
-- German launch article, review/noindex: https://www.afm.hu/de/hirek/megujult-az-avenir-weboldala-es-arculata
+- [German news index, review/noindex](https://www.afm.hu/de/hirek)
+- [German launch article, review/noindex](https://www.afm.hu/de/hirek/megujult-az-avenir-weboldala-es-arculata)
 
 Do not infer French, Chinese or Korean news URLs.
 

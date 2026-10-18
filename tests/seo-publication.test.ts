@@ -40,7 +40,7 @@ test("24/7 dispatch is not asserted as business opening hours", () => {
 
 test("company schema uses a supported LocalBusiness type", () => {
   const source = readFileSync("lib/homepage-schema.ts", "utf8");
-  assert.ok(source.includes('"@type": "LocalBusiness"'));
+  assert.ok(source.includes('"@type": ["Organization", "LocalBusiness"]'));
   assert.equal(source.includes('["ProfessionalService", "SecurityService"]'), false);
 });
 

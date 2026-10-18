@@ -46,8 +46,11 @@ try {
       const value = JSON.parse(node.textContent);
       return Array.isArray(value) ? value : [value];
     }));
-    const organization = schemas.find(value => value["@type"] === "Organization");
-    const business = schemas.find(value => value["@type"] === "LocalBusiness");
+    // Organization and LocalBusiness are one node (@type array) since the
+    // October 2026 schema cleanup; the service ItemList is homepage-only.
+    const types = value => [].concat(value["@type"]);
+    const organization = schemas.find(value => types(value).includes("Organization"));
+    const business = organization && types(organization).includes("LocalBusiness") ? organization : null;
     const catalog = schemas.find(value => value["@type"] === "ItemList");
     assert.ok(organization && business && catalog, locale);
     assert.equal("openingHoursSpecification" in business, false);

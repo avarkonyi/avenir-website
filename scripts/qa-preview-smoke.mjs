@@ -450,6 +450,7 @@ async function checkSecurityTxt(baseUrl) {
     "Contact: mailto:dpo@afm.hu",
     "Contact: mailto:info@afm.hu",
     "Policy: https://www.afm.hu/en/responsible-disclosure",
+    "Policy: https://www.afm.hu/hu/felelos-hibabejelentes",
   ]) {
     if (!result.text.includes(required)) {
       failures.push({
@@ -613,7 +614,7 @@ async function main() {
   }
 
   const securityTxtFailures = await checkSecurityTxt(baseUrl);
-  totalChecks += 6;
+  totalChecks += 7;
   failures.push(...securityTxtFailures);
 
   const robotsFailures = await checkRobots(baseUrl, allowProduction);

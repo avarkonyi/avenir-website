@@ -10,7 +10,6 @@ import { JsonLd } from "@/components/JsonLd";
 import { AnalyticsConsentBanner } from "@/components/analytics/AnalyticsConsentBanner";
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
 import { db, certifications } from "@/lib/db";
-import { getActiveTopLevelServices } from "@/lib/db/queries/services";
 import { localizeCertificationText } from "@/lib/homepage-content";
 import { getLocaleAccessibility } from "@/lib/locale-accessibility";
 import {
@@ -63,10 +62,6 @@ export async function generateMetadata({
   const tagline = META_TAGLINES[seoLocale];
   const title = `${SEO_DATA.legalNameShort} — ${tagline}`;
   const description = META_DESCRIPTIONS[seoLocale];
-  const localeUrl = `${SEO_DATA.url}/${seoLocale}`;
-  const isIndexableLocale = (INDEXABLE_LOCALES as readonly string[]).includes(
-    seoLocale,
-  );
   const alternateLocales = INDEXABLE_LOCALES.filter((l) => l !== seoLocale).map(
     (l) => OG_LOCALE_MAP[l],
   );
@@ -76,27 +71,13 @@ export async function generateMetadata({
     title,
     description,
     authors: [{ name: SEO_DATA.legalNameShort }],
-    robots: {
-      index: isIndexableLocale,
-      follow: true,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-      "max-video-preview": -1,
-    },
-    alternates: {
-      canonical: localeUrl,
-      languages: isIndexableLocale ? {
-        hu: `${SEO_DATA.url}/hu`,
-        en: `${SEO_DATA.url}/en`,
-        "x-default": `${SEO_DATA.url}/hu`,
-      } : undefined,
-    },
+    // robots and canonical/hreflang are set per page (lib/page-metadata.ts),
+    // so the localized 404 boundary inherits no index directive or canonical.
     openGraph: {
       type: "website",
       siteName: SEO_DATA.name,
       title,
       description,
-      url: localeUrl,
       locale: OG_LOCALE_MAP[seoLocale],
       alternateLocale: alternateLocales,
     },
@@ -178,15 +159,8 @@ export default async function LocaleLayout({
     description: localizeCertificationText(locale, cert.description, cert.slug, "description"),
   }));
 
-  // Locale-aware service rows via shared helper
-  // (lib/db/queries/services.ts). JSON-LD ItemList requires both name
-  // and description, so the empty-field guard checks both.
-  const serviceRows = await getActiveTopLevelServices(locale);
-  const serviceItems = serviceRows
-    .map((r) => ({ name: r.name, description: r.shortDesc }))
-    .filter((s) => s.name.length > 0 && s.description.length > 0);
-
-  const schemas = buildJsonLdSchemas(seoLocale, serviceItems, certs);
+  // The service ItemList is emitted on the homepage only (app/[locale]/page.tsx).
+  const schemas = buildJsonLdSchemas(seoLocale, certs);
   const skipLinkText = getLocaleAccessibility(seoLocale).skip;
 
   return (

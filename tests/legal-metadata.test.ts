@@ -28,7 +28,7 @@ async function legalPages() {
 test("DE review legal metadata has canonical and noindex without HU/EN hreflang", async () => {
   for (const page of await legalPages()) {
     const metadata = await page.generateMetadata({ params: Promise.resolve({ locale: "de" }) });
-    assert.deepEqual(metadata.robots, { index: false, follow: true });
+    assert.deepEqual(metadata.robots, { index: false, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 });
     assert.match(String(metadata.alternates?.canonical), /^https:\/\/www\.afm\.hu\/de\//);
     assert.equal(metadata.alternates?.languages, undefined);
   }
@@ -38,7 +38,7 @@ test("HU and EN legal metadata retain reciprocal indexable alternates", async ()
   for (const page of await legalPages()) {
     for (const locale of ["hu", "en"]) {
       const metadata = await page.generateMetadata({ params: Promise.resolve({ locale }) });
-      assert.deepEqual(metadata.robots, { index: true, follow: true });
+      assert.deepEqual(metadata.robots, { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 });
       assert.deepEqual(Object.keys(metadata.alternates?.languages ?? {}).sort(), ["en", "hu", "x-default"]);
       assert.match(String(metadata.alternates?.canonical), new RegExp(`^https://www\\.afm\\.hu/${locale}/`));
     }
