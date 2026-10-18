@@ -27,7 +27,7 @@ export function Hero({ t }: { t: Pick<Translation, "hero" | "stats"> }) {
           mobile gets ~10 KB, desktop ~33 KB (WebP is already tiny). */}
       <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
         <Image
-          src="/uploads/background.webp"
+          src="/uploads/avenir-security-20261018.png"
           alt={t.hero.bgAlt}
           fill
           priority
