@@ -87,7 +87,7 @@ export const TRUST_CENTER_CONTENT: Record<
         id: "certifications",
         heading: "Tanúsítványok",
         body:
-          "Az Avenir nyilvánosan elérhető tanúsítványai az irányítási rendszerekhez kapcsolódnak. A tanúsítványok nem jelentenek szolgáltatási eredmény-, megfelelőségi vagy válaszidő-garanciát.",
+          "Az Avenir nyilvánosan elérhető tanúsítványai az irányítási rendszerekhez kapcsolódnak.",
         items: [
           {
             title: "MSZ EN ISO 9001:2015",
@@ -242,7 +242,7 @@ export const TRUST_CENTER_CONTENT: Record<
         id: "certifications",
         heading: "Certifications",
         body:
-          "Avenir's publicly available certificates relate to management systems. The certificates do not constitute a service outcome, compliance or response-time guarantee.",
+          "Avenir's publicly available certificates relate to management systems.",
         items: [
           {
             title: "MSZ EN ISO 9001:2015",
