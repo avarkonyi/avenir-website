@@ -46,12 +46,12 @@ const CERTIFICATION_UPDATES: Record<TargetSlug, CertificationUpdate> = {
       "The certificate is internationally recognized under the IAF MLA agreement.",
     descriptionDe:
       "ISO 9001 ist der internationale Standard für Qualitätsmanagementsysteme. " +
-      "Der im Zertifikat angegebene Geltungsbereich lautet \"Comprehensive security services\". Das " +
+      "Der im Zertifikat angegebene Geltungsbereich lautet \"Umfassende Sicherheitsdienstleistungen\". Das " +
       "zertifizierte Managementsystem wurde innerhalb des im Zertifikat definierten Geltungsbereichs " +
       "durch MartonCert Rendszertanúsító Kft. auditiert. Das Zertifikat ist im Rahmen des IAF MLA-Abkommens international " +
       "anerkannt.",
     descriptionZh:
-      "ISO 9001 是质量管理体系的国际标准。证书中列明的范围为 “Comprehensive security services”。" +
+      "ISO 9001 是质量管理体系的国际标准。证书中列明的范围为 “全面安保服务”。" +
       "该认证管理体系已由 MartonCert Rendszertanúsító Kft. 按证书定义的范围进行审核。" +
       "该证书在 IAF MLA 协议下获得国际认可。",
   },

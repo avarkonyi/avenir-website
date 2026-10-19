@@ -71,6 +71,19 @@ test("French and Korean career overlays cover known positions and omit unknown t
   }
 });
 
+for (const [locale, translation, nationwide, budapest] of [
+  ["fr", fr, "Budapest / dans toute la Hongrie", "Budapest"],
+  ["ko", ko, "부다페스트 / 헝가리 전역", "부다페스트"],
+] as const) {
+  test(`${locale} career locations preserve nationwide meaning for current and legacy CMS keys`, () => {
+    const locations = translation.careerFallbacks.locations;
+    assert.equal(localizeCareerField(locale, "Budapest / nationwide", locations), nationwide);
+    assert.equal(localizeCareerField(locale, "Budapest, regional", locations), nationwide);
+    assert.equal(localizeCareerField(locale, "Budapest", locations), budapest);
+    assert.equal(localizeCareerField(locale, "Untranslated new location", locations), null);
+  });
+}
+
 test("consent and accessibility controls are localized in every supported language", () => {
   assert.equal(getAnalyticsConsentCopy("fr").reject, "Refuser");
   assert.equal(getAnalyticsConsentCopy("zh").settings, "Cookie 设置");

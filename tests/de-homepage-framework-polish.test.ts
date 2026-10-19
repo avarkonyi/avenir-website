@@ -92,7 +92,7 @@ test("KO career fallback labels are localized instead of English DB labels", () 
   assert.equal(ko.careerFallbacks?.titles["Security Guard"], "보안요원");
   assert.equal(ko.careerFallbacks?.titles["Cleaning Team Leader"], "청소팀 리더");
   assert.equal(ko.careerFallbacks?.types["Full-time"], "풀타임");
-  assert.equal(ko.careerFallbacks?.locations["Budapest, regional"], "부다페스트 및 지역 현장");
+  assert.equal(ko.careerFallbacks?.locations["Budapest, regional"], "부다페스트 / 헝가리 전역");
 });
 
 test("HU, EN and DE nav include news while ZH/KO keep it closed", () => {

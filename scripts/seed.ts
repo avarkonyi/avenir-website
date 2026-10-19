@@ -132,9 +132,9 @@ async function main() {
         titleDe: "Sicherheitsmitarbeiter",
         titleZh: "保安员",
         locationHu: "Budapest / országosan",
-        locationEn: "Budapest, regional",
-        locationDe: "Budapest, Land",
-        locationZh: "布达佩斯及周边",
+        locationEn: "Budapest / nationwide",
+        locationDe: "Budapest / landesweit",
+        locationZh: "布达佩斯 / 匈牙利全国",
         typeHu: "Teljes munkaidő",
         typeEn: "Full-time",
         typeDe: "Vollzeit",
@@ -313,13 +313,13 @@ async function main() {
         // TRANSLATION DRAFT: review by user
         descriptionDe:
           "ISO 9001 ist der internationale Standard für Qualitätsmanagementsysteme. " +
-          "Der im Zertifikat angegebene Geltungsbereich lautet \"Comprehensive security services\". Das " +
+          "Der im Zertifikat angegebene Geltungsbereich lautet \"Umfassende Sicherheitsdienstleistungen\". Das " +
           "zertifizierte Managementsystem wurde innerhalb des im Zertifikat definierten Geltungsbereichs " +
           "durch MartonCert Rendszertanúsító Kft. auditiert. Das Zertifikat ist im Rahmen des IAF MLA-Abkommens international " +
           "anerkannt.",
         // TRANSLATION DRAFT: review by user
         descriptionZh:
-          "ISO 9001 是质量管理体系的国际标准。证书中列明的范围为 “Comprehensive security services”。" +
+          "ISO 9001 是质量管理体系的国际标准。证书中列明的范围为 “全面安保服务”。" +
           "该认证管理体系已由 MartonCert Rendszertanúsító Kft. 按证书定义的范围进行审核。" +
           "该证书在 IAF MLA 协议下获得国际认可。",
 

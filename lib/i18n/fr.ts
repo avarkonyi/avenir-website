@@ -47,7 +47,11 @@ export const fr = {
   applyBtn: "Postuler",
   careerFallbacks: {
     titles: { "Security Guard": "Agent de sécurité", "Cleaning Team Leader": "Responsable d’équipe de nettoyage", "Facility Management Engineer": "Ingénieur en gestion technique des bâtiments", "Reception Manager": "Responsable de l’accueil" },
-    locations: { "Budapest, regional": "Budapest et autres régions", Budapest: "Budapest" },
+    locations: {
+      "Budapest, regional": "Budapest / dans toute la Hongrie",
+      "Budapest / nationwide": "Budapest / dans toute la Hongrie",
+      Budapest: "Budapest",
+    },
     types: { "Full-time": "Temps plein" },
   },
   contactTitle: "Contact", contactSub: "Demander un devis",
