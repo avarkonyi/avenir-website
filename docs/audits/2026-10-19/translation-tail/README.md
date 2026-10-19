@@ -1,6 +1,6 @@
 # Translation tail — 2026-10-19
 
-Status: source and eight-field proposal prepared; no database writes or production release in this package.
+Status: **checked Preview and eight-field proposal ready for staging approval**; no database writes or production release in this package.
 
 - [Owner-readable complete before/after proposal](cms-proposal.md)
 - [Immutable eight-field proposal](cms-proposal.json)
@@ -21,4 +21,12 @@ Fresh staging public-content snapshot verified `br-round-fog-al4isa1i`, `ep-twil
 - Fresh staging read-only proposal check: **8/8 before values match**, 0 already applied; four intended records only.
 - Source scope: seven files; dictionaries/tests plus existing seed/updater text literals. No seed/updater was executed. No HU fields, layout, routing, indexing or DB guard changes.
 
-Independent review and Ready Preview/smoke evidence will be added before staging approval is requested. Staging writes and production release are separate authorization gates. The new CMS values are only a proposal until staging approval; Preview initially shows the old CMS values with the corrected FR/KO compatibility layer.
+- [Independent semantic/scope/render-path review](independent-review.md): **no blocking findings**; all eight before-values, hash, source literals and actual output paths independently verified.
+- [Draft PR #15](https://github.com/avarkonyi/avenir-website/pull/15), tested source commit `061e63cf2908e5df1f0ea2a6aac517aa54605dcf`.
+- Vercel Preview `dpl_Erg1RiuBtAJ2WoogN8oSFkRGetKK`: **READY**, matching source commit. [French career Preview](https://avenir-website-7q5vo3i5u-andrasvarkonyi-7800s-projects.vercel.app/fr#career).
+- Preview GET-only smoke: **569/569 PASS**. GitHub CI [39266379855](https://github.com/avarkonyi/avenir-website/actions/runs/39266379855): success.
+- Browser spot-check: FR and KO career sections at 390 px and 1440 px, correct nationwide location, no horizontal overflow. Screenshots and viewport observations are saved in the external artifact directory. Viewport override reset after QA.
+
+Staging writes and production release are separate authorization gates. The new CMS values are only a proposal until staging approval; this Preview shows the old CMS values with the corrected FR/KO compatibility layer. The new-key path is independently covered by the helper regression tests; full post-write CMS rendering QA remains required after approval. No form was submitted and no mail sent.
+
+The remaining registry-document details, IAF schema attribution, HU EDPB document version, mail data-flow check and 91 optional style observations remain separate backlog items; this package does not mark them closed.
