@@ -186,7 +186,6 @@ export const zh = {
     "issuedOn": "颁发日期",
     "validUntil": "有效期至",
     "accreditation": "认可机构",
-    "iafMember": "IAF MLA 成员",
     "downloadPdf": "下载证书 (PDF)",
     "altText": "{name} 认证标志"
   },

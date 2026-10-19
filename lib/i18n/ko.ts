@@ -149,7 +149,6 @@ export const ko = {
     issuedOn: "발급일",
     validUntil: "유효기간",
     accreditation: "인정",
-    iafMember: "IAF MLA 회원",
     downloadPdf: "인증서 다운로드 (PDF)",
     altText: "{name} 인증 로고",
   },

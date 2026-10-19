@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { buildPageMetadata } from "@/lib/page-metadata";
 import { SEO_DATA } from "@/lib/seo-data";
+import { IAF_CERTIFICATE_SEARCH_URL, NAH_MCERT_ACCREDITATION_URL } from "@/lib/certification-proof";
 export {
   TRUST_CENTER_LOCALES,
   TRUST_CENTER_SLUGS,
@@ -102,6 +103,10 @@ export const TRUST_CENTER_CONTENT: Record<
               { label: "ISO/IEC 27001 tanúsítvány", href: ISO_27001_PDF },
             ],
           },
+        ],
+        links: [
+          { label: "Tanúsító akkreditációja (NAH)", href: NAH_MCERT_ACCREDITATION_URL, external: true },
+          { label: "Tanúsítványkereső (IAF CertSearch) – Avenir Facility Kft.", href: IAF_CERTIFICATE_SEARCH_URL, external: true },
         ],
       },
       {
@@ -253,6 +258,10 @@ export const TRUST_CENTER_CONTENT: Record<
               { label: "ISO/IEC 27001 certificate", href: ISO_27001_PDF },
             ],
           },
+        ],
+        links: [
+          { label: "Certification body accreditation (NAH)", href: NAH_MCERT_ACCREDITATION_URL, external: true },
+          { label: "Certificate search (IAF CertSearch) – Avenir Facility Kft.", href: IAF_CERTIFICATE_SEARCH_URL, external: true },
         ],
       },
       {

@@ -146,7 +146,6 @@ export default async function LocaleLayout({
       certificateNumber: certifications.certificateNumber,
       accreditationBody: certifications.accreditationBody,
       accreditationNumber: certifications.accreditationNumber,
-      iafMlaMember: certifications.iafMlaMember,
       pdfUrl: certifications.pdfUrl,
     })
     .from(certifications)

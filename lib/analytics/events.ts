@@ -13,8 +13,7 @@ export type AnalyticsEventName =
   | "service_quote_form_open"
   | "service_quote_form_start"
   | "service_quote_form_submit_success"
-  | "service_quote_form_submit_error"
-  | "special_service_option_selected";
+  | "service_quote_form_submit_error";
 
 export type AnalyticsEventParams = {
   locale?: string;

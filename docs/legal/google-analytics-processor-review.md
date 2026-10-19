@@ -2,6 +2,13 @@
 
 Date: 2026-06-13
 
+Status update 2026-10-19: the owner has accepted the Hungarian legal baseline
+and the specific consent-copy correction; see
+`docs/audits/2026-10-17/owner-confirmations-2026-10-18.md`. Do not reopen the
+historical blanket HU approval request below. Account configuration and actual
+data-flow evidence remain open where identified in the
+[ISO/contact review](../audits/2026-10-19/iso-contact-review.md).
+
 This note supports DPO/legal review of the Google Analytics 4 processor and
 international-transfer wording added to the website privacy notices. It is not
 a final legal approval and does not publish Google DPA, SCC or account

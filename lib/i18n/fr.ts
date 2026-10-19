@@ -76,6 +76,6 @@ export const fr = {
   certifications: {
     sub: "Certifications", title: "Qualité certifiée.\nProcessus audités.",
     intro: "Nos systèmes de management de la qualité et de la sécurité de l’information sont audités par des organismes de certification indépendants. Ces certifications soutiennent des opérations documentées, traçables et améliorées en continu.",
-    qualityManagement: "Management de la qualité", informationSecurity: "Sécurité de l’information", standardLabel: "Norme", scopeLabel: "Périmètre", issuedBy: "Délivré par", certNumber: "Numéro de certificat", issuedOn: "Date de délivrance", validUntil: "Valable jusqu’au", accreditation: "Accréditation", iafMember: "Membre de l’IAF MLA", downloadPdf: "Télécharger le certificat (PDF)", altText: "Logo de la certification {name}",
+    qualityManagement: "Management de la qualité", informationSecurity: "Sécurité de l’information", standardLabel: "Norme", scopeLabel: "Périmètre", issuedBy: "Délivré par", certNumber: "Numéro de certificat", issuedOn: "Date de délivrance", validUntil: "Valable jusqu’au", accreditation: "Accréditation", downloadPdf: "Télécharger le certificat (PDF)", altText: "Logo de la certification {name}",
   },
 } as const;

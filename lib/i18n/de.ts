@@ -187,7 +187,6 @@ export const de = {
     "issuedOn": "Ausgestellt am",
     "validUntil": "Gültig bis",
     "accreditation": "Akkreditierung",
-    "iafMember": "IAF-MLA-Mitglied",
     "downloadPdf": "Zertifikat herunterladen (PDF)",
     "altText": "Logo des Zertifikats {name}"
   },

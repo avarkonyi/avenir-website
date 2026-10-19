@@ -2,6 +2,13 @@
 
 Date: 2026-06-13
 
+Status update 2026-10-19: the owner accepted the lawyer-reviewed Hungarian
+legal baseline and the specific consent-copy correction (see
+`docs/audits/2026-10-17/owner-confirmations-2026-10-18.md`). The historical
+general HU approval request below is superseded. Actual runtime/account
+verification remains separate; see the current
+[ISO/contact review](../audits/2026-10-19/iso-contact-review.md).
+
 ## Current Implementation Summary
 
 The website includes a direct GA4 integration using `NEXT_PUBLIC_GA4_ID`. Google
@@ -34,7 +41,6 @@ The implementation may emit these events after consent only:
 - `phone_click`
 - `email_click`
 - `service_cta_click`
-- `special_service_option_selected`
 - `service_quote_cta_click`
 - `service_quote_form_open`
 - `service_quote_form_start`
@@ -47,8 +53,8 @@ Allowed event parameters:
 
 - locale
 - path
-- predefined service key
-- predefined service label
+- predefined public page/link service key (not the homepage form selection)
+- predefined public page/link service label
 - event type
 - service slug
 - form variant, for example `service_embedded`
