@@ -240,48 +240,14 @@ const SERVICE_SLUG_ALIASES: Record<string, string> = {
   green: "soft-fm",
 };
 
-const SERVICE_PREFILL_FALLBACKS: Record<string, ServiceOption> = {
-  objektumorzes: {
-    slug: "objektumorzes",
-    label: "Élőerős objektumőrzés",
-  },
-  portaszolgalat: {
-    slug: "portaszolgalat",
-    label: "Recepciós és portaszolgálat",
-  },
-  biztonsagtechnika: {
-    slug: "biztonsagtechnika",
-    label: "Biztonságtechnika",
-  },
-  "tavfelugyelet-vonuloszolgalat": {
-    slug: "tavfelugyelet-vonuloszolgalat",
-    label: "Távfelügyelet és vonulószolgálat",
-  },
-  "mystery-shopping-helyszini-audit": {
-    slug: "mystery-shopping-helyszini-audit",
-    label: "Próbavásárlás és szolgáltatásaudit",
-  },
-  "hard-fm": {
-    slug: "hard-fm",
-    label: "Hard FM",
-  },
-  "soft-fm": {
-    slug: "soft-fm",
-    label: "Soft FM",
-  },
-  rendezvenybiztositas: {
-    slug: "rendezvenybiztositas",
-    label: "Rendezvénybiztosítás",
-  },
-};
-
 function canonicalServiceSlug(slug: string): string {
   return SERVICE_SLUG_ALIASES[slug] ?? slug;
 }
 
-function canonicalServiceOptions(
+export function canonicalServiceOptions(
   options: ServiceOption[],
   requestedCanonicalSlug: string,
+  fallbackOptions: ServiceOption[],
 ): ServiceOption[] {
   const bySlug = new Map<string, ServiceOption>();
 
@@ -292,9 +258,9 @@ function canonicalServiceOptions(
     }
   }
 
-  const fallback = SERVICE_PREFILL_FALLBACKS[requestedCanonicalSlug];
-  if (fallback && !bySlug.has(fallback.slug)) {
-    bySlug.set(fallback.slug, fallback);
+  const fallback = fallbackOptions.find((option) => canonicalServiceSlug(option.slug) === requestedCanonicalSlug);
+  if (fallback && !bySlug.has(requestedCanonicalSlug)) {
+    bySlug.set(requestedCanonicalSlug, { ...fallback, slug: requestedCanonicalSlug });
   }
 
   return [...bySlug.values()];
@@ -304,6 +270,7 @@ export function Contact({
   t,
   locale,
   serviceOptions,
+  serviceFallbackOptions = [],
 }: {
   // form is the narrowed ContactFormCopy (not the full Translation["form"])
   // so parked special-service strings never enter the client payload —
@@ -313,6 +280,7 @@ export function Contact({
   };
   locale: string;
   serviceOptions: ServiceOption[];
+  serviceFallbackOptions?: ServiceOption[];
 }) {
   const [form, setForm] = useState<FormState>({
     name: "",
@@ -337,6 +305,7 @@ export function Contact({
   const normalizedServiceOptions = canonicalServiceOptions(
     serviceOptions,
     canonicalRequestedService,
+    serviceFallbackOptions,
   );
   const prefilledService =
     canonicalRequestedService &&

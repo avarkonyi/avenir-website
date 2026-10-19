@@ -3,18 +3,20 @@ import { readFileSync } from "node:fs";
 import path from "node:path";
 import test from "node:test";
 import { renderToStaticMarkup } from "react-dom/server";
-import { Contact } from "../components/Contact";
+import { Contact, canonicalServiceOptions } from "../components/Contact";
 import { NewsRelatedServices } from "../components/NewsRelatedServices";
 import {
   SERVICE_QUOTE_COPY,
   ServiceQuoteCtaPanel,
 } from "../components/ServiceQuoteCta";
 import { normalizeContactService } from "../lib/contact-schema";
+import { getContactServiceFallbackOptions } from "../lib/homepage-content";
 import { hu } from "../lib/i18n/hu";
 import { en } from "../lib/i18n/en";
 import { de } from "../lib/i18n/de";
 import { zh } from "../lib/i18n/zh";
 import { ko } from "../lib/i18n/ko";
+import { fr } from "../lib/i18n/fr";
 import {
   getContactFormCopy,
   getFooterMapLinkTitle,
@@ -27,7 +29,26 @@ const PRIVACY_NOTICE_HU = {
   href: "/hu/adatvedelem",
 };
 
-const LOCALES = { hu, en, de, zh, ko } as const;
+const LOCALES = { hu, en, de, zh, ko, fr } as const;
+
+test("contact prefill uses the supplied locale's labels without overriding CMS options", () => {
+  const expectedLabels = {
+    hu: "Recepciós és portaszolgálat", en: "Reception and Gatehouse Services",
+    de: "Empfangs- und Pförtnerdienst", fr: "Accueil et services de poste de garde",
+    ko: "리셉션 및 게이트하우스 서비스", zh: "前台与门岗服务",
+  };
+  for (const [locale, dictionary] of Object.entries(LOCALES)) {
+    const fallbacks = getContactServiceFallbackOptions(locale, dictionary.services);
+    const expected = expectedLabels[locale as keyof typeof expectedLabels];
+    assert.deepEqual(canonicalServiceOptions([], "portaszolgalat", fallbacks), [
+      { slug: "portaszolgalat", label: expected },
+    ]);
+    assert.deepEqual(canonicalServiceOptions([{ slug: "reception", label: "CMS label" }], "portaszolgalat", fallbacks), [
+      { slug: "portaszolgalat", label: "CMS label" },
+    ]);
+    assert.deepEqual(canonicalServiceOptions([], "unknown", fallbacks), []);
+  }
+});
 
 const RESPONSE_TIME_PROMISE =
   /2\s*munkanap|2 business days|2 Werktagen|2\s*个工作日|2 영업일/i;

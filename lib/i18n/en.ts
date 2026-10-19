@@ -5,23 +5,23 @@ export const en = {
     "services": "Services",
     "references": "References",
     "news": "News",
-    "career": "Career",
+    "career": "Careers",
     "contact": "Contact",
-    "cta": "Get a Quote"
+    "cta": "Request a quote"
   },
   "hero": {
     "tag": "SECURITY SERVICES · SECURITY TECHNOLOGY · AUDITS",
     "h1a": "Less risk.",
     "h1b": "More control.",
     "sub": "Avenir brings your security operations together as one coordinated service: site guarding, access control, security technology, on-site inspections and reporting. One contract. One accountable point of contact.",
-    "cta1": "Our Services",
-    "cta2": "Get a Quote",
+    "cta1": "Our services",
+    "cta2": "Request a quote",
     "bgAlt": "Avenir Facility Management — building operations and security in Hungary"
   },
   "stats": [
     {
       "n": "30+",
-      "l": "Active locations"
+      "l": "Active sites"
     },
     {
       "n": "200+",
@@ -46,11 +46,11 @@ export const en = {
     },
     {
       "t": "Professional presence",
-      "d": "Trained personnel, site-specific protocols and controlled delivery across industrial, logistics, commercial and office environments."
+      "d": "Trained personnel, site-specific protocols and controlled delivery across industrial, logistics and commercial environments."
     },
     {
       "t": "Response and accountability",
-      "d": "When incidents occur, Avenir does not only provide presence on site: we document, report back and help reduce recurring operational issues."
+      "d": "When incidents occur, we do more than provide an on-site presence: we document, report back and help prevent recurring issues."
     }
   ],
   "servicesTitle": "Our Services",
@@ -60,7 +60,7 @@ export const en = {
       "id": "security",
       "icon": "shield",
       "t": "On-site Security Guarding",
-      "d": "On-site guarding for access, patrol, incident handling, service logging and agreed escalation at business sites."
+      "d": "On-site guarding with access control, patrols, incident handling, service logging and agreed escalation at business sites."
     },
     {
       "id": "cleaning",
@@ -116,12 +116,12 @@ export const en = {
   ],
   "newsTitle": "News",
   "newsSub": "Updates & announcements",
-  "newsText": "Company updates, industry notes and selected announcements from Avenir.",
+  "newsText": "Company news, industry updates, new references and announcements.",
   "newsReadMore": "Read more",
   "newsEmpty": "Fresh news coming soon.",
-  "careerTitle": "Career",
+  "careerTitle": "Careers",
   "careerSub": "Join our team",
-  "careerText": "The Avenir team works nationwide at the sites of large corporate clients. We are looking for colleagues who take shifts seriously, understand the importance of reliable presence and responsible work.\n\nWe welcome applicants for security, cleaning, technical and supervisory roles. We offer stable backing, legal employment, professional onboarding and development opportunities.",
+  "careerText": "The Avenir team works nationwide at the sites of large corporate clients. We are looking for colleagues who take their shifts seriously and understand the importance of punctuality and reliable work.\n\nWe welcome applicants for security, cleaning, technical and supervisory roles. We offer a stable employer, lawful employment, professional onboarding and development opportunities.",
   "applyBtn": "Apply",
   "contactTitle": "Contact",
   "contactSub": "Request a quote",
@@ -137,7 +137,7 @@ export const en = {
     "phone": "Phone number",
     "service": "Service of interest",
     "message": "Message / Requirements",
-    "send": "Send Request",
+    "send": "Send request",
     "sending": "Sending…",
     // Narrowed contact follow-up wording: next-business-day contact only,
     // not quote delivery, service start, response-time SLA, or guarantee.
@@ -197,9 +197,9 @@ export const en = {
     "includedEyebrow": "Scope",
     "includedTitle": "What is included",
     "processEyebrow": "Process",
-    "processTitle": "How cooperation starts",
-    "trustEyebrow": "Why clients choose us",
-    "trustTitle": "Trust signals",
+    "processTitle": "How we get started",
+    "trustEyebrow": "Why you can trust us",
+    "trustTitle": "Assurance and control",
     "faqEyebrow": "Frequently asked questions",
     "faqTitle": "Common questions",
     "relatedEyebrow": "More from Avenir",
@@ -339,7 +339,7 @@ export const en = {
         {
           "id": "complaints",
           "title": "10. Complaint Handling Procedure (B2B)",
-          "body": "The Provider serves B2B (business) clients only (see section 1). Provisions on consumer-dispute resolution, conciliation boards, and complaints to consumer-protection authorities under Hungarian Act CLV of 1997 on consumer protection do not apply to this B2B relationship.\n\nB2B-natured comments and complaints regarding the Provider may be submitted directly at info@afm.hu or by phone at +36 70 316 8218, to which the Provider provides a substantive response within 8 business days. The parties resolve any complaint in accordance with the governing law and competent court set out in section 12."
+          "body": "The Provider serves B2B (business) clients only (see section 1). Provisions on consumer-dispute resolution, conciliation boards, and complaints to consumer-protection authorities under Hungarian Act CLV of 1997 on consumer protection do not apply to this B2B relationship.\n\nComments and complaints of a B2B nature regarding the Provider may be submitted directly to info@afm.hu or by phone at +36 70 316 8218. The Provider will respond substantively within 8 business days. The parties resolve any complaint in accordance with the governing law and competent court set out in section 12."
         },
         {
           "id": "code-of-conduct",
@@ -400,7 +400,7 @@ export const en = {
         "marketingName": "Marketing name",
         "registrationNumber": "Company registration number",
         "court": "Registry court",
-        "taxId": "Tax ID",
+        "taxId": "Tax number",
         "vatId": "EU VAT ID",
         "foundingDate": "Date of incorporation",
         "registeredOffice": "Registered office",

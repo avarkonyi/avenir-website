@@ -70,11 +70,11 @@ export const SERVICE_QUOTE_COPY = {
     message: "Message",
     messagePlaceholder: "Briefly describe how we can help.",
     send: "Send",
-    sending: "Sending...",
+    sending: "Sending…",
     success:
       "Thank you, we have received your request. Our team will respond using the contact details provided.",
     error:
-      "There was an error sending your request. Please try again later or contact us by phone.",
+      "There was an error sending your request. Please try again later or call us: +36 70 316 8218.",
     nameRequired: "Please enter your name.",
     emailRequired: "Please enter your email address.",
     emailInvalid: "Please enter a valid email address.",

@@ -129,9 +129,9 @@ const RESPONSIBLE_DISCLOSURE_CONTENT: Record<
       },
       {
         id: "out-of-scope-testing",
-        title: "Out-of-scope testing",
+        title: "Testing that is not permitted",
         body:
-          "Physical intrusion attempts, social engineering, phishing, spam, DoS / DDoS / load testing, malicious code, downloading, copying or viewing data beyond authorised access, and testing customer, partner or third-party systems are not permitted.",
+          "Physical intrusion attempts, social engineering, phishing, spam, DoS / DDoS / load testing, the use of malicious code, downloading, copying or viewing data beyond authorised access, and testing customer, partner or third-party systems are not permitted.",
       },
       {
         id: "privacy-and-harm-minimisation",

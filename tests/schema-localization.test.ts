@@ -74,7 +74,7 @@ test("schema dispatch support does not imply an approved monitoring centre", () 
   const expected = {
     de: "24/7-Dispositionsunterstützung",
     ko: "24/7 디스패처 지원 체계",
-    fr: "Permanence de dispatching 24 h/24 et 7 j/7",
+    fr: "Permanence de dispatching 24 h/24 et 7 j/7",
   } as const;
   for (const locale of ["de", "ko", "fr"] as const) {
     const org = buildJsonLdSchemas(locale, []).find(isOrganization)!;

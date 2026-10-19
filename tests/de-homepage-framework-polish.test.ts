@@ -49,12 +49,12 @@ test("DE hero eyebrow reflects security + FM, not the gated audit layer", () => 
   assert.ok(!de.hero.tag.includes("AUDIT"));
 });
 
-test("DE stat/trust labels are German and proof-safe", () => {
+test("DE stat/trust labels retain the official rating name and German operational labels", () => {
   assert.equal(de.stats[1]?.l, "Geschulte Mitarbeitende");
-  assert.equal(de.stats[2]?.l, "Hohe Bonitätsbewertung (D&B)");
+  assert.equal(de.stats[2]?.l, "D&B High Creditworthy 2026");
   assert.equal(de.stats[3]?.l, "Dispositionsbereitschaft");
   const labels: string[] = de.stats.map((s) => s.l);
-  assert.ok(!labels.includes("D&B High Creditworthy 2026"));
+  assert.ok(!labels.includes("OPTEN A+"));
   assert.ok(!labels.includes("Dispatcher-Bereitschaft"));
 });
 

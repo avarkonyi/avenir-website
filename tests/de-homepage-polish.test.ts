@@ -13,7 +13,7 @@ test("DE homepage polish uses German interim labels without touching other local
   assert.equal(de.hero.cta2, "Angebot anfordern");
   assert.equal(de.contactSub, "Angebot anfordern");
   assert.equal(de.stats[2]?.n, "AA");
-  assert.equal(de.stats[2]?.l, "Hohe Bonitätsbewertung (D&B)");
+  assert.equal(de.stats[2]?.l, "D&B High Creditworthy 2026");
   assert.equal(de.stats[3]?.l, "Dispositionsbereitschaft");
 
   assert.deepEqual(

@@ -24,15 +24,15 @@ export const DE_REVIEW_SERVICE_QUOTE_COPY = {
   message: "Nachricht",
   messagePlaceholder: "Beschreiben Sie kurz, wobei wir Sie unterstützen können.",
   send: "Senden",
-  sending: "Wird gesendet...",
+  sending: "Wird gesendet…",
   success:
     "Vielen Dank, wir haben Ihre Anfrage erhalten. Unser Team meldet sich über die angegebenen Kontaktdaten bei Ihnen.",
   error:
-    "Beim Senden ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut oder rufen Sie uns an.",
+    "Beim Senden ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut oder rufen Sie uns an: +36 70 316 8218.",
   nameRequired: "Bitte geben Sie Ihren Namen an.",
   emailRequired: "Bitte geben Sie Ihre E-Mail-Adresse an.",
   emailInvalid: "Bitte geben Sie eine gültige E-Mail-Adresse an.",
   requiredField: "* Pflichtfeld",
   nextStepHelper:
-    "Innerhalb der Geschäftszeiten antworten wir in der Regel noch am selben Tag, spätestens jedoch am nächsten Werktag melden wir uns bei Ihnen. Wie lange die Angebotserstellung dauert, hängt vom Umfang und der Komplexität der Anfrage ab.",
+    "Innerhalb der Geschäftszeiten antworten wir in der Regel noch am selben Tag, spätestens jedoch am nächsten Arbeitstag melden wir uns bei Ihnen. Wie lange die Angebotserstellung dauert, hängt vom Umfang und der Komplexität der Anfrage ab.",
 } as const;

@@ -29,7 +29,7 @@ export const de = {
     },
     {
       "n": "AA",
-      "l": "Hohe Bonitätsbewertung (D&B)"
+      "l": "D&B High Creditworthy 2026"
     },
     {
       "n": "24/7",
@@ -42,15 +42,15 @@ export const de = {
   "values": [
     {
       "t": "Transparente Kontrolle",
-      "d": "Klare Abläufe, nachvollziehbare Dokumentation und regelmäßige Abstimmung unterstützen die steuerbare Standortbetreuung."
+      "d": "Dokumentierte Abläufe, regelmäßige Berichte und klare Verantwortlichkeiten – damit Sie jederzeit wissen, was am Standort geschieht."
     },
     {
       "t": "Professionelle Präsenz",
-      "d": "Geschulte Mitarbeitende und abgestimmte Routinen sorgen für eine verlässliche Präsenz am Standort."
+      "d": "Geschultes Personal, standortspezifische Protokolle und kontrollierte Leistungserbringung in Industrie-, Logistik- und Handelsumgebungen."
     },
     {
       "t": "Reaktion und Verantwortung",
-      "d": "Bei Abweichungen, Vorfällen oder Änderungsbedarf zählen klare Eskalationswege und verantwortliche Ansprechpartner."
+      "d": "Bei Vorfällen sind wir nicht nur präsent: Wir dokumentieren, melden zurück und helfen, wiederkehrende Probleme zu vermeiden."
     }
   ],
   "servicesTitle": "Unsere Dienstleistungen",
@@ -66,7 +66,7 @@ export const de = {
       "id": "cleaning",
       "icon": "sparkle",
       "t": "Veranstaltungssicherheit",
-      "d": "Absicherung von Firmenevents, Konferenzen und Sonderveranstaltungen nach abgestimmten Protokollen: Zutrittskontrolle, Präsenz vor Ort, Streifendienste und Vorfallbearbeitung."
+      "d": "Veranstaltungssicherheit für Firmen-, geschlossene und öffentliche Veranstaltungen, mit Zutrittskontrolle, Unterstützung der Besucherströme, Zonenmanagement, Vorfallerfassung und Eskalation an die Veranstaltungsleitung."
     },
     {
       "id": "building",
@@ -78,19 +78,19 @@ export const de = {
       "id": "reception",
       "icon": "desk",
       "t": "Empfangs- und Pförtnerdienst",
-      "d": "Repräsentativer Pförtnerdienst und Empfangspräsenz: Besucherempfang, Zutrittskontrolle, Schlüsselverwaltung, Paketannahme und Mieterkommunikation zur Unterstützung des täglichen Betriebs."
+      "d": "Empfangs- und Pförtnerdienst für Besucher, Lieferanten, Mitarbeiter, Schlüssel, Pakete, Protokollierung und abgestimmte Eskalation."
     },
     {
       "id": "green",
       "icon": "leaf",
       "t": "Soft FM – Infrastrukturelles Gebäudemanagement",
-      "d": "Organisation von Reinigungs-, Grünpflege- und Hausmeisterleistungen als ergänzende Services, mit kontrollierter Qualität und einem verantwortlichen Ansprechpartner."
+      "d": "Soft FM für Reinigung, Grünpflege, Hygiene, Unterstützung bei der Abfallentsorgung und Dienstleistersteuerung, mit vereinbartem Leistungsumfang, Qualitätskontrolle und schriftlichem Berichtswesen."
     },
     {
       "id": "technical",
       "icon": "radar",
       "t": "Fernüberwachung und Interventionsdienst",
-      "d": "Bearbeitung von Alarm- und Kamerasignalen mit Leitstellenunterstützung, bei Bedarf mit Reaktion vor Ort, nach abgestimmten Protokollen."
+      "d": "Fernüberwachung und Interventionsdienst mit Signalempfang, Alarmverifikation, Eskalation, Ereignisprotokollierung und abgestimmtem Reaktionsprozess."
     },
     {
       "id": "mystery",
@@ -102,7 +102,7 @@ export const de = {
       "id": "hardfm",
       "icon": "gear",
       "t": "Hard FM – Technisches Gebäudemanagement",
-      "d": "Unterstützung bei technischem Betrieb, Wartungskoordination und kleineren Reparaturarbeiten als ergänzende Leistung in komplexen Kundenumgebungen."
+      "d": "Hard FM mit geplanter vorbeugender Instandhaltung, reaktiver Störungsbearbeitung, Koordination von Fachfirmen, dokumentiertem Störungsprotokoll und betrieblichem Berichtswesen."
     }
   ],
   "refTitle": "Partner",
@@ -116,12 +116,12 @@ export const de = {
   ],
   "newsTitle": "Aktuelles",
   "newsSub": "Aktuelles & Mitteilungen",
-  "newsText": "Unternehmensupdates, Branchennotizen und ausgewählte Mitteilungen von Avenir.",
+  "newsText": "Unternehmensnachrichten, Branchenthemen, neue Referenzen und Mitteilungen.",
   "newsReadMore": "Weiterlesen",
   "newsEmpty": "Neue Nachrichten folgen in Kürze.",
   "careerTitle": "Karriere",
   "careerSub": "Werde Teil unseres Teams",
-  "careerText": "Das Avenir-Team arbeitet landesweit an Standorten großer Unternehmenskunden. Wir suchen Mitarbeitende, die ihre Schicht verantwortungsvoll angehen und die Bedeutung von zuverlässiger Präsenz und sorgfältiger Arbeit verstehen.\n\nWir freuen uns über Bewerbungen für Sicherheits-, Reinigungs-, technische und leitende Positionen. Wir bieten einen stabilen Hintergrund, legale Beschäftigung, professionelle Einarbeitung und Entwicklungsmöglichkeiten.",
+  "careerText": "Das Avenir-Team arbeitet landesweit an Standorten großer Unternehmenskunden. Wir suchen Mitarbeitende, die ihre Schicht verantwortungsvoll angehen und die Bedeutung von Pünktlichkeit und zuverlässiger Arbeit verstehen.\n\nWir freuen uns über Bewerbungen für Sicherheits-, Reinigungs-, technische sowie Aufsichts- und Leitungspositionen. Wir bieten einen stabilen Arbeitgeber, eine ordnungsgemäß angemeldete Beschäftigung, professionelle Einarbeitung und Entwicklungsmöglichkeiten.",
   "applyBtn": "Bewerben",
   "contactTitle": "Kontakt",
   "contactSub": "Angebot anfordern",
@@ -144,9 +144,9 @@ export const de = {
     "success": "Wir haben Ihre Nachricht erhalten. Unser Team meldet sich über die angegebenen Kontaktdaten. Ihre Daten werden gemäß unserer Datenschutzerklärung verarbeitet.",
     "successPrivacyLink": "Datenschutzerklärung",
     "requiredField": "* Pflichtfeld",
-    "nextStepHelper": "Innerhalb der Geschäftszeiten antworten wir in der Regel noch am selben Tag, spätestens jedoch am nächsten Werktag melden wir uns bei Ihnen. Wie lange die Angebotserstellung dauert, hängt vom Umfang und der Komplexität der Anfrage ab.",
-    "specialDataWarning": "Bitte übermitteln Sie über das Nachrichtenfeld keine besonderen Datenkategorien, strafrechtlichen Daten, klassifizierten Daten, Geschäftsgeheimnisse oder detaillierten Privatlebensinformationen über Dritte. Solche Angelegenheiten erfordern eine gesonderte Vertrags- und Datenschutzabstimmung.",
-    "specialDataWarningLink": "Nutzungsbedingungen, Abschnitt 4",
+    "nextStepHelper": "Innerhalb der Geschäftszeiten antworten wir in der Regel noch am selben Tag, spätestens jedoch am nächsten Arbeitstag melden wir uns bei Ihnen. Wie lange die Angebotserstellung dauert, hängt vom Umfang und der Komplexität der Anfrage ab.",
+    "specialDataWarning": "Bitte übermitteln Sie über das Nachrichtenfeld keine besonderen Kategorien personenbezogener Daten, Daten über strafrechtliche Verurteilungen und Straftaten, Verschlusssachen, Geschäftsgeheimnisse oder detaillierten Angaben zum Privatleben Dritter. Solche Angelegenheiten erfordern eine gesonderte Vertrags- und Datenschutzabstimmung.",
+    "specialDataWarningLink": "Rechtliche Hinweise, Abschnitt 4",
     "privateInvestigation": "Privatermittlung",
     "layeredNotice": "Mit dem Absenden bestätigen Sie die Kenntnisnahme unserer",
     "layeredNoticeLink": "Datenschutzerklärung",
@@ -166,18 +166,18 @@ export const de = {
     "rights": "© 2026 Avenir Facility Management Kft. · Alle Rechte vorbehalten.",
     "legalTitle": "Rechtliches",
     "privacy": "Datenschutz",
-    "terms": "Nutzungsbedingungen",
+    "terms": "Rechtliche Hinweise",
     "impressum": "Impressum",
     "companyNumberLabel": "Handelsregisternummer",
     "taxNumberLabel": "Steuernummer",
     "headquartersLabel": "Sitz",
-    "machineTranslationDisclaimer": "Diese Seite wurde maschinell aus dem Ungarischen übersetzt. Rechtlich verbindlich ist ausschließlich die ungarische Fassung."
+    "machineTranslationDisclaimer": "Diese Seite ist eine Übersetzung aus dem Ungarischen. Rechtlich verbindlich ist ausschließlich die ungarische Fassung."
   },
   // TRANSLATION DRAFT: review by user
   "certifications": {
     "sub": "Zertifikate",
     "title": "Zertifizierte Qualität.\nGeprüfte Prozesse.",
-    "intro": "Unsere Abläufe im Qualitätsmanagement und in der Informationssicherheit werden von unabhängigen Zertifizierungsstellen überprüft. Die Zertifikate bilden die Grundlage für dokumentierte, nachvollziehbare und kontinuierlich verbesserte Prozesse.",
+    "intro": "Unsere Qualitätsmanagement- und Informationssicherheitsmanagementsysteme werden von unabhängigen Zertifizierungsstellen überprüft. Die Zertifikate bilden die Grundlage für dokumentierte, nachvollziehbare und kontinuierlich verbesserte Prozesse.",
     "qualityManagement": "Qualitätsmanagement",
     "informationSecurity": "Informationssicherheit",
     "standardLabel": "Norm",
@@ -187,9 +187,9 @@ export const de = {
     "issuedOn": "Ausgestellt am",
     "validUntil": "Gültig bis",
     "accreditation": "Akkreditierung",
-    "iafMember": "IAF MLA-Mitglied",
+    "iafMember": "IAF-MLA-Mitglied",
     "downloadPdf": "Zertifikat herunterladen (PDF)",
-    "altText": "{name} Zertifikatslogo"
+    "altText": "Logo des Zertifikats {name}"
   },
   "serviceDetail": {
     "useCasesEyebrow": "Für wen",
@@ -238,7 +238,7 @@ export const de = {
       "sections": [
         { "id": "general", "title": "1. Allgemeine Bestimmungen", "body": "Anbieter (Marketing): Avenir Facility Management Kft.\nAnbieter (Rechtsname): Avenir Facility Management Szolgáltató Korlátolt Felelősségű Társaság.\nB2B-Klientel: Der Anbieter schließt über diese Website keine Verträge mit Verbrauchern. Verbindliche Sprache: Ungarisch." },
         { "id": "service", "title": "2. Beschreibung des Dienstes", "body": "Die Website ist informativ und KEINE Online-Vertragsplattform. Verträge entstehen separat in Schriftform." },
-        { "id": "contact-form", "title": "3. Nutzung des Kontaktformulars", "body": "Das Formular dient ausschließlich Angebotsanfragen und Kontakt. Der Dienstleister prüft jede eingegangene Anfrage und nimmt spätestens am nächsten Werktag über eine der angegebenen Kontaktmöglichkeiten Kontakt auf. Die Dauer der Angebotserstellung richtet sich nach dem Umfang und der Komplexität der Anfrage sowie nach dem erforderlichen Abstimmungsbedarf." },
+        { "id": "contact-form", "title": "3. Nutzung des Kontaktformulars", "body": "Das Formular dient ausschließlich Angebotsanfragen und Kontakt. Der Dienstleister prüft jede eingegangene Anfrage und nimmt spätestens am nächsten Arbeitstag über eine der angegebenen Kontaktmöglichkeiten Kontakt auf. Die Dauer der Angebotserstellung richtet sich nach dem Umfang und der Komplexität der Anfrage sowie nach dem erforderlichen Abstimmungsbedarf." },
         { "id": "private-investigation", "title": "4. Ausschluss besonderer Datenkategorien und Privatdetektiv-Angelegenheiten aus dem Formular", "body": "Bitte übermitteln Sie keine besonderen Datenkategorien, strafrechtlichen Daten, klassifizierten Daten oder detaillierten Privatlebensinformationen über Dritte. Privatdetektivtätigkeit erfolgt nur unter Lizenz 01030-822/4925-3/2018, gemäß SzVMt., auf Basis schriftlicher Beauftragung." },
         { "id": "licenses", "title": "5. Betriebslizenzen", "body": "a) Bewachung — 01030-822/4926-7/2023, gültig bis 31.01.2028\nb) Sicherheitstechnik-Planer-Installateur — 01030-822/4927-3/2018, bis Widerruf\nc) Privatdetektivtätigkeit — 01030-822/4925-3/2018, bis Widerruf\nd) Nationale Sicherheitsregister-Eintragung — AH/37595-14/2024-2, Überprüfung bis 30.06.2026, Vbt. § 120" },
         { "id": "ip", "title": "6. Geistiges Eigentum", "body": "Sämtliche Inhalte sind urheberrechtlich geschützt. Kommerzielle Verwendung ohne schriftliche Genehmigung untersagt." },

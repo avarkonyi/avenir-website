@@ -167,7 +167,7 @@ export const RECRUITMENT_PRIVACY_CONTENT: Record<
       {
         id: "remedies",
         title: "12. Remedies",
-        body: "For any question or complaint relating to data processing, applicants may first turn to the Controller or the Data Protection Officer.\n\nSupervisory authority:\nNational Authority for Data Protection and Freedom of Information (NAIH)\nAddress: Falk Miksa utca 9-11, 1055 Budapest, Hungary\nPostal address: P.O. Box 9, 1363 Budapest\nPhone: +36 1 391 1400\nEmail: ugyfelszolgalat@naih.hu\nWeb: https://www.naih.hu\n\nApplicants may also turn to the courts. At the applicant's choice, the action may be brought before the regional court (törvényszék) of their place of residence or stay.",
+        body: "For any question or complaint relating to data processing, applicants may first turn to the Controller or the Data Protection Officer.\n\nSupervisory authority:\nNational Authority for Data Protection and Freedom of Information (NAIH)\nAddress: Falk Miksa utca 9-11, 1055 Budapest, Hungary\nPostal address: P.O. Box 9, 1363 Budapest\nPhone: +36 1 391 1400\nEmail: ugyfelszolgalat@naih.hu\nWeb: https://www.naih.hu\n\nApplicants may also turn to the courts. At the applicant's choice, the action may also be brought before the regional court (törvényszék) of their place of residence or stay.",
       },
     ],
     versionHistory: `Version history: Version 1.0 - Effective from ${PUBLICATION_DATE_EN}. First publication.`,

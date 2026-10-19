@@ -23,6 +23,19 @@ export function localizeHomepageService(
   return { name: row.name?.trim() || translated?.t || "", shortDesc: row.shortDesc?.trim() || translated?.d || "" };
 }
 
+/** Keep source-only prefill labels on the same locale overlays as CMS cards.
+ * Return only the eight existing service identifiers and their display names. */
+export function getContactServiceFallbackOptions(
+  locale: string,
+  services: readonly { readonly id: string; readonly t: string }[],
+): { slug: string; label: string }[] {
+  return Object.entries(SERVICE_IDS).flatMap(([slug, id]) => {
+    const name = services.find((service) => service.id === id)?.t ?? null;
+    const label = localizeHomepageService(locale, slug, { name, shortDesc: null }).name;
+    return label ? [{ slug, label }] : [];
+  });
+}
+
 export function localizeCareerField(
   locale: string, value: string | null,
   translations: Readonly<Record<string, string>> | undefined,
@@ -58,7 +71,7 @@ const KOREAN_SERVICE_DISPLAY: Record<
   biztonsagtechnika: {
     name: "보안 기술",
     shortDesc:
-      "CCTV, 출입 통제 및 경보 프로세스를 현장별 보안 모델에 맞춰 설계·운영하도록 지원하는 보안 기술 서비스입니다.",
+      "개인정보 보호를 고려한 기술 설계를 바탕으로 CCTV·출입 통제·경보 프로세스를 현장별 보안 모델에 연계합니다.",
   },
   "tavfelugyelet-vonuloszolgalat": {
     name: "원격 모니터링 및 출동 대응 서비스",
@@ -73,7 +86,7 @@ const KOREAN_SERVICE_DISPLAY: Record<
   rendezvenybiztositas: {
     name: "행사 보안",
     shortDesc:
-      "기업 행사, 초청 행사 및 공개 행사에서 출입 관리, 동선 지원, 구역 관리, 사건 기록 및 주최자 기준 에스컬레이션을 지원합니다.",
+      "기업 행사, 비공개 행사 및 공개 행사에서 출입 관리, 동선 지원, 구역 관리, 사건 기록 및 주최자 기준 에스컬레이션을 지원합니다.",
   },
   "hard-fm": {
     name: "Hard FM – 기술 시설 관리",

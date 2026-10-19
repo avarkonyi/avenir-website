@@ -61,12 +61,12 @@ const DE_REVIEW_SERVICE_DETAILS = {
       "Erfassung und Eskalation von Vorfällen",
       "Dienstbuch und abgestimmtes Berichtswesen",
       "Sicherheitsbegehung vor Ort und Protokollvorschlag",
-      "Anbindung an vorhandene Kamera-, Zutrittskontroll- oder Alarmprozesse, sofern der Standort dies erfordert"
+      "Anbindung an vorhandene Kamerasysteme, Zutrittskontrollanlagen oder Alarmprozesse, sofern der Standort dies erfordert"
     ],
     "processSteps": [
       {
         "title": "Erstabstimmung und Bedarfsaufnahme",
-        "body": "Wir sehen die Anfrage durch und melden uns spätestens am nächsten Werktag über die angegebenen Kontaktdaten. Wie lange die Angebotserstellung dauert, hängt vom Standort und der Komplexität der Anfrage ab."
+        "body": "Wir sehen die Anfrage durch und melden uns spätestens am nächsten Arbeitstag über die angegebenen Kontaktdaten. Wie lange die Angebotserstellung dauert, hängt vom Standort und der Komplexität der Anfrage ab."
       },
       {
         "title": "Begehung vor Ort und Überblick über die Risikopunkte",
@@ -122,7 +122,7 @@ const DE_REVIEW_SERVICE_DETAILS = {
       },
       {
         "q": "Wann ist eine Sicherheitsbegehung vor Ort sinnvoll?",
-        "a": "Eine Sicherheitsbegehung vor Ort ist besonders dann sinnvoll, wenn ein neues Objekt zu schützen ist, sich die Zutrittsordnung ändert, der Lieferverkehr zunimmt, wiederkehrende Vorfälle auftreten oder die bestehenden Schutz- und Technikprozesse transparenter gestaltet werden sollen."
+        "a": "Eine Sicherheitsbegehung vor Ort ist besonders dann sinnvoll, wenn ein neues Objekt zu schützen ist, sich die Zutrittsordnung ändert, der Lkw-Verkehr zunimmt, wiederkehrende Vorfälle auftreten oder die bestehenden Schutz- und Technikprozesse transparenter gestaltet werden sollen."
       },
       {
         "q": "In welcher Vertragsform sollte der Objektschutz starten?",
@@ -130,7 +130,7 @@ const DE_REVIEW_SERVICE_DETAILS = {
       },
       {
         "q": "Wie erfolgt die Zutrittskontrolle für Besucher und Lieferanten?",
-        "a": "Die Zutrittsordnung gestalten wir auf Grundlage der Begehung vor Ort. Festgelegt werden kann, wer wann mit welcher Berechtigung Zutritt erhält, wie die Besucherregistrierung, der Zutritt von Lieferanten, die Abwicklung des Lieferverkehrs und die Dokumentation des Austritts erfolgen."
+        "a": "Die Zutrittsordnung gestalten wir auf Grundlage der Begehung vor Ort. Festgelegt werden kann, wer wann mit welcher Berechtigung Zutritt erhält, wie die Besucherregistrierung, der Zutritt von Lieferanten, die Abwicklung des Lkw-Verkehrs und die Dokumentation des Austritts erfolgen."
       },
       {
         "q": "Lässt sich der Objektschutz mit Kamera- oder Zutrittskontrollsystemen verbinden?",
@@ -180,7 +180,7 @@ const DE_REVIEW_SERVICE_DETAILS = {
     "imageUrl": null,
     "name": "Empfangs- und Pförtnerdienst",
     "shortDesc": "Pförtnerdienst mit Zutrittskontrolle, Besuchermanagement, Schlüsselverwaltung und protokolliertem Tagesablauf für Bürogebäude und Unternehmensstandorte.",
-    "longDesc": "Der Pförtnerdienst ist keine bloße Präsenz am Eingang, sondern einer der wichtigsten Kontrollpunkte des täglichen Betriebs. Die Leistung kann je nach Bedarf des Standorts den Empfang von Besuchern, die Besucherregistrierung, die Zutrittskontrolle von Lieferanten und Nachunternehmern, die Schlüsselverwaltung, die Annahme von Paketen, die Auskunftserteilung und die Meldung außergewöhnlicher Ereignisse unterstützen.\n\nAuf Grundlage einer Begehung vor Ort legt Avenir das Pförtner- und Empfangsprotokoll fest: wer mit welcher Berechtigung und mit welcher Dokumentation Zutritt erhält, wann eine Benachrichtigung erforderlich ist und welche Ereignisse zu protokollieren oder zu eskalieren sind. Bei der Verarbeitung von Besucher- und Zutrittsdaten sind auch die Zweckbindung, die zeitlich begrenzte Aufbewahrung und die angemessene Information Bestandteil des Empfangs- und Pförtnerprozesses.\n\nDer Pförtnerdienst kann an den Objektschutz vor Ort, an Zutrittskontroll- oder Kamerasysteme oder an interne Betriebsprozesse angebunden werden. Der Auftraggeber erhält einen klaren Dienstrahmen: mit Dienstbuch, abgestimmtem Berichtswesen und einem benannten verantwortlichen Ansprechpartner.",
+    "longDesc": "Der Pförtnerdienst ist keine bloße Präsenz am Eingang, sondern einer der wichtigsten Kontrollpunkte des täglichen Betriebs. Die Leistung kann je nach Bedarf des Standorts den Empfang von Besuchern, die Besucherregistrierung, die Zutrittskontrolle von Lieferanten und Nachunternehmern, die Schlüsselverwaltung, die Annahme von Paketen, die Auskunftserteilung und die Meldung außergewöhnlicher Ereignisse unterstützen.\n\nAuf Grundlage einer Begehung vor Ort legt Avenir das Pförtner- und Empfangsprotokoll fest: wer mit welcher Berechtigung und mit welcher Dokumentation Zutritt erhält, wann eine Benachrichtigung erforderlich ist und welche Ereignisse zu protokollieren oder zu eskalieren sind. Bei der Verarbeitung von Besucher- und Zutrittsdaten sind auch die Zweckbindung, die zeitlich begrenzte Aufbewahrung und die angemessene Information der Betroffenen Bestandteil des Empfangs- und Pförtnerprozesses.\n\nDer Pförtnerdienst kann an den Objektschutz vor Ort, an Zutrittskontroll- oder Kamerasysteme oder an interne Betriebsprozesse angebunden werden. Der Auftraggeber erhält einen klaren Dienstrahmen: mit Dienstbuch, abgestimmtem Berichtswesen und einem benannten verantwortlichen Ansprechpartner.",
     "seoTitle": "Empfangs- und Pförtnerdienst für Unternehmen | Avenir",
     "seoDescription": "Pförtnerdienst mit Zutrittskontrolle, Besuchermanagement, Schlüsselverwaltung und protokolliertem Tagesablauf für Bürogebäude und Unternehmensstandorte.",
     "valueProposition": "Der Empfangs- und Pförtnerdienst ist der erste Betriebspunkt, an dem Besucher, Lieferanten, Mitarbeiter und Mieter auf die Regeln des Standorts treffen. Ziel von Avenir ist, dass dieser Punkt geordnet, zuvorkommend, nachvollziehbar und sicherheitsseitig konsequent funktioniert.",
@@ -189,7 +189,7 @@ const DE_REVIEW_SERVICE_DETAILS = {
       "Empfangsbetrieb von Bürogebäuden und Businesscentern",
       "Pforten- und Zutrittspunkte von Logistik- und Industriestandorten",
       "Standorte mit Mieter-, Mitarbeiter- und Besucherverkehr",
-      "Objekte mit Lieferanten-, Kurier- und Lieferverkehr",
+      "Objekte mit Lieferanten-, Kurier- und Lkw-Verkehr",
       "Unternehmensstandorte, an denen ein geordneter erster Eindruck und eine geregelte Zutrittskontrolle wichtig sind"
     ],
     "includedItems": [
@@ -204,7 +204,7 @@ const DE_REVIEW_SERVICE_DETAILS = {
     "processSteps": [
       {
         "title": "Erstabstimmung und Aufnahme des Betriebsbedarfs",
-        "body": "Wir sehen die Anfrage durch und melden uns spätestens am nächsten Werktag über die angegebenen Kontaktdaten. Wie lange die Angebotserstellung dauert, hängt vom Standort und der Komplexität der Anfrage ab."
+        "body": "Wir sehen die Anfrage durch und melden uns spätestens am nächsten Arbeitstag über die angegebenen Kontaktdaten. Wie lange die Angebotserstellung dauert, hängt vom Standort und der Komplexität der Anfrage ab."
       },
       {
         "title": "Begehung vor Ort und Überblick über Eingänge und Besucher- bzw. Lieferantenströme",
@@ -250,7 +250,7 @@ const DE_REVIEW_SERVICE_DETAILS = {
       },
       {
         "title": "Gästeempfang und Zutrittskontrolle in einem Ablauf",
-        "body": "Die Empfangs- und Pförtnerprotokolle verbinden den zuvorkommenden Umgang mit Besuchern mit kontrollierter Zutrittskontrolle, Eskalation und Berichtswesen, sodass der Empfangsbetrieb und die Sicherheitsroutinen denselben Standortregeln folgen."
+        "body": "Die Empfangs- und Pförtnerprotokolle verbinden den zuvorkommenden Umgang mit Besuchern mit kontrolliertem Zutritt, Eskalation und Berichtswesen, sodass Empfangs- und Pfortenbetrieb sowie die Sicherheitsroutinen denselben Standortregeln folgen."
       }
     ],
     "faq": [
@@ -264,7 +264,7 @@ const DE_REVIEW_SERVICE_DETAILS = {
       },
       {
         "q": "Worin unterscheidet sich der Pförtnerdienst vom Objektschutz?",
-        "a": "Der Pförtnerdienst konzentriert sich vor allem auf die Eingangs-, Empfangs- und Durchgangsbereiche, während der Objektschutz eine breitere Sicherheitspräsenz mit Kontrollgängen und Vorfallbearbeitung bedeuten kann. Beide Leistungen lassen sich bei Bedarf aufeinander abstimmen."
+        "a": "Der Pförtnerdienst konzentriert sich vor allem auf Eingang, Empfang und die Abwicklung des täglichen Personen- und Lieferverkehrs, während der Objektschutz eine breitere Sicherheitspräsenz mit Kontrollgängen und Vorfallbearbeitung bedeuten kann. Beide Leistungen lassen sich bei Bedarf aufeinander abstimmen."
       },
       {
         "q": "Kann der Lieferanten- und Kurierverkehr abgewickelt werden?",
@@ -306,15 +306,15 @@ const DE_REVIEW_SERVICE_DETAILS = {
     "icon": "eye",
     "imageUrl": null,
     "name": "Mystery Shopping und Serviceaudit",
-    "shortDesc": "Mystery Shopping, Brand Audit, Testfahrt und Serviceaudit zur Prüfung von Kundenerlebnis, Prozesstreue und Compliance-Aspekten.",
-    "longDesc": "Mystery Shopping ist keine einfache Kontrolle, sondern eine geplante und dokumentierte Messung der Servicequalität. Avenir legt in Abstimmung mit dem Auftraggeber den Prüfumfang des Audits fest, entwickelt das Szenario und die Bewertungskriterien, schult den Tester und führt die Prüfung anschließend in einer realen Kundensituation durch: als Testkauf, Geschäftsvorgang, Standortbesuch, Testfahrt oder an einem anderen Kundenkontaktpunkt.\n\nDer Prüfumfang legt fest, welche Servicepunkte, Prozessschritte, Markenstandards, Kommunikationsanforderungen, Informationspflichten oder Compliance-Aspekte zu prüfen sind. Ziel ist nicht die Fehlersuche um ihrer selbst willen, sondern dass die Geschäftsleitung ein genaues, strukturiertes Bild vom tatsächlichen Kundenerlebnis erhält.\n\nDie Leistung ist in mehreren Formen einsetzbar. Das Brand Audit prüft Erscheinungsbild, visuelle Standards, Sauberkeit, Atmosphäre und Servicestandards. Das Situation Shopping testet konkrete Kundensituationen, Fragen, Konflikte oder Prozessschritte. Das Serviceaudit oder die Testfahrt kann eine vollständige Customer Journey untersuchen, etwa in Personenbeförderungs-, Kundenservice- oder Vor-Ort-Bedienprozessen.\n\nAvenir erstellt einen strukturierten Bericht über Beobachtungen, wiederkehrende Muster, Risikopunkte und Verbesserungsempfehlungen. Die Ergebnisse besprechen wir gemeinsam mit dem Auftraggeber, damit sie Entscheidungen zu Servicequalität, Prozessverbesserung und abgestimmten Kontrollpunkten unterstützen.",
+    "shortDesc": "Mystery Shopping, Brand Audit, Testfahrt als Fahrgast und Serviceaudit zur Prüfung von Kundenerlebnis, Prozesstreue und Compliance-Aspekten.",
+    "longDesc": "Mystery Shopping ist keine einfache Kontrolle, sondern eine geplante und dokumentierte Messung der Servicequalität. Avenir legt in Abstimmung mit dem Auftraggeber den Prüfumfang des Audits fest, entwickelt das Szenario und die Bewertungskriterien, schult den Tester und führt die Prüfung anschließend in einer realen Kundensituation durch: als Testkauf, Geschäftsvorgang, Standortbesuch, Testfahrt als Fahrgast oder an einem anderen Kundenkontaktpunkt.\n\nDer Prüfumfang legt fest, welche Servicepunkte, Prozessschritte, Markenstandards, Kommunikationsanforderungen, Informationspflichten oder Compliance-Aspekte zu prüfen sind. Ziel ist nicht die Fehlersuche um ihrer selbst willen, sondern dass die Geschäftsleitung ein genaues, strukturiertes Bild vom tatsächlichen Kundenerlebnis erhält.\n\nDie Leistung ist in mehreren Formen einsetzbar. Das Brand Audit prüft Erscheinungsbild, visuelle Standards, Sauberkeit, Atmosphäre und Servicestandards. Das Situation Shopping testet konkrete Kundensituationen, Fragen, Konflikte oder Prozessschritte. Das Serviceaudit oder die Testfahrt als Fahrgast kann eine vollständige Customer Journey untersuchen, etwa in Personenbeförderungs-, Kundenservice- oder Vor-Ort-Bedienprozessen.\n\nAvenir erstellt einen strukturierten Bericht über Beobachtungen, wiederkehrende Muster, Risikopunkte und Verbesserungsempfehlungen. Die Ergebnisse besprechen wir gemeinsam mit dem Auftraggeber, damit sie Entscheidungen zu Servicequalität, Prozessverbesserung und abgestimmten Kontrollpunkten unterstützen.",
     "seoTitle": "Mystery Shopping und Serviceaudit | Avenir",
-    "seoDescription": "Mystery Shopping, Brand Audit, Testfahrt und Serviceaudit zur Prüfung von Kundenerlebnis, Prozesstreue und Compliance-Aspekten.",
+    "seoDescription": "Mystery Shopping, Brand Audit, Testfahrt als Fahrgast und Serviceaudit zur Prüfung von Kundenerlebnis, Prozesstreue und Compliance-Aspekten.",
     "valueProposition": "Mystery Shopping und Serviceaudit zeigen in realen Kundensituationen, was der Kunde erlebt, ob der vorgesehene Prozess eingehalten wird, ob Marken-, Informations- und Servicestandards erfüllt werden und wo Qualitäts-, Reputations- oder Compliance-Risiken sichtbar werden.",
     "highlights": [],
     "useCases": [
       "Testkäufe in Geschäften, an Servicepunkten oder in Kundenservicesituationen",
-      "Testfahrten bei Taxi-, Personenbeförderungs- oder Verkehrsdienstleistungen",
+      "Testfahrten als Fahrgast bei Taxi-, Personenbeförderungs- oder Verkehrsdienstleistungen",
       "Brand Audit: Prüfung von Erscheinungsbild, Sauberkeit, visueller Präsenz und Servicestandards",
       "Situation Shopping: Test konkreter Kundensituationen, Fragen oder Konfliktsituationen",
       "Untersuchung der Customer Journey und des Besuchererlebnisses",
@@ -323,7 +323,7 @@ const DE_REVIEW_SERVICE_DETAILS = {
     ],
     "includedItems": [
       "Abstimmung von Auditziel, Prüfumfang und Bewertungskriterien",
-      "Entwicklung des Testkauf-, Testfahrt- oder Customer-Journey-Szenarios",
+      "Entwicklung des Szenarios für einen Testkauf, eine Testfahrt als Fahrgast oder eine Customer Journey",
       "Auswahl der Methodik: Brand Audit oder Situation Shopping",
       "Messung der Servicequalität in realer Kundensituation",
       "Bewertung von Customer Journey, Kommunikation, Prozesstreue und Bedienung",
@@ -334,14 +334,14 @@ const DE_REVIEW_SERVICE_DETAILS = {
     "processSteps": [
       {
         "title": "Abstimmung von Auditziel und Prüfumfang",
-        "body": "Wir legen fest, welche geschäftliche, servicequalitäts- oder compliance-bezogene Frage das Audit beantworten soll und welche Prozesse genau Gegenstand der Prüfung sind."
+        "body": "Wir legen fest, welche geschäftliche, servicequalitäts- oder compliancebezogene Frage das Audit beantworten soll und welche Prozesse genau Gegenstand der Prüfung sind."
       },
       {
         "title": "Entwicklung der Bewertungskriterien und des Szenarios",
-        "body": "Wir definieren die Messpunkte, die Markenstandards, die Kommunikations- und Informationsanforderungen sowie das Testkauf-, Testfahrt- oder Customer-Journey-Szenario."
+        "body": "Wir definieren die Messpunkte, die Markenstandards, die Kommunikations- und Informationsanforderungen sowie das Szenario für einen Testkauf, eine Testfahrt als Fahrgast oder eine Customer Journey."
       },
       {
-        "title": "Durchführung von Brand Audit, Situation Shopping, Testkauf oder Testfahrt",
+        "title": "Durchführung von Brand Audit, Situation Shopping, Testkauf oder Testfahrt als Fahrgast",
         "body": "Das Audit erfolgt nach dem freigegebenen Prüfumfang in realer Kundensituation, mit Fokus auf die Messung des Serviceprozesses, des Kundenerlebnisses und der vorab festgelegten Compliance-Punkte."
       },
       {
@@ -386,7 +386,7 @@ const DE_REVIEW_SERVICE_DETAILS = {
       },
       {
         "q": "Wie wird der Prüfumfang festgelegt, und wie bleibt die Prüfung im vereinbarten Rahmen?",
-        "a": "Der Prüfumfang wird vor der Durchführung festgelegt. Avenir definiert vorab das Ziel, das Szenario, die Prüfkriterien, die Berichtsform und die zulässigen Beobachtungspunkte. Die Feststellungen beziehen sich auf die vereinbarten Servicekriterien und Verbesserungsziele und erscheinen nicht als rechtliche Schlussfolgerung oder disziplinarischer Beweis."
+        "a": "Der Prüfumfang wird vor der Durchführung festgelegt. Avenir definiert vorab das Ziel, das Szenario, die Prüfkriterien, die Berichtsform und die zulässigen Beobachtungspunkte. Die Feststellungen beziehen sich auf die vereinbarten Servicekriterien und Verbesserungsziele und erscheinen nicht als rechtliche Schlussfolgerung oder Beweismittel für disziplinarische Maßnahmen."
       },
       {
         "q": "Was kann im Rahmen des Serviceaudits geprüft werden?",
@@ -406,7 +406,7 @@ const DE_REVIEW_SERVICE_DETAILS = {
       },
       {
         "q": "Ist die Methode auf Verkehrs- oder Service-Customer-Journeys anwendbar?",
-        "a": "Ja. Im Rahmen einer Testfahrt oder einer Service-Customer-Journey können beispielsweise Information, Bedienung, Rechnungs- oder Belegausgabeprozesse, die Einhaltung von Verhaltensstandards und die Erfüllung vorab festgelegter Service- oder Compliance-Kriterien geprüft werden."
+        "a": "Ja. Im Rahmen einer Testfahrt als Fahrgast oder einer Service-Customer-Journey können beispielsweise Information, Bedienung, Rechnungs- oder Belegausgabeprozesse, die Einhaltung von Verhaltensstandards und die Erfüllung vorab festgelegter Service- oder Compliance-Kriterien geprüft werden."
       },
       {
         "q": "Worin unterscheidet sich Mystery Shopping von einer Privatermittlung?",
@@ -445,7 +445,7 @@ const DE_REVIEW_SERVICE_DETAILS = {
       "Festivals und Open-Air-Kulturveranstaltungen",
       "Konzerte und öffentliche Indoor-Veranstaltungen",
       "Sportveranstaltungen und Turniere",
-      "Veranstaltungen mit VIP-, Backstage-, geschlossenen oder besonders geschützten Bereichen",
+      "Veranstaltungen mit VIP-, Backstage-, geschlossenen oder priorisierten Bereichen",
       "Events mit mehreren Zutrittspunkten, Besucherströmen oder Koordinationsbedarf mit der Veranstaltungsleitung",
       "Veranstaltungen, die Vorfallerfassung und einen Eskalationsrahmen erfordern"
     ],
@@ -453,7 +453,7 @@ const DE_REVIEW_SERVICE_DETAILS = {
       "Zutrittskontrolle und Management der Zutrittspunkte",
       "Unterstützung der Gäste- und Besucherströme",
       "Management von Zonen, Randbereichen und geschlossenen Bereichen",
-      "Betreuung von VIP-, Backstage- oder besonders geschützten Bereichen, sofern der Veranstaltungscharakter dies erfordert",
+      "Betreuung von VIP-, Backstage- oder priorisierten Bereichen, sofern der Veranstaltungscharakter dies erfordert",
       "Konfliktprävention und Vorfalleskalation",
       "Vorfallerfassung und Bericht zur Veranstaltungssicherheit",
       "Management mehrerer Zutrittspunkte bei öffentlichen oder größeren Veranstaltungen",
@@ -466,7 +466,7 @@ const DE_REVIEW_SERVICE_DETAILS = {
       },
       {
         "title": "Erfassung von Zutrittspunkten, Zonen und Kontaktwegen zur Veranstaltungsleitung",
-        "body": "Wir prüfen die Zutrittspunkte, geschlossene oder besonders geschützte Bereiche, die Richtungen der Gäste- oder Besucherströme, die Randbereiche und die Kontaktordnung der Veranstaltungsleitung."
+        "body": "Wir prüfen die Zutrittspunkte, geschlossene oder priorisierte Bereiche, die Richtungen der Gäste- oder Besucherströme, die Randbereiche und die Kontaktordnung der Veranstaltungsleitung."
       },
       {
         "title": "Festlegung der Sicherheitspersonal- und Eskalationsordnung",
@@ -496,7 +496,7 @@ const DE_REVIEW_SERVICE_DETAILS = {
       },
       {
         "title": "Management von Zonen, Randbereichen und geschlossenen Bereichen",
-        "body": "VIP-, Backstage-, geschlossene, besonders geschützte oder Randbereiche werden nach dem vereinbarten Sicherheitskonzept und den Zutrittsregeln betreut."
+        "body": "VIP-, Backstage-, geschlossene, priorisierte oder Randbereiche werden nach dem vereinbarten Sicherheitskonzept und den Zutrittsregeln betreut."
       },
       {
         "title": "Vorfallerfassung und Eskalation an die Veranstaltungsleitung",
@@ -522,7 +522,7 @@ const DE_REVIEW_SERVICE_DETAILS = {
       },
       {
         "q": "Können VIP- oder Backstage-Bereiche betreut werden?",
-        "a": "Ja, wenn der Veranstaltungsumfang dies vorsieht, kann sich der Sicherheitsbetrieb auch auf VIP-, Backstage-, geschlossene oder besonders geschützte Bereiche erstrecken. Die Berechtigungspunkte und Zutrittsregeln sind vorab festzulegen."
+        "a": "Ja, wenn der Veranstaltungsumfang dies vorsieht, kann sich der Sicherheitsbetrieb auch auf VIP-, Backstage-, geschlossene oder priorisierte Bereiche erstrecken. Die Berechtigungspunkte und Zutrittsregeln sind vorab festzulegen."
       },
       {
         "q": "Gibt es eine Garantie für eine konfliktfreie Veranstaltung?",
@@ -561,7 +561,7 @@ const DE_REVIEW_SERVICE_DETAILS = {
     "imageUrl": null,
     "name": "Sicherheitstechnik",
     "shortDesc": "Kamerasystem, Zutrittskontrolle, Einbruchmeldung und Alarmprozesse — abgestimmt mit Objektschutz und Pförtnerdienst.",
-    "longDesc": "Ziel der Sicherheitstechnik ist, dass sich die Sicherheit vor Ort nicht allein auf personelle Präsenz stützt, sondern auch gut handhabbare technische Unterstützung erhält. Dazu können das Kamerasystem, die Zutrittskontrollanlage, die Einbruchmeldung, der Alarmprozess, die Weiterleitung von Meldungen und die Dokumentation der Ereignisse gehören.\n\nAvenir behandelt den sicherheitstechnischen Betrieb nicht als isolierte Gerätebeschaffung. Auf Grundlage der Begehung vor Ort prüfen wir, wo sich Zutrittspunkte, schwach kontrollierte Zonen, wiederkehrende Ereignisse, kritische Bereiche und Prozesse befinden, in denen die Technik den Objektschutz, den Pförtnerdienst oder die Fernüberwachung unterstützen kann.\n\nAvenir bezieht bei der sicherheitstechnischen Bestandsaufnahme und Planung auch die Datenschutzaspekte ein: Der dokumentierte Zweck, der verhältnismäßige Erfassungsbereich, die Zugriffsberechtigungen, die Information der Betroffenen und die Speicherlogik werden auf den Betrieb des Standorts und den Datenschutzrahmen des Kunden abgestimmt. Dies unterstützt die datenschutzrechtliche Prüfung des Kunden; die Rechtsgrundlage und die abschließenden Datenschutzentscheidungen verbleiben beim Kunden und seinen Beratern.\n\nZiel ist eine transparente, wartbare und im Tagesbetrieb nutzbare sicherheitstechnische Ebene: eine Lösung, die nicht nur aufzeichnet, sondern Erkennung, Eskalation, Zutrittskontrolle, Berichtswesen und Entscheidungsfindung unterstützt.",
+    "longDesc": "Ziel der Sicherheitstechnik ist, dass sich die Sicherheit vor Ort nicht allein auf personelle Präsenz stützt, sondern auch gut handhabbare technische Unterstützung erhält. Dazu können das Kamerasystem, die Zutrittskontrollanlage, die Einbruchmeldung, der Alarmprozess, die Weiterleitung von Meldungen und die Dokumentation der Ereignisse gehören.\n\nAvenir behandelt den sicherheitstechnischen Betrieb nicht als isolierte Gerätebeschaffung. Auf Grundlage der Begehung vor Ort prüfen wir, wo es Zutrittspunkte, schwach kontrollierte Zonen, wiederkehrende Ereignisse, kritische Bereiche und Prozesse gibt, bei denen die Technik den Objektschutz, den Pförtnerdienst oder die Fernüberwachung unterstützen kann.\n\nAvenir bezieht bei der sicherheitstechnischen Bestandsaufnahme und Planung auch die Datenschutzaspekte ein: Der dokumentierte Zweck, der verhältnismäßige Erfassungsbereich, die Zugriffsberechtigungen, die Information der Betroffenen und die Speicherlogik werden auf den Betrieb des Standorts und den Datenschutzrahmen des Kunden abgestimmt. Dies unterstützt die datenschutzrechtliche Prüfung des Kunden; die Rechtsgrundlage und die abschließenden Datenschutzentscheidungen verbleiben beim Kunden und seinen Beratern.\n\nZiel ist eine transparente, wartbare und im Tagesbetrieb nutzbare sicherheitstechnische Ebene: eine Lösung, die nicht nur aufzeichnet, sondern Erkennung, Eskalation, Zutrittskontrolle, Berichtswesen und Entscheidungsfindung unterstützt.",
     "seoTitle": "Sicherheitstechnik für Unternehmensstandorte | Avenir",
     "seoDescription": "Kamerasystem, Zutrittskontrolle, Einbruchmeldung und Alarmprozesse — abgestimmt mit Objektschutz und Pförtnerdienst.",
     "valueProposition": "Die Sicherheitstechnik verbindet Kamerasystem, Zutrittskontrolle und Alarmprozesse zu einem standortgerechten Sicherheitssystem — mit dokumentiertem Zweck, verhältnismäßiger Abdeckung, Eskalation und betrieblicher Integration.",
@@ -589,7 +589,7 @@ const DE_REVIEW_SERVICE_DETAILS = {
       },
       {
         "title": "Identifikation kritischer Punkte, Zutrittszonen und Risikobereiche",
-        "body": "Wir identifizieren die Zonen, in denen Bewegungen, Berechtigungen, Lieferverkehr oder wiederkehrende Ereignisse technische Unterstützung erfordern."
+        "body": "Wir identifizieren die Zonen, in denen Bewegungen, Berechtigungen, Lkw-Verkehr oder wiederkehrende Ereignisse technische Unterstützung erfordern."
       },
       {
         "title": "Überprüfung der Kamera-, Zutritts-, Alarm- und Meldungsprozesse",
@@ -751,7 +751,7 @@ const DE_REVIEW_SERVICE_DETAILS = {
       },
       {
         "title": "Dokumentiertes Alarmverifikationsprotokoll",
-        "body": "Jede Meldung, jeder Prüfschritt und jede Eskalationsentscheidung wird im Ereignisprotokoll festgehalten, das gemäß der Servicevereinbarung rückverfolgbar ist."
+        "body": "Jede Meldung, jeder Prüfschritt und jede Eskalationsentscheidung wird im Ereignisprotokoll festgehalten, das gemäß der Servicevereinbarung abrufbar ist."
       },
       {
         "title": "Namentliche Kontaktkette und Eskalationsmatrix",
@@ -840,7 +840,7 @@ const DE_REVIEW_SERVICE_DETAILS = {
     "imageUrl": null,
     "name": "Hard FM – Technisches Gebäudemanagement",
     "shortDesc": "Geplante vorbeugende Instandhaltung, reaktive Störungsbearbeitung, Koordination von Fachfirmen und dokumentiertes Berichtswesen für den technischen Standortbetrieb.",
-    "longDesc": "Die Hard-FM-Leistung von Avenir bündelt die geplante vorbeugende Instandhaltung und die reaktive Störungsbearbeitung der technischen Anlagen von Unternehmens-, Industrie- und Logistikstandorten. Der Leistungsumfang kann die Gebäudesubstanz, gebäudetechnische und elektrische Anlagen, Sanitär- und HLK-Prozesse, kleinere technische Arbeiten, die Koordination von Fachfirmen und die dokumentierte Störungsverfolgung umfassen.\n\nWährend der Mobilisierung legt Avenir gemeinsam mit dem Kunden den Störungsmeldeweg, die Eskalationspunkte, die Dienstleisterverantwortlichkeiten, die Maßnahmendokumentation und den Berichtsrhythmus fest. Sind für HLK-, Elektro-, Sanitär- oder Pflichtprüfungsarbeiten Fachfirmen erforderlich, erfolgt deren Steuerung als Teil des vereinbarten Betriebsmodells — nicht als verdeckte Rückübertragung an den Kunden.\n\nHard FM kann als eigenständige technische Betriebsleistung funktionieren oder gemeinsam mit dem Pförtnerdienst, dem Objektschutz oder der Soft-FM-Leistung von Avenir am selben Standort. Im integrierten Betrieb sind Berichtsrhythmus, Eskalationskette und operative Kontaktpunkte aufeinander abgestimmt — der Kunde erhält kein fragmentiertes Dienstleisterfeedback, sondern ein einheitliches technisches Bild.",
+    "longDesc": "Die Hard-FM-Leistung von Avenir bündelt die geplante vorbeugende Instandhaltung und die reaktive Störungsbearbeitung der technischen Anlagen von Unternehmens-, Industrie- und Logistikstandorten. Der Leistungsumfang kann die Gebäudesubstanz, gebäudetechnische und elektrische Anlagen, Sanitär- und HLK-Prozesse, kleinere technische Arbeiten, die Koordination von Fachfirmen und die dokumentierte Störungsverfolgung umfassen.\n\nWährend der Mobilisierung legt Avenir gemeinsam mit dem Kunden den Störungsmeldeweg, die Eskalationspunkte, die Dienstleisterverantwortlichkeiten, die Maßnahmendokumentation und den Berichtsrhythmus fest. Sind für HLK-, Elektro-, Sanitär- oder Pflichtprüfungsarbeiten Fachfirmen erforderlich, erfolgt deren Steuerung als Teil des vereinbarten Betriebsmodells — nicht als verdeckte Rückübertragung an den Kunden.\n\nHard FM kann als eigenständige technische Betriebsleistung oder gemeinsam mit dem Pförtnerdienst, dem Objektschutz oder der Soft-FM-Leistung von Avenir am selben Standort erbracht werden. Im integrierten Betrieb sind Berichtsrhythmus, Eskalationskette und operative Kontaktpunkte aufeinander abgestimmt — der Kunde erhält kein fragmentiertes Dienstleisterfeedback, sondern ein einheitliches technisches Bild.",
     "seoTitle": "Hard FM – Technisches Gebäudemanagement | Avenir",
     "seoDescription": "Geplante vorbeugende Instandhaltung, reaktive Störungsbearbeitung, Koordination von Fachfirmen und dokumentiertes Berichtswesen für den technischen Standortbetrieb.",
     "valueProposition": "Hard FM bündelt die geplante vorbeugende Instandhaltung und die reaktive Störungsbearbeitung für Gebäudebetrieb, gebäudetechnische und elektrische Anlagen, Sanitär, HLK und den technischen Betrieb — mit dokumentierter Eskalation und Berichtswesen.",
@@ -1104,7 +1104,7 @@ const DE_REVIEW_RELATED_SERVICES_BY_SOURCE_SLUG = {
       "slug": "tavfelugyelet-vonuloszolgalat",
       "icon": "radar",
       "name": "Fernüberwachung und Interventionsdienst",
-      "shortDesc": "Fernüberwachung und Interventionsdienst mit Alarmempfang, Alarmverifikation, Eskalation, Ereignisprotokollierung und abgestimmtem Reaktionsprozess."
+      "shortDesc": "Fernüberwachung und Interventionsdienst mit Signalempfang, Alarmverifikation, Eskalation, Ereignisprotokollierung und abgestimmtem Reaktionsprozess."
     },
     {
       "slug": "mystery-shopping-helyszini-audit",
@@ -1202,7 +1202,7 @@ const DE_REVIEW_RELATED_SERVICES_BY_SOURCE_SLUG = {
       "slug": "tavfelugyelet-vonuloszolgalat",
       "icon": "radar",
       "name": "Fernüberwachung und Interventionsdienst",
-      "shortDesc": "Fernüberwachung und Interventionsdienst mit Alarmempfang, Alarmverifikation, Eskalation, Ereignisprotokollierung und abgestimmtem Reaktionsprozess."
+      "shortDesc": "Fernüberwachung und Interventionsdienst mit Signalempfang, Alarmverifikation, Eskalation, Ereignisprotokollierung und abgestimmtem Reaktionsprozess."
     },
     {
       "slug": "objektumorzes",
@@ -1266,7 +1266,7 @@ const DE_REVIEW_RELATED_SERVICES_BY_SOURCE_SLUG = {
       "slug": "tavfelugyelet-vonuloszolgalat",
       "icon": "radar",
       "name": "Fernüberwachung und Interventionsdienst",
-      "shortDesc": "Fernüberwachung und Interventionsdienst mit Alarmempfang, Alarmverifikation, Eskalation, Ereignisprotokollierung und abgestimmtem Reaktionsprozess."
+      "shortDesc": "Fernüberwachung und Interventionsdienst mit Signalempfang, Alarmverifikation, Eskalation, Ereignisprotokollierung und abgestimmtem Reaktionsprozess."
     },
     {
       "slug": "objektumorzes",

@@ -1,0 +1,62 @@
+{
+  "checkedAt": "2026-10-19",
+  "scope": "Legfeljebb háromperces, read-only kiegészítő vizsgálat",
+  "items": [
+    {
+      "id": "ENB-015",
+      "status": "részben igazolt; HU v2 nem talált",
+      "known": [
+        "A jelenlegi HU link elérhető hivatalos PDF, 2024. július 16-i elfogadású.",
+        "Az EDPB régi kiadványoldala kifejezetten a v2 által felváltottnak jelöli a kiadást.",
+        "A v2 hivatalos oldala 2026. január 23-i publikációt közöl; a letöltött PDF v2.0, elfogadva 2026. január 15-én.",
+        "A hivatalos v2 oldal most a 2026-04 könyvtárbeli EN PDF-re hivatkozik; ez olvasható.",
+        "A forrásban levő 2026-01 EN PDF-URL webes letöltése 403 választ adott; ez önmagában nem bizonyít minden felhasználóra kiterjedő hibás linket."
+      ],
+      "unknown": [
+        "A vizsgált hivatalos v2 oldal csak angol letöltést adott; célzott EDPB-keresésben magyar v2 nem került elő, de a teljes webhelyen való nemlétezését ez nem bizonyítja."
+      ],
+      "evidence": "lib/current-privacy-content.ts HU transfers: 2024-12 HU PDF; EN transfers: 2026-01 v2 EN PDF; a hivatalos EDPB kiadványoldalak és a megnyitott PDF-ek alapján a verzióeltérés igazolt.",
+      "action": "Az EN link technikai karbantartása a hivatalos oldalról igazolt 2026-04 PDF-re lehetséges; a HU szöveg és link ebben a körben változatlan, később a régi magyar változat jelölése és az aktuális angol v2 kiegészítő hivatkozása mérlegelhető, magyar v2 URL nem található ki.",
+      "sources": [
+        {
+          "url": "https://www.edpb.europa.eu/system/files/2024-12/edpb_dpf_faq-for-individuals_hu.pdf",
+          "evidence": "PDF címlap: 2024. július 16.; 5 oldal."
+        },
+        {
+          "url": "https://www.edpb.europa.eu/documents/other-guidance/eu-us-data-privacy-framework-faq-for-european-individuals_en",
+          "evidence": "A korábbi kiadványt a v2 felváltotta."
+        },
+        {
+          "url": "https://www.edpb.europa.eu/documents/other-guidance/eu-us-data-privacy-framework-faq-for-european-individuals-version-20_en",
+          "evidence": "2026. január 23.; egy angol PDF-letöltés."
+        },
+        {
+          "url": "https://www.edpb.europa.eu/system/files/2026-04/edpb_dpf_faq-for-individuals_v2_en.pdf",
+          "evidence": "PDF címlap és verziótörténet: Version 2.0, adopted 15 January 2026."
+        }
+      ]
+    },
+    {
+      "id": "EDU-041",
+      "status": "igazolt szemantikai pontosítás szükséges; nincs forrásmódosítás",
+      "known": [
+        "lib/homepage-schema.ts:117–123 a c.iafMlaMember boolean alapján az EducationalOccupationalCredential.additionalProperty mezőjéhez IAF MLA member=true tulajdonságot ad.",
+        "lib/schema-locale-copy.ts és lib/i18n/{hu,en,de,fr,ko,zh}.ts a tagság alanyát nem nevezi meg.",
+        "A live-before /en JSON-LD mindkét credentialje NAH akkreditációt és külön IAF MLA member=true értéket közöl; a recognizedBy szervezet MartonCert/MCert.",
+        "Az IAF hivatalos MLA Mark leírása megkülönbözteti az MLA-aláíró akkreditáló testületet és az általa akkreditált tanúsítót."
+      ],
+      "unknown": [
+        "Ez a háromperces vizsgálat nem értékelte újra a NAH aktuális aláírói scope-ját vagy a tanúsítványok érvényességét; az ISO megléte elfogadott."
+      ],
+      "evidence": "A kód közvetlenül a credentialhez rendeli a tagságállítást, nem kifejezetten a recognizedBy kibocsátóhoz; ezért az audit által jelzett szereptévesztési kockázat valós, de a pontos hiba alany nélküli/nem megfelelő credential-tulajdonság, nem bizonyított explicit MartonCert-tagságállítás.",
+      "action": "A publikus címke és schema property neve nevezze meg az akkreditáló testület aláírói státuszát (például Accreditation body is an IAF MLA signatory), vagy a credential kapcsolatát (Accreditation by an IAF MLA signatory); ezt minden érintett nyelven kell egységesíteni, a boolean/tanúsítási tény változtatása nélkül. A jelen feladatban sem HU, sem FR, sem közös forrás nem módosult.",
+      "sources": [
+        {
+          "url": "https://iaf.nu/en/mla-mark/",
+          "evidence": "Az akkreditáló testület MLA-aláíró, a tanúsító e testület által akkreditált; a hivatalos oldal 2026 óta archivált IAF-forrásként jelöli magát."
+        }
+      ]
+    }
+  ],
+  "ENB-011-clarification": "Azonos HU/EN szolgáltatói lista; nem fordításeltérés és nem új jogi jóváhagyási blokk. A végső levelezési adatút későbbi működési tényellenőrzés."
+}

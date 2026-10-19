@@ -37,7 +37,7 @@ test("responsible disclosure content includes required HU and EN sections withou
     "What to include",
     "Scope",
     "Nem engedélyezett tesztek",
-    "Out-of-scope testing",
+    "Testing that is not permitted",
     "Adatvédelem és kárminimalizálás",
     "Privacy and harm minimisation",
     "Visszajelzés",

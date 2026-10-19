@@ -1,0 +1,105 @@
+{
+  "checkedAt": "2026-10-19T09:31:30.035Z",
+  "scope": [
+    "EDU-019",
+    "FKZ-015",
+    "EDU-021",
+    "EDU-022",
+    "EDU-046"
+  ],
+  "provenance": {
+    "staging": {
+      "file": "staging-extras.json",
+      "target": "ep-twilight-sound-al2b7jsb",
+      "readOnly": true,
+      "selectedPublicRecords": {
+        "positions": 4,
+        "certifications": 2,
+        "news": 1
+      }
+    },
+    "live": {
+      "file": "C:\\Users\\andra\\Documents\\avenir weblap\\audit-artifacts\\translation-review-2026-10-19\\live-before.json",
+      "checkedAt": "2026-10-19T09:11:27.919Z"
+    },
+    "liveExtra": {
+      "file": "C:\\Users\\andra\\Documents\\avenir weblap\\audit-artifacts\\translation-review-2026-10-19\\live-extra-before.json",
+      "checkedAt": "2026-10-19T09:20:32.381Z"
+    }
+  },
+  "rows": [
+    {
+      "id": "EDU-019",
+      "status": "aktuális igazolt hiba",
+      "evidence": {
+        "record": "positions.id=1",
+        "hu": "Budapest / országosan",
+        "en": "Budapest, regional",
+        "de": "Budapest, Land",
+        "zh": "布达佩斯及周边",
+        "liveMatchesStaging": true
+      },
+      "action": "Külön CMS-javaslat: location_en/de/zh. A másik három aktív állás helyszíne Budapest és helyesen fordított.",
+      "optional": "A német álláscímek m/w/d bővítése opcionális HR-stílus; fordítási hiba vagy új jogi megfelelési állítás nem igazolt, ezért nincs a módosítási csomagban."
+    },
+    {
+      "id": "FKZ-015",
+      "status": "aktuális igazolt hiba",
+      "evidence": {
+        "record": "certifications.iso-9001",
+        "currentScopeZh": "全面安保服务",
+        "stagingInlineEnglish": true,
+        "liveInlineEnglish": true
+      },
+      "action": "Külön CMS-javaslat: kizárólag a description_zh angol scope-részletének cseréje a már meglévő scope_zh értékre. Nincs szükség új kódbeli overlayre."
+    },
+    {
+      "id": "EDU-021",
+      "status": "már javítva; lokalizációs maradék",
+      "evidence": {
+        "standard": "MSZ ISO/IEC 27001:2023",
+        "stageDescriptionsUseCurrentStandard": true,
+        "liveDescriptionsUseCurrentStandard": true,
+        "scopeBoundedDescriptions": true,
+        "staleOverclaimsAbsent": true,
+        "deInlineEnglishScope": true
+      },
+      "action": "Az audit fő állításai (túlállított hatókör, 2022-es szabvány, Eigentumsschutz) már rendezettek. Egy maradék a description_de angol scope-részlete; külön CMS-javaslat. Standard → Norm opcionális stílus, kimarad."
+    },
+    {
+      "id": "EDU-022",
+      "status": "már javítva",
+      "evidence": {
+        "stagingIssuers": [
+          "MartonCert Rendszertanúsító Kft.",
+          "MCert Rendszertanúsító Kft."
+        ],
+        "liveCorrectIssuers": true,
+        "obsoleteIssuerAbsentInLiveAndStaging": true
+      },
+      "action": "Nincs szükséges módosítás."
+    },
+    {
+      "id": "EDU-046",
+      "status": "élesben javítva; stagingben aktuális igazolt hiba",
+      "evidence": {
+        "slug": "megujult-az-avenir-weboldala-es-arculata",
+        "liveRoute": "/en/hirek/megujult-az-avenir-weboldala-es-arculata",
+        "stagingOldPhrases": [
+          "manned guarding",
+          "reception and concierge services",
+          "security technology solutions",
+          "remote monitoring and response services"
+        ],
+        "proposedBodyExactlyMatchesLive": true,
+        "existingSourceTransform": "scripts/launch-news-en-service-label-replacements.ts"
+      },
+      "action": "Külön CMS-javaslat: body_en négy kifejezés cseréje. Az éles cikk jelenlegi törzsével egyező végállapot; csak staging eltérés."
+    }
+  ],
+  "proposedFields": 6,
+  "sourceWrites": false,
+  "databaseWrites": false,
+  "servicePackageModified": false,
+  "maintenanceNote": "scripts/seed.ts és scripts/update-positions-prod.ts megőrzik a régi helyszínértékeket; scripts/seed.ts és scripts/update-certifications-prod.ts az angol DE/ZH scope-részleteket. A CMS-javítás későbbi alkalmazásakor ezeket külön felül kell vizsgálni a visszaírás elkerülésére; most egyik sem változott."
+}
