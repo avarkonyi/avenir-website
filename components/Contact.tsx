@@ -426,10 +426,12 @@ export function Contact({
   };
 
   const inputStyle = (hasError: boolean): React.CSSProperties => ({
-    border: `1px solid ${hasError ? "#D1172E" : "#E2E8F0"}`,
+    border: `1px solid ${hasError ? "#D1172E" : "#CBD5E1"}`,
     borderRadius: 2,
-    padding: "12px 16px",
+    padding: "9.5px 16px",
+    fontFamily: "inherit",
     fontSize: 14,
+    lineHeight: "21px",
     color: "#0B1E3E",
     transition: "border-color 0.2s, box-shadow 0.2s",
     background: "#FAFBFC",
@@ -687,7 +689,7 @@ export function Contact({
                   }}
                   style={{
                     ...inputStyle(!!errors.service),
-                    color: selectedService ? "#0B1E3E" : "var(--avenir-text-placeholder)",
+                    color: selectedService ? "#0B1E3E" : "var(--avenir-text-soft)",
                     appearance: "none",
                   }}
                   aria-invalid={!!errors.service}
@@ -730,7 +732,7 @@ export function Contact({
                     setForm({ ...form, message: e.target.value });
                     if (errors.message) setErrors({ ...errors, message: undefined });
                   }}
-                  style={{ ...inputStyle(!!errors.message), resize: "vertical" }}
+                  style={{ ...inputStyle(!!errors.message), padding: "12px 16px", height: 94, minHeight: 94, resize: "vertical" }}
                   aria-invalid={!!errors.message}
                   aria-describedby={errors.message ? "contact-message-error" : undefined}
                 />
