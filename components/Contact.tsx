@@ -363,12 +363,9 @@ export function Contact({
       });
 
       if (res.ok) {
+        // Count the submission without forwarding any entered form values.
         trackAnalyticsEvent("contact_submit_success", {
           locale,
-          selected_service_key: selectedService || undefined,
-          selected_service_label: normalizedServiceOptions.find(
-            (option) => option.slug === selectedService,
-          )?.label,
         });
         setSent(true);
         return;

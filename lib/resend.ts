@@ -45,7 +45,6 @@ export async function sendContactNotification(
   ) {
     console.error(
       "[resend] BLOCKED — production cannot use sandbox sender",
-      from,
     );
     return { sent: false, reason: "production-sandbox-blocked" };
   }
@@ -66,12 +65,14 @@ export async function sendContactNotification(
       text: content.text,
     });
     if (error) {
-      console.warn("[resend] api-error:", error);
+      // Provider error objects may contain submitted data or arbitrary fields.
+      // Keep logs to fixed categories; delivery details stay with the provider.
+      console.warn("[resend] api-error");
       return { sent: false, reason: "api-error" };
     }
     return { sent: true, id: data?.id };
-  } catch (err) {
-    console.warn("[resend] exception:", err);
+  } catch {
+    console.warn("[resend] exception");
     return { sent: false, reason: "exception" };
   }
 }

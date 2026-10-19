@@ -2,12 +2,19 @@
 
 Last updated: 2026-06-13
 
+Contact/privacy status reconciliation: 2026-10-19. The owner-accepted Hungarian
+legal baseline is no longer awaiting blanket approval. The authorized live
+contact test #17 and notification delivery to info@afm.hu were confirmed.
+Current scoped open items and source fixes are recorded in
+[ISO/contact review](audits/2026-10-19/iso-contact-review.md); unrelated roadmap
+rows below retain their historical dates/status.
+
 This backlog supports the Phase 0-8 roadmap in `docs/product_roadmap.md`.
 It is a product/development tracking document, not a deployment approval.
 
 | ID | Phase | Priority | Area | Task | Why it matters | Status | Decision/owner needed | Notes |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| PL-001 | Phase 0 | P1 | Contact | Run real production contact form smoke with non-sensitive test content. | Confirms lead intake works after launch and env changes. | Pending verification | Operator / owner | Do not submit sensitive data. |
+| PL-001 | Phase 0 | P1 | Contact | Verify real production contact intake and notification delivery. | Confirms lead intake works after launch and env changes. | Verified 2026-10-19: admin #17 and owner-confirmed notification | Operator | Completed authorized test; repeat only for a relevant change with explicit submission approval. |
 | PL-002 | Phase 0 | P1 | SEO | Set up or verify Google Search Console and submit `https://www.afm.hu/sitemap.xml`. | Confirms production indexing pipeline. | Pending | Owner / SEO | Monitor coverage after submission. |
 | PL-003 | Phase 0 | P1 | SEO | Set up or verify Bing Webmaster Tools and submit sitemap. | Supports Bing/Copilot discovery. | Pending | Owner / SEO | Keep sitemap URL canonical. |
 | PL-004 | Phase 0 | P1 | SEO | Run IndexNow submission if approved. | Speeds discovery for updated URLs. | Pending approval | Owner | Do not run automatically without approval. |
@@ -18,7 +25,7 @@ It is a product/development tracking document, not a deployment approval.
 | PL-009 | Phase 0 | P1 | UX/Privacy | Review consent banner placement on mobile. | Keeps privacy UI visible but not intrusive. | Pending | UX/legal | Do not change consent behavior without review. |
 | PL-010 | Phase 0 | P1 | Navigation | Verify EN news route policy after deploy. | Avoids EN public 404 flows. | Completed in source; deploy verification pending | Content owner/dev | EN news index and launch article are now public/indexable in source: `/en/hirek` and `/en/hirek/megujult-az-avenir-weboldala-es-arculata`. The EN article is DB-backed; a guarded dry-run-default script now exists to align the two old service-name phrases to `On-site Security Guarding` and `Reception and Gatehouse Services` without changing routes or HU article copy. |
 | PL-011 | Phase 0 | P1 | Localization | Audit DE/ZH/KO partial-localization flows. | Avoids links to non-ready partial-locale routes. | Interim DE polish and DE legal review-mode links applied; recurring audit pending | Product/dev | DE footer/contact legal links point to DE legal review-mode routes; DE service/legal pages remain noindex and outside sitemap/hreflang. Keep route-aware language switcher/footer behavior. |
-| PL-012 | Phase 1 | P1 | Legal/privacy | Sync HU/EN/DE Privacy Policy versions. | Public legal pages must match current consent/contact behavior. | Source prepared; pending legal/DPO approval and deploy | Legal/DPO | HU/EN/DE v1.3 source adds GA4 processor/transfer clarification; see `docs/legal/privacy-policy-sync-review.md` and `docs/legal/google-analytics-processor-review.md`. |
+| PL-012 | Phase 1 | P1 | Legal/privacy | Keep translations and actual data flow aligned with the accepted Hungarian Privacy Policy. | Public legal pages must match current consent/contact behavior. | HU legal baseline accepted; operational follow-up remains | Operator / documentation owner | CDF-03/04/05 in `docs/audits/2026-10-19/iso-contact-review.md`: retention execution, provider inventory and account settings. Do not re-request blanket HU legal approval. |
 | PL-013 | Phase 1 | P1 | Analytics/privacy | Review analytics privacy documentation and GA4 consent copy. | Required before privacy notice is treated as final. | Source prepared; pending account evidence and DPO/legal sign-off | Legal/DPO | See `docs/legal/analytics-privacy-review.md`; no runtime analytics change in v1.3. |
 | PL-014 | Phase 1 | P1 | Analytics/privacy | Review GA4 Enhanced Measurement settings. | Account settings can collect more than code-level events. | Pending | Analytics/legal | Pay attention to form interactions. |
 | PL-015 | Phase 1 | P1 | Sensitive intake | Improve private investigation dropdown explanation. | Prevents sensitive personal data in general contact flow. | Superseded in source 2026-06-11: option removed from public dropdown | Legal/product | The "Magánnyomozás" option no longer appears in the public contact dropdown. The backend keeps accepting the legacy `magannyomozas` key so old/in-flight submits do not break. A dedicated special-intake flow (PL-059) is required before the option returns publicly. Legal-fact mentions in Impresszum/ÁSZF are unchanged. |

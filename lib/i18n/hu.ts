@@ -187,7 +187,6 @@ export const hu = {
     issuedOn: "Kiállítva",
     validUntil: "Érvényes",
     accreditation: "Akkreditáció",
-    iafMember: "IAF MLA tag",
     downloadPdf: "Tanúsítvány letöltése (PDF)",
     altText: "{name} tanúsítvány logó",
   },

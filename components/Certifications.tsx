@@ -4,6 +4,7 @@ import type { Translation } from "@/lib/i18n";
 import { db, certifications } from "@/lib/db";
 import { localizeCertificationText } from "@/lib/homepage-content";
 import { TrustCenterCallout } from "@/components/TrustCenterCallout";
+import { credentialId, SEO_DATA } from "@/lib/seo-data";
 
 // Locale-conditional column map for the wide-column-per-locale schema.
 // Mirrors the NEWS_COLS pattern in app/[locale]/page.tsx.
@@ -65,7 +66,6 @@ type CertRow = {
   issuerUrl: string | null;
   accreditationBody: string | null;
   accreditationNumber: string | null;
-  iafMlaMember: boolean;
   verifyUrl: string | null;
   issuedDate: string | null;
   expiresDate: string | null;
@@ -165,7 +165,6 @@ export async function Certifications({
       issuerUrl: certifications.issuerUrl,
       accreditationBody: certifications.accreditationBody,
       accreditationNumber: certifications.accreditationNumber,
-      iafMlaMember: certifications.iafMlaMember,
       verifyUrl: certifications.verifyUrl,
       issuedDate: certifications.issuedDate,
       expiresDate: certifications.expiresDate,
@@ -272,8 +271,9 @@ export async function Certifications({
                     so AI/SEO/screen-reader can read full credential context
                     while the visual stays minimal. */}
                 <span className="sr-only" itemProp="name">
-                  {cert.name}
+                  {cert.standardCode || cert.name}
                 </span>
+                <link itemProp="about" href={`${SEO_DATA.url}/#organization`} />
                 <span className="sr-only">{cert.fullName}</span>
                 {cert.description && (
                   <span className="sr-only" itemProp="description">
@@ -282,7 +282,7 @@ export async function Certifications({
                 )}
                 <span
                   className="sr-only"
-                  itemProp="recognizedBy"
+                  itemProp="issuedBy"
                   itemScope
                   itemType="https://schema.org/Organization"
                 >
@@ -294,7 +294,7 @@ export async function Certifications({
                 {cert.issuedDate && (
                   <time
                     className="sr-only"
-                    itemProp="dateCreated"
+                    itemProp="datePublished"
                     dateTime={cert.issuedDate}
                   >
                     {formatDate(cert.issuedDate, locale)}
@@ -310,16 +310,15 @@ export async function Certifications({
                   </time>
                 )}
                 {cert.credentialCategory && (
-                  <meta
-                    itemProp="credentialCategory"
-                    content={localizeCredentialCategory(locale, cert.credentialCategory) ?? undefined}
-                  />
+                  <span className="sr-only">
+                    {localizeCredentialCategory(locale, cert.credentialCategory)}
+                  </span>
                 )}
                 {cert.scope && (
-                  <meta itemProp="competencyRequired" content={cert.scope} />
+                  <span className="sr-only">{cert.scope}</span>
                 )}
-                {cert.standardCode && (
-                  <meta itemProp="identifier" content={cert.standardCode} />
+                {cert.certificateNumber && (
+                  <meta itemProp="identifier" content={cert.certificateNumber} />
                 )}
               </>
             );
@@ -332,7 +331,8 @@ export async function Certifications({
                 rel="noopener noreferrer"
                 className="certification-card certification-card-link"
                 itemScope
-                itemType="https://schema.org/EducationalOccupationalCredential"
+                itemType="https://schema.org/Certification"
+                itemID={credentialId(cert.slug)}
                 aria-label={altText}
               >
                 {innerContent}
@@ -342,7 +342,8 @@ export async function Certifications({
                 key={cert.id}
                 className="certification-card certification-card-static"
                 itemScope
-                itemType="https://schema.org/EducationalOccupationalCredential"
+                itemType="https://schema.org/Certification"
+                itemID={credentialId(cert.slug)}
               >
                 {innerContent}
               </article>

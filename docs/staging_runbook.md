@@ -726,7 +726,6 @@ Events emitted after consent only:
 - `service_quote_form_start`
 - `service_quote_form_submit_success`
 - `service_quote_form_submit_error`
-- `special_service_option_selected`
 
 PII guardrails:
 

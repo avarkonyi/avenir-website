@@ -38,10 +38,10 @@ test("unavailable consent storage fails closed without throwing", () => {
   assert.deepEqual(calls, []);
 });
 
-test("analytics event helper forwards only approved non-PII parameters", () => {
+test("public service link events retain service context without free-text fields", () => {
   const calls = installFakeWindow("accepted");
 
-  trackAnalyticsEvent("contact_submit_success", {
+  trackAnalyticsEvent("service_cta_click", {
     locale: "en",
     path: "/en",
     selected_service_key: "objektumorzes",
@@ -56,7 +56,7 @@ test("analytics event helper forwards only approved non-PII parameters", () => {
 
   assert.equal(calls.length, 1);
   assert.equal(calls[0][0], "event");
-  assert.equal(calls[0][1], "contact_submit_success");
+  assert.equal(calls[0][1], "service_cta_click");
   assert.deepEqual(calls[0][2], {
     locale: "en",
     path: "/en",

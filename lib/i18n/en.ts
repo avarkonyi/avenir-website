@@ -187,7 +187,6 @@ export const en = {
     "issuedOn": "Issued",
     "validUntil": "Valid until",
     "accreditation": "Accreditation",
-    "iafMember": "IAF MLA member",
     "downloadPdf": "Download certificate (PDF)",
     "altText": "{name} certification logo"
   },

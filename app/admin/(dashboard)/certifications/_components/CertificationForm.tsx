@@ -506,11 +506,16 @@ export function CertificationForm(props: Props) {
         </Field>
 
         <Checkbox
-          label="IAF MLA tag (nemzetközileg elismert akkreditáció)"
+          label="IAF MLA-jelölés szerepel a tanúsítványon"
           checked={state.iafMlaMember}
           onChange={(v) => update("iafMlaMember", v)}
           disabled={pending}
         />
+
+        <p style={helpTextStyle}>
+          A PDF-en szereplő jelölést rögzíti. Nem az Avenir vagy a tanúsító
+          IAF-tagságát jelenti; az akkreditáció a tanúsító szervezetre vonatkozik.
+        </p>
 
         <Field label="Ellenőrző URL (opcionális)">
           <input

@@ -1,6 +1,7 @@
 import { SEO_DATA, META_DESCRIPTIONS, credentialId, type SeoLocale } from "./seo-data";
 import { INDEXABLE_SERVICE_LOCALES } from "./services/publication";
-import { getSchemaLocaleCopy, localizeCredentialCategory } from "./schema-locale-copy";
+import { getSchemaLocaleCopy } from "./schema-locale-copy";
+import { accreditationVerificationUrl } from "./certification-proof";
 
 export type CertSchemaInput = {
   readonly slug: string;
@@ -16,7 +17,6 @@ export type CertSchemaInput = {
   readonly certificateNumber: string | null;
   readonly accreditationBody: string | null;
   readonly accreditationNumber: string | null;
-  readonly iafMlaMember: boolean;
   readonly pdfUrl: string | null;
 };
 
@@ -80,7 +80,7 @@ export function buildJsonLdSchemas(
           availableLanguage: [...copy.languages],
         },
       ],
-      hasCredential: credentialRefs,
+      hasCertification: credentialRefs,
       sameAs: [SEO_DATA.officialProfiles.linkedin],
     },
     {
@@ -94,54 +94,44 @@ export function buildJsonLdSchemas(
       // review surfaces and must not be advertised as site languages.
       inLanguage: [...INDEXABLE_SERVICE_LOCALES],
     },
-    // One top-level EducationalOccupationalCredential per certification.
+    // Management-system certificates belong to Avenir; accreditation belongs
+    // to the issuing certification body. The stable IDs are unchanged.
     // The Organization node references these via @id above.
     ...certs.map((c) => {
-      const additionalProperty: Record<string, unknown>[] = [];
-      if (c.standardCode) {
-        additionalProperty.push({
-          "@type": "PropertyValue",
-          name: copy.standard,
-          value: c.standardCode,
-        });
-      }
-      if (c.accreditationBody || c.accreditationNumber) {
-        additionalProperty.push({
-          "@type": "PropertyValue",
-          name: copy.accreditation,
-          value: [c.accreditationBody, c.accreditationNumber]
-            .filter(Boolean)
-            .join(" · "),
-        });
-      }
-      if (c.iafMlaMember) {
-        additionalProperty.push({
-          "@type": "PropertyValue",
-          name: copy.iafMember,
-          value: "true",
-        });
-      }
+      const accreditationUrl = accreditationVerificationUrl(c);
+      const accreditation = c.accreditationBody || c.accreditationNumber
+        ? {
+            "@type": "EducationalOccupationalCredential",
+            credentialCategory: copy.accreditation,
+            ...(accreditationUrl ? { url: accreditationUrl } : {}),
+            ...(c.accreditationNumber ? { identifier: c.accreditationNumber } : {}),
+            ...(c.accreditationBody ? {
+              recognizedBy: { "@type": "Organization", name: c.accreditationBody },
+            } : {}),
+          }
+        : null;
       const schema: Record<string, unknown> = {
         "@context": "https://schema.org",
-        "@type": "EducationalOccupationalCredential",
+        "@type": "Certification",
         "@id": credentialId(c.slug),
-        name: c.name,
-        recognizedBy: {
+        name: c.standardCode || c.name,
+        about: { "@id": orgId },
+        issuedBy: {
           "@type": "Organization",
           name: c.issuer,
           ...(c.issuerUrl ? { url: c.issuerUrl } : {}),
+          ...(accreditation ? { hasCredential: accreditation } : {}),
         },
       };
       if (c.fullName) schema.alternateName = c.fullName;
       if (c.description) schema.description = c.description;
-      if (c.credentialCategory)
-        schema.credentialCategory = localizeCredentialCategory(localeIso, c.credentialCategory);
-      if (c.certificateNumber) schema.identifier = c.certificateNumber;
-      if (c.issuedDate) schema.dateCreated = c.issuedDate;
+      if (c.certificateNumber) {
+        schema.identifier = c.certificateNumber;
+        schema.certificationIdentification = c.certificateNumber;
+      }
+      if (c.issuedDate) schema.datePublished = c.issuedDate;
       if (c.expiresDate) schema.expires = c.expiresDate;
       if (c.pdfUrl) schema.url = absoluteUrl(c.pdfUrl);
-      if (additionalProperty.length > 0)
-        schema.additionalProperty = additionalProperty;
       return schema;
     }),
   ];
