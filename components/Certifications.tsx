@@ -98,8 +98,6 @@ function CertificationLogo({
   const numPart = cert.name.replace(/^ISO\s*/, "");
   const gradId = `cert-grad-${cert.id}`;
   const titleId = `cert-title-${cert.id}`;
-  const compressedLabelLength =
-    categoryLabel && categoryLabel.length > 14 ? 150 : undefined;
   return (
     <svg
       viewBox="0 0 200 200"
@@ -115,10 +113,10 @@ function CertificationLogo({
         </linearGradient>
       </defs>
       <rect width="200" height="200" rx="4" fill={`url(#${gradId})`} />
-      <text x="100" y="62" textAnchor="middle" className="cert-iso">
+      <text x="100" y="55" textAnchor="middle" className="cert-iso">
         ISO
       </text>
-      <text x="100" y="108" textAnchor="middle" className="cert-num">
+      <text x="100" y="116" textAnchor="middle" className="cert-num">
         {numPart}
       </text>
       {categoryLabel && (
@@ -132,11 +130,9 @@ function CertificationLogo({
           />
           <text
             x="100"
-            y="164"
+            y="162"
             textAnchor="middle"
             className="cert-category"
-            textLength={compressedLabelLength}
-            lengthAdjust="spacingAndGlyphs"
           >
             {categoryLabel}
           </text>
