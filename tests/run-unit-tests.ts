@@ -36,3 +36,4 @@ import "./reply-email.test.ts";
 import "./schema-localization.test.ts";
 import "./approved-process-copy.test.ts";
 import "./monitoring-copy-patch.test.ts";
+import "./redis-health.test.ts";
