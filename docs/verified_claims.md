@@ -1,6 +1,24 @@
 # Verified Claims — Avenir
 
-Last updated: 2026-10-18
+Last updated: 2026-10-19
+
+## Owner confirmation — 19 October 2026
+
+The owner confirmed: "Saját felügyeleti központunk fogadja és kezeli a
+jelzéseket 24/7." Avenir's own monitoring centre receives and handles the
+connected sites' signals around the clock. Every signal, verification step
+and escalation decision is recorded and remains traceable. Recording is
+definite; this does not create a new promise to analyse every false alarm.
+
+For both Soft FM and Hard FM, the owner accepted own staff, approved
+subcontractors/specialist firms, and coordination of the client's existing
+providers as possible delivery models. Existing copy reflecting these models
+may remain. These facts do not need another general business approval.
+
+The monitoring-centre confirmation does not independently expand arrival
+guarantees, live-video observation, response-service scope or certification
+claims. Keep the existing site/contract boundaries and data-retention terms.
+Implementation and audit dispositions: `docs/audits/2026-10-19/monitoring-copy.md`.
 
 ## Owner confirmation — 18 October 2026
 
@@ -36,6 +54,9 @@ publicly. Do not infer public Trust Center approval from this file alone.
 The following claims may be used in public website copy when the wording follows the usage rules below:
 
 - 24/7 diszpécseri háttér
+- Saját felügyeleti központ: 24/7 jelzésfogadás és jelzéskezelés
+- Minden távfelügyeleti jelzés, ellenőrzési lépés és eszkalációs döntés naplózása
+- Soft FM és Hard FM: saját munkatársak, bevont szakcégek/alvállalkozók és az ügyfél szolgáltatóinak koordinálása
 - Fegyver nélküli vagy fegyveres vagyonőri jelenlét szerződéses igény és kockázati profil alapján
 - Vagyonvédelmi engedély: 01030-822/4926-7/2023
 - MSZ EN ISO 9001:2015, certificate 843579099, certification body MartonCert
@@ -163,6 +184,7 @@ and until a separate OPTEN-specific proof document is approved.
 ## Preferred Wording Patterns
 
 - Use: "24/7 diszpécseri háttérrel támogatható"
+- Remote-monitoring service: "Az Avenir saját felügyeleti központja 24/7 fogadja és kezeli a csatlakoztatott helyszínekről érkező riasztási, behatolásjelzési és kamerajelzéseket"
 - Avoid: "minden helyszínen garantált 24/7 reakció"
 - Use: "fegyver nélküli vagy fegyveres vagyonőri jelenlét a szerződéses igény és a helyszín kockázati profilja alapján"
 - Avoid: "fegyveres őrzést biztosítunk minden objektumban"
