@@ -51,7 +51,7 @@ const PILOT_HU = {
     "Riasztási jelzések kezelése, eszkaláció, eseményrögzítés és " +
     "vonulószolgálati folyamat biztonságtechnikával és őrzéssel összehangolva.",
   valueProposition:
-    "Az Avenir 24/7 diszpécseri háttérrel kezeli a csatlakoztatott " +
+    "Az Avenir saját felügyeleti központja 24/7 fogadja és kezeli a csatlakoztatott " +
     "helyszínekről érkező riasztási, behatolásjelzési és kamerajelzéseket; " +
     "minden jelzés ellenőrzött eszkalációs folyamatba kerül, és az " +
     "intézkedések eseménynaplóban rögzülnek.",
@@ -60,7 +60,7 @@ const PILOT_HU = {
     "csatlakoztatott helyszínekről érkező riasztási, behatolásjelzési és " +
     "kamerához kapcsolódó jelzéseket. A jelzések az előre rögzített " +
     "verifikációs protokoll szerint kerülnek ellenőrzésre az eszkaláció " +
-    "előtt. A téves jelzések naplózhatók és elemezhetők; a valós események " +
+    "előtt. A téves jelzéseket naplózzuk, és azok elemezhetők; a valós események " +
     "a helyszíni protokoll szerint a kijelölt kapcsolattartóhoz, " +
     "vonulószolgálathoz vagy külső eszkalációs útvonalhoz kerülnek. Az " +
     "intézkedések eseménynaplóban rögzülnek.\n\n" +
@@ -205,7 +205,7 @@ const PILOT_HU = {
         "A verifikációs lépés a helyszíni protokollban kerül meghatározásra. " +
         "Az Avenir a rendelkezésre álló jelzésforrások és az egyeztetett " +
         "ellenőrzési szabály alapján vizsgálja a riasztást az eszkaláció " +
-        "előtt. A téves jelzések naplózhatók és visszanézhetők; a valós " +
+        "előtt. A téves jelzéseket naplózzuk, és azok visszanézhetők; a valós " +
         "események a dokumentált kapcsolattartási és reagálási protokoll " +
         "szerint kerülnek eszkalálásra. Minden lépés eseménynaplóban rögzül.",
     },
@@ -244,7 +244,7 @@ const PILOT_HU = {
     {
       q: "Hogyan dokumentálhatók a riasztási jelzések és események?",
       a:
-        "A jelzések időbélyegzett eseménynaplóban rögzíthetők: mikor érkezett " +
+        "A jelzéseket időbélyegzett eseménynaplóban rögzítjük: mikor érkezett " +
         "a jelzés, milyen ellenőrzési lépés történt, milyen értesítési lánc " +
         "indult el, történt-e eszkaláció, milyen intézkedés következett, és " +
         "mi lett a lezárási státusz. A részleteket a helyszíni és szerződéses " +

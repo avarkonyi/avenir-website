@@ -698,10 +698,10 @@ const DE_REVIEW_SERVICE_DETAILS = {
     "imageUrl": null,
     "name": "Fernüberwachung und Interventionsdienst",
     "shortDesc": "Bearbeitung von Alarmmeldungen, Eskalation, Ereigniserfassung und Interventionsdienst — abgestimmt mit Sicherheitstechnik und Objektschutz.",
-    "longDesc": "Avenir nimmt die Alarm-, Einbruch- und kamerabezogenen Meldungen der aufgeschalteten Standorte gemäß der vereinbarten Aufschaltungskonfiguration entgegen. Die Meldungen werden vor der Eskalation nach dem vorab festgelegten Verifikationsprotokoll geprüft. Fehlalarme können protokolliert und ausgewertet werden; reale Ereignisse werden nach dem Standortprotokoll an den benannten Ansprechpartner, den Interventionsdienst oder den externen Eskalationsweg weitergeleitet. Die Maßnahmen werden im Ereignisprotokoll festgehalten.\n\nUmfasst die Leistung die Meldungsbearbeitung der Fernüberwachung, ist der Verifikationsschritt Teil des Betriebsverfahrens und wird je Ereignis dokumentiert. Die rechtlichen und vertraglichen Rahmenbedingungen der Fernüberwachung und des Interventionsdienstes werden in der Vorbereitungsphase abgestimmt; die externe Eskalation erfolgt nach dem vereinbarten Standortprotokoll und den anwendbaren Vorschriften.\n\nDie Fernüberwachung funktioniert dann gut, wenn sie mit den übrigen Sicherheitsebenen des Standorts verbunden ist: mit der Sicherheitstechnik, dem Objektschutz, dem Pförtnerdienst und dem abgestimmten Reaktionsprozess. So fügen sich Meldungsbearbeitung, Eskalation, Ereignisprotokollierung und Abschluss zu einem Betriebsmodell zusammen.",
+    "longDesc": "Avenir nimmt die Alarm-, Einbruch- und kamerabezogenen Meldungen der aufgeschalteten Standorte gemäß der vereinbarten Aufschaltungskonfiguration entgegen. Die Meldungen werden vor der Eskalation nach dem vorab festgelegten Verifikationsprotokoll geprüft. Fehlalarme werden protokolliert und können ausgewertet werden; reale Ereignisse werden nach dem Standortprotokoll an den benannten Ansprechpartner, den Interventionsdienst oder den externen Eskalationsweg weitergeleitet. Die Maßnahmen werden im Ereignisprotokoll festgehalten.\n\nUmfasst die Leistung die Meldungsbearbeitung der Fernüberwachung, ist der Verifikationsschritt Teil des Betriebsverfahrens und wird je Ereignis dokumentiert. Die rechtlichen und vertraglichen Rahmenbedingungen der Fernüberwachung und des Interventionsdienstes werden in der Vorbereitungsphase abgestimmt; die externe Eskalation erfolgt nach dem vereinbarten Standortprotokoll und den anwendbaren Vorschriften.\n\nDie Fernüberwachung funktioniert dann gut, wenn sie mit den übrigen Sicherheitsebenen des Standorts verbunden ist: mit der Sicherheitstechnik, dem Objektschutz, dem Pförtnerdienst und dem abgestimmten Reaktionsprozess. So fügen sich Meldungsbearbeitung, Eskalation, Ereignisprotokollierung und Abschluss zu einem Betriebsmodell zusammen.",
     "seoTitle": "Fernüberwachung und Interventionsdienst | Avenir",
     "seoDescription": "Bearbeitung von Alarmmeldungen, Eskalation, Ereigniserfassung und Interventionsdienst — abgestimmt mit Sicherheitstechnik und Objektschutz.",
-    "valueProposition": "Avenir bearbeitet mit einer 24/7-Leitstelle die Alarm-, Einbruch- und Kamerameldungen der aufgeschalteten Standorte; jede Meldung durchläuft einen geprüften Eskalationsprozess, und die Maßnahmen werden im Ereignisprotokoll festgehalten.",
+    "valueProposition": "Die eigene Leitstelle von Avenir nimmt die Alarm-, Einbruch- und Kamerameldungen der aufgeschalteten Standorte rund um die Uhr entgegen und bearbeitet sie; jede Meldung durchläuft einen geprüften Eskalationsprozess, und die Maßnahmen werden im Ereignisprotokoll festgehalten.",
     "highlights": [],
     "useCases": [
       "Industrie- und Logistikstandorte mit Einbruch-, Alarm- oder Perimeterschutz-Meldungen",
@@ -785,7 +785,7 @@ const DE_REVIEW_SERVICE_DETAILS = {
       },
       {
         "q": "Wie wird ein Alarm vor der Eskalation geprüft?",
-        "a": "Der Verifikationsschritt wird im Standortprotokoll festgelegt. Avenir prüft den Alarm vor der Eskalation anhand der verfügbaren Meldungsquellen und der vereinbarten Prüfregel. Fehlalarme können protokolliert und nachträglich ausgewertet werden; reale Ereignisse werden nach dem dokumentierten Kontakt- und Reaktionsprotokoll eskaliert. Jeder Schritt wird im Ereignisprotokoll festgehalten."
+        "a": "Der Verifikationsschritt wird im Standortprotokoll festgelegt. Avenir prüft den Alarm vor der Eskalation anhand der verfügbaren Meldungsquellen und der vereinbarten Prüfregel. Fehlalarme werden protokolliert und können nachträglich ausgewertet werden; reale Ereignisse werden nach dem dokumentierten Kontakt- und Reaktionsprotokoll eskaliert. Jeder Schritt wird im Ereignisprotokoll festgehalten."
       },
       {
         "q": "Verfügt Avenir über die für Fernüberwachung und Interventionsdienst erforderlichen Genehmigungen?",
@@ -805,7 +805,7 @@ const DE_REVIEW_SERVICE_DETAILS = {
       },
       {
         "q": "Wie lassen sich Alarmmeldungen und Ereignisse dokumentieren?",
-        "a": "Die Meldungen können in einem Ereignisprotokoll mit Zeitstempel erfasst werden: wann die Meldung einging, welcher Prüfschritt erfolgte, welche Benachrichtigungskette anlief, ob eskaliert wurde, welche Maßnahme folgte und welcher Abschlussstatus vergeben wurde. Die Einzelheiten sind nach den Standort- und Vertragsregeln festzulegen."
+        "a": "Die Meldungen werden in einem Ereignisprotokoll mit Zeitstempel erfasst: wann die Meldung einging, welcher Prüfschritt erfolgte, welche Benachrichtigungskette anlief, ob eskaliert wurde, welche Maßnahme folgte und welcher Abschlussstatus vergeben wurde. Die Einzelheiten sind nach den Standort- und Vertragsregeln festzulegen."
       },
       {
         "q": "Lässt sich die Fernüberwachung mit der Sicherheitstechnik verbinden?",
