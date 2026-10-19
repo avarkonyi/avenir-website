@@ -38,7 +38,7 @@ export const zh = {
   ],
   "aboutTitle": "关于Avenir",
   "aboutSub": "安保服务 · 稳定运营",
-  "aboutText": "Avenir 成立于 2018 年，但我们的管理团队和专业人员在设施管理和安保服务领域拥有数十年的经验。如今，我们拥有 200 多名专业人员，在全国 30 多个运营现场提供服务，覆盖企业、商业、工业和物流环境。\n\n我们负责统筹安保运营，包括驻场安保、出入管理、巡逻服务、事件处理和报告。我们的目标是减少客户日常协调成本，降低风险，并提升现场运营的透明度。\n\n在需要时，我们会以安防技术、神秘顾客评估以及相关设施管理支持来补充核心安保服务。这样，客户无需协调多个独立服务商，而是可以与一个责任明确的合作伙伴对接。",
+  "aboutText": "Avenir 成立于 2018 年，但我们的管理团队和专业人员在设施管理和安保服务领域拥有数十年的经验。如今，我们拥有 200 多名专业人员，在全国 30 多个运营现场提供服务，覆盖企业、商业、工业和物流环境。\n\n我们负责统筹安保运营，包括驻场安保、出入管理、巡逻服务、事件处理和报告。我们的目标是减少客户日常所需的协调工作，降低风险，并提升现场运营的透明度。\n\n在需要时，我们会以安防技术、神秘顾客评估以及相关设施管理支持来补充核心安保服务。这样，客户无需协调多个独立服务商，而是可以与一个责任明确的合作伙伴对接。",
   "values": [
     {
       "t": "透明管控",
@@ -139,16 +139,14 @@ export const zh = {
     "message": "留言 / 需求说明",
     "send": "发送报价申请",
     "sending": "发送中…",
-    // No fixed response-time promise (SLA-like wording needs owner/legal
-    // approval) — the success and helper copy stays non-committal.
     "success": "我们已收到您的留言。我们的同事将通过您提供的联系方式回复。您的数据将依据我们的隐私政策进行处理。",
     "successPrivacyLink": "隐私政策（英文）",
     // TRANSLATION DRAFT: review by user (partial/noindex locale)
     "requiredField": "* 必填项",
-    "nextStepHelper": "我们的同事将通过您提供的联系方式回复。报价的准备时间取决于需求的范围和复杂程度。",
-    "specialDataWarning": "请勿通过本表单提交特殊类别数据、刑事记录数据、机密数据、商业秘密或涉及第三方详细私人信息的内容。此类事项需另行签署合同并进行数据保护协商。",
+    "nextStepHelper": "工作时间内通常当天回复，最迟在下一个工作日与您联系。报价所需时间取决于需求范围与复杂程度。",
+    "specialDataWarning": "请勿通过本表单提交特殊类别数据、刑事记录数据、机密数据、商业秘密或涉及第三方详细私人信息的内容。此类事项需另行进行合同及数据保护沟通。",
     "specialDataWarningLink": "使用条款 第4节",
-    "privateInvestigation": "私家侦探",
+    "privateInvestigation": "私人调查",
     "layeredNotice": "提交即表示您已知悉我们的",
     "layeredNoticeLink": "隐私政策（英文）",
     // TRANSLATION DRAFT: review by user
@@ -171,14 +169,14 @@ export const zh = {
     "impressum": "公司信息",
     "companyNumberLabel": "公司注册号",
     "taxNumberLabel": "税号",
-    "headquartersLabel": "总部地址",
+    "headquartersLabel": "注册地址",
     "machineTranslationDisclaimer": "中文首页和服务详情的译文仍在审核中。法律链接指向英文文件；新闻尚未提供中文版本。"
   },
   // TRANSLATION DRAFT: review by user
   "certifications": {
     "sub": "认证资质",
-    "title": "经认证的质量。\n经审核的运营。",
-    "intro": "我们的质量管理和信息安全运营由独立认证机构进行审核。这些认证为流程记录、可追溯管理和持续改进的运营奠定基础。",
+    "title": "经认证的质量。\n受控的运营。",
+    "intro": "我们的质量管理体系和信息安全管理体系由独立认证机构审核。这些认证为流程记录、可追溯管理和持续改进的运营奠定基础。",
     "qualityManagement": "质量管理",
     "informationSecurity": "信息安全",
     "standardLabel": "标准",

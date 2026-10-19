@@ -37,7 +37,7 @@ const COPY = {
     catalog: "Services Avenir", country: "Hongrie", contact: "service client", languages: ["hongrois", "anglais"],
     standard: "Norme", accreditation: "Accréditation", iafMember: "Membre de l’IAF MLA",
     qualityCategory: "Certification du système de management de la qualité", securityCategory: "Certification du système de management de la sécurité de l’information",
-    knowsAbout: ["Gardiennage sur site", "Technologies de sécurité", "Télésurveillance des systèmes d’alarme", "Systèmes de contrôle d’accès", "Services de poste de garde", "Permanence de dispatching 24 h/24 et 7 j/7", "Audit client mystère", "Gestion intégrée des installations"],
+    knowsAbout: ["Gardiennage sur site", "Technologies de sécurité", "Télésurveillance des systèmes d’alarme", "Systèmes de contrôle d’accès", "Services de poste de garde", "Permanence de dispatching 24 h/24 et 7 j/7", "Audit client mystère", "Gestion intégrée des installations"],
   },
 } as const;
 

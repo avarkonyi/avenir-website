@@ -104,7 +104,7 @@ export const META_TAGLINES: Record<SeoLocale, string> = {
 export const META_DESCRIPTIONS: Record<SeoLocale, string> = {
   hu: "Vagyonvédelem, biztonságtechnika, szolgáltatásaudit és FM-támogatás országosan. Egy szerződés, egy felelős kapcsolattartó.",
   en: "Security services, security technology, service audits and FM support in Hungary. One contract, one accountable point of contact.",
-  de: "Objektschutz, Sicherheitstechnik, Vor-Ort-Audits und FM-Unterstützung in Ungarn. Ein Vertrag, ein verantwortlicher Ansprechpartner.",
+  de: "Objektschutz, Sicherheitstechnik, Serviceaudits und FM-Unterstützung in Ungarn. Ein Vertrag, ein verantwortlicher Ansprechpartner.",
   zh: "Avenir 在匈牙利提供安保服务、安防技术、现场审核和设施管理支持，一份合同，一个责任明确的对接人。",
   ko: "Avenir는 헝가리에서 보안 서비스, 보안 기술, 서비스 감사 및 FM 지원을 제공합니다. 하나의 계약, 하나의 책임 연락 창구.",
   fr: "Gardiennage, technologies de sécurité, audits de service et facility management en Hongrie. Un contrat, un interlocuteur responsable.",

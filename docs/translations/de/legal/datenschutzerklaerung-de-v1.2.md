@@ -26,15 +26,15 @@ E-Mail: info@afm.hu
 Telefon: +36 70 316 8218
 Web: https://www.afm.hu
 
-## 2. Vertreter des Verantwortlichen
+## 2. Gesetzlicher Vertreter des Verantwortlichen
 
-Vertreter: Attila Kovács, Geschäftsführer
+Vertretungsberechtigt: Attila Kovács, Geschäftsführer
 E-Mail: info@afm.hu
 Telefon: +36 70 312 5868
 
-## 3. Datenschutzbeauftragter (Data Protection Officer, DPO)
+## 3. Datenschutzbeauftragte (Data Protection Officer, DPO)
 
-Der Verantwortliche hat auf Grundlage von Art. 37 Abs. 1 lit. b und c DSGVO einen Datenschutzbeauftragten benannt.
+Der Verantwortliche hat auf Grundlage von Art. 37 Abs. 1 lit. b und c DSGVO eine Datenschutzbeauftragte benannt.
 
 Datenschutzbeauftragte: Fanni Csegény
 E-Mail: dpo@afm.hu
@@ -69,7 +69,7 @@ Zweck der Verarbeitung: technische Verhinderung der missbräuchlichen Nutzung de
 
 Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO. Das berechtigte Interesse des Verantwortlichen besteht im sicheren Betrieb der Website und des Formulars sowie in der Verhinderung unbefugter oder massenhafter Übermittlungen.
 
-Speicherdauer: höchstens 30 Tage ab der Erfassung der Daten, es sei denn, eine längere Speicherung ist wegen eines Sicherheitsvorfalls oder zur Geltendmachung von Rechtsansprüchen erforderlich.
+Speicherdauer: höchstens 30 Tage ab der Erfassung der Daten, es sei denn, eine längere Speicherung ist wegen eines Sicherheitsvorfalls oder wegen Rechtsansprüchen erforderlich.
 
 4.3. Vertragsbezogene Verwaltung nach erfolgreicher Angebotsanfrage
 
@@ -85,7 +85,7 @@ Speicherdauer: bis zum Ablauf der allgemeinen Verjährungsfrist, gerechnet ab de
 
 Bitte übermitteln Sie über das Kontaktformular keine besonderen Kategorien personenbezogener Daten, keine Daten über strafrechtliche Verurteilungen und Straftaten, keine Verschlusssachen, keine Geschäftsgeheimnisse und keine detaillierten Angaben zum Privatleben Dritter.
 
-Der Verantwortliche fordert solche Daten im Kontaktprozess der Website nicht an und verarbeitet sie dort nicht. Enthält eine übermittelte Nachricht solche Daten, kann der Verantwortliche die für die Bearbeitung der Anfrage nicht erforderlichen Daten löschen oder die betroffene Person bitten, die Anfrage ohne diese Daten erneut zu übermitteln.
+Der Verantwortliche fordert solche Daten im Kontaktprozess der Website nicht an und verarbeitet sie dort nicht. Enthält eine übermittelte Nachricht solche Daten, kann der Verantwortliche die für die Bearbeitung der Anfrage nicht erforderlichen Daten löschen oder die betroffene Person bitten, die Anfrage ohne diese Daten zu präzisieren.
 
 ## 6. Unsere Auftragsverarbeiter (Art. 28 DSGVO)
 
@@ -94,13 +94,13 @@ Für den Betrieb der Website und des Kontaktprozesses setzt der Verantwortliche 
 6.1. Resend — Plus Five Five, Inc.
 Rolle: Versand von Transaktions-E-Mails.
 Sitz: 2261 Market Street #5039, San Francisco, CA 94114, USA
-Ort der Verarbeitung: EU Frankfurt (Sending Region)
+Ort der Verarbeitung: Frankfurt am Main, EU (Versandregion)
 Garantie für Drittlandübermittlungen: die Standardvertragsklauseln gemäß dem Durchführungsbeschluss (EU) 2021/914 der Europäischen Kommission (Standard Contractual Clauses, SCC) nach Art. 46 Abs. 2 lit. d DSGVO, ergänzt durch zusätzliche technische und organisatorische Maßnahmen.
 
 6.2. Vercel — Vercel Inc.
 Rolle: Hosting, Edge-/CDN-Dienst und serverseitige Protokollierung.
 Sitz: 440 N Barranca Avenue #4133, Covina, CA 91723, USA
-Ort der Verarbeitung: EU Edge Regions (konfiguriert)
+Ort der Verarbeitung: Edge-Regionen in der EU (konfiguriert)
 Garantie für Drittlandübermittlungen: Vercel Inc. ist zum Zeitpunkt der Erstellung dieser Erklärung im EU-US Data Privacy Framework gelistet; Übermittlungen können daher auf Grundlage des Angemessenheitsbeschlusses nach Art. 45 DSGVO erfolgen.
 
 6.3. Neon (ein verbundenes Unternehmen der Databricks, Inc.) — Neon, LLC
@@ -110,7 +110,7 @@ Ort der Verarbeitung: EU AWS Frankfurt (eu-central-1)
 Garantie für Drittlandübermittlungen: die Standardvertragsklauseln gemäß dem Durchführungsbeschluss (EU) 2021/914 der Europäischen Kommission (Standard Contractual Clauses, SCC) nach Art. 46 Abs. 2 lit. d DSGVO, ergänzt durch zusätzliche technische und organisatorische Maßnahmen.
 
 6.4. Google Analytics 4 (GA4) — Google Ireland Limited / Google LLC
-Auftragsverarbeiter / Anbieter: Google Ireland Limited / Google LLC, soweit nach den für Google Analytics geltenden Vertrags- und Nutzungsbedingungen einschlägig.
+Auftragsverarbeiter / Anbieter: Google Ireland Limited / Google LLC gemäß den für Google Analytics geltenden Vertrags- und Nutzungsbedingungen.
 Dienst: Google Analytics 4 (GA4).
 Zweck: einwilligungsbasierte, aggregierte Analyse der Websitenutzung.
 Datenkategorien: Online-Kennungen, zum Beispiel Cookie-Kennungen, IP-Adressen, Gerätekennungen, Client-Kennungen sowie technische Nutzungsereignisse.
@@ -166,7 +166,7 @@ Widerspruchsrecht
 
 Die betroffene Person kann aus Gründen, die sich aus ihrer besonderen Situation ergeben, jederzeit Widerspruch gegen eine auf Art. 6 Abs. 1 lit. f DSGVO gestützte Verarbeitung einlegen. In diesem Fall hat der Verantwortliche nachzuweisen, dass zwingende schutzwürdige Gründe für die Verarbeitung vorliegen, die die Interessen, Rechte und Freiheiten der betroffenen Person überwiegen, oder dass die Verarbeitung der Geltendmachung, Ausübung oder Verteidigung von Rechtsansprüchen dient.
 
-Recht auf Löschung („Recht auf Vergessenwerden")
+Recht auf Löschung („Recht auf Vergessenwerden“)
 
 Die betroffene Person kann die Löschung ihrer personenbezogenen Daten verlangen, wenn die Daten für die Zwecke der Verarbeitung nicht mehr benötigt werden; wenn sie Widerspruch gegen die Verarbeitung eingelegt hat und keine vorrangigen berechtigten Gründe vorliegen; wenn der Verantwortliche die Daten unrechtmäßig verarbeitet; oder wenn die Daten aufgrund einer gesetzlichen oder unionsrechtlichen Verpflichtung zu löschen sind.
 
@@ -202,7 +202,7 @@ Telefon: +36 1 391 1400
 E-Mail: ugyfelszolgalat@naih.hu
 Web: https://www.naih.hu
 
-Die betroffene Person kann auch gerichtlich vorgehen. Die Klage kann nach Wahl der betroffenen Person auch vor dem für ihren Wohnsitz oder gewöhnlichen Aufenthaltsort zuständigen Gerichtshof (törvényszék) erhoben werden.
+Die betroffene Person kann auch gerichtlich vorgehen. Die Klage kann nach Wahl der betroffenen Person auch vor dem für ihren Wohnsitz oder Aufenthaltsort zuständigen Gerichtshof (törvényszék) erhoben werden.
 
 ## 13. Umgang mit Datenschutzverletzungen
 

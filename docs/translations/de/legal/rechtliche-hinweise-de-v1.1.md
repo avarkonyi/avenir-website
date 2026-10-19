@@ -30,7 +30,7 @@ Die auf der Website veröffentlichten Informationen dienen der Orientierung; der
 
 Das unter https://www.afm.hu/de#contact verfügbare Formular dient ausschließlich der Angebotsanfrage und der Kontaktaufnahme. Das Ausfüllen und Absenden des Formulars begründet KEIN Vertragsverhältnis zwischen den Parteien.
 
-Der Dienstleister prüft eingegangene Anfragen und nimmt spätestens am nächsten Werktag über eine der angegebenen Kontaktmöglichkeiten Kontakt mit der anfragenden Person auf. Der Zeitbedarf für die Angebotserstellung hängt von der Komplexität der Anfrage und den erforderlichen Abstimmungen ab.
+Der Dienstleister prüft eingegangene Anfragen und nimmt spätestens am nächsten Arbeitstag über eine der angegebenen Kontaktmöglichkeiten Kontakt mit der anfragenden Person auf. Der Zeitbedarf für die Angebotserstellung hängt von der Komplexität der Anfrage und den erforderlichen Abstimmungen ab.
 
 Datenschutz: Die über das Formular angegebenen personenbezogenen Daten werden gemäß der Datenschutzerklärung (https://www.afm.hu/de/adatvedelem) verarbeitet.
 

@@ -5,7 +5,7 @@ export const CERTIFICATION_TRANSLATIONS: Record<string, Record<string, { fullNam
   fr: {
     "iso-9001": {
       fullName: "Certification ISO 9001 du système de management de la qualité",
-      description: "ISO 9001 est la norme internationale relative aux systèmes de management de la qualité. Le périmètre indiqué sur le certificat est « Services de sécurité complets ». Le système de management certifié a été audité par l’organisme émetteur indiqué sur le certificat dans le périmètre défini par le certificat. Celui-ci bénéficie d’une reconnaissance internationale dans le cadre de l’accord IAF MLA.",
+      description: "ISO 9001 est la norme internationale relative aux systèmes de management de la qualité. Le périmètre indiqué sur le certificat est « Services de sécurité complets ». Le système de management certifié a été audité par l’organisme émetteur indiqué sur le certificat dans le périmètre défini par le certificat. Celui-ci bénéficie d’une reconnaissance internationale dans le cadre de l’accord IAF MLA.",
       scope: "Services de sécurité complets",
     },
     "iso-27001": {

@@ -73,7 +73,7 @@ test("recruitment privacy metadata is canonical, indexable and cross-linked", ()
   }
 });
 
-test("career privacy microcopy links the right notice per locale and is omitted for zh/ko", () => {
+test("career privacy microcopy links the right notice and labels English fallback destinations", () => {
   const hu = getCareerPrivacyNotice("hu");
   assert.ok(hu);
   assert.equal(hu.href, "/hu/palyazoi-adatkezeles");
@@ -91,6 +91,10 @@ test("career privacy microcopy links the right notice per locale and is omitted 
   assert.equal(de.href, "/en/recruitment-privacy");
   assert.equal(de.linkLabel, "Datenschutzhinweise für Bewerbungen (auf Englisch)");
 
-  assert.equal(getCareerPrivacyNotice("zh"), null);
-  assert.equal(getCareerPrivacyNotice("ko"), null);
+  for (const locale of ["fr", "zh", "ko"]) {
+    const notice = getCareerPrivacyNotice(locale);
+    assert.ok(notice);
+    assert.equal(notice.href, "/en/recruitment-privacy");
+    assert.match(notice.linkLabel, /anglais|英文|영문/);
+  }
 });

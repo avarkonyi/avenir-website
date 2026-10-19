@@ -91,7 +91,7 @@ test("DE legal notices preserve the current HU section sequence, dates and commi
   assert.match(general.body, /maßgeblich ist die ungarische Fassung/);
   assert.doesNotMatch(general.body, /Mit dem Aufruf|erkennen Sie/);
   const section = (id: string) => terms.sections.find((entry) => entry.id === id)!;
-  assert.match(section("contact-form").body, /spätestens am nächsten Werktag/);
+  assert.match(section("contact-form").body, /spätestens am nächsten Arbeitstag/);
   assert.match(section("contact-form").body, /Zeitbedarf.*Komplexität.*Abstimmungen/);
   assert.match(section("contact-form").body, /https:\/\/www\.afm\.hu\/de\/adatvedelem/);
   assert.match(section("magannyomozas").body, /gesonderten Vertrags.*Datenschutzinformation.*Rechtsgrundlage/);
@@ -120,7 +120,7 @@ test("DE impressum source is available as markdown legal content", () => {
   const impressum = getDeImpressumContent();
 
   assert.equal(impressum.title, "Impressum");
-  assert.equal(impressum.lastUpdated, "Letzte Aktualisierung: 5. Juni 2026");
+  assert.equal(impressum.lastUpdated, "Letzte Aktualisierung: 28. April 2026");
   assert.equal(impressum.sections.length, 10);
   assert.equal(impressum.intro.includes("[Datum der Veröffentlichung]"), false);
   assert.equal(impressum.sections[0]?.title, "1. Angaben zum Unternehmen");
@@ -162,7 +162,7 @@ test("DE impressum source follows HU/EN factual structure without fallback label
   assert.match(fullText, /01030-822\/4927-3\/2018/);
   assert.match(fullText, /01030-822\/4925-3\/2018/);
   assert.match(fullText, /AH\/37595-14\/2024-2/);
-  assert.match(fullText, /Personen- und Vermögensschutz sowie Privatermittlung/);
+  assert.match(fullText, /Personen- und Vermögensschutzes sowie der Privatermittlung/);
   assert.match(fullText, /Behördliche Bescheinigung Nr\.: 01030-822\/4927-3\/2018/);
   assert.match(fullText, /Aktenzeichen: AH\/37595-14\/2024-2/);
   assert.match(fullText, /Überprüfung verpflichtend bis: 30\.06\.2026/);

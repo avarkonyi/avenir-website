@@ -1,0 +1,851 @@
+{
+  "checkedAt": "2026-10-19T09:36:19.348Z",
+  "head": "bf86a0a8f417e646d5168c154249f97c68ef0575",
+  "diffSha256": "c733f11484575ce45492bd553850ef61695c29933f39eee35098e6ed257a3648",
+  "changedFiles": [
+    {
+      "file": "app/[locale]/hirek/page.tsx",
+      "sha256": "7d56a89fc921087eade5902d6f83cd895d84dc20b956637d9c37041dd254a4ed"
+    },
+    {
+      "file": "app/[locale]/page.tsx",
+      "sha256": "b79ec78cf1c04594f9ee8a96cabacc47ad4bbdc3b94291c49a842babc51f243f"
+    },
+    {
+      "file": "components/Career.tsx",
+      "sha256": "933adbe8fa4a388e420c0657b53a162178ff91ad6656aca8cf9860ec9d38f7e8"
+    },
+    {
+      "file": "components/Contact.tsx",
+      "sha256": "675bb778a27bce92787f6f2331e28a0fc4b325a77d339c722b67545002c7b800"
+    },
+    {
+      "file": "components/ServiceQuoteCta.tsx",
+      "sha256": "76c22516fd0df6a016c780b5b2d09d162b2e75f49e09acfee03cbb00b9ffc384"
+    },
+    {
+      "file": "docs/translations/de/legal/datenschutzerklaerung-de-v1.2.md",
+      "sha256": "6b0e5ec0b3c8985c36b27a1c3f2c65b103f5c6ed357dd3c729fc925090711f52"
+    },
+    {
+      "file": "docs/translations/de/legal/impressum-de.md",
+      "sha256": "bc1ad97bc07a36a12d4512b4b9073f5fdd1ed8b32f76262278d44236ac19ad36"
+    },
+    {
+      "file": "docs/translations/de/legal/rechtliche-hinweise-de-v1.1.md",
+      "sha256": "7788e0a654d4dc65b3dbeb7d20856ddc3547060b5b5e6d0dc8bed2b7f42c4e53"
+    },
+    {
+      "file": "lib/certification-translations.ts",
+      "sha256": "f1130ce74ee57172154c13f7342da0346b6592181eac0e97f13b6a0027a1fbad"
+    },
+    {
+      "file": "lib/current-privacy-content.ts",
+      "sha256": "a82b8b6feb2512cda08462fc35c70e98786702fedf7f4ca80bed49a56b5e9274"
+    },
+    {
+      "file": "lib/homepage-content.ts",
+      "sha256": "01108caa04c110b0d042c637480ce6a88daafc97fe545fb2543ad99cc402f43d"
+    },
+    {
+      "file": "lib/i18n/de.ts",
+      "sha256": "b437edbae89d3e9db2fec83bce148d3fe9f324fa0986b178e0cfd3d4ea0c6641"
+    },
+    {
+      "file": "lib/i18n/en.ts",
+      "sha256": "8f2a44c7b1783e602c39f86f34fda0f645fe62d682f3ff5e3f1bb9facb4d448e"
+    },
+    {
+      "file": "lib/i18n/fr.ts",
+      "sha256": "0f9dd99d3a5a039c360b34fa6a1211e996ea1e7a769dcf70c3c87dcaf200a758"
+    },
+    {
+      "file": "lib/i18n/ko.ts",
+      "sha256": "6751d72038f43075c52ecbd9a935d60deba409afa4eacd6c9c6e939af874c02c"
+    },
+    {
+      "file": "lib/i18n/zh.ts",
+      "sha256": "23b3faaee5da7c633e9a40ef8aacaa3de94d94400585c08c4e068fe5a7c06247"
+    },
+    {
+      "file": "lib/locale-accessibility.ts",
+      "sha256": "810ff902cf4038d2b973f5cbc60e63e8217148ac23dc53df64a0ac25c8873cc7"
+    },
+    {
+      "file": "lib/locale-ui-helpers.ts",
+      "sha256": "da8668d1a4cadf55dda7836cffa0fc9291d630a70559fdb38a76d6fd1f35af76"
+    },
+    {
+      "file": "lib/recruitment-privacy-content.ts",
+      "sha256": "b4dd12df5d0b128b4f136563e34c7e4045157b5984796d121da7aea29ca64fc4"
+    },
+    {
+      "file": "lib/responsible-disclosure-content.ts",
+      "sha256": "77b83d663be9cbbf738cb2d570e0b397b559ae5da19b9a37a1250bb082ee8ed0"
+    },
+    {
+      "file": "lib/schema-locale-copy.ts",
+      "sha256": "0933cd2a71d75609738284a579afa5d0481c26a71fe8e62cb859e01d95e4c485"
+    },
+    {
+      "file": "lib/seo-data.ts",
+      "sha256": "ccee4f6a59627ee4fe5e09dc774bb1031a5da6746d8d58da5a0b6496b36b46bb"
+    },
+    {
+      "file": "lib/services/de-service-details.ts",
+      "sha256": "588672884c4c1adc9447f97d75fd0221f8c5cf39b2d6e71ad6c05c1443bf5dc3"
+    },
+    {
+      "file": "lib/services/de-service-shared-copy.ts",
+      "sha256": "97f09ace97de6f506ade9d64d138e1d36cd024964640a71e90219a2d9bb069a7"
+    },
+    {
+      "file": "lib/services/fr-service-details.ts",
+      "sha256": "bde953336120c373213c9206ad03ccb6c3be9f846bafe385c6eb0ec51bbf33da"
+    },
+    {
+      "file": "lib/services/ko-service-details.ts",
+      "sha256": "1299a1f507783ac1a840ff3b936f6f5bd7aee58996396ce27f5b8687e2354ee2"
+    },
+    {
+      "file": "lib/services/zh-service-details.ts",
+      "sha256": "d3a8685a37e251abaae5f7ec0fd51b8d08677a966c8b7bb44ddad63de0a593cc"
+    },
+    {
+      "file": "lib/trust-center-content.ts",
+      "sha256": "9e1f8d96721ada497e15216bb111d0be1678501c65be59cbbc20b4c432eced3b"
+    },
+    {
+      "file": "tests/de-homepage-framework-polish.test.ts",
+      "sha256": "d02e78de550fea931c89aaca13233ef43e5d46dc1046277314f08362959a06be"
+    },
+    {
+      "file": "tests/de-homepage-polish.test.ts",
+      "sha256": "9ef113db71c37517d1081807ab2b9f6a61ce795231f8640d04e400d30ca07680"
+    },
+    {
+      "file": "tests/de-legal-release.test.ts",
+      "sha256": "8b5194b45a1e3250ac86ce573a2391feeb3dc6e96fc7eaa20d3a84385ef56577"
+    },
+    {
+      "file": "tests/recruitment-privacy.test.ts",
+      "sha256": "923c1bf01b27ce81c15a11e87f2f58b80b08e8c448970d869526267400b726ec"
+    },
+    {
+      "file": "tests/response-time-governance.test.ts",
+      "sha256": "a25580a416a248cb5d5eaff6883727ce6cbcab6afe54e32c361aeb1435f627ba"
+    },
+    {
+      "file": "tests/responsible-disclosure.test.ts",
+      "sha256": "97cf8bf6b6998bd158d407bc8cf77e8c1d3c0e4a7c6899546c0b999cba0944e1"
+    },
+    {
+      "file": "tests/schema-localization.test.ts",
+      "sha256": "b1e86b93063d26f375a4a6e2cd9a691a3dbe149f4f0465581dd4e64f1cd209e7"
+    },
+    {
+      "file": "tests/ux-safety-cleanup.test.tsx",
+      "sha256": "bf5520493f2b1230b9b6ea5f1bbfcb4f7b74d118a6793cf200e9a2c4d670b745"
+    }
+  ],
+  "protectedFiles": [
+    {
+      "file": "lib/i18n/hu.ts",
+      "equal": true
+    },
+    {
+      "file": "lib/analytics/consent-copy.ts",
+      "equal": true
+    },
+    {
+      "file": "lib/analytics/consent.ts",
+      "equal": true
+    },
+    {
+      "file": "lib/analytics/runtime.ts",
+      "equal": true
+    },
+    {
+      "file": "lib/analytics/events.ts",
+      "equal": true
+    },
+    {
+      "file": "components/analytics/GoogleAnalytics.tsx",
+      "equal": true
+    },
+    {
+      "file": "components/analytics/AnalyticsConsentBanner.tsx",
+      "equal": true
+    },
+    {
+      "file": "components/analytics/CookieSettingsButton.tsx",
+      "equal": true
+    },
+    {
+      "file": "lib/services/publication.ts",
+      "equal": true
+    },
+    {
+      "file": "lib/page-metadata.ts",
+      "equal": true
+    },
+    {
+      "file": "lib/public-sitemap.ts",
+      "equal": true
+    },
+    {
+      "file": "app/robots.ts",
+      "equal": true
+    },
+    {
+      "file": "app/sitemap.ts",
+      "equal": true
+    },
+    {
+      "file": "lib/services/review-services.ts",
+      "equal": true
+    },
+    {
+      "file": "lib/db/queries/services.ts",
+      "equal": true
+    },
+    {
+      "file": "app/api/contact/route.ts",
+      "equal": true
+    },
+    {
+      "file": "app/[locale]/layout.tsx",
+      "equal": true
+    }
+  ],
+  "huProperties": [
+    {
+      "file": "app/[locale]/hirek/page.tsx",
+      "count": 1,
+      "equal": true
+    },
+    {
+      "file": "app/[locale]/page.tsx",
+      "count": 1,
+      "equal": true
+    },
+    {
+      "file": "components/Career.tsx",
+      "count": 1,
+      "equal": true
+    },
+    {
+      "file": "components/ServiceQuoteCta.tsx",
+      "count": 1,
+      "equal": true
+    },
+    {
+      "file": "lib/current-privacy-content.ts",
+      "count": 1,
+      "equal": true
+    },
+    {
+      "file": "lib/locale-accessibility.ts",
+      "count": 2,
+      "equal": true
+    },
+    {
+      "file": "lib/locale-ui-helpers.ts",
+      "count": 2,
+      "equal": true
+    },
+    {
+      "file": "lib/recruitment-privacy-content.ts",
+      "count": 1,
+      "equal": true
+    },
+    {
+      "file": "lib/responsible-disclosure-content.ts",
+      "count": 2,
+      "equal": true
+    },
+    {
+      "file": "lib/schema-locale-copy.ts",
+      "count": 1,
+      "equal": true
+    },
+    {
+      "file": "lib/seo-data.ts",
+      "count": 3,
+      "equal": true
+    },
+    {
+      "file": "lib/trust-center-content.ts",
+      "count": 1,
+      "equal": true
+    }
+  ],
+  "jsxPresentation": [
+    {
+      "file": "app/[locale]/hirek/page.tsx",
+      "attributeCount": 23,
+      "equal": true
+    },
+    {
+      "file": "app/[locale]/page.tsx",
+      "attributeCount": 0,
+      "equal": true
+    },
+    {
+      "file": "components/Career.tsx",
+      "attributeCount": 20,
+      "equal": true
+    },
+    {
+      "file": "components/Contact.tsx",
+      "attributeCount": 45,
+      "equal": true
+    },
+    {
+      "file": "components/ServiceQuoteCta.tsx",
+      "attributeCount": 19,
+      "equal": true
+    },
+    {
+      "file": "tests/ux-safety-cleanup.test.tsx",
+      "attributeCount": 0,
+      "equal": true
+    }
+  ],
+  "consentLocales": {
+    "fr": [
+      "accept",
+      "reject",
+      "settings",
+      "text",
+      "title"
+    ],
+    "zh": [
+      "accept",
+      "reject",
+      "settings",
+      "text",
+      "title"
+    ],
+    "ko": [
+      "accept",
+      "reject",
+      "settings",
+      "text",
+      "title"
+    ],
+    "hu": [
+      "accept",
+      "reject",
+      "settings",
+      "text",
+      "title"
+    ],
+    "en": [
+      "accept",
+      "reject",
+      "settings",
+      "text",
+      "title"
+    ],
+    "de": [
+      "accept",
+      "reject",
+      "settings",
+      "text",
+      "title"
+    ]
+  },
+  "fallbackDictionaryLabels": {
+    "hu": [
+      {
+        "id": "security",
+        "label": "Élőerős objektumőrzés"
+      },
+      {
+        "id": "cleaning",
+        "label": "Rendezvénybiztosítás"
+      },
+      {
+        "id": "building",
+        "label": "Biztonságtechnika"
+      },
+      {
+        "id": "reception",
+        "label": "Recepciós és portaszolgálat"
+      },
+      {
+        "id": "green",
+        "label": "Soft FM"
+      },
+      {
+        "id": "technical",
+        "label": "Távfelügyelet és vonulószolgálat"
+      },
+      {
+        "id": "mystery",
+        "label": "Próbavásárlás és szolgáltatásaudit"
+      },
+      {
+        "id": "hardfm",
+        "label": "Hard FM"
+      }
+    ],
+    "en": [
+      {
+        "id": "security",
+        "label": "On-site Security Guarding"
+      },
+      {
+        "id": "cleaning",
+        "label": "Event Security"
+      },
+      {
+        "id": "building",
+        "label": "Security Technology"
+      },
+      {
+        "id": "reception",
+        "label": "Reception and Gatehouse Services"
+      },
+      {
+        "id": "green",
+        "label": "Soft FM"
+      },
+      {
+        "id": "technical",
+        "label": "Remote Monitoring and Response Service"
+      },
+      {
+        "id": "mystery",
+        "label": "Mystery Shopping and Service Audit"
+      },
+      {
+        "id": "hardfm",
+        "label": "Hard FM"
+      }
+    ],
+    "de": [
+      {
+        "id": "security",
+        "label": "Objektschutz vor Ort"
+      },
+      {
+        "id": "cleaning",
+        "label": "Veranstaltungssicherheit"
+      },
+      {
+        "id": "building",
+        "label": "Sicherheitstechnik"
+      },
+      {
+        "id": "reception",
+        "label": "Empfangs- und Pförtnerdienst"
+      },
+      {
+        "id": "green",
+        "label": "Soft FM – Infrastrukturelles Gebäudemanagement"
+      },
+      {
+        "id": "technical",
+        "label": "Fernüberwachung und Interventionsdienst"
+      },
+      {
+        "id": "mystery",
+        "label": "Mystery Shopping und Serviceaudit"
+      },
+      {
+        "id": "hardfm",
+        "label": "Hard FM – Technisches Gebäudemanagement"
+      }
+    ],
+    "fr": [
+      {
+        "id": "security",
+        "label": "Gardiennage sur site"
+      },
+      {
+        "id": "cleaning",
+        "label": "Sécurité événementielle"
+      },
+      {
+        "id": "building",
+        "label": "Technologies de sécurité"
+      },
+      {
+        "id": "reception",
+        "label": "Accueil et services de poste de garde"
+      },
+      {
+        "id": "green",
+        "label": "Soft FM — services aux installations"
+      },
+      {
+        "id": "technical",
+        "label": "Télésurveillance et intervention"
+      },
+      {
+        "id": "mystery",
+        "label": "Visites mystères et audit de service"
+      },
+      {
+        "id": "hardfm",
+        "label": "Hard FM — gestion technique des bâtiments"
+      }
+    ],
+    "ko": [
+      {
+        "id": "security",
+        "label": "On-site Security Guarding"
+      },
+      {
+        "id": "cleaning",
+        "label": "Event Security"
+      },
+      {
+        "id": "building",
+        "label": "Security Technology"
+      },
+      {
+        "id": "reception",
+        "label": "Reception and Gatehouse Services"
+      },
+      {
+        "id": "green",
+        "label": "Soft FM"
+      },
+      {
+        "id": "technical",
+        "label": "Remote Monitoring and Response Service"
+      },
+      {
+        "id": "mystery",
+        "label": "Mystery Shopping and Service Audit"
+      },
+      {
+        "id": "hardfm",
+        "label": "Hard FM"
+      }
+    ],
+    "zh": [
+      {
+        "id": "security",
+        "label": "驻场安保"
+      },
+      {
+        "id": "cleaning",
+        "label": "活动安保"
+      },
+      {
+        "id": "building",
+        "label": "安防技术"
+      },
+      {
+        "id": "reception",
+        "label": "前台与门岗服务"
+      },
+      {
+        "id": "green",
+        "label": "Soft FM — 日常设施支持"
+      },
+      {
+        "id": "technical",
+        "label": "远程监控与现场响应"
+      },
+      {
+        "id": "mystery",
+        "label": "神秘顾客与服务审核"
+      },
+      {
+        "id": "hardfm",
+        "label": "Hard FM — 技术设施管理"
+      }
+    ]
+  },
+  "actualFallbacks": {
+    "hu": [
+      {
+        "slug": "objektumorzes",
+        "label": "Élőerős objektumőrzés"
+      },
+      {
+        "slug": "portaszolgalat",
+        "label": "Recepciós és portaszolgálat"
+      },
+      {
+        "slug": "biztonsagtechnika",
+        "label": "Biztonságtechnika"
+      },
+      {
+        "slug": "tavfelugyelet-vonuloszolgalat",
+        "label": "Távfelügyelet és vonulószolgálat"
+      },
+      {
+        "slug": "mystery-shopping-helyszini-audit",
+        "label": "Próbavásárlás és szolgáltatásaudit"
+      },
+      {
+        "slug": "rendezvenybiztositas",
+        "label": "Rendezvénybiztosítás"
+      },
+      {
+        "slug": "hard-fm",
+        "label": "Hard FM"
+      },
+      {
+        "slug": "soft-fm",
+        "label": "Soft FM"
+      }
+    ],
+    "en": [
+      {
+        "slug": "objektumorzes",
+        "label": "On-site Security Guarding"
+      },
+      {
+        "slug": "portaszolgalat",
+        "label": "Reception and Gatehouse Services"
+      },
+      {
+        "slug": "biztonsagtechnika",
+        "label": "Security Technology"
+      },
+      {
+        "slug": "tavfelugyelet-vonuloszolgalat",
+        "label": "Remote Monitoring and Response Service"
+      },
+      {
+        "slug": "mystery-shopping-helyszini-audit",
+        "label": "Mystery Shopping and Service Audit"
+      },
+      {
+        "slug": "rendezvenybiztositas",
+        "label": "Event Security"
+      },
+      {
+        "slug": "hard-fm",
+        "label": "Hard FM"
+      },
+      {
+        "slug": "soft-fm",
+        "label": "Soft FM"
+      }
+    ],
+    "de": [
+      {
+        "slug": "objektumorzes",
+        "label": "Objektschutz vor Ort"
+      },
+      {
+        "slug": "portaszolgalat",
+        "label": "Empfangs- und Pförtnerdienst"
+      },
+      {
+        "slug": "biztonsagtechnika",
+        "label": "Sicherheitstechnik"
+      },
+      {
+        "slug": "tavfelugyelet-vonuloszolgalat",
+        "label": "Fernüberwachung und Interventionsdienst"
+      },
+      {
+        "slug": "mystery-shopping-helyszini-audit",
+        "label": "Mystery Shopping und Serviceaudit"
+      },
+      {
+        "slug": "rendezvenybiztositas",
+        "label": "Veranstaltungssicherheit"
+      },
+      {
+        "slug": "hard-fm",
+        "label": "Hard FM – Technisches Gebäudemanagement"
+      },
+      {
+        "slug": "soft-fm",
+        "label": "Soft FM – Infrastrukturelles Gebäudemanagement"
+      }
+    ],
+    "fr": [
+      {
+        "slug": "objektumorzes",
+        "label": "Gardiennage sur site"
+      },
+      {
+        "slug": "portaszolgalat",
+        "label": "Accueil et services de poste de garde"
+      },
+      {
+        "slug": "biztonsagtechnika",
+        "label": "Technologies de sécurité"
+      },
+      {
+        "slug": "tavfelugyelet-vonuloszolgalat",
+        "label": "Télésurveillance et intervention"
+      },
+      {
+        "slug": "mystery-shopping-helyszini-audit",
+        "label": "Visites mystères et audit de service"
+      },
+      {
+        "slug": "rendezvenybiztositas",
+        "label": "Sécurité événementielle"
+      },
+      {
+        "slug": "hard-fm",
+        "label": "Hard FM — gestion technique des bâtiments"
+      },
+      {
+        "slug": "soft-fm",
+        "label": "Soft FM — services aux installations"
+      }
+    ],
+    "ko": [
+      {
+        "slug": "objektumorzes",
+        "label": "현장 보안 인력 서비스"
+      },
+      {
+        "slug": "portaszolgalat",
+        "label": "리셉션 및 게이트하우스 서비스"
+      },
+      {
+        "slug": "biztonsagtechnika",
+        "label": "보안 기술"
+      },
+      {
+        "slug": "tavfelugyelet-vonuloszolgalat",
+        "label": "원격 모니터링 및 출동 대응 서비스"
+      },
+      {
+        "slug": "mystery-shopping-helyszini-audit",
+        "label": "미스터리 쇼핑 및 서비스 감사"
+      },
+      {
+        "slug": "rendezvenybiztositas",
+        "label": "행사 보안"
+      },
+      {
+        "slug": "hard-fm",
+        "label": "Hard FM – 기술 시설 관리"
+      },
+      {
+        "slug": "soft-fm",
+        "label": "Soft FM – 일상 시설 운영 지원"
+      }
+    ],
+    "zh": [
+      {
+        "slug": "objektumorzes",
+        "label": "驻场安保"
+      },
+      {
+        "slug": "portaszolgalat",
+        "label": "前台与门岗服务"
+      },
+      {
+        "slug": "biztonsagtechnika",
+        "label": "安防技术"
+      },
+      {
+        "slug": "tavfelugyelet-vonuloszolgalat",
+        "label": "远程监控与现场响应"
+      },
+      {
+        "slug": "mystery-shopping-helyszini-audit",
+        "label": "神秘顾客与服务审核"
+      },
+      {
+        "slug": "rendezvenybiztositas",
+        "label": "活动安保"
+      },
+      {
+        "slug": "hard-fm",
+        "label": "Hard FM — 技术设施管理"
+      },
+      {
+        "slug": "soft-fm",
+        "label": "Soft FM — 日常设施支持"
+      }
+    ]
+  },
+  "fallbackChecks": [
+    {
+      "locale": "hu",
+      "count": 8,
+      "fieldsNarrow": true,
+      "reception": {
+        "slug": "portaszolgalat",
+        "label": "Recepciós és portaszolgálat"
+      },
+      "cmsPreserved": true,
+      "unknownIgnored": true,
+      "duplicateAliasCollapsed": true
+    },
+    {
+      "locale": "en",
+      "count": 8,
+      "fieldsNarrow": true,
+      "reception": {
+        "slug": "portaszolgalat",
+        "label": "Reception and Gatehouse Services"
+      },
+      "cmsPreserved": true,
+      "unknownIgnored": true,
+      "duplicateAliasCollapsed": true
+    },
+    {
+      "locale": "de",
+      "count": 8,
+      "fieldsNarrow": true,
+      "reception": {
+        "slug": "portaszolgalat",
+        "label": "Empfangs- und Pförtnerdienst"
+      },
+      "cmsPreserved": true,
+      "unknownIgnored": true,
+      "duplicateAliasCollapsed": true
+    },
+    {
+      "locale": "fr",
+      "count": 8,
+      "fieldsNarrow": true,
+      "reception": {
+        "slug": "portaszolgalat",
+        "label": "Accueil et services de poste de garde"
+      },
+      "cmsPreserved": true,
+      "unknownIgnored": true,
+      "duplicateAliasCollapsed": true
+    },
+    {
+      "locale": "ko",
+      "count": 8,
+      "fieldsNarrow": true,
+      "reception": {
+        "slug": "portaszolgalat",
+        "label": "리셉션 및 게이트하우스 서비스"
+      },
+      "cmsPreserved": true,
+      "unknownIgnored": true,
+      "duplicateAliasCollapsed": true
+    },
+    {
+      "locale": "zh",
+      "count": 8,
+      "fieldsNarrow": true,
+      "reception": {
+        "slug": "portaszolgalat",
+        "label": "前台与门岗服务"
+      },
+      "cmsPreserved": true,
+      "unknownIgnored": true,
+      "duplicateAliasCollapsed": true
+    }
+  ],
+  "huFallbackLabelsPreserved": true,
+  "limitations": [
+    "Source-only review; browser and full operational QA are owned by root.",
+    "Own KO/ZH translation copy is not independently approved by this reviewer.",
+    "No DB query, DB mutation, commit, push or deployment performed."
+  ]
+}

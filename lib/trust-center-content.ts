@@ -224,7 +224,7 @@ export const TRUST_CENTER_CONTENT: Record<
             meta: [
               "Legal name: Avenir Facility Management Szolgáltató Korlátolt Felelősségű Társaság",
               "Registered short name: Avenir Facility Kft.",
-              "Registered seat: 1039 Budapest, Királyok útja 291, building B, door 15, Hungary",
+              "Registered office: Királyok útja 291, building B, door 15, 1039 Budapest, Hungary",
               "Company registration number: 01-09-328046",
               "Tax number: 26395124-2-41",
               "EU VAT ID: HU26395124",
@@ -348,7 +348,7 @@ export const TRUST_CENTER_CONTENT: Record<
       },
       {
         id: "additional-proof",
-        heading: "Additional proof requests",
+        heading: "Requesting additional documents",
         body:
           "Additional non-public documents may be shared as part of a separate agreement or procurement process.",
       },

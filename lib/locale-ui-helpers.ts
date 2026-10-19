@@ -68,9 +68,7 @@ export function getContactFormCopy(
 // Career-section microcopy linking the recruitment privacy notice
 // (PL-091). HU/EN link their own locale's notice; DE shows the approved
 // German sentence but links the EN page because no reviewed DE notice
-// exists. ZH/KO return null — no reviewed translation, the line is
-// omitted on those partial/noindex locales (see
-// docs/legal/recruitment-privacy-review.md Section 2).
+// exists. Other review locales also label the English destination explicitly.
 export type CareerPrivacyNotice = {
   readonly before: string;
   readonly linkLabel: string;
@@ -110,6 +108,12 @@ export function getCareerPrivacyNotice(
   }
   if (locale === "fr") {
     return { before: "Avant de postuler, veuillez lire notre ", linkLabel: "notice de confidentialité pour les candidats (en anglais)", after: ".", href: enHref };
+  }
+  if (locale === "ko") {
+    return { before: "지원하기 전에 ", linkLabel: "지원자 개인정보 처리 안내문(영문)", after: "을 읽어 주세요.", href: enHref };
+  }
+  if (locale === "zh") {
+    return { before: "申请前，请阅读", linkLabel: "求职者隐私声明（英文）", after: "。", href: enHref };
   }
   return null;
 }

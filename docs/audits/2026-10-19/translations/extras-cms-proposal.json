@@ -1,0 +1,59 @@
+[
+  {
+    "id": "EDU-019",
+    "table": "positions",
+    "recordId": 1,
+    "field": "location_en",
+    "before": "Budapest, regional",
+    "after": "Budapest / nationwide",
+    "reason": "A HU országosan jelentését a regional indokolatlanul szűkíti."
+  },
+  {
+    "id": "EDU-019",
+    "table": "positions",
+    "recordId": 1,
+    "field": "location_de",
+    "before": "Budapest, Land",
+    "after": "Budapest / landesweit",
+    "reason": "A HU országosan egyértelmű német megfelelője; a Land önmagában kétértelmű."
+  },
+  {
+    "id": "EDU-019",
+    "table": "positions",
+    "recordId": 1,
+    "field": "location_zh",
+    "before": "布达佩斯及周边",
+    "after": "布达佩斯 / 匈牙利全国",
+    "reason": "A HU országosan nem Budapest környékét, hanem magyarországi országos helyszínkört jelent."
+  },
+  {
+    "id": "EDU-021",
+    "table": "certifications",
+    "recordId": 1,
+    "slug": "iso-9001",
+    "field": "description_de",
+    "before": "ISO 9001 ist der internationale Standard für Qualitätsmanagementsysteme. Der im Zertifikat angegebene Geltungsbereich lautet \"Comprehensive security services\". Das zertifizierte Managementsystem wurde innerhalb des im Zertifikat definierten Geltungsbereichs durch MartonCert Rendszertanúsító Kft. auditiert. Das Zertifikat ist im Rahmen des IAF MLA-Abkommens international anerkannt.",
+    "after": "ISO 9001 ist der internationale Standard für Qualitätsmanagementsysteme. Der im Zertifikat angegebene Geltungsbereich lautet \"Umfassende Sicherheitsdienstleistungen\". Das zertifizierte Managementsystem wurde innerhalb des im Zertifikat definierten Geltungsbereichs durch MartonCert Rendszertanúsító Kft. auditiert. Das Zertifikat ist im Rahmen des IAF MLA-Abkommens international anerkannt.",
+    "reason": "A már meglévő, HU-hű scope_de érték lokalizálja az angol töredéket; a tanúsítvány állításai változatlanok."
+  },
+  {
+    "id": "FKZ-015",
+    "table": "certifications",
+    "recordId": 1,
+    "slug": "iso-9001",
+    "field": "description_zh",
+    "before": "ISO 9001 是质量管理体系的国际标准。证书中列明的范围为 “Comprehensive security services”。该认证管理体系已由 MartonCert Rendszertanúsító Kft. 按证书定义的范围进行审核。该证书在 IAF MLA 协议下获得国际认可。",
+    "after": "ISO 9001 是质量管理体系的国际标准。证书中列明的范围为 “全面安保服务”。该认证管理体系已由 MartonCert Rendszertanúsító Kft. 按证书定义的范围进行审核。该证书在 IAF MLA 协议下获得国际认可。",
+    "reason": "A már meglévő, HU-hű scope_zh érték lokalizálja az angol töredéket; a tanúsítvány állításai változatlanok."
+  },
+  {
+    "id": "EDU-046",
+    "table": "news",
+    "recordId": 3,
+    "slug": "megujult-az-avenir-weboldala-es-arculata",
+    "field": "body_en",
+    "before": "Avenir Facility Management Kft. has renewed its website and corporate visual identity. The purpose of the update was to help clients and future partners understand our services, operations and professional background faster, more clearly and more accurately.\n\nThe new website presents our main service areas in a cleaner structure: manned guarding, reception and concierge services, security technology solutions, remote monitoring and response services, as well as related Soft FM and Hard FM support.\n\nThe renewed visual identity reflects the essence of Avenir’s work: we provide controlled, documented and responsibly organized services in corporate, industrial, logistics and retail environments where security and predictable operations are essential expectations.\n\nAs part of the update, we also refreshed our legal and privacy information, as well as the presentation of our certifications and company details. Our goal is for the website to serve not only as a company introduction, but also as a reliable and up-to-date information point for clients and partners.",
+    "after": "Avenir Facility Management Kft. has renewed its website and corporate visual identity. The purpose of the update was to help clients and future partners understand our services, operations and professional background faster, more clearly and more accurately.\n\nThe new website presents our main service areas in a cleaner structure: On-site Security Guarding, Reception and Gatehouse Services, Security Technology, Remote Monitoring and Response Service, as well as related Soft FM and Hard FM support.\n\nThe renewed visual identity reflects the essence of Avenir’s work: we provide controlled, documented and responsibly organized services in corporate, industrial, logistics and retail environments where security and predictable operations are essential expectations.\n\nAs part of the update, we also refreshed our legal and privacy information, as well as the presentation of our certifications and company details. Our goal is for the website to serve not only as a company introduction, but also as a reliable and up-to-date information point for clients and partners.",
+    "reason": "A staging törzsszöveg négy szolgáltatásneve az aktuális éles cikkével egyező kanonikus nevekre kerül."
+  }
+]

@@ -2,7 +2,7 @@
 
 # Impressum
 
-Letzte Aktualisierung: 5. Juni 2026
+Letzte Aktualisierung: 28. April 2026
 
 Dieses Impressum enthält die Anbieterkennzeichnung und die für die Website veröffentlichten Unternehmens-, Kontakt-, Genehmigungs-, Aufsichts- und Hostingangaben des Dienstleisters.
 
@@ -16,11 +16,11 @@ Registergericht: Handelsregistergericht des Hauptstädtischen Gerichtshofs (Főv
 Steuernummer: 26395124-2-41
 EU-USt-IdNr.: HU26395124
 Gegründet am: 31.07.2018
-Sitz: 1039 Budapest, Királyok útja 291. B. ép. 15. ajtó, Ungarn
+Sitz: Királyok útja 291, Gebäude B, Tür 15, 1039 Budapest, Ungarn
 
 ## 2. Vertretung
 
-Vertreten durch: Kovács Attila, Geschäftsführer
+Vertreten durch: Attila Kovács, Geschäftsführer
 Ausweis als Sicherheitskraft (vagyonőri igazolvány): VS0000850
 Privatermittlerausweis (magánnyomozói igazolvány): MA2001317
 E-Mail: info@afm.hu
@@ -33,20 +33,20 @@ Der Verantwortliche hat auf Grundlage von Art. 37 Abs. 1 lit. b und c DSGVO eine
 Datenschutzbeauftragte: Fanni Csegény
 E-Mail: dpo@afm.hu
 Telefon: +36 70 622 6242
-Postanschrift: 1039 Budapest, Királyok útja 291. B. ép. 15. ajtó, Ungarn
+Postanschrift: Királyok útja 291, Gebäude B, Tür 15, 1039 Budapest, Ungarn
 
 Die Meldung an die ungarische Datenschutzbehörde (NAIH) ist gemäß § 25/L des ungarischen Informationsgesetzes (Infotv.) erfolgt.
 
 ## 4. Sitz und Kontaktdaten
 
-Sitz: 1039 Budapest, Királyok útja 291. B. ép. 15. ajtó, Ungarn
+Sitz: Királyok útja 291, Gebäude B, Tür 15, 1039 Budapest, Ungarn
 Allgemeine E-Mail: info@afm.hu
 Allgemeines Telefon: +36 70 316 8218
 Website: https://www.afm.hu
 
 ## 5. Reglementierter Beruf
 
-Die Tätigkeiten Personen- und Vermögensschutz sowie Privatermittlung sind in Ungarn reglementierte Berufe. Maßgeblich sind insbesondere das Gesetz Nr. CXXXIII von 2005 über die Personen- und Vermögensschutz- sowie die Privatermittlungstätigkeit (SzVMt.) und die Verordnung des Innenministeriums Nr. 22/2006 (IV. 25.) BM über Sicherheitskraft- und Privatermittlerausweise sowie die Einzelheiten der Berufsausübung. Die Angaben erfolgen gemäß § 4 des ungarischen Gesetzes Nr. CVIII von 2001 über den elektronischen Geschäftsverkehr (Ekertv.). Die einschlägigen behördlichen Genehmigungen sind in Abschnitt 6 aufgeführt.
+Die Tätigkeiten des Personen- und Vermögensschutzes sowie der Privatermittlung sind in Ungarn reglementierte Berufe. Maßgeblich sind insbesondere das Gesetz Nr. CXXXIII von 2005 über die Personen- und Vermögensschutz- sowie die Privatermittlungstätigkeit (SzVMt.) und die Verordnung des Innenministeriums Nr. 22/2006 (IV. 25.) BM über Sicherheitskraft- und Privatermittlerausweise sowie die Einzelheiten der Berufsausübung. Die Angaben erfolgen gemäß § 4 lit. g des ungarischen Gesetzes Nr. CVIII von 2001 über den elektronischen Geschäftsverkehr (Ekertv.). Die einschlägigen behördlichen Genehmigungen sind in Abschnitt 6 aufgeführt.
 
 ## 6. Behördliche Genehmigungen
 
@@ -116,7 +116,7 @@ E-Mail: privacy@vercel.com
 
 ## 10. Urheberrecht und weitere rechtliche Hinweise
 
-Sämtliche Inhalte der Website — Texte, Grafiken, Logos, Bilder und deren Anordnung — sind urheberrechtlich geschützt. Ihre Verwendung über den persönlichen, nicht kommerziellen Gebrauch hinaus bedarf der vorherigen schriftlichen Zustimmung des Dienstleisters.
+© 2026 Avenir Facility Management Kft. Alle Rechte vorbehalten. Sämtliche Inhalte der Website — Texte, Grafiken, Logos, Bilder und deren Anordnung — sind nach dem ungarischen Gesetz Nr. LXXVI von 1999 urheberrechtlich geschützt. Ihre Verwendung über den persönlichen, nicht kommerziellen Gebrauch hinaus bedarf der vorherigen schriftlichen Zustimmung des Dienstleisters.
 
 Datenschutzerklärung: https://www.afm.hu/de/adatvedelem
 Rechtliche Hinweise: https://www.afm.hu/de/aszf

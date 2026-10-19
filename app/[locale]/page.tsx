@@ -14,6 +14,7 @@ import { getTranslation } from "@/lib/i18n";
 import { LOCALES, type Locale } from "@/lib/locales";
 import { buildPageMetadata } from "@/lib/page-metadata";
 import { buildServiceItemListSchema } from "@/lib/homepage-schema";
+import { getContactServiceFallbackOptions } from "@/lib/homepage-content";
 import { JsonLd } from "@/components/JsonLd";
 import { META_DESCRIPTIONS, META_TAGLINES, SEO_DATA, type SeoLocale } from "@/lib/seo-data";
 import { isIndexableServiceLocale } from "@/lib/services/publication";
@@ -161,6 +162,7 @@ export default async function HomePage({
           }}
           locale={locale}
           serviceOptions={serviceOptions}
+          serviceFallbackOptions={getContactServiceFallbackOptions(locale, t.services)}
         />
       </main>
       <Footer

@@ -129,10 +129,8 @@ export async function Career({
           })}
         </div>
 
-        {/* PL-091: recruitment privacy notice link near the apply buttons.
-            HU/EN link their own notice; DE links the EN page; ZH/KO omit
-            the line until reviewed translations exist (helper returns
-            null). */}
+        {/* PL-091: HU/EN link their own recruitment privacy notice;
+            DE/FR/KO/ZH explicitly label the English destination. */}
         {privacyNotice && (
           <p
             style={{

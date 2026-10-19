@@ -43,7 +43,7 @@ const INDEX_COPY: Record<
   de: {
     title: `Aktuelles und Fachbeiträge - ${SEO_DATA.legalNameShort}`,
     description:
-      "Avenir Neuigkeiten, Fachbeiträge und Facility-Management-Inhalte für Unternehmensentscheider.",
+      "Avenir-Neuigkeiten, Fachbeiträge und Facility-Management-Inhalte für Unternehmensentscheider.",
     h1: "Aktuelles und Fachbeiträge",
   },
 };

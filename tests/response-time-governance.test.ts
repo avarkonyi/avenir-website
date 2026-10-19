@@ -16,19 +16,19 @@ const APPROVED = {
   enContact:
     "Within business hours we usually reply the same day, and in any case we'll be in touch by the next business day. The time needed to prepare a quote depends on the scope and complexity of your request.",
   deContact:
-    "Innerhalb der Geschäftszeiten antworten wir in der Regel noch am selben Tag, spätestens jedoch am nächsten Werktag melden wir uns bei Ihnen. Wie lange die Angebotserstellung dauert, hängt vom Umfang und der Komplexität der Anfrage ab.",
+    "Innerhalb der Geschäftszeiten antworten wir in der Regel noch am selben Tag, spätestens jedoch am nächsten Arbeitstag melden wir uns bei Ihnen. Wie lange die Angebotserstellung dauert, hängt vom Umfang und der Komplexität der Anfrage ab.",
   huTerms:
     "A Szolgáltató a beérkezett megkeresést áttekinti, és legkésőbb a következő munkanapon a megadott elérhetőségek valamelyikén kapcsolatba lép a megkeresővel. Az ajánlat elkészítésének időigénye az igény összetettségétől és a szükséges egyeztetésektől függ.",
   enTerms:
     "The Provider reviews each incoming request and makes contact by the next business day via one of the contact details provided. The time required to prepare a quote depends on the scope and complexity of the request and on any clarification needed.",
   deTerms:
-    "Der Dienstleister prüft jede eingegangene Anfrage und nimmt spätestens am nächsten Werktag über eine der angegebenen Kontaktmöglichkeiten Kontakt auf. Die Dauer der Angebotserstellung richtet sich nach dem Umfang und der Komplexität der Anfrage sowie nach dem erforderlichen Abstimmungsbedarf.",
+    "Der Dienstleister prüft jede eingegangene Anfrage und nimmt spätestens am nächsten Arbeitstag über eine der angegebenen Kontaktmöglichkeiten Kontakt auf. Die Dauer der Angebotserstellung richtet sich nach dem Umfang und der Komplexität der Anfrage sowie nach dem erforderlichen Abstimmungsbedarf.",
   huService:
     "A megkeresést átnézzük, és legkésőbb a következő munkanapon jelentkezünk a megadott elérhetőségen. Az ajánlat előkészítésének ideje a helyszíntől és az igény összetettségétől függ.",
   enService:
     "We go over your enquiry and get in touch by the next business day using the details you provided. The time needed to prepare a quote depends on the site and the complexity of the request.",
   deService:
-    "Wir sehen die Anfrage durch und melden uns spätestens am nächsten Werktag über die angegebenen Kontaktdaten. Wie lange die Angebotserstellung dauert, hängt vom Standort und der Komplexität der Anfrage ab.",
+    "Wir sehen die Anfrage durch und melden uns spätestens am nächsten Arbeitstag über die angegebenen Kontaktdaten. Wie lange die Angebotserstellung dauert, hängt vom Standort und der Komplexität der Anfrage ab.",
 } as const;
 
 const OLD_RESPONSE_TIME_CLAIM =

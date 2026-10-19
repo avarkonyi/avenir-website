@@ -1,0 +1,82 @@
+[
+  {
+    "id": "NEW-FR-001",
+    "status": "most javítva",
+    "evidence": "lib/i18n/hu.ts footer.terms = Jogi nyilatkozatok, form.specialDataWarningLink = Jogi nyilatkozatok 4. szakasz. FR Conditions d’utilisation ettől eltérő dokumentumnevet sugallt; EN footer.terms Legal Statements.",
+    "action": "A jogi dokumentum címkéit forráshűsítettem; útvonal és jogi tartalom változatlan.",
+    "before": "Conditions d’utilisation (en anglais) / Conditions d’utilisation, section 4 (en anglais)",
+    "after": "Informations juridiques (en anglais) / Informations juridiques, section 4 (en anglais)",
+    "report": "fr-review.json"
+  },
+  {
+    "id": "NEW-KO-001",
+    "status": "most javítva",
+    "evidence": "Remote longDesc a távfelügyeleti jelzéskezelést csak riasztáskezelésre szűkítette; most 원격 모니터링 신호 처리. A related kártya jelzésfogadása 신호 접수, a riasztásellenőrzés külön 경보 검증 tétel. Forrás: friss staging-public-services.json HU mezők / lib/i18n/hu.ts; aktuális KO/ZH forrás.",
+    "action": "Forrás javítva; nem új szolgáltatási/jogi állítás.",
+    "before": "원격 경보 처리가 서비스에 포함되는 경우 | 경보 접수·검증·에스컬레이션·사건 기록 및 합의된 대응 프로세스",
+    "after": "원격 모니터링 신호 처리가 서비스에 포함되는 경우 | 신호 접수·경보 검증·에스컬레이션·이벤트 기록 및 합의된 대응 프로세스",
+    "report": "ko-zh-review.json"
+  },
+  {
+    "id": "NEW-ZH-001",
+    "status": "most javítva",
+    "evidence": "Mystery trustItems[1] a HU megfigyelés/fegyelmi keretezés elhatárolását hatósági vizsgálatként fordította, ugyanúgy mint a már javított KOS-011. Most 监视/纪律处分. Forrás: friss staging-public-services.json HU mezők / lib/i18n/hu.ts; aktuális KO/ZH forrás.",
+    "action": "Forrás javítva; nem új szolgáltatási/jogi állítás.",
+    "before": "不将其界定为监管检查或纪律处理。",
+    "after": "不将其作为监视或纪律处分的手段。",
+    "report": "ko-zh-review.json"
+  },
+  {
+    "id": "NEW-ZH-002",
+    "status": "most javítva",
+    "evidence": "Soft FM longDesc szolgáltatói koordináció/helyszíni támogatás fogalompárja felcserélődött; most HU-paritású. Forrás: friss staging-public-services.json HU mezők / lib/i18n/hu.ts; aktuális KO/ZH forrás.",
+    "action": "Forrás javítva; nem új szolgáltatási/jogi állítás.",
+    "before": "服务商管理及现场运营协调。",
+    "after": "服务商协调及现场运营支持。",
+    "report": "ko-zh-review.json"
+  },
+  {
+    "id": "NEW-ZH-003",
+    "status": "most javítva",
+    "evidence": "Hard FM includedItems[0] a karbantartási ütemezés helyett ütemezett karbantartást állított; most a schedule készítése a tétel. Forrás: friss staging-public-services.json HU mezők / lib/i18n/hu.ts; aktuális KO/ZH forrás.",
+    "action": "Forrás javítva; nem új szolgáltatási/jogi állítás.",
+    "before": "针对约定设备与系统制定日程的计划性预防维护",
+    "after": "为约定设备与系统制定计划性预防维护日程",
+    "report": "ko-zh-review.json"
+  },
+  {
+    "id": "NEW-ZH-004",
+    "status": "most javítva",
+    "evidence": "About: HU kevesebb egyeztetés helyett kínai költségcsökkenést mondott. Most a szükséges koordinációs munkát csökkenti; COPY-ZH-013 megerősítve. Forrás: friss staging-public-services.json HU mezők / lib/i18n/hu.ts; aktuális KO/ZH forrás.",
+    "action": "Forrás javítva; nem új szolgáltatási/jogi állítás.",
+    "before": "我们的目标是减少客户日常协调成本",
+    "after": "我们的目标是减少客户日常所需的协调工作",
+    "report": "ko-zh-review.json"
+  },
+  {
+    "id": "NEW-ZH-005",
+    "status": "most javítva",
+    "evidence": "Négy FAQ HU érdemes ajánlása egyértelmű 建议 alakot kapott. Guard faq2, technológia faq4, remote faq5 második mondat, Hard FM faq2. A remote első mondat HU kell kötelezettsége megmaradt; KO már megfelelő volt. Forrás: friss staging-public-services.json HU mezők / lib/i18n/hu.ts; aktuális KO/ZH forrás.",
+    "action": "Forrás javítva; nem új szolgáltatási/jogi állítás.",
+    "before": "应在启动前明确这些因素，使服务符合现场实际运营。 | 具体安排应根据现场风险、技术条件与合同要求确定。 | 因此，到场或响应规则应在合作开始时明确约定。 | 具体流程应根据现场需求与合同条件确定。",
+    "after": "建议在启动前明确这些因素，使服务符合现场实际运营。 | 建议根据现场风险、技术条件与合同要求确定具体安排。 | 因此，建议在合作开始时明确约定到场或响应规则。 | 建议根据现场需求与合同条件确定具体流程。",
+    "report": "ko-zh-review.json"
+  },
+  {
+    "id": "NEW-ZH-006",
+    "status": "CMS",
+    "evidence": "A friss HU remote short_desc_hu jelzésfogadást, riasztás-verifikációt, eszkalációt, eseménynaplózást és egyeztetett reagálást sorol fel. A ZH régi kártya az elsőn kívül ezeket nem bontja ki.",
+    "action": "13. pontos változtatási javaslat a ko-zh-cms-proposal.json fájlban; nincs DB-írás.",
+    "report": "ko-zh-review.json"
+  },
+  {
+    "id": "NEW-EN-LINK-001",
+    "status": "FORRAS_JAVITVA",
+    "evidence": "Az EN EDPB URL helyes, hivatalos 2026-04 címre cserélve, HTTP200/PDF ellenőrzéssel."
+  },
+  {
+    "id": "NEW-KO-FALLBACK-001",
+    "status": "FORRAS_JAVITVA",
+    "evidence": "A koreai örökölt dictionary helyett a saját homepage overlay adja a hiányzó CMS-opció koreai címkéjét. Explicit hatnyelvi teszt és független visszaellenőrzés PASS."
+  }
+]
