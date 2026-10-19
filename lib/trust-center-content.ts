@@ -92,13 +92,13 @@ export const TRUST_CENTER_CONTENT: Record<
           {
             title: "MSZ EN ISO 9001:2015",
             body:
-              "Minőségirányítási rendszer. Tanúsítvány száma: 843579099. Kiállító: MartonCert Rendszertanúsító Kft. A tanúsítvány részletei a PDF-ben ellenőrizhetők. Hatály: 2026-03-19 - 2029-03-18.",
+              "Minőségirányítási rendszer. Tanúsítvány száma: 843579099. Kiállító: MartonCert Rendszertanúsító Kft. Hatály: 2026-03-19 - 2029-03-18.",
             links: [{ label: "ISO 9001 tanúsítvány", href: ISO_9001_PDF }],
           },
           {
             title: "MSZ ISO/IEC 27001:2023",
             body:
-              "Információbiztonsági irányítási rendszer. Tanúsítvány száma: 988960032. Kiállító: MCert Rendszertanúsító Kft. A tanúsítvány részletei a PDF-ben ellenőrizhetők. Hatály: 2026-04-27 - 2029-04-26.",
+              "Információbiztonsági irányítási rendszer. Tanúsítvány száma: 988960032. Kiállító: MCert Rendszertanúsító Kft. Hatály: 2026-04-27 - 2029-04-26.",
             links: [
               { label: "ISO/IEC 27001 tanúsítvány", href: ISO_27001_PDF },
             ],
@@ -247,13 +247,13 @@ export const TRUST_CENTER_CONTENT: Record<
           {
             title: "MSZ EN ISO 9001:2015",
             body:
-              "Quality management system. Certificate number: 843579099. Certification body: MartonCert Rendszertanúsító Kft. Certificate details can be verified in the PDF. Valid: 2026-03-19 to 2029-03-18.",
+              "Quality management system. Certificate number: 843579099. Certification body: MartonCert Rendszertanúsító Kft. Valid: 2026-03-19 to 2029-03-18.",
             links: [{ label: "ISO 9001 certificate", href: ISO_9001_PDF }],
           },
           {
             title: "MSZ ISO/IEC 27001:2023",
             body:
-              "Information security management system. Certificate number: 988960032. Certification body: MCert Rendszertanúsító Kft. Certificate details can be verified in the PDF. Valid: 2026-04-27 to 2029-04-26.",
+              "Information security management system. Certificate number: 988960032. Certification body: MCert Rendszertanúsító Kft. Valid: 2026-04-27 to 2029-04-26.",
             links: [
               { label: "ISO/IEC 27001 certificate", href: ISO_27001_PDF },
             ],
