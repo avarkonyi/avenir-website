@@ -1,6 +1,6 @@
 # Maradék fordításjavítások — jóváhagyási előnézet
 
-Dátum: 2026-10-19. Állapot: **előkészítve, adatbázisba még nem írva**.
+Dátum: 2026-10-19. Állapot: **külön jóváhagyással stagingben alkalmazva és ellenőrizve; élesben még nem**. Az alábbi lista az eredeti teljes előtte–utána változásokat őrzi. Részletek: [staging-validation.md](staging-validation.md).
 
 A csomag **8 idegen nyelvű mezőt, 4 rekordot** érint: EN 3, DE 3, ZH 2. Magyar szöveg, új szolgáltatásígéret, tanúsítási tény, dizájn és indexelési szabály nem változik.
 
@@ -174,5 +174,5 @@ Mystery shopping, brand audit, test journey and service audit for examining cust
 
 ## Jóváhagyási határ
 
-Az előkészítés nem jelent adatbázis-írási vagy élesítési engedélyt. A korábbi 68 szolgáltatásmező jóváhagyása külön csomagra vonatkozott. Következő lépés: a fenti nyolc staging-mező külön jóváhagyása, friss régiérték-ellenőrzés, célzott tranzakció, utóellenőrzés és Preview QA. A későbbi éles módosításhoz új, konkrét kiadási jóváhagyás szükséges.
+A tulajdonos a fenti nyolc staging-mezőt külön jóváhagyta; célazonosítás, friss régiérték-ellenőrzés, mentés, célzott tranzakció, teljes visszaolvasás és Preview QA sikeres. A későbbi éles módosításhoz új, konkrét kiadási jóváhagyás szükséges; ez még nem történt meg.
 
