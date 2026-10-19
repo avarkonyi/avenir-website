@@ -625,6 +625,11 @@ that could contain personal or free-text lead data.
 
 ## Contact Rate-Limit QA
 
+The production-only daily Redis read, its release checklist, and its limits are
+documented in [Redis availability](redis-availability.md). Preview must return
+404 on `/api/cron/redis-health` without contacting Redis. This check does not
+replace an explicitly approved end-to-end contact submission.
+
 `/api/contact` uses a durable Upstash Redis / Vercel KV-compatible REST rate
 limiter when these environment variables are configured:
 
