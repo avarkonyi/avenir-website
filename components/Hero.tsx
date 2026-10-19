@@ -3,12 +3,13 @@ import type { Translation } from "@/lib/i18n";
 
 export function Hero({ t }: { t: Pick<Translation, "hero" | "stats"> }) {
   return (
+    <>
     <section
       id="hero"
       className="hero-section"
       style={{
-        minHeight: "100vh",
-        background: "#0B1E3E",
+        minHeight: "clamp(680px, 90svh, 790px)",
+        background: "#071522",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
@@ -17,41 +18,27 @@ export function Hero({ t }: { t: Pick<Translation, "hero" | "stats"> }) {
         padding: "120px 5vw 80px",
       }}
     >
-      {/* Full-bleed hero background photo. next/image with `fill` mode
+      {/* Right-aligned hero photo. next/image with `fill` mode
           requires the parent to have `position: relative|absolute|fixed`
           (we have absolute) and a sized container.
           - `priority` skips lazy-loading (LCP candidate, above-the-fold)
           - `fetchPriority="high"` HTTP/2 stream priority hint (P1-G phase 2)
-          - `sizes="100vw"` tells Next which srcset variant to serve
-          - `quality={75}` explicit default — balance fidelity vs file size
-          mobile gets ~10 KB, desktop ~33 KB (WebP is already tiny). */}
-      <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
+          - `sizes="100vw"` retains enough detail for the tall cover crop
+          - `quality={95}` preserves fine detail in the face and jacket logo. */}
+      <div className="hero-photo">
         <Image
-          src="/uploads/background.webp"
+          src="/uploads/avenir-security-20261018.png"
           alt={t.hero.bgAlt}
           fill
           priority
           fetchPriority="high"
           sizes="100vw"
-          quality={75}
-          style={{ objectFit: "cover", objectPosition: "center" }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            background:
-              "linear-gradient(90deg, rgba(11,30,62,0.92) 0%, rgba(11,30,62,0.75) 40%, rgba(11,30,62,0.15) 70%, transparent 100%)",
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            background: "linear-gradient(to bottom, rgba(11,30,62,0.25) 0%, rgba(11,30,62,0.5) 100%)",
-          }}
+          quality={95}
+          className="hero-photo-image"
+          style={{ objectFit: "cover" }}
         />
       </div>
+      <div className="hero-shade" aria-hidden="true" />
       {/* Red accent line */}
       <div
         style={{
@@ -64,8 +51,8 @@ export function Hero({ t }: { t: Pick<Translation, "hero" | "stats"> }) {
           zIndex: 1,
         }}
       />
-      <div style={{ maxWidth: 1200, margin: "0 auto", width: "100%", position: "relative", zIndex: 2 }}>
-        <div style={{ maxWidth: 640 }}>
+      <div className="hero-content" style={{ maxWidth: 1200, margin: "0 auto", width: "100%", position: "relative", zIndex: 2 }}>
+        <div className="hero-copy" style={{ maxWidth: 640 }}>
           <div
             className="hero-eyebrow"
             style={{
@@ -95,12 +82,11 @@ export function Hero({ t }: { t: Pick<Translation, "hero" | "stats"> }) {
           <h1
             style={{
               fontFamily: "var(--font-head)",
-              fontWeight: 800,
-              fontSize: "clamp(44px, 7vw, 92px)",
-              lineHeight: 1.0,
+              fontWeight: 700,
+              fontSize: "clamp(42px, 5.6vw, 74px)",
+              lineHeight: 1.04,
               color: "#fff",
               marginBottom: 12,
-              textShadow: "0 2px 20px rgba(0,0,0,0.5)",
             }}
           >
             {t.hero.h1a}
@@ -108,6 +94,7 @@ export function Hero({ t }: { t: Pick<Translation, "hero" | "stats"> }) {
             <span style={{ color: "#D1172E" }}>{t.hero.h1b}</span>
           </h1>
           <p
+            className="hero-description"
             style={{
               color: "rgba(255,255,255,0.85)",
               fontSize: "clamp(15px, 1.6vw, 18px)",
@@ -115,7 +102,6 @@ export function Hero({ t }: { t: Pick<Translation, "hero" | "stats"> }) {
               lineHeight: 1.65,
               margin: "28px 0 44px",
               fontWeight: 300,
-              textShadow: "0 1px 8px rgba(0,0,0,0.4)",
             }}
           >
             {t.hero.sub}
@@ -130,20 +116,13 @@ export function Hero({ t }: { t: Pick<Translation, "hero" | "stats"> }) {
           </div>
         </div>
       </div>
-      {/* Stats bar overlay (glassmorphism, anchored to hero bottom).
-          Mobile (<600px): becomes static flow element below CTAs to avoid
-          overlap with longer HU/DE hero text. */}
+    </section>
+      {/* Keep the statistics in normal flow, clear of the photo and CTAs. */}
       <div
         className="hero-stats-bar"
         style={{
-          zIndex: 2,
-          position: "absolute",
-          bottom: 0,
-          left: 0,
-          right: 0,
-          background: "rgba(255,255,255,0.04)",
+          background: "#071522",
           borderTop: "1px solid rgba(255,255,255,0.08)",
-          backdropFilter: "blur(10px)",
         }}
       >
         <div
@@ -182,6 +161,6 @@ export function Hero({ t }: { t: Pick<Translation, "hero" | "stats"> }) {
           ))}
         </div>
       </div>
-    </section>
+    </>
   );
 }

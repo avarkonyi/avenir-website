@@ -45,7 +45,7 @@ export async function Services({
   return (
     <section id="services" style={{ padding: "100px 5vw", background: "#F8FAFC" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
-        <div style={{ textAlign: "center", marginBottom: 64 }}>
+        <div className="services-heading" style={{ textAlign: "center", marginBottom: 64 }}>
           <div
             style={{
               display: "flex",
@@ -83,6 +83,7 @@ export async function Services({
           </h2>
         </div>
         <div
+          className="services-grid"
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
@@ -101,10 +102,10 @@ export async function Services({
                 <p className="service-desc">{card.description}</p>
                 {card.href && (
                   <span
+                    className="service-details"
                     aria-hidden="true"
                     style={{
                       display: "inline-flex",
-                      marginTop: 18,
                       fontFamily: "var(--font-head)",
                       fontSize: 13,
                       fontWeight: 700,
