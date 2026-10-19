@@ -77,7 +77,8 @@ export const ko = {
       "Full-time": "풀타임",
     },
     locations: {
-      "Budapest, regional": "부다페스트 및 지역 현장",
+      "Budapest, regional": "부다페스트 / 헝가리 전역",
+      "Budapest / nationwide": "부다페스트 / 헝가리 전역",
       Budapest: "부다페스트",
     },
   },
