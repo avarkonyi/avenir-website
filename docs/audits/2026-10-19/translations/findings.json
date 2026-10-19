@@ -433,11 +433,11 @@
     "id": "DEB-044",
     "scope": "DE-B",
     "originalPriority": "P3",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "residual JSON-LD, mindhárom DE jogi oldal: `itemListElement[0,2,3].name`, `credentialCategory`, `additionalProperty[1,2].name`",
     "originalConcern": "A glossary a „Vor-Ort-Audit” használatát review nélkül kerülendőnek jelöli („Mystery Shopping und Service Audit”), és a „Veranstaltungssicherheit” alakot preferálja. A szabad szöveges JSON-LD értékek angolok a DE oldalon.",
-    "evidence": "live-before.json, 2026-10-19T09:11:27.919Z, /de (HTTP 200): …{\"@type\": \"Service\", \"name\": \"Mystery Shopping und Vor-Ort-Audits\", \"description\": \"Mystery Shopping, Servicequalitätskontrollen und Vor-Ort-Audits in realen Kunden- und Betriebssituationen, mit unabhängig…",
-    "action": "A /de főoldali ItemList még régi DB-neveket tartalmaz: Personeller Objektschutz, Mystery Shopping und Vor-Ort-Audits, Veranstaltungsschutz. A schema kategória- és akkreditációcímkék már lokalizáltak; a DB-nevek külön frissítendők."
+    "evidence": "Jóváhagyás előtti bizonyíték: live-before.json, 2026-10-19T09:11:27.919Z, /de (HTTP 200): …{\"@type\": \"Service\", \"name\": \"Mystery Shopping und Vor-Ort-Audits\", \"description\": \"Mystery Shopping, Servicequalitätskontrollen und Vor-Ort-Audits in realen Kunden- und Betriebssituationen, mit unabhängig… | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "DEB-045",
@@ -1403,21 +1403,21 @@
     "id": "ENS-002",
     "scope": "EN-SVC",
     "originalPriority": "P1",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "portaszolgalat.trustItems[4].title + .body",
     "originalConcern": "HU cím: „Látogatóadat-kezelési szempontok figyelembevétele”; törzs: „…figyelembe kell venni a célhoz kötöttséget, a tájékoztatást és az időben korlátozott megőrzést”. Az EN a normát megvalósult gyakorlatként állítja, ami implicit adatvédelmi (GDPR) megfelelési ígéret. Tilos (proof_language_rules: no GDPR guarantee).",
-    "evidence": "A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: portaszolgalat.trust_items_en.4.title, portaszolgalat.trust_items_en.4.body. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS.",
-    "action": "A helyi, átnézett javítási csomag alkalmazása külön staging célpontellenőrzés és írási jóváhagyás után lehetséges; jelen feladatban nincs DB-írás."
+    "evidence": "Jóváhagyás előtti bizonyíték: A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: portaszolgalat.trust_items_en.4.title, portaszolgalat.trust_items_en.4.body. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS. | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "ENS-003",
     "scope": "EN-SVC",
     "originalPriority": "P1",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "soft-fm.processSteps[4].body",
     "originalConcern": "HU: „Az első működési időszakban” – nincs konkrét időtartam. Az EN új, nem igazolt időkeretet (1 hónap) vezet be, ami vállalásnak olvasható (verified_claims: ne legyen új szám vagy határidő).",
-    "evidence": "A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: soft-fm.process_steps_en.4.body. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS.",
-    "action": "A helyi, átnézett javítási csomag alkalmazása külön staging célpontellenőrzés és írási jóváhagyás után lehetséges; jelen feladatban nincs DB-írás."
+    "evidence": "Jóváhagyás előtti bizonyíték: A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: soft-fm.process_steps_en.4.body. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS. | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "ENS-004",
@@ -1453,81 +1453,81 @@
     "id": "ENS-007",
     "scope": "EN-SVC",
     "originalPriority": "P2",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "tavfelugyelet-vonuloszolgalat.faq[10].a",
     "originalConcern": "HU: „kizárólag … kezelhetők” (normatív korlát). Az EN megvalósult gyakorlatként állítja, ami adatvédelmi állítás erősítése.",
-    "evidence": "A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: tavfelugyelet-vonuloszolgalat.faq_en.10.a. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS.",
-    "action": "A helyi, átnézett javítási csomag alkalmazása külön staging célpontellenőrzés és írási jóváhagyás után lehetséges; jelen feladatban nincs DB-írás."
+    "evidence": "Jóváhagyás előtti bizonyíték: A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: tavfelugyelet-vonuloszolgalat.faq_en.10.a. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS. | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "ENS-008",
     "scope": "EN-SVC",
     "originalPriority": "P2",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "portaszolgalat.faq[7].a",
     "originalConcern": "HU: „…riportálás kapcsolódhat” (lehetőség), ebből „is structured around” lett (erősítés). Kimaradt a második mondat: a riportformátumot a megrendelői igény és a helyszín működése alapján rögzítjük.",
-    "evidence": "A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: portaszolgalat.faq_en.7.a. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS.",
-    "action": "A helyi, átnézett javítási csomag alkalmazása külön staging célpontellenőrzés és írási jóváhagyás után lehetséges; jelen feladatban nincs DB-írás."
+    "evidence": "Jóváhagyás előtti bizonyíték: A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: portaszolgalat.faq_en.7.a. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS. | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "ENS-009",
     "scope": "EN-SVC",
     "originalPriority": "P2",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "mystery-shopping-helyszini-audit.faq[3].q + .a",
     "originalConcern": "A kérdés és a válasz logikailag ellentmond egymásnak. A HU eldöntendő kérdés („Készül riport az eredményekről?”), az EN viszont tartalmi kérdést tesz fel, a válasz mégis „Yes.”-szel indul. Látható hiba.",
-    "evidence": "A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: mystery-shopping-helyszini-audit.faq_en.3.q. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS.",
-    "action": "A helyi, átnézett javítási csomag alkalmazása külön staging célpontellenőrzés és írási jóváhagyás után lehetséges; jelen feladatban nincs DB-írás."
+    "evidence": "Jóváhagyás előtti bizonyíték: A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: mystery-shopping-helyszini-audit.faq_en.3.q. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS. | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "ENS-010",
     "scope": "EN-SVC",
     "originalPriority": "P2",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "mystery-shopping-helyszini-audit.valueProposition",
     "originalConcern": "Jelentős átírás. Kimaradt: „mit tapasztal az ügyfél”, „követik-e az elvárt folyamatot”, és a lényeg: „hol jelenik meg minőségi, reputációs vagy megfelelési kockázat”. Hozzáadva: „with structured reporting and improvement recommendations”. A nagybetűs névvel és névelővel is nehézkes.",
-    "evidence": "A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: mystery-shopping-helyszini-audit.value_proposition_en. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS.",
-    "action": "A helyi, átnézett javítási csomag alkalmazása külön staging célpontellenőrzés és írási jóváhagyás után lehetséges; jelen feladatban nincs DB-írás."
+    "evidence": "Jóváhagyás előtti bizonyíték: A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: mystery-shopping-helyszini-audit.value_proposition_en. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS. | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "ENS-011",
     "scope": "EN-SVC",
     "originalPriority": "P2",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "soft-fm.longDesc (HU ¶2 2. mondat; HU ¶3)",
     "originalConcern": "Kimaradt: „A cél nem nyitott, »ahogy szükséges« jellegű működés, hanem előre rögzített, ellenőrizhető és riportálható szolgáltatási keret.” Kimaradtak a koordinációs réteg elemei (napi helyszíni egyeztetés, minőségellenőrzés, riportálás). A HU „átveheti” (lehetőség) „manages” lett, a „széttagolt szerződés” pedig „service flows”.",
-    "evidence": "A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: soft-fm.long_desc_en. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS.",
-    "action": "A helyi, átnézett javítási csomag alkalmazása külön staging célpontellenőrzés és írási jóváhagyás után lehetséges; jelen feladatban nincs DB-írás."
+    "evidence": "Jóváhagyás előtti bizonyíték: A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: soft-fm.long_desc_en. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS. | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "ENS-012",
     "scope": "EN-SVC",
     "originalPriority": "P2",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "soft-fm.includedItems[0]; [1]; [2]; [6] (=HU [5])",
     "originalConcern": "HU [0]: „Napi takarítási működés az egyeztetett területeken és feladatgyakoriságok szerint”. Az EN konkrét területeket ad hozzá, a „napi” és az „egyeztetett” szó kimarad, ami scope-bővítés. [1] a „ha a scope tartalmazza”, [2] a „ha a helyszíni modell része” feltételt veszíti el. HU [5]-ben a „meglévő ügyféloldali beszállítók esetén” feltétel helyett „with quality checks” áll.",
-    "evidence": "A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: soft-fm.included_items_en.0, soft-fm.included_items_en.1, soft-fm.included_items_en.2, soft-fm.included_items_en.6. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS. Soft FM included_items_en[6] a jelentés szerinti HU[5] forrását követi; a két listában az 5/6 sorrend korábban is eltért.",
-    "action": "A helyi, átnézett javítási csomag alkalmazása külön staging célpontellenőrzés és írási jóváhagyás után lehetséges; jelen feladatban nincs DB-írás."
+    "evidence": "Jóváhagyás előtti bizonyíték: A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: soft-fm.included_items_en.0, soft-fm.included_items_en.1, soft-fm.included_items_en.2, soft-fm.included_items_en.6. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS. Soft FM included_items_en[6] a jelentés szerinti HU[5] forrását követi; a két listában az 5/6 sorrend korábban is eltért. | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "ENS-013",
     "scope": "EN-SVC",
     "originalPriority": "P2",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "portaszolgalat.longDesc[1]; portaszolgalat.faq[6].a",
     "originalConcern": "A „megfelelő tájékoztatás” / „látogatói tájékoztatás” az érintettek adatvédelmi tájékoztatását jelenti. Az EN „appropriate information” / „visitor information” félreérthető (látogatókról szóló adat), az adatvédelmi fogalom téves.",
-    "evidence": "A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: portaszolgalat.long_desc_en, portaszolgalat.faq_en.6.a. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS.",
-    "action": "A helyi, átnézett javítási csomag alkalmazása külön staging célpontellenőrzés és írási jóváhagyás után lehetséges; jelen feladatban nincs DB-írás."
+    "evidence": "Jóváhagyás előtti bizonyíték: A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: portaszolgalat.long_desc_en, portaszolgalat.faq_en.6.a. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS. | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "ENS-014",
     "scope": "EN-SVC",
     "originalPriority": "P2",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "mystery-shopping-helyszini-audit.faq[7].a",
     "originalConcern": "Alany–állítmány egyeztetési hiba: egyes számú szolgáltatásnév után „measure”, majd „It is”.",
-    "evidence": "A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: mystery-shopping-helyszini-audit.faq_en.7.a. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS. Az eredeti többes/szolgáltatásnévi egyeztetés vitatható, a javasolt The … service measures szerkezet egyértelmű egyes szám, a tartalom változatlan.",
-    "action": "A helyi, átnézett javítási csomag alkalmazása külön staging célpontellenőrzés és írási jóváhagyás után lehetséges; jelen feladatban nincs DB-írás."
+    "evidence": "Jóváhagyás előtti bizonyíték: A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: mystery-shopping-helyszini-audit.faq_en.7.a. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS. Az eredeti többes/szolgáltatásnévi egyeztetés vitatható, a javasolt The … service measures szerkezet egyértelmű egyes szám, a tartalom változatlan. | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "ENS-015",
@@ -1603,21 +1603,21 @@
     "id": "ENS-022",
     "scope": "EN-SVC",
     "originalPriority": "P3",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "objektumorzes.trustItems[4].body; rendezvenybiztositas.trustItems[4].title; biztonsagtechnika.processSteps[3].body",
     "originalConcern": "Ingadozik a terminológia: máshol 9× „point of contact”. A „points-of-contact” kötőjeles alak hibás.",
-    "evidence": "A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: objektumorzes.trust_items_en.4.body, biztonsagtechnika.process_steps_en.3.body. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS.",
-    "action": "A helyi, átnézett javítási csomag alkalmazása külön staging célpontellenőrzés és írási jóváhagyás után lehetséges; jelen feladatban nincs DB-írás."
+    "evidence": "Jóváhagyás előtti bizonyíték: A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: objektumorzes.trust_items_en.4.body, biztonsagtechnika.process_steps_en.3.body. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS. | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "ENS-023",
     "scope": "EN-SVC",
     "originalPriority": "P3",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "tavfelugyelet-vonuloszolgalat.longDesc[0], includedItems[4], trustItems[1], trustItems[4], faq[3].a, faq[8].a",
     "originalConcern": "HU: „eseménynapló”. Az EN 6× „operations log”, ugyanazon az oldalon viszont „event logging” és „Event recording” is szerepel; a távfelügyeletben az „event log” a bevett kifejezés.",
-    "evidence": "A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: tavfelugyelet-vonuloszolgalat.long_desc_en, tavfelugyelet-vonuloszolgalat.included_items_en.4, tavfelugyelet-vonuloszolgalat.trust_items_en.1.body, tavfelugyelet-vonuloszolgalat.trust_items_en.4.body, tavfelugyelet-vonuloszolgalat.faq_en.3.a, tavfelugyelet-vonuloszolgalat.faq_en.8.a, tavfelugyelet-vonuloszolgalat.process_steps_en.4.title. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS.",
-    "action": "A helyi, átnézett javítási csomag alkalmazása külön staging célpontellenőrzés és írási jóváhagyás után lehetséges; jelen feladatban nincs DB-írás."
+    "evidence": "Jóváhagyás előtti bizonyíték: A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: tavfelugyelet-vonuloszolgalat.long_desc_en, tavfelugyelet-vonuloszolgalat.included_items_en.4, tavfelugyelet-vonuloszolgalat.trust_items_en.1.body, tavfelugyelet-vonuloszolgalat.trust_items_en.4.body, tavfelugyelet-vonuloszolgalat.faq_en.3.a, tavfelugyelet-vonuloszolgalat.faq_en.8.a, tavfelugyelet-vonuloszolgalat.process_steps_en.4.title. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS. | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "ENS-024",
@@ -1643,161 +1643,161 @@
     "id": "ENS-026",
     "scope": "EN-SVC",
     "originalPriority": "P3",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "hard-fm.longDesc[2] vs biztonsagtechnika.trustItems[0].body, faq[0].a",
     "originalConcern": "Ingadozó írásmód.",
-    "evidence": "A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: hard-fm.long_desc_en. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS.",
-    "action": "A helyi, átnézett javítási csomag alkalmazása külön staging célpontellenőrzés és írási jóváhagyás után lehetséges; jelen feladatban nincs DB-írás."
+    "evidence": "Jóváhagyás előtti bizonyíték: A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: hard-fm.long_desc_en. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS. | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "ENS-027",
     "scope": "EN-SVC",
     "originalPriority": "P3",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "objektumorzes.includedItems[2]",
     "originalConcern": "A „checkpoints” egy szó.",
-    "evidence": "A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: objektumorzes.included_items_en.2. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS.",
-    "action": "A helyi, átnézett javítási csomag alkalmazása külön staging célpontellenőrzés és írási jóváhagyás után lehetséges; jelen feladatban nincs DB-írás."
+    "evidence": "Jóváhagyás előtti bizonyíték: A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: objektumorzes.included_items_en.2. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS. | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "ENS-028",
     "scope": "EN-SVC",
     "originalPriority": "P3",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "objektumorzes.longDesc[2], trustItems[5].body, faq[6].a; tavfelugyelet-vonuloszolgalat.faq[4].a",
     "originalConcern": "A HU „szabályozási keret” (regulatory) „licensing framework” lett, ami szűkít. A „personal and property security” tükörfordítás. A longDesc-ben a HU „a szolgáltatást … nyújtja” „operates” lett.",
-    "evidence": "A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: objektumorzes.long_desc_en, objektumorzes.trust_items_en.5.body, objektumorzes.faq_en.6.a, tavfelugyelet-vonuloszolgalat.faq_en.4.a. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS.",
-    "action": "A helyi, átnézett javítási csomag alkalmazása külön staging célpontellenőrzés és írási jóváhagyás után lehetséges; jelen feladatban nincs DB-írás."
+    "evidence": "Jóváhagyás előtti bizonyíték: A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: objektumorzes.long_desc_en, objektumorzes.trust_items_en.5.body, objektumorzes.faq_en.6.a, tavfelugyelet-vonuloszolgalat.faq_en.4.a. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS. | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "ENS-029",
     "scope": "EN-SVC",
     "originalPriority": "P3",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "objektumorzes.trustItems[5].title",
     "originalConcern": "Nem idiomatikus. A proof_language_rules jóváhagyott EN mintája: „Licensed security operations”.",
-    "evidence": "A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: objektumorzes.trust_items_en.5.title. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS.",
-    "action": "A helyi, átnézett javítási csomag alkalmazása külön staging célpontellenőrzés és írási jóváhagyás után lehetséges; jelen feladatban nincs DB-írás."
+    "evidence": "Jóváhagyás előtti bizonyíték: A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: objektumorzes.trust_items_en.5.title. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS. | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "ENS-030",
     "scope": "EN-SVC",
     "originalPriority": "P3",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "objektumorzes.faq[6].a; tavfelugyelet-vonuloszolgalat.faq[4].a",
     "originalConcern": "A „where required” HU-ban nincs (feltétel hozzáadása). A „guard documentation” pontatlan (HU: „a vagyonőri állomány engedélyezési dokumentációja”).",
-    "evidence": "A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: objektumorzes.faq_en.6.a, tavfelugyelet-vonuloszolgalat.faq_en.4.a. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS.",
-    "action": "A helyi, átnézett javítási csomag alkalmazása külön staging célpontellenőrzés és írási jóváhagyás után lehetséges; jelen feladatban nincs DB-írás."
+    "evidence": "Jóváhagyás előtti bizonyíték: A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: objektumorzes.faq_en.6.a, tavfelugyelet-vonuloszolgalat.faq_en.4.a. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS. | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "ENS-031",
     "scope": "EN-SVC",
     "originalPriority": "P3",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "objektumorzes.longDesc[1]; portaszolgalat.valueProposition",
     "originalConcern": "A HU „visszakövethető” (nyomon követhető) egyszer „clear”, egyszer „accountable” lett, ami jelentéseltolódás. Az objektumorzes ¶2 elején hozzáadott „When the site requires it” HU-ban nincs.",
-    "evidence": "A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: objektumorzes.long_desc_en, portaszolgalat.value_proposition_en. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS.",
-    "action": "A helyi, átnézett javítási csomag alkalmazása külön staging célpontellenőrzés és írási jóváhagyás után lehetséges; jelen feladatban nincs DB-írás."
+    "evidence": "Jóváhagyás előtti bizonyíték: A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: objektumorzes.long_desc_en, portaszolgalat.value_proposition_en. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS. | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "ENS-032",
     "scope": "EN-SVC",
     "originalPriority": "P3",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "objektumorzes.trustItems[1].body; portaszolgalat.trustItems[0].body",
     "originalConcern": "HU: „segíti a helyszíni / portaszolgálati kontrollt”. Az átfogalmazás enyhén erősít, a „kontroll” fogalom elvész.",
-    "evidence": "A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: objektumorzes.trust_items_en.1.body, portaszolgalat.trust_items_en.0.body. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS.",
-    "action": "A helyi, átnézett javítási csomag alkalmazása külön staging célpontellenőrzés és írási jóváhagyás után lehetséges; jelen feladatban nincs DB-írás."
+    "evidence": "Jóváhagyás előtti bizonyíték: A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: objektumorzes.trust_items_en.1.body, portaszolgalat.trust_items_en.0.body. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS. | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "ENS-033",
     "scope": "EN-SVC",
     "originalPriority": "P3",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "objektumorzes.trustItems[0].body, faq[7].a; portaszolgalat.trustItems[2].body",
     "originalConcern": "Tautológia (supported … support). A tartalom megfelel a jóváhagyott claimnek.",
-    "evidence": "A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: objektumorzes.trust_items_en.0.body, objektumorzes.faq_en.7.a, portaszolgalat.trust_items_en.2.body. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS.",
-    "action": "A helyi, átnézett javítási csomag alkalmazása külön staging célpontellenőrzés és írási jóváhagyás után lehetséges; jelen feladatban nincs DB-írás."
+    "evidence": "Jóváhagyás előtti bizonyíték: A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: objektumorzes.trust_items_en.0.body, objektumorzes.faq_en.7.a, portaszolgalat.trust_items_en.2.body. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS. | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "ENS-034",
     "scope": "EN-SVC",
     "originalPriority": "P3",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "objektumorzes.includedItems[0]",
     "originalConcern": "HU: „Beléptetési és kiléptetési rend támogatása”. A „rend támogatása” „pontkezelés” lett, és a „management” erősebb vállalás.",
-    "evidence": "A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: objektumorzes.included_items_en.0. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS.",
-    "action": "A helyi, átnézett javítási csomag alkalmazása külön staging célpontellenőrzés és írási jóváhagyás után lehetséges; jelen feladatban nincs DB-írás."
+    "evidence": "Jóváhagyás előtti bizonyíték: A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: objektumorzes.included_items_en.0. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS. | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "ENS-035",
     "scope": "EN-SVC",
     "originalPriority": "P3",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "objektumorzes.processSteps[2].title",
     "originalConcern": "A HU cím konkrét („Belépési, kilépési, járőrözési és eszkalációs rend kialakítása”), az EN általánosít.",
-    "evidence": "A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: objektumorzes.process_steps_en.2.title. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS.",
-    "action": "A helyi, átnézett javítási csomag alkalmazása külön staging célpontellenőrzés és írási jóváhagyás után lehetséges; jelen feladatban nincs DB-írás."
+    "evidence": "Jóváhagyás előtti bizonyíték: A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: objektumorzes.process_steps_en.2.title. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS. | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "ENS-036",
     "scope": "EN-SVC",
     "originalPriority": "P3",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "portaszolgalat.longDesc[0]; biztonsagtechnika.faq[5].a",
     "originalConcern": "A „rendkívüli esemény” tükörfordítása.",
-    "evidence": "A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: portaszolgalat.long_desc_en, biztonsagtechnika.faq_en.5.a. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS.",
-    "action": "A helyi, átnézett javítási csomag alkalmazása külön staging célpontellenőrzés és írási jóváhagyás után lehetséges; jelen feladatban nincs DB-írás."
+    "evidence": "Jóváhagyás előtti bizonyíték: A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: portaszolgalat.long_desc_en, biztonsagtechnika.faq_en.5.a. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS. | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "ENS-037",
     "scope": "EN-SVC",
     "originalPriority": "P3",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "objektumorzes.faq[8].a",
     "originalConcern": "A „signals” itt félreérthető (HU: „milyen sorrendben történik a jelzés”).",
-    "evidence": "A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: objektumorzes.faq_en.8.a. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS.",
-    "action": "A helyi, átnézett javítási csomag alkalmazása külön staging célpontellenőrzés és írási jóváhagyás után lehetséges; jelen feladatban nincs DB-írás."
+    "evidence": "Jóváhagyás előtti bizonyíték: A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: objektumorzes.faq_en.8.a. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS. | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "ENS-038",
     "scope": "EN-SVC",
     "originalPriority": "P3",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "portaszolgalat.processSteps[4].body",
     "originalConcern": "HU: „betanítással és indulási egyeztetéssel”. Az EN zsargonos és homályos.",
-    "evidence": "A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: portaszolgalat.process_steps_en.4.body. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS.",
-    "action": "A helyi, átnézett javítási csomag alkalmazása külön staging célpontellenőrzés és írási jóváhagyás után lehetséges; jelen feladatban nincs DB-írás."
+    "evidence": "Jóváhagyás előtti bizonyíték: A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: portaszolgalat.process_steps_en.4.body. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS. | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "ENS-039",
     "scope": "EN-SVC",
     "originalPriority": "P3",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "biztonsagtechnika.longDesc[1]",
     "originalConcern": "Dupla „where”, nehézkes mondatszerkezet.",
-    "evidence": "A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: biztonsagtechnika.long_desc_en. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS.",
-    "action": "A helyi, átnézett javítási csomag alkalmazása külön staging célpontellenőrzés és írási jóváhagyás után lehetséges; jelen feladatban nincs DB-írás."
+    "evidence": "Jóváhagyás előtti bizonyíték: A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: biztonsagtechnika.long_desc_en. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS. | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "ENS-040",
     "scope": "EN-SVC",
     "originalPriority": "P3",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "biztonsagtechnika.trustItems[3].body",
     "originalConcern": "A „jogosultsági szabályok követése” betartást jelent, nem „tracking”-et.",
-    "evidence": "A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: biztonsagtechnika.trust_items_en.3.body. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS.",
-    "action": "A helyi, átnézett javítási csomag alkalmazása külön staging célpontellenőrzés és írási jóváhagyás után lehetséges; jelen feladatban nincs DB-írás."
+    "evidence": "Jóváhagyás előtti bizonyíték: A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: biztonsagtechnika.trust_items_en.3.body. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS. | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "ENS-041",
     "scope": "EN-SVC",
     "originalPriority": "P3",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "biztonsagtechnika.trustItems[5].title",
     "originalConcern": "HU: „megvalósítási javaslat”. A címben a „plan” erősebb, a törzsszöveg „recommendation”.",
-    "evidence": "A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: biztonsagtechnika.trust_items_en.5.title. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS.",
-    "action": "A helyi, átnézett javítási csomag alkalmazása külön staging célpontellenőrzés és írási jóváhagyás után lehetséges; jelen feladatban nincs DB-írás."
+    "evidence": "Jóváhagyás előtti bizonyíték: A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: biztonsagtechnika.trust_items_en.5.title. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS. | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "ENS-042",
@@ -1813,231 +1813,231 @@
     "id": "ENS-043",
     "scope": "EN-SVC",
     "originalPriority": "P3",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "biztonsagtechnika.faq[3].a",
     "originalConcern": "A felsorolás nyelvtanilag hibás („camera … processes”).",
-    "evidence": "A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: biztonsagtechnika.faq_en.3.a. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS.",
-    "action": "A helyi, átnézett javítási csomag alkalmazása külön staging célpontellenőrzés és írási jóváhagyás után lehetséges; jelen feladatban nincs DB-írás."
+    "evidence": "Jóváhagyás előtti bizonyíték: A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: biztonsagtechnika.faq_en.3.a. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS. | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "ENS-044",
     "scope": "EN-SVC",
     "originalPriority": "P3",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "tavfelugyelet-vonuloszolgalat.faq[1].q",
     "originalConcern": "A „response” önmagában homályos (HU: „vonulószolgálat”).",
-    "evidence": "A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: tavfelugyelet-vonuloszolgalat.faq_en.1.q. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS.",
-    "action": "A helyi, átnézett javítási csomag alkalmazása külön staging célpontellenőrzés és írási jóváhagyás után lehetséges; jelen feladatban nincs DB-írás."
+    "evidence": "Jóváhagyás előtti bizonyíték: A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: tavfelugyelet-vonuloszolgalat.faq_en.1.q. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS. | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "ENS-045",
     "scope": "EN-SVC",
     "originalPriority": "P3",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "tavfelugyelet-vonuloszolgalat.useCases[4]",
     "originalConcern": "Kimaradt a „vagy vonulószolgálati” folyamat.",
-    "evidence": "A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: tavfelugyelet-vonuloszolgalat.use_cases_en.4. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS.",
-    "action": "A helyi, átnézett javítási csomag alkalmazása külön staging célpontellenőrzés és írási jóváhagyás után lehetséges; jelen feladatban nincs DB-írás."
+    "evidence": "Jóváhagyás előtti bizonyíték: A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: tavfelugyelet-vonuloszolgalat.use_cases_en.4. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS. | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "ENS-046",
     "scope": "EN-SVC",
     "originalPriority": "P3",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "tavfelugyelet-vonuloszolgalat.includedItems[3]",
     "originalConcern": "Az „Own” nem idiomatikus.",
-    "evidence": "A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: tavfelugyelet-vonuloszolgalat.included_items_en.3. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS.",
-    "action": "A helyi, átnézett javítási csomag alkalmazása külön staging célpontellenőrzés és írási jóváhagyás után lehetséges; jelen feladatban nincs DB-írás."
+    "evidence": "Jóváhagyás előtti bizonyíték: A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: tavfelugyelet-vonuloszolgalat.included_items_en.3. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS. | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "ENS-047",
     "scope": "EN-SVC",
     "originalPriority": "P3",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "tavfelugyelet-vonuloszolgalat.processSteps[3].body; processSteps[5].title; faq[9].a; faq[4].a",
     "originalConcern": "Szóismétlés („conditions”). A „monitoring” kétértelmű a távfelügyeleti oldalon (HU: „működéskövetés”). Pleonazmus. A faq[4]-ben névelő hiányzik („Remote monitoring and response service are provided”).",
-    "evidence": "A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: tavfelugyelet-vonuloszolgalat.process_steps_en.3.body, tavfelugyelet-vonuloszolgalat.process_steps_en.5.title, tavfelugyelet-vonuloszolgalat.faq_en.4.a, tavfelugyelet-vonuloszolgalat.faq_en.9.a. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS.",
-    "action": "A helyi, átnézett javítási csomag alkalmazása külön staging célpontellenőrzés és írási jóváhagyás után lehetséges; jelen feladatban nincs DB-írás."
+    "evidence": "Jóváhagyás előtti bizonyíték: A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: tavfelugyelet-vonuloszolgalat.process_steps_en.3.body, tavfelugyelet-vonuloszolgalat.process_steps_en.5.title, tavfelugyelet-vonuloszolgalat.faq_en.4.a, tavfelugyelet-vonuloszolgalat.faq_en.9.a. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS. | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "ENS-048",
     "scope": "EN-SVC",
     "originalPriority": "P3",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "mystery-shopping-helyszini-audit.longDesc[0]",
     "originalConcern": "HU: „betanítja” (trains), az EN gyengít.",
-    "evidence": "A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: mystery-shopping-helyszini-audit.long_desc_en. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS.",
-    "action": "A helyi, átnézett javítási csomag alkalmazása külön staging célpontellenőrzés és írási jóváhagyás után lehetséges; jelen feladatban nincs DB-írás."
+    "evidence": "Jóváhagyás előtti bizonyíték: A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: mystery-shopping-helyszini-audit.long_desc_en. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS. | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "ENS-049",
     "scope": "EN-SVC",
     "originalPriority": "P3",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_RESZBEN_JAVITVA_MARADEK_NYITOTT",
     "originalLocation": "mystery-shopping-helyszini-audit.includedItems[4], faq[7].a, meta.description",
     "originalConcern": "A „folyamatkövetés” a folyamat betartását jelenti; a „follow-through” befejezést, végigvitelt.",
-    "evidence": "A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: mystery-shopping-helyszini-audit.included_items_en.4, mystery-shopping-helyszini-audit.faq_en.7.a. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS.",
-    "action": "A helyi, átnézett javítási csomag alkalmazása külön staging célpontellenőrzés és írási jóváhagyás után lehetséges; jelen feladatban nincs DB-írás."
+    "evidence": "Jóváhagyás előtti bizonyíték: A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: mystery-shopping-helyszini-audit.included_items_en.4, mystery-shopping-helyszini-audit.faq_en.7.a. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS. | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md. | Végső lezárási review: a seo_description_en mezőben a live/staging snapshot szerint még process follow-through áll, míg HU folyamatkövetés. A metadata közvetlen CMS-forrás, nincs javító EN overlay; nincs a jóváhagyott 68 mezőben.",
+    "action": "A felsorolás és GYIK stagingben javítva, élesítésre vár. Külön nyitott 1 mező: mystery-shopping-helyszini-audit.seo_description_en, process follow-through → process adherence. Nincs még előterjesztve vagy engedélyezve ebben a csomagban."
   },
   {
     "id": "ENS-050",
     "scope": "EN-SVC",
     "originalPriority": "P3",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "mystery-shopping-helyszini-audit.useCases[5]; faq[2].a; faq[6].a",
     "originalConcern": "A „nyugtaadás” jelentése: nyugta kiadása.",
-    "evidence": "A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: mystery-shopping-helyszini-audit.use_cases_en.5, mystery-shopping-helyszini-audit.faq_en.2.a, mystery-shopping-helyszini-audit.faq_en.6.a. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS.",
-    "action": "A helyi, átnézett javítási csomag alkalmazása külön staging célpontellenőrzés és írási jóváhagyás után lehetséges; jelen feladatban nincs DB-írás."
+    "evidence": "Jóváhagyás előtti bizonyíték: A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: mystery-shopping-helyszini-audit.use_cases_en.5, mystery-shopping-helyszini-audit.faq_en.2.a, mystery-shopping-helyszini-audit.faq_en.6.a. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS. | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "ENS-051",
     "scope": "EN-SVC",
     "originalPriority": "P3",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "mystery-shopping-helyszini-audit.processSteps[4].body",
     "originalConcern": "HU: „tartalmazhat” (may include), ebből „including” lett.",
-    "evidence": "A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: mystery-shopping-helyszini-audit.process_steps_en.4.body. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS.",
-    "action": "A helyi, átnézett javítási csomag alkalmazása külön staging célpontellenőrzés és írási jóváhagyás után lehetséges; jelen feladatban nincs DB-írás."
+    "evidence": "Jóváhagyás előtti bizonyíték: A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: mystery-shopping-helyszini-audit.process_steps_en.4.body. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS. | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "ENS-052",
     "scope": "EN-SVC",
     "originalPriority": "P3",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "mystery-shopping-helyszini-audit.trustItems[4].body",
     "originalConcern": "HU: az egyes munkatársakra vonatkozó adatok, illetve „csak előzetesen egyeztetett” keretek. A munkavállalói fókusz és az „előzetesen” kimaradt.",
-    "evidence": "A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: mystery-shopping-helyszini-audit.trust_items_en.4.body. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS.",
-    "action": "A helyi, átnézett javítási csomag alkalmazása külön staging célpontellenőrzés és írási jóváhagyás után lehetséges; jelen feladatban nincs DB-írás."
+    "evidence": "Jóváhagyás előtti bizonyíték: A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: mystery-shopping-helyszini-audit.trust_items_en.4.body. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS. | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "ENS-053",
     "scope": "EN-SVC",
     "originalPriority": "P3",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "mystery-shopping-helyszini-audit.faq[7].q",
     "originalConcern": "Csonka kérdés (HU: „Mi a különbség a Mystery Shopping és a magánnyomozás között?”).",
-    "evidence": "A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: mystery-shopping-helyszini-audit.faq_en.7.q. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS.",
-    "action": "A helyi, átnézett javítási csomag alkalmazása külön staging célpontellenőrzés és írási jóváhagyás után lehetséges; jelen feladatban nincs DB-írás."
+    "evidence": "Jóváhagyás előtti bizonyíték: A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: mystery-shopping-helyszini-audit.faq_en.7.q. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS. | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "ENS-054",
     "scope": "EN-SVC",
     "originalPriority": "P3",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "rendezvenybiztositas.useCases[7]; includedItems[6]",
     "originalConcern": "Hiányzik a névelő. A HU „vagy nagyobb létszámú” helyett „and mass” áll.",
-    "evidence": "A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: rendezvenybiztositas.use_cases_en.7, rendezvenybiztositas.included_items_en.6. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS.",
-    "action": "A helyi, átnézett javítási csomag alkalmazása külön staging célpontellenőrzés és írási jóváhagyás után lehetséges; jelen feladatban nincs DB-írás."
+    "evidence": "Jóváhagyás előtti bizonyíték: A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: rendezvenybiztositas.use_cases_en.7, rendezvenybiztositas.included_items_en.6. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS. | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "ENS-055",
     "scope": "EN-SVC",
     "originalPriority": "P3",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "rendezvenybiztositas.faq[0].a; faq[3].a; faq[4].a",
     "originalConcern": "Tükörfordítás; pleonazmus (guaranteed … promised). A HU „gyorsabb az egyeztetés” „resolved” lett, ami enyhe erősítés.",
-    "evidence": "A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: rendezvenybiztositas.faq_en.0.a, rendezvenybiztositas.faq_en.3.a, rendezvenybiztositas.faq_en.4.a. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS.",
-    "action": "A helyi, átnézett javítási csomag alkalmazása külön staging célpontellenőrzés és írási jóváhagyás után lehetséges; jelen feladatban nincs DB-írás."
+    "evidence": "Jóváhagyás előtti bizonyíték: A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: rendezvenybiztositas.faq_en.0.a, rendezvenybiztositas.faq_en.3.a, rendezvenybiztositas.faq_en.4.a. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS. | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "ENS-056",
     "scope": "EN-SVC",
     "originalPriority": "P3",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "hard-fm.valueProposition; useCases[1]; useCases[2]",
     "originalConcern": "HU: „épületüzemeltetés” (nem épületállag); „összetett” → „mixed”; „üzemeltetők” → „occupiers”; az „accountable” hozzáadás.",
-    "evidence": "A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: hard-fm.value_proposition_en, hard-fm.use_cases_en.1, hard-fm.use_cases_en.2. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS.",
-    "action": "A helyi, átnézett javítási csomag alkalmazása külön staging célpontellenőrzés és írási jóváhagyás után lehetséges; jelen feladatban nincs DB-írás."
+    "evidence": "Jóváhagyás előtti bizonyíték: A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: hard-fm.value_proposition_en, hard-fm.use_cases_en.1, hard-fm.use_cases_en.2. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS. | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "ENS-057",
     "scope": "EN-SVC",
     "originalPriority": "P3",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "hard-fm.longDesc[2]; related cards; soft-fm/portaszolgalat meta",
     "originalConcern": "Csonkolt vagy eltérő szolgáltatásnevek a törzsszövegben és a kártyákon („Reception”, „On-site guarding”, „Soft FM Services”). A nav/H1/footer következetes.",
-    "evidence": "A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: hard-fm.long_desc_en. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS.",
-    "action": "A helyi, átnézett javítási csomag alkalmazása külön staging célpontellenőrzés és írási jóváhagyás után lehetséges; jelen feladatban nincs DB-írás."
+    "evidence": "Jóváhagyás előtti bizonyíték: A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: hard-fm.long_desc_en. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS. | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md. | Végső lezárási review: related kártyák DB name_en nevei helyesek (queries/services.ts és service page). Reception meta Gatehouse service megfelel HU Portaszolgálat szövegnek; Soft FM Services for corporate sites megfelel HU Soft FM szolgáltatások vállalati helyszínekre szövegnek. Nincs további igazolt maradék.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "ENS-058",
     "scope": "EN-SVC",
     "originalPriority": "P3",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "hard-fm.processSteps[3].title, [4].title",
     "originalConcern": "Felszólító forma, a többi lépéscím (minden oldalon) főnévi.",
-    "evidence": "A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: hard-fm.process_steps_en.3.title, hard-fm.process_steps_en.4.title. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS.",
-    "action": "A helyi, átnézett javítási csomag alkalmazása külön staging célpontellenőrzés és írási jóváhagyás után lehetséges; jelen feladatban nincs DB-írás."
+    "evidence": "Jóváhagyás előtti bizonyíték: A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: hard-fm.process_steps_en.3.title, hard-fm.process_steps_en.4.title. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS. | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "ENS-059",
     "scope": "EN-SVC",
     "originalPriority": "P3",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "hard-fm.processSteps[0].body; hard-fm.faq[0].a",
     "originalConcern": "Az „érintett szolgáltatói kör” fordítása nehézkes. A „supplier” eltér a lapon használt „provider”-től (a biztonsági oldalakon a „supplier” beszállítót jelent).",
-    "evidence": "A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: hard-fm.process_steps_en.0.body, hard-fm.faq_en.0.a. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS.",
-    "action": "A helyi, átnézett javítási csomag alkalmazása külön staging célpontellenőrzés és írási jóváhagyás után lehetséges; jelen feladatban nincs DB-írás."
+    "evidence": "Jóváhagyás előtti bizonyíték: A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: hard-fm.process_steps_en.0.body, hard-fm.faq_en.0.a. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS. | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "ENS-060",
     "scope": "EN-SVC",
     "originalPriority": "P3",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "hard-fm.trustItems[3].body, [4].body",
     "originalConcern": "HU: „összegezhetők”, „összehangolhatók” (lehetőség), az EN tényként állítja.",
-    "evidence": "A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: hard-fm.trust_items_en.3.body, hard-fm.trust_items_en.4.body. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS.",
-    "action": "A helyi, átnézett javítási csomag alkalmazása külön staging célpontellenőrzés és írási jóváhagyás után lehetséges; jelen feladatban nincs DB-írás."
+    "evidence": "Jóváhagyás előtti bizonyíték: A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: hard-fm.trust_items_en.3.body, hard-fm.trust_items_en.4.body. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS. | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "ENS-061",
     "scope": "EN-SVC",
     "originalPriority": "P3",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "soft-fm.valueProposition",
     "originalConcern": "Tautológia (reported … reporting).",
-    "evidence": "A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: soft-fm.value_proposition_en. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS.",
-    "action": "A helyi, átnézett javítási csomag alkalmazása külön staging célpontellenőrzés és írási jóváhagyás után lehetséges; jelen feladatban nincs DB-írás."
+    "evidence": "Jóváhagyás előtti bizonyíték: A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: soft-fm.value_proposition_en. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS. | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "ENS-062",
     "scope": "EN-SVC",
     "originalPriority": "P3",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "soft-fm.useCases[0]; useCases[5]; meta.description",
     "originalConcern": "[0]: a hozzáadott rész HU-ban nincs. [5]: a „KPI-k” kimaradtak. A meta a HU „takarítási koordináció, operatív támogatás” helyett „provider management, quality checks”-et ír.",
-    "evidence": "A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: soft-fm.use_cases_en.0, soft-fm.use_cases_en.5, soft-fm.seo_description_en. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS.",
-    "action": "A helyi, átnézett javítási csomag alkalmazása külön staging célpontellenőrzés és írási jóváhagyás után lehetséges; jelen feladatban nincs DB-írás."
+    "evidence": "Jóváhagyás előtti bizonyíték: A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: soft-fm.use_cases_en.0, soft-fm.use_cases_en.5, soft-fm.seo_description_en. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS. | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "ENS-063",
     "scope": "EN-SVC",
     "originalPriority": "P3",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "soft-fm.includedItems[1]",
     "originalConcern": "Záró pont, a többi listaelemnél nincs.",
-    "evidence": "A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: soft-fm.included_items_en.1. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS.",
-    "action": "A helyi, átnézett javítási csomag alkalmazása külön staging célpontellenőrzés és írási jóváhagyás után lehetséges; jelen feladatban nincs DB-írás."
+    "evidence": "Jóváhagyás előtti bizonyíték: A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: soft-fm.included_items_en.1. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS. | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "ENS-064",
     "scope": "EN-SVC",
     "originalPriority": "P3",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "soft-fm.processSteps[2].title; [3].title",
     "originalConcern": "Perjeles cím. HU [3]: „Mobilizáció és működési beállítás”, az EN „site documentation” eltér.",
-    "evidence": "A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: soft-fm.process_steps_en.2.title, soft-fm.process_steps_en.3.title. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS.",
-    "action": "A helyi, átnézett javítási csomag alkalmazása külön staging célpontellenőrzés és írási jóváhagyás után lehetséges; jelen feladatban nincs DB-írás."
+    "evidence": "Jóváhagyás előtti bizonyíték: A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: soft-fm.process_steps_en.2.title, soft-fm.process_steps_en.3.title. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS. | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "ENS-065",
     "scope": "EN-SVC",
     "originalPriority": "P3",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "soft-fm.faq[4].q",
     "originalConcern": "Nem idiomatikus.",
-    "evidence": "A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: soft-fm.faq_en.4.q. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS.",
-    "action": "A helyi, átnézett javítási csomag alkalmazása külön staging célpontellenőrzés és írási jóváhagyás után lehetséges; jelen feladatban nincs DB-írás."
+    "evidence": "Jóváhagyás előtti bizonyíték: A friss staging-public-services.json és a 2026-10-19 en-cms-proposal.json összevetése; a javaslat még nincs alkalmazva. Érintett mezők: soft-fm.faq_en.4.q. Minden before értéket a snapshot, a csomag szerint a live-before is igazol. A 89 részváltozás független peer kontrollja PASS. | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "ENS-066",
@@ -2063,31 +2063,31 @@
     "id": "EDU-002",
     "scope": "ENDE-UI",
     "originalPriority": "P1",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "DE `homepageServiceOverlay.tavfelugyelet-vonuloszolgalat.shortDesc` (= lib/i18n/de.ts `services[5].d`, a /de főoldali kártyán renderel)",
     "originalConcern": "HU: jelzésfogadás, riasztás-verifikáció, eszkaláció, eseménynaplózás, egyeztetett reagálási folyamat. A DE hozzáad „Leitstellenunterstützung”-ot (24/7 / felügyeleti központ erősítés) és „Kamerasignale”-t (videós távfelügyelet), kihagyja a verifikációt és a naplózást.",
-    "evidence": "live-before.json, 2026-10-19T09:11:27.919Z, /de (HTTP 200): …chung und Interventionsdienst Bearbeitung von Alarm- und Kamerasignalen mit Leitstellenunterstützung, bei Bedarf mit Reaktion vor Ort, nach abgestimmten Protokollen. Details Soft FM – Infrastrukturelles Gebäudemanagement Organisation von Re…",
-    "action": "A source fallback most HU-hű lett, de a live CMS-kártya továbbra is régi. Nem a Leitstelle ténye hibás, hanem a hiányzó verifikáció/naplózás."
+    "evidence": "Jóváhagyás előtti bizonyíték: live-before.json, 2026-10-19T09:11:27.919Z, /de (HTTP 200): …chung und Interventionsdienst Bearbeitung von Alarm- und Kamerasignalen mit Leitstellenunterstützung, bei Bedarf mit Reaktion vor Ort, nach abgestimmten Protokollen. Details Soft FM – Infrastrukturelles Gebäudemanagement Organisation von Re… | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "EDU-003",
     "scope": "ENDE-UI",
     "originalPriority": "P1",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "DE `homepageServiceOverlay.objektumorzes.shortDesc` (= de.ts `services[0].d`)",
     "originalConcern": "A „Personenschutz” németül személyvédelmet / testőrszolgálatot jelent – a HU kártya ilyet nem állít (ellenőrizni, kínál-e ilyet az Avenir). Kimarad a szolgálati napló és az egyeztetett eszkalációs rend; „Büroumgebungen” hozzáadva.",
-    "evidence": "live-before.json, 2026-10-19T09:11:27.919Z, /de (HTTP 200): …istungen Objektschutz vor Ort Personen- und Sachschutz mit geschulten Sicherheitskräften: Objektschutz, Streifendienste, Unterstützung bei der Zutrittskontrolle und Vorfallbearbeitung in Industrie-, Handels- u…",
-    "action": "A de.ts fallback már helyes volt, de az élő CMS-leírás még régi és más szolgáltatási scope-ot sugall."
+    "evidence": "Jóváhagyás előtti bizonyíték: live-before.json, 2026-10-19T09:11:27.919Z, /de (HTTP 200): …istungen Objektschutz vor Ort Personen- und Sachschutz mit geschulten Sicherheitskräften: Objektschutz, Streifendienste, Unterstützung bei der Zutrittskontrolle und Vorfallbearbeitung in Industrie-, Handels- u… | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "EDU-004",
     "scope": "ENDE-UI",
     "originalPriority": "P1",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "DE `homepageServiceOverlay.biztonsagtechnika.shortDesc` (= de.ts `services[2].d`)",
     "originalConcern": "A HU kártya (és a HU szolgáltatásoldal) nem vállal telepítést/karbantartást; helyszínre szabott biztonsági modellbe illesztést és adatvédelmi szempontú tervezést ír. A DE szolgáltatási kört bővít (verify), az adatvédelmi elem kimarad.",
-    "evidence": "live-before.json, 2026-10-19T09:11:27.919Z, /de (HTTP 200): …g. Details Sicherheitstechnik Planung, Installation und Wartung von Videoüberwachungs-, Zutrittskontroll- und Alarmanlagen als technische Unterstützung für den personellen Objektschutz. Details Fernüberw…",
-    "action": "A de.ts fallback már HU-hű, az élő DB-kártya továbbra is a régi eltérő leírást adja."
+    "evidence": "Jóváhagyás előtti bizonyíték: live-before.json, 2026-10-19T09:11:27.919Z, /de (HTTP 200): …g. Details Sicherheitstechnik Planung, Installation und Wartung von Videoüberwachungs-, Zutrittskontroll- und Alarmanlagen als technische Unterstützung für den personellen Objektschutz. Details Fernüberw… | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "EDU-005",
@@ -2113,11 +2113,11 @@
     "id": "EDU-007",
     "scope": "ENDE-UI",
     "originalPriority": "P2",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "DE `homepageServiceOverlay.{portaszolgalat, mystery-shopping-helyszini-audit, rendezvenybiztositas, hard-fm, soft-fm}.shortDesc` (= de.ts `services[3/6/1/7/4].d`)",
     "originalConcern": "A régi DE kártyaszövegek nem a HU fordításai: Porta – hozzáadott „Mieterkommunikation”, kimarad beszállító/munkatárs/naplózás/eszkaláció; Mystery – „unabhängige Bewertung” (új állítás), kimaradnak a fejlesztési javaslatok; Rendezvény – kimarad a nyilvános esemény, közönségáramlás, zónakezelés, hozzáadott „Streifendienste”; Hard FM – „kleinere Reparaturarbeiten” (saját javítás vállalása, verify), kimarad a PPM/hibanapló/riport; Soft FM – „Hausmeisterleistungen” hozzáadva, kimarad higiénia/hulladék/írásos riport. Ráadásul eltér ugyanezen szolgáltatások DE related-kártyáitól.",
-    "evidence": "live-before.json, 2026-10-19T09:11:27.919Z, /de (HTTP 200): …lverwaltung, Paketannahme und Mieterkommunikation zur Unterstützung des täglichen Betriebs. Details Mystery Shopping und Serviceaudit Mystery Shopping, Servicequalitätskontrollen und Vor-Or…",
-    "action": "Az öt felsorolt szolgáltatásból Mystery fallback korábban javult, a másik négy most HU-hű; az élő CMS-kártyák külön módosítandók."
+    "evidence": "Jóváhagyás előtti bizonyíték: live-before.json, 2026-10-19T09:11:27.919Z, /de (HTTP 200): …lverwaltung, Paketannahme und Mieterkommunikation zur Unterstützung des täglichen Betriebs. Details Mystery Shopping und Serviceaudit Mystery Shopping, Servicequalitätskontrollen und Vor-Or… | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "EDU-008",
@@ -2213,11 +2213,11 @@
     "id": "EDU-017",
     "scope": "ENDE-UI",
     "originalPriority": "P2",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_RESZBEN_JAVITVA_MARADEK_NYITOTT",
     "originalLocation": "DE preview: JSON-LD `itemListElement[0/2/3].name` (minden /de oldal); /de/hirek/megujult-az-avenir-weboldala-es-arculata p[2]; `metaDescription` (lib/seo-data.ts)",
     "originalConcern": "Terminológiai eltérés a kanonikus DE nevektől (nav/kártya/H1: „Objektschutz vor Ort”, „Empfangs- und Pförtnerdienst”, „Sicherheitstechnik”, „Mystery Shopping und Serviceaudit”, „Veranstaltungssicherheit”). A glosszárium kifejezetten kerülendőnek jelöli az „Objektbewachung”-ot és a „Vor-Ort-Audit”-ot (hatósági ellenőrzés / nyomozás asszociáció); a „Portier” osztrák/svájci. A JSON-LD és a hírcikk DB-ből jön (az éles DB-t is ellenőrizni).",
-    "evidence": "live-before.json, 2026-10-19T09:11:27.919Z, /de (HTTP 200): …{\"@type\": \"Service\", \"name\": \"Mystery Shopping und Vor-Ort-Audits\", \"description\": \"Mystery Shopping, Servicequalitätskontrollen und Vor-Ort-Audits in realen Kunden- und Betriebssituationen, mit unabhängig…",
-    "action": "Az élő főoldali ItemList DB-nevei még nem kanonikusak; a source lib/seo-data.ts Vor-Ort-Audits → Serviceaudits közös javításra jelzett. A hírcikk külön CMS-ellenőrzés/módosítás."
+    "evidence": "Jóváhagyás előtti bizonyíték: live-before.json, 2026-10-19T09:11:27.919Z, /de (HTTP 200): …{\"@type\": \"Service\", \"name\": \"Mystery Shopping und Vor-Ort-Audits\", \"description\": \"Mystery Shopping, Servicequalitätskontrollen und Vor-Ort-Audits in realen Kunden- und Betriebssituationen, mit unabhängig… | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "A német szolgáltatásmegnevezések stagingben javítva, élesítésre várnak. A német hírcikk personelle Objektbewachung, Empfangs- und Portierdienste maradéka külön nyitott; nincs a 68 mezőben vagy a külön hatmezős javaslatban."
   },
   {
     "id": "EDU-018",
@@ -2303,11 +2303,11 @@
     "id": "EDU-026",
     "scope": "ENDE-UI",
     "originalPriority": "P3",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "EN `services[0].d`/overlay objektumorzes; `services[6].d`/overlay mystery; `services[3].t` vs `.d`",
     "originalConcern": "„for access” értelmetlen (HU: beléptetés = access control); a Mystery kártya „service-quality checks”-et ad hozzá a HU-hoz képest (enyhe).",
-    "evidence": "lib/i18n/en.ts services[0].d már with access control alakra javult, de a live-before /en CMS-overlay még for access szöveget ad; en-cms-proposal.json tartalmazza a megfelelő unapplied javítást.",
-    "action": "A külön EN CMS-csomag alkalmazása szükséges; a forrásjavítás önmagában nem cseréli le a DB-overlayt, további mystery/reception stílus opcionális."
+    "evidence": "Jóváhagyás előtti bizonyíték: lib/i18n/en.ts services[0].d már with access control alakra javult, de a live-before /en CMS-overlay még for access szöveget ad; en-cms-proposal.json tartalmazza a megfelelő unapplied javítást. | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "EDU-027",
@@ -2873,11 +2873,11 @@
     "id": "FKZ-004",
     "scope": "FRKOZH-UI",
     "originalPriority": "P1",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "ZH `homepageServiceOverlay.objektumorzes.shortDesc` és `.biztonsagtechnika.shortDesc` (/zh kártyák)",
     "originalConcern": "A HU-ban nem szereplő szolgáltatási claimek (ellenőrizendő). 1) „人身…安全保护” = személyvédelem is, a HU kártya csak élőerős objektumőrzést mond. 2) „安装与维护” = telepítés és karbantartás, a HU csak illesztést és adatvédelmi szempontú tervezést említ. A HU-ban szereplő elemek (szolgálati napló, egyeztetett eszkaláció, adatvédelmi tervezés) kimaradtak.",
-    "evidence": "lib/i18n/ko.ts + lib/i18n/zh.ts; közös réteg a leírás szerint; ZH `homepageServiceOverlay.objektumorzes.shortDesc` és `.biztonsagtechnika.shortDesc` (/zh kártyák). ZH őrzési és technológiai homepage-kártyák friss staging/live értékei eltérnek a HU-tól. A jó forrás fallback nem írja felül a CMS-t; 2 short_desc_zh javaslat előkészítve.",
-    "action": "Adatbázis-írás nélkül előkészített változtatás; lásd ko-zh-cms-proposal.json és a konkrét evidence."
+    "evidence": "Jóváhagyás előtti bizonyíték: lib/i18n/ko.ts + lib/i18n/zh.ts; közös réteg a leírás szerint; ZH `homepageServiceOverlay.objektumorzes.shortDesc` és `.biztonsagtechnika.shortDesc` (/zh kártyák). ZH őrzési és technológiai homepage-kártyák friss staging/live értékei eltérnek a HU-tól. A jó forrás fallback nem írja felül a CMS-t; 2 short_desc_zh javaslat előkészítve. | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "FKZ-005",
@@ -2943,21 +2943,21 @@
     "id": "FKZ-011",
     "scope": "FRKOZH-UI",
     "originalPriority": "P2",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "ZH `homepageServiceOverlay.*.shortDesc`: portaszolgalat, mystery-shopping-helyszini-audit, rendezvenybiztositas, hard-fm, soft-fm (/zh kártyák)",
     "originalConcern": "A kártyaleírások nem a HU forrást követik. Hard/Soft FM: „作为补充服务” (kiegészítő szolgáltatás) leértékeli a pozicionálást. Hard FM: „小型维修” (kisjavítások) a megelőző karbantartás, hibanapló és riport helyett. Soft FM: a higiénia, hulladékkezelés és írásos riport kimaradt. Rendezvény: a nyilvános események, közönségáramlás és szervezői eszkaláció kimaradt, a járőrözés hozzáadva. Porta: „租户沟通” hozzáadva, a beszállítók, naplózás és eszkaláció kimaradt. Mystery: „独立评估” (független értékelés) hozzáadott claim, a fejlesztési javaslatok kimaradtak.",
-    "evidence": "lib/i18n/ko.ts + lib/i18n/zh.ts; közös réteg a leírás szerint; ZH `homepageServiceOverlay.*.shortDesc`: portaszolgalat, mystery-shopping-helyszini-audit, rendezvenybiztositas, hard-fm, soft-fm (/zh kártyák). Öt ZH CMS rövidleírás régi tartalmú. A javaslatok a friss HU short_desc_hu mezőkből származnak; nem érintik a jóváhagyott alvállalkozói modellt.",
-    "action": "Adatbázis-írás nélkül előkészített változtatás; lásd ko-zh-cms-proposal.json és a konkrét evidence."
+    "evidence": "Jóváhagyás előtti bizonyíték: lib/i18n/ko.ts + lib/i18n/zh.ts; közös réteg a leírás szerint; ZH `homepageServiceOverlay.*.shortDesc`: portaszolgalat, mystery-shopping-helyszini-audit, rendezvenybiztositas, hard-fm, soft-fm (/zh kártyák). Öt ZH CMS rövidleírás régi tartalmú. A javaslatok a friss HU short_desc_hu mezőkből származnak; nem érintik a jóváhagyott alvállalkozói modellt. | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "FKZ-012",
     "scope": "FRKOZH-UI",
     "originalPriority": "P2",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "Kártya h3 + aria-label, kapcsolat legördülő, lábléc szolgáltatáslista vs. szolgáltatásoldali H1/breadcrumb: KO `homepageServiceOverlay.hard-fm.name`, `.soft-fm.name`; ZH `.objektumorzes.name`, `.tavfelugyelet-vonuloszolgalat.name`, `.mystery-shopping-helyszini-audit.name`, `.hard-fm.name`, `.soft-fm.name`",
     "originalConcern": "Terminológiai inkonzisztencia: ugyanannak a szolgáltatásnak más a neve a főoldalon, a legördülőben, a láblécben és a H1-ben. ZH-ban még: 驻场安保服务 ↔ 驻场安保; Soft FM（软性设施管理） ↔ Soft FM — 日常设施支持; Hard FM（硬性设施管理） ↔ Hard FM — 技术设施管理. Az FR mind a 8 névben egységes. A ZH „出勤响应” egyébként szokatlan („出勤” = munkába járás/jelenlét).",
-    "evidence": "lib/i18n/ko.ts + lib/i18n/zh.ts; közös réteg a leírás szerint; Kártya h3 + aria-label, kapcsolat legördülő, lábléc szolgáltatáslista vs. szolgáltatásoldali H1/breadcrumb: KO `homepageServiceOverlay.hard-fm.name`, `.soft-fm.name`; ZH `.objektumorzes.name`, `.tavfelugyelet-vonuloszolgalat.name`, `.mystery-shopping-helyszini-audit.name`, `.hard-fm.name`, `.soft-fm.name`. KO homepage/H1/related névsor már egyezik, beleértve FM-et. ZH-nál 5 CMS név eltér a jelenlegi forrás H1-jeitől; pontos name_zh cserejavaslat készült.",
-    "action": "Adatbázis-írás nélkül előkészített változtatás; lásd ko-zh-cms-proposal.json és a konkrét evidence."
+    "evidence": "Jóváhagyás előtti bizonyíték: lib/i18n/ko.ts + lib/i18n/zh.ts; közös réteg a leírás szerint; Kártya h3 + aria-label, kapcsolat legördülő, lábléc szolgáltatáslista vs. szolgáltatásoldali H1/breadcrumb: KO `homepageServiceOverlay.hard-fm.name`, `.soft-fm.name`; ZH `.objektumorzes.name`, `.tavfelugyelet-vonuloszolgalat.name`, `.mystery-shopping-helyszini-audit.name`, `.hard-fm.name`, `.soft-fm.name`. KO homepage/H1/related névsor már egyezik, beleértve FM-et. ZH-nál 5 CMS név eltér a jelenlegi forrás H1-jeitől; pontos name_zh cserejavaslat készült. | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "FKZ-013",
@@ -3143,11 +3143,11 @@
     "id": "FKZ-031",
     "scope": "FRKOZH-UI",
     "originalPriority": "P3",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "KORABBAN_JAVITVA",
     "originalLocation": "known-F3 – /fr, /ko, /zh főoldal tanúsítványkártya-címke + aria-label; JSON-LD `recognizedBy.name` és `additionalProperty[0].value` minden FR/KO/ZH oldalon; /zh kártyaszöveg + JSON-LD `description`",
     "originalConcern": "Elavult staging-CMS adat (a production MartonCert/MCert és MSZ ISO/IEC 27001:2023 adatokat mutat). Új előfordulás: a ZH prózában túlzó ISO-hatókör is szerepel (FM-folyamatok, konkrét adatkategóriák megfelelősége). Productionben ez rendben, de lásd FKZ-015.",
-    "evidence": "A mai live-before.json /fr tanúsítványkártyák MartonCert Rendszertanúsító Kft., MCert Rendszertanúsító Kft., MSZ ISO/IEC 27001:2023 értékeket tartalmaznak. A kibocsátó, azonosító és szabványkód helyesen változatlan jogi/CMS-adat; a próza FR overlayből jön.\nlib/i18n/ko.ts + lib/i18n/zh.ts; közös réteg a leírás szerint; known-F3 – /fr, /ko, /zh főoldal tanúsítványkártya-címke + aria-label; JSON-LD `recognizedBy.name` és `additionalProperty[0].value` minden FR/KO/ZH oldalon; /zh kártyaszöveg + JSON-LD `description`. A friss live/staging tanúsítványok MartonCert/MCert, MSZ ISO/IEC 27001:2023 adatokat és 2029-es érvényességet mutatnak. Az ISO tulajdonosilag elfogadott; a régi known-F3 tétel nem újranyitandó.",
-    "action": "FR production régi staging-hibája nem reprodukálódik a friss snapshotban. DB-írás nincs; teljes staging certification rekordot ez az agent nem olvasott.\nNincs kötelező változtatás."
+    "evidence": "A mai live-before.json /fr tanúsítványkártyák MartonCert Rendszertanúsító Kft., MCert Rendszertanúsító Kft., MSZ ISO/IEC 27001:2023 értékeket tartalmaznak. A kibocsátó, azonosító és szabványkód helyesen változatlan jogi/CMS-adat; a próza FR overlayből jön.\nlib/i18n/ko.ts + lib/i18n/zh.ts; közös réteg a leírás szerint; known-F3 – /fr, /ko, /zh főoldal tanúsítványkártya-címke + aria-label; JSON-LD `recognizedBy.name` és `additionalProperty[0].value` minden FR/KO/ZH oldalon; /zh kártyaszöveg + JSON-LD `description`. A friss live/staging tanúsítványok MartonCert/MCert, MSZ ISO/IEC 27001:2023 adatokat és 2029-es érvényességet mutatnak. Az ISO tulajdonosilag elfogadott; a régi known-F3 tétel nem újranyitandó. | Staging-extras 2026-10-19 09:31:30Z és éles FR/KO/ZH: helyes MartonCert/MCert, ISO/IEC 27001:2023, tanúsítási terjedelemhez kötött ZH leírás. Független lezárási review megerősítette.",
+    "action": "A kiállító, szabvány és terjedelem korábban javított. A ZH ISO9001-leírás angol részlete külön FKZ-015 feladat; az ISO megléte elfogadott."
   },
   {
     "id": "FKZ-032",
@@ -3753,11 +3753,11 @@
     "id": "ZHS-006",
     "scope": "ZH-SVC",
     "originalPriority": "P2",
-    "status": "CMS_JOVAHAGYASRA_VAR",
+    "status": "STAGING_JAVITVA_ELESITESRE_VAR",
     "originalLocation": "Footer „我们的服务” lista minden ZH szolgáltatásoldalon (lib/i18n/zh.ts `services[*].t`) vs. H1/breadcrumb/related kártyák (zh-service-details.ts `name`)",
     "originalConcern": "Ugyanazon az oldalon a footer más szolgáltatásneveket mutat, mint a H1: „驻场安保”, „神秘顾客与服务审核”, „远程监控与出勤响应”, „Hard FM — 技术设施管理”, „Soft FM — 日常设施支持”. Ez terminológiai inkonzisztencia. A `services[*].t` nem teljesen „unused”, mert a footer renderálja.",
-    "evidence": "lib/services/zh-service-details.ts; Footer „我们的服务” lista minden ZH szolgáltatásoldalon (lib/i18n/zh.ts `services[*].t`) vs. H1/breadcrumb/related kártyák (zh-service-details.ts `name`). A forrás i18n szolgáltatásnevei és H1 nevei már egyeznek. A friss staging/live CMS 5 eltérő névalakja felülírja a fallbacket; a ko-zh-cms-proposal.json pontos name_zh javításokat ad.",
-    "action": "Adatbázis-írás nélkül előkészített változtatás; lásd ko-zh-cms-proposal.json és a konkrét evidence."
+    "evidence": "Jóváhagyás előtti bizonyíték: lib/services/zh-service-details.ts; Footer „我们的服务” lista minden ZH szolgáltatásoldalon (lib/i18n/zh.ts `services[*].t`) vs. H1/breadcrumb/related kártyák (zh-service-details.ts `name`). A forrás i18n szolgáltatásnevei és H1 nevei már egyeznek. A friss staging/live CMS 5 eltérő névalakja felülírja a fallbacket; a ko-zh-cms-proposal.json pontos name_zh javításokat ad. | 2026-10-19 staging: a jóváhagyott 68 mező alkalmazása és teljes soros visszaolvasása PASS; Preview 68/68 mező, 569/569 smoke PASS. Lásd staging-application.md.",
+    "action": "Jóváhagyott szolgáltatásmezők stagingben alkalmazva és Preview-n ellenőrizve. Production alkalmazás/forráskiadás még nincs; külön kiadási engedély szükséges."
   },
   {
     "id": "ZHS-007",

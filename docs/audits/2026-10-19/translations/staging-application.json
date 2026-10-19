@@ -1,0 +1,200 @@
+{
+  "authorization": {
+    "environment": "staging",
+    "userReply": "elfogadom",
+    "scope": "8 services; 68 fields: 44 EN, 11 DE, 13 ZH",
+    "productionAuthorized": false,
+    "extrasAuthorized": false
+  },
+  "application": {
+    "appliedAt": "2026-10-19T13:11:15.543Z",
+    "endpoint": "ep-twilight-sound-al2b7jsb",
+    "branch": "br-round-fog-al4isa1i",
+    "sha256": "da02b01b2676c1827b0a621829b9cbe16e2ae4061489e5d984bb0081679431e6",
+    "rows": 8,
+    "fields": 68,
+    "atomic": true,
+    "transactionRowCounts": [
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1"
+    ],
+    "fullRowReadbackMatches": true,
+    "backup": "staging-backup-2026-10-19T13-11-15-264Z.json",
+    "status": "PASS"
+  },
+  "preview": {
+    "sourceCommit": "2d7424a56d6a4fb7cd92ed12ef5cc518156f82cd",
+    "deployment": "dpl_GH4VEp7gqaCmRKsZoMywyZLTtSkz",
+    "url": "https://avenir-website-jcvbbhse2-andrasvarkonyi-7800s-projects.vercel.app",
+    "smoke": {
+      "checks": 569,
+      "status": "PASS"
+    },
+    "copy": {
+      "checkedAt": "2026-10-19T13:13:05.059Z",
+      "fields": 68,
+      "strings": 399,
+      "routes": 11,
+      "pass": 68
+    },
+    "viewports": {
+      "deployment": "dpl_GH4VEp7gqaCmRKsZoMywyZLTtSkz",
+      "checkedAt": "2026-10-19T13:17:19.650Z",
+      "checks": [
+        {
+          "h1": [
+            "Reception and Gatehouse Services"
+          ],
+          "path": "/en/szolgaltatasok/portaszolgalat",
+          "scrollWidth": 1350,
+          "width": 1350
+        },
+        {
+          "h1": [
+            "Reception and Gatehouse Services"
+          ],
+          "path": "/en/szolgaltatasok/portaszolgalat",
+          "scrollWidth": 375,
+          "width": 375
+        },
+        {
+          "h1": [
+            "Weniger Risiko.Mehr Kontrolle."
+          ],
+          "path": "/de",
+          "scrollWidth": 375,
+          "serviceOptions": [
+            {
+              "text": "Gewünschte Dienstleistung",
+              "value": ""
+            },
+            {
+              "text": "Objektschutz vor Ort",
+              "value": "objektumorzes"
+            },
+            {
+              "text": "Empfangs- und Pförtnerdienst",
+              "value": "portaszolgalat"
+            },
+            {
+              "text": "Mystery Shopping und Serviceaudit",
+              "value": "mystery-shopping-helyszini-audit"
+            },
+            {
+              "text": "Veranstaltungssicherheit",
+              "value": "rendezvenybiztositas"
+            },
+            {
+              "text": "Sicherheitstechnik",
+              "value": "biztonsagtechnika"
+            },
+            {
+              "text": "Fernüberwachung und Interventionsdienst",
+              "value": "tavfelugyelet-vonuloszolgalat"
+            },
+            {
+              "text": "Soft FM – Infrastrukturelles Gebäudemanagement",
+              "value": "soft-fm"
+            },
+            {
+              "text": "Hard FM – Technisches Gebäudemanagement",
+              "value": "hard-fm"
+            }
+          ],
+          "width": 375
+        },
+        {
+          "h1": [
+            "Weniger Risiko.Mehr Kontrolle."
+          ],
+          "path": "/de",
+          "scrollWidth": 1350,
+          "width": 1350
+        },
+        {
+          "h1": [
+            "降低风险。加强管控。"
+          ],
+          "path": "/zh",
+          "scrollWidth": 1350,
+          "serviceOptions": [
+            {
+              "text": "感兴趣的服务",
+              "value": ""
+            },
+            {
+              "text": "驻场安保",
+              "value": "objektumorzes"
+            },
+            {
+              "text": "前台与门岗服务",
+              "value": "portaszolgalat"
+            },
+            {
+              "text": "神秘顾客与服务审核",
+              "value": "mystery-shopping-helyszini-audit"
+            },
+            {
+              "text": "活动安保",
+              "value": "rendezvenybiztositas"
+            },
+            {
+              "text": "安防技术",
+              "value": "biztonsagtechnika"
+            },
+            {
+              "text": "远程监控与现场响应",
+              "value": "tavfelugyelet-vonuloszolgalat"
+            },
+            {
+              "text": "Soft FM — 日常设施支持",
+              "value": "soft-fm"
+            },
+            {
+              "text": "Hard FM — 技术设施管理",
+              "value": "hard-fm"
+            }
+          ],
+          "width": 1350
+        },
+        {
+          "h1": [
+            "降低风险。加强管控。"
+          ],
+          "path": "/zh",
+          "scrollWidth": 375,
+          "width": 375
+        }
+      ]
+    }
+  },
+  "auditStatusCounts": {
+    "KORABBAN_JAVITVA": 108,
+    "KULON_KEZELES": 5,
+    "FORRAS_JAVITVA": 102,
+    "NEM_IGAZOLT_HIBA": 36,
+    "OPCIONALIS_STILUS": 91,
+    "STAGING_JAVITVA_ELESITESRE_VAR": 60,
+    "STAGING_RESZBEN_JAVITVA_MARADEK_NYITOTT": 2,
+    "CMS_JOVAHAGYASRA_VAR": 4
+  },
+  "closureReview": {
+    "reviewer": "translation_de_review",
+    "partiallyResolved": [
+      "EDU-017",
+      "ENS-049"
+    ],
+    "previouslyResolvedConfirmed": [
+      "FKZ-031"
+    ],
+    "crossSurfaceNoFurtherIssueConfirmed": [
+      "ENS-057"
+    ]
+  }
+}
