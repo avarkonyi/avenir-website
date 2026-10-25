@@ -1,6 +1,6 @@
 import { expect, test, type Page } from "@playwright/test";
 
-const KEY = "avenir_analytics_consent";
+const KEY = process.env.NEXT_PUBLIC_AHREFS_ENABLED === "1" ? "avenir_analytics_consent_v2" : "avenir_analytics_consent";
 const ID = "G-AUDITTEST";
 const scriptBody = `window.__analyticsQaGtagScriptLoaded = true;`;
 
@@ -121,7 +121,7 @@ test("a failed withdrawal storage write cannot revive a stale persisted acceptan
   await expect.poll(() => pageViews(page)).toHaveLength(1);
   await page.evaluate(() => { Storage.prototype.setItem = () => { throw new Error("Write blocked"); }; });
   await choose(page, false);
-  expect(await page.evaluate(() => localStorage.getItem("avenir_analytics_consent"))).toBe("accepted");
+  expect(await page.evaluate((key) => localStorage.getItem(key), KEY)).toBe("accepted");
   expect(await page.evaluate(() => window["ga-disable-G-AUDITTEST"])).toBe(true);
   await choose(page, true);
   expect(await pageViews(page)).toHaveLength(1);
@@ -135,23 +135,23 @@ test("before first consent no tag, queue or GA runtime exists", async ({ page })
 });
 
 test("a queued page view rechecks consent at its actual send time", async ({ page }) => {
-  await page.addInitScript(() => {
+  await page.addInitScript((key: string) => {
     const original = window.setTimeout;
     let interrupted = false;
     window.setTimeout = ((callback: TimerHandler, delay?: number, ...args: unknown[]) => {
       if (delay === 0 && window.__avenirGa4Initialized && !interrupted && typeof callback === "function") {
         interrupted = true;
         return original(() => {
-          localStorage.setItem("avenir_analytics_consent", "rejected");
+          localStorage.setItem(key, "rejected");
           callback(...args);
         }, delay);
       }
       return original(callback, delay, ...args);
     }) as typeof window.setTimeout;
-  });
+  }, KEY);
   await page.goto("/hu");
   await choose(page, true);
-  await expect.poll(() => page.evaluate(() => localStorage.getItem("avenir_analytics_consent"))).toBe("rejected");
+  await expect.poll(() => page.evaluate((key) => localStorage.getItem(key), KEY)).toBe("rejected");
   expect(await pageViews(page)).toHaveLength(0);
 });
 

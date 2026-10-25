@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test, { afterEach } from "node:test";
-import { ANALYTICS_CONSENT_KEY } from "../lib/analytics/consent";
+import { analyticsConsentKey } from "../lib/analytics/consent";
 import { trackAnalyticsEvent } from "../lib/analytics/events";
 
 type GtagCall = [string, string, Record<string, unknown>];
@@ -125,7 +125,7 @@ function installFakeWindow(
   pathname = "/hu",
 ): GtagCall[] {
   const calls: GtagCall[] = [];
-  const storage = new Map<string, string>([[ANALYTICS_CONSENT_KEY, consent]]);
+  const storage = new Map<string, string>([[analyticsConsentKey(), consent]]);
 
   Object.defineProperty(globalThis, "window", {
     configurable: true,

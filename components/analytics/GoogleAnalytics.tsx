@@ -5,6 +5,7 @@ import { usePathname, useSearchParams } from "next/navigation";
 import {
   ANALYTICS_CONSENT_EVENT,
   ANALYTICS_CONSENT_KEY,
+  AHREFS_ANALYTICS_CONSENT_KEY,
   hasAnalyticsConsent,
   readAnalyticsConsent,
   type AnalyticsConsentChoice,
@@ -37,7 +38,8 @@ export function GoogleAnalytics() {
     });
 
     function handleConsentChange(event: Event) {
-      if (event instanceof StorageEvent && event.key !== null && event.key !== ANALYTICS_CONSENT_KEY) return;
+      if (event instanceof StorageEvent && event.key !== null &&
+        ![ANALYTICS_CONSENT_KEY, AHREFS_ANALYTICS_CONSENT_KEY].includes(event.key)) return;
       const choice = readAnalyticsConsent();
       applyAnalyticsConsent(choice === "accepted");
       setConsent(choice);
