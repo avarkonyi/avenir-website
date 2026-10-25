@@ -78,6 +78,12 @@ export function AnalyticsConsentBanner({ locale }: { locale: string }) {
       >
         {copy.text}
       </p>
+      <a
+        href={copy.privacyHref}
+        style={{ display: "inline-block", marginTop: 8, color: "#D1172E", fontSize: 13, textDecoration: "underline" }}
+      >
+        {copy.privacyLabel}
+      </a>
       <div
         style={{
           display: "flex",

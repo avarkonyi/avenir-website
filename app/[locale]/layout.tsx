@@ -9,6 +9,7 @@ import { LOCALES } from "@/lib/i18n";
 import { JsonLd } from "@/components/JsonLd";
 import { AnalyticsConsentBanner } from "@/components/analytics/AnalyticsConsentBanner";
 import { GoogleAnalytics } from "@/components/analytics/GoogleAnalytics";
+import { AhrefsAnalytics } from "@/components/analytics/AhrefsAnalytics";
 import { db, certifications } from "@/lib/db";
 import { localizeCertificationText } from "@/lib/homepage-content";
 import { getLocaleAccessibility } from "@/lib/locale-accessibility";
@@ -175,6 +176,7 @@ export default async function LocaleLayout({
         <JsonLd schemas={schemas} />
         <Suspense fallback={null}>
           <GoogleAnalytics />
+          <AhrefsAnalytics />
         </Suspense>
         {children}
         <AnalyticsConsentBanner locale={locale} />

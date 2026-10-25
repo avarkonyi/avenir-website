@@ -192,6 +192,57 @@ Analytics events must not include personal form content. Do not send names,
 email addresses, phone numbers, company names, message text, IP addresses or
 other free-text personal details.
 
+## Consent-Gated Ahrefs Web Analytics
+
+Ahrefs Web Analytics is a separate provider alongside direct GA4, not an SEO
+verification tag or a replacement for consent. The owner-supplied public
+`data-key` is configured in `lib/analytics/ahrefs.ts`; no secret or environment
+file is needed for the key. On 2026-10-25 the owner confirmed signing and sending
+the official SCC document and authorised activation (owner attestation, not
+independent receipt or legal verification). Missing
+`NEXT_PUBLIC_AHREFS_ENABLED`, or any value other than `1`, keeps Ahrefs fully
+unloaded even after acceptance. Do not enable it until the
+[activation checklist](docs/legal/ahrefs-activation-checklist.md) is complete.
+After approved activation and renewed analytics acceptance, the official async script
+`https://analytics.ahrefs.com/analytics.js` is inserted into the document head.
+No Ahrefs request is made before consent or after a rejected page reload.
+
+This integration sends pageviews on initial opt-in and App Router navigation.
+Page locations omit query strings and fragments. Ahrefs' automatic link/form
+events are suspended without cancelling site events; GA4 continues to handle
+its existing PII-guarded business events. No form values, contact targets or
+custom/free-text properties are passed to Ahrefs. Visits with a query-bearing
+or fragment-bearing referrer are not measured, because the tag otherwise sends
+that referrer verbatim. This intentionally reduces coverage for privacy.
+
+Withdrawal disables the existing tag by removing its installation key; it does
+not undo already executed JavaScript or retract previously consented hits.
+Refresh after rejection leaves the tag unloaded. The current official tag's
+per-event key/location checks are covered by a real-script regression test.
+
+Activation moves consent to `avenir_analytics_consent_v2`. Prior GA4-only
+acceptance is not reused; prior rejection remains valid. While Ahrefs is inactive,
+existing GA4 consent and operation stay unchanged. The HU/EN and DE-review Privacy
+Policy v1.4 identifies Ahrefs and reflects the activation switch; the banner names providers
+and links to the policy.
+Withdrawal is mirrored to the legacy key for older tabs and rollback builds;
+expanded acceptance uses a versioned marker. A GA4-only tab cannot revive an
+older Ahrefs acceptance; older builds may safely reprompt.
+
+`npm run qa:analytics -- <local-or-preview-url>` also runs Ahrefs consent tests.
+The real-script smoke downloads the official script but intercepts all Ahrefs
+collection with a local `204`, so test hits are not sent. Contact submissions
+are mocked as well. Local runs use a virtual HTTPS browser origin because the
+vendor deliberately ignores localhost. The test checks initial/SPA pageviews,
+withdrawal, and absence of automatic link/form data.
+
+After a separately approved release, accept analytics and check Network for
+`analytics.js` and `/api/event` on `analytics.ahrefs.com`. Ahrefs' automatic
+"Recheck installation" may not detect a consent-gated tag because its crawler
+does not click the banner. Do not bypass consent for its user agent. Provider,
+transfer and consent-notice review is a release gate; see
+`docs/legal/analytics-privacy-review.md`. No GTM or marketing pixel is introduced.
+
 ## Official Entity Links
 
 Official LinkedIn company profile:

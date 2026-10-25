@@ -1,5 +1,6 @@
 import type { Translation } from "@/lib/i18n";
 import { CURRENT_PRIVACY_CONTENT } from "@/lib/current-privacy-content";
+import { withAhrefsPrivacyNotice } from "@/lib/ahrefs-privacy-content";
 import {
   getDePrivacyContent,
   getDeTermsContent,
@@ -19,10 +20,10 @@ function replaceTermsLanguage(text: string): string {
 
 export function getPrivacyContent(locale: string, fallback: Translation): PrivacyContent {
   if (locale === "de") {
-    return getDePrivacyContent();
+    return withAhrefsPrivacyNotice(locale, getDePrivacyContent());
   }
 
-  return CURRENT_PRIVACY_CONTENT[locale as "hu" | "en"] ?? fallback.legal.privacy;
+  return withAhrefsPrivacyNotice(locale, CURRENT_PRIVACY_CONTENT[locale as "hu" | "en"] ?? fallback.legal.privacy);
 }
 
 export function getTermsContent(locale: string, fallback: Translation): TermsContent {

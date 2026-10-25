@@ -10,6 +10,7 @@ declare global {
 }
 
 const BASE_URL = process.env.ANALYTICS_QA_BASE_URL || "http://localhost:3000";
+const CONSENT_KEY = process.env.NEXT_PUBLIC_AHREFS_ENABLED === "1" ? "avenir_analytics_consent_v2" : "avenir_analytics_consent";
 const PRODUCTION_HOSTS = new Set(["www.afm.hu", "afm.hu"]);
 
 const TEST_PII = {
@@ -199,9 +200,7 @@ test.describe("consent-gated GA4", () => {
 
     await expect
       .poll(() =>
-        page.evaluate(() =>
-          window.localStorage.getItem("avenir_analytics_consent"),
-        ),
+        page.evaluate((key) => window.localStorage.getItem(key), CONSENT_KEY),
       )
       .toBe("accepted");
   });
@@ -484,6 +483,14 @@ async function mockAnalyticsNetwork(
   await page.route("**://*.google-analytics.com/**", fulfillNoContent);
   await page.route("**://analytics.google.com/**", fulfillNoContent);
   await page.route("**://*.analytics.google.com/**", fulfillNoContent);
+  // GA4 tests must never send real hits to the second analytics provider.
+  // Ahrefs has its own real-script smoke with collection intercepted.
+  await page.route("https://analytics.ahrefs.com/**", (route) => {
+    if (new URL(route.request().url()).pathname === "/analytics.js") {
+      return route.fulfill({ contentType: "application/javascript", body: "/* Ahrefs isolated in GA4 QA */" });
+    }
+    return fulfillNoContent(route);
+  });
 
   return analytics;
 }

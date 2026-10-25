@@ -78,7 +78,7 @@ const { baseUrl, allowProduction, playwrightArgs } = parseArgs(process.argv);
 
 const result = spawnSync(
   "npx",
-  ["playwright", "test", "tests/analytics-consent.spec.ts", ...playwrightArgs],
+  ["playwright", "test", "tests/analytics-consent.spec.ts", "tests/ahrefs-consent.spec.ts", ...playwrightArgs],
   {
     stdio: "inherit",
     shell: process.platform === "win32",

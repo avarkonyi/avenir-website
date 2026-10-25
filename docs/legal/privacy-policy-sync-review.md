@@ -1,6 +1,21 @@
 # Privacy Policy HU/EN Sync Review
 
-Date: 2026-06-13
+Date: 2026-10-25
+
+## Current v1.4 Addendum
+
+The public accessor layers `lib/ahrefs-privacy-content.ts` onto the retained,
+reviewed v1.3 HU/EN and DE-review baselines. Effective date: 25 October 2026.
+Only provider, transfer, analytics and withdrawal details are added; unrelated
+sections and the existing Google/Resend/Vercel/Neon text remain intact. The v1.3
+record below remains historical provenance, not the rendered version.
+
+On 2026-10-25 the owner confirmed signing and sending the official SCC document
+and authorised activation. This is owner attestation, not independent PDF,
+receipt or legal verification. The default-off switch blocks loading unless
+enabled; the notice reflects the same switch. Activation requires renewed consent
+from prior GA4-only accepters while preserving rejections. See
+`ahrefs-activation-checklist.md`; signed evidence stays outside the public repo.
 
 This document records the controlled HU/EN Privacy Policy synchronization for
 the public `adatvedelem` routes. It is a legal-review support note, not a final

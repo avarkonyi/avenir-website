@@ -1,6 +1,8 @@
 import "./contact-schema.test.ts";
 import "./admin-session-policy.test.ts";
 import "./analytics-events.test.ts";
+import "./ahrefs-analytics.test.ts";
+import "./ahrefs-privacy.test.ts";
 import "./notification-email.test.ts";
 import "./service-quote-cta.test.tsx";
 import "./de-service-details.test.ts";

@@ -7,6 +7,7 @@ const scriptSrc = [
   "script-src 'self' 'unsafe-inline'",
   "https://www.googletagmanager.com",
   "https://*.googletagmanager.com",
+  "https://analytics.ahrefs.com",
   isVercelPreview ? "https://vercel.live" : null,
 ]
   .filter(Boolean)
@@ -19,6 +20,7 @@ const connectSrc = [
   "https://*.analytics.google.com",
   "https://www.googletagmanager.com",
   "https://*.googletagmanager.com",
+  "https://analytics.ahrefs.com",
   isVercelPreview ? "https://vercel.live" : null,
 ]
   .filter(Boolean)
@@ -65,6 +67,7 @@ const securityHeaders = [
     //     across components (Hero, Footer, Contact, etc.).
     //   GA4 domains are limited to direct gtag.js + analytics collection
     //     endpoints; no Ads, DoubleClick, or Floodlight endpoints are allowed.
+    //   Ahrefs uses its exact analytics origin only, after analytics consent.
     //   img-src includes data: + blob: for next/image optimization output,
     //     plus *.public.blob.vercel-storage.com for admin-uploaded covers
     //     served from the Vercel Blob CDN (Iter 3D).

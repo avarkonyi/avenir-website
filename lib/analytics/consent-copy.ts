@@ -1,4 +1,5 @@
 import type { Locale } from "../i18n";
+import { isAhrefsAnalyticsEnabled } from "./ahrefs-config";
 
 type Copy = {
   text: string;
@@ -47,6 +48,22 @@ export const ANALYTICS_COPY: Record<Locale, Copy> = {
   },
 };
 
-export function getAnalyticsConsentCopy(locale: string): Copy {
-  return ANALYTICS_COPY[locale as Locale] ?? ANALYTICS_COPY.en;
+const PROVIDER_COPY: Record<Locale, { active: string; inactive: string; privacy: string }> = {
+  hu: { active: "Szolgáltatók: Google Analytics 4 (GA4) és Ahrefs Web Analytics (sütimentes oldalmérés).", inactive: "Szolgáltató: Google Analytics 4 (GA4). Az Ahrefs Web Analytics jelenleg inaktív.", privacy: "Adatkezelési tájékoztató" },
+  en: { active: "Providers: Google Analytics 4 (GA4) and Ahrefs Web Analytics (cookie-free page measurement).", inactive: "Provider: Google Analytics 4 (GA4). Ahrefs Web Analytics is currently inactive.", privacy: "Privacy Policy" },
+  de: { active: "Anbieter: Google Analytics 4 (GA4) und Ahrefs Web Analytics (cookiefreie Seitenmessung).", inactive: "Anbieter: Google Analytics 4 (GA4). Ahrefs Web Analytics ist derzeit inaktiv.", privacy: "Datenschutzerklärung" },
+  fr: { active: "Prestataires : Google Analytics 4 (GA4) et Ahrefs Web Analytics (mesure des pages sans cookies).", inactive: "Prestataire : Google Analytics 4 (GA4). Ahrefs Web Analytics est actuellement inactif.", privacy: "Politique de confidentialité (anglais)" },
+  zh: { active: "服务提供商：Google Analytics 4 (GA4) 和 Ahrefs Web Analytics（无 Cookie 页面统计）。", inactive: "服务提供商：Google Analytics 4 (GA4)。Ahrefs Web Analytics 目前未启用。", privacy: "隐私政策（英文）" },
+  ko: { active: "서비스 제공업체: Google Analytics 4 (GA4) 및 Ahrefs Web Analytics(쿠키 없는 페이지 측정).", inactive: "서비스 제공업체: Google Analytics 4 (GA4). Ahrefs Web Analytics는 현재 비활성 상태입니다.", privacy: "개인정보 처리방침(영어)" },
+};
+
+export function getAnalyticsConsentCopy(locale: string) {
+  const copy = ANALYTICS_COPY[locale as Locale] ?? ANALYTICS_COPY.en;
+  const provider = PROVIDER_COPY[locale as Locale] ?? PROVIDER_COPY.en;
+  return {
+    ...copy,
+    text: `${copy.text} ${isAhrefsAnalyticsEnabled() ? provider.active : provider.inactive}`,
+    privacyLabel: provider.privacy,
+    privacyHref: `/${["hu", "en", "de"].includes(locale) ? locale : "en"}/adatvedelem`,
+  };
 }
