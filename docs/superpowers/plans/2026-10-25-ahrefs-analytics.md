@@ -17,9 +17,16 @@
 
 ## Verification Result
 
-TypeScript, lint, 234 unit tests, 33 copy checks, production build (100 generated
-pages), 567 local route smoke checks and 24 local analytics browser tests
-passed. The browser suite uses the real Ahrefs script for collection, SPA
+Initial validation passed TypeScript, lint, 234 unit tests, 33 copy checks,
+production build (100 generated pages), 567 local route smoke checks and 24 local analytics browser tests.
+A pre-release review then identified withdrawal across mixed/rollback builds;
+the failures were reproduced before mirroring rejection and versioning expanded
+acceptance in the legacy key. Legacy-only reacceptance cannot revive old Ahrefs
+consent. The expanded unit suite contains 237 tests; final browser verification
+includes these regressions. Final local validation passed TypeScript, lint,
+237 unit tests, 33 copy checks, build, 567 route checks and 25 browser tests
+(one inactive-only case skipped). Independent re-review found no important
+remaining consent-transition regressions. The browser suite uses the real Ahrefs script for collection, SPA
 navigation, automatic-interaction suppression and withdrawal checks; all
 collection and contact requests remain intercepted until browser-context
 closure. A microtask timing leak found by the real-script test was reproduced

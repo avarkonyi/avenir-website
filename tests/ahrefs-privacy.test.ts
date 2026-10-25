@@ -4,7 +4,7 @@ import { getTranslation } from "../lib/i18n";
 import { getPrivacyContent } from "../lib/legal-content";
 import { CURRENT_PRIVACY_CONTENT } from "../lib/current-privacy-content";
 import { getDePrivacyContent } from "../lib/de-legal-content";
-import { readAnalyticsConsent } from "../lib/analytics/consent";
+import { readAnalyticsConsent, writeAnalyticsConsent } from "../lib/analytics/consent";
 
 const originalFlag = process.env.NEXT_PUBLIC_AHREFS_ENABLED;
 const originalWindow = globalThis.window;
@@ -27,7 +27,7 @@ test("Ahrefs activation cannot reuse GA4-only acceptance but preserves legacy re
   assert.equal(readAnalyticsConsent(), null);
   storedConsent({ avenir_analytics_consent: "rejected" });
   assert.equal(readAnalyticsConsent(), "rejected");
-  storedConsent({ avenir_analytics_consent_v2: "accepted" });
+  storedConsent({ avenir_analytics_consent_v2: "accepted", avenir_analytics_consent: "accepted:v2" });
   assert.equal(readAnalyticsConsent(), "accepted");
 });
 
@@ -35,6 +35,48 @@ test("inactive Ahrefs leaves existing GA4 consent valid", () => {
   delete process.env.NEXT_PUBLIC_AHREFS_ENABLED;
   storedConsent({ avenir_analytics_consent: "accepted" });
   assert.equal(readAnalyticsConsent(), "accepted");
+});
+
+test("withdrawal updates the legacy key and remains rejected after disabling Ahrefs", () => {
+  process.env.NEXT_PUBLIC_AHREFS_ENABLED = "1";
+  const values: Record<string, string> = {
+    avenir_analytics_consent: "accepted",
+    avenir_analytics_consent_v2: "accepted",
+  };
+  storedConsent(values);
+  window.localStorage.setItem = (key, value) => { values[key] = value; };
+  window.dispatchEvent = () => true;
+  assert.equal(writeAnalyticsConsent("rejected"), "rejected");
+  assert.equal(values.avenir_analytics_consent, "rejected");
+  delete process.env.NEXT_PUBLIC_AHREFS_ENABLED;
+  assert.equal(readAnalyticsConsent(), "rejected");
+});
+
+test("a legacy-tab rejection overrides v2 acceptance until explicit renewed acceptance", () => {
+  process.env.NEXT_PUBLIC_AHREFS_ENABLED = "1";
+  const values: Record<string, string> = {
+    avenir_analytics_consent: "rejected",
+    avenir_analytics_consent_v2: "accepted",
+  };
+  storedConsent(values);
+  window.localStorage.setItem = (key, value) => { values[key] = value; };
+  window.dispatchEvent = () => true;
+  assert.equal(readAnalyticsConsent(), "rejected");
+  assert.equal(writeAnalyticsConsent("accepted"), "accepted");
+  assert.equal(values.avenir_analytics_consent, "accepted:v2");
+});
+
+test("a GA4-only reject then reaccept cannot revive expanded-provider acceptance", () => {
+  process.env.NEXT_PUBLIC_AHREFS_ENABLED = "1";
+  const values: Record<string, string> = {};
+  storedConsent(values);
+  window.localStorage.setItem = (key, value) => { values[key] = value; };
+  window.dispatchEvent = () => true;
+  assert.equal(writeAnalyticsConsent("accepted"), "accepted");
+  values.avenir_analytics_consent = "rejected";
+  assert.equal(readAnalyticsConsent(), "rejected");
+  values.avenir_analytics_consent = "accepted";
+  assert.equal(readAnalyticsConsent(), null);
 });
 
 test("enabled privacy notices identify consent-gated Ahrefs without the inactive assertion", () => {

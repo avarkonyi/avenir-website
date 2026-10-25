@@ -167,7 +167,28 @@ test("cross-tab rejection disables Ahrefs without another measurement", async ({
   await other.getByRole("button", { name: "Süti beállítások", exact: true }).click();
   await choose(other, false);
   await expect(page.locator(`#${SCRIPT_ID}`)).not.toHaveAttribute("data-key", KEY);
+  expect(await other.evaluate(() => localStorage.getItem("avenir_analytics_consent"))).toBe("rejected");
   expect(calls.events).toHaveLength(2);
+});
+
+test("a legacy-only tab withdrawal disables the new provider in other tabs", async ({ page, context }) => {
+  test.skip(!ENABLED, "Consent migration applies only when Ahrefs is enabled.");
+  const calls = await network(context);
+  await page.goto(`${ORIGIN}/hu`);
+  await choose(page, true);
+  await expect.poll(() => calls.events.length).toBe(1);
+  const olderTab = await context.newPage();
+  await olderTab.goto(`${ORIGIN}/en`);
+  await expect.poll(() => calls.events.length).toBe(2);
+  await olderTab.evaluate(() => localStorage.setItem("avenir_analytics_consent", "rejected"));
+  await expect(page.locator(`#${SCRIPT_ID}`)).not.toHaveAttribute("data-key", KEY);
+  await olderTab.evaluate(() => localStorage.setItem("avenir_analytics_consent", "accepted"));
+  await page.waitForTimeout(200);
+  await expect(page.locator(`#${SCRIPT_ID}`)).not.toHaveAttribute("data-key", KEY);
+  expect(calls.events).toHaveLength(2);
+  await page.getByRole("button", { name: "Süti beállítások", exact: true }).click();
+  await choose(page, true);
+  await expect.poll(() => calls.events.length).toBe(3);
 });
 
 test("storage failure and query-bearing referrers keep Ahrefs blocked", async ({ page, context }) => {

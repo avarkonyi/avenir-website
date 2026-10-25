@@ -38,6 +38,12 @@ reused; prior rejection is preserved. The banner names the active providers and
 links to the actual locale Privacy Policy. The policy's active/inactive status
 uses the same switch.
 
+Rejection is mirrored to the legacy GA4 key so older/rollback builds receive
+withdrawal. Expanded acceptance uses a versioned legacy marker: an older
+GA4-only tab cannot revive Ahrefs by accepting again. Older builds may safely
+reprompt rather than recognising the expanded marker. A new Ahrefs acceptance
+must come from the expanded provider notice.
+
 ## Verification
 
 - Run TypeScript, lint, unit tests, copy guard and build on the current main.

@@ -40,7 +40,7 @@ function fixture(choice: string | null = null, referrer = "") {
   const location = { href: "https://www.afm.hu/hu?email=private@example.test#secret", pathname: "/hu" };
   Object.defineProperty(globalThis, "window", {
     configurable: true,
-    value: { location, localStorage: { getItem: () => consent }, AhrefsAnalytics: { sendEvent: (name: string) => calls.push(name) } },
+    value: { location, localStorage: { getItem: (key: string) => key === "avenir_analytics_consent" && consent === "accepted" ? "accepted:v2" : consent }, AhrefsAnalytics: { sendEvent: (name: string) => calls.push(name) } },
   });
   Object.defineProperty(globalThis, "document", {
     configurable: true,

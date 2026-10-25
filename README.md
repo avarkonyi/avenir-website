@@ -225,6 +225,9 @@ acceptance is not reused; prior rejection remains valid. While Ahrefs is inactiv
 existing GA4 consent and operation stay unchanged. The HU/EN and DE-review Privacy
 Policy v1.4 identifies Ahrefs and reflects the activation switch; the banner names providers
 and links to the policy.
+Withdrawal is mirrored to the legacy key for older tabs and rollback builds;
+expanded acceptance uses a versioned marker. A GA4-only tab cannot revive an
+older Ahrefs acceptance; older builds may safely reprompt.
 
 `npm run qa:analytics -- <local-or-preview-url>` also runs Ahrefs consent tests.
 The real-script smoke downloads the official script but intercepts all Ahrefs

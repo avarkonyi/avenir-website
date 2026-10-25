@@ -126,6 +126,9 @@ function installFakeWindow(
 ): GtagCall[] {
   const calls: GtagCall[] = [];
   const storage = new Map<string, string>([[analyticsConsentKey(), consent]]);
+  if (analyticsConsentKey() !== "avenir_analytics_consent" && consent === "accepted") {
+    storage.set("avenir_analytics_consent", "accepted:v2");
+  }
 
   Object.defineProperty(globalThis, "window", {
     configurable: true,
